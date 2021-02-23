@@ -32,10 +32,11 @@ export class ResultsComponent implements AfterViewInit, OnChanges, AfterViewChec
 
   ngAfterViewChecked() {
     /* Looks for changes on this component and its children, after the wizardSteps changed */
-    // this.cd.detectChanges();
+
     if (!this.activeTab) {
       this.activeTab = 'table';
     }
+    this.cd.detectChanges();
 
   }
 
