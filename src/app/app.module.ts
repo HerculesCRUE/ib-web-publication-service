@@ -47,6 +47,7 @@ import { CustomNgbDatepickerI18n } from './_helpers/customNgbDatepickerI18n.prov
 import { AccesibilityComponent } from './accesibility/accesibility.component';
 import { Helper } from './_helpers/utils';
 import { HelperGraphics } from './_helpers/helperGraphics';
+import { LangInterceptor } from './_helpers/lang-intercetor';
 
 // -------------- Aux functions --------------
 
@@ -95,6 +96,7 @@ import { HelperGraphics } from './_helpers/helperGraphics';
       useClass: TokenizedInterceptor,
       multi: true,
     },
+    { provide: HTTP_INTERCEPTORS, useClass: LangInterceptor, multi: true },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: OAuthInterceptor,
