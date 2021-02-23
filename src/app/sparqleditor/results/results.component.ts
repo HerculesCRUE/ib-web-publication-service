@@ -1,24 +1,20 @@
 import {
-  AfterViewChecked,
   AfterViewInit,
   ChangeDetectorRef,
   Component,
   OnChanges,
-  OnInit,
-  SimpleChanges,
-  ViewChild,
+  SimpleChanges
 } from '@angular/core';
-import { Binding, BindingValue, SparqlResults } from 'src/app/_models/sparql';
+import { BindingValue, SparqlResults } from 'src/app/_models/sparql';
 
 @Component({
   selector: 'app-results',
   templateUrl: './results.component.html',
   inputs: ['data', 'errorMessage'],
 })
-export class ResultsComponent implements AfterViewInit, OnChanges, AfterViewChecked {
-  @ViewChild('resultsTab', { static: false })
-  // resultsTab: TabsetComponent;
-  activeTab: string;
+export class ResultsComponent implements AfterViewInit, OnChanges {
+
+  activeTab: string = 'table';
 
   data: SparqlResults = null;
   errorMessage = null;
@@ -30,15 +26,6 @@ export class ResultsComponent implements AfterViewInit, OnChanges, AfterViewChec
   }
 
 
-  ngAfterViewChecked() {
-    /* Looks for changes on this component and its children, after the wizardSteps changed */
-
-    if (!this.activeTab) {
-      this.activeTab = 'table';
-    }
-    this.cd.detectChanges();
-
-  }
 
   // Set default values after load the view
   ngAfterViewInit(): void {
