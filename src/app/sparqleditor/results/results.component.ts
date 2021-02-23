@@ -32,8 +32,10 @@ export class ResultsComponent implements AfterViewInit, OnChanges, AfterViewChec
 
   ngAfterViewChecked() {
     /* Looks for changes on this component and its children, after the wizardSteps changed */
-    this.activeTab = 'table';
-    this.cd.detectChanges();
+    // this.cd.detectChanges();
+    if (!this.activeTab) {
+      this.activeTab = 'table';
+    }
 
   }
 
@@ -88,6 +90,7 @@ export class ResultsComponent implements AfterViewInit, OnChanges, AfterViewChec
   */
   private enableGraphics() {
     this.activeCharts = false;
+
     if (this.data.head.vars.length == 2 && !!this.data.results.bindings && this.data.results.bindings.length > 0) {
       var firstResult = this.data.results.bindings[0];
 

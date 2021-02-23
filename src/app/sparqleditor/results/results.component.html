@@ -10,20 +10,22 @@
             {{ "sparql.results.table" | translate }}</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" disabled="true" [ngClass]="{'active': activeTab === 'response' }" id="response-tab"
-            (click)="changeTab('response', true)" data-bs-toggle="tab" href="JavaScript:void(0)" role="tab"
-            aria-controls="response" [attr.aria-selected]="activeTab === 'response'"><span class="oi oi-list"></span>
+          <a class="nav-link" [class.disabled]="!data" [ngClass]="{'active': activeTab === 'response' }"
+            id="response-tab" (click)="changeTab('response', !data)" data-bs-toggle="tab" href="JavaScript:void(0)"
+            role="tab" aria-controls="response" [attr.aria-selected]="activeTab === 'response'"><span
+              class="oi oi-list"></span>
             {{ "sparql.results.response" | translate }}</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" disabled="true" [ngClass]="{'active': activeTab === 'chart' }" id="chart-atb"
-            (click)="changeTab('chart', true)" data-bs-toggle="tab" href="JavaScript:void(0)" role="tab"
-            aria-controls="chart" [attr.aria-selected]="activeTab === 'chart'"><span class="oi oi-graph"></span>
+          <a class="nav-link" [class.disabled]="!activeCharts" [ngClass]="{'active': activeTab === 'chart' }"
+            id="chart-atb" (click)="changeTab('chart', !activeCharts)" data-bs-toggle="tab" href="JavaScript:void(0)"
+            role="tab" aria-controls="chart" [attr.aria-selected]="activeTab === 'chart'"><span
+              class="oi oi-graph"></span>
             {{ "sparql.results.chart" | translate }}</a>
         </li>
         <li class="nav-item" role="presentation">
-          <a class="nav-link" disabled="true" [ngClass]="{'active': activeTab === 'map' }" id="map-tab"
-            (click)="changeTab('map', true)" data-bs-toggle="tab" href="JavaScript:void(0)" role="tab"
+          <a class="nav-link" [class.disabled]="!activeCharts" [ngClass]="{'active': activeTab === 'map' }" id="map-tab"
+            (click)="changeTab('map', !activeCharts)" data-bs-toggle="tab" href="JavaScript:void(0)" role="tab"
             aria-controls="map" [attr.aria-selected]="activeTab === 'map'"><span class="oi oi-map"></span>
             {{ "sparql.results.map" | translate }}</a>
         </li>
