@@ -202,7 +202,7 @@ export abstract class PaginatedSearchComponent<T> implements AfterContentInit {
 
   ngAfterContentInit(): void {
     const lastSearch: FindRequest = JSON.parse(
-      localStorage.getItem('searchform-' + this.router.url)
+      localStorage.getItem(`searchform-${this.router.url}`)
     );
 
     if (lastSearch) {
@@ -229,7 +229,7 @@ export abstract class PaginatedSearchComponent<T> implements AfterContentInit {
    */
   find() {
     localStorage.setItem(
-      'searchform-' + this.router.url,
+      `searchform-${this.router.url}`,
       JSON.stringify(this.findRequest)
     );
     this.findInternal(this.findRequest).subscribe((page: Page<T>) => {

@@ -65,7 +65,7 @@ export class Helper {
       let sort = pageRequest.property;
 
       if (pageRequest.direction) {
-        sort += ',' + pageRequest.direction;
+        sort += `,${pageRequest.direction}`;
       }
 
       params = params.set('sort', sort);

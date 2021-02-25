@@ -19,7 +19,7 @@ export class HelperGraphics {
      * @memberof HelperGraphics
      */
     static configChartPie(data: any, seriesName: string, titleText: string) {
-        const echartOptions = {
+        return {
             title: {
                 text: titleText,
                 left: 'center',
@@ -54,7 +54,6 @@ export class HelperGraphics {
                 },
             ],
         };
-        return echartOptions;
     }
 
     /**
@@ -68,7 +67,7 @@ export class HelperGraphics {
      * @memberof HelperGraphics
      */
     static configChartBar(xAxisData: any, seriesData: Array<SeriesBarData>, legendData: Array<string>) {
-        const echartOptions = {
+        return {
             legend: {
                 data: legendData,
                 align: 'left',
@@ -86,11 +85,10 @@ export class HelperGraphics {
             animationEasing: 'elasticOut',
             animationDelayUpdate: (idx) => idx * 5,
         };
-        return echartOptions;
     }
 
     static configChartTree(dataTree: Array<any>) {
-        const echartOptions = {
+        return {
             series: [{
                 type: 'treemap',
                 data: dataTree,
@@ -102,7 +100,6 @@ export class HelperGraphics {
                 }
             }]
         };
-        return echartOptions;
     }
 
     /**
