@@ -41,7 +41,6 @@ export class TableResultsDtoComponent
    */
   @Input()
   set data(val: any) {
-    // this.dataComplete = Object.assign({}, val);
     this.dataComplete = JSON.parse(JSON.stringify(val));
   }
 
@@ -170,8 +169,6 @@ export class TableResultsDtoComponent
 
         page.number = 0;
 
-        // this.searchResult = page.content;
-        // this.resultObject = page;
       } else {
         if (findRequest.pageRequest.page === 1) {
           page.first = true;
@@ -197,15 +194,10 @@ export class TableResultsDtoComponent
     return of(page);
   }
   protected removeInternal(entity: any): Observable<{} | Response> {
-    // throw new Error('Method not implemented.');
     return;
   }
 
   protected getDefaultOrder(): Order {
-    // return {
-    //   property: 'id',
-    //   direction: Direction.ASC,
-    // };
     return new Order();
   }
 

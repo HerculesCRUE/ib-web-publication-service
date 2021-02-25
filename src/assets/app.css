@@ -20,6 +20,10 @@ table tbody {
   font-size: 14px;
 }
 
+.actions {
+  margin-top: 20px;
+}
+
 .table-users .actions {
   width: 10em;
 }
@@ -34,9 +38,7 @@ table tbody {
   color: white;
 }
 
-.actions {
-  margin-top: 20px;
-}
+
 
 .btn-outline-primary {
   color: white;

@@ -80,7 +80,7 @@ export class ResultsComponent implements AfterViewInit, OnChanges {
     this.activeCharts = false;
 
     if (this.data.head.vars.length == 2 && !!this.data.results.bindings && this.data.results.bindings.length > 0) {
-      var firstResult = this.data.results.bindings[0];
+      const firstResult = this.data.results.bindings[0];
 
       if (this.isText(firstResult[this.data.head.vars[0]]) || this.isText(firstResult[this.data.head.vars[1]])) {
         if (this.isText(firstResult[this.data.head.vars[0]]) && this.isNumeric(firstResult[this.data.head.vars[1]])) {
