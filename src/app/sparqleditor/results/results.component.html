@@ -50,9 +50,9 @@
         <div class="tab-pane fade" id="chart"
           [ngClass]="{'show': activeTab === 'chart', 'active': activeTab === 'chart' }" role="tabpanel"
           aria-labelledby="chart-tab">
-          <!-- <ng-content *ngIf="">
-            <app-bar-chart-results></app-bar-chart-results>
-          </ng-content> -->
+          <div *ngIf="!!activeCharts">
+            <app-bar-chart-results data="data"></app-bar-chart-results>
+          </div>
         </div>
         <div class="tab-pane fade" id="map" [ngClass]="{'show': activeTab === 'map', 'active': activeTab === 'map' }"
           role="tabpanel" aria-labelledby="map-tab">

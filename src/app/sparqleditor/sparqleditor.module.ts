@@ -14,6 +14,7 @@ import { CommonDisplayDataModule } from '../common-display-data/common-display-d
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { BarChartResultsComponent } from './bar-chart-results/bar-chart-results.component';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 // -------------- Aux functions --------------
 
@@ -33,6 +34,11 @@ import { BarChartResultsComponent } from './bar-chart-results/bar-chart-results.
     AlertModule.forRoot(),
     CommonDisplayDataModule,
     SharedModule,
+
+    NgxEchartsModule,
+    NgxEchartsModule.forRoot({
+      echarts: () => import('echarts'),
+    })
   ],
 })
-export class SparqleditorModule {}
+export class SparqleditorModule { }
