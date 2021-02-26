@@ -9,6 +9,31 @@ import {
 } from '@angular/core';
 import { BindingValue, SparqlResults } from 'src/app/_models/sparql';
 
+/**
+ * ResultsComponent
+ *
+ * @export
+ * @class ResultsComponent
+ * @implements {AfterViewInit}
+ * @implements {OnChanges}
+ * @implements {OnInit}
+ * @implements {AfterViewChecked}
+ *  
+ * Example of SPARQL to show graphics
+ * 
+ * 
+ * PREFIX  xsd:  <http://www.w3.org/2001/XMLSchema#>
+ * 
+ * SELECT ?published (COUNT(?x) as ?cuenta)
+ * WHERE {
+ *     ?x <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>  <http://hercules.org/um/es-ES/rec/Article> .  
+ *     ?x <http://hercules.org/um/es-ES/rec/publishedIn> ?published .
+ * 
+ * }  GROUP BY ?published
+ * LIMIT 10
+ * 
+ *  
+ */
 @Component({
   selector: 'app-results',
   templateUrl: './results.component.html',

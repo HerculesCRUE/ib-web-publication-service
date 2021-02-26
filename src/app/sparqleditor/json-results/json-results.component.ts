@@ -1,5 +1,14 @@
 import { Component, OnInit, Input, AfterViewChecked, ChangeDetectorRef } from '@angular/core';
 
+/**
+ * JsonResultsComponent
+ *
+ * @export
+ * @class JsonResultsComponent
+ * @implements {OnInit}
+ * @implements {AfterViewChecked}
+ * 
+ */
 @Component({
   selector: 'app-json-results',
   templateUrl: './json-results.component.html'
@@ -13,6 +22,11 @@ export class JsonResultsComponent implements OnInit, AfterViewChecked {
     return this._data;
   }
 
+  /**
+   * data
+   *
+   * @memberof JsonResultsComponent
+   */
   @Input()
   set data(val: any) {
     this._data = val;

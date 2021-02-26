@@ -41,7 +41,7 @@
           <a class="nav-link" [class.disabled]="!activeCharts" [ngClass]="{'active': activeTab === 'sector-chart' }"
             id="sector-chart-atb" (click)="changeTab('sector-chart', !activeCharts)" data-bs-toggle="tab"
             href="JavaScript:void(0)" role="tab" aria-controls="sector-chart"
-            [attr.aria-selected]="activeTab === 'sector-chart'"><span class="oi oi-target"></span>
+            [attr.aria-selected]="activeTab === 'sector-chart'"><span class="oi oi-pie-chart"></span>
             {{ "sparql.results.sector-chart" | translate }}</a>
         </li>
         <li class="nav-item" role="presentation" [ngClass]="{'cursor-text': !activeCharts }">
