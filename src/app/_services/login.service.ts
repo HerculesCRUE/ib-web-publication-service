@@ -4,7 +4,8 @@ import { Helper } from '../_helpers/utils';
 import { Observable, of } from 'rxjs';
 import { AbstractService } from '../_helpers/abstract';
 import { User } from '../_models/user';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { KeycloakService } from 'keycloak-angular';
 
 /**
  * Servicio para la gestión del login.
@@ -18,7 +19,7 @@ export class LoginService extends AbstractService {
    */
   private loggedIn = false;
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient, private keycloak: KeycloakService) {
     super();
     this.loggedIn = !!localStorage.getItem('access_token');
   }
@@ -95,5 +96,24 @@ export class LoginService extends AbstractService {
    */
   isLoggedIn() {
     return this.loggedIn;
+  }
+
+  logoutKeyCloak() {
+    this.keycloak.logout();
+  }
+  initializeKeycloak() {
+
+    this.keycloak.init({
+      config: {
+        url: 'http://localhost:8080/auth',
+        realm: 'umasio',
+        clientId: 'login-app',
+      },
+      initOptions: {
+        onLoad: 'login-required'
+      },
+    });
+
+
   }
 }
