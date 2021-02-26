@@ -13,6 +13,7 @@ import { BindingValue, SparqlResults } from 'src/app/_models/sparql';
   selector: 'app-results',
   templateUrl: './results.component.html',
   inputs: ['data', 'errorMessage'],
+  styleUrls: ['./results.component.css']
 })
 export class ResultsComponent implements AfterViewInit, OnChanges, OnInit, AfterViewChecked {
 
@@ -41,8 +42,6 @@ export class ResultsComponent implements AfterViewInit, OnChanges, OnInit, After
 
   // Set default values after load the view
   ngAfterViewInit(): void {
-
-
 
   }
 

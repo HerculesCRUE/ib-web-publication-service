@@ -9,35 +9,42 @@
             aria-controls="table" [attr.aria-selected]="activeTab === 'table'"><span class="oi oi-grid-three-up"></span>
             {{ "sparql.results.table" | translate }}</a>
         </li>
-        <li class="nav-item" role="presentation">
+        <li class="nav-item" role="presentation" [ngClass]="{'cursor-text': !data }">
           <a class="nav-link" [class.disabled]="!data" [ngClass]="{'active': activeTab === 'response' }"
             id="response-tab" (click)="changeTab('response', !data)" data-bs-toggle="tab" href="JavaScript:void(0)"
             role="tab" aria-controls="response" [attr.aria-selected]="activeTab === 'response'"><span
               class="oi oi-list"></span>
             {{ "sparql.results.response" | translate }}</a>
         </li>
-        <li class="nav-item" role="presentation">
+        <li class="nav-item" role="presentation" [ngClass]="{'cursor-text': !activeCharts }">
           <a class="nav-link" [class.disabled]="!activeCharts" [ngClass]="{'active': activeTab === 'bar-chart' }"
             id="bar-chart-atb" (click)="changeTab('bar-chart', !activeCharts)" data-bs-toggle="tab"
             href="JavaScript:void(0)" role="tab" aria-controls="bar-chart"
             [attr.aria-selected]="activeTab === 'bar-chart'"><span class="oi oi-bar-chart"></span>
             {{ "sparql.results.bar-chart" | translate }}</a>
         </li>
-        <li class="nav-item" role="presentation">
+        <li class="nav-item" role="presentation" [ngClass]="{'cursor-text': !activeCharts }">
           <a class="nav-link" [class.disabled]="!activeCharts" [ngClass]="{'active': activeTab === 'line-chart' }"
             id="line-chart-atb" (click)="changeTab('line-chart', !activeCharts)" data-bs-toggle="tab"
             href="JavaScript:void(0)" role="tab" aria-controls="line-chart"
             [attr.aria-selected]="activeTab === 'line-chart'"><span class="oi oi-graph"></span>
             {{ "sparql.results.line-chart" | translate }}</a>
         </li>
-        <li class="nav-item" role="presentation">
+        <li class="nav-item" role="presentation" [ngClass]="{'cursor-text': !activeCharts }">
           <a class="nav-link" [class.disabled]="!activeCharts" [ngClass]="{'active': activeTab === 'buble-chart' }"
             id="buble-chart-atb" (click)="changeTab('buble-chart', !activeCharts)" data-bs-toggle="tab"
             href="JavaScript:void(0)" role="tab" aria-controls="buble-chart"
             [attr.aria-selected]="activeTab === 'buble-chart'"><span class="oi oi-target"></span>
             {{ "sparql.results.bubble-chart" | translate }}</a>
         </li>
-        <li class="nav-item" role="presentation">
+        <li class="nav-item" role="presentation" [ngClass]="{'cursor-text': !activeCharts }">
+          <a class="nav-link" [class.disabled]="!activeCharts" [ngClass]="{'active': activeTab === 'sector-chart' }"
+            id="sector-chart-atb" (click)="changeTab('sector-chart', !activeCharts)" data-bs-toggle="tab"
+            href="JavaScript:void(0)" role="tab" aria-controls="sector-chart"
+            [attr.aria-selected]="activeTab === 'sector-chart'"><span class="oi oi-target"></span>
+            {{ "sparql.results.bubble-chart" | translate }}</a>
+        </li>
+        <li class="nav-item" role="presentation" [ngClass]="{'cursor-text': !activeCharts }">
           <a class="nav-link" [class.disabled]="!activeCharts" [ngClass]="{'active': activeTab === 'map' }" id="map-tab"
             (click)="changeTab('map', !activeCharts)" data-bs-toggle="tab" href="JavaScript:void(0)" role="tab"
             aria-controls="map" [attr.aria-selected]="activeTab === 'map'"><span class="oi oi-map"></span>
@@ -79,6 +86,13 @@
           [ngClass]="{'show': activeTab === 'buble-chart', 'active': activeTab === 'buble-chart' }" role="tabpanel"
           aria-labelledby="buble-chart-tab">
           <div *ngIf="activeTab === 'buble-chart'">
+            <app-chart-results [data]="echartData" [labels]="echartLabels" type="bubble"></app-chart-results>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="sector-chart"
+          [ngClass]="{'show': activeTab === 'sector-chart', 'active': activeTab === 'sector-chart' }" role="tabpanel"
+          aria-labelledby="sector-chart-tab">
+          <div *ngIf="activeTab === 'sector-chart'">
             <app-chart-results [data]="echartData" [labels]="echartLabels" type="bubble"></app-chart-results>
           </div>
         </div>
