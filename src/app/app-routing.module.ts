@@ -67,6 +67,10 @@ const noSecureRoutes: Routes = [
     path: 'links',
     component: LinksComponent,
   },
+  {
+    path: 'login',
+    component: LoginComponent
+  }
 ];
 
 const routes: Routes = [

@@ -2,7 +2,7 @@
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import {
   HttpClientModule,
   HttpClient,
@@ -49,7 +49,14 @@ import { Helper } from './_helpers/utils';
 import { HelperGraphics } from './_helpers/helperGraphics';
 import { LangInterceptor } from './_helpers/lang-intercetor';
 
+
 // -------------- Aux functions --------------
+
+// keycloak
+import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
+import { environment } from 'src/environments/environment';
+
+
 
 @NgModule({
   declarations: [
@@ -63,6 +70,7 @@ import { LangInterceptor } from './_helpers/lang-intercetor';
   ],
   imports: [
     BrowserModule,
+    KeycloakAngularModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,

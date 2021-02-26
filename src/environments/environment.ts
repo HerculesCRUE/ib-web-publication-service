@@ -9,6 +9,9 @@ export const environment = {
   urlWebsocket: '/gs-guide-websocket',
   oauthClientId: 'acme',
   oauthSecret: 'acmesecret',
+  keycloackAuthURL: 'http://localhost:8080/auth/realms/umasio',
+  realm: 'umasio',
+  clientId: 'login-app'
 };
 
 // default settings for how to query the endpoint
