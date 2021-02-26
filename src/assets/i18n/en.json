@@ -85,7 +85,10 @@
       "table": "table",
       "response": "response",
       "map": "map",
-      "chart": "chart"
+      "chart": "chart",
+      "bar-chart": "bar chart",
+      "line-chart": "line chart",
+      "bubble-chart": "buble chart"
     }
   },
   "home": {
@@ -129,7 +132,7 @@
     "projects": "Projects",
     "patents": "Patentes",
     "area": "Area",
-    "id":"ID"
+    "id": "ID"
   },
   "scientist": {
     "title": "Research staff",
@@ -150,9 +153,9 @@
     "trajectory-by-timeline": "Trayectory by timeline",
     "events": "Events",
     "congress-events": "Congress and events",
-    "id":"ID",
+    "id": "ID",
     "birthDate": "BithDate",
-    "description":"Description",
+    "description": "Description",
     "firstName": "Name",
     "gender": "Gender",
     "hasContactInfo": "Has contact info",
@@ -174,7 +177,7 @@
     "scientific-publications": "Scientific publications",
     "academic-publications": "Academic publications",
     "other-publications": "Other publications",
-    "events":"Events"
+    "events": "Events"
   },
   "projects": {
     "year": "Year",
@@ -197,16 +200,16 @@
     "main-researcher": "name(s) main  researcher(s)",
     "competitive": "Competitive",
     "level": "Level",
-    "id":"ID",
+    "id": "ID",
     "title": "Title",
     "abbreviation": "Abbreviation",
     "description": "Description",
-    "endDate":"End Date",
+    "endDate": "End Date",
     "foreseenJustificationDate": "Foreseen Justification Date",
-    "keyword":"Keyword",
+    "keyword": "Keyword",
     "modality": "Modality",
     "needsEthicalValidation": "Needs Ethical Validation",
-    "startDate":"Start date",
+    "startDate": "Start date",
     "status": "status"
   },
   "investigation-actions": {
@@ -225,18 +228,18 @@
     "document": "Documents",
     "date-fin": "End Date",
     "date-ini": "Start Date",
-    "types":"Type",
+    "types": "Type",
     "title": "Title",
-    "id":"ID",
+    "id": "ID",
     "startPage": "Start page",
     "endPage": "End page",
-    "doi":"DOI",
+    "doi": "DOI",
     "publishedIn": "Published in",
     "date": "Date",
     "summary": "Summary",
-    "type":"Type",
-    "abbreviation":"Abbreviation",
-    "placeOfPublication":"Place of publication"
+    "type": "Type",
+    "abbreviation": "Abbreviation",
+    "placeOfPublication": "Place of publication"
   },
   "participant": {
     "title": "Participants",
@@ -268,11 +271,11 @@
     "doi": "DOI",
     "endDate": "End date",
     "endPage": "End page",
-    "id":"ID",
-    "keyword":"Keyword",
+    "id": "ID",
+    "keyword": "Keyword",
     "mode": "Mode",
     "startDate": "Start date",
-    "startPage":"Start page",
+    "startPage": "Start page",
     "title": "Title"
   },
   "directed-jobs": {
@@ -312,16 +315,16 @@
     "keyword": "Keyword",
     "resume": "Resume",
     "other-authors": "Other authors",
-    "name":"Name"
+    "name": "Name"
   },
   "event": {
     "id": "Id",
     "area": "Area",
     "location": "Location",
-    "date-from":"Date from",
+    "date-from": "Date from",
     "date-to": "Date to",
     "participant": "Participant",
-    "keyword":"Keyword",
+    "keyword": "Keyword",
     "asociated-publication": "Asociated publication",
     "description": "Description"
   },

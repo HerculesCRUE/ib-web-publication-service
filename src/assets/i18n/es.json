@@ -86,7 +86,10 @@
       "table": "tabla",
       "response": "response",
       "map": "mapa",
-      "chart": "gráfica"
+      "chart": "gráfica",
+      "bar-chart": "gráfica de barras",
+      "line-chart": "gráfica de lineas",
+      "bubble-chart": "gráfica de burbujas"
     }
   },
   "proyect": {
@@ -138,18 +141,18 @@
     "projects": "Proyectos",
     "patents": "Patentes",
     "area": "Área",
-    "id":"ID"
+    "id": "ID"
   },
   "scientist": {
     "title": "Titulo",
     "area": "Área",
     "type": "Tipo",
-    "acction-inves":"Acciones de investigación",
+    "acction-inves": "Acciones de investigación",
     "congress": "Congresos",
     "business-activity": "Actividad empresarial",
     "trajectory": "Trayectoria",
     "reg-documents": "Documentos registrados",
-    "prod-scientist":"Producción cientifica",
+    "prod-scientist": "Producción cientifica",
     "directed-jobs": "Trabajos dirigidos",
     "startups": "Startups/ Spin-off",
     "scientific-production-indicators": "Indicadores de producción científica",
@@ -157,14 +160,14 @@
     "h-index": "h-index",
     "apto": "Apto",
     "trajectory-by-timeline": "Trayectoria por línea de tiempo",
-    "events":"Eventos",
+    "events": "Eventos",
     "congress-events": "Congresos y eventos de divulgación científica",
-    "name":"Nombre",
+    "name": "Nombre",
     "appointments": "Citas",
     "publications": "Publicaciones",
-    "id":"ID",
+    "id": "ID",
     "birthDate": "Fecha de Nac.",
-    "description":"Descripción",
+    "description": "Descripción",
     "firstName": "Nombre",
     "gender": "Género",
     "hasContactInfo": "Info. de contacto",
@@ -186,7 +189,7 @@
     "scientific-publications": "Publicaciones cientificas",
     "academic-publications": "Publicaciones academicas",
     "other-publications": "Otras publicaciones",
-    "events":"Eventos"
+    "events": "Eventos"
   },
   "projects": {
     "year": "Año",
@@ -207,18 +210,18 @@
     "call-type": "Tipo de convocatoria",
     "people-involved": "Personas involucradas en el proyecto",
     "main-researcher": "Nombre(s) del investigador (s) principal",
-    "competitive":"Competitivo",
+    "competitive": "Competitivo",
     "level": "Nivel",
-    "id":"ID",
+    "id": "ID",
     "title": "Titulo",
     "abbreviation": "Abreviación",
     "description": "Descripción",
-    "endDate":"Fecha fin",
+    "endDate": "Fecha fin",
     "foreseenJustificationDate": "Fecha justificación",
-    "keyword":"Palabra clave",
+    "keyword": "Palabra clave",
     "modality": "Modalidad",
     "needsEthicalValidation": "Validación etica",
-    "startDate":"Fecha inicio",
+    "startDate": "Fecha inicio",
     "status": "Estado"
   },
   "investigation-actions": {
@@ -237,29 +240,29 @@
     "document": "Documentos",
     "date-fin": "Fecha Fin",
     "date-ini": "Fecha Inicio",
-    "types":"Tipo",
+    "types": "Tipo",
     "title": "Titulo",
-    "id":"ID",
+    "id": "ID",
     "startPage": "Página inicio",
     "endPage": "Página fin",
-    "doi":"DOI",
+    "doi": "DOI",
     "publishedIn": "Publicado en",
     "date": "Fecha",
     "summary": "Sumario",
-    "type":"Tipo",
-    "abbreviation":"Abreviación",
-    "placeOfPublication":"Lugar de publicación"
+    "type": "Tipo",
+    "abbreviation": "Abreviación",
+    "placeOfPublication": "Lugar de publicación"
   },
   "participant": {
     "title": "Participantes",
     "level": "Nivel",
     "year": "Año",
     "people-involved": "Personas involucradas en el proyecto",
-    "proyect-participants": "Entidades colaboradores/ participantes", 
+    "proyect-participants": "Entidades colaboradores/ participantes",
     "table-header": {
       "centro": "Centro",
       "dpto": "Departamento",
-      "id":"ID"
+      "id": "ID"
     }
   },
   "deliverable": {
@@ -275,22 +278,22 @@
     }
   },
   "patent": {
-    "area":"Área",
+    "area": "Área",
     "dateIssued": "Fecha de publicación",
     "doi": "DOI",
     "endDate": "Fecha fin",
     "endPage": "Página fin",
-    "id":"ID",
-    "keyword":"Palabra clave",
+    "id": "ID",
+    "keyword": "Palabra clave",
     "mode": "Modo",
     "startDate": "Fecha inicio",
-    "startPage":"Página inicio",
+    "startPage": "Página inicio",
     "title": "Titulo"
   },
   "directed-jobs": {
     "table-header": {
       "title": "Título",
-      "type":"Tipo",
+      "type": "Tipo",
       "keywords": "Palabras claves",
       "release-year": "Año de lanzamiento"
     }
@@ -298,11 +301,11 @@
   "startup": {
     "table-header": {
       "title": "Título",
-      "type":"Tipo",
+      "type": "Tipo",
       "rol": "Rol"
     }
-  }, 
-  "areas" : {
+  },
+  "areas": {
     "title": "Áreas",
     "areas": "Áreas",
     "disciplines": "Disciplinas",
@@ -313,8 +316,8 @@
     "business-finance": "Empresas y finanzas"
   },
   "events": {
-    "rol":"Rol",
-    "type":"Tipo"
+    "rol": "Rol",
+    "type": "Tipo"
   },
   "document": {
     "author": "Autor principal",
@@ -324,16 +327,16 @@
     "keyword": "Palabra clave",
     "resume": "Resumen",
     "other-authors": "Otros authores",
-    "name":"Nombre"
+    "name": "Nombre"
   },
   "event": {
     "id": "Identificador",
     "area": "Área",
     "location": "Ubicación",
-    "date-from":"Fecha de inicio",
+    "date-from": "Fecha de inicio",
     "date-to": "Fecha de fin",
     "participant": "Participante",
-    "keyword":"Palabra clave",
+    "keyword": "Palabra clave",
     "asociated-publication": "Publicación académica asociada",
     "description": "Descripción"
   },

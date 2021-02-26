@@ -87,6 +87,95 @@ export class HelperGraphics {
         };
     }
 
+    static configSimpleChartBar(xAxisData: any, seriesData: Array<SeriesBarData>) {
+        return {
+            color: ['#3398DB'],
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'shadow',
+                },
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true,
+            },
+            xAxis: [
+                {
+                    type: 'category',
+                    data: xAxisData,
+                    axisTick: {
+                        alignWithLabel: true,
+                    },
+                },
+            ],
+            yAxis: [
+                {
+                    type: 'value',
+                },
+            ],
+            series: [
+                {
+                    name: 'Counters',
+                    type: 'bar',
+                    barWidth: '60%',
+                    data: seriesData,
+                },
+            ],
+        };
+    }
+
+    static configChartLine(xAxisData: any, seriesData: Array<SeriesBarData>) {
+        return {
+            xAxis: {
+                type: 'category',
+                data: xAxisData
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [{
+                data: seriesData,
+                type: 'line'
+            }]
+        };
+
+    }
+
+    static configChartBubble(xAxisData: any, seriesData: Array<SeriesBarData>) {
+        return {
+            xAxis: {
+                type: 'category',
+                data: xAxisData
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [{
+                data: seriesData,
+                type: 'scatter'
+            }]
+        };
+    }
+
+    static configSimpleChartPie(xAxisData: any[], seriesData: Array<SeriesBarData>) {
+        let newData: any[] = xAxisData.map((a, i) => {
+            return {
+                name: a,
+                value: seriesData[i]
+            }
+        });
+        return {
+            series: [{
+                data: newData,
+                type: 'pie'
+            }]
+        };
+    }
+
+
     static configChartTree(dataTree: Array<any>) {
         return {
             series: [{

@@ -13,7 +13,7 @@ import { ErrorResultsComponent } from './error-results/error-results.component';
 import { CommonDisplayDataModule } from '../common-display-data/common-display-data.module';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
-import { BarChartResultsComponent } from './bar-chart-results/bar-chart-results.component';
+import { ChartResultsComponent } from './chart-results/chart-results.component';
 import { NgxEchartsModule } from 'ngx-echarts';
 
 // -------------- Aux functions --------------
@@ -24,7 +24,7 @@ import { NgxEchartsModule } from 'ngx-echarts';
     ResultsComponent,
     JsonResultsComponent,
     ErrorResultsComponent,
-    BarChartResultsComponent,
+    ChartResultsComponent,
   ],
   imports: [
     RouterModule,
