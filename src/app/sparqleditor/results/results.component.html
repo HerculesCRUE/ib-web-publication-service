@@ -42,7 +42,7 @@
             id="sector-chart-atb" (click)="changeTab('sector-chart', !activeCharts)" data-bs-toggle="tab"
             href="JavaScript:void(0)" role="tab" aria-controls="sector-chart"
             [attr.aria-selected]="activeTab === 'sector-chart'"><span class="oi oi-target"></span>
-            {{ "sparql.results.bubble-chart" | translate }}</a>
+            {{ "sparql.results.sector-chart" | translate }}</a>
         </li>
         <li class="nav-item" role="presentation" [ngClass]="{'cursor-text': !activeCharts }">
           <a class="nav-link" [class.disabled]="!activeCharts" [ngClass]="{'active': activeTab === 'map' }" id="map-tab"
@@ -93,7 +93,7 @@
           [ngClass]="{'show': activeTab === 'sector-chart', 'active': activeTab === 'sector-chart' }" role="tabpanel"
           aria-labelledby="sector-chart-tab">
           <div *ngIf="activeTab === 'sector-chart'">
-            <app-chart-results [data]="echartData" [labels]="echartLabels" type="bubble"></app-chart-results>
+            <app-chart-results [data]="echartData" [labels]="echartLabels" type="sector"></app-chart-results>
           </div>
         </div>
         <div class="tab-pane fade" id="map" [ngClass]="{'show': activeTab === 'map', 'active': activeTab === 'map' }"

@@ -88,7 +88,8 @@
       "chart": "chart",
       "bar-chart": "bar chart",
       "line-chart": "line chart",
-      "bubble-chart": "buble chart"
+      "bubble-chart": "buble chart",
+      "sector-chart": "sector chart"
     }
   },
   "home": {

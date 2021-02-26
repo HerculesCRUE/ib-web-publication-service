@@ -89,7 +89,8 @@
       "chart": "gráfica",
       "bar-chart": "gráfica de barras",
       "line-chart": "gráfica de lineas",
-      "bubble-chart": "gráfica de burbujas"
+      "bubble-chart": "gráfica de burbujas",
+      "sector-chart": "gráfica de sectores"
     }
   },
   "proyect": {
