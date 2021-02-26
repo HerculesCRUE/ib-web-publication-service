@@ -20,6 +20,8 @@ export const yasgui = {
   // Fuseki
   endpoint: 'http://localhost:8787/trellis/sparql',
   method: 'POST',
+  endpointFeder: 'http://localhost:8787/trellis/sparql',
+  methodFeder: 'POST',
 };
 
 /*
