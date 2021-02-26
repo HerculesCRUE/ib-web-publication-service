@@ -81,6 +81,9 @@
     "create-user-title": "Create new user"
   },
   "sparql": {
+    "main": {
+      "federated": "Federated queries"
+    },
     "results": {
       "table": "table",
       "response": "response",

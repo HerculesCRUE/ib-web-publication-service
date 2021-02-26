@@ -25,6 +25,19 @@ export class SPARQLEditorComponent implements OnInit {
     });
   }
 
+  federChangeCheck(value: boolean): void {
+    if (value == true) {
+      Yasgui.defaults.requestConfig.endpoint = yasgui.endpointFeder;
+      Yasgui.defaults.requestConfig.method =
+        yasgui.methodFeder == 'GET' ? 'GET' : 'POST';
+    } else {
+      Yasgui.defaults.requestConfig.endpoint = yasgui.endpoint;
+      Yasgui.defaults.requestConfig.method =
+        yasgui.method == 'GET' ? 'GET' : 'POST';
+
+    }
+  }
+
 
   // When Yasgui gets the results
   onQueryResponse(data: any) {

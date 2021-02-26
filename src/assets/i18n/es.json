@@ -82,6 +82,9 @@
   },
 
   "sparql": {
+    "main": {
+      "federated": "Consultas federadas"
+    },
     "results": {
       "table": "tabla",
       "response": "response",

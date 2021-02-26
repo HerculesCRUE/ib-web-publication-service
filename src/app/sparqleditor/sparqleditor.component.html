@@ -1,3 +1,14 @@
-<h1>{{'menu.sparql' | translate }}</h1>
+<div class="container">
+    <div class="row align-items-end">
+        <div class="col-md-10">
+            <h1>{{'menu.sparql' | translate }}</h1>
+        </div>
+        <div class="col-md-2 ms-auto">
+            <label><input type="checkbox" (change)="federChangeCheck($event.target.checked)"> {{'sparql.main.federated'
+                |
+                translate}} </label>
+        </div>
+    </div>
+</div>
 <div id="yasgui"></div>
 <app-results [data]="jsonData" [errorMessage]="errorMessage"></app-results>
