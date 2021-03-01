@@ -8,6 +8,8 @@ import { yasgui } from '../../environments/environment';
   templateUrl: './sparqleditor.component.html'
 })
 export class SPARQLEditorComponent implements OnInit {
+
+  yasqe: any;
   jsonData: any = null;
   errorMessage: any;
 
@@ -18,21 +20,21 @@ export class SPARQLEditorComponent implements OnInit {
     Yasgui.defaults.requestConfig.method =
       yasgui.method == 'GET' ? 'GET' : 'POST';
 
-    const yasqe = new Yasgui.Yasqe(document.getElementById('yasgui'));
+    this.yasqe = new Yasgui.Yasqe(document.getElementById('yasgui'));
 
-    yasqe.on('queryResponse', (instance: Yasqe, req: any) => {
+    this.yasqe.on('queryResponse', (instance: Yasqe, req: any) => {
       this.onQueryResponse(req);
     });
   }
 
   federChangeCheck(value: boolean): void {
     if (value == true) {
-      Yasgui.defaults.requestConfig.endpoint = yasgui.endpointFeder;
-      Yasgui.defaults.requestConfig.method =
+      this.yasqe.config.requestConfig.endpoint = yasgui.endpointFeder;
+      this.yasqe.config.requestConfig.method =
         yasgui.methodFeder == 'GET' ? 'GET' : 'POST';
     } else {
-      Yasgui.defaults.requestConfig.endpoint = yasgui.endpoint;
-      Yasgui.defaults.requestConfig.method =
+      this.yasqe.config.requestConfig.endpoint = yasgui.endpoint;
+      this.yasqe.config.requestConfig.method =
         yasgui.method == 'GET' ? 'GET' : 'POST';
 
     }
