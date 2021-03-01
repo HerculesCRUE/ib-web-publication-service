@@ -11,13 +11,12 @@ export class ChartResultsComponent implements OnInit {
   @Input()
   data: any[];
   @Input()
-  labels: String[];
+  labels: string[];
   @Input()
-  type: String;
+  type: string;
 
   echartOptions: any;
 
-  constructor() { }
   ngOnInit(): void {
     if (this.type == 'bar') {
       this.echartOptions = HelperGraphics.configSimpleChartBar(this.labels, this.data);

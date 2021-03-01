@@ -13,7 +13,7 @@ import { Component, OnInit, Input, AfterViewChecked, ChangeDetectorRef } from '@
   selector: 'app-json-results',
   templateUrl: './json-results.component.html'
 })
-export class JsonResultsComponent implements OnInit, AfterViewChecked {
+export class JsonResultsComponent implements AfterViewChecked {
   _data; // private property _data
   _dataToShow;
 
@@ -32,13 +32,11 @@ export class JsonResultsComponent implements OnInit, AfterViewChecked {
     this._data = val;
   }
 
+  constructor(private cd: ChangeDetectorRef) { }
+
   ngAfterViewChecked() {
     /* Looks for changes on this component and its children, after the wizardSteps changed */
     this.cd.detectChanges();
   }
 
-  constructor(private cd: ChangeDetectorRef) { }
-
-  ngOnInit(): void {
-  }
 }
