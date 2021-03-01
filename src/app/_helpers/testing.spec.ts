@@ -75,6 +75,7 @@ import { TopResearchmentStructuresComponent } from '../categories/researchment-s
 import { ResearchmentStructuresByQSComponent } from '../categories/researchment-structures/researchment-structures-chart-by-qs/researchment-structures-chart-by-qs.component';
 import { ResearchmentStructuresByFinancingComponent } from '../categories/researchment-structures/researchment-structures-chart-by-financing/researchment-structures-chart-by-financing.component';
 import { ResearchmentStructuresDetailComponent } from '../categories/researchment-structures-detail/researchment-structures-detail.component';
+import { KeycloakService } from 'keycloak-angular';
 
 
 /**
@@ -173,6 +174,7 @@ export class TestingHelper {
         AuthGuard,
         LoginService,
         MenuService,
+        KeycloakService,
         UserService,
         { provide: TranslateService, useClass: TranslateServiceStub },
         {
