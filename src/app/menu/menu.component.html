@@ -16,18 +16,23 @@
       {{ item.title | translate }}
     </ng-container>
   </li>
-  <li class="lang-container">
-    <a class="link-logo" href="JavaScript:void(0)" (click)="translateHelperService.setTransLanguage('es')">
-      <img class="img-logo" alt="{{'lang.es' | translate}}" src="assets/images/spanish-language.png" />
-    </a>
-    <a class="link-logo" href="JavaScript:void(0)" (click)="translateHelperService.setTransLanguage('en')">
-      <img class="img-logo" alt="{{'lang.en' | translate}}" src="assets/images/english-language.png" />
-    </a>
-  </li>
+
 
   <!-- logout button -->
-  <li class=" sidebar-brand">
+  <li class=" sidebar-brand cursor" [routerLink]="'./login'">
+    <em class="oi oi-account-login icons-menu"></em>
+    {{ "menu.login" | translate }}
+  </li>
+  <li class=" sidebar-brand cursor" (click)="logout()">
     <em class="oi oi-account-logout icons-menu"></em>
     {{ "menu.logout" | translate }}
+  </li>
+  <li class="lang-container">
+    <a class="link-logo cursor" href="JavaScript:void(0)" (click)="translateHelperService.setTransLanguage('es')">
+      <img class="img-logo" alt="{{'lang.es' | translate}}" src="assets/images/spanish-language.png" />
+    </a>
+    <a class="link-logo cursos" href="JavaScript:void(0)" (click)="translateHelperService.setTransLanguage('en')">
+      <img class="img-logo" alt="{{'lang.en' | translate}}" src="assets/images/english-language.png" />
+    </a>
   </li>
 </ul>

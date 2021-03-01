@@ -4,6 +4,7 @@ import { MenuItem } from '../_models/menu';
 import { LoginService } from '../_services/login.service';
 import { Router } from '@angular/router';
 import { TranslateHelperService } from '../_services/translate-helper.service';
+import { KeycloakService } from 'keycloak-angular';
 
 /**
  * Componente que muestra el menú de la aplicación.
@@ -19,6 +20,7 @@ export class MenuComponent implements OnInit {
    * Items del menú de la aplicación.
    */
   menuItems: MenuItem[];
+  initKeycloack;
 
   constructor(
     public translateHelperService: TranslateHelperService,
@@ -31,15 +33,20 @@ export class MenuComponent implements OnInit {
     this.menuService.getMenu().then((menuItems: MenuItem[]) => {
       this.menuItems = menuItems;
     });
+
   }
 
   /**
    * Realiza el logout del usuario.
    */
   logout() {
-    this.loginService.logout();
-    this.router.navigate(['/login']);
+    this.loginService.logoutKeyCloak();
   }
+
+
+
+
+
 
 
 }

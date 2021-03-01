@@ -147,3 +147,7 @@ table tbody {
 .red {
   color:brown;
 }
+
+.cursor {
+  cursor: pointer;
+}

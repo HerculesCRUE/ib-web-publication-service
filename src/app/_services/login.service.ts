@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
-import { map, catchError } from 'rxjs/operators';
+import { map, catchError, tap } from 'rxjs/operators';
 import { Helper } from '../_helpers/utils';
 import { Observable, of } from 'rxjs';
 import { AbstractService } from '../_helpers/abstract';
 import { User } from '../_models/user';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { KeycloakService } from 'keycloak-angular';
+import { promise } from 'protractor';
+import { KeycloakInstance } from 'keycloak-js';
 
 /**
  * Servicio para la gestión del login.
@@ -18,10 +20,41 @@ export class LoginService extends AbstractService {
    * Flag que indica si el usuario se encuentra logado.
    */
   private loggedIn = false;
-
-  constructor(private httpClient: HttpClient, private keycloak: KeycloakService) {
+  keycloakAuth: KeycloakService = new KeycloakService();
+  keycloakAuthInstance: KeycloakInstance;
+  token: Promise<string>;
+  keycloakcdata: any;
+  keycloak;
+  constructor(private httpClient: HttpClient) {
     super();
-    this.loggedIn = !!localStorage.getItem('access_token');
+    this.keycloakAuth.init({
+      config: {
+        url: 'http://localhost:8080/auth',
+        realm: 'umasio',
+        clientId: 'login-app'
+      },
+      enableBearerInterceptor: true,
+      bearerPrefix: 'Bearer',
+    });
+
+  }
+
+  loginKeycloack() {
+    this.keycloakAuth.init({
+      config: {
+        url: 'http://localhost:8080/auth',
+        realm: 'umasio',
+        clientId: 'login-app'
+      },
+      initOptions: {
+        onLoad: 'login-required',
+        checkLoginIframe: false
+      },
+      enableBearerInterceptor: true,
+      bearerPrefix: 'Bearer',
+    });
+    this.keycloakAuth.login();
+
   }
 
   /**
@@ -99,21 +132,38 @@ export class LoginService extends AbstractService {
   }
 
   logoutKeyCloak() {
-    this.keycloak.logout();
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('refresh_token');
+    localStorage.removeItem('username');
+    this.loggedIn = false;
+    this.httpClient.get('http://localhost:8080/auth/realms/umasio/protocol/openid-connect/logout?redirect_uri=http%3A%2F%2Flocalhost%3A4200%2Fmain%2F')
+      .subscribe(data => {
+        console.log(data);
+      });
   }
-  initializeKeycloak() {
 
-    this.keycloak.init({
-      config: {
-        url: 'http://localhost:8080/auth',
-        realm: 'umasio',
-        clientId: 'login-app',
-      },
-      initOptions: {
-        onLoad: 'login-required'
-      },
+  loginKC(user, password) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/x-www-form-urlencoded'
+      })
+    };
+
+    const params = new HttpParams({
+      fromObject: {
+        grant_type: 'password',
+        client_id: 'login-app',
+        scope: 'openid',
+        username: user,
+        password
+      }
     });
 
+    return this.httpClient.post('http://localhost:8080/auth/realms/umasio/protocol/openid-connect/token', params, httpOptions)
+      .pipe(tap((response: any) => {
 
+      }));
   }
+
+
 }

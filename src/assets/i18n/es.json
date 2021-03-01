@@ -49,7 +49,8 @@
     "prod-scientist": "Producción cientifica",
     "acction-inves": "Acciones investigación",
     "stats": "Estadisticas",
-    "accessibility": "Accesibilidad"
+    "accessibility": "Accesibilidad",
+    "login": "Acceder"
   },
   "login": {
     "form": {

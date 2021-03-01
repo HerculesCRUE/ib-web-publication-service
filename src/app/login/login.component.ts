@@ -40,29 +40,18 @@ export class LoginComponent implements OnInit {
    * Realiza el login del usuario.
    */
   login() {
-    const keykocl: KeycloakService = new KeycloakService();
-    this.loginService.initializeKeycloak();
-    /* this.loginService.login(this.model.username, this.model.password).subscribe(
-       (result) => {
-         if (result) {
-           this.userService.getUserData().subscribe((user: User) => {
-             localStorage.setItem('current_user', JSON.stringify(user));
-           });
-           this.router.navigate(['/']);
-         } else {
-           this.toastr.error(
-             this.translate.instant('login.error.invalid-body'),
-             this.translate.instant('login.error.invalid')
-           );
-         }
-       },
-       (error: Response | any) => {
-         this.toastr.error(
-           this.translate.instant('login.error.invalid-body'),
-           this.translate.instant('login.error.invalid')
-         );
-       }
-     );*/
+    this.loginService.loginKC(this.model.username, this.model.password).subscribe(response => {
+      if (response) {
+        localStorage.setItem('access_token', response.access_token);
+        localStorage.setItem('refresh_token', response.refresh_token);
+        localStorage.setItem('username', this.model.username);
 
+      }
+      console.log(response);
+    }, error => {
+      console.log('error', error);
+    });
   }
+
+
 }

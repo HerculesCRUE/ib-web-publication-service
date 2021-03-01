@@ -54,9 +54,8 @@ import { LangInterceptor } from './_helpers/lang-intercetor';
 
 // keycloak
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
-import { environment } from 'src/environments/environment';
 
-
+const keycloakService = new KeycloakService();
 
 @NgModule({
   declarations: [
@@ -105,6 +104,10 @@ import { environment } from 'src/environments/environment';
       multi: true,
     },
     { provide: HTTP_INTERCEPTORS, useClass: LangInterceptor, multi: true },
+    {
+      provide: KeycloakService,
+      useValue: keycloakService,
+    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: OAuthInterceptor,
