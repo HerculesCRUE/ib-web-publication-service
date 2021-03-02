@@ -1,12 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { LoginService } from '../_services/login.service';
-import { ToastrService } from 'ngx-toastr';
-import { UserService } from '../_services/user.service';
-import { User } from '../_models/user';
-import { TranslateService } from '@ngx-translate/core';
-import { KeycloakService } from 'keycloak-angular';
-
 /**
  * Componente para la gestión del login.
  */
@@ -21,23 +14,24 @@ export class LoginComponent implements OnInit {
   model: any = {};
 
   constructor(
-    private router: Router,
-    private translate: TranslateService,
-    private toastr: ToastrService,
-    private loginService: LoginService,
-    private userService: UserService
+    private loginService: LoginService
   ) { }
 
   ngOnInit(): void {
-    this.loginService.logout();
   }
 
+  /**
+   *
+   *  logout de sesión de keycloack
+   * @memberof LoginComponent
+   */
   logout() {
     this.loginService.logoutKeyCloak();
   }
 
   /**
    * Realiza el login del usuario.
+   * y guarda las claves
    */
   login() {
     this.loginService.loginKC(this.model.username, this.model.password).subscribe(response => {

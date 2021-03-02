@@ -9,7 +9,7 @@ export const environment = {
   urlWebsocket: '/gs-guide-websocket',
   oauthClientId: 'acme',
   oauthSecret: 'acmesecret',
-  keycloackAuthURL: 'http://localhost:8080/auth/realms/umasio',
+  keycloackAuthURL: 'http://localhost:8080/auth/realms/umasio/protocol/openid-connect/',
   realm: 'umasio',
   clientId: 'login-app'
 };

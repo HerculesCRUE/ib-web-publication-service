@@ -17,8 +17,8 @@ export class Helper {
     return BASE_URL + fragment;
   }
 
-  static getKeyCloakUrl() {
-    return environment.keycloackAuthURL;
+  static getKeyCloakUrl(fragment: string) {
+    return environment.keycloackAuthURL + fragment;
   }
 
   /**

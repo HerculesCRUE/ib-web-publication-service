@@ -6,7 +6,6 @@ import { AbstractService } from '../_helpers/abstract';
 import { User } from '../_models/user';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { KeycloakService } from 'keycloak-angular';
-import { promise } from 'protractor';
 import { KeycloakInstance } from 'keycloak-js';
 
 /**
@@ -39,6 +38,12 @@ export class LoginService extends AbstractService {
 
   }
 
+  /**
+   *
+   *  Se usa solo si se quiere realiza el login 
+   *  en la pantalla de keycloack
+   * @memberof LoginService
+   */
   loginKeycloack() {
     this.keycloakAuth.init({
       config: {
@@ -58,7 +63,8 @@ export class LoginService extends AbstractService {
   }
 
   /**
-   * Realiza el login del usuario. Almacena en el local storage los tokens de acceso y refresco.
+   * Realiza el login del usuario. El login es con el theme local
+   * para obtener el token y almacenarlo
    * @param username Nombre de usuario.
    * @param password  Contraseña.
    * @returns Observable con el resultado de la llamada.
@@ -131,17 +137,31 @@ export class LoginService extends AbstractService {
     return this.loggedIn;
   }
 
+  /**
+   *
+   * Este logout se utiliza para los usuarios logueados mediante keycloack
+   * @memberof LoginService
+   */
   logoutKeyCloak() {
     localStorage.removeItem('access_token');
     localStorage.removeItem('refresh_token');
     localStorage.removeItem('username');
     this.loggedIn = false;
-    this.httpClient.get('http://localhost:8080/auth/realms/umasio/protocol/openid-connect/logout?redirect_uri=http%3A%2F%2Flocalhost%3A4200%2Fmain%2F')
+    this.httpClient.get(Helper.getKeyCloakUrl('logout?redirect_uri=http%3A%2F%2Flocalhost%3A4200%2Fmain%2F'))
       .subscribe(data => {
         console.log(data);
       });
   }
 
+  /**
+   *
+   * Login que se utiliza para theme local y conexion a 
+   * keycloack para obtener token y almacenarlo
+   * @param {*} user
+   * @param {*} password
+   * @return {*} 
+   * @memberof LoginService
+   */
   loginKC(user, password) {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -159,7 +179,7 @@ export class LoginService extends AbstractService {
       }
     });
 
-    return this.httpClient.post('http://localhost:8080/auth/realms/umasio/protocol/openid-connect/token', params, httpOptions)
+    return this.httpClient.post(Helper.getKeyCloakUrl('token'), params, httpOptions)
       .pipe(tap((response: any) => {
 
       }));
