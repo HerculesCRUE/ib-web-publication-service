@@ -23,7 +23,7 @@ export const yasgui = {
   // Fuseki
   endpoint: 'http://localhost:8787/trellis/sparql',
   method: 'POST',
-  endpointFeder: 'http://localhost:8787/trellis/sparql',
+  endpointFeder: 'http://localhost:8787/trellis/sparqlfeder',
   methodFeder: 'POST',
 };
 
@@ -33,5 +33,7 @@ export const yasgui = {
  *
  * This import should be commented out in production mode because it will have a negative impact
  * on performance if an error is thrown.
+ *
+ * import 'zone.js/dist/zone-error';  // Included with Angular CLI.
  */
-// import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+
