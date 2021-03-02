@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MenuComponent } from './menu.component';
 import { TestingHelper } from '../_helpers/testing.spec';
 import { LoginService } from '../_services/login.service';
+import { MockLoginService } from '../_services/_testingServices/mockLogin.service';
 
 describe('MenuComponent', () => {
   let component: MenuComponent;
@@ -10,6 +11,9 @@ describe('MenuComponent', () => {
 
   beforeEach(async(() => {
     TestingHelper.configureTest().compileComponents();
+    TestBed.configureTestingModule({
+      providers: [{ provide: LoginService, useClass: MockLoginService }]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -25,9 +29,9 @@ describe('MenuComponent', () => {
   describe('logout', () => {
     it('should call loginService.logout', () => {
       const loginService = fixture.debugElement.injector.get(LoginService);
-      const spy = spyOn(loginService, 'logout').and.callThrough();
+      const spy = spyOn(loginService, 'logoutKeyCloak').and.callThrough();
       component.logout();
-      expect(loginService.logout).toHaveBeenCalled();
+      expect(loginService.logoutKeyCloak).toHaveBeenCalled();
     });
   });
 });

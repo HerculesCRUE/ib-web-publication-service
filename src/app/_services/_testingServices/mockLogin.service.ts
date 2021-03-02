@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { map, catchError, tap } from 'rxjs/operators';
-import { Helper } from '../_helpers/utils';
-import { Observable, of } from 'rxjs';
-import { AbstractService } from '../_helpers/abstract';
-import { User } from '../_models/user';
+import { observable, Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { KeycloakService } from 'keycloak-angular';
 import { KeycloakInstance } from 'keycloak-js';
+import { AbstractService } from 'src/app/_helpers/abstract';
+import { Helper } from 'src/app/_helpers/utils';
+import { User } from 'src/app/_models/user';
 
 /**
  * Servicio para la gestión del login.
@@ -14,7 +14,7 @@ import { KeycloakInstance } from 'keycloak-js';
 @Injectable({
   providedIn: 'root',
 })
-export class LoginService extends AbstractService {
+export class MockLoginService extends AbstractService {
   /**
    * Flag que indica si el usuario se encuentra logado.
    */
@@ -26,6 +26,7 @@ export class LoginService extends AbstractService {
   keycloak;
   constructor(private httpClient: HttpClient) {
     super();
+
   }
 
   /**
@@ -137,10 +138,7 @@ export class LoginService extends AbstractService {
     localStorage.removeItem('refresh_token');
     localStorage.removeItem('username');
     this.loggedIn = false;
-    this.httpClient.get(Helper.getKeyCloakUrl('logout?redirect_uri=http%3A%2F%2Flocalhost%3A4200%2Fmain%2F'))
-      .subscribe(data => {
-        console.log(data);
-      });
+    return of({});
   }
 
   /**
@@ -169,10 +167,7 @@ export class LoginService extends AbstractService {
       }
     });
 
-    return this.httpClient.post(Helper.getKeyCloakUrl('token'), params, httpOptions)
-      .pipe(tap((response: any) => {
-
-      }));
+    return of({});
   }
 
 

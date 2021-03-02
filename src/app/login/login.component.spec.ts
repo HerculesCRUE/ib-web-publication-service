@@ -3,10 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { LoginComponent } from './login.component';
 import { TestingHelper } from '../_helpers/testing.spec';
 import { LoginService } from '../_services/login.service';
-import { of, throwError } from 'rxjs';
-import { UserService } from '../_services/user.service';
-import { User } from '../_models/user';
-import { ToastrService } from 'ngx-toastr';
+import { MockLoginService } from '../_services/_testingServices/mockLogin.service';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -14,6 +11,9 @@ describe('LoginComponent', () => {
 
   beforeEach(async(() => {
     TestingHelper.configureTest().compileComponents();
+    TestBed.configureTestingModule({
+      providers: [{ provide: LoginService, useClass: MockLoginService }]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -26,38 +26,22 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  /*describe('login', () => {
-    it('should login user and call get user data', () => {
-      const user: User = new User();
-      const response: Response = new Response();
+  describe('logout', () => {
+    it('should log out', () => {
       const loginService = fixture.debugElement.injector.get(LoginService);
-      const spy = spyOn(loginService, 'login').and.returnValue(of(response));
-      const userService = fixture.debugElement.injector.get(UserService);
-      const spy2 = spyOn(userService, 'getUserData').and.returnValue(of(user));
-      component.login();
-      expect(loginService.login).toHaveBeenCalled();
-      expect(userService.getUserData).toHaveBeenCalled();
+      const spy = spyOn(loginService, 'logoutKeyCloak').and.callThrough();
+      component.logout();
+      expect(loginService.logoutKeyCloak).toHaveBeenCalled();
     });
+  });
 
-    it('should login user not call get user data', () => {
-      const user: User = new User();
-      const loginService = fixture.debugElement.injector.get(LoginService);
-      const spy = spyOn(loginService, 'login').and.returnValue(of(null));
-      const userService = fixture.debugElement.injector.get(UserService);
-      const spy2 = spyOn(userService, 'getUserData').and.returnValue(of(user));
-      component.login();
-      expect(loginService.login).toHaveBeenCalled();
-      expect(userService.getUserData).not.toHaveBeenCalled();
-    });
 
-    it('it should thorw error on service and show toast', () => {
-      const user: User = new User();
+  describe('login', () => {
+    it('should login', () => {
       const loginService = fixture.debugElement.injector.get(LoginService);
-      const spy = spyOn(loginService, 'login').and.returnValue(throwError({ status: 404 }));
-      const toastService = fixture.debugElement.injector.get(ToastrService);
-      const spy2 = spyOn(toastService, 'error').and.callThrough();
+      const spy = spyOn(loginService, 'loginKC').and.callThrough().withArgs('user', 'pass');
       component.login();
-      expect(toastService.error).toHaveBeenCalled();
+      expect(loginService.loginKC).toHaveBeenCalled();
     });
-  });*/
+  });
 });
