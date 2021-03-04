@@ -58,6 +58,8 @@
       "password": "Password",
       "submit": "Log in"
     },
+    "reset": "Reset password",
+    "my-account": "My account",
     "error": {
       "invalid": "Invalid credentials",
       "invalid-body": "The username and/or password provided are invalid"

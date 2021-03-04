@@ -58,6 +58,8 @@
       "password": "Contraseña",
       "submit": "Acceder"
     },
+    "reset": "Resetear contraseña",
+    "my-account": "Mi cuenta",
     "error": {
       "invalid": "Credenciales no válidas",
       "invalid-body": "El nombre de usuario y/o contraseña introducido no son correctos"

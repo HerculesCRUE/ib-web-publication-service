@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+import { environment } from 'src/environments/environment';
 import { LoginService } from '../_services/login.service';
 /**
  * Componente para la gestión del login.
@@ -12,9 +14,10 @@ export class LoginComponent implements OnInit {
    * Modelo de formulario.
    */
   model: any = {};
-
+  loginUrl = this.sanitizer.bypassSecurityTrustResourceUrl(environment.keycloackAuthURL + 'auth?client_id=account&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Fauth%2Frealms%2Fumasio%2Faccount%2Flogin-redirect&state=0%2Fea63479f-b2b6-4bd0-92a1-a6c3a5add14e&response_type=code&scope=openid');
   constructor(
-    private loginService: LoginService
+    private loginService: LoginService,
+    private sanitizer: DomSanitizer
   ) { }
 
   ngOnInit(): void {
