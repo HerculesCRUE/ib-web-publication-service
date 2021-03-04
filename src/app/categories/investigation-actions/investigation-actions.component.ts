@@ -5,6 +5,12 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './investigation-actions.component.html'
 })
 export class InvestigationActionsComponent implements OnInit {
+  /**
+   *
+   * current active tab
+   * @type {string}
+   * @memberof InvestigationActionsComponent
+   */
   activeTab: string;
   constructor() { }
 

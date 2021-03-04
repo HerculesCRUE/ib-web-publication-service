@@ -5,6 +5,13 @@ import { SparqlResults } from 'src/app/_models/sparql';
 import { TableResultsHeaderItem } from 'src/app/_models/table-results';
 import { DirectedJobsService } from 'src/app/_services/directedJobs.service';
 
+/**
+ *
+ *
+ * @export
+ * @class DirectedJobsComponent
+ * @implements {OnInit}
+ */
 @Component({
   selector: 'app-directed-jobs',
   templateUrl: './directed-jobs.component.html'

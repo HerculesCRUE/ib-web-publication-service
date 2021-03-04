@@ -10,6 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResearchmentStructuresComponent
   implements OnInit {
+  /**
+   *
+   *
+   * @type {*}
+   * @memberof ResearchmentStructuresComponent
+   */
   echartOptions: any;
 
 

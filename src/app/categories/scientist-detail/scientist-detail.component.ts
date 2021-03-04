@@ -7,13 +7,36 @@ import { SeriesBarData } from 'src/app/_models/seriesBarData';
   templateUrl: './scientist-detail.component.html'
 })
 export class ScientistDetailComponent implements OnInit {
+  /**
+   *
+   *
+   * @type {*}
+   * @memberof ScientistDetailComponent
+   */
   scientist: any = {
     name: 'María Hernandez Reyes Mora',
     email: 'reyes@um.es',
     university: 'Universidad de Murcia'
   };
+  /**
+   *
+   *
+   * @memberof ScientistDetailComponent
+   */
   loadingData = false;
+  /**
+   *
+   *
+   * @type {*}
+   * @memberof ScientistDetailComponent
+   */
   echartOptions: any;
+  /**
+   *
+   *
+   * @type {string}
+   * @memberof ScientistDetailComponent
+   */
   activeTab: string;
   constructor() { }
 

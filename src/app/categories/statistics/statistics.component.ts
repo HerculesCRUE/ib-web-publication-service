@@ -7,7 +7,19 @@ import { HelperGraphics } from 'src/app/_helpers/helperGraphics';
   templateUrl: './statistics.component.html'
 })
 export class StatisticsComponent implements OnInit {
+  /**
+   *
+   *
+   * @type {*}
+   * @memberof StatisticsComponent
+   */
   echartOptions2: any;
+  /**
+   *
+   *
+   * @type {*}
+   * @memberof StatisticsComponent
+   */
   options: any;
   constructor() { }
 
