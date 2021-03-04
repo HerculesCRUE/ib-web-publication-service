@@ -3,7 +3,31 @@ name: CI
 on: [push]
 
 jobs:
-  ci:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '12.18'
+      - name: npm install
+        run: npm install
+      - name: Build
+        run: npm run build -- --baseHref=/ --configuration=production --prod
+      - name: Microsoft Teams Notification
+        uses: skitionek/notify-microsoft-teams@master
+        if: failure()
+        with:
+          webhook_url: ${{ secrets.MSTEAMS_WEBHOOK }}
+          overwrite: "{title: `web-publication-service`}"
+          needs: ${{ toJson(needs) }}
+          job: ${{ toJson(job) }}
+          steps: ${{ toJson(steps) }}
+      
+  test-analyze:
     runs-on: ubuntu-latest
     container: izertis/node-chrome:12.18
 
@@ -13,8 +37,6 @@ jobs:
           fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
       - name: npm install
         run: npm install
-      - name: Build
-        run: npm run build -- --baseHref=/ --configuration=production --prod
       - name: Test
         run: npm run test -- --karmaConfig=karma.ci.conf.js --watch=false --code-coverage
       - name: Pre Analyze
