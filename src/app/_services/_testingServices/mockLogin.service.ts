@@ -29,29 +29,7 @@ export class MockLoginService extends AbstractService {
 
   }
 
-  /**
-   *
-   *  Se usa solo si se quiere realiza el login 
-   *  en la pantalla de keycloack
-   * @memberof LoginService
-   */
-  loginKeycloack() {
-    this.keycloakAuth.init({
-      config: {
-        url: 'http://localhost:8080/auth',
-        realm: 'umasio',
-        clientId: 'login-app'
-      },
-      initOptions: {
-        onLoad: 'login-required',
-        checkLoginIframe: false
-      },
-      enableBearerInterceptor: true,
-      bearerPrefix: 'Bearer',
-    });
-    this.keycloakAuth.login();
 
-  }
 
   /**
    * Realiza el login del usuario. El login es con el theme local

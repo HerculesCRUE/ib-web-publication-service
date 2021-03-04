@@ -42,16 +42,16 @@ import { BindingValue, SparqlResults } from 'src/app/_models/sparql';
 })
 export class ResultsComponent implements AfterViewInit, OnChanges, OnInit, AfterViewChecked {
 
-  activeTab: string = 'table';
+  activeTab = 'table';
 
   data: SparqlResults = null;
   errorMessage = null;
 
   echartOptions: any;
   echartData: any[];
-  echartLabels: String[];
+  echartLabels: string[];
 
-  activeCharts: boolean = false;
+  activeCharts = false;
 
   constructor(private cd: ChangeDetectorRef) {
 
@@ -99,7 +99,7 @@ export class ResultsComponent implements AfterViewInit, OnChanges, OnInit, After
   private enableGraphics() {
     this.activeCharts = false;
 
-    if (!!this.data && this.data.head.vars.length == 2 && !!this.data.results.bindings && this.data.results.bindings.length > 0) {
+    if (!!this.data && this.data.head.vars.length === 2 && !!this.data.results.bindings && this.data.results.bindings.length > 0) {
       const firstResult = this.data.results.bindings[0];
 
       if (this.isText(firstResult[this.data.head.vars[0]]) || this.isText(firstResult[this.data.head.vars[1]])) {
@@ -117,12 +117,13 @@ export class ResultsComponent implements AfterViewInit, OnChanges, OnInit, After
   }
 
   private isText(binding: BindingValue): boolean {
-    return binding.type == "literal" && binding.hasOwnProperty('xml:lang');
+    return binding.type === 'literal' && binding.hasOwnProperty('xml:lang');
   }
 
   private isNumeric(binding: BindingValue): boolean {
-    if (binding.type == "literal" && binding.hasOwnProperty('datatype')) {
-      if (binding.datatype.includes('integer') || binding.datatype.includes('decimal') || binding.datatype.includes('float') || binding.datatype.includes('double')) {
+    if (binding.type === 'literal' && binding.hasOwnProperty('datatype')) {
+      if (binding.datatype.includes('integer') || binding.datatype.includes('decimal') ||
+        binding.datatype.includes('float') || binding.datatype.includes('double')) {
         return true;
       }
     }

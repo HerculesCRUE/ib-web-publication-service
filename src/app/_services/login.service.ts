@@ -5,8 +5,6 @@ import { Observable, of } from 'rxjs';
 import { AbstractService } from '../_helpers/abstract';
 import { User } from '../_models/user';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { KeycloakService } from 'keycloak-angular';
-import { KeycloakInstance } from 'keycloak-js';
 
 /**
  * Servicio para la gestión del login.
@@ -19,38 +17,13 @@ export class LoginService extends AbstractService {
    * Flag que indica si el usuario se encuentra logado.
    */
   private loggedIn = false;
-  keycloakAuth: KeycloakService = new KeycloakService();
-  keycloakAuthInstance: KeycloakInstance;
   token: Promise<string>;
-  keycloakcdata: any;
   keycloak;
   constructor(private httpClient: HttpClient) {
     super();
   }
 
-  /**
-   *
-   *  Se usa solo si se quiere realiza el login 
-   *  en la pantalla de keycloack
-   * @memberof LoginService
-   */
-  loginKeycloack() {
-    this.keycloakAuth.init({
-      config: {
-        url: 'http://localhost:8080/auth',
-        realm: 'umasio',
-        clientId: 'login-app'
-      },
-      initOptions: {
-        onLoad: 'login-required',
-        checkLoginIframe: false
-      },
-      enableBearerInterceptor: true,
-      bearerPrefix: 'Bearer',
-    });
-    this.keycloakAuth.login();
 
-  }
 
   /**
    * Realiza el login del usuario. El login es con el theme local
