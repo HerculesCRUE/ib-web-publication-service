@@ -149,4 +149,26 @@ export class LoginService extends AbstractService {
   }
 
 
+  checkIsValidToken() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/x-www-form-urlencoded'
+      })
+    };
+
+    const params = new HttpParams({
+      fromObject: {
+        grant_type: 'refresh_token',
+        client_id: 'login-app',
+        refresh_token: localStorage.getItem('access_token')
+      }
+    });
+
+    return this.httpClient.post(Helper.getKeyCloakUrl('token'), params, httpOptions)
+      .pipe(tap((response: any) => {
+
+      }));
+  }
+
+
 }
