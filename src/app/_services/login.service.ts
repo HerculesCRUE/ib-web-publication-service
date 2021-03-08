@@ -5,6 +5,7 @@ import { Observable, of } from 'rxjs';
 import { AbstractService } from '../_helpers/abstract';
 import { User } from '../_models/user';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 /**
  * Servicio para la gestión del login.
@@ -110,11 +111,15 @@ export class LoginService extends AbstractService {
     localStorage.removeItem('refresh_token');
     localStorage.removeItem('username');
     this.loggedIn = false;
-    this.httpClient.get(Helper.getKeyCloakUrl('logout?redirect_uri=http%3A%2F%2Flocalhost%3A4200%2Fmain%2F'))
+
+    this.httpClient.post(environment.keycloak.logout + '?redirect_uri=http%3A%2F%2Flocalhost%3A4200%2Fmain%2F', {})
       .subscribe(data => {
         console.log(data);
       });
   }
+
+
+
 
   /**
    *
@@ -138,11 +143,52 @@ export class LoginService extends AbstractService {
         client_id: 'login-app',
         scope: 'openid',
         username: user,
-        password
+        password,
+        client_secret: environment.keycloak.clientSecret
       }
     });
 
-    return this.httpClient.post(Helper.getKeyCloakUrl('token'), params, httpOptions)
+    return this.httpClient.post(environment.keycloak.tokenUri, params, httpOptions)
+      .pipe(tap((response: any) => {
+
+      }));
+  }
+
+
+  logoutKC() {
+    localStorage.removeItem('access_token');
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/x-www-form-urlencoded',
+
+      })
+    };
+
+    const params = new HttpParams({
+      fromObject: {
+        client_id: 'login-app',
+        grant_type: 'refresh_token',
+        refresh_token: localStorage.getItem('refresh_token')
+      }
+    });
+
+    return this.httpClient.post(environment.keycloak.logout, params, httpOptions)
+      .pipe(tap((response: any) => {
+
+      }));
+  }
+
+  tokenKC() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Authorization: localStorage.getItem('access_token')
+      })
+    };
+
+
+
+    return this.httpClient.get(environment.keycloak.userInfoUri, httpOptions)
       .pipe(tap((response: any) => {
 
       }));
@@ -164,7 +210,7 @@ export class LoginService extends AbstractService {
       }
     });
 
-    return this.httpClient.post(Helper.getKeyCloakUrl('token'), params, httpOptions)
+    return this.httpClient.post(environment.keycloak.tokenUri, params, httpOptions)
       .pipe(tap((response: any) => {
 
       }));

@@ -17,9 +17,7 @@ export class Helper {
     return BASE_URL + fragment;
   }
 
-  static getKeyCloakUrl(fragment: string) {
-    return environment.keycloackAuthURL + fragment;
-  }
+
 
   /**
    * Add a parameter to request parameter list.

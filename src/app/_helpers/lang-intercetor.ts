@@ -10,7 +10,8 @@ export class LangInterceptor implements HttpInterceptor {
         let cloneReq;
         let localeLang = '';
         this.translateHelper.getLocalLang() ? localeLang = this.translateHelper.getLocalLang() : localeLang = 'es';
-        if (!httpRequest.urlWithParams.includes('json') && !httpRequest.urlWithParams.includes('8080')) {
+        if (!httpRequest.urlWithParams.includes('json') && !httpRequest.urlWithParams.includes('8080')
+            && !httpRequest.urlWithParams.includes('logout')) {
             cloneReq = httpRequest.clone({ url: httpRequest.urlWithParams + '&language=@' + localeLang });
         } else {
             cloneReq = httpRequest;

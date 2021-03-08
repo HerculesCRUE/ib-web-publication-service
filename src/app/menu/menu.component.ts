@@ -40,7 +40,11 @@ export class MenuComponent implements OnInit {
    * Realiza el logout del usuario.
    */
   logout() {
-    this.loginService.logoutKeyCloak();
+    this.loginService.logoutKC().subscribe(data => {
+      console.log(data);
+    }, e => {
+      console.log(e);
+    });
   }
 
 
