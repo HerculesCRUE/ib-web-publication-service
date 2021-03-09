@@ -7,6 +7,7 @@ import { FindRequest, Page } from '../_helpers/search';
 import { Helper } from '../_helpers/utils';
 import { AcademicPublication } from '../_models/academicPublication';
 import { Document } from '../_models/document';
+import { DocumentDetail } from '../_models/documentDetail';
 
 /**
  *  Service for Document
@@ -55,6 +56,13 @@ export class DocumentService extends AbstractService {
             );
     }
 
+    /**
+     *
+     *
+     * @param {FindRequest} findRequest
+     * @return {*}  {Observable<Page<AcademicPublication>>}
+     * @memberof DocumentService
+     */
     findAcademicPublication(findRequest: FindRequest): Observable<Page<AcademicPublication>> {
         // Filter params
         let parameters = new HttpParams();
@@ -67,6 +75,26 @@ export class DocumentService extends AbstractService {
 
         return this.httpClient
             .get(Helper.getUrl('/academicpublication/search'), {
+                params: parameters
+            }).pipe(
+                catchError(this.handleError)
+            );
+    }
+
+    /**
+     * get docuemtn from back with id and type
+     *
+     * @param {string} id
+     * @param {string} type
+     * @return {*} 
+     * @memberof DocumentService
+     */
+    getDocumentByIdAndType(id: string, type: string): Observable<DocumentDetail> {
+        let parameters = new HttpParams();
+        parameters = Helper.addParam(parameters, 'id', id);
+        parameters = Helper.addParam(parameters, 'type', type);
+        return this.httpClient
+            .get(Helper.getUrl('/document/'), {
                 params: parameters
             }).pipe(
                 catchError(this.handleError)
