@@ -148,5 +148,9 @@ export class MockLoginService extends AbstractService {
     return of({});
   }
 
+  logoutKC() {
+    return of({});
+  }
+
 
 }

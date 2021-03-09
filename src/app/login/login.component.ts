@@ -21,9 +21,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.loginService.checkIsValidToken().subscribe(data => {
-      console.log(data);
-    });
+
   }
 
   /**

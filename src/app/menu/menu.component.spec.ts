@@ -29,9 +29,9 @@ describe('MenuComponent', () => {
   describe('logout', () => {
     it('should call loginService.logout', () => {
       const loginService = fixture.debugElement.injector.get(LoginService);
-      const spy = spyOn(loginService, 'logoutKeyCloak').and.callThrough();
+      const spy = spyOn(loginService, 'logoutKC').and.callThrough();
       component.logout();
-      expect(loginService.logoutKeyCloak).toHaveBeenCalled();
+      expect(loginService.logoutKC).toHaveBeenCalled();
     });
   });
 });

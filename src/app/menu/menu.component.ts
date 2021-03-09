@@ -42,8 +42,6 @@ export class MenuComponent implements OnInit {
   logout() {
     this.loginService.logoutKC().subscribe(data => {
       console.log(data);
-    }, e => {
-      console.log(e);
     });
   }
 

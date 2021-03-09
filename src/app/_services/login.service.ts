@@ -155,7 +155,7 @@ export class LoginService extends AbstractService {
   }
 
 
-  logoutKC() {
+  logoutKC(): Observable<any> {
     localStorage.removeItem('access_token');
     const httpOptions = {
       headers: new HttpHeaders({
