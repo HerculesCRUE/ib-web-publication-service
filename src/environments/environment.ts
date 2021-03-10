@@ -9,6 +9,7 @@ export const environment = {
   urlWebsocket: '/gs-guide-websocket',
   oauthClientId: 'acme',
   oauthSecret: 'acmesecret',
+  skipPort: '8080',
   keycloak: {
     realm: 'umasio',
     clientId: 'login-app',

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpEvent, HttpRequest, HttpHandler } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TranslateHelperService } from '../_services/translate-helper.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class LangInterceptor implements HttpInterceptor {
@@ -10,7 +11,7 @@ export class LangInterceptor implements HttpInterceptor {
         let cloneReq;
         let localeLang = '';
         this.translateHelper.getLocalLang() ? localeLang = this.translateHelper.getLocalLang() : localeLang = 'es';
-        if (!httpRequest.urlWithParams.includes('json') && !httpRequest.urlWithParams.includes('8080')
+        if (!httpRequest.urlWithParams.includes('json') && !httpRequest.urlWithParams.includes(environment.skipPort)
             && !httpRequest.urlWithParams.includes('logout')) {
             cloneReq = httpRequest.clone({ url: httpRequest.urlWithParams + '&language=@' + localeLang });
         } else {
