@@ -153,6 +153,10 @@ export class MockDocumentService {
         return of(page);
     }
 
+    getDocumentByIdAndType(id, type) {
+        return of({});
+    }
+
 
 
 
