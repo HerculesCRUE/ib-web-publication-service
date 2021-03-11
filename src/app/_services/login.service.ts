@@ -6,6 +6,7 @@ import { AbstractService } from '../_helpers/abstract';
 import { User } from '../_models/user';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { KeycloakService } from 'keycloak-angular';
 
 /**
  * Servicio para la gestión del login.
@@ -20,7 +21,7 @@ export class LoginService extends AbstractService {
   private loggedIn = false;
   token: Promise<string>;
   keycloak;
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient, private keycloakAuth: KeycloakService) {
     super();
   }
 
@@ -114,10 +115,31 @@ export class LoginService extends AbstractService {
 
     this.httpClient.post(environment.keycloak.logout + '?redirect_uri=http%3A%2F%2Flocalhost%3A4200%2Fmain%2F', {})
       .subscribe(data => {
-        console.log(data);
       });
   }
 
+
+  /*logoutKeyCloak() {
+    console.log('hello');
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('refresh_token');
+    localStorage.removeItem('username');
+    this.loggedIn = false;
+    this.keycloakAuth.init({
+      config: {
+        url: 'http://localhost:8080/auth',
+        realm: 'umasio',
+        clientId: 'login-app'
+      },
+      initOptions: {
+        checkLoginIframe: false
+      },
+      enableBearerInterceptor: true,
+      bearerPrefix: 'Bearer',
+    });
+    this.keycloakAuth.logout();
+
+  }*/
 
 
 

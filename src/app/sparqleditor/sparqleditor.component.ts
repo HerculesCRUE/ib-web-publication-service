@@ -17,10 +17,17 @@ export class SPARQLEditorComponent implements OnInit {
 
   ngOnInit(): void {
     Yasgui.defaults.requestConfig.endpoint = yasgui.endpoint;
+    if (localStorage.getItem('access_token')) {
+      Yasgui.defaults.requestConfig.headers = {
+        Authorization: 'Bearer ' + localStorage.getItem('access_token')
+      };
+    }
+
     Yasgui.defaults.requestConfig.method =
-      yasgui.method == 'GET' ? 'GET' : 'POST';
+      yasgui.method === 'GET' ? 'GET' : 'POST';
 
     this.yasqe = new Yasgui.Yasqe(document.getElementById('yasgui'));
+
 
     this.yasqe.on('queryResponse', (instance: Yasqe, req: any) => {
       this.onQueryResponse(req);
@@ -28,14 +35,14 @@ export class SPARQLEditorComponent implements OnInit {
   }
 
   federChangeCheck(value: boolean): void {
-    if (value == true) {
+    if (value === true) {
       this.yasqe.config.requestConfig.endpoint = yasgui.endpointFeder;
       this.yasqe.config.requestConfig.method =
-        yasgui.methodFeder == 'GET' ? 'GET' : 'POST';
+        yasgui.methodFeder === 'GET' ? 'GET' : 'POST';
     } else {
       this.yasqe.config.requestConfig.endpoint = yasgui.endpoint;
       this.yasqe.config.requestConfig.method =
-        yasgui.method == 'GET' ? 'GET' : 'POST';
+        yasgui.method === 'GET' ? 'GET' : 'POST';
 
     }
   }
@@ -47,7 +54,7 @@ export class SPARQLEditorComponent implements OnInit {
       this.errorMessage = null;
       this.jsonData = JSON.parse((data as any).text);
     } else if (data.hasOwnProperty('response')) {
-      if (data.response.status == 400) {
+      if (data.response.status === 400) {
         this.errorMessage = (data as any).response.text;
         this.jsonData = null;
       }

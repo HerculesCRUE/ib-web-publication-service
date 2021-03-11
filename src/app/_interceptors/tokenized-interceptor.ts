@@ -36,7 +36,6 @@ export class TokenizedInterceptor extends AbstractHttpInterceptor {
     | HttpUserEvent<any>
   > {
     const accessToken = localStorage.getItem('access_token');
-
     if (accessToken) {
       req = req.clone({
         setHeaders: {
@@ -65,7 +64,7 @@ export class TokenizedInterceptor extends AbstractHttpInterceptor {
           return this.intercept(req, next);
         }),
         catchError((err: any) => {
-          this.router.navigate(['/login']);
+          // this.router.navigate(['/login']);
           return of();
         })
       );
