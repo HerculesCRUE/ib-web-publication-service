@@ -19,7 +19,7 @@ export class SPARQLEditorComponent implements OnInit {
     Yasgui.defaults.requestConfig.endpoint = yasgui.endpoint;
     if (localStorage.getItem('access_token')) {
       Yasgui.defaults.requestConfig.headers = {
-        'X-CSRF-TOKEN': localStorage.getItem('access_token')
+        Authorization: 'Bearer ' + localStorage.getItem('access_token')
       };
     }
 
