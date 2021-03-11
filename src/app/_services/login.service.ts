@@ -165,8 +165,7 @@ export class LoginService extends AbstractService {
         client_id: 'login-app',
         scope: 'openid',
         username: user,
-        password,
-        client_secret: environment.keycloak.clientSecret
+        password
       }
     });
 
@@ -178,7 +177,7 @@ export class LoginService extends AbstractService {
 
 
   logoutKC(): Observable<any> {
-    localStorage.removeItem('access_token');
+
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -189,11 +188,13 @@ export class LoginService extends AbstractService {
     const params = new HttpParams({
       fromObject: {
         client_id: 'login-app',
-        grant_type: 'refresh_token',
         refresh_token: localStorage.getItem('refresh_token')
       }
     });
 
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('refresh_token');
+    localStorage.removeItem('username');
     return this.httpClient.post(environment.keycloak.logout, params, httpOptions)
       .pipe(tap((response: any) => {
 
@@ -220,7 +221,7 @@ export class LoginService extends AbstractService {
   checkIsValidToken() {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'Content-Type': 'application/x-www-form-urlencoded',
       })
     };
 
@@ -228,7 +229,7 @@ export class LoginService extends AbstractService {
       fromObject: {
         grant_type: 'refresh_token',
         client_id: 'login-app',
-        refresh_token: localStorage.getItem('access_token')
+        refresh_token: localStorage.getItem('refresh_token')
       }
     });
 

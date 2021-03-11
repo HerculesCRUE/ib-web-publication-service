@@ -10,7 +10,7 @@ import {
 import { Observable, of, throwError } from 'rxjs';
 import { Injectable } from '@angular/core';
 
-import { mergeMap, catchError } from 'rxjs/operators';
+import { mergeMap, catchError, retryWhen } from 'rxjs/operators';
 
 import { LoginService } from '../_services/login.service';
 import { Router } from '@angular/router';
@@ -36,7 +36,8 @@ export class TokenizedInterceptor extends AbstractHttpInterceptor {
     | HttpUserEvent<any>
   > {
     const accessToken = localStorage.getItem('access_token');
-    if (accessToken) {
+    console.log(req.url);
+    if (accessToken && !req.urlWithParams.includes('token')) {
       req = req.clone({
         setHeaders: {
           Authorization: `Bearer ${accessToken}`,
