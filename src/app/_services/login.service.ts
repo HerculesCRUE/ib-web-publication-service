@@ -239,5 +239,8 @@ export class LoginService extends AbstractService {
       }));
   }
 
+  keycloakIsActive() {
+    return this.httpClient.get('/keycloack/isActive');
+  }
 
 }

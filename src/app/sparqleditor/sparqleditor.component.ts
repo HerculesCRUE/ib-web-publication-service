@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import Yasgui from '@triply/yasgui';
 import Yasqe from '@triply/yasqe';
 import { yasgui } from '../../environments/environment';
-
+import { NgForm } from '@angular/forms';
+import { LoginService } from '../_services/login.service';
 @Component({
   selector: 'app-sparqleditor',
   templateUrl: './sparqleditor.component.html'
@@ -12,10 +13,13 @@ export class SPARQLEditorComponent implements OnInit {
   yasqe: any;
   jsonData: any = null;
   errorMessage: any;
-
-  constructor() { }
+  federated = false;
+  constructor(private loginService: LoginService) { }
 
   ngOnInit(): void {
+    this.loginService.keycloakIsActive().subscribe(data => {
+      console.log(data);
+    });
     Yasgui.defaults.requestConfig.endpoint = yasgui.endpoint;
     if (localStorage.getItem('access_token')) {
       Yasgui.defaults.requestConfig.headers = {
@@ -62,5 +66,7 @@ export class SPARQLEditorComponent implements OnInit {
       }
     }
   }
+
+
 
 }

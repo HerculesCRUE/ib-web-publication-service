@@ -15,6 +15,7 @@ import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { ChartResultsComponent } from './chart-results/chart-results.component';
 import { NgxEchartsModule } from 'ngx-echarts';
+import { FormsModule } from '@angular/forms';
 
 // -------------- Aux functions --------------
 
@@ -34,7 +35,7 @@ import { NgxEchartsModule } from 'ngx-echarts';
     AlertModule.forRoot(),
     CommonDisplayDataModule,
     SharedModule,
-
+    FormsModule,
     NgxEchartsModule,
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts'),

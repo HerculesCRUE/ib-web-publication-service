@@ -4,7 +4,9 @@
             <h1>{{'menu.sparql' | translate }}</h1>
         </div>
         <div class="col-md-2 ms-auto">
-            <label><input type="checkbox" (change)="federChangeCheck($event.target.checked)"> {{'sparql.main.federated'
+            <label>
+                <input type="checkbox" *ngIf="federated" (change)="federChangeCheck($event.target.checked)">
+                {{'sparql.main.federated'
                 |
                 translate}} </label>
         </div>
