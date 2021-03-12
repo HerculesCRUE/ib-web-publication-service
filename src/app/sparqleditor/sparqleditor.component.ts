@@ -21,6 +21,8 @@ export class SPARQLEditorComponent implements OnInit {
       Yasgui.defaults.requestConfig.headers = {
         Authorization: 'Bearer ' + localStorage.getItem('access_token')
       };
+    } else {
+      Yasgui.defaults.requestConfig.headers = {};
     }
 
     Yasgui.defaults.requestConfig.method =
