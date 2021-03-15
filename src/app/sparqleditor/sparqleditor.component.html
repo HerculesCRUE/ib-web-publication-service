@@ -5,7 +5,7 @@
         </div>
         <div class="col-md-2 ms-auto">
             <label>
-                <input type="checkbox" *ngIf="federated" (change)="federChangeCheck($event.target.checked)">
+                <input type="checkbox" *ngIf="federatedItem" (change)="federChangeCheck($event.target.checked)">
                 {{'sparql.main.federated'
                 |
                 translate}} </label>

@@ -241,7 +241,7 @@ export class LoginService extends AbstractService {
    * @return {*} 
    * @memberof LoginService
    */
-  keycloakIsActive() {
+  keycloakIsActive(): Observable<any> {
     return this.httpClient.get(Helper.getUrl('/keycloack/isActive'));
   }
 

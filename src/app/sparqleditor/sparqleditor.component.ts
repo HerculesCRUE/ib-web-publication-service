@@ -13,11 +13,12 @@ export class SPARQLEditorComponent implements OnInit {
   yasqe: any;
   jsonData: any = null;
   errorMessage: any;
-  federated = false;
+  federatedItem = false;
   constructor(private loginService: LoginService) { }
 
   ngOnInit(): void {
     this.loginService.keycloakIsActive().subscribe(data => {
+      this.federatedItem = data;
       console.log('is active', data);
     });
     Yasgui.defaults.requestConfig.endpoint = yasgui.endpoint;
