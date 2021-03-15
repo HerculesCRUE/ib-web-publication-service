@@ -19,7 +19,6 @@ export class SPARQLEditorComponent implements OnInit {
   ngOnInit(): void {
     this.loginService.keycloakIsActive().subscribe(data => {
       this.federatedItem = data;
-      console.log('is active', data);
     });
     Yasgui.defaults.requestConfig.endpoint = yasgui.endpoint;
     if (localStorage.getItem('access_token')) {
