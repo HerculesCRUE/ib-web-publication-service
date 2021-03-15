@@ -90,13 +90,9 @@ export class DocumentService extends AbstractService {
      * @memberof DocumentService
      */
     getDocumentByIdAndType(id: string, type: string): Observable<DocumentDetail> {
-        let parameters = new HttpParams();
-        parameters = Helper.addParam(parameters, 'id', id);
-        parameters = Helper.addParam(parameters, 'type', type);
+
         return this.httpClient
-            .get(Helper.getUrl('/document/'), {
-                params: parameters
-            }).pipe(
+            .get(Helper.getUrl('/document/' + type + '/' + id)).pipe(
                 catchError(this.handleError)
             );
     }
