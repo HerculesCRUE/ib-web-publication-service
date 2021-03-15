@@ -119,28 +119,6 @@ export class LoginService extends AbstractService {
   }
 
 
-  /*logoutKeyCloak() {
-    console.log('hello');
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('refresh_token');
-    localStorage.removeItem('username');
-    this.loggedIn = false;
-    this.keycloakAuth.init({
-      config: {
-        url: 'http://localhost:8080/auth',
-        realm: 'umasio',
-        clientId: 'login-app'
-      },
-      initOptions: {
-        checkLoginIframe: false
-      },
-      enableBearerInterceptor: true,
-      bearerPrefix: 'Bearer',
-    });
-    this.keycloakAuth.logout();
-
-  }*/
-
 
 
   /**
@@ -176,6 +154,12 @@ export class LoginService extends AbstractService {
   }
 
 
+  /**
+   *
+   *
+   * @return {*}  {Observable<any>}
+   * @memberof LoginService
+   */
   logoutKC(): Observable<any> {
 
     const httpOptions = {
@@ -201,6 +185,12 @@ export class LoginService extends AbstractService {
       }));
   }
 
+  /**
+   *
+   *
+   * @return {*} 
+   * @memberof LoginService
+   */
   tokenKC() {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -218,6 +208,12 @@ export class LoginService extends AbstractService {
   }
 
 
+  /**
+   *
+   *
+   * @return {*} 
+   * @memberof LoginService
+   */
   checkIsValidToken() {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -239,8 +235,14 @@ export class LoginService extends AbstractService {
       }));
   }
 
+  /**
+   *
+   *
+   * @return {*} 
+   * @memberof LoginService
+   */
   keycloakIsActive() {
-    return this.httpClient.get('/keycloack/isActive');
+    return this.httpClient.get(Helper.getUrl('/keycloack/isActive'));
   }
 
 }
