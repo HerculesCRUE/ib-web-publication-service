@@ -12,7 +12,7 @@ export class LangInterceptor implements HttpInterceptor {
         let localeLang = '';
         this.translateHelper.getLocalLang() ? localeLang = this.translateHelper.getLocalLang() : localeLang = 'es';
         if (!httpRequest.urlWithParams.includes('json') && !httpRequest.urlWithParams.includes(environment.skipPort)
-            && !httpRequest.urlWithParams.includes('logout')) {
+            && !httpRequest.urlWithParams.includes('logout') && !httpRequest.urlWithParams.includes('keycloack')) {
             cloneReq = httpRequest.clone({ url: httpRequest.urlWithParams + '&language=@' + localeLang });
         } else {
             cloneReq = httpRequest;

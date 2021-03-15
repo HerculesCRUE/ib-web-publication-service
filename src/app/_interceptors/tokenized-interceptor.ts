@@ -36,7 +36,6 @@ export class TokenizedInterceptor extends AbstractHttpInterceptor {
     | HttpUserEvent<any>
   > {
     const accessToken = localStorage.getItem('access_token');
-    console.log(req.url);
     if (accessToken && !req.urlWithParams.includes('token')) {
       req = req.clone({
         setHeaders: {

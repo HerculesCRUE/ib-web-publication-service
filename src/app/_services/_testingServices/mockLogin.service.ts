@@ -148,8 +148,25 @@ export class MockLoginService extends AbstractService {
     return of({});
   }
 
+  /**
+   *
+   *
+   * @return {*} 
+   * @memberof MockLoginService
+   */
   logoutKC() {
     return of({});
+  }
+
+
+  /**
+   *
+   *
+   * @return {*} 
+   * @memberof MockLoginService
+   */
+  keycloakIsActive() {
+    return of(true);
   }
 
 

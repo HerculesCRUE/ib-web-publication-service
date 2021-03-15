@@ -3,6 +3,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SPARQLEditorComponent } from './sparqleditor.component';
 import { TestingHelper } from '../_helpers/testing.spec';
 import { yasgui } from 'src/environments/environment';
+import { MockLoginService } from '../_services/_testingServices/mockLogin.service';
+import { LoginService } from '../_services/login.service';
 
 describe('SPARQLEditorComponent', () => {
   let component: SPARQLEditorComponent;
@@ -10,6 +12,9 @@ describe('SPARQLEditorComponent', () => {
 
   beforeEach(async(() => {
     TestingHelper.configureTest().compileComponents();
+    TestBed.configureTestingModule({
+      providers: [{ provide: LoginService, useClass: MockLoginService }]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
