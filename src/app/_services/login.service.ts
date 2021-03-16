@@ -34,7 +34,7 @@ export class LoginService extends AbstractService {
    * @param password  Contraseña.
    * @returns Observable con el resultado de la llamada.
    */
-  login(username, password): Observable<Response> {
+  /*login(username, password): Observable<Response> {
     const data = `grant_type=password&username=${username}&password=${password}`;
 
     return this.httpClient.post(Helper.getUrl('/oauth/token'), data).pipe(
@@ -51,13 +51,13 @@ export class LoginService extends AbstractService {
       }),
       catchError(this.handleError)
     );
-  }
+  }*/
 
   /**
    * Realiza el refresco de los datos de login.
    * @returns con el resultado de la llamada.
    */
-  refreshToken(): Observable<Response> {
+  /*refreshToken(): Observable<Response> {
     const refreshToken: string = localStorage.getItem('refresh_token');
 
     if (refreshToken != null) {
@@ -77,7 +77,7 @@ export class LoginService extends AbstractService {
     }
 
     return of();
-  }
+  }*/
 
   /**
    * Obtiene los datos del usuario actual.

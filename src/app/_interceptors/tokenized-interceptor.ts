@@ -57,18 +57,18 @@ export class TokenizedInterceptor extends AbstractHttpInterceptor {
     next: HttpHandler
   ) {
 
-    if (error.status === 401) {
-      return this.loginService.refreshToken().pipe(
-        mergeMap((response: any) => {
-          req.headers.delete('Authorization');
-          return this.intercept(req, next);
-        }),
-        catchError((err: any) => {
-          // this.router.navigate(['/login']);
-          return of();
-        })
-      );
-    }
+    /* if (error.status === 401) {
+       return this.loginService.refreshToken().pipe(
+         mergeMap((response: any) => {
+           req.headers.delete('Authorization');
+           return this.intercept(req, next);
+         }),
+         catchError((err: any) => {
+           // this.router.navigate(['/login']);
+           return of();
+         })
+       );
+     }*/
 
     return throwError(error);
   }

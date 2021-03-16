@@ -36,7 +36,6 @@ import { NoAuthGuard } from './_guards/no-auth.guard';
 
 // -------------- Interceptors --------------
 import { TokenizedInterceptor } from './_interceptors/tokenized-interceptor';
-import { OAuthInterceptor } from './_interceptors/oauth-interceptor';
 import { SparqleditorModule } from './sparqleditor/sparqleditor.module';
 import { LinksComponent } from './links/links.component';
 import { LoginComponent } from './login/login.component';
@@ -107,11 +106,6 @@ const keycloakService = new KeycloakService();
     {
       provide: KeycloakService,
       useValue: keycloakService,
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: OAuthInterceptor,
-      multi: true,
     },
     {
       provide: NgbDateAdapter,
