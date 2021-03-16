@@ -17,7 +17,17 @@
         <tbody>
           <ng-container *ngFor="let item of dataCompleteToShow; index as i">
             <tr [routerLink]="[routerNameLink, item[routerField]]" class="cursor"
-              *ngIf="!!routerField && !!item[routerField]" [ngClass]="{ 'table-secondary': i % 2 == 1 }">
+              *ngIf="!!routerField && !!item[routerField] && routerFieldSecondary === ''"
+              [ngClass]="{ 'table-secondary': i % 2 == 1 }">
+              <ng-container>
+                <td *ngFor="let header of hedearDTO">
+                  <ng-container>{{ item[header] }}</ng-container>
+                </td>
+              </ng-container>
+            </tr>
+            <tr [routerLink]="[routerNameLink, item[routerField], item[routerFieldSecondary]]" class="cursor"
+              *ngIf="!!routerField && !!item[routerField] && routerFieldSecondary !== ''"
+              [ngClass]="{ 'table-secondary': i % 2 == 1 }">
               <ng-container>
                 <td *ngFor="let header of hedearDTO">
                   <ng-container>{{ item[header] }}</ng-container>

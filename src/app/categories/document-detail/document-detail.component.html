@@ -1,21 +1,22 @@
-<div class="row">
+<div class="row" *ngIf="loaded">
     <div class="col-lg-12 margin-bottom">
         <legend class="legend">{{ document.title}}</legend>
     </div>
 </div>
-<div class="row">
+<div class="row" *ngIf="loaded">
     <div class="col-12">
-        <p><strong>{{document.type}}</strong></p>
-        <p><strong>{{'document.author' | translate}}:</strong> {{document.author}}</p>
-        <p><strong>{{'document.published-by' | translate}}:</strong> {{document.publishedBy}}</p>
-        <p><strong>{{'document.published-date' | translate}}:</strong> {{document.publishDate}}</p>
-        <p><strong>{{'document.organization' | translate}}:</strong> {{document.organization}}</p>
-        <p><strong>{{'document.keyword' | translate}}:</strong> {{document.keyword}}</p>
-        <p><strong>{{'document.resume' | translate}}:</strong> {{document.resume}}</p>
+        <p><strong>{{'documents.type' | translate}}: {{lastItem}}</strong></p>
+        <p><strong>{{'documents.doi' | translate}}:</strong> {{document.doi}}</p>
+        <p><strong>{{'documents.edition' | translate}}:</strong> {{document.edition}}</p>
+        <p><strong>{{'documents.startPage' | translate}}:</strong> {{document.startPage}}</p>
+        <p><strong>{{'documents.endPage' | translate}}:</strong> {{document.endPage}}</p>
+        <p><strong>{{'documents.summary' | translate}}:</strong> {{document.summary}}</p>
+        <p><strong>{{'documents.placeOfPublication' | translate}}:</strong> {{document.placeOfPublication}}</p>
+        <p><strong>{{'documents.publishedIn' | translate}}:</strong> {{document.publishedIn}}</p>
     </div>
 </div>
 
-<div class="row">
+<div class="row" *ngIf="false">
     <div class="col-12 margin-bottom">
         <legend class="legend">{{ "document.other-authors" | translate }}</legend>
     </div>

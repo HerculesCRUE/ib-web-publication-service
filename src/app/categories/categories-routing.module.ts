@@ -56,7 +56,7 @@ const routes: Routes = [
     component: ScientificProductionComponent
   },
   {
-    path: 'document/:id',
+    path: 'document/:id/:type',
     component: DocumentDetailComponent
   },
   {

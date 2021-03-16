@@ -92,7 +92,7 @@ export class DocumentService extends AbstractService {
     getDocumentByIdAndType(id: string, type: string): Observable<DocumentDetail> {
 
         return this.httpClient
-            .get(Helper.getUrl('/document/' + type + '/' + id)).pipe(
+            .get(Helper.getUrl('/document/' + id + '/' + type)).pipe(
                 catchError(this.handleError)
             );
     }

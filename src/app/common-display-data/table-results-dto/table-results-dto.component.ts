@@ -76,6 +76,9 @@ export class TableResultsDtoComponent
   @Input()
   routerNameLink = './';
 
+  @Input()
+  routerFieldSecondary = '';
+
 
   /**
    * Send the event when page is changed

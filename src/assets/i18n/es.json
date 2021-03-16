@@ -258,7 +258,8 @@
     "summary": "Sumario",
     "type": "Tipo",
     "abbreviation": "Abreviación",
-    "placeOfPublication": "Lugar de publicación"
+    "placeOfPublication": "Lugar de publicación",
+    "edition": "Edición"
   },
   "participant": {
     "title": "Participantes",
@@ -334,7 +335,8 @@
     "keyword": "Palabra clave",
     "resume": "Resumen",
     "other-authors": "Otros authores",
-    "name": "Nombre"
+    "name": "Nombre",
+    "type": "Tipo"
   },
   "event": {
     "id": "Identificador",
