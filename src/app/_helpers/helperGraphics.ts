@@ -145,6 +145,7 @@ export class HelperGraphics {
     }
 
     static configChartBubble(xAxisData: any, seriesData: Array<SeriesBarData>) {
+
         return {
             xAxis: {
                 type: 'category',
@@ -161,11 +162,12 @@ export class HelperGraphics {
     }
 
     static configSimpleChartPie(xAxisData: any[], seriesData: Array<SeriesBarData>) {
-        let newData: any[] = xAxisData.map((a, i) => {
+
+        const newData: any[] = xAxisData.map((a, i) => {
             return {
                 name: a,
                 value: seriesData[i]
-            }
+            };
         });
         return {
             series: [{

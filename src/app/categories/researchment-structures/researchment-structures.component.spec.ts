@@ -4,6 +4,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 
 import { TranslateModule } from '@ngx-translate/core';
+import { GraphicService } from 'src/app/_services/graphic.service';
+import { MockGraphicService } from 'src/app/_services/_testingServices/mockGraphic.service';
 import { ResearchmentStructuresComponent } from './researchment-structures.component';
 
 describe('ResearchmentStructuresComponent', () => {
@@ -18,6 +20,7 @@ describe('ResearchmentStructuresComponent', () => {
         HttpClientModule,
         FormsModule,
       ],
+      providers: [{ provide: GraphicService, useClass: MockGraphicService }],
       declarations: [ResearchmentStructuresComponent],
     }).compileComponents();
   }));
