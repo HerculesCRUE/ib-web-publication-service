@@ -97,15 +97,12 @@ Funciona de dos formas:
 
   - realm: 'umasio' - El nombre del real creado
   - clientId: 'login-app' - El client id que se creo
-  - clientSecret: '' - El client secret se obtiene al poner en client accest type 
   - scope: 'openid, profile' - debería quedar as
   - authorizationGrantType: 'password' - tipo de autorización utilizamos password
   - authorizationUri: 'http://localhost:8080/auth/realms/umasio/protocol/openid-connect/auth',
   - userInfoUri: 'http://localhost:8080/auth/realms/umasio/protocol/openid-connect/userinfo',
   - tokenUri: 'http://localhost:8080/auth/realms/umasio/protocol/openid-connect/token',
-  - logout: 'http://localhost:8080/auth/realms/umasio/protocol/openid-connect/logout',
-  - jwkSetUri: 'http://localhost:8080/auth/realms/umasio/protocol/openid-connect/certs', - Todas las URL de la api de keycloack
-  - certsId: '' - certificate Id (no es necesario crearlo para esta app)
+  - logout: 'http://localhost:8080/auth/realms/umasio/protocol/openid-connect/logout' - Todas las URL de la api de keycloack
 
   - skipPort - Esta variable la avisa al language interceptor que puerto tiene keycloack para no adjuntarle los detalles de idioma a la petición al back
   

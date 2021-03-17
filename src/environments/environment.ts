@@ -13,15 +13,12 @@ export const environment = {
   keycloak: {
     realm: 'umasio',
     clientId: 'login-app',
-    clientSecret: 'd0ef8d7f-2c2d-4dec-8a8c-6623e07a0a52',
     scope: 'openid, profile',
     authorizationGrantType: 'password',
     authorizationUri: 'http://localhost:8080/auth/realms/umasio/protocol/openid-connect/auth',
     userInfoUri: 'http://localhost:8080/auth/realms/umasio/protocol/openid-connect/userinfo',
     tokenUri: 'http://localhost:8080/auth/realms/umasio/protocol/openid-connect/token',
-    logout: 'http://localhost:8080/auth/realms/umasio/protocol/openid-connect/logout',
-    jwkSetUri: 'http://localhost:8080/auth/realms/umasio/protocol/openid-connect/certs',
-    certsId: 'hHfpcRM37HXnMGc3PDiwoPQLUNfHOmbj2EOjq0GFjg0'
+    logout: 'http://localhost:8080/auth/realms/umasio/protocol/openid-connect/logout'
   }
 };
 
