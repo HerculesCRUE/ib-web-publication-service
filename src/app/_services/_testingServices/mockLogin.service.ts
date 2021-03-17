@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
-import { map, catchError, tap } from 'rxjs/operators';
-import { observable, Observable, of } from 'rxjs';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { of } from 'rxjs';
+import { HttpHeaders, HttpParams } from '@angular/common/http';
 import { KeycloakService } from 'keycloak-angular';
 import { KeycloakInstance } from 'keycloak-js';
 import { AbstractService } from 'src/app/_helpers/abstract';
-import { Helper } from 'src/app/_helpers/utils';
 import { User } from 'src/app/_models/user';
 
 /**
@@ -24,64 +22,15 @@ export class MockLoginService extends AbstractService {
   token: Promise<string>;
   keycloakcdata: any;
   keycloak;
-  constructor(private httpClient: HttpClient) {
+  constructor() {
     super();
 
   }
 
 
 
-  /**
-   * Realiza el login del usuario. El login es con el theme local
-   * para obtener el token y almacenarlo
-   * @param username Nombre de usuario.
-   * @param password  Contraseña.
-   * @returns Observable con el resultado de la llamada.
-   */
-  login(username, password): Observable<Response> {
-    const data = `grant_type=password&username=${username}&password=${password}`;
 
-    return this.httpClient.post(Helper.getUrl('/oauth/token'), data).pipe(
-      map((response: any) => {
-        if (response) {
-          localStorage.setItem('access_token', response.access_token);
-          localStorage.setItem('refresh_token', response.refresh_token);
-          localStorage.setItem('username', username);
 
-          this.loggedIn = true;
-        }
-
-        return response;
-      }),
-      catchError(this.handleError)
-    );
-  }
-
-  /**
-   * Realiza el refresco de los datos de login.
-   * @returns con el resultado de la llamada.
-   */
-  refreshToken(): Observable<Response> {
-    const refreshToken: string = localStorage.getItem('refresh_token');
-
-    if (refreshToken != null) {
-      const data = `grant_type=refresh_token&refresh_token=${refreshToken}`;
-
-      return this.httpClient.post(Helper.getUrl('/oauth/token'), data).pipe(
-        map((response: any) => {
-          if (response != null) {
-            localStorage.setItem('access_token', response.access_token);
-            localStorage.setItem('refresh_token', response.refresh_token);
-          }
-
-          return response;
-        }),
-        catchError(this.handleError)
-      );
-    }
-
-    return of();
-  }
 
   /**
    * Obtiene los datos del usuario actual.

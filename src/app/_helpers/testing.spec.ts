@@ -172,7 +172,6 @@ export class TestingHelper {
       ],
       providers: [
         AuthGuard,
-        LoginService,
         MenuService,
         KeycloakService,
         UserService,
