@@ -39,7 +39,6 @@ export class DocumentDetailComponent implements OnInit {
     this.documentService.getDocumentByIdAndType(id, btoa(this.lastItem)).subscribe(data => {
       if (data) {
         this.document = data;
-        console.log(this.document);
         this.loaded = true;
       }
     });

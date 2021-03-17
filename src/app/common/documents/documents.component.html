@@ -72,8 +72,7 @@
     </div>
 </form>
 <app-table-results-dto [dtoTypeTranslate]="'documents'" [extra]="idPrefix" *ngIf="loaded"
-    [data]="allDocumentFiltered.content" [routerNameLink]="'../document/'" [routerField]="'id'"
-    [routerFieldSecondary]="'type'" [pageInfo]="allDocumentFiltered"
-    (pageChanged)="allprojectsFilteredPageChanged($event)" (sizeChanged)="allprojectsFilteredSizeChanged($event)"
-    (sortChanged)="allprojectsFilteredSortChanged($event)">
+    [data]="allDocumentFiltered.content" [routerNameLink]="url" [routerField]="'id'" [routerFieldSecondary]="'type'"
+    [pageInfo]="allDocumentFiltered" (pageChanged)="allprojectsFilteredPageChanged($event)"
+    (sizeChanged)="allprojectsFilteredSizeChanged($event)" (sortChanged)="allprojectsFilteredSortChanged($event)">
 </app-table-results-dto>
