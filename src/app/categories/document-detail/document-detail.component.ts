@@ -31,8 +31,11 @@ export class DocumentDetailComponent implements OnInit {
   ngOnInit(): void {
     const id = this.rutaActiva.snapshot.params.id;
     const type = this.rutaActiva.snapshot.params.type;
-    const typeFromURL = type.split('/');
-    this.lastItem = typeFromURL.pop();
+    if (type) {
+      const typeFromURL = type.split('/');
+      this.lastItem = typeFromURL.pop();
+    }
+
     this.documentService.getDocumentByIdAndType(id, btoa(this.lastItem)).subscribe(data => {
       if (data) {
         this.document = data;
