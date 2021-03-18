@@ -73,7 +73,6 @@ describe('ProyectsComponent', () => {
 
   describe('on Chart Init', () => {
     it('should change loadingData to true', () => {
-      spyOn(graphicService, 'projectInvestigation').and.callThrough();
       component.onChartInit();
       expect(component.loadingData).toBeTruthy();
     });

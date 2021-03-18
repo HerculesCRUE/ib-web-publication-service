@@ -11,9 +11,6 @@ describe('MainComponent', () => {
 
   beforeEach(async(() => {
     TestingHelper.configureTest().compileComponents();
-    TestBed.configureTestingModule({
-      providers: [{ provide: LoginService, useClass: MockLoginService }]
-    }).compileComponents();
   }));
 
   beforeEach(() => {

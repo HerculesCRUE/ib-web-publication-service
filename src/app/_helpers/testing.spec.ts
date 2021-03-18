@@ -20,8 +20,6 @@ import { NgProgressRouterModule } from 'ngx-progressbar/router';
 import { NgSelectModule } from '@ng-select/ng-select';
 
 // -------------- Services --------------
-import { LoginService } from '../_services/login.service';
-import { MenuService } from '../_services/menu.service';
 import { UserService } from '../_services/user.service';
 
 // -------------- Components --------------
@@ -76,6 +74,8 @@ import { ResearchmentStructuresByQSComponent } from '../categories/researchment-
 import { ResearchmentStructuresByFinancingComponent } from '../categories/researchment-structures/researchment-structures-chart-by-financing/researchment-structures-chart-by-financing.component';
 import { ResearchmentStructuresDetailComponent } from '../categories/researchment-structures-detail/researchment-structures-detail.component';
 import { KeycloakService } from 'keycloak-angular';
+import { LoginService } from '../_services/login.service';
+import { MockLoginService } from '../_services/_testingServices/mockLogin.service';
 
 
 /**
@@ -107,8 +107,6 @@ export class TestingHelper {
       declarations: [
         TranslatePipeStub,
         LoginComponent,
-        MainComponent,
-        MenuComponent,
         HomeComponent,
         SPARQLEditorComponent,
         ScientistSearchComponent,
@@ -172,8 +170,6 @@ export class TestingHelper {
       ],
       providers: [
         AuthGuard,
-        MenuService,
-        KeycloakService,
         UserService,
         { provide: TranslateService, useClass: TranslateServiceStub },
         {

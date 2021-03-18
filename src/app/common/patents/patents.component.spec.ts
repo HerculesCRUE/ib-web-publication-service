@@ -32,7 +32,6 @@ describe('PatentsComponent', () => {
   });
 
   it('should create', () => {
-    spyOn(graphicService, 'patentArea').and.callThrough();
     expect(component).toBeTruthy();
   });
 

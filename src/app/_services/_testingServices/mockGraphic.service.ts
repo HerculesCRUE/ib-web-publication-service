@@ -15,12 +15,11 @@ import { AbstractService } from 'src/app/_helpers/abstract';
 @Injectable({
     providedIn: 'root',
 })
-export class MockGraphicService extends AbstractService {
+export class MockGraphicService {
 
 
 
     constructor() {
-        super();
     }
 
 

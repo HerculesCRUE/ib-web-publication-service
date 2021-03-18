@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 import { AbstractService } from '../_helpers/abstract';
 import { User } from '../_models/user';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { KEYCLOACK } from '../configuration';
 
 /**
  * Servicio para la gestión del login.

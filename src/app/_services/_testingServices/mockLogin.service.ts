@@ -12,7 +12,7 @@ import { User } from 'src/app/_models/user';
 @Injectable({
   providedIn: 'root',
 })
-export class MockLoginService extends AbstractService {
+export class MockLoginService {
   /**
    * Flag que indica si el usuario se encuentra logado.
    */
@@ -23,8 +23,6 @@ export class MockLoginService extends AbstractService {
   keycloakcdata: any;
   keycloak;
   constructor() {
-    super();
-
   }
 
 
@@ -78,22 +76,6 @@ export class MockLoginService extends AbstractService {
    * @memberof LoginService
    */
   loginKC(user, password) {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/x-www-form-urlencoded'
-      })
-    };
-
-    const params = new HttpParams({
-      fromObject: {
-        grant_type: 'password',
-        client_id: 'login-app',
-        scope: 'openid',
-        username: user,
-        password
-      }
-    });
-
     return of({});
   }
 
