@@ -13,6 +13,7 @@ describe('PatentsComponent', () => {
   let component: PatentsComponent;
   let fixture: ComponentFixture<PatentsComponent>;
   let patentService: MockPatentService;
+  let graphicService: MockGraphicService;
   beforeEach(async(() => {
     TestingHelper.configureTest()
       .compileComponents();
@@ -26,10 +27,12 @@ describe('PatentsComponent', () => {
     fixture = TestBed.createComponent(PatentsComponent);
     component = fixture.componentInstance;
     patentService = TestBed.inject(MockPatentService);
+    graphicService = TestBed.inject(MockGraphicService);
     fixture.detectChanges();
   });
 
   it('should create', () => {
+    spyOn(graphicService, 'patentArea').and.callThrough();
     expect(component).toBeTruthy();
   });
 

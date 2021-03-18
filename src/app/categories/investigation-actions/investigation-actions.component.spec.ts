@@ -1,9 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { TestingHelper } from 'src/app/_helpers/testing.spec';
 import { DocumentService } from 'src/app/_services/document.service';
+import { GraphicService } from 'src/app/_services/graphic.service';
 import { PatentService } from 'src/app/_services/patent.service';
 import { ProjectService } from 'src/app/_services/project.service';
 import { MockDocumentService } from 'src/app/_services/_testingServices/mockDocument.service';
+import { MockGraphicService } from 'src/app/_services/_testingServices/mockGraphic.service';
 import { MockPatentService } from 'src/app/_services/_testingServices/mockPatent.service';
 import { MockProjectService } from 'src/app/_services/_testingServices/mockProject.service';
 
@@ -19,7 +21,8 @@ describe('InvestigationActionsComponent', () => {
     TestBed.configureTestingModule({
       providers: [{ provide: DocumentService, useClass: MockDocumentService },
       { provide: ProjectService, useClass: MockProjectService },
-      { provide: PatentService, useClass: MockPatentService }]
+      { provide: PatentService, useClass: MockPatentService },
+      { provide: GraphicService, useClass: MockGraphicService }]
     }).compileComponents();
   }));
 

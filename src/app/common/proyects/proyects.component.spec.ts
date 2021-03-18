@@ -12,6 +12,7 @@ describe('ProyectsComponent', () => {
   let component: ProyectsComponent;
   let fixture: ComponentFixture<ProyectsComponent>;
   let projectService: MockProjectService;
+  let graphicService: MockGraphicService;
   beforeEach(async(() => {
     TestingHelper.configureTest()
       .compileComponents();
@@ -27,15 +28,18 @@ describe('ProyectsComponent', () => {
     fixture = TestBed.createComponent(ProyectsComponent);
     component = fixture.componentInstance;
     projectService = TestBed.inject(MockProjectService);
+    graphicService = TestBed.inject(MockGraphicService);
     fixture.detectChanges();
   });
 
   it('should create', () => {
+    spyOn(graphicService, 'projectInvestigation').and.callThrough();
     expect(component).toBeTruthy();
   });
 
   it('should create execute ngOnInit and populate data table to show', () => {
     spyOn(projectService, 'find').and.callThrough();
+    spyOn(graphicService, 'projectInvestigation').and.callThrough();
     spyOn(component, 'ngOnInit').and.callThrough();
     fixture.detectChanges();
     expect(component.allProjectFiltered.content.length).toBe(5);
@@ -44,6 +48,7 @@ describe('ProyectsComponent', () => {
 
   describe('on component Init', () => {
     it('should change load all elements', () => {
+      spyOn(graphicService, 'projectInvestigation').and.callThrough();
       const pageRequest: PageRequest = new PageRequest();
       pageRequest.page = 1;
       pageRequest.size = 10;
@@ -55,6 +60,7 @@ describe('ProyectsComponent', () => {
 
   describe('on component Init', () => {
     it('should change load all elements and start bar graphic', () => {
+      spyOn(graphicService, 'projectInvestigation').and.callThrough();
       const pageRequest: PageRequest = new PageRequest();
       pageRequest.page = 1;
       pageRequest.size = 10;
@@ -67,6 +73,7 @@ describe('ProyectsComponent', () => {
 
   describe('on Chart Init', () => {
     it('should change loadingData to true', () => {
+      spyOn(graphicService, 'projectInvestigation').and.callThrough();
       component.onChartInit();
       expect(component.loadingData).toBeTruthy();
     });

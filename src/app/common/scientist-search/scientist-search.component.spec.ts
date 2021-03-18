@@ -11,6 +11,7 @@ describe('ScientistSearchComponent', () => {
   let component: ScientistSearchComponent;
   let fixture: ComponentFixture<ScientistSearchComponent>;
   let researchStaffService: MockResearchStaffService;
+  let graphicService: MockGraphicService;
   beforeEach(async(() => {
     TestingHelper.configureTest()
       .compileComponents();
@@ -25,10 +26,12 @@ describe('ScientistSearchComponent', () => {
     fixture = TestBed.createComponent(ScientistSearchComponent);
     component = fixture.componentInstance;
     researchStaffService = TestBed.inject(MockResearchStaffService);
+    graphicService = TestBed.inject(MockGraphicService);
     fixture.detectChanges();
   });
 
   it('should create', () => {
+    spyOn(graphicService, 'personArea').and.callThrough();
     expect(component).toBeTruthy();
   });
 
