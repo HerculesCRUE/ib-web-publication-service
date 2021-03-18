@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
    *
    * @memberof LoginComponent
    */
-  loginUrl = this.sanitizer.bypassSecurityTrustResourceUrl(`${Helper.getKeyCloackUrl().authorizationUri}?client_id=account&redirect_uri=${Helper.getKeyCloackUrl().redirectURL}&response_type=code&scope=openid`);
+  loginUrl = this.sanitizer.bypassSecurityTrustResourceUrl(`${Helper.getKeyCloackUrl().authorizationUri}?client_id=account&redirect_uri=${Helper.getKeyCloackUrl().redirectUrl}&response_type=code&scope=openid`);
   constructor(
     private loginService: LoginService,
     private sanitizer: DomSanitizer,
