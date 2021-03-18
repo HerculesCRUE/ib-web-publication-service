@@ -21,6 +21,7 @@ export class MenuComponent implements OnInit {
    */
   menuItems: MenuItem[];
   initKeycloack;
+  isLogged: boolean;
 
   constructor(
     public translateHelperService: TranslateHelperService,
@@ -30,6 +31,10 @@ export class MenuComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.loginService.keycloakIsActive().subscribe(data => {
+      this.isLogged = data;
+      console.log(data);
+    });
     this.menuService.getMenu().then((menuItems: MenuItem[]) => {
       this.menuItems = menuItems;
     });

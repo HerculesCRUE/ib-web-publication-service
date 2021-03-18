@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 import { AbstractService } from '../_helpers/abstract';
 import { User } from '../_models/user';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
 import { KEYCLOACK } from '../configuration';
 
 /**
@@ -61,7 +60,7 @@ export class LoginService extends AbstractService {
     localStorage.removeItem('username');
     this.loggedIn = false;
 
-    this.httpClient.post(KEYCLOACK.logout + '?redirect_uri=http%3A%2F%2Flocalhost%3A4200%2Fmain%2F', {})
+    this.httpClient.post(Helper.getKeyCloackUrl().logout + '?redirect_uri=http%3A%2F%2Flocalhost%3A4200%2Fmain%2F', {})
       .subscribe(data => {
       });
   }
@@ -95,7 +94,7 @@ export class LoginService extends AbstractService {
       }
     });
 
-    return this.httpClient.post(KEYCLOACK.tokenUri, params, httpOptions)
+    return this.httpClient.post(Helper.getKeyCloackUrl().tokenUri, params, httpOptions)
       .pipe(tap((response: any) => {
 
       }));
@@ -127,7 +126,7 @@ export class LoginService extends AbstractService {
     localStorage.removeItem('access_token');
     localStorage.removeItem('refresh_token');
     localStorage.removeItem('username');
-    return this.httpClient.post(KEYCLOACK.logout, params, httpOptions)
+    return this.httpClient.post(Helper.getKeyCloackUrl().logout, params, httpOptions)
       .pipe(tap((response: any) => {
 
       }));
@@ -149,7 +148,7 @@ export class LoginService extends AbstractService {
 
 
 
-    return this.httpClient.get(KEYCLOACK.userInfoUri, httpOptions)
+    return this.httpClient.get(Helper.getKeyCloackUrl().userInfoUri, httpOptions)
       .pipe(tap((response: any) => {
 
       }));
@@ -177,7 +176,7 @@ export class LoginService extends AbstractService {
       }
     });
 
-    return this.httpClient.post(KEYCLOACK.tokenUri, params, httpOptions)
+    return this.httpClient.post(Helper.getKeyCloackUrl().tokenUri, params, httpOptions)
       .pipe(tap((response: any) => {
 
       }));

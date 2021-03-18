@@ -19,11 +19,11 @@
 
 
   <!-- logout button -->
-  <li class=" sidebar-brand cursor" [routerLink]="'./login'">
+  <li class=" sidebar-brand cursor" [routerLink]="'./login'" *ngIf="!isLogged">
     <em class="oi oi-account-login icons-menu"></em>
     {{ "menu.login" | translate }}
   </li>
-  <li class=" sidebar-brand cursor" (click)="logout()">
+  <li class=" sidebar-brand cursor" (click)="logout()" *ngIf="isLogged">
     <em class="oi oi-account-logout icons-menu"></em>
     {{ "menu.logout" | translate }}
   </li>
