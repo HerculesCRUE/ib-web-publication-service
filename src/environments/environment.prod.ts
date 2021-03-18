@@ -10,10 +10,10 @@ export const environment = {
     clientId: 'login-app',
     scope: 'openid, profile',
     authorizationGrantType: 'password',
-    authorizationUri: 'http://localhost:8080/auth/realms/umasio/protocol/openid-connect/auth',
-    userInfoUri: 'http://localhost:8080/auth/realms/umasio/protocol/openid-connect/userinfo',
-    tokenUri: 'http://localhost:8080/auth/realms/umasio/protocol/openid-connect/token',
-    logout: 'http://localhost:8080/auth/realms/umasio/protocol/openid-connect/logout'
+    authorizationUri: 'https://herculesasioizertis.desa.um.es/auth/realms/umasio/protocol/openid-connect/auth',
+    userInfoUri: 'https://herculesasioizertis.desa.um.es/auth/realms/umasio/protocol/openid-connect/userinfo',
+    tokenUri: 'https://herculesasioizertis.desa.um.es/auth/realms/umasio/protocol/openid-connect/token',
+    logout: 'https://herculesasioizertis.desa.um.es/auth/realms/umasio/protocol/openid-connect/logout'
   }
 };
 
