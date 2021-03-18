@@ -28,7 +28,11 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
+    this.loginService.keycloakIsActive().subscribe(data => {
+      if (data) {
+        this.router.navigate(['./']);
+      }
+    });
   }
 
   /**
@@ -50,7 +54,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('access_token', response.access_token);
         localStorage.setItem('refresh_token', response.refresh_token);
         localStorage.setItem('username', this.model.username);
-        this.router.navigate(['./']);
+        window.location.reload();
       }
     }, error => {
     });

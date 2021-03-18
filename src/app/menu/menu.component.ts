@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { MenuService } from '../_services/menu.service';
 import { MenuItem } from '../_models/menu';
 import { LoginService } from '../_services/login.service';
@@ -33,13 +33,13 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
     this.loginService.keycloakIsActive().subscribe(data => {
       this.isLogged = data;
-      console.log(data);
     });
     this.menuService.getMenu().then((menuItems: MenuItem[]) => {
       this.menuItems = menuItems;
     });
 
   }
+
 
   /**
    * Realiza el logout del usuario.
