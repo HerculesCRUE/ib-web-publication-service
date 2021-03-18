@@ -5,6 +5,7 @@ import { Helper } from 'src/app/_helpers/utils';
 import { Person } from 'src/app/_models/person';
 import { SparqlResults } from 'src/app/_models/sparql';
 import { TableResultsHeaderItem } from 'src/app/_models/table-results';
+import { GraphicService } from 'src/app/_services/graphic.service';
 import { ResearchStaffService } from 'src/app/_services/research-staff.service';
 /**
  *
@@ -74,7 +75,8 @@ export class ScientistSearchComponent implements OnInit {
    * param cdr 
    */
   constructor(
-    private researchStaffServices: ResearchStaffService) {
+    private researchStaffServices: ResearchStaffService,
+    private graphicService: GraphicService) {
   }
 
   /**
@@ -101,8 +103,10 @@ export class ScientistSearchComponent implements OnInit {
       data2.push((Math.cos(i / 5) * (i / 5 - 10) + i / 6) * 5);
     }
 
-    const data = Helper.genData(7);
-    this.echartOptions = HelperGraphics.configChartPie(data, 'Sello de Calidad', 'Personal por tipo filtrado por area');
+
+    this.graphicService.personArea().subscribe(data => {
+      this.echartOptions = HelperGraphics.configChartPie(data, 'Sello de Calidad', 'Personal por tipo filtrado por area');
+    });
   }
 
   /**

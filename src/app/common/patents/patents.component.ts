@@ -3,6 +3,7 @@ import { HelperGraphics } from 'src/app/_helpers/helperGraphics';
 import { FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
 import { Helper } from 'src/app/_helpers/utils';
 import { Patent } from 'src/app/_models/patent';
+import { GraphicService } from 'src/app/_services/graphic.service';
 import { PatentService } from 'src/app/_services/patent.service';
 
 
@@ -72,7 +73,8 @@ export class PatentsComponent implements OnInit {
    * @memberof PatentsComponent
    */
   constructor(
-    private patentService: PatentService) {
+    private patentService: PatentService,
+    private graphicServcice: GraphicService) {
   }
 
 
@@ -101,8 +103,11 @@ export class PatentsComponent implements OnInit {
       data2.push((Math.cos(i / 5) * (i / 5 - 10) + i / 6) * 5);
     }
 
-    const data = Helper.genData(3);
-    this.echartOptions = HelperGraphics.configChartPie(data, 'Sello de Calidad', 'Personal por tipo filtrado por area');
+
+    this.graphicServcice.patentArea().subscribe(data => {
+      this.echartOptions = HelperGraphics.configChartPie(data, 'Sello de Calidad', 'Personal por tipo filtrado por area');
+
+    });
   }
 
 

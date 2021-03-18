@@ -43,4 +43,17 @@ export class MockGraphicService extends AbstractService {
     universityQuality(): Observable<any> {
         return of();
     }
+
+
+    personArea(): Observable<any> {
+        return of();
+    }
+
+    patentArea(): Observable<any> {
+        return of();
+    }
+
+    projectInvestigation(): Observable<any> {
+        return of();
+    }
 }

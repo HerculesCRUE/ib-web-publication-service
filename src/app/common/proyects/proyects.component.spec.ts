@@ -5,6 +5,8 @@ import { ProjectService } from 'src/app/_services/project.service';
 
 import { ProyectsComponent } from './proyects.component';
 import { FindRequest, PageRequest } from 'src/app/_helpers/search';
+import { GraphicService } from 'src/app/_services/graphic.service';
+import { MockGraphicService } from 'src/app/_services/_testingServices/mockGraphic.service';
 
 describe('ProyectsComponent', () => {
   let component: ProyectsComponent;
@@ -14,9 +16,12 @@ describe('ProyectsComponent', () => {
     TestingHelper.configureTest()
       .compileComponents();
     TestBed.configureTestingModule({
-      providers: [{ provide: ProjectService, useClass: MockProjectService }]
+      providers: [{ provide: ProjectService, useClass: MockProjectService },
+      { provide: GraphicService, useClass: MockGraphicService }]
     }).compileComponents();
   }));
+
+
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ProyectsComponent);

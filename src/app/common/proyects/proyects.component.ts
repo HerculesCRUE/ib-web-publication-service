@@ -5,6 +5,7 @@ import { Helper } from 'src/app/_helpers/utils';
 import { HelperGraphics } from 'src/app/_helpers/helperGraphics';
 import { SeriesBarData } from 'src/app/_models/seriesBarData';
 import { Project } from 'src/app/_models/project';
+import { GraphicService } from 'src/app/_services/graphic.service';
 
 /**
  *
@@ -92,7 +93,8 @@ export class ProyectsComponent implements OnInit {
    * @memberof ProyectsComponent
    */
   constructor(
-    private projectService: ProjectService
+    private projectService: ProjectService,
+    private graphicServcice: GraphicService
   ) {
   }
 
@@ -136,8 +138,11 @@ export class ProyectsComponent implements OnInit {
       }];
       this.echartOptions = HelperGraphics.configChartBar(xAxisData, barData, legend);
     } else {
-      const treeData = HelperGraphics.returnSquareData();
-      this.echartOptions = HelperGraphics.configChartTree(treeData);
+
+      this.graphicServcice.projectInvestigation().subscribe(treeData => {
+        this.echartOptions = HelperGraphics.configChartTree([treeData]);
+      });
+
     }
 
 

@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  urlBase: 'https://app.herculesasioizertis.desa.um.es/api',
+  urlBase: 'https://app.herculesasioizertis.desa.um.es/api/',
   urlWebsocket: '/gs-guide-websocket',
   oauthClientId: 'acme',
   oauthSecret: 'acmesecret',

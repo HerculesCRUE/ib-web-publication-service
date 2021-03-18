@@ -51,4 +51,44 @@ export class GraphicService extends AbstractService {
                 catchError(this.handleError)
             );
     }
+
+    /**
+     *
+     *
+     * @return {*}  {Observable<any>}
+     * @memberof GraphicService
+     */
+    personArea(): Observable<any> {
+        return this.httpClient
+            .get(Helper.getUrl('/person/area')).pipe(
+                catchError(this.handleError)
+            );
+    }
+
+    /**
+     *
+     *
+     * @return {*}  {Observable<any>}
+     * @memberof GraphicService
+     */
+    patentArea(): Observable<any> {
+        return this.httpClient
+            .get(Helper.getUrl('/patent/area')).pipe(
+                catchError(this.handleError)
+            );
+    }
+
+    /**
+     *
+     *
+     * @return {*}  {Observable<any>}
+     * @memberof GraphicService
+     */
+    projectInvestigation(): Observable<any> {
+        return this.httpClient
+            .get(Helper.getUrl('/project/investigation')).pipe(
+                catchError(this.handleError)
+            );
+    }
+
 }
