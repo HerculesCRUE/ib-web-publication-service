@@ -14,9 +14,9 @@ export class LangInterceptor implements HttpInterceptor {
         if (!httpRequest.urlWithParams.includes('json') && !httpRequest.urlWithParams.includes(environment.skipPort)
             && !httpRequest.urlWithParams.includes('logout') && !httpRequest.urlWithParams.includes('keycloak')) {
             if (httpRequest.urlWithParams.includes('?')) {
-                cloneReq = httpRequest.clone({ url: httpRequest.urlWithParams + '&language=@' + localeLang });
+                cloneReq = httpRequest.clone({ url: httpRequest.url + '?language=@' + localeLang });
             } else {
-                cloneReq = httpRequest.clone({ url: httpRequest.urlWithParams + '?language=@' + localeLang });
+                cloneReq = httpRequest.clone({ url: httpRequest.url + '?language=@' + localeLang });
             }
 
         } else {

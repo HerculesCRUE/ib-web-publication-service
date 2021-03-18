@@ -29,7 +29,6 @@ export class ResearchmentStructuresService extends AbstractService {
     parameters = Helper.addParam(parameters, 'name', findRequest.filter.name);
     // Pagination params
     parameters = Helper.addPaginationParams(parameters, findRequest.pageRequest);
-
     return this.httpClient
       .get(Helper.getUrl('/university/search'), {
         params: parameters

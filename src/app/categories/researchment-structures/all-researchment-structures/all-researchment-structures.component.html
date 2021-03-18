@@ -1,6 +1,6 @@
 <fieldset class="panel-default">
     <legend></legend>
-    <form class="form-horizontal" (ngSubmit)="filterResearchmentStructures(null)" #f="ngForm">
+    <form class="form-horizontal" #f="ngForm">
         <div class="row">
             <!-- type -->
             <div class="form-group col-lg-4">
@@ -8,7 +8,7 @@
                 <div>
                     <select [attr.aria-label]="'researchmentStructure.type' | translate " name="type"
                         class="form-control" [(ngModel)]="findRequest.filter.type" id="type" #type="ngModel"
-                        (change)="filterResearchmentStructures('type')">
+                        (change)="filterResearchmentStructures()">
                         <option [value]="undefined"> {{ "form.select" | translate }}</option>
                         <option value="Universidad">Universidad</option>
                         <option value="Centro">Centro</option>
@@ -25,7 +25,7 @@
                 <div>
                     <select [attr.aria-label]="'researchmentStructure.financing' | translate " id="financing"
                         name="financing" class="form-control" [(ngModel)]="findRequest.filter.financing"
-                        #financing="ngModel">
+                        #financing="ngModel" (change)="filterResearchmentStructures()">
                         <option [value]="undefined">{{ "form.select" | translate }}</option>
                         <option value="Proyectos H2020">Proyectos H2020</option>
                         <option value="Proyecto del Plan Estatal">
@@ -40,7 +40,7 @@
                 <div>
                     <select [attr.aria-label]="'researchmentStructure.qa' | translate " id="qa" name="qa"
                         class="form-control" [(ngModel)]="findRequest.filter.qa" #qa="ngModel"
-                        (change)="filterResearchmentStructures('qa')">
+                        (change)="filterResearchmentStructures()">
                         <option [value]="undefined">{{ "form.select" | translate }}</option>
                         <option [value]="'Severo Ochoa'">Severo Ochoa</option>
                     </select>

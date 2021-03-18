@@ -44,14 +44,8 @@ export class AllResearchmentStructuresComponent implements OnInit {
    * @param {string} filterName
    * @memberof AllResearchmentStructuresComponent
    */
-  filterResearchmentStructures(filterName: string) {
-
-    const pageRequest: PageRequest = new PageRequest();
-    pageRequest.page = 1;
-    pageRequest.size = this.allResearchmentStructuresFiltered.size;
-    pageRequest.property = this.allResearchmentStructuresFiltered.sort;
-    pageRequest.direction = this.allResearchmentStructuresFiltered.direction;
-    this.findRequest.pageRequest = pageRequest;
+  filterResearchmentStructures() {
+    console.log(this.findRequest);
     this.researchmentStructureService.find(this.findRequest).subscribe((data) => {
       this.allResearchmentStructuresFiltered = data;
     });
@@ -71,8 +65,6 @@ export class AllResearchmentStructuresComponent implements OnInit {
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = i;
     pageRequest.size = this.allResearchmentStructuresFiltered.size;
-    pageRequest.property = this.allResearchmentStructuresFiltered.sort;
-    pageRequest.direction = this.allResearchmentStructuresFiltered.direction;
     this.findRequest.pageRequest = pageRequest;
 
     this.researchmentStructureService.find(this.findRequest).subscribe((data) => {
@@ -91,8 +83,6 @@ export class AllResearchmentStructuresComponent implements OnInit {
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = this.allResearchmentStructuresFiltered.number;
     pageRequest.size = i;
-    pageRequest.property = this.allResearchmentStructuresFiltered.sort;
-    pageRequest.direction = this.allResearchmentStructuresFiltered.direction;
     this.findRequest.pageRequest = pageRequest;
 
     this.researchmentStructureService.find(this.findRequest).subscribe((data) => {
@@ -112,8 +102,6 @@ export class AllResearchmentStructuresComponent implements OnInit {
     const newPageRequest: PageRequest = new PageRequest();
     newPageRequest.page = this.allResearchmentStructuresFiltered.number;
     newPageRequest.size = this.allResearchmentStructuresFiltered.size;
-    newPageRequest.property = pageRequest.property;
-    newPageRequest.direction = pageRequest.direction;
 
     this.findRequest.pageRequest = pageRequest;
 
