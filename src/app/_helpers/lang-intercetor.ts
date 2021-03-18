@@ -3,6 +3,7 @@ import { HttpInterceptor, HttpEvent, HttpRequest, HttpHandler } from '@angular/c
 import { Observable } from 'rxjs';
 import { TranslateHelperService } from '../_services/translate-helper.service';
 import { environment } from 'src/environments/environment';
+import { SKIPORT } from '../configuration';
 
 @Injectable()
 export class LangInterceptor implements HttpInterceptor {
@@ -11,7 +12,7 @@ export class LangInterceptor implements HttpInterceptor {
         let cloneReq;
         let localeLang = '';
         this.translateHelper.getLocalLang() ? localeLang = this.translateHelper.getLocalLang() : localeLang = 'es';
-        if (!httpRequest.urlWithParams.includes('json') && !httpRequest.urlWithParams.includes(environment.skipPort)
+        if (!httpRequest.urlWithParams.includes('json') && !httpRequest.urlWithParams.includes(SKIPORT)
             && !httpRequest.urlWithParams.includes('logout') && !httpRequest.urlWithParams.includes('keycloak')) {
             if (httpRequest.urlWithParams.includes('?')) {
                 cloneReq = httpRequest.clone({ url: httpRequest.url + '?language=@' + localeLang });

@@ -4,7 +4,6 @@ import { Direction, Page, PageRequest } from './search';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import * as moment from 'moment';
 import { Binding, SparqlResults } from '../_models/sparql';
-import { environment } from 'src/environments/environment';
 /**
  * Clase de ayuda para la realización de llamadas HTTP.
  */

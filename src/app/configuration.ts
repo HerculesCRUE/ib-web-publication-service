@@ -12,6 +12,10 @@ export class LocaleConfiguration {
 
 export const BASE_URL = environment.urlBase;
 
+export const KEYCLOACK = environment.keycloak;
+
+export const SKIPORT = environment.skipPort;
+
 export const WEBSOCKET_URL = environment.urlWebsocket;
 
 export const OAUTH: OAuth = {
