@@ -54,14 +54,19 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('access_token', response.access_token);
         localStorage.setItem('refresh_token', response.refresh_token);
         localStorage.setItem('username', this.model.username);
-        window.location.reload();
+        this.windowReload();
       }
     }, error => {
     });
+
+
+
   }
 
 
-
+  windowReload() {
+    window.location.reload();
+  }
 
 
 

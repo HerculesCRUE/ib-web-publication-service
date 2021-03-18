@@ -46,8 +46,12 @@ export class MenuComponent implements OnInit {
    */
   logout() {
     this.loginService.logoutKC().subscribe(data => {
-      window.location.reload();
+      this.windowReload();
     });
+  }
+
+  windowReload() {
+    window.location.reload();
   }
 
 

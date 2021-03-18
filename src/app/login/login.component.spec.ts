@@ -28,6 +28,7 @@ describe('LoginComponent', () => {
 
   describe('logout', () => {
     it('should log out', () => {
+
       const loginService = fixture.debugElement.injector.get(LoginService);
       const spy = spyOn(loginService, 'logoutKeyCloak').and.callThrough();
       component.logout();
@@ -38,6 +39,7 @@ describe('LoginComponent', () => {
 
   describe('login', () => {
     it('should login', () => {
+      spyOn(component, 'windowReload').and.callFake(() => { });
       const loginService = fixture.debugElement.injector.get(LoginService);
       const spy = spyOn(loginService, 'loginKC').and.callThrough().withArgs('user', 'pass');
       component.login();
