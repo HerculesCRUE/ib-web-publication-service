@@ -40,7 +40,7 @@ export class ProjectService extends AbstractService {
         let parameters = new HttpParams();
         parameters = Helper.addParam(parameters, 'end', findRequest.filter.end);
         parameters = Helper.addParam(parameters, 'start', findRequest.filter.start);
-        parameters = Helper.addParam(parameters, 'name', findRequest.filter.name);
+        parameters = Helper.addParam(parameters, 'title', findRequest.filter.name);
         parameters = Helper.addParam(parameters, 'id', findRequest.filter.id);
         // Pagination params
         parameters = Helper.addPaginationParams(parameters, findRequest.pageRequest);

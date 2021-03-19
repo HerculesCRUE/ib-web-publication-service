@@ -42,7 +42,7 @@ import { LoginComponent } from './login/login.component';
 import { NgbModule, NgbDateAdapter, NgbDateParserFormatter, NgbDatepickerI18n } from '@ng-bootstrap/ng-bootstrap';
 import { CustomNgbDateAdapter } from './_helpers/customNgbDateAdapter';
 import { CustomNgbDateFormatter } from './_helpers/customNgbDateFormatter';
-import { CustomNgbDatepickerI18n } from './_helpers/customNgbDatepickerI18n.provider';
+import { CustomNgbDatepickerI18n, I18n } from './_helpers/customNgbDatepickerI18n.provider';
 import { AccesibilityComponent } from './accesibility/accesibility.component';
 import { Helper } from './_helpers/utils';
 import { HelperGraphics } from './_helpers/helperGraphics';
@@ -91,6 +91,7 @@ const keycloakService = new KeycloakService();
     NgbModule,
   ],
   providers: [
+    I18n,
     AuthGuard,
     NoAuthGuard,
     LoginService,

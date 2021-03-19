@@ -76,7 +76,7 @@
             <div class="tab-pane fade" id="events"
                 [ngClass]="{'show': activeTab === 'events', 'active': activeTab === 'events' }" role="tabpanel"
                 aria-labelledby="events-tab">
-                <app-events [idPrefix]="'events'"></app-events>
+                <app-events [url]="'../event/'" [idPrefix]="'events'"></app-events>
             </div>
         </div>
     </div>

@@ -79,7 +79,7 @@
         </div>
     </div>
 </form>
-<app-table-results *ngIf="loaded" [data]="allEvents.content[0]" [pageInfo]="allEvents" [routerNameLink]="'../event/'"
+<app-table-results *ngIf="loaded" [data]="allEvents.content[0]" [pageInfo]="allEvents" [routerNameLink]="url"
     [dtoTypeTranslate]="'events'" [extra]="'2'" [routerField]="'id'"
     (pageChanged)="allEventsFilteredPageChanged($event)" (sizeChanged)="allEventsFilteredSizeChanged($event)"
     (sortChanged)="allEventsFilteredSortChanged($event)">

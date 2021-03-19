@@ -9,6 +9,7 @@ import { EventsService } from 'src/app/_services/events.service';
 })
 export class EventsComponent implements OnInit {
   @Input() idPrefix: string;
+  @Input() url: string;
   findRequest: FindRequest = new FindRequest();
   dateIni;
   dateFin;

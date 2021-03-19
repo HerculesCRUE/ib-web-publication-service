@@ -9,93 +9,86 @@
                 (click)="normalTree = !normalTree">{{'form.change-tree-normal' |
                 translate}}</button>
         </div>
-        <div class="row">
-            <div class="col-lg-6">
-                <!-- categorias tree -->
-                <div class="col-12" *ngIf="normalTree">
-                    <label for="type" class="col-sm-4 control-label">{{ "scientist.area" | translate }}</label>
-                    <app-new-tree [treeType]="'area'"></app-new-tree>
-                </div>
-                <!-- categorias tree -->
-                <div class="col-12" *ngIf="!normalTree">
-                    <label for="type" class="col-sm-4 control-label">{{ "scientist.area" | translate }}</label>
-                    <app-tree [treeType]="'area'"></app-tree>
-                </div>
-                <!-- dates -->
-            </div>
-            <div class="col-lg-6">
-                <div class="row">
-                    <div class="form-group col-lg-6">
-                        <label for="dateFromProyect{{idPrefix}}" class="control-label">{{'projects.date-ini-from' |
-                            translate
-                            }}</label>
-                        <input class="form-control" name="dateFromProyect" id="dateFromProyect{{idPrefix}}" required
-                            (ngModelChange)="filterProjects()"
-                            placeholder="{{'form.datepicker-placeholder' | translate}}" ngbDatepicker [readonly]="true"
-                            #decisionDate="ngbDatepicker" (click)="decisionDate.toggle();"
-                            (keyup)="decisionDate.close()" #dateFrom="ngModel" [(ngModel)]="dateIni" (keydown)="($event.key === 'Escape' || $event.key === 'Tab') ? decisionDate.close() :
+
+        <!-- categorias tree -->
+        <div class="col-6" *ngIf="normalTree">
+            <label for="type" class="col-sm-4 control-label">{{ "scientist.area" | translate }}</label>
+            <app-new-tree [treeType]="'area'"></app-new-tree>
+        </div>
+        <!-- categorias tree -->
+        <div class="col-12" *ngIf="!normalTree">
+            <label for="type" class="col-sm-4 control-label">{{ "scientist.area" | translate }}</label>
+            <app-tree [treeType]="'area'"></app-tree>
+        </div>
+        <!-- dates -->
+
+
+        <div class="row col-6">
+            <div class="form-group col-lg-6">
+                <label for="dateFromProyect{{idPrefix}}" class="control-label">{{'projects.date-ini-from' |
+                    translate
+                    }}</label>
+                <input class="form-control" name="dateFromProyect" id="dateFromProyect{{idPrefix}}" required
+                    (ngModelChange)="filterProjects()" placeholder="{{'form.datepicker-placeholder' | translate}}"
+                    ngbDatepicker [readonly]="true" #decisionDate="ngbDatepicker" (click)="decisionDate.toggle();"
+                    (keyup)="decisionDate.close()" #dateFrom="ngModel" [(ngModel)]="dateIni" (keydown)="($event.key === 'Escape' || $event.key === 'Tab') ? decisionDate.close() :
             decisionDate.toggle();" />
-                    </div>
-                    <div class="form-group col-lg-6">
-                        <label for="dateToProyect{{idPrefix}}" class="control-label">{{'projects.date-ini-to' |
-                            translate }}</label>
-                        <input class="form-control" name="dateToProyect" id="dateToProyect{{idPrefix}}" required
-                            (ngModelChange)="filterProjects()"
-                            placeholder="{{'form.datepicker-placeholder' | translate}}" ngbDatepicker [readonly]="true"
-                            #decisionTo="ngbDatepicker" (click)="decisionTo.toggle();" (keyup)="decisionTo.close()"
-                            #dateTo="ngModel" [(ngModel)]="dateFin" (keydown)="($event.key === 'Escape' || $event.key === 'Tab') ? decisionTo.close() :
+            </div>
+            <div class="form-group col-lg-6">
+                <label for="dateToProyect{{idPrefix}}" class="control-label">{{'projects.date-ini-to' |
+                    translate }}</label>
+                <input class="form-control" name="dateToProyect" id="dateToProyect{{idPrefix}}" required
+                    (ngModelChange)="filterProjects()" placeholder="{{'form.datepicker-placeholder' | translate}}"
+                    ngbDatepicker [readonly]="true" #decisionTo="ngbDatepicker" (click)="decisionTo.toggle();"
+                    (keyup)="decisionTo.close()" #dateTo="ngModel" [(ngModel)]="dateFin" (keydown)="($event.key === 'Escape' || $event.key === 'Tab') ? decisionTo.close() :
                             decisionTo.toggle();" />
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group col-lg-6">
-                        <label for="dateFromProyectend{{idPrefix}}" class="control-label">{{'projects.date-end-from' |
-                            translate
-                            }}</label>
-                        <input class="form-control" name="dateFromProyect" id="dateFromProyectend{{idPrefix}}" required
-                            (ngModelChange)="filterProjects()"
-                            placeholder="{{'form.datepicker-placeholder' | translate}}" ngbDatepicker [readonly]="true"
-                            #decisionDated="ngbDatepicker" (click)="decisionDated.toggle();" (keydown)="($event.key === 'Escape' || $event.key === 'Tab') ? decisionDated.close() :
+            </div>
+
+            <div class="form-group col-lg-6">
+                <label for="dateFromProyectend{{idPrefix}}" class="control-label">{{'projects.date-end-from' |
+                    translate
+                    }}</label>
+                <input class="form-control" name="dateFromProyect" id="dateFromProyectend{{idPrefix}}" required
+                    (ngModelChange)="filterProjects()" placeholder="{{'form.datepicker-placeholder' | translate}}"
+                    ngbDatepicker [readonly]="true" #decisionDated="ngbDatepicker" (click)="decisionDated.toggle();"
+                    (keydown)="($event.key === 'Escape' || $event.key === 'Tab') ? decisionDated.close() :
                             decisionDated.toggle();" #dateFrom="ngModel" [(ngModel)]="dateIni" />
-                    </div>
-                    <div class="form-group col-lg-6">
-                        <label for="dateToProyectend{{idPrefix}}" class="control-label">{{'projects.date-end-to' |
-                            translate }}</label>
-                        <input class="form-control" name="dateToProyect" id="dateToProyectend{{idPrefix}}" required
-                            (ngModelChange)="filterProjects()" (keydown)="($event.key === 'Escape' || $event.key === 'Tab') ? decisionTod.close() :
+            </div>
+            <div class="form-group col-lg-6">
+                <label for="dateToProyectend{{idPrefix}}" class="control-label">{{'projects.date-end-to' |
+                    translate }}</label>
+                <input class="form-control" name="dateToProyect" id="dateToProyectend{{idPrefix}}" required
+                    (ngModelChange)="filterProjects()" (keydown)="($event.key === 'Escape' || $event.key === 'Tab') ? decisionTod.close() :
                             decisionTod.toggle();" placeholder="{{'form.datepicker-placeholder' | translate}}"
-                            ngbDatepicker [readonly]="true" #decisionTod="ngbDatepicker" (click)="decisionTod.toggle();"
-                            #dateTo="ngModel" [(ngModel)]="dateFin" />
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group col-lg-6">
-                        <label for="competitive{{idPrefix}}" class="control-label">{{'projects.competitive' | translate
-                            }}</label>
-                        <select (change)="filterProjects()" id="competitive{{idPrefix}}" name="competitive"
-                            class="form-control" [(ngModel)]="findRequest.filter.competitive" #competitive="ngModel">
-                            <option [value]="undefined">{{ "form.select" | translate }}</option>
-                            <option value="Competitivo">Competitivo</option>
-                            <option value="No Competitivo">No Competitivo</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-lg-6">
-                        <label for="level{{idPrefix}}" class="control-label">{{'projects.level' | translate }}</label>
-                        <select (change)="filterProjects()" id="level{{idPrefix}}" name="level" class="form-control"
-                            [(ngModel)]="findRequest.filter.level" #level="ngModel">
-                            <option [value]="undefined">{{ "form.select" | translate }}</option>
-                            <option value="Europeo">Europeo</option>
-                            <option value="Interno">Interno</option>
-                            <option value="Nacional">Nacional</option>
-                            <option value="Internacional">Internacional</option>
-                            <option value="Regional">Regional</option>
-                        </select>
-                    </div>
-                </div>
+                    ngbDatepicker [readonly]="true" #decisionTod="ngbDatepicker" (click)="decisionTod.toggle();"
+                    #dateTo="ngModel" [(ngModel)]="dateFin" />
+            </div>
+
+            <div class="form-group col-lg-6">
+                <label for="competitive{{idPrefix}}" class="control-label">{{'projects.competitive' | translate
+                    }}</label>
+                <select (change)="filterProjects()" id="competitive{{idPrefix}}" name="competitive" class="form-control"
+                    [(ngModel)]="findRequest.filter.competitive" #competitive="ngModel">
+                    <option [value]="undefined">{{ "form.select" | translate }}</option>
+                    <option value="Competitivo">Competitivo</option>
+                    <option value="No Competitivo">No Competitivo</option>
+                </select>
+            </div>
+            <div class="form-group col-lg-6">
+                <label for="level{{idPrefix}}" class="control-label">{{'projects.level' | translate }}</label>
+                <select (change)="filterProjects()" id="level{{idPrefix}}" name="level" class="form-control"
+                    [(ngModel)]="findRequest.filter.level" #level="ngModel">
+                    <option [value]="undefined">{{ "form.select" | translate }}</option>
+                    <option value="Europeo">Europeo</option>
+                    <option value="Interno">Interno</option>
+                    <option value="Nacional">Nacional</option>
+                    <option value="Internacional">Internacional</option>
+                    <option value="Regional">Regional</option>
+                </select>
             </div>
         </div>
-
     </div>
+
 
     <div class="container-fluid">
         <div class="row justify-content-end">
