@@ -62,10 +62,10 @@
         </div>
     </div>
 </div>
-<app-table-results *ngIf="loaded" [data]="allDataPerson.content[0]" [pageInfo]="allDataPerson"
-    [dtoTypeTranslate]="'part'" [extra]="'2'" [headerData]="headerData2" (pageChanged)="allChanged($event)"
-    (sizeChanged)="allChanged($event)" (sortChanged)="allChanged($event)">
-</app-table-results>
+<app-table-results-dto *ngIf="loaded2" [data]="allDataPerson.content" [pageInfo]="allDataPerson"
+    [dtoTypeTranslate]="'part'" [extra]="'2'" (pageChanged)="allChanged($event)" (sizeChanged)="allChanged($event)"
+    (sortChanged)="allChanged($event)">
+</app-table-results-dto>
 <hr>
 <legend>{{'participant.proyect-participants' | translate}}</legend>
 <div class="container-fluid">

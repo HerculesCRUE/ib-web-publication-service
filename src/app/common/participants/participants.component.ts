@@ -116,7 +116,7 @@ export class ParticipantsComponent implements OnInit {
    * @memberof ParticipantsComponent
    */
   yearsForSelect = Helper.getYears();
-
+  loaded2 = false;
   constructor(
     private participantService: ParticipantService,
     private researchStaff: ResearchStaffService) {
@@ -129,7 +129,7 @@ export class ParticipantsComponent implements OnInit {
     pageRequest.size = 10;
     this.researchStaff.find(this.findRequest).subscribe(data => {
       this.allDataPerson = data;
-      this.loaded = true;
+      this.loaded2 = true;
     });
 
     const findRequest: FindRequest = new FindRequest();
