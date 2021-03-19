@@ -25,8 +25,8 @@ export const yasgui = {
   // method: 'GET'
 
   // Fuseki
-  endpoint: 'http://herc-iz-bd-desa.atica.um.es:3030/trellis/sparql',
+  endpoint: 'https://app.herculesasioizertis.desa.um.es/api/trellis/sparql',
   method: 'POST',
-  endpointFeder: 'http://localhost:8787/trellis/sparql',
+  endpointFeder: 'https://app.herculesasioizertis.desa.um.es/api/trellis/sparql',
   methodFeder: 'POST',
 };
