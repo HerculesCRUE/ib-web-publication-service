@@ -140,7 +140,7 @@ export class ProyectsComponent implements OnInit {
     } else {
 
       this.graphicServcice.projectInvestigation().subscribe(treeData => {
-        this.echartOptions = HelperGraphics.configChartTree([treeData]);
+        this.echartOptions = HelperGraphics.configChartTree(treeData);
       });
 
     }
