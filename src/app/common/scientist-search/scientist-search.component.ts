@@ -148,4 +148,42 @@ export class ScientistSearchComponent implements OnInit {
     });
   }
 
+  /**
+   *
+   *
+   * @param {number} i
+   * @memberof ScientistSearchComponent
+   */
+  allScientistsFilteredSizeChanged(i: number): void {
+
+    const pageRequest: PageRequest = new PageRequest();
+    pageRequest.page = this.allScientificsFiltered.number;
+    pageRequest.size = i;
+    pageRequest.direction = this.allScientificsFiltered.direction;
+    this.findRequest.pageRequest = pageRequest;
+    this.researchStaffServices.find(this.findRequest).subscribe((data) => {
+      this.allScientificsFiltered = data;
+      this.loaded = true;
+    });
+  }
+
+  /**
+   *
+   *
+   * @param {PageRequest} pageRequest
+   * @memberof ScientistSearchComponent
+   */
+  allScientistsFilteredSortChanged(pageRequest: PageRequest) {
+    const newPageRequest: PageRequest = new PageRequest();
+    newPageRequest.page = this.allScientificsFiltered.number;
+    newPageRequest.size = this.allScientificsFiltered.size;
+    newPageRequest.property = pageRequest.property;
+    newPageRequest.direction = pageRequest.direction;
+    this.findRequest.pageRequest = pageRequest;
+    this.researchStaffServices.find(this.findRequest).subscribe((data) => {
+      this.allScientificsFiltered = data;
+      this.loaded = true;
+    });
+  }
+
 }

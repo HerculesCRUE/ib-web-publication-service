@@ -61,7 +61,7 @@
 <app-table-results-dto [routerNameLink]="'./'" [routerField]="'id'" *ngIf="loaded"
     [data]="allScientificsFiltered.content" [dtoTypeTranslate]="'scientist'" [extra]="'2'"
     [pageInfo]="allScientificsFiltered" (pageChanged)="allScientistsFilteredPageChanged($event)"
-    (sizeChanged)="allScientistsFilteredPageChanged($event)" (sortChanged)="allScientistsFilteredPageChanged($event)">
+    (sizeChanged)="allScientistsFilteredSizeChanged($event)" (sortChanged)="allScientistsFilteredSortChanged($event)">
 </app-table-results-dto>
 
 <div echarts [options]="echartOptions" class="sector-chart"></div>
