@@ -1,3 +1,5 @@
+import { Helper } from "../_helpers/utils";
+
 /**
  * Definición de un grupo del home.
  */
@@ -36,6 +38,7 @@ export class HomeItem {
    * URL.
    */
   url: string;
+  urlExterna: string;
 
   /**
    *
@@ -55,6 +58,7 @@ export const HOME_ITEMS: HomeGroupItem[] = [{
       iconName: 'oi-project',
       iconCircle: false,
       url: '../categories/researchmentStructures',
+      urlExterna: '',
       disabled: false
     },
     {
@@ -62,35 +66,40 @@ export const HOME_ITEMS: HomeGroupItem[] = [{
       iconName: 'oi-person',
       iconCircle: false,
       url: '../categories/scientist',
-      disabled: false
+      disabled: false,
+      urlExterna: ''
     },
     {
       title: 'home.areas',
       iconName: 'oi-folder',
       iconCircle: false,
       url: '../categories/areas',
-      disabled: false
+      disabled: false,
+      urlExterna: ''
     },
     {
       title: 'home.prod-scientist',
       iconName: 'oi-box',
       iconCircle: false,
       url: '../categories/scientific-production',
-      disabled: false
+      disabled: false,
+      urlExterna: ''
     },
     {
       title: 'home.acction-inves',
       iconName: 'oi-pencil',
       iconCircle: false,
       url: '../categories/investigation-actions',
-      disabled: false
+      disabled: false,
+      urlExterna: ''
     },
     {
       title: 'home.stats',
       iconName: 'oi-bar-chart',
       iconCircle: false,
       url: '../categories/statistics',
-      disabled: false
+      disabled: false,
+      urlExterna: ''
     }
   ]
 },
@@ -102,14 +111,16 @@ export const HOME_ITEMS: HomeGroupItem[] = [{
       iconName: 'oi-terminal',
       iconCircle: false,
       url: '/main/sparql',
-      disabled: false
+      disabled: false,
+      urlExterna: ''
     },
     {
       title: 'home.users',
       iconName: 'oi-person',
       iconCircle: false,
       url: null,
-      disabled: true
+      disabled: true,
+      urlExterna: ''
     },
   ]
 },
@@ -121,56 +132,72 @@ export const HOME_ITEMS: HomeGroupItem[] = [{
       iconName: 'oi-cloud-upload',
       iconCircle: false,
       url: '/main/links',
-      disabled: false
+      disabled: false,
+      urlExterna: ''
     },
     {
       title: 'menu.accessibility',
       iconName: 'oi-eye',
       iconCircle: false,
       url: '/main/accessibility',
-      disabled: false
+      disabled: false,
+      urlExterna: ''
+    },
+    {
+      title: 'home.info-LPD',
+      iconName: 'oi-link-intact',
+      iconCircle: false,
+      url: '',
+      disabled: false,
+      urlExterna: Helper.getLPDUrl()
     },
     {
       title: 'home.info-URI',
       iconName: 'oi-link-intact',
       iconCircle: false,
       url: null,
-      disabled: true
+      disabled: true,
+      urlExterna: ''
     },
     {
       title: 'home.validators',
       iconName: 'oi-circle-check',
       iconCircle: false,
       url: null,
-      disabled: true
+      disabled: true,
+      urlExterna: ''
     },
     {
       title: 'home.sgi',
       iconName: 'oi-hard-drive',
       iconCircle: false,
       url: null,
-      disabled: true
+      disabled: true,
+      urlExterna: ''
     },
     {
       title: 'home.graphs',
       iconName: 'oi-pie-chart',
       iconCircle: false,
       url: null,
-      disabled: true
+      disabled: true,
+      urlExterna: ''
     },
     {
       title: 'home.info-hercules',
       iconName: 'oi-info',
       iconCircle: true,
       url: null,
-      disabled: true
+      disabled: true,
+      urlExterna: ''
     },
     {
       title: 'home.contact',
       iconName: 'oi-map',
       iconCircle: false,
       url: null,
-      disabled: true
+      disabled: true,
+      urlExterna: ''
     },
   ]
 }];

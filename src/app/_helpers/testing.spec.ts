@@ -171,6 +171,7 @@ export class TestingHelper {
       providers: [
         AuthGuard,
         UserService,
+        KeycloakService,
         { provide: TranslateService, useClass: TranslateServiceStub },
         {
           provide: HTTP_INTERCEPTORS,

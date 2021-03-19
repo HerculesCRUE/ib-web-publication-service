@@ -6,10 +6,19 @@
         <hr />
         <div class="row">
           <div class="col-lg-2" *ngFor="let item of groupItem.homeItems">
-            <div [routerLink]="[item.url]" class="cursor home-enabled" *ngIf="!item.disabled">
+            <div [routerLink]="[item.url]" class="cursor home-enabled" *ngIf="!item.disabled && item.url !== ''">
               <em class="oi" [ngClass]="item.iconName"></em>
               <p></p>
               <a>
+                <p style="text-align: center">
+                  <strong>{{ item.title| translate }}</strong>
+                </p>
+              </a>
+            </div>
+            <div class="cursor home-enabled" *ngIf="!item.disabled && item.url == ''">
+              <em class="oi" [ngClass]="item.iconName"></em>
+              <p></p>
+              <a [href]="item.urlExterna" target="_blank">
                 <p style="text-align: center">
                   <strong>{{ item.title| translate }}</strong>
                 </p>

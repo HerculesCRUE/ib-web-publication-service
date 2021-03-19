@@ -1,4 +1,4 @@
-import { BASE_URL, KEYCLOACK } from '../configuration';
+import { BASE_URL, KEYCLOACK, LPDURL } from '../configuration';
 import { HttpParams } from '@angular/common/http';
 import { Direction, Page, PageRequest } from './search';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
@@ -18,6 +18,10 @@ export class Helper {
 
   static getKeyCloackUrl() {
     return KEYCLOACK;
+  }
+
+  static getLPDUrl() {
+    return LPDURL;
   }
 
 

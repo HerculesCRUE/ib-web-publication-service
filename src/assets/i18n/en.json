@@ -113,6 +113,7 @@
     "stats": "Statistics and indicators",
     "info": "Information",
     "info-URI": "URIs contract information",
+    "info-LPD": "LPD",
     "validators": "Validators",
     "sgi": "Backends SGI",
     "graphs": "Named Graphs metadata rendering",

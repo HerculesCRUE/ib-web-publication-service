@@ -16,6 +16,8 @@ export const KEYCLOACK = environment.keycloak;
 
 export const SKIPORT = environment.skipPort;
 
+export const LPDURL = environment.lpdUrl;
+
 export const WEBSOCKET_URL = environment.urlWebsocket;
 
 export const OAUTH: OAuth = {
