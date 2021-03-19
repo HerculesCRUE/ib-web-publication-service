@@ -42,7 +42,7 @@ export class DocumentService extends AbstractService {
         // Filter params
         let parameters = new HttpParams();
         parameters = Helper.addParam(parameters, 'types', findRequest.filter.types);
-        parameters = Helper.addParam(parameters, 'name', findRequest.filter.name);
+        parameters = Helper.addParam(parameters, 'title', findRequest.filter.name);
         parameters = Helper.addParam(parameters, 'yearFrom', findRequest.filter.yearFrom);
         parameters = Helper.addParam(parameters, 'yearTo', findRequest.filter.yearTo);
         // Pagination params
