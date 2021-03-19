@@ -151,3 +151,7 @@ table tbody {
 .cursor {
   cursor: pointer;
 }
+
+.tree {
+  margin-bottom: 20px;
+}

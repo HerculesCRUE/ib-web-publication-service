@@ -1,8 +1,12 @@
 <form class="form-horizontal " (ngSubmit)="f.form.valid" #f="ngForm">
     <div class="row mt-20">
         <div class="col-lg-12">
-            <button role="button" aria-pressed="false" class="btn btn-default"
+            <button role="button" aria-pressed="false" class="btn btn-secondary tree" *ngIf="normalTree"
                 (click)="normalTree = !normalTree">{{'form.change-tree' |
+                translate}}</button>
+
+            <button role="button" aria-pressed="false" class="btn btn-secondary tree" *ngIf="!normalTree"
+                (click)="normalTree = !normalTree">{{'form.change-tree-normal' |
                 translate}}</button>
         </div>
         <div class="row">

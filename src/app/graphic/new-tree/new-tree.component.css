@@ -43,3 +43,6 @@ li {
       cursor: pointer;
   }
   
+  input {
+    margin-right: 10px;
+  }

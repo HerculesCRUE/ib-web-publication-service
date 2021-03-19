@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 import { AbstractService } from '../_helpers/abstract';
 import { User } from '../_models/user';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { KeycloakService } from 'keycloak-angular';
+import { KeycloakInstance } from 'keycloak-js';
 
 /**
  * Servicio para la gestión del login.
@@ -18,8 +20,8 @@ export class LoginService extends AbstractService {
    */
   private loggedIn = false;
   token: Promise<string>;
-
-  constructor(private httpClient: HttpClient) {
+  keycloackService: KeycloakInstance;
+  constructor(private httpClient: HttpClient, private keycloakAuth: KeycloakService) {
     super();
   }
 
@@ -189,6 +191,30 @@ export class LoginService extends AbstractService {
    */
   keycloakIsActive(): Observable<any> {
     return this.httpClient.get(Helper.getUrl('/keycloak/isActive'));
+  }
+
+  /**
+   *
+   *  Se usa solo si se quiere realiza el login 
+   *  en la pantalla de keycloack
+   * @memberof LoginService
+   */
+  loginKeycloack() {
+    this.keycloakAuth.init({
+      config: {
+        url: Helper.getKeyCloackUrl().authUrl,
+        realm: Helper.getKeyCloackUrl().realm,
+        clientId: Helper.getKeyCloackUrl().clientId
+      },
+      initOptions: {
+        onLoad: 'login-required',
+        checkLoginIframe: false
+      },
+      enableBearerInterceptor: true,
+      bearerPrefix: 'Bearer',
+    });
+    this.keycloakAuth.login();
+
   }
 
 }

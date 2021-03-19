@@ -18,7 +18,7 @@ export class ScientificProductionComponent implements OnInit {
    * @type {boolean}
    * @memberof ScientificProductionComponent
    */
-  normalTree: boolean;
+  normalTree = true;
   /**
    *
    *

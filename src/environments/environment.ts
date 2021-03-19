@@ -15,6 +15,7 @@ export const environment = {
     clientId: 'login-app',
     scope: 'openid, profile',
     authorizationGrantType: 'password',
+    authUrl: 'http://localhost:8080/auth',
     authorizationUri: 'http://localhost:8080/auth/realms/umasio/protocol/openid-connect/auth',
     userInfoUri: 'http://localhost:8080/auth/realms/umasio/protocol/openid-connect/userinfo',
     tokenUri: 'http://localhost:8080/auth/realms/umasio/protocol/openid-connect/token',

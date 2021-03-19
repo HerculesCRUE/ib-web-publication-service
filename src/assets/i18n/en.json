@@ -35,7 +35,8 @@
     "no": "No",
     "datepicker-placeholder": "YYYY-MM-DD",
     "change-tree": "Change tree",
-    "clear": "Clean"
+    "clear": "Clean",
+    "change-tree-normal": "Change to normal tree"
   },
   "menu": {
     "home": "Welcome",
@@ -171,7 +172,8 @@
     "personalMaibox": "PersonalMailbox",
     "researchLine": "Research Line",
     "surname": "Surname",
-    "taxId": "Tax ID"
+    "taxId": "Tax ID",
+    "image": "Image"
   },
   "scientific-production": {
     "title": "Scientific production",

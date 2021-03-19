@@ -46,6 +46,7 @@ export class DocumentsComponent implements OnInit {
    * @memberof DocumentsComponent
    */
   @Input() isTreeVisible = true;
+  isNormalTree = true;
   /**
    *
    *
