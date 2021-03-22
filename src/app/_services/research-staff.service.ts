@@ -47,4 +47,12 @@ export class ResearchStaffService extends AbstractService {
         catchError(this.handleError)
       );
   }
+
+  getPerson(id: string): Observable<Person> {
+    // Filter params
+    return this.httpClient
+      .get(Helper.getUrl('/person/' + id)).pipe(
+        catchError(this.handleError)
+      );
+  }
 }

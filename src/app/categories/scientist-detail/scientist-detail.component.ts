@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { HelperGraphics } from 'src/app/_helpers/helperGraphics';
+import { Person } from 'src/app/_models/person';
 import { SeriesBarData } from 'src/app/_models/seriesBarData';
+import { ResearchStaffService } from 'src/app/_services/research-staff.service';
 
 @Component({
   selector: 'app-scientist-detail',
@@ -13,11 +16,7 @@ export class ScientistDetailComponent implements OnInit {
    * @type {*}
    * @memberof ScientistDetailComponent
    */
-  scientist: any = {
-    name: 'María Hernandez Reyes Mora',
-    email: 'reyes@um.es',
-    university: 'Universidad de Murcia'
-  };
+  scientist: Person = new Person();
   /**
    *
    *
@@ -38,14 +37,17 @@ export class ScientistDetailComponent implements OnInit {
    * @memberof ScientistDetailComponent
    */
   activeTab: string;
-  constructor() { }
+  constructor(private researchStaffService: ResearchStaffService, private rutaActiva: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.activeTab = 'acction-inves';
     const xAxisData: Array<string> = [];
     const data1: Array<any> = [];
     const data2: Array<any> = [];
-
+    const id = this.rutaActiva.snapshot.params.id;
+    this.researchStaffService.getPerson(id).subscribe(data => {
+      this.scientist = data;
+    });
     for (let i = 0; i < 100; i++) {
       xAxisData.push(`category${i}`);
       data1.push((Math.sin(i / 5) * (i / 5 - 10) + i / 6) * 5);

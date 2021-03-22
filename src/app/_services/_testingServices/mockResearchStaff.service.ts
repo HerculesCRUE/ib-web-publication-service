@@ -127,6 +127,11 @@ export class MockResearchStaffService {
     }
 
 
+    getPerson() {
+        return of({});
+    }
+
+
 
 
 }
