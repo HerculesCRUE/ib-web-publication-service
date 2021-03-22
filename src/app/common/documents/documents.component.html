@@ -20,7 +20,7 @@
             <app-tree [treeType]="'documents'"></app-tree>
         </div>
         <!-- dates -->
-        <div class="form-group col-lg-3" [ngClass]="{'col-lg-3': !isTreeVisible}">
+        <div class="form-group col-lg-3">
             <label for="dateFrom{{idPrefix}}" class="control-label">{{'documents.date-ini' | translate }}</label>
             <input class="form-control ngbdatepicker" name="dateFrom{{idPrefix}}" id="dateFrom{{idPrefix}}" required
                 (ngModelChange)="filterProjects()" [readOnly]="true"
@@ -29,7 +29,7 @@
                 (keydown)="($event.key === 'Escape' || $event.key === 'Tab') ? decisionDate.close() : decisionDate.toggle();"
                 #dateFrom{{idPrefix}}="ngModel" [(ngModel)]="dateIni" />
         </div>
-        <div class="form-group col-lg-3" [ngClass]="{'col-lg-3': !isTreeVisible}">
+        <div class="form-group col-lg-3">
             <label for="dateTo{{idPrefix}}" class="control-label">{{'documents.date-fin' | translate }}</label>
             <input class="form-control ngbdatepicker" name="dateTo{{idPrefix}}" id="dateTo{{idPrefix}}" required
                 (keydown)="($event.key === 'Escape' || $event.key === 'Tab') ? decisionTo.close() : decisionTo.toggle();"
