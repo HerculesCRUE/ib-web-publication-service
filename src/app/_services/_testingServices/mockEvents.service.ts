@@ -3,6 +3,7 @@ import { of } from 'rxjs';
 import { AbstractService } from 'src/app/_helpers/abstract';
 import { Page, PageRequest } from 'src/app/_helpers/search';
 import { Helper } from 'src/app/_helpers/utils';
+import { Event } from 'src/app/_models/event';
 import { SparqlResults } from 'src/app/_models/sparql';
 
 
@@ -120,9 +121,9 @@ export class MockEventsService extends AbstractService {
      * @return {*}  {Page<SparqlResults>}
      * @memberof EventsService
      */
-    find(filters: Map<string, string>, pageRequest: PageRequest): Page<SparqlResults> {
-        const data: SparqlResults = JSON.parse(JSON.stringify(this.DUMMY_DATA));
-        return Helper.findInServiceData(data, filters, pageRequest);
+    find(findrequest) {
+        const page: PageRequest = new PageRequest;
+        return of(page);
     }
 
 

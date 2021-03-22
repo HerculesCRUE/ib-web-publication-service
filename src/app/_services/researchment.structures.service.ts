@@ -6,6 +6,7 @@ import { Helper } from '../_helpers/utils';
 import { Observable } from 'rxjs';
 import { University } from '../_models/university';
 import { catchError } from 'rxjs/operators';
+import { OrganizationDetail } from '../_models/organizationDetail';
 
 @Injectable({
   providedIn: 'root',
@@ -33,6 +34,14 @@ export class ResearchmentStructuresService extends AbstractService {
       .get(Helper.getUrl('/organization/search'), {
         params: parameters
       }).pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  getById(id: string, type: string): Observable<OrganizationDetail> {
+    // Filter params
+    return this.httpClient
+      .get(Helper.getUrl('/organization/' + id + '/' + type)).pipe(
         catchError(this.handleError)
       );
   }

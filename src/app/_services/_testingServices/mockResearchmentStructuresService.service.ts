@@ -14,7 +14,7 @@ import { ResearchmentStructuresService } from '../researchment.structures.servic
 @Injectable({
     providedIn: 'root',
 })
-export class MockResearchmentStructuresService extends ResearchmentStructuresService {
+export class MockResearchmentStructuresService {
     // mock data
     DATARESULT: any = [{
         id: 1,
@@ -47,5 +47,11 @@ export class MockResearchmentStructuresService extends ResearchmentStructuresSer
         page.content = results;
         return of(page);
     }
+
+    getById(id: string, type: string) {
+        // Filter params
+        return of({});
+    }
+
 
 }

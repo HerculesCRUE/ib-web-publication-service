@@ -12,6 +12,7 @@ import { MockDocumentService } from 'src/app/_services/_testingServices/mockDocu
 import { MockGraphicService } from 'src/app/_services/_testingServices/mockGraphic.service';
 import { MockPatentService } from 'src/app/_services/_testingServices/mockPatent.service';
 import { MockProjectService } from 'src/app/_services/_testingServices/mockProject.service';
+import { MockResearchmentStructuresService } from 'src/app/_services/_testingServices/mockResearchmentStructuresService.service';
 import { MockResearchStaffService } from 'src/app/_services/_testingServices/mockResearchStaff.service';
 
 import { ResearchmentStructuresDetailComponent } from './researchment-structures-detail.component';
@@ -28,7 +29,8 @@ describe('ResearchmentStructuresDetailComponent', () => {
       { provide: ProjectService, useClass: MockProjectService },
       { provide: PatentService, useClass: MockPatentService },
       { provide: ResearchStaffService, useClass: MockResearchStaffService },
-      { provide: GraphicService, useClass: MockGraphicService }]
+      { provide: GraphicService, useClass: MockGraphicService },
+      { provide: ResearchmentStructuresService, useClass: MockResearchmentStructuresService }]
     }).compileComponents();
   }));
 
@@ -40,6 +42,7 @@ describe('ResearchmentStructuresDetailComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+
   });
 
   it('should change tab selected', () => {
