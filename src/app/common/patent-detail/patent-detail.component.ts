@@ -9,11 +9,13 @@ import { PatentService } from 'src/app/_services/patent.service';
 })
 export class PatentDetailComponent implements OnInit {
   patentDetail: PatentDetail = new PatentDetail();
+  loaded: boolean;
   constructor(private patentService: PatentService) { }
 
   ngOnInit(): void {
     this.patentService.getPatent('2882').subscribe(data => {
-      console.log(data);
+      this.patentDetail = data;
+      this.loaded = true;
     });
   }
 
