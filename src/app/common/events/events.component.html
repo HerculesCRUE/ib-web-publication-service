@@ -1,4 +1,4 @@
-<form class="form-horizontal " (ngSubmit)="f.form.valid" #f="ngForm">
+<form class="form-horizontal " (ngSubmit)="f.form.valid" #f="ngForm" (keydown.enter)="$event.preventDefault()">
     <div class="row mt-20">
         <!-- rol -->
         <div class="form-group col-lg-6">

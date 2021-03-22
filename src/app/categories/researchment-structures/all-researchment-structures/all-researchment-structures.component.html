@@ -1,6 +1,6 @@
 <fieldset class="panel-default">
     <legend></legend>
-    <form class="form-horizontal" #f="ngForm">
+    <form class="form-horizontal" #f="ngForm" (keydown.enter)="$event.preventDefault()">
         <!--    <div class="row">
             
             <div class="form-group col-lg-4">
