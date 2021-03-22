@@ -55,6 +55,22 @@ export class LoginComponent implements OnInit {
 
         });
       }
+    }, error => {
+      const config = {
+        url: Helper.getKeyCloackUrl().authUrl,
+        realm: Helper.getKeyCloackUrl().realm,
+        clientId: Helper.getKeyCloackUrl().clientId
+      };
+      // @ts-ignore
+      this.keycloakAuth = new Keycloak(config);
+      this.keycloakAuth.init({ onLoad: 'login-required' }).then(() => {
+        const token = this.keycloakAuth.token;
+        const refresh = this.keycloakAuth.refreshToken;
+        localStorage.setItem('access_token', token);
+        localStorage.setItem('refresh_token', refresh);
+        this.router.navigate(['/main/home']);
+
+      });
     });
   }
 
