@@ -19,6 +19,7 @@
         </div>
     </div>
 </form>
+<div class="loader" *ngIf="!loaded"></div>
 <app-table-results *ngIf="loaded" [data]="allData.content[0]" [pageInfo]="allData" [dtoTypeTranslate]="'businnes'"
     [extra]="'2'" (pageChanged)="allprojectsFilteredPageChanged($event)"
     (sizeChanged)="allprojectsFilteredSizeChanged($event)" (sortChanged)="allprojectsFilteredSortChanged($event)">

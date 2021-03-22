@@ -33,6 +33,7 @@
             </div>
         </div>
     </div>
+    <div class="loader" *ngIf="!loaded"></div>
     <app-table-results *ngIf="loaded" [data]="allDirectedJobs.content[0]" [pageInfo]="allDirectedJobs"
         [dtoTypeTranslate]="'directed'" [extra]="idPrefix" (pageChanged)="allDirectedFilteredPageChanged($event)"
         [headerData]="headerData" (sizeChanged)="allDirectedFilteredSizeChanged($event)"

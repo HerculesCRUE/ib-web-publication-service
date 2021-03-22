@@ -75,6 +75,7 @@
         </div>
     </div>
 </form>
+<div class="loader" *ngIf="!loaded"></div>
 <app-table-results-dto [dtoTypeTranslate]="'documents'" [extra]="idPrefix" *ngIf="loaded"
     [data]="allDocumentFiltered.content" [routerNameLink]="url" [routerField]="'id'" [routerFieldSecondary]="'type'"
     [pageInfo]="allDocumentFiltered" (pageChanged)="allprojectsFilteredPageChanged($event)"

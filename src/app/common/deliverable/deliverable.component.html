@@ -41,6 +41,7 @@
         </div>
     </div>
 </div>
+<div class="loader" *ngIf="!loaded"></div>
 <app-table-results *ngIf="loaded" [data]="allData.content[0]" [pageInfo]="allData" [headerData]="headerData"
     [dtoTypeTranslate]="'deliverable'" [extra]="'1'" (pageChanged)="allprojectsFilteredPageChanged($event)"
     (sizeChanged)="allprojectsFilteredSizeChanged($event)" (sortChanged)="allprojectsFilteredSortChanged($event)">
@@ -62,6 +63,7 @@
         </div>
     </div>
 </div>
+<div class="loader" *ngIf="!loaded"></div>
 <app-table-results *ngIf="loaded" [data]="allData.content[0]" [pageInfo]="allData" [headerData]="headerData"
     [dtoTypeTranslate]="'deliverable'" [extra]="'2'" (pageChanged)="allprojectsFilteredPageChanged($event)"
     (sizeChanged)="allprojectsFilteredSizeChanged($event)" (sortChanged)="allprojectsFilteredSortChanged($event)">

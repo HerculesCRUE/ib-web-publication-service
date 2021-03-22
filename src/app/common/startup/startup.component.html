@@ -20,6 +20,7 @@
             </div>
         </div>
     </div>
+    <div class="loader" *ngIf="!loaded"></div>
     <app-table-results *ngIf="loaded" [data]="allStartup.content[0]" [pageInfo]="allStartup" [headerData]="headerData"
         [dtoTypeTranslate]="'startup'" [extra]="'2'" (pageChanged)="allStartupFilteredPageChanged($event)"
         (sizeChanged)="allStartupFilteredSizeChanged($event)" (sortChanged)="allStartupFilteredSortChanged($event)">

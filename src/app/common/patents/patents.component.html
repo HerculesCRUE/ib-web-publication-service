@@ -59,7 +59,7 @@
         </div>
     </div>
 </form>
-
+<div class="loader" *ngIf="!loaded"></div>
 <app-table-results-dto [dtoTypeTranslate]="'patent'" [extra]="'4'" *ngIf="loaded" [data]="allPatentFiltered.content"
     [pageInfo]="allPatentFiltered" (pageChanged)="allPatentsFilteredPageChanged($event)"
     (sizeChanged)="allPatentsFilteredSizeChanged($event)" (sortChanged)="allPatentsFilteredSortChanged($event)">

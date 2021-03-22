@@ -40,6 +40,7 @@
         </div>
     </div>
 </div>
+<div class="loader" *ngIf="!loaded"></div>
 <app-table-results-dto *ngIf="loaded" [dtoTypeTranslate]="'participants'" [extra]="'2'"
     [data]="allDataParticipants.content" [pageInfo]="allDataParticipants"
     (pageChanged)="allParticipantsFilteredPageChanged($event)"
@@ -62,6 +63,7 @@
         </div>
     </div>
 </div>
+<div class="loader" *ngIf="!loaded2"></div>
 <app-table-results-dto *ngIf="loaded2" [data]="allDataPerson.content" [pageInfo]="allDataPerson"
     [dtoTypeTranslate]="'part'" [extra]="'2'" (pageChanged)="allChanged($event)" (sizeChanged)="allChanged($event)"
     (sortChanged)="allChanged($event)">
@@ -82,7 +84,7 @@
         </div>
     </div>
 </div>
-
+<div class="loader" *ngIf="!loaded"></div>
 <app-table-results-dto *ngIf="loaded" [data]="allDataParticipantsSecondTable.content"
     [dtoTypeTranslate]="'participantsdos'" [extra]="'3'" [pageInfo]="allDataParticipantsSecondTable"
     (pageChanged)="allParticipantsFilteredPageChanged($event)"

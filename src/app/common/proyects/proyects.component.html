@@ -112,6 +112,7 @@
         </div>
     </div>
 </form>
+<div class="loader" *ngIf="!loadedProjects"></div>
 <app-table-results-dto [dtoTypeTranslate]="'projects'" [extra]="'5'" [routerNameLink]="'./project/'"
     *ngIf="loadedProjects" [routerField]="'id'" [data]="allProjectFiltered.content" [pageInfo]="allProjectFiltered"
     (pageChanged)="allprojectsFilteredPageChanged($event)" (sizeChanged)="allprojectsFilteredSizeChanged($event)"
