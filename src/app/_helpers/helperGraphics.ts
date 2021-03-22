@@ -184,10 +184,57 @@ export class HelperGraphics {
                 type: 'treemap',
                 data: dataTree,
                 label: {
-                    show: true
+                    show: true,
+                    normal: {
+                        position: 'insideTopLeft',
+                        formatter: function (params) {
+                            var arr = [
+                                '{name|' + params.name + '}',
+                                '{hr|}',
+                                '{budget| ' + params.value + '}'
+                            ];
+
+
+                            return arr.join('\n');
+                        },
+                        rich: {
+                            budget: {
+                                fontSize: 22,
+                                lineHeight: 30,
+                                color: 'white'
+                            },
+                            household: {
+                                fontSize: 14,
+                                color: '#fff'
+                            },
+                            label: {
+                                fontSize: 9,
+                                backgroundColor: 'rgba(0,0,0,0.3)',
+                                color: '#fff',
+                                borderRadius: 2,
+                                padding: [2, 4],
+                                lineHeight: 25,
+                                align: 'right'
+                            },
+                            name: {
+                                fontSize: 12,
+                                color: '#fff'
+                            },
+                            hr: {
+                                width: '100%',
+                                borderColor: 'rgba(255,255,255,0.2)',
+                                borderWidth: 0.5,
+                                height: 0,
+                                lineHeight: 10
+                            }
+                        }
+                    }
                 },
                 tooltip: {
                     borderWidth: 0.5
+                },
+                viewControl: {
+                    zoomSensitivity: 0
                 }
             }]
         };

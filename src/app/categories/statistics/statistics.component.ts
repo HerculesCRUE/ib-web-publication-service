@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { latLng, tileLayer } from 'leaflet';
 import { HelperGraphics } from 'src/app/_helpers/helperGraphics';
+import { StatisticService } from 'src/app/_services/statistic.service';
 
 @Component({
   selector: 'app-statistics',
@@ -21,11 +22,15 @@ export class StatisticsComponent implements OnInit {
    * @memberof StatisticsComponent
    */
   options: any;
-  constructor() { }
+  constructor(private statisticService: StatisticService) { }
 
   ngOnInit(): void {
-    const treeData = HelperGraphics.returnSquareData();
-    this.echartOptions2 = HelperGraphics.configChartTree(treeData);
+    let treeData;
+    this.statisticService.topPatents().subscribe(data => {
+      treeData = data;
+      this.echartOptions2 = HelperGraphics.configChartTree(treeData);
+    })
+
     // leaflet map
     this.options = {
       layers: [

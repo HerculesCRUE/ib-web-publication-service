@@ -54,6 +54,7 @@ import { LangInterceptor } from './_helpers/lang-intercetor';
 // keycloak
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 
+
 const keycloakService = new KeycloakService();
 
 @NgModule({

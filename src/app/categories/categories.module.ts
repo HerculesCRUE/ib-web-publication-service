@@ -37,6 +37,7 @@ import { DocumentDetailComponent } from './document-detail/document-detail.compo
 import { EventDetailComponent } from './event-detail/event-detail.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 
+
 @NgModule({
   declarations: [ResearchmentStructuresComponent, ResearchmentStructuresDetailComponent, AllResearchmentStructuresComponent,
     TopResearchmentStructuresComponent, ResearchmentStructuresByFinancingComponent, ResearchmentStructuresByQSComponent,
@@ -47,10 +48,10 @@ import { StatisticsComponent } from './statistics/statistics.component';
     BusinessComponent, ScientificProductionComponent, DocumentDetailComponent, EventDetailComponent, StatisticsComponent
   ],
   imports: [
+    NgxEchartsModule,
     CommonModule,
     CategoriesRoutingModule,
     FormsModule,
-    NgxEchartsModule,
     LeafletModule,
     SharedModule,
     TabsModule.forRoot(),
