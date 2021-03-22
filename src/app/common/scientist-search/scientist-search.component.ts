@@ -57,7 +57,7 @@ export class ScientistSearchComponent implements OnInit {
    * @memberof ScientistSearchComponent
    */
   normalTree = true;
-
+  @Input() url = './';
   /**
    *
    *

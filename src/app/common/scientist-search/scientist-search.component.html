@@ -59,7 +59,7 @@
     </div>
 </form>
 <div class="loader" *ngIf="!loaded"></div>
-<app-table-results-dto [routerNameLink]="'./'" [routerField]="'id'" *ngIf="loaded"
+<app-table-results-dto [routerNameLink]="url" [routerField]="'id'" *ngIf="loaded"
     [data]="allScientificsFiltered.content" [dtoTypeTranslate]="'scientist'" [extra]="'2'"
     [pageInfo]="allScientificsFiltered" (pageChanged)="allScientistsFilteredPageChanged($event)"
     (sizeChanged)="allScientistsFilteredSizeChanged($event)" (sortChanged)="allScientistsFilteredSortChanged($event)">
