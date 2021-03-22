@@ -41,8 +41,8 @@ export class PatentService extends AbstractService {
         let parameters = new HttpParams();
         parameters = Helper.addParam(parameters, 'tipo', findRequest.filter.type);
         parameters = Helper.addParam(parameters, 'title', findRequest.filter.name);
-        parameters = Helper.addParam(parameters, 'ini', findRequest.filter.ini);
-        parameters = Helper.addParam(parameters, 'fin', findRequest.filter.fin);
+        parameters = Helper.addParam(parameters, 'startDate', findRequest.filter.ini);
+        parameters = Helper.addParam(parameters, 'endDate', findRequest.filter.fin);
         // Pagination params
         parameters = Helper.addPaginationParams(parameters, findRequest.pageRequest);
 
