@@ -20,12 +20,13 @@ export class ResearchmentStructuresDetailComponent implements OnInit {
   /**
    * researchment structure Id
    */
-  researchmentId: string;
+  id: string;
   /** 
    * researchment
    */
   researchment: OrganizationDetail = new OrganizationDetail();
   activeTab: string;
+  lastItem: string;
   /**
    * Creates an instance of ResearchmentStructuresDetailComponent.
    * @param {ActivatedRoute} route
@@ -42,10 +43,16 @@ export class ResearchmentStructuresDetailComponent implements OnInit {
    */
   ngOnInit(): void {
 
+
     this.route.params.subscribe((params: Params) => {
-      this.researchmentId = params.id; // (+) converts string 'id' to a number
+      this.id = params.id; // (+) converts string 'id' to a number
       this.activeTab = 'scientist';
-      this.researchmentStructureService.getById('erer', 'ereer').subscribe(data => {
+      const type = params.type;
+      if (type) {
+        const typeFromURL = type.split('/');
+        this.lastItem = typeFromURL.pop();
+      }
+      this.researchmentStructureService.getById(this.id, btoa(this.lastItem)).subscribe(data => {
         this.researchment = data;
       })
     });

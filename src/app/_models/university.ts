@@ -15,4 +15,5 @@ export class University {
      * The name
      */
     name: string;
+    type: string;
 }

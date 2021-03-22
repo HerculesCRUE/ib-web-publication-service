@@ -23,8 +23,9 @@ export class DocumentsComponent implements OnInit {
    * @type {Array<string>}
    * @memberof DocumentsComponent
    */
-  @Input() selectDocumentType: Array<string> = ['Audio', 'Publicación editada', 'Coleccionable', 'Libro', 'Caso de estudio',
-    'Manual', 'Tesis'];
+  @Input() selectDocumentType: Array<any> = [
+    { name: 'book', value: 'Books' }, { name: 'articles', value: 'Articles' }
+  ];
   /**
    *
    *

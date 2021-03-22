@@ -45,7 +45,8 @@
                 <select (change)="filterProjects()" id="type{{idPrefix}}" name="type{{idPrefix}}" class="form-control"
                     [(ngModel)]="findRequest.filter.type" #type{{idPrefix}}="ngModel">
                     <option [value]="undefined">{{ "form.select" | translate }}</option>
-                    <option *ngFor="let item of selectDocumentType" [value]="item">{{item}}</option>
+                    <option *ngFor="let item of selectDocumentType" [value]="item.value">{{'documents.' + item.name |
+                        translate}}</option>
 
                 </select>
             </div>

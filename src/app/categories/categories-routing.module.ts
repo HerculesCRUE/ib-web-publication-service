@@ -19,7 +19,7 @@ const routes: Routes = [
     component: ResearchmentStructuresComponent,
   },
   {
-    path: 'researchmentStructures/:id',
+    path: 'researchmentStructures/:id/:type',
     component: ResearchmentStructuresDetailComponent,
   },
   {

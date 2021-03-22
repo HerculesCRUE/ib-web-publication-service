@@ -24,7 +24,7 @@ export class ResearchmentStructuresService extends AbstractService {
   find(findRequest: FindRequest): Observable<Page<University>> {
     // Filter params
     let parameters = new HttpParams();
-    parameters = Helper.addParam(parameters, 'type', findRequest.filter.type);
+    parameters = Helper.addParam(parameters, 'types', findRequest.filter.type);
     parameters = Helper.addParam(parameters, 'financing', findRequest.filter.financing);
     parameters = Helper.addParam(parameters, 'qa', findRequest.filter.qa);
     parameters = Helper.addParam(parameters, 'name', findRequest.filter.name);
