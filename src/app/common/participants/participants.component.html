@@ -32,8 +32,9 @@
             <input class="form-control py-2 border-right-0 border" type="search"
                 placeholder="{{'form.search-by-name' | translate }}" [(ngModel)]="findRequest.filter.name">
             <span class="input-group-append">
-                <button [attr.aria-label]="'form.search-by-name' | translate" role="button" aria-pressed="false"
-                    class="btn btn-outline-secondary border-left-0 border" type="button">
+                <button (click)="changePersonProyect()" [attr.aria-label]="'form.search-by-name' | translate"
+                    role="button" aria-pressed="false" class="btn btn-outline-secondary border-left-0 border"
+                    type="button">
                     <em class="oi oi-magnifying-glass "></em>
                 </button>
             </span>
@@ -41,7 +42,7 @@
     </div>
 </div>
 <div class="loader" *ngIf="!loaded"></div>
-<app-table-results-dto *ngIf="loaded" [dtoTypeTranslate]="'participants'" [extra]="'2'"
+<app-table-results-dto *ngIf="loaded" [dtoTypeTranslate]="'scientist'" [extra]="'2'"
     [data]="allDataParticipants.content" [pageInfo]="allDataParticipants"
     (pageChanged)="allParticipantsFilteredPageChanged($event)"
     (sizeChanged)="allParticipantsFilteredSizeChanged($event)"
@@ -74,10 +75,11 @@
     <div class="row justify-content-end">
         <div class="input-group col-md-4">
             <input class="form-control py-2 border-right-0 border" type="search"
-                placeholder="{{'form.search-by-name' | translate }}" [(ngModel)]="findRequest.filter.name">
+                placeholder="{{'form.search-by-name' | translate }}" [(ngModel)]="findRequest.filter.nameDos">
             <span class="input-group-append">
-                <button [attr.aria-label]="'form.search-by-name' | translate" role="button" aria-pressed="false"
-                    class="btn btn-outline-secondary border-left-0 border" type="button">
+                <button (click)="changePersonProyectSecond()" [attr.aria-label]="'form.search-by-name' | translate"
+                    role="button" aria-pressed="false" class="btn btn-outline-secondary border-left-0 border"
+                    type="button">
                     <em class="oi oi-magnifying-glass "></em>
                 </button>
             </span>
@@ -85,9 +87,8 @@
     </div>
 </div>
 <div class="loader" *ngIf="!loaded"></div>
-<app-table-results-dto *ngIf="loaded" [data]="allDataParticipantsSecondTable.content"
-    [dtoTypeTranslate]="'participantsdos'" [extra]="'3'" [pageInfo]="allDataParticipantsSecondTable"
-    (pageChanged)="allParticipantsFilteredPageChanged($event)"
+<app-table-results-dto *ngIf="loaded" [data]="allDataParticipantsSecondTable.content" [dtoTypeTranslate]="'scientist'"
+    [extra]="'3'" [pageInfo]="allDataParticipantsSecondTable" (pageChanged)="allParticipantsFilteredPageChanged($event)"
     (sizeChanged)="allParticipantsFilteredSizeChanged($event)"
     (sortChanged)="allParticipantsFilteredSortChanged($event)">
 </app-table-results-dto>

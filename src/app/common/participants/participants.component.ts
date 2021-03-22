@@ -217,5 +217,31 @@ export class ParticipantsComponent implements OnInit {
    */
   allChanged(event) { }
 
+  /**
+   *
+   *
+   * @memberof ParticipantsComponent
+   */
+  changePersonProyect() {
+    this.participantService.findPerson(this.findRequest).subscribe((data) => {
+      this.allDataParticipants = data;
+      this.loaded = true;
+    });
+
+
+  }
+  /**
+   *
+   *
+   * @memberof ParticipantsComponent
+   */
+  changePersonProyectSecond() {
+    this.findRequest.filter.name = this.findRequest.filter.nameDos;
+    this.participantService.findPerson(this.findRequest).subscribe((data) => {
+      this.findRequest.filter.name = '';
+      this.allDataParticipantsSecondTable = data;
+      this.loaded = true;
+    });
+  }
 
 }
