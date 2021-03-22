@@ -154,6 +154,11 @@ export class MockPatentService {
         return of(page);
     }
 
+    getPatent(id: string) {
+        // Filter params
+        return of({});
+    }
+
 
 
 

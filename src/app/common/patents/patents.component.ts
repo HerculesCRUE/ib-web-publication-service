@@ -26,6 +26,7 @@ export class PatentsComponent implements OnInit {
    * @memberof PatentsComponent
    */
   @Input() idPrefix: string;
+  @Input() url = '';
   /**
    * all data shown on table
    *

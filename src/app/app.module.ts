@@ -53,6 +53,7 @@ import { LangInterceptor } from './_helpers/lang-intercetor';
 
 // keycloak
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
+import { PatentDetailComponent } from './common/patent-detail/patent-detail.component';
 
 
 const keycloakService = new KeycloakService();
@@ -65,7 +66,8 @@ const keycloakService = new KeycloakService();
     MenuComponent,
     HomeComponent,
     LinksComponent,
-    AccesibilityComponent
+    AccesibilityComponent,
+    PatentDetailComponent
   ],
   imports: [
     BrowserModule,

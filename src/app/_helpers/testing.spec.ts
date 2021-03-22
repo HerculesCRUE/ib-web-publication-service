@@ -106,6 +106,7 @@ export class TestingHelper {
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       declarations: [
         TranslatePipeStub,
+        PatentsComponent,
         LoginComponent,
         HomeComponent,
         SPARQLEditorComponent,

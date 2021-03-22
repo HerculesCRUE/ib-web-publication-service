@@ -6,6 +6,7 @@ import { AbstractService } from '../_helpers/abstract';
 import { FindRequest, Page } from '../_helpers/search';
 import { Helper } from '../_helpers/utils';
 import { Patent } from '../_models/patent';
+import { PatentDetail } from '../_models/patentDetail';
 
 /**
  *  Service for patent production
@@ -50,6 +51,17 @@ export class PatentService extends AbstractService {
             .get(Helper.getUrl('/patent/search'), {
                 params: parameters
             }).pipe(
+                catchError(this.handleError)
+            );
+    }
+
+
+    getPatent(id: string): Observable<PatentDetail> {
+        // Filter params
+
+
+        return this.httpClient
+            .get(Helper.getUrl('/patent/' + id),).pipe(
                 catchError(this.handleError)
             );
     }
