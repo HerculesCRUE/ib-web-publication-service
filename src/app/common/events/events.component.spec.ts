@@ -32,7 +32,7 @@ describe('EventsComponent', () => {
   describe('all events Filtered Page Changed', () => {
     it('should change to page 1 and a result to show of 5', () => {
       component.allEventsFilteredPageChanged(2);
-      spyOn(eventService, 'findByFilters').and.callThrough();
+      spyOn(eventService, 'find').and.callThrough();
       expect(component.findRequest.pageRequest.page).toBe(1);
     });
   });
@@ -54,7 +54,7 @@ describe('EventsComponent', () => {
   describe('all proyects Filtered Page Changed', () => {
     it('should change to page 1 and a result to show of 5', () => {
       component.allEventsFilteredSizeChanged(20);
-      spyOn(eventService, 'findByFilters').and.callThrough();
+      spyOn(eventService, 'find').and.callThrough();
       expect(component.findRequest.pageRequest.size).toBe(20);
     });
   });
