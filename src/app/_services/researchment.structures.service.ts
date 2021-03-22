@@ -30,7 +30,7 @@ export class ResearchmentStructuresService extends AbstractService {
     // Pagination params
     parameters = Helper.addPaginationParams(parameters, findRequest.pageRequest);
     return this.httpClient
-      .get(Helper.getUrl('/university/search'), {
+      .get(Helper.getUrl('/organization/search'), {
         params: parameters
       }).pipe(
         catchError(this.handleError)

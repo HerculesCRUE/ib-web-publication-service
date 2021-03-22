@@ -141,7 +141,14 @@
     "projects": "Projects",
     "patents": "Patentes",
     "area": "Area",
-    "id": "ID"
+    "id": "ID",
+    "abbreviation":"Abbreviation",
+    "description":"Descripctio",
+    "endDate":"End Date",
+    "homepage":"Home page",
+    "isStartup": "Is startup",
+    "publicCompany": "CPublic company",
+    "startDate":"Start date"
   },
   "scientist": {
     "title": "Research staff",

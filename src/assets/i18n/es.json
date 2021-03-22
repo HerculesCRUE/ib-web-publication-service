@@ -150,7 +150,14 @@
     "projects": "Proyectos",
     "patents": "Patentes",
     "area": "Área",
-    "id": "ID"
+    "id": "ID",
+    "abbreviation":"Abreviación",
+    "description":"Descripción",
+    "endDate":"Fecha fin",
+    "homepage":"Pag. Inicio",
+    "isStartup": "Es startup",
+    "publicCompany": "Compania publica",
+    "startDate":"Fecha inicio"
   },
   "scientist": {
     "title": "Titulo",
