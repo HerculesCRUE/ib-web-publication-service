@@ -329,7 +329,11 @@
     "date":"Date",
     "locality": "Locality",
     "conference": "Conference",
-    "exhibit": "Exhibit"
+    "exhibit": "Exhibit",
+    "abbreviation": "Abbreviation",
+    "description":"Descriptio",
+    "locatedIn": "Located in",
+    "presents": "Presents"
   },
   "document": {
     "author": "Author",

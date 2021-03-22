@@ -44,10 +44,10 @@ describe('EventsComponent', () => {
       newPageRequest.size = 10;
       component.findRequest.pageRequest = newPageRequest;
       const evnService = fixture.debugElement.injector.get(EventsService);
-      const spy = spyOn(evnService, 'findByFilters').and.callThrough();
+      const spy = spyOn(evnService, 'find').and.callThrough();
       fixture.detectChanges();
       component.allEventsFilteredSortChanged(component.findRequest.pageRequest);
-      expect(spy).toHaveBeenCalledWith(component.filters, component.findRequest.pageRequest);
+      expect(spy).toHaveBeenCalledWith(component.findRequest);
     });
   });
 

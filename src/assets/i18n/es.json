@@ -341,7 +341,11 @@
     "date":"Fecha",
     "locality": "Localidad",
     "conference": "Conferencia",
-    "exhibit": "Exhibición"
+    "exhibit": "Exhibición",
+    "abbreviation": "Abreviación",
+    "description":"Descripción",
+    "locatedIn": "Localizado en",
+    "presents": "Presenta"
   },
   "document": {
     "author": "Autor principal",

@@ -6,6 +6,7 @@ import { AbstractService } from '../_helpers/abstract';
 import { FindRequest, Page, PageRequest } from '../_helpers/search';
 import { Helper } from '../_helpers/utils';
 import { Event } from '../_models/event';
+import { EventDetail } from '../_models/eventDetail';
 import { SparqlResults } from '../_models/sparql';
 
 
@@ -54,7 +55,13 @@ export class EventsService extends AbstractService {
             );
     }
 
+    geteventByIdAndType(id: string, type: string): Observable<EventDetail> {
 
+        return this.httpClient
+            .get(Helper.getUrl('/event/' + id + '/' + type)).pipe(
+                catchError(this.handleError)
+            );
+    }
 
 
 

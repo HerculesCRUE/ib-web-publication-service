@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { of } from 'rxjs';
 import { AbstractService } from 'src/app/_helpers/abstract';
 import { Page, PageRequest } from 'src/app/_helpers/search';
 import { Helper } from 'src/app/_helpers/utils';
@@ -125,11 +126,9 @@ export class MockEventsService extends AbstractService {
     }
 
 
-    findByFilters(filters: Map<string, string>, pageRequest: PageRequest): Page<SparqlResults> {
+    geteventByIdAndType(id: string, type: string) {
 
-        const data: SparqlResults = JSON.parse(JSON.stringify(this.DUMMY_DATA));
-
-        return Helper.findInServiceData(data, filters, pageRequest);
+        return of({});
     }
 
 
