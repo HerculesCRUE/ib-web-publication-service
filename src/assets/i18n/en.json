@@ -257,7 +257,9 @@
     "type": "Type",
     "abbreviation": "Abbreviation",
     "placeOfPublication": "Place of publication",
-    "edition": "Edition"
+    "edition": "Edition",
+    "book":"Books",
+    "articles": "Articles"
   },
   "participant": {
     "title": "Participants",

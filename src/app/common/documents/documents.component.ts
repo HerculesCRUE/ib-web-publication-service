@@ -24,7 +24,7 @@ export class DocumentsComponent implements OnInit {
    * @memberof DocumentsComponent
    */
   @Input() selectDocumentType: Array<any> = [
-    { name: 'book', value: 'Books' }, { name: 'articles', value: 'Articles' }
+    { name: 'book', value: 'Book' }, { name: 'articles', value: 'Article' }
   ];
   /**
    *

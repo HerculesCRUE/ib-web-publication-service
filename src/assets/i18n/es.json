@@ -269,7 +269,9 @@
     "type": "Tipo",
     "abbreviation": "Abreviación",
     "placeOfPublication": "Lugar de publicación",
-    "edition": "Edición"
+    "edition": "Edición",
+    "book":"Libros",
+    "articles": "Articulos"
   },
   "participant": {
     "title": "Participantes",
