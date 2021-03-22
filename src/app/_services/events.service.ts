@@ -40,9 +40,8 @@ export class EventsService extends AbstractService {
      */
     find(findRequest: FindRequest): Observable<Page<Event>> {
         let parameters = new HttpParams();
-        parameters = Helper.addParam(parameters, 'endDate', findRequest.filter.end);
-        parameters = Helper.addParam(parameters, 'startDate', findRequest.filter.start);
-        parameters = Helper.addParam(parameters, 'title', findRequest.filter.name);
+        parameters = Helper.addParam(parameters, 'date', findRequest.filter.start);
+        parameters = Helper.addParam(parameters, 'type', findRequest.filter.type);
         parameters = Helper.addParam(parameters, 'id', findRequest.filter.id);
         // Pagination params
         parameters = Helper.addPaginationParams(parameters, findRequest.pageRequest);

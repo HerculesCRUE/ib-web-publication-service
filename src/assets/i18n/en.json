@@ -327,7 +327,9 @@
     "id":"ID",
     "title":"Title",
     "date":"Date",
-    "locality": "Locality"
+    "locality": "Locality",
+    "conference": "Conference",
+    "exhibit": "Exhibit"
   },
   "document": {
     "author": "Author",

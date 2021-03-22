@@ -1,7 +1,7 @@
 <form class="form-horizontal " (ngSubmit)="f.form.valid" #f="ngForm" (keydown.enter)="$event.preventDefault()">
     <div class="row mt-20">
         <!-- rol -->
-        <div class="form-group col-lg-6">
+        <!-- <div class="form-group col-lg-6">
             <label for="rol" class="control-label">{{ "events.rol" | translate }}</label>
             <div>
                 <select name="rol" class="form-control" [(ngModel)]="findRequest.filter.rol" #rol="ngModel">
@@ -10,35 +10,22 @@
                     <option [value]="'Expositor'">Expositor</option>
                 </select>
             </div>
-        </div>
+        </div>-->
         <!-- rol -->
         <div class="form-group col-lg-6">
             <label for="type" class="control-label">{{ "events.type" | translate }}</label>
             <div>
-                <select name="type" class="form-control" [(ngModel)]="findRequest.filter.type" #type="ngModel">
+                <select name="type" class="form-control" (change)="filterEvents()" [(ngModel)]="findRequest.filter.type"
+                    #type="ngModel">
                     <option [value]="undefined">{{ "form.select" | translate }}</option>
-                    <option [value]="'actuación'">actuación</option>
-                    <option [value]="'audición'">audición</option>
-                    <option [value]="'Competición'">Competición</option>
-                    <option [value]="'Conferencia'">Conferencia</option>
-                    <option [value]="'Contest'">Contest</option>
-                    <option [value]="'Curso'">Curso</option>
-                    <option [value]="'Defensa de tesis'">Defensa de tesis</option>
-                    <option [value]="'Evento de difusión'">Evento de difusión</option>
-                    <option [value]="'Entrevista'">Entrevista</option>
-                    <option [value]="'Estancia'">Estancia</option>
-                    <option [value]="'Exhibición'">Exhibición</option>
-                    <option [value]="'Charla en Panel'">Charla en Panel</option>
-                    <option [value]="'Charla Invitada'">Charla Invitada</option>
-                    <option [value]="'Reunión'">Reunión</option>
-                    <option [value]="'Mesa redonda'">Mesa redonda</option>
-                    <option [value]="'Seminario'">Seminario</option>
+                    <option [value]="'Conference'">{{'events.conference' | translate }}</option>
+                    <option [value]="'Exhibit'">{{'events.exhibit' | translate }}</option>
                 </select>
             </div>
         </div>
         <!-- dates -->
-        <div class="form-group col-lg-3">
-            <label for="dateFrom{{idPrefix}}" class="control-label">{{'documents.date-ini' | translate }}</label>
+        <div class="form-group col-lg-6">
+            <label for="dateFrom{{idPrefix}}" class="control-label">{{'events.date' | translate }}</label>
             <input class="form-control ngbDatepicker" name="dateFrom{{idPrefix}}" id="dateFrom{{idPrefix}}" required
                 (ngModelChange)="filterEvents()" placeholder="{{'form.datepicker-placeholder' | translate}}"
                 ngbDatepicker [readonly]="true" #decisionDate="ngbDatepicker" (click)="decisionDate.toggle();"
@@ -46,15 +33,7 @@
                 (keydown)="($event.key === 'Escape' || $event.key === 'Tab') ? decisionDate.close() : decisionDate.toggle();"
                 #dateFrom{{idPrefix}}="ngModel" [(ngModel)]="dateIni" />
         </div>
-        <div class="form-group col-lg-3">
-            <label for="dateTo{{idPrefix}}" class="control-label">{{'documents.date-fin' | translate }}</label>
-            <input class="form-control ngbDatepicker" name="dateTo{{idPrefix}}" id="dateTo{{idPrefix}}" required
-                (ngModelChange)="filterEvents()" placeholder="{{'form.datepicker-placeholder' | translate}}"
-                ngbDatepicker [readonly]="true"
-                (keydown)="($event.key === 'Escape' || $event.key === 'Tab') ? decisionTo.close() : decisionTo.toggle();"
-                #decisionTo="ngbDatepicker" (click)="decisionTo.toggle();" (keyup)="decisionTo.close()"
-                #dateTo{{idPrefix}}="ngModel" [(ngModel)]="dateFin" />
-        </div>
+
 
     </div>
     <div class="container-fluid">

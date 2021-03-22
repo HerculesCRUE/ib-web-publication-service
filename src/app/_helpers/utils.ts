@@ -136,6 +136,15 @@ export class Helper {
     }
   }
 
+  static parseBack(value: number): any {
+    const momentDate = moment.utc(value);
+    if (momentDate.isValid()) {
+      return momentDate.format('DD-MM-YYYY');
+    } else {
+      return null;
+    }
+  }
+
   static parseYear(value: number): any {
     const momentDate = moment.utc(value);
     if (momentDate.isValid()) {

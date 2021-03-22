@@ -339,7 +339,9 @@
     "id":"ID",
     "title":"Título",
     "date":"Fecha",
-    "locality": "Localidad"
+    "locality": "Localidad",
+    "conference": "Conferencia",
+    "exhibit": "Exhibición"
   },
   "document": {
     "author": "Autor principal",

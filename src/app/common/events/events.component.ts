@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
+import { Helper } from 'src/app/_helpers/utils';
 import { Event } from 'src/app/_models/event';
 import { SparqlResults } from 'src/app/_models/sparql';
 import { EventsService } from 'src/app/_services/events.service';
@@ -32,7 +33,21 @@ export class EventsComponent implements OnInit {
   }
 
   filterEvents() {
-    this.loaded = true;
+    console.log('hello', this.dateIni);
+    setTimeout(() => {
+      if (this.dateIni) {
+        const currentDate = Helper.parse(this.dateIni);
+        if (currentDate) {
+          this.findRequest.filter.start = currentDate;
+        }
+      } else {
+        this.findRequest.filter.start = null;
+      }
+      this.eventsService.find(this.findRequest).subscribe((data) => {
+        this.allEvents = data;
+        this.loaded = true;
+      });
+    }, 0);
   }
 
   /**
