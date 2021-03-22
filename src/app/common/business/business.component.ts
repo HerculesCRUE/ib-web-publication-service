@@ -79,6 +79,7 @@ export class BusinessComponent implements OnInit {
    * @memberof ScientificProductionComponent
    */
   allfilter(i: number): void {
+    this.loaded = false;
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = i;
     pageRequest.size = this.allData.size;

@@ -167,6 +167,7 @@ export class ProyectsComponent implements OnInit {
    * @memberof ProyectsComponent
    */
   allprojectsFilteredPageChanged(i: number): void {
+    this.loadedProjects = false;
     this.findRequest.pageRequest.page = i - 1;
     this.findRequest.pageRequest.size = this.allProjectFiltered.size;
     this.projectService.find(this.findRequest).subscribe((data) => {
@@ -183,7 +184,7 @@ export class ProyectsComponent implements OnInit {
    * @memberof ProyectsComponent
    */
   allprojectsFilteredSizeChanged(i: number): void {
-
+    this.loadedProjects = false;
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = this.allProjectFiltered.number;
     pageRequest.size = i;
@@ -203,6 +204,7 @@ export class ProyectsComponent implements OnInit {
    * @memberof ProyectsComponent
    */
   allprojectsFilteredSortChanged(pageRequest: PageRequest) {
+    this.loadedProjects = false;
     const newPageRequest: PageRequest = new PageRequest();
     newPageRequest.page = this.allProjectFiltered.number;
     newPageRequest.size = this.allProjectFiltered.size;

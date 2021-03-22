@@ -45,9 +45,10 @@ export class AllResearchmentStructuresComponent implements OnInit {
    * @memberof AllResearchmentStructuresComponent
    */
   filterResearchmentStructures() {
-    console.log(this.findRequest);
+    this.loaded = false;
     this.researchmentStructureService.find(this.findRequest).subscribe((data) => {
       this.allResearchmentStructuresFiltered = data;
+      this.loaded = true;
     });
 
   }
@@ -61,7 +62,7 @@ export class AllResearchmentStructuresComponent implements OnInit {
    * @memberof AllResearchmentStructuresComponent
    */
   allResearchmentStructuresFilteredPageChanged(i: number): void {
-
+    this.loaded = false;
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = i;
     pageRequest.size = this.allResearchmentStructuresFiltered.size;
@@ -69,6 +70,7 @@ export class AllResearchmentStructuresComponent implements OnInit {
 
     this.researchmentStructureService.find(this.findRequest).subscribe((data) => {
       this.allResearchmentStructuresFiltered = data;
+      this.loaded = true;
     });
   }
 
@@ -79,7 +81,7 @@ export class AllResearchmentStructuresComponent implements OnInit {
    * @memberof AllResearchmentStructuresComponent
    */
   allResearchmentStructuresFilteredSizeChanged(i: number): void {
-
+    this.loaded = false;
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = this.allResearchmentStructuresFiltered.number;
     pageRequest.size = i;
@@ -87,6 +89,7 @@ export class AllResearchmentStructuresComponent implements OnInit {
 
     this.researchmentStructureService.find(this.findRequest).subscribe((data) => {
       this.allResearchmentStructuresFiltered = data;
+      this.loaded = true;
     });
   }
 
@@ -98,7 +101,7 @@ export class AllResearchmentStructuresComponent implements OnInit {
    * @memberof AllResearchmentStructuresComponent
    */
   allResearchmentStructuresFilteredSortChanged(pageRequest: PageRequest): void {
-
+    this.loaded = false;
     const newPageRequest: PageRequest = new PageRequest();
     newPageRequest.page = this.allResearchmentStructuresFiltered.number;
     newPageRequest.size = this.allResearchmentStructuresFiltered.size;
@@ -107,6 +110,7 @@ export class AllResearchmentStructuresComponent implements OnInit {
 
     this.researchmentStructureService.find(this.findRequest).subscribe((data) => {
       this.allResearchmentStructuresFiltered = data;
+      this.loaded = true;
     });
   }
 

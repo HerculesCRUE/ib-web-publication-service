@@ -306,7 +306,8 @@
     "mode": "Modo",
     "startDate": "Fecha inicio",
     "startPage": "Página inicio",
-    "title": "Titulo"
+    "title": "Titulo",
+    "summary":"Sumario"
   },
   "directed-jobs": {
     "table-header": {

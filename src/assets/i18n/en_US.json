@@ -294,7 +294,8 @@
     "mode": "Mode",
     "startDate": "Start date",
     "startPage": "Start page",
-    "title": "Title"
+    "title": "Title",
+    "summary":"Summary"
   },
   "directed-jobs": {
     "table-header": {

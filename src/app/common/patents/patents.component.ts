@@ -118,6 +118,7 @@ export class PatentsComponent implements OnInit {
    * @memberof PatentsComponent
    */
   allPatentsFilteredPageChanged(i: number): void {
+    this.loaded = false;
     this.findRequest.pageRequest.page = i - 1;
     this.findRequest.pageRequest.size = this.allPatentFiltered.size;
     this.patentService.find(this.findRequest).subscribe((data) => {
@@ -134,7 +135,7 @@ export class PatentsComponent implements OnInit {
    * @memberof PatentsComponent
    */
   allPatentsFilteredSizeChanged(i: number): void {
-
+    this.loaded = false;
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = this.allPatentFiltered.number;
     pageRequest.size = i;
@@ -154,6 +155,7 @@ export class PatentsComponent implements OnInit {
    * @memberof PatentsComponent
    */
   allPatentsFilteredSortChanged(pageRequest: PageRequest) {
+    this.loaded = false;
     const newPageRequest: PageRequest = new PageRequest();
     newPageRequest.page = this.allPatentFiltered.number;
     newPageRequest.size = this.allPatentFiltered.size;
@@ -172,6 +174,7 @@ export class PatentsComponent implements OnInit {
    * @memberof PatentsComponent
    */
   filterPatents() {
+    this.loaded = false;
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = 0;
     pageRequest.size = this.allPatentFiltered.size;

@@ -116,6 +116,7 @@ export class ScientistSearchComponent implements OnInit {
    * @memberof ScientificProductionComponent
    */
   allScientistsFilteredPageChanged(i: number): void {
+    this.loaded = false;
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = i;
     pageRequest.size = this.allScientificsFiltered.size;
@@ -135,6 +136,7 @@ export class ScientistSearchComponent implements OnInit {
    * @memberof ScientificProductionComponent
    */
   filterTop(event, filterName: string) {
+    this.loaded = false;
     event !== 'undefined' ? this.filters.set(filterName, event) : this.filters.set(filterName, '');
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = 1;
@@ -155,7 +157,7 @@ export class ScientistSearchComponent implements OnInit {
    * @memberof ScientistSearchComponent
    */
   allScientistsFilteredSizeChanged(i: number): void {
-
+    this.loaded = false;
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = this.allScientificsFiltered.number;
     pageRequest.size = i;
@@ -174,6 +176,7 @@ export class ScientistSearchComponent implements OnInit {
    * @memberof ScientistSearchComponent
    */
   allScientistsFilteredSortChanged(pageRequest: PageRequest) {
+    this.loaded = false;
     const newPageRequest: PageRequest = new PageRequest();
     newPageRequest.page = this.allScientificsFiltered.number;
     newPageRequest.size = this.allScientificsFiltered.size;

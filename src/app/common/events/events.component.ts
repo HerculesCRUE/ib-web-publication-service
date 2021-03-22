@@ -33,7 +33,8 @@ export class EventsComponent implements OnInit {
   }
 
   filterEvents() {
-    console.log('hello', this.dateIni);
+
+    this.loaded = false;
     setTimeout(() => {
       if (this.dateIni) {
         const currentDate = Helper.parse(this.dateIni);
@@ -57,6 +58,7 @@ export class EventsComponent implements OnInit {
    * @memberof EventsComponent
    */
   allEventsFilteredPageChanged(i: number) {
+    this.loaded = false;
     this.findRequest.pageRequest.page = i - 1;
     this.findRequest.pageRequest.size = this.allEvents.size;
     this.eventsService.find(this.findRequest).subscribe((data) => {
@@ -73,6 +75,7 @@ export class EventsComponent implements OnInit {
    * @memberof EventsComponent
    */
   allEventsFilteredSizeChanged(i: number) {
+    this.loaded = false;
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = this.allEvents.number;
     pageRequest.size = i;
@@ -92,6 +95,7 @@ export class EventsComponent implements OnInit {
    * @memberof EventsComponent
    */
   allEventsFilteredSortChanged(pageRequest: PageRequest) {
+    this.loaded = false;
     const newPageRequest: PageRequest = new PageRequest();
     newPageRequest.page = this.allEvents.number;
     newPageRequest.size = this.allEvents.size;

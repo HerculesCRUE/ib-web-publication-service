@@ -130,6 +130,7 @@ export class DocumentsComponent implements OnInit {
    * @memberof ScientificProductionComponent
    */
   filterProjects() {
+    this.loaded = false;
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = 0;
     pageRequest.size = this.allDocumentFiltered.size;
@@ -178,6 +179,7 @@ export class DocumentsComponent implements OnInit {
    * @memberof ScientificProductionComponent
    */
   allprojectsFilteredPageChanged(i: number): void {
+    this.loaded = false;
     this.findRequest.pageRequest.page = i - 1;
     this.findRequest.pageRequest.size = this.allDocumentFiltered.size;
     if (this.idPrefix === 'academic') {
@@ -200,6 +202,7 @@ export class DocumentsComponent implements OnInit {
    * @memberof DocumentsComponent
    */
   filterDocuments() {
+    this.loaded = false;
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = 0;
     pageRequest.size = this.allDocumentFiltered.size;
@@ -226,7 +229,7 @@ export class DocumentsComponent implements OnInit {
    * @memberof PatentsComponent
    */
   allprojectsFilteredSizeChanged(i: number): void {
-
+    this.loaded = false;
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = this.allDocumentFiltered.number;
     pageRequest.size = i;
@@ -253,6 +256,7 @@ export class DocumentsComponent implements OnInit {
    * @memberof PatentsComponent
    */
   allprojectsFilteredSortChanged(pageRequest: PageRequest) {
+    this.loaded = false;
     const newPageRequest: PageRequest = new PageRequest();
     newPageRequest.page = this.allDocumentFiltered.number;
     newPageRequest.size = this.allDocumentFiltered.size;
