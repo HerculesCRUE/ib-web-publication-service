@@ -323,7 +323,11 @@
   },
   "events": {
     "rol": "Rol",
-    "type": "Type"
+    "type": "Type",
+    "id":"ID",
+    "title":"Title",
+    "date":"Date",
+    "locality": "Locality"
   },
   "document": {
     "author": "Author",

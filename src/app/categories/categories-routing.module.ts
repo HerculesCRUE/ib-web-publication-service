@@ -60,7 +60,7 @@ const routes: Routes = [
     component: DocumentDetailComponent
   },
   {
-    path: 'event/:id',
+    path: 'event/:id/:type',
     component: EventDetailComponent
   },
   {

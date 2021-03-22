@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
+import { Event } from 'src/app/_models/event';
 import { SparqlResults } from 'src/app/_models/sparql';
 import { EventsService } from 'src/app/_services/events.service';
 
@@ -13,9 +14,9 @@ export class EventsComponent implements OnInit {
   findRequest: FindRequest = new FindRequest();
   dateIni;
   dateFin;
-  allEvents: Page<SparqlResults> = new Page();
+  allEvents: Page<Event>;
   loaded: boolean;
-  filters: Map<string, string> = new Map();
+
 
   constructor(private eventsService: EventsService) { }
 
@@ -23,10 +24,11 @@ export class EventsComponent implements OnInit {
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = 1;
     pageRequest.size = 10;
-    this.allEvents = this.eventsService.find(
-      null, pageRequest
-    );
-    this.loaded = true;
+    this.eventsService.find(this.findRequest).subscribe(data => {
+      this.loaded = true;
+      this.allEvents = data;
+    });
+
   }
 
   filterEvents() {
@@ -42,9 +44,10 @@ export class EventsComponent implements OnInit {
   allEventsFilteredPageChanged(i: number) {
     this.findRequest.pageRequest.page = i - 1;
     this.findRequest.pageRequest.size = this.allEvents.size;
-    this.allEvents = this.eventsService.findByFilters(
-      this.filters, this.findRequest.pageRequest
-    );
+    this.eventsService.find(this.findRequest).subscribe((data) => {
+      this.allEvents = data;
+      this.loaded = true;
+    });
   }
 
 
@@ -60,10 +63,10 @@ export class EventsComponent implements OnInit {
     pageRequest.size = i;
     pageRequest.direction = this.allEvents.direction;
     this.findRequest.pageRequest = pageRequest;
-
-    this.allEvents = this.eventsService.findByFilters(
-      this.filters, pageRequest
-    );
+    this.eventsService.find(this.findRequest).subscribe((data) => {
+      this.allEvents = data;
+      this.loaded = true;
+    });
   }
 
 
@@ -80,10 +83,10 @@ export class EventsComponent implements OnInit {
     newPageRequest.property = pageRequest.property;
     newPageRequest.direction = pageRequest.direction;
     this.findRequest.pageRequest = pageRequest;
-
-    this.allEvents = this.eventsService.findByFilters(
-      this.filters, pageRequest
-    );
+    this.eventsService.find(this.findRequest).subscribe((data) => {
+      this.allEvents = data;
+      this.loaded = true;
+    });
   }
 
 }
