@@ -59,8 +59,5 @@ describe('EventsComponent', () => {
     });
   });
 
-  it('filterEvents', () => {
-    component.filterEvents();
-    expect(component.loaded).toBeTruthy();
-  });
+
 });
