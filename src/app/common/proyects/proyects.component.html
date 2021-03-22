@@ -28,16 +28,17 @@
                 <label for="dateFromProyect{{idPrefix}}" class="control-label">{{'projects.date-ini-from' |
                     translate
                     }}</label>
-                <input class="form-control" name="dateFromProyect" id="dateFromProyect{{idPrefix}}" required
-                    (ngModelChange)="filterProjects()" placeholder="{{'form.datepicker-placeholder' | translate}}"
-                    ngbDatepicker [readonly]="true" #decisionDate="ngbDatepicker" (click)="decisionDate.toggle();"
-                    (keyup)="decisionDate.close()" #dateFrom="ngModel" [(ngModel)]="dateIni" (keydown)="($event.key === 'Escape' || $event.key === 'Tab') ? decisionDate.close() :
+                <input class="form-control ngbDatepicker" name="dateFromProyect" id="dateFromProyect{{idPrefix}}"
+                    required (ngModelChange)="filterProjects()"
+                    placeholder="{{'form.datepicker-placeholder' | translate}}" ngbDatepicker [readonly]="true"
+                    #decisionDate="ngbDatepicker" (click)="decisionDate.toggle();" (keyup)="decisionDate.close()"
+                    #dateFrom="ngModel" [(ngModel)]="dateIni" (keydown)="($event.key === 'Escape' || $event.key === 'Tab') ? decisionDate.close() :
             decisionDate.toggle();" />
             </div>
             <div class="form-group col-lg-6">
                 <label for="dateToProyect{{idPrefix}}" class="control-label">{{'projects.date-end-to' |
                     translate }}</label>
-                <input class="form-control" name="dateToProyect" id="dateToProyect{{idPrefix}}" required
+                <input class="form-control ngbDatepicker" name="dateToProyect" id="dateToProyect{{idPrefix}}" required
                     (ngModelChange)="filterProjects()" placeholder="{{'form.datepicker-placeholder' | translate}}"
                     ngbDatepicker [readonly]="true" #decisionTo="ngbDatepicker" (click)="decisionTo.toggle();"
                     (keyup)="decisionTo.close()" #dateTo="ngModel" [(ngModel)]="dateFin" (keydown)="($event.key === 'Escape' || $event.key === 'Tab') ? decisionTo.close() :

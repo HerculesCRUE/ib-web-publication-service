@@ -155,3 +155,8 @@ table tbody {
 .tree {
   margin-bottom: 20px;
 }
+
+
+.ngbdatepicker:disabled, .ngbdatepicker[readonly], .ngbDatepicker:disabled, .ngbDatepicker[readonly]{
+  background-color: white!important;
+}
