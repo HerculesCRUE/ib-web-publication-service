@@ -10,6 +10,8 @@ export class LocaleConfiguration {
   availableLanguages: string[];
 }
 
+export const BASE_APP_URL = environment.appUrl;
+
 export const BASE_URL = environment.urlBase;
 
 export const KEYCLOACK = environment.keycloak;

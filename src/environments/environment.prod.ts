@@ -17,7 +17,8 @@ export const environment = {
     logout: 'https://herculesasioizertis.desa.um.es/auth/realms/umasio/protocol/openid-connect/logout',
     redirectUrl: 'https%3A%2F%2Fherculesasioizertis.desa.um.es%2Fauth%2Frealms%2Fumasio%2Faccount%2F%23%2Fpersonal-info'
   },
-  lpdUrl: 'https://lpd.herculesasioizertis.desa.um.es'
+  lpdUrl: 'https://lpd.herculesasioizertis.desa.um.es',
+  appUrl: 'https://app.herculesasioizertis.desa.um.es'
 };
 
 // default settings for how to query the endpoint

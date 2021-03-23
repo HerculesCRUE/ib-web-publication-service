@@ -6,6 +6,7 @@ import { KeycloakInstance } from 'keycloak-js';
 import { Helper } from '../_helpers/utils';
 import { LoginService } from '../_services/login.service';
 import * as Keycloak from 'keycloak-js';
+import { BASE_APP_URL } from '../configuration';
 /**
  * Componente para la gestión del login.
  */
@@ -34,7 +35,6 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
     this.loginService.keycloakIsActive().subscribe(data => {
       if (data) {
         this.router.navigate(['/main']);
@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
           const refresh = this.keycloakAuth.refreshToken;
           localStorage.setItem('access_token', token);
           localStorage.setItem('refresh_token', refresh);
-          this.router.navigate(['/main/home']);
+          this.redirect();
 
         });
       }
@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit {
         const refresh = this.keycloakAuth.refreshToken;
         localStorage.setItem('access_token', token);
         localStorage.setItem('refresh_token', refresh);
-        this.router.navigate(['/main/home']);
+        this.redirect();
 
       });
     });
@@ -76,6 +76,10 @@ export class LoginComponent implements OnInit {
 
   loginck() {
     this.loginService.loginKeycloack();
+  }
+
+  redirect() {
+    window.location.href = BASE_APP_URL + '/main/home';
   }
 
   /**
