@@ -17,7 +17,7 @@
 
   <div class="col-lg-4 offset-lg-2">
     <pagination [boundaryLinks]="true" [totalItems]="resultObject.totalElements" [rotate]="false"
-      [(ngModel)]="currentPage" (pageChanged)="showPage($event)" class="pagination-sm"
+      [(ngModel)]="currentPage" (pageChanged)="showPage($event) " class="pagination-sm"
       itemsPerPage="{{ resultObject.size }}" previousText="{{ 'form.pagination-previous' | translate }}"
       nextText="{{ 'form.pagination-next' | translate }}" firstText="{{ 'form.pagination-first' | translate }}"
       lastText="{{ 'form.pagination-last' | translate }}" [maxSize]="maxSize">

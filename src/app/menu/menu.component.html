@@ -4,19 +4,28 @@
     <img alt="Logo Hercules" class="logo" src="assets/images/transparent logo Hercules.png">
   </li>
   <!-- menu entries -->
-  <li *ngFor="let item of menuItems" class="sidebar-brand">
-    <ng-container *ngIf="!item.disabled">
-      <a [routerLink]="[item.url]">
+  <ng-container *ngFor="let item of menuItems">
+    <li class="sidebar-brand" *ngIf="item.title === 'menu.sparql' && isLogged">
+      <ng-container>
+        <a [routerLink]="[item.url]">
+          <em class="oi icons-menu" [ngClass]="[item.icon]"></em>
+          {{ item.title | translate }}
+        </a>
+      </ng-container>
+    </li>
+    <li class="sidebar-brand" *ngIf="item.title !== 'menu.sparql'">
+      <ng-container *ngIf="!item.disabled && item.title !== 'menu.sparql'">
+        <a [routerLink]="[item.url]">
+          <em class="oi icons-menu" [ngClass]="[item.icon]"></em>
+          {{ item.title | translate }}
+        </a>
+      </ng-container>
+      <ng-container *ngIf="item.disabled">
         <em class="oi icons-menu" [ngClass]="[item.icon]"></em>
         {{ item.title | translate }}
-      </a>
-    </ng-container>
-    <ng-container *ngIf="item.disabled">
-      <em class="oi icons-menu" [ngClass]="[item.icon]"></em>
-      {{ item.title | translate }}
-    </ng-container>
-  </li>
-
+      </ng-container>
+    </li>
+  </ng-container>
 
   <!-- logout button -->
   <li class=" sidebar-brand cursor" [routerLink]="'./login'" *ngIf="!isLogged">
