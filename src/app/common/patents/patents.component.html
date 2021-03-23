@@ -48,7 +48,7 @@
             <div class="input-group col-md-4" role="search">
                 <input class="form-control py-2 border-right-0 border" type="search" name="search" #search="ngModel"
                     placeholder="{{'form.search-by-title' | translate }}" [(ngModel)]="findRequest.filter.name"
-                    id="search-patents">
+                    id="search-patents" (keyup.enter)="filterPatents()">
                 <span class="input-group-append">
                     <button [attr.aria-label]="'form.search-by-name' | translate" role="button" aria-pressed="false"
                         (click)="filterPatents()" class="btn btn-outline-secondary border-left-0 border" type="button">

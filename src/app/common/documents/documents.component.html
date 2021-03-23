@@ -65,7 +65,7 @@
                 <input class="form-control py-2 border-right-0 border" type="text" name="search{{idPrefix}}"
                     #search="ngModel" placeholder="{{'form.search-by-title' | translate }}"
                     [(ngModel)]="findRequest.filter.name" id="search-documents{{idPrefix}}">
-                <span class="input-group-append">
+                <span class="input-group-append" (keyup.enter)="filterDocuments()">
                     <button [attr.aria-label]="'form.search-by-name' | translate" role="button" aria-pressed="false"
                         (click)="filterDocuments()" class="btn btn-outline-secondary border-left-0 border"
                         type="button">

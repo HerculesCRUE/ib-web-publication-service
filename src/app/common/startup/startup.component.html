@@ -9,7 +9,7 @@
             <div class="input-group col-md-4" role="search">
                 <input class="form-control py-2 border-right-0 border" type="search" name="startupName"
                     placeholder="{{'form.search-by-title' | translate }}" [(ngModel)]="findRequest.filter.name"
-                    id="search-startup">
+                    id="search-startup" (keyup.enter)="filterDocuments()">
                 <span class="input-group-append">
                     <button [attr.aria-label]="'form.search-by-name' | translate" role="button" aria-pressed="false"
                         (click)="filterDocuments()" class="btn btn-outline-secondary border-left-0 border"
