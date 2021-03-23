@@ -36,7 +36,8 @@
     "datepicker-placeholder": "YYYY-MM-DD",
     "change-tree": "Change tree",
     "clear": "Clean",
-    "change-tree-normal": "Change to normal tree"
+    "change-tree-normal": "Change to normal tree",
+    "no-result": "No results"
   },
   "menu": {
     "home": "Welcome",

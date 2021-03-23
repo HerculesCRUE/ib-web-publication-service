@@ -26,6 +26,7 @@ export class ProyectsComponent implements OnInit {
    * @memberof ProyectsComponent
    */
   @Input() idPrefix: string;
+  @Input() url = './project/';
   /**
    *
    *

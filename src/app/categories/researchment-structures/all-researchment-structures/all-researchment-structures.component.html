@@ -70,9 +70,16 @@
     </form>
 </fieldset>
 <div class="loader" *ngIf="!loaded"></div>
-<app-table-results-dto *ngIf="loaded" [dtoTypeTranslate]="'researchmentStructure'" [extra]="'2'"
-    [data]="allResearchmentStructuresFiltered.content" [pageInfo]="allResearchmentStructuresFiltered"
-    [routerFieldSecondary]="'type'" [routerField]="'id'"
+<div class="container-fluid" *ngIf="loaded && allResearchmentStructuresFiltered.content.length === 0">
+    <div class="row">
+        <div class="col-12">
+            <h3>{{'form.no-result' | translate}}</h3>
+        </div>
+    </div>
+</div>
+<app-table-results-dto *ngIf="loaded && allResearchmentStructuresFiltered.content.length !== 0"
+    [dtoTypeTranslate]="'researchmentStructure'" [extra]="'2'" [data]="allResearchmentStructuresFiltered.content"
+    [pageInfo]="allResearchmentStructuresFiltered" [routerFieldSecondary]="'type'" [routerField]="'id'"
     (pageChanged)="allResearchmentStructuresFilteredPageChanged($event)"
     (sizeChanged)="allResearchmentStructuresFilteredSizeChanged($event)"
     (sortChanged)="allResearchmentStructuresFilteredSortChanged($event)">

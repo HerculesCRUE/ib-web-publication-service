@@ -47,13 +47,14 @@
     <div class="tab-pane fade"
         [ngClass]="{'show': activeTab === 'prod-scientist', 'active': activeTab === 'prod-scientist' }"
         id="prod-scientist" role="tabpanel" aria-labelledby="prod-scientist-tab">
-        <app-documents [idPrefix]="'prodScientist'" [isTreeVisible]="false" [filterDocumentType]="['Book', 'Article']">
+        <app-documents [url]="'../../document'" [idPrefix]="'prodScientist'" [isTreeVisible]="false"
+            [filterDocumentType]="['Book', 'Article']">
         </app-documents>
     </div>
     <div class="tab-pane fade" id="projects"
         [ngClass]="{'show': activeTab === 'projects', 'active': activeTab === 'projects' }" role="tabpanel"
         aria-labelledby="projects-tab">
-        <app-proyects [idPrefix]="'projects'" [chartType]="'bar'"></app-proyects>
+        <app-proyects [url]="'../../../project'" [idPrefix]="'projects'" [chartType]="'bar'"></app-proyects>
     </div>
     <div class="tab-pane fade" id="patents"
         [ngClass]="{'show': activeTab === 'patents', 'active': activeTab === 'patents' }" role="tabpanel"

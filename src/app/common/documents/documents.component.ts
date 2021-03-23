@@ -26,6 +26,8 @@ export class DocumentsComponent implements OnInit {
   @Input() selectDocumentType: Array<any> = [
     { name: 'book', value: 'Book' }, { name: 'articles', value: 'Article' }
   ];
+
+  @Input() url = './';
   /**
    *
    *
@@ -88,7 +90,7 @@ export class DocumentsComponent implements OnInit {
    * @memberof DocumentsComponent
    */
   normalTree = true;
-  url = '';
+
 
   /**
    * Creates an instance of DocumentsComponent.
@@ -99,9 +101,7 @@ export class DocumentsComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.idPrefix === 'prodScientist') {
-      this.url = '../../document/';
-    } else {
-      this.url = '../document/';
+      this.url = '../../../document/';
     }
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = 0;

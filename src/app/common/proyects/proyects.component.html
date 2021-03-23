@@ -29,7 +29,7 @@
                     translate
                     }}</label>
                 <input class="form-control ngbDatepicker" name="dateFromProyect" id="dateFromProyect{{idPrefix}}"
-                    required (ngModelChange)="filterProjects()"
+                    required (ngModelChange)="filterProjects()" [minDate]="{year: 1950, month: 1, day: 1}"
                     placeholder="{{'form.datepicker-placeholder' | translate}}" ngbDatepicker [readonly]="true"
                     #decisionDate="ngbDatepicker" (click)="decisionDate.toggle();" (keyup)="decisionDate.close()"
                     #dateFrom="ngModel" [(ngModel)]="dateIni" (keydown)="($event.key === 'Escape' || $event.key === 'Tab') ? decisionDate.close() :
@@ -41,8 +41,9 @@
                 <input class="form-control ngbDatepicker" name="dateToProyect" id="dateToProyect{{idPrefix}}" required
                     (ngModelChange)="filterProjects()" placeholder="{{'form.datepicker-placeholder' | translate}}"
                     ngbDatepicker [readonly]="true" #decisionTo="ngbDatepicker" (click)="decisionTo.toggle();"
-                    (keyup)="decisionTo.close()" #dateTo="ngModel" [(ngModel)]="dateFin" (keydown)="($event.key === 'Escape' || $event.key === 'Tab') ? decisionTo.close() :
-                            decisionTo.toggle();" />
+                    [minDate]="{year: 1950, month: 1, day: 1}" (keyup)="decisionTo.close()" #dateTo="ngModel"
+                    [(ngModel)]="dateFin" (keydown)="($event.key === 'Escape' || $event.key === 'Tab') ? decisionTo.close() :
+                          decisionTo.toggle();" />
             </div>
 
             <!-- <div class="form-group col-lg-6">
@@ -114,10 +115,18 @@
     </div>
 </form>
 <div class="loader" *ngIf="!loadedProjects"></div>
-<app-table-results-dto [dtoTypeTranslate]="'projects'" [extra]="'5'" [routerNameLink]="'./project/'"
-    *ngIf="loadedProjects" [routerField]="'id'" [data]="allProjectFiltered.content" [pageInfo]="allProjectFiltered"
+<div class="container-fluid" *ngIf="loadedProjects && allProjectFiltered.content.length === 0">
+    <div class="row">
+        <div class="col-12">
+            <p>{{'form.no-result' | translate}}</p>
+        </div>
+    </div>
+</div>
+<app-table-results-dto [dtoTypeTranslate]="'projects'" [extra]="'5'" [routerNameLink]="url"
+    *ngIf="loadedProjects && allProjectFiltered.content.length !== 0" [routerField]="'id'"
+    [data]="allProjectFiltered.content" [pageInfo]="allProjectFiltered"
     (pageChanged)="allprojectsFilteredPageChanged($event)" (sizeChanged)="allprojectsFilteredSizeChanged($event)"
     (sortChanged)="allprojectsFilteredSortChanged($event)">
 </app-table-results-dto>
-<div style="min-width: 600px; width:100%; height:450px" echarts [loading]="loadingData" [options]="echartOptions"
+<div style="min-width: 600px; width:100%; height:450px" echarts [loading]="loadingData " [options]="echartOptions"
     class="demo-chart"></div>

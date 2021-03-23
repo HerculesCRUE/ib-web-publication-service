@@ -36,7 +36,8 @@
     "datepicker-placeholder": "YYYY-MM-DD",
     "change-tree": "versión gráfica",
     "clean": "Limpiar",
-    "change-tree-normal": "versión listado"
+    "change-tree-normal": "versión listado",
+    "no-result": "Lo sentimos, no hay resultados para esta búsqueda"
   },
   "menu": {
     "home": "Inicio",
@@ -47,7 +48,7 @@
     "university": "Estructuras investigación",
     "scientist": "Personal investigador",
     "areas": "Áreas",
-    "prod-scientist": "publicaciones cientificas",
+    "prod-scientist": "Publicaciones científicas",
     "acction-inves": "Acciones investigación",
     "stats": "Estadisticas",
     "accessibility": "Accesibilidad",
@@ -116,7 +117,7 @@
     "university": "Estructuras de investigación",
     "scientist": "Personal investigador",
     "areas": "Áreas",
-    "prod-scientist": "publicaciones cientificas",
+    "prod-scientist": "Publicaciones científicas",
     "acction-inves": "Acciones de investigación",
     "stats": "Estadisticas e indicadores",
     "info": "Información",
@@ -147,7 +148,7 @@
     "num-qa": "Número de universidades por Sello de Calidad",
     "num-financing": "Número de universidades por Financiación",
     "scientist": "Personal investigador",
-    "prod-scientist": "publicaciones cientificas",
+    "prod-scientist": "Publicaciones científicas",
     "projects": "Proyectos",
     "patents": "Patentes",
     "area": "Área",
@@ -169,7 +170,7 @@
     "business-activity": "Actividad empresarial",
     "trajectory": "Trayectoria",
     "reg-documents": "Documentos registrados",
-    "prod-scientist": "publicaciones cientificas",
+    "prod-scientist": "Publicaciones científicas",
     "directed-jobs": "Trabajos dirigidos",
     "startups": "Startups/ Spin-off",
     "scientific-production-indicators": "Indicadores de producción científica",
@@ -197,14 +198,14 @@
     "image": "Imagén"
   },
   "scientific-production": {
-    "title": "Publicaciones cientificas",
+    "title": "Publicaciones científicas",
     "date-from": "Fecha desde",
     "date-to": "Fecha hasta",
     "degree": "Título",
     "type": "Tipo",
     "doi": "DOI",
     "publication-year": "Año de publicación",
-    "scientific-publications": "Publicaciones cientificas",
+    "scientific-publications": "Publicaciones científicas",
     "academic-publications": "Publicaciones academicas",
     "other-publications": "Otras publicaciones",
     "events": "Eventos"

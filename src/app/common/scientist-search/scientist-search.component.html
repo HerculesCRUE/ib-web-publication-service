@@ -60,10 +60,18 @@
     </div>
 </form>
 <div class="loader" *ngIf="!loaded"></div>
-<app-table-results-dto [routerNameLink]="url" [routerField]="'id'" *ngIf="loaded"
-    [data]="allScientificsFiltered.content" [dtoTypeTranslate]="'scientist'" [extra]="'2'"
-    [pageInfo]="allScientificsFiltered" (pageChanged)="allScientistsFilteredPageChanged($event)"
-    (sizeChanged)="allScientistsFilteredSizeChanged($event)" (sortChanged)="allScientistsFilteredSortChanged($event)">
+<div class="container-fluid" *ngIf="loaded && allScientificsFiltered.content.length === 0">
+    <div class="row">
+        <div class="col-12">
+            <p>{{'form.no-result' | translate}}</p>
+        </div>
+    </div>
+</div>
+<app-table-results-dto [routerNameLink]="url" [routerField]="'id'"
+    *ngIf="loaded && allScientificsFiltered.content.length !== 0" [data]="allScientificsFiltered.content"
+    [dtoTypeTranslate]="'scientist'" [extra]="'2'" [pageInfo]="allScientificsFiltered"
+    (pageChanged)="allScientistsFilteredPageChanged($event)" (sizeChanged)="allScientistsFilteredSizeChanged($event)"
+    (sortChanged)="allScientistsFilteredSortChanged($event)">
 </app-table-results-dto>
 
 <div echarts [options]="echartOptions" class="sector-chart"></div>
