@@ -34,9 +34,9 @@
     "yes": "Sí",
     "no": "No",
     "datepicker-placeholder": "YYYY-MM-DD",
-    "change-tree": "Cambiar versión visual árbol",
+    "change-tree": "versión gráfica",
     "clean": "Limpiar",
-    "change-tree-normal": "Cambiar a versión normal"
+    "change-tree-normal": "versión listado"
   },
   "menu": {
     "home": "Inicio",
@@ -135,7 +135,8 @@
   },
 
   "researchmentStructure": {
-    "title": "Estructuras de investigación",
+    "header": "Estructuras de investigación",
+    "title": "Título",
     "type": "Tipo",
     "financing": "Financiación",
     "name": "Nombre",
