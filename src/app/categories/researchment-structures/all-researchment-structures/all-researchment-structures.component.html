@@ -77,7 +77,8 @@
         </div>
     </div>
 </div>
-<app-table-results-dto *ngIf="loaded && allResearchmentStructuresFiltered.content.length !== 0"
+<app-table-results-dto [findRequest]="findRequest"
+    *ngIf="loaded && allResearchmentStructuresFiltered.content.length !== 0"
     [dtoTypeTranslate]="'researchmentStructure'" [extra]="'2'" [data]="allResearchmentStructuresFiltered.content"
     [pageInfo]="allResearchmentStructuresFiltered" [routerFieldSecondary]="'type'" [routerField]="'id'"
     (pageChanged)="allResearchmentStructuresFilteredPageChanged($event)"

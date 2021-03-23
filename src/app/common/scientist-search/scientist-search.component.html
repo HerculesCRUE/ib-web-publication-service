@@ -67,7 +67,7 @@
         </div>
     </div>
 </div>
-<app-table-results-dto [routerNameLink]="url" [routerField]="'id'"
+<app-table-results-dto [findRequest]="findRequest" [routerNameLink]="url" [routerField]="'id'"
     *ngIf="loaded && allScientificsFiltered.content.length !== 0" [data]="allScientificsFiltered.content"
     [dtoTypeTranslate]="'scientist'" [extra]="'2'" [pageInfo]="allScientificsFiltered"
     (pageChanged)="allScientistsFilteredPageChanged($event)" (sizeChanged)="allScientistsFilteredSizeChanged($event)"

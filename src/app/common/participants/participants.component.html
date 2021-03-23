@@ -49,8 +49,8 @@
         </div>
     </div>
 </div>
-<app-table-results-dto *ngIf="loaded && allDataParticipants.content.length !== 0" [dtoTypeTranslate]="'scientist'"
-    [extra]="'2'" [data]="allDataParticipants.content" [pageInfo]="allDataParticipants"
+<app-table-results-dto [findRequest]="findRequest" *ngIf="loaded && allDataParticipants.content.length !== 0"
+    [dtoTypeTranslate]="'scientist'" [extra]="'2'" [data]="allDataParticipants.content" [pageInfo]="allDataParticipants"
     (pageChanged)="allParticipantsFilteredPageChanged($event)"
     (sizeChanged)="allParticipantsFilteredSizeChanged($event)"
     (sortChanged)="allParticipantsFilteredSortChanged($event)">
@@ -72,9 +72,9 @@
     </div>
 </div>
 <div class="loader" *ngIf="!loaded2"></div>
-<app-table-results-dto *ngIf="loaded2" [data]="allDataPerson.content" [pageInfo]="allDataPerson"
-    [dtoTypeTranslate]="'part'" [extra]="'2'" (pageChanged)="allChanged($event)" (sizeChanged)="allChanged($event)"
-    (sortChanged)="allChanged($event)">
+<app-table-results-dto [findRequest]="findRequest" *ngIf="loaded2" [data]="allDataPerson.content"
+    [pageInfo]="allDataPerson" [dtoTypeTranslate]="'part'" [extra]="'2'" (pageChanged)="allChanged($event)"
+    (sizeChanged)="allChanged($event)" (sortChanged)="allChanged($event)">
 </app-table-results-dto>
 <hr>
 <legend>{{'participant.proyect-participants' | translate}}</legend>
@@ -101,7 +101,7 @@
         </div>
     </div>
 </div>
-<app-table-results-dto *ngIf="loaded && allDataParticipantsSecondTable.content.length !== 0"
+<app-table-results-dto [findRequest]="findRequest" *ngIf="loaded && allDataParticipantsSecondTable.content.length !== 0"
     [data]="allDataParticipantsSecondTable.content" [dtoTypeTranslate]="'scientist'" [extra]="'3'"
     [pageInfo]="allDataParticipantsSecondTable" (pageChanged)="allParticipantsFilteredPageChanged($event)"
     (sizeChanged)="allParticipantsFilteredSizeChanged($event)"

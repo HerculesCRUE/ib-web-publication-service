@@ -79,6 +79,8 @@ export class TableResultsDtoComponent
   @Input()
   routerFieldSecondary = '';
 
+  @Input() findRequest: FindRequest = new FindRequest();
+
 
   /**
    * Send the event when page is changed

@@ -122,7 +122,7 @@
         </div>
     </div>
 </div>
-<app-table-results-dto [dtoTypeTranslate]="'projects'" [extra]="'5'" [routerNameLink]="url"
+<app-table-results-dto [findRequest]="findRequest" [dtoTypeTranslate]="'projects'" [extra]="'5'" [routerNameLink]="url"
     *ngIf="loadedProjects && allProjectFiltered.content.length !== 0" [routerField]="'id'"
     [data]="allProjectFiltered.content" [pageInfo]="allProjectFiltered"
     (pageChanged)="allprojectsFilteredPageChanged($event)" (sizeChanged)="allprojectsFilteredSizeChanged($event)"

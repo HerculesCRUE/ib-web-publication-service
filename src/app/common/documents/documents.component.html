@@ -84,7 +84,7 @@
         </div>
     </div>
 </div>
-<app-table-results-dto [dtoTypeTranslate]="'documents'" [extra]="idPrefix"
+<app-table-results-dto [findRequest]="findRequest" [dtoTypeTranslate]="'documents'" [extra]="idPrefix"
     *ngIf="loaded && allDocumentFiltered.content.length !== 0" [data]="allDocumentFiltered.content"
     [routerNameLink]="url" [routerField]="'id'" [routerFieldSecondary]="'type'" [pageInfo]="allDocumentFiltered"
     (pageChanged)="allprojectsFilteredPageChanged($event)" (sizeChanged)="allprojectsFilteredSizeChanged($event)"

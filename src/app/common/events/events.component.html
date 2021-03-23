@@ -66,8 +66,9 @@
         </div>
     </div>
 </div>
-<app-table-results-dto *ngIf="loaded && allEvents.content.length !== 0" [data]="allEvents.content"
-    [pageInfo]="allEvents" [dtoTypeTranslate]="'events'" [extra]="'2'" [routerField]="'id'" [routerNameLink]="url"
-    [routerField]="'id'" [routerFieldSecondary]="'type'" (pageChanged)="allEventsFilteredPageChanged($event)"
-    (sizeChanged)="allEventsFilteredSizeChanged($event)" (sortChanged)="allEventsFilteredSortChanged($event)">
+<app-table-results-dto [findRequest]="findRequest" *ngIf="loaded && allEvents.content.length !== 0"
+    [data]="allEvents.content" [pageInfo]="allEvents" [dtoTypeTranslate]="'events'" [extra]="'2'" [routerField]="'id'"
+    [routerNameLink]="url" [routerField]="'id'" [routerFieldSecondary]="'type'"
+    (pageChanged)="allEventsFilteredPageChanged($event)" (sizeChanged)="allEventsFilteredSizeChanged($event)"
+    (sortChanged)="allEventsFilteredSortChanged($event)">
 </app-table-results-dto>

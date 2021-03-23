@@ -103,10 +103,9 @@ export class DocumentsComponent implements OnInit {
     if (this.idPrefix === 'prodScientist') {
       this.url = '../../../document/';
     }
-    const pageRequest: PageRequest = new PageRequest();
-    pageRequest.page = 0;
-    pageRequest.size = 10;
-    this.findRequest.pageRequest = pageRequest;
+    this.findRequest.pageRequest.page = 1;
+    this.findRequest.pageRequest.size = 10;
+    this.findRequest.pageRequest.direction = Direction.ASC;
     this.findRequest.filter.types = this.filterDocumentType;
     if (this.idPrefix === 'academic') {
       this.documentService.findAcademicPublication(this.findRequest).subscribe((data) => {
@@ -132,13 +131,6 @@ export class DocumentsComponent implements OnInit {
    */
   filterProjects() {
     this.loaded = false;
-    const pageRequest: PageRequest = new PageRequest();
-    pageRequest.page = 0;
-    pageRequest.size = this.allDocumentFiltered.size;
-    pageRequest.direction = Direction.ASC;
-    this.findRequest.pageRequest = pageRequest;
-
-
     setTimeout(() => {
       if (this.dateIni) {
         const currentDate = Helper.parseYear(this.dateIni);
@@ -234,7 +226,6 @@ export class DocumentsComponent implements OnInit {
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = this.allDocumentFiltered.number;
     pageRequest.size = i;
-    pageRequest.direction = this.allDocumentFiltered.direction;
     this.findRequest.pageRequest = pageRequest;
     if (this.idPrefix === 'academic') {
       this.documentService.findAcademicPublication(this.findRequest).subscribe((data) => {
@@ -257,12 +248,13 @@ export class DocumentsComponent implements OnInit {
    * @memberof PatentsComponent
    */
   allprojectsFilteredSortChanged(pageRequest: PageRequest) {
+    console.log(pageRequest);
     this.loaded = false;
     const newPageRequest: PageRequest = new PageRequest();
     newPageRequest.page = this.allDocumentFiltered.number;
     newPageRequest.size = this.allDocumentFiltered.size;
     newPageRequest.property = pageRequest.property;
-    newPageRequest.direction = pageRequest.direction;
+    newPageRequest.direction = pageRequest.direction === Direction.ASC ? Direction.DESC : Direction.ASC;
     this.findRequest.pageRequest = pageRequest;
 
     if (this.idPrefix === 'academic') {

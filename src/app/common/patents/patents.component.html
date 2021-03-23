@@ -70,7 +70,7 @@
     </div>
 </div>
 
-<app-table-results-dto [dtoTypeTranslate]="'patent'" [extra]="'4'"
+<app-table-results-dto [findRequest]="findRequest" [dtoTypeTranslate]="'patent'" [extra]="'4'"
     *ngIf="loaded && allPatentFiltered.content.length !== 0" [data]="allPatentFiltered.content" [routerNameLink]="url"
     [routerField]="'id'" [pageInfo]="allPatentFiltered" (pageChanged)="allPatentsFilteredPageChanged($event)"
     (sizeChanged)="allPatentsFilteredSizeChanged($event)" (sortChanged)="allPatentsFilteredSortChanged($event)">

@@ -233,9 +233,24 @@ export abstract class PaginatedSearchComponent<T> implements AfterContentInit {
       JSON.stringify(this.findRequest)
     );
     this.findInternal(this.findRequest).subscribe((page: Page<T>) => {
-      this.searchResult = page.content;
+      if (page.numberOfElements === 0 && page.number !== 0) {
+        // Si no se encuentran resultados, se posiciona en la primera página del listado
+        this.findRequest.pageRequest.page = 0;
+        //this.findRequest.pageRequest.uibPage = 1;
+        this.findInternal(this.findRequest).subscribe(
+          ((p: Page<T>) => {
+            this.searchResult = p.content;
+            p.uibPage = p.number + 1;
+            this.resultObject = p;
+          }));
+      } else {
+        this.searchResult = page.content;
+        page.uibPage = page.number + 1;
+        this.resultObject = page;
+      }
+      /*this.searchResult = page.content;
       page.uibPage = page.number + 1;
-      this.resultObject = page;
+      this.resultObject = page;*/
     });
 
   }
@@ -247,6 +262,7 @@ export abstract class PaginatedSearchComponent<T> implements AfterContentInit {
    * @param property Propiedad por la que se pretende ordenar.
    */
   sort(property: string) {
+    console.log(this.findRequest.pageRequest.direction);
     if (this.findRequest.pageRequest.property === property) {
       if (this.findRequest.pageRequest.direction === Direction.DESC) {
         this.findRequest.pageRequest.direction = Direction.ASC;
@@ -255,11 +271,7 @@ export abstract class PaginatedSearchComponent<T> implements AfterContentInit {
       }
     } else {
       this.findRequest.pageRequest.property = property;
-      if (this.findRequest.pageRequest.direction === Direction.DESC) {
-        this.findRequest.pageRequest.direction = Direction.ASC;
-      } else {
-        this.findRequest.pageRequest.direction = Direction.DESC;
-      }
+      this.findRequest.pageRequest.direction = Direction.ASC;
     }
     // this.find();
     this.sortChanged.emit(this.findRequest.pageRequest);
