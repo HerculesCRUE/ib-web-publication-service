@@ -1,8 +1,8 @@
 <fieldset class="panel-default">
     <legend></legend>
     <form class="form-horizontal" #f="ngForm" (keydown.enter)="$event.preventDefault()">
-        <!--    <div class="row">
-            
+        <div class="row">
+
             <div class="form-group col-lg-4">
                 <label for="type" class="control-label">{{ "researchmentStructure.type" | translate }}</label>
                 <div>
@@ -10,16 +10,13 @@
                         class="form-control" [(ngModel)]="findRequest.filter.type" id="type" #type="ngModel"
                         (change)="filterResearchmentStructures()">
                         <option [value]="undefined"> {{ "form.select" | translate }}</option>
-                        <option value="Universidad">Universidad</option>
-                        <option value="Centro">Centro</option>
-                        <option value="Organizacion">Organización</option>
-                        <option value="Fundación">Fundación</option>
-                        <option value="Otras estructuras">Otras estructuras</option>
+                        <option value="University">Universidad</option>
+                        <option value="Organization">Organización</option>
                     </select>
                 </div>
             </div>
-
-          
+        </div>
+        <!--  
             <div class="form-group col-lg-4">
                 <label for="financing" class="control-label">{{ "researchmentStructure.financing" | translate }}</label>
                 <div>

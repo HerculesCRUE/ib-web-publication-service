@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { HelperGraphics } from 'src/app/_helpers/helperGraphics';
-import { FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
+import { Direction, FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
 import { Helper } from 'src/app/_helpers/utils';
 import { Patent } from 'src/app/_models/patent';
 import { GraphicService } from 'src/app/_services/graphic.service';
@@ -86,10 +86,10 @@ export class PatentsComponent implements OnInit {
    */
   ngOnInit(): void {
 
-    const pageRequest: PageRequest = new PageRequest();
-    pageRequest.page = 0;
-    pageRequest.size = 10;
-    this.findRequest.pageRequest = pageRequest;
+
+    this.findRequest.pageRequest.page = 1;
+    this.findRequest.pageRequest.size = 10;
+    this.findRequest.pageRequest.direction = Direction.ASC;
     this.patentService.find(this.findRequest).subscribe(res => {
       this.allPatentFiltered = res;
       this.loaded = true;
@@ -140,7 +140,6 @@ export class PatentsComponent implements OnInit {
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = this.allPatentFiltered.number;
     pageRequest.size = i;
-    pageRequest.direction = this.allPatentFiltered.direction;
     this.findRequest.pageRequest = pageRequest;
     this.patentService.find(this.findRequest).subscribe((data) => {
       this.allPatentFiltered = data;
@@ -156,13 +155,13 @@ export class PatentsComponent implements OnInit {
    * @memberof PatentsComponent
    */
   allPatentsFilteredSortChanged(pageRequest: PageRequest) {
-    this.loaded = false;
     const newPageRequest: PageRequest = new PageRequest();
     newPageRequest.page = this.allPatentFiltered.number;
     newPageRequest.size = this.allPatentFiltered.size;
     newPageRequest.property = pageRequest.property;
     newPageRequest.direction = pageRequest.direction;
     this.findRequest.pageRequest = pageRequest;
+
     this.patentService.find(this.findRequest).subscribe((data) => {
       this.allPatentFiltered = data;
       this.loaded = true;

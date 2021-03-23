@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
+import { Direction, FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
 import { University } from 'src/app/_models/university';
 import { ResearchmentStructuresService } from 'src/app/_services/researchment.structures.service';
 
@@ -28,10 +28,9 @@ export class AllResearchmentStructuresComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const pageRequest: PageRequest = new PageRequest();
-    pageRequest.page = 1;
-    pageRequest.size = 10;
-
+    this.findRequest.pageRequest.page = 0;
+    this.findRequest.pageRequest.size = 10;
+    this.findRequest.pageRequest.direction = Direction.ASC;
     this.researchmentStructureService.find(this.findRequest).subscribe((data) => {
       this.allResearchmentStructuresFiltered = data;
       this.loaded = true;
@@ -64,7 +63,7 @@ export class AllResearchmentStructuresComponent implements OnInit {
   allResearchmentStructuresFilteredPageChanged(i: number): void {
     this.loaded = false;
     const pageRequest: PageRequest = new PageRequest();
-    pageRequest.page = i;
+    pageRequest.page = i - 1;
     pageRequest.size = this.allResearchmentStructuresFiltered.size;
     this.findRequest.pageRequest = pageRequest;
 
@@ -101,13 +100,13 @@ export class AllResearchmentStructuresComponent implements OnInit {
    * @memberof AllResearchmentStructuresComponent
    */
   allResearchmentStructuresFilteredSortChanged(pageRequest: PageRequest): void {
-    this.loaded = false;
+
     const newPageRequest: PageRequest = new PageRequest();
     newPageRequest.page = this.allResearchmentStructuresFiltered.number;
     newPageRequest.size = this.allResearchmentStructuresFiltered.size;
-
+    newPageRequest.property = pageRequest.property;
+    newPageRequest.direction = pageRequest.direction;
     this.findRequest.pageRequest = pageRequest;
-
     this.researchmentStructureService.find(this.findRequest).subscribe((data) => {
       this.allResearchmentStructuresFiltered = data;
       this.loaded = true;
