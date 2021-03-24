@@ -76,7 +76,6 @@ import { ResearchmentStructuresDetailComponent } from '../categories/researchmen
 import { KeycloakService } from 'keycloak-angular';
 import { LoginService } from '../_services/login.service';
 import { MockLoginService } from '../_services/_testingServices/mockLogin.service';
-import { PatentDetail } from '../_models/patentDetail';
 
 
 /**
@@ -108,7 +107,6 @@ export class TestingHelper {
       declarations: [
         TranslatePipeStub,
         PatentsComponent,
-        PatentDetail,
         LoginComponent,
         MainComponent,
         HomeComponent,
