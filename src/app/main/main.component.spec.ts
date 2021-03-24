@@ -4,6 +4,8 @@ import { MainComponent } from './main.component';
 import { TestingHelper } from '../_helpers/testing.spec';
 import { EventEmitter, Pipe, PipeTransform } from '@angular/core';
 import { of } from 'rxjs';
+import { LoginService } from '../_services/login.service';
+import { MockLoginService } from '../_services/_testingServices/mockLogin.service';
 export class TranslateServiceStub {
   public onLangChange = new EventEmitter<any>();
   public onTranslationChange = new EventEmitter<any>();
@@ -29,6 +31,9 @@ describe('MainComponent', () => {
 
   beforeEach(async(() => {
     TestingHelper.configureTest().compileComponents();
+    TestBed.configureTestingModule({
+      providers: [{ provide: LoginService, useClass: MockLoginService }]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -41,10 +46,4 @@ describe('MainComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  describe('toggleMenu', () => {
-    it('should toggle isMenuCollapsed value to true', () => {
-      component.toggleMenu();
-      expect(component.isMenuCollapsed).toBeTruthy();
-    });
-  });
 });
