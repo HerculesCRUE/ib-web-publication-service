@@ -115,7 +115,7 @@
     </div>
 </form>
 <div class="loader" *ngIf="!loadedProjects"></div>
-<div class="container-fluid" *ngIf="loadedProjects && allProjectFiltered.content.length === 0">
+<div class="container-fluid" *ngIf="loadedProjects && allProjectFiltered?.content.length === 0">
     <div class="row">
         <div class="col-12">
             <p>{{'form.no-result' | translate}}</p>
@@ -123,7 +123,7 @@
     </div>
 </div>
 <app-table-results-dto [findRequest]="findRequest" [dtoTypeTranslate]="'projects'" [extra]="'5'" [routerNameLink]="url"
-    *ngIf="loadedProjects && allProjectFiltered.content.length !== 0" [routerField]="'id'"
+    *ngIf="loadedProjects && allProjectFiltered?.content.length !== 0" [routerField]="'id'"
     [data]="allProjectFiltered.content" [pageInfo]="allProjectFiltered"
     (pageChanged)="allprojectsFilteredPageChanged($event)" (sizeChanged)="allprojectsFilteredSizeChanged($event)"
     (sortChanged)="allprojectsFilteredSortChanged($event)">

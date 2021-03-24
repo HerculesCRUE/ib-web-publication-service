@@ -77,7 +77,7 @@
     </div>
 </form>
 <div class="loader" *ngIf="!loaded"></div>
-<div class="container-fluid" *ngIf="loaded && allDocumentFiltered.content.length === 0">
+<div class="container-fluid" *ngIf="loaded && allDocumentFiltered?.content.length === 0">
     <div class="row">
         <div class="col-12">
             <p>{{'form.no-result' | translate}}</p>
@@ -85,7 +85,7 @@
     </div>
 </div>
 <app-table-results-dto [findRequest]="findRequest" [dtoTypeTranslate]="'documents'" [extra]="idPrefix"
-    *ngIf="loaded && allDocumentFiltered.content.length !== 0" [data]="allDocumentFiltered.content"
+    *ngIf="loaded && allDocumentFiltered?.content.length !== 0" [data]="allDocumentFiltered.content"
     [routerNameLink]="url" [routerField]="'id'" [routerFieldSecondary]="'type'" [pageInfo]="allDocumentFiltered"
     (pageChanged)="allprojectsFilteredPageChanged($event)" (sizeChanged)="allprojectsFilteredSizeChanged($event)"
     (sortChanged)="allprojectsFilteredSortChanged($event)">

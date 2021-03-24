@@ -20,90 +20,15 @@ import { SparqlResults } from 'src/app/_models/sparql';
 })
 export class MockEventsService extends AbstractService {
     // mock data
-    readonly DUMMY_DATA: SparqlResults = {
-        head: {
-            vars: [
-                'title',
-                'type',
-                'rol',
-                'place',
-                'date'
-            ]
-        },
-        results: {
-            bindings: [
-                // 1
-                {
-                    title: {
-                        type: 'literal',
-                        value: 'IV Congreso sobre semántica web de España'
-                    },
-                    type: {
-                        type: 'literal',
-                        value: 'Congreso'
-                    },
-                    rol: {
-                        type: 'literal',
-                        value: 'Organizador'
-                    },
-                    place: {
-                        type: 'literal',
-                        value: 'Universidad de Murcia'
-                    },
-                    date: {
-                        type: 'literal',
-                        value: '25-05-2004'
-                    }
-                },
-                // 2
-                {
-                    title: {
-                        type: 'literal',
-                        value: 'XII Congreso sobre dirección de proyectos PMP'
-                    },
-                    type: {
-                        type: 'literal',
-                        value: 'Congreso'
-                    },
-                    rol: {
-                        type: 'literal',
-                        value: 'Expositor'
-                    },
-                    place: {
-                        type: 'literal',
-                        value: 'Izertis Gijón'
-                    },
-                    date: {
-                        type: 'literal',
-                        value: '25-05-2019'
-                    }
-                },
-                {
-                    title: {
-                        type: 'literal',
-                        value: 'I Taller sobre semántica Web Universidad de Oviedo'
-                    },
-                    type: {
-                        type: 'literal',
-                        value: 'Workshop'
-                    },
-                    rol: {
-                        type: 'literal',
-                        value: 'Expositor'
-                    },
-                    place: {
-                        type: 'literal',
-                        value: 'Politecnica UO'
-                    },
-                    date: {
-                        type: 'literal',
-                        value: '03-11-2016'
-                    }
-                }
-
-            ]
+    readonly DUMMY_DATA: Event[] = [
+        {
+            id: '',
+            title: '',
+            type: '',
+            date: '',
+            locality: '',
         }
-    };
+    ];
 
 
 
@@ -122,7 +47,14 @@ export class MockEventsService extends AbstractService {
      * @memberof EventsService
      */
     find(findrequest) {
-        const page: PageRequest = new PageRequest;
+        const page: Page<Event> = new Page<Event>();
+        const results: Event[] = this.DUMMY_DATA;
+        page.number = 0;
+        page.numberOfElements = 10;
+        page.size = 10;
+        page.totalElements = 10;
+        // TODO sort
+        page.content = results;
         return of(page);
     }
 

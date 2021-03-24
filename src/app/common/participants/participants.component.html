@@ -42,14 +42,14 @@
     </div>
 </div>
 <div class="loader" *ngIf="!loaded"></div>
-<div class="container-fluid" *ngIf="loaded && allDataParticipants.content.length === 0">
+<div class="container-fluid" *ngIf="loaded && allDataParticipants?.content.length === 0">
     <div class="row">
         <div class="col-12">
             <p>{{'form.no-result' | translate}}</p>
         </div>
     </div>
 </div>
-<app-table-results-dto [findRequest]="findRequest" *ngIf="loaded && allDataParticipants.content.length !== 0"
+<app-table-results-dto [findRequest]="findRequest" *ngIf="loaded && allDataParticipants?.content.length !== 0"
     [dtoTypeTranslate]="'scientist'" [extra]="'2'" [data]="allDataParticipants.content" [pageInfo]="allDataParticipants"
     (pageChanged)="allParticipantsFilteredPageChanged($event)"
     (sizeChanged)="allParticipantsFilteredSizeChanged($event)"
@@ -94,14 +94,15 @@
     </div>
 </div>
 <div class="loader" *ngIf="!loaded"></div>
-<div class="container-fluid" *ngIf="loaded && allDataParticipantsSecondTable.content.length === 0">
+<div class="container-fluid" *ngIf="loaded && allDataParticipantsSecondTable?.content.length === 0">
     <div class="row">
         <div class="col-12">
             <p>{{'form.no-result' | translate}}</p>
         </div>
     </div>
 </div>
-<app-table-results-dto [findRequest]="findRequest" *ngIf="loaded && allDataParticipantsSecondTable.content.length !== 0"
+<app-table-results-dto [findRequest]="findRequest"
+    *ngIf="loaded && allDataParticipantsSecondTable?.content.length !== 0"
     [data]="allDataParticipantsSecondTable.content" [dtoTypeTranslate]="'scientist'" [extra]="'3'"
     [pageInfo]="allDataParticipantsSecondTable" (pageChanged)="allParticipantsFilteredPageChanged($event)"
     (sizeChanged)="allParticipantsFilteredSizeChanged($event)"

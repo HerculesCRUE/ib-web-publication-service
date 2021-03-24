@@ -229,7 +229,7 @@ describe('TableResultsComponent', () => {
     it('without pageInfo', () => {
       component.callShowPageWhenSizeChanges(5);
       expect(component.findRequest.pageRequest.size).toEqual(5);
-      expect(component.resultObject.uibPage).toEqual(component.findRequest.pageRequest.page);
+      expect(component.resultObject.uibPage).toEqual(1);
 
     });
 
