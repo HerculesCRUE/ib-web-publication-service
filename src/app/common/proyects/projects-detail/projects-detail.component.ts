@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { FindRequest } from 'src/app/_helpers/search';
@@ -38,7 +39,8 @@ export class ProjectsDetailComponent implements OnInit {
   activeTab: string;
   constructor(
     private route: ActivatedRoute,
-    private projectService: ProjectService) { }
+    private projectService: ProjectService,
+    private _location: Location) { }
 
   ngOnInit(): void {
     this.activeTab = 'general-info';
@@ -69,5 +71,8 @@ export class ProjectsDetailComponent implements OnInit {
     this.activeTab = tabName;
   }
 
+  backClicked() {
+    this._location.back();
+  }
 
 }

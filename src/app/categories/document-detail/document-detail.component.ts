@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DocumentDetail } from 'src/app/_models/documentDetail';
@@ -26,7 +27,7 @@ export class DocumentDetailComponent implements OnInit {
   document: any;
   loaded: boolean;
   lastItem = '';
-  constructor(private documentService: DocumentService, private rutaActiva: ActivatedRoute) { }
+  constructor(private documentService: DocumentService, private rutaActiva: ActivatedRoute, private _location: Location) { }
 
   ngOnInit(): void {
     const id = this.rutaActiva.snapshot.params.id;
@@ -44,7 +45,9 @@ export class DocumentDetailComponent implements OnInit {
     });
   }
 
-
+  backClicked() {
+    this._location.back();
+  }
 
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeGroupItem } from '../_models/home';
 import { HomeService } from '../_services/home.service';
+import { LoginService } from '../_services/login.service';
 import { TranslateHelperService } from '../_services/translate-helper.service';
 
 @Component({
@@ -18,14 +19,20 @@ export class HomeComponent implements OnInit {
    * Categoria seleccionada.
    */
   category: string;
+  isLogged: boolean;
 
-  constructor(private homeService: HomeService) { }
+  constructor(private homeService: HomeService, private loginService: LoginService) { }
 
   ngOnInit(): void {
+    this.loginService.keycloakIsActive().subscribe(data => {
+      this.isLogged = data;
+    });
     this.homeService.getHome().then((groupItems: HomeGroupItem[]) => {
       this.groupItems = groupItems;
     });
   }
+
+
 
 
 }

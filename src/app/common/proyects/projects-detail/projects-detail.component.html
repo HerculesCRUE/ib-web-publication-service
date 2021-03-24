@@ -3,61 +3,78 @@
         <legend class="legend" *ngIf="loaded">{{proyect[0]?.name?.value}}</legend>
     </div>
 </div>
-
-
+<div class="container-fluid">
+    <div class="row text-muted">
+        <div class="col-12 text-right">
+            <p>
+                <a (click)="backClicked()" class="text-muted"> {{'form.back' | translate}} </a>
+            </p>
+        </div>
+    </div>
+</div>
 <div class="row">
-    <div class="col-12 mt-40">
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item" role="presentation">
-                <a class="nav-link" [ngClass]="{'active': activeTab === 'general-info' }" id="general-info-tab"
-                    (click)="changeTab('general-info')" data-bs-toggle="tab" href="JavaScript:void(0)" role="tab"
-                    aria-controls="general-info"
-                    [attr.aria-selected]="activeTab === 'general-info'">{{'projects.general-info' | translate}}</a>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link" [ngClass]="{'active': activeTab === 'participants' }" id="participants-tab"
-                    (click)="changeTab('participants')" data-bs-toggle="tab" href="JavaScript:void(0)" role="tab"
-                    aria-controls="participants"
-                    [attr.aria-selected]="activeTab === 'participants'">{{'projects.participants' | translate}}</a>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link" [ngClass]="{'active': activeTab === 'deliverables' }" id="deliverables-tab"
-                    (click)="changeTab('deliverables')" data-bs-toggle="tab" href="JavaScript:void(0)" role="tab"
-                    aria-controls="deliverables"
-                    [attr.aria-selected]="activeTab === 'other-publications'">{{'projects.deliverables' |
-                    translate}}</a>
-            </li>
+    <div class="col-12">
+        <div class="card flex-fill">
+            <div class="card-header">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" [ngClass]="{'active': activeTab === 'general-info' }" id="general-info-tab"
+                            (click)="changeTab('general-info')" data-bs-toggle="tab" href="JavaScript:void(0)"
+                            role="tab" aria-controls="general-info"
+                            [attr.aria-selected]="activeTab === 'general-info'">{{'projects.general-info' |
+                            translate}}</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" [ngClass]="{'active': activeTab === 'participants' }" id="participants-tab"
+                            (click)="changeTab('participants')" data-bs-toggle="tab" href="JavaScript:void(0)"
+                            role="tab" aria-controls="participants"
+                            [attr.aria-selected]="activeTab === 'participants'">{{'projects.participants' |
+                            translate}}</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" [ngClass]="{'active': activeTab === 'deliverables' }" id="deliverables-tab"
+                            (click)="changeTab('deliverables')" data-bs-toggle="tab" href="JavaScript:void(0)"
+                            role="tab" aria-controls="deliverables"
+                            [attr.aria-selected]="activeTab === 'other-publications'">{{'projects.deliverables' |
+                            translate}}</a>
+                    </li>
 
-        </ul>
-        <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade"
-                [ngClass]="{'show': activeTab === 'general-info', 'active': activeTab === 'general-info' }"
-                id="general-info" role="tabpanel" aria-labelledby="general-info-tab">
-                <div class="row">
-                    <div class="col-12 mt-40">
-                        <p><strong>{{ 'projects.project-name' | translate}}:</strong><span *ngIf="loaded">
-                                {{proyect[0]?.name?.value}} </span> </p>
-                        <p><strong>{{ 'projects.key-words' | translate}}:</strong>- web, universidades </p>
-                        <p><strong>{{ 'projects.project-type' | translate}}:</strong><span *ngIf="loaded">
-                                {{proyect[0]?.tipo?.value}} </span> </p>
-                        <p><strong>{{ 'projects.financing-type' | translate}}:</strong> <span *ngIf="loaded">
-                                {{proyect[0]?.fund?.value}} </span></p>
-                        <p><strong>{{ 'projects.call-type' | translate}}:</strong>- Público </p>
-                        <p><strong>{{ 'projects.people-involved' | translate}}:</strong>- 23 </p>
-                        <p><strong>{{ 'projects.main-researcher' | translate}}:</strong>- Maria Hernandez Reyes Mora
-                        </p>
+                </ul>
+            </div>
+            <div id="datatables-dashboard-markets_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade"
+                        [ngClass]="{'show': activeTab === 'general-info', 'active': activeTab === 'general-info' }"
+                        id="general-info" role="tabpanel" aria-labelledby="general-info-tab">
+                        <div class="row">
+                            <div class="col-12 mt-40">
+                                <p><strong>{{ 'projects.project-name' | translate}}:</strong><span *ngIf="loaded">
+                                        {{proyect[0]?.name?.value}} </span> </p>
+                                <p><strong>{{ 'projects.key-words' | translate}}:</strong>- web, universidades </p>
+                                <p><strong>{{ 'projects.project-type' | translate}}:</strong><span *ngIf="loaded">
+                                        {{proyect[0]?.tipo?.value}} </span> </p>
+                                <p><strong>{{ 'projects.financing-type' | translate}}:</strong> <span *ngIf="loaded">
+                                        {{proyect[0]?.fund?.value}} </span></p>
+                                <p><strong>{{ 'projects.call-type' | translate}}:</strong>- Público </p>
+                                <p><strong>{{ 'projects.people-involved' | translate}}:</strong>- 23 </p>
+                                <p><strong>{{ 'projects.main-researcher' | translate}}:</strong>- Maria Hernandez Reyes
+                                    Mora
+                                </p>
+                            </div>
+                        </div>
                     </div>
+                    <div class="tab-pane fade"
+                        [ngClass]="{'show': activeTab === 'participants', 'active': activeTab === 'participants' }"
+                        id="participants" role="tabpanel" aria-labelledby="participants-tab">
+                        <app-participants></app-participants>
+                    </div>
+                    <div class="tab-pane fade" id="deliverables"
+                        [ngClass]="{'show': activeTab === 'deliverables', 'active': activeTab === 'deliverables' }"
+                        role="tabpanel" aria-labelledby="deliverables-tab">
+                        <app-deliverable></app-deliverable>
+                    </div>
+
                 </div>
-            </div>
-            <div class="tab-pane fade"
-                [ngClass]="{'show': activeTab === 'participants', 'active': activeTab === 'participants' }"
-                id="participants" role="tabpanel" aria-labelledby="participants-tab">
-                <app-participants></app-participants>
-            </div>
-            <div class="tab-pane fade" id="deliverables"
-                [ngClass]="{'show': activeTab === 'deliverables', 'active': activeTab === 'deliverables' }"
-                role="tabpanel" aria-labelledby="deliverables-tab">
-                <app-deliverable></app-deliverable>
             </div>
 
         </div>

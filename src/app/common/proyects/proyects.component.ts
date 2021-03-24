@@ -66,7 +66,7 @@ export class ProyectsComponent implements OnInit {
    * @type {boolean}
    * @memberof ProyectsComponent
    */
-  loadedProjects = false;
+  loaded = false;
   /**
    *
    *
@@ -111,7 +111,7 @@ export class ProyectsComponent implements OnInit {
     this.findRequest.pageRequest = pageRequest;
     this.projectService.find(this.findRequest).subscribe((data) => {
       this.allProjectFiltered = data;
-      this.loadedProjects = true;
+      this.loaded = true;
     });
 
     let xAxisData: Array<string> = [];
@@ -168,12 +168,12 @@ export class ProyectsComponent implements OnInit {
    * @memberof ProyectsComponent
    */
   allprojectsFilteredPageChanged(i: number): void {
-    this.loadedProjects = false;
+    this.loaded = false;
     this.findRequest.pageRequest.page = i - 1;
     this.findRequest.pageRequest.size = this.allProjectFiltered.size;
     this.projectService.find(this.findRequest).subscribe((data) => {
       this.allProjectFiltered = data;
-      this.loadedProjects = true;
+      this.loaded = true;
     });
   }
 
@@ -185,7 +185,7 @@ export class ProyectsComponent implements OnInit {
    * @memberof ProyectsComponent
    */
   allprojectsFilteredSizeChanged(i: number): void {
-    this.loadedProjects = false;
+    this.loaded = false;
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = this.allProjectFiltered.number;
     pageRequest.size = i;
@@ -193,7 +193,7 @@ export class ProyectsComponent implements OnInit {
     this.findRequest.pageRequest = pageRequest;
     this.projectService.find(this.findRequest).subscribe((data) => {
       this.allProjectFiltered = data;
-      this.loadedProjects = true;
+      this.loaded = true;
     });
   }
 
@@ -205,7 +205,7 @@ export class ProyectsComponent implements OnInit {
    * @memberof ProyectsComponent
    */
   allprojectsFilteredSortChanged(pageRequest: PageRequest) {
-    this.loadedProjects = false;
+    this.loaded = false;
     const newPageRequest: PageRequest = new PageRequest();
     newPageRequest.page = this.allProjectFiltered.number;
     newPageRequest.size = this.allProjectFiltered.size;
@@ -214,7 +214,7 @@ export class ProyectsComponent implements OnInit {
     this.findRequest.pageRequest = pageRequest;
     this.projectService.find(this.findRequest).subscribe((data) => {
       this.allProjectFiltered = data;
-      this.loadedProjects = true;
+      this.loaded = true;
     });
   }
 
@@ -250,7 +250,7 @@ export class ProyectsComponent implements OnInit {
       }
       this.projectService.find(this.findRequest).subscribe((data) => {
         this.allProjectFiltered = data;
-        this.loadedProjects = true;
+        this.loaded = true;
       });
     }, 0);
   }

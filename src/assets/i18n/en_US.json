@@ -38,7 +38,8 @@
     "clean": "Clean",
     "change-tree-normal": "Change to normal tree",
     "no-result": "No results",
-    "results-amount": "Total: "
+    "results-amount": "Total: ",
+    "back": "Go back"
   },
   "menu": {
     "home": "Welcome",

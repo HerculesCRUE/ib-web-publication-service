@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EventDetail } from 'src/app/_models/eventDetail';
@@ -11,7 +12,7 @@ export class EventDetailComponent implements OnInit {
   event: EventDetail = new EventDetail();
   lastItem = '';
   loaded: boolean;
-  constructor(private eventService: EventsService, private rutaActiva: ActivatedRoute) { }
+  constructor(private eventService: EventsService, private rutaActiva: ActivatedRoute, private _location: Location) { }
 
   ngOnInit(): void {
     const id = this.rutaActiva.snapshot.params.id;
@@ -28,5 +29,10 @@ export class EventDetailComponent implements OnInit {
       }
     });
   }
+
+  backClicked() {
+    this._location.back();
+  }
+
 
 }

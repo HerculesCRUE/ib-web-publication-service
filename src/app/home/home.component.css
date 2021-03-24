@@ -56,3 +56,12 @@
   }
 }
 
+
+.card-header:first-child {
+	border-radius: .25rem .25rem 0 0;
+  min-height: 90px;
+}
+
+.hidden {
+  display: none!important;
+}

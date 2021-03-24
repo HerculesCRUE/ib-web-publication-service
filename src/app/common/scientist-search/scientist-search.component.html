@@ -1,5 +1,10 @@
 <form class="form-horizontal " (ngSubmit)="f.form.valid" #f="ngForm" (keydown.enter)="$event.preventDefault()">
-    <div class="row mt-20">
+    <div class="row">
+        <div class="col-12">
+            <h5 class="card-title"> {{'form.search-form' | translate}}</h5>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-lg-12">
             <button role="button" aria-pressed="false" class="btn btn-secondary tree" *ngIf="normalTree"
                 (click)="normalTree = !normalTree">{{'form.change-tree' |
@@ -21,54 +26,57 @@
         </div>
     </div>
 
-</form>
-<div class="row">
-    <div class="col-12">
-        <div class="card flex-fill">
-            <div class="card-header">
 
-                <div class="container-fluid">
-                    <div class="row justify-content-end">
+    <div class="row">
+        <div class="col-12">
+            <div class="card flex-fill">
+                <div class="card-header">
 
-                        <div class="input-group col-md-4" role="search">
-                            <input class="form-control py-2 border-right-0 border" type="search" name="search"
-                                #search="ngModel" placeholder="{{'form.search-by-title' | translate }}"
-                                [(ngModel)]="findRequest.filter.name" (keyup.enter)="filterTop($event, 'name')">
-                            <span class="input-group-append">
-                                <button (click)="filterTop($event, 'name')"
-                                    [attr.aria-label]="'form.search-by-name' | translate" role="button"
-                                    aria-pressed="false" class="btn btn-outline-secondary border-left-0 border"
-                                    type="button">
-                                    <em class="oi oi-magnifying-glass "></em>
-                                </button>
-                            </span>
-                        </div>
-                        <div class="input-group col-md-2 text-right">
-                            <button id="clean" [attr.aria-label]="'form.clean' | translate " role="button"
-                                aria-pressed="false" class="btn btn-secondary" (click)="f.resetForm();">{{'form.clean' |
-                                translate }}</button>
+                    <div class="container-fluid">
+                        <div class="row justify-content-end">
+
+                            <div class="input-group col-md-4" role="search">
+                                <input class="form-control py-2 border-right-0 border" type="search" name="search"
+                                    #search="ngModel" placeholder="{{'form.search-by-title' | translate }}"
+                                    [(ngModel)]="findRequest.filter.name" (keyup.enter)="filterTop($event, 'name')">
+                                <span class="input-group-append">
+                                    <button (click)="filterTop($event, 'name')"
+                                        [attr.aria-label]="'form.search-by-name' | translate" role="button"
+                                        aria-pressed="false" class="btn btn-outline-secondary border-left-0 border"
+                                        type="button">
+                                        <em class="oi oi-magnifying-glass "></em>
+                                    </button>
+                                </span>
+                            </div>
+                            <div class="input-group col-md-2 text-right">
+                                <button id="clean" [attr.aria-label]="'form.clean' | translate " role="button"
+                                    aria-pressed="false" class="btn btn-secondary"
+                                    (click)="f.resetForm();">{{'form.clean' |
+                                    translate }}</button>
+                            </div>
                         </div>
                     </div>
+                    <h5 class="card-title mb-0" *ngIf="loaded && allScientificsFiltered?.content.length === 0">
+                        {{'form.no-result' | translate}}</h5>
+                    <h5 class="card-title mb-0" *ngIf="loaded && allScientificsFiltered?.content.length !== 0">
+                        {{'form.results-amount' | translate}} {{allScientificsFiltered.totalElements}}</h5>
                 </div>
-                <h5 class="card-title mb-0" *ngIf="loaded && allScientificsFiltered?.content.length === 0">
-                    {{'form.no-result' | translate}}</h5>
-                <h5 class="card-title mb-0" *ngIf="loaded && allScientificsFiltered?.content.length !== 0">
-                    {{'form.results-amount' | translate}} {{allScientificsFiltered.totalElements}}</h5>
+
+                <div id="datatables-dashboard-markets_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                    <div class="loader" *ngIf="!loaded"></div>
+                    <app-table-results-dto [findRequest]="findRequest" [routerNameLink]="url" [routerField]="'id'"
+                        *ngIf="loaded && allScientificsFiltered?.content.length !== 0"
+                        [data]="allScientificsFiltered.content" [dtoTypeTranslate]="'scientist'" [extra]="'2'"
+                        [pageInfo]="allScientificsFiltered" (pageChanged)="allScientistsFilteredPageChanged($event)"
+                        (sizeChanged)="allScientistsFilteredSizeChanged($event)"
+                        (sortChanged)="allScientistsFilteredSortChanged($event)">
+                    </app-table-results-dto>
+                </div>
+
             </div>
-            <div class="loader" *ngIf="!loaded"></div>
-
-            <app-table-results-dto [findRequest]="findRequest" [routerNameLink]="url" [routerField]="'id'"
-                *ngIf="loaded && allScientificsFiltered?.content.length !== 0" [data]="allScientificsFiltered.content"
-                [dtoTypeTranslate]="'scientist'" [extra]="'2'" [pageInfo]="allScientificsFiltered"
-                (pageChanged)="allScientistsFilteredPageChanged($event)"
-                (sizeChanged)="allScientistsFilteredSizeChanged($event)"
-                (sortChanged)="allScientistsFilteredSortChanged($event)">
-            </app-table-results-dto>
-
         </div>
     </div>
-</div>
-
+</form>
 <div class="row">
     <div class="col-12">
         <div class="card flex-fill">

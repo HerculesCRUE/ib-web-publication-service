@@ -1,16 +1,11 @@
 <form class="form-horizontal " (ngSubmit)="f.form.valid" #f="ngForm" (keydown.enter)="$event.preventDefault()">
-    <div class="row mt-20">
-        <!-- rol -->
-        <!-- <div class="form-group col-lg-6">
-            <label for="rol" class="control-label">{{ "events.rol" | translate }}</label>
-            <div>
-                <select name="rol" class="form-control" [(ngModel)]="findRequest.filter.rol" #rol="ngModel">
-                    <option [value]="undefined">{{ "form.select" | translate }}</option>
-                    <option [value]="'Organizador'">Organizador</option>
-                    <option [value]="'Expositor'">Expositor</option>
-                </select>
-            </div>
-        </div>-->
+    <div class="row">
+        <div class="col-12">
+            <h5 class="card-title"> {{'form.search-form' | translate}}</h5>
+        </div>
+    </div>
+    <div class="row">
+
         <!-- rol -->
         <div class="form-group col-lg-6">
             <label for="type" class="control-label">{{ "events.type" | translate }}</label>

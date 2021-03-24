@@ -1,5 +1,10 @@
 <form class="form-horizontal " (ngSubmit)="f.form.valid" #f="ngForm" (keydown.enter)="$event.preventDefault()">
-    <div class="row mt-20">
+    <div class="row">
+        <div class="col-12">
+            <h5 class="card-title"> {{'form.search-form' | translate}}</h5>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-lg-12">
             <button role="button" aria-pressed="false" class="btn btn-secondary tree" *ngIf="normalTree"
                 (click)="normalTree = !normalTree">{{'form.change-tree' |
@@ -90,60 +95,64 @@
             </div>-->
         </div>
     </div>
-</form>
-<div class="row">
-    <div class="col-12">
-        <div class="card flex-fill">
-            <div class="card-header">
-                <h5 class="card-title mb-0" *ngIf="loadedProjects && allProjectFiltered?.content.length === 0">
-                    {{'form.no-result' | translate}}</h5>
-                <h5 class="card-title mb-0" *ngIf="loadedProjects && allProjectFiltered?.content.length !== 0">
-                    {{'form.results-amount' | translate}} {{allProjectFiltered.totalElements}}</h5>
-                <div class="container-fluid">
-                    <div class="row justify-content-end">
 
-                        <div class="input-group col-md-4" role="search">
-                            <input class="form-control py-2 border-right-0 border" type="search" name="search"
-                                #search="ngModel" placeholder="{{'form.search-by-title' | translate }}"
-                                [(ngModel)]="findRequest.filter.name" (keyup.enter)="filterProjects()">
-                            <span class="input-group-append">
-                                <button (click)="filterProjects()" [attr.aria-label]="'form.search-by-name' | translate"
-                                    role="button" aria-pressed="false"
-                                    class="btn btn-outline-secondary border-left-0 border" type="button">
-                                    <em class="oi oi-magnifying-glass "></em>
-                                </button>
-                            </span>
-                        </div>
-                        <div class="input-group col-md-2 text-right">
-                            <button id="clean" [attr.aria-label]="'form.clean' | translate " role="button"
-                                aria-pressed="false" class="btn btn-secondary" (click)="f.resetForm();">{{'form.clean' |
-                                translate }}</button>
+    <div class="row">
+        <div class="col-12">
+            <div class="card flex-fill">
+                <div class="card-header">
+                    <h5 class="card-title mb-0" *ngIf="loaded && allProjectFiltered?.content.length === 0">
+                        {{'form.no-result' | translate}}</h5>
+                    <h5 class="card-title mb-0" *ngIf="loaded && allProjectFiltered?.content.length !== 0">
+                        {{'form.results-amount' | translate}} {{allProjectFiltered.totalElements}}</h5>
+                    <div class="container-fluid">
+                        <div class="row justify-content-end">
+
+                            <div class="input-group col-md-4" role="search">
+                                <input class="form-control py-2 border-right-0 border" type="search" name="search"
+                                    #search="ngModel" placeholder="{{'form.search-by-title' | translate }}"
+                                    [(ngModel)]="findRequest.filter.name" (keyup.enter)="filterProjects()">
+                                <span class="input-group-append">
+                                    <button (click)="filterProjects()"
+                                        [attr.aria-label]="'form.search-by-name' | translate" role="button"
+                                        aria-pressed="false" class="btn btn-outline-secondary border-left-0 border"
+                                        type="button">
+                                        <em class="oi oi-magnifying-glass "></em>
+                                    </button>
+                                </span>
+                            </div>
+                            <div class="input-group col-md-2 text-right">
+                                <button id="clean" [attr.aria-label]="'form.clean' | translate " role="button"
+                                    aria-pressed="false" class="btn btn-secondary"
+                                    (click)="f.resetForm();">{{'form.clean' |
+                                    translate }}</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div id="datatables-dashboard-markets_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-                <app-table-results-dto [findRequest]="findRequest" [dtoTypeTranslate]="'projects'" [extra]="'5'"
-                    [routerNameLink]="url" *ngIf="loadedProjects && allProjectFiltered?.content.length !== 0"
-                    [routerField]="'id'" [data]="allProjectFiltered.content" [pageInfo]="allProjectFiltered"
-                    (pageChanged)="allprojectsFilteredPageChanged($event)"
-                    (sizeChanged)="allprojectsFilteredSizeChanged($event)"
-                    (sortChanged)="allprojectsFilteredSortChanged($event)">
-                </app-table-results-dto>
+                <div id="datatables-dashboard-markets_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                    <div class="loader" *ngIf="!loaded"></div>
+                    <app-table-results-dto [findRequest]="findRequest" [dtoTypeTranslate]="'projects'" [extra]="'5'"
+                        [routerNameLink]="url" *ngIf="loaded && allProjectFiltered?.content.length !== 0"
+                        [routerField]="'id'" [data]="allProjectFiltered.content" [pageInfo]="allProjectFiltered"
+                        (pageChanged)="allprojectsFilteredPageChanged($event)"
+                        (sizeChanged)="allprojectsFilteredSizeChanged($event)"
+                        (sortChanged)="allprojectsFilteredSortChanged($event)">
+                    </app-table-results-dto>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-12">
-        <div class="card flex-fill">
-            <div class="card-header">
+    <div class="row">
+        <div class="col-12">
+            <div class="card flex-fill">
+                <div class="card-header">
 
-            </div>
-            <div id="datatables-dashboard-markets_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-                <div style="min-width: 600px; width:100%; height:450px" echarts [loading]="loadingData "
-                    [options]="echartOptions" class="demo-chart"></div>
+                </div>
+                <div id="datatables-dashboard-markets_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                    <div style="min-width: 600px; width:100%; height:450px" echarts [loading]="loadingData "
+                        [options]="echartOptions" class="demo-chart"></div>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</form>

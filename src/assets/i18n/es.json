@@ -34,11 +34,12 @@
     "yes": "Sí",
     "no": "No",
     "datepicker-placeholder": "YYYY-MM-DD",
-    "change-tree": "versión gráfica",
+    "change-tree": "Vista gráfica",
     "clean": "Limpiar Filtros",
-    "change-tree-normal": "versión listado",
+    "change-tree-normal": "Vista listado",
     "no-result": "Lo sentimos, no hay resultados para esta búsqueda",
-    "results-amount": "Resultados totales: "
+    "results-amount": "Resultados totales: ",
+    "back": "Volver"
   },
   "menu": {
     "home": "Inicio",
