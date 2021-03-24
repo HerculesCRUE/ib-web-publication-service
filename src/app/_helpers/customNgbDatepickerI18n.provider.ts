@@ -1,10 +1,16 @@
 import { Component, Injectable } from '@angular/core';
 import { NgbDatepickerI18n, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { TranslateService } from '@ngx-translate/core';
 import * as moment from 'moment';
+import { TranslateHelperService } from '../_services/translate-helper.service';
 const I18N_VALUES = {
     es: {
         weekdays: ['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa', 'Do'],
         months: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+    },
+    en: {
+        weekdays: ['Mon', 'Tues', 'Web', 'Thurs', 'Fri', 'Sat', 'Sun'],
+        months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     }
     // other languages you would support
 };
@@ -14,7 +20,7 @@ export class I18n {
 }
 @Injectable()
 export class CustomNgbDatepickerI18n extends NgbDatepickerI18n {
-    constructor(private i18n: I18n) {
+    constructor(private i18n: I18n, private translateHelperService: TranslateHelperService) {
         super();
     }
     /*getDayAriaLabel(date: NgbDateStruct): string {
@@ -35,10 +41,10 @@ export class CustomNgbDatepickerI18n extends NgbDatepickerI18n {
     }*/
 
     getWeekdayShortName(weekday: number): string {
-        return I18N_VALUES[this.i18n.language].weekdays[weekday - 1];
+        return I18N_VALUES[this.translateHelperService.getLocalLang()].weekdays[weekday - 1];
     }
     getMonthShortName(month: number): string {
-        return I18N_VALUES[this.i18n.language].months[month - 1];
+        return I18N_VALUES[this.translateHelperService.getLocalLang()].months[month - 1];
     }
     getMonthFullName(month: number): string {
         return this.getMonthShortName(month);
