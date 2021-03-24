@@ -4,6 +4,5 @@
 @import "open-iconic/font/css/open-iconic-bootstrap.css";
 @import "~@ng-select/ng-select/themes/default.theme.css";
 @import "~@triply/yasgui/build/yasgui.min.css";
-@import "assets/sidebar/simple-sidebar.css";
 @import "leaflet/dist/leaflet.css";
 @import "assets/app.css";

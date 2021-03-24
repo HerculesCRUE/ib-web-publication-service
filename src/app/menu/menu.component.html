@@ -1,47 +1,24 @@
-<ul class="sidebar-nav" role="list">
-  <!-- Hercules logo -->
-  <li class=" sidebar-brand">
-    <img alt="Logo Hercules" class="logo" src="assets/images/transparent logo Hercules.png">
-  </li>
-  <!-- menu entries -->
-  <ng-container *ngFor="let item of menuItems">
-    <li class="sidebar-brand" *ngIf="item.title === 'menu.sparql' && isLogged">
-      <ng-container>
-        <a [routerLink]="[item.url]">
-          <em class="oi icons-menu" [ngClass]="[item.icon]"></em>
-          {{ item.title | translate }}
-        </a>
-      </ng-container>
-    </li>
-    <li class="sidebar-brand" *ngIf="item.title !== 'menu.sparql'">
-      <ng-container *ngIf="!item.disabled && item.title !== 'menu.sparql'">
-        <a [routerLink]="[item.url]">
-          <em class="oi icons-menu" [ngClass]="[item.icon]"></em>
-          {{ item.title | translate }}
-        </a>
-      </ng-container>
-      <ng-container *ngIf="item.disabled">
+<!-- menu entries -->
+<ng-container *ngFor="let item of menuItems">
+
+  <li class="sidebar-brand" *ngIf="item.title === 'menu.sparql' && isLogged" routerLinkActive="active">
+    <ng-container>
+      <a [routerLink]="[item.url]">
         <em class="oi icons-menu" [ngClass]="[item.icon]"></em>
         {{ item.title | translate }}
-      </ng-container>
-    </li>
-  </ng-container>
-
-  <!-- logout button -->
-  <li class=" sidebar-brand cursor" [routerLink]="'./login'" *ngIf="!isLogged">
-    <em class="oi oi-account-login icons-menu"></em>
-    {{ "menu.login" | translate }}
+      </a>
+    </ng-container>
   </li>
-  <li class=" sidebar-brand cursor" (click)="logout()" *ngIf="isLogged">
-    <em class="oi oi-account-logout icons-menu"></em>
-    {{ "menu.logout" | translate }}
+  <li class="sidebar-item" *ngIf="item.title !== 'menu.sparql'" routerLinkActive="active">
+    <ng-container *ngIf="!item.disabled && item.title !== 'menu.sparql'">
+      <a class="sidebar-link" [routerLink]="[item.url]">
+        <em class="oi icons-menu" [ngClass]="[item.icon]"></em>
+        {{ item.title | translate }}
+      </a>
+    </ng-container>
+    <ng-container *ngIf="item.disabled">
+      <em class="oi icons-menu" [ngClass]="[item.icon]"></em>
+      {{ item.title | translate }}
+    </ng-container>
   </li>
-  <li class="lang-container">
-    <a class="link-logo cursor" href="JavaScript:void(0)" (click)="translateHelperService.setTransLanguage('es')">
-      <img class="img-logo" alt="{{'lang.es' | translate}}" src="assets/images/spanish-language.png" />
-    </a>
-    <a class="link-logo cursos" href="JavaScript:void(0)" (click)="translateHelperService.setTransLanguage('en')">
-      <img class="img-logo" alt="{{'lang.en' | translate}}" src="assets/images/english-language.png" />
-    </a>
-  </li>
-</ul>
+</ng-container>

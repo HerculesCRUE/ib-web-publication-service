@@ -155,9 +155,9 @@ export const HOME_ITEMS: HomeGroupItem[] = [{
       title: 'home.info-URI',
       iconName: 'oi-link-intact',
       iconCircle: false,
-      url: null,
-      disabled: true,
-      urlExterna: ''
+      url: '',
+      disabled: false,
+      urlExterna: 'https://github.com/HerculesCRUE/ib-asio-docs-/blob/a3e838e9944faac26957cc1944b468f65596a2c9/09-Buenas_pr%C3%A1cticas_para_URIs_H%C3%A9rcules/ASIO_Izertis_Contrato_BuenasPracticasParaURIsHercules.md'
     },
     {
       title: 'home.validators',
@@ -171,9 +171,9 @@ export const HOME_ITEMS: HomeGroupItem[] = [{
       title: 'home.sgi',
       iconName: 'oi-hard-drive',
       iconCircle: false,
-      url: null,
-      disabled: true,
-      urlExterna: ''
+      url: '',
+      disabled: false,
+      urlExterna: 'https://www.um.es/web/hercules/proyectos/sgi'
     },
     {
       title: 'home.graphs',
@@ -187,9 +187,9 @@ export const HOME_ITEMS: HomeGroupItem[] = [{
       title: 'home.info-hercules',
       iconName: 'oi-info',
       iconCircle: true,
-      url: null,
-      disabled: true,
-      urlExterna: ''
+      url: '',
+      disabled: false,
+      urlExterna: 'https://www.um.es/web/hercules/sobre-hercules'
     },
     {
       title: 'home.contact',

@@ -21,28 +21,34 @@ export class HelperGraphics {
     static configChartPie(data: any, seriesName: string, titleText: string) {
         return {
             title: {
-                text: titleText,
+                text: 'Núm. Universidades [Financiación]',
                 left: 'center',
             },
+            color: ["#264653", "#2a9d8f", "#e9c46a", "#f4a261", "#e76f51"],
             tooltip: {
                 trigger: 'item',
                 formatter: '{a} <br/>{b} : {c} ({d}%)',
             },
             legend: {
-                type: 'scroll',
+                type: 'plain',
                 orient: 'horizontal',
+                left: "left",
                 right: 10,
                 top: 30,
                 bottom: 0,
                 data: data.legendData,
+                textStyle: {
+                    fontFamily: "Poppins"
+                },
+                color: '#333',
                 selected: data.selected,
             },
             series: [
                 {
-                    name: seriesName,
+                    name: 'Sello de Calidad',
                     type: 'pie',
+                    top: '10%',
                     radius: '55%',
-                    center: ['40%', '50%'],
                     data: data.seriesData,
                     emphasis: {
                         itemStyle: {
@@ -183,6 +189,7 @@ export class HelperGraphics {
             series: [{
                 type: 'treemap',
                 data: dataTree,
+                silent: false,
                 label: {
                     show: true,
                     normal: {
@@ -262,7 +269,7 @@ export class HelperGraphics {
                     {
                         name: 'Publicación académica',
                         value: 'PUA',
-                        selected: true,
+                        selected: false,
                         children: [
                             {
                                 name: 'Tesis',
@@ -348,7 +355,7 @@ export class HelperGraphics {
                     {
                         name: 'Ciencias sociales y humanidades',
                         value: 'CSH',
-                        selected: true,
+                        selected: false,
                         children: [
                             {
                                 name: 'Ciencias sociales',

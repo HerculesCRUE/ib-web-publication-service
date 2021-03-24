@@ -24,63 +24,73 @@
         <app-tree [treeType]="'documents'"></app-tree>
     </div>
 </div>
+
 <div class="row">
-    <div class="col-12 mt-40">
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item" role="presentation">
-                <a class="nav-link" [ngClass]="{'active': activeTab === 'scientific-publications' }"
-                    id="scientific-publications-tab" (click)="changeTab('scientific-publications')" data-bs-toggle="tab"
-                    href="JavaScript:void(0)" role="tab" aria-controls="scientific-publications"
-                    [attr.aria-selected]="activeTab === 'scientific-publications'">{{'scientific-production.scientific-publications'
-                    | translate}}</a>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link" [ngClass]="{'active': activeTab === 'academic-publications' }"
-                    id="academic-publications-tab" (click)="changeTab('academic-publications')" data-bs-toggle="tab"
-                    href="JavaScript:void(0)" role="tab" aria-controls="academic-publications"
-                    [attr.aria-selected]="activeTab === 'academic-publications'">{{'scientific-production.academic-publications'
-                    | translate}}</a>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link" [ngClass]="{'active': activeTab === 'other-publications' }"
-                    id="other-publications-atb" (click)="changeTab('other-publications')" data-bs-toggle="tab"
-                    href="JavaScript:void(0)" role="tab" aria-controls="other-publications"
-                    [attr.aria-selected]="activeTab === 'other-publications'">{{'scientific-production.other-publications'
-                    | translate}}</a>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link" [ngClass]="{'active': activeTab === 'events' }" id="events-tab"
-                    (click)="changeTab('events')" data-bs-toggle="tab" href="JavaScript:void(0)" role="tab"
-                    aria-controls="events"
-                    [attr.aria-selected]="activeTab === 'events'">{{'scientific-production.events' | translate}}</a>
-            </li>
-        </ul>
-        <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade"
-                [ngClass]="{'show': activeTab === 'scientific-publications', 'active': activeTab === 'scientific-publications' }"
-                id="scientific-publications" role="tabpanel" aria-labelledby="scientific-publications-tab">
-                <app-documents [url]="'../document'" [idPrefix]="'publications'" [isTreeVisible]="false"
-                    [filterDocumentType]="['Book', 'Article']"></app-documents>
+    <div class="col-12">
+        <div class="card flex-fill">
+            <div class="card-header">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" [ngClass]="{'active': activeTab === 'scientific-publications' }"
+                            id="scientific-publications-tab" (click)="changeTab('scientific-publications')"
+                            data-bs-toggle="tab" href="JavaScript:void(0)" role="tab"
+                            aria-controls="scientific-publications"
+                            [attr.aria-selected]="activeTab === 'scientific-publications'">{{'scientific-production.scientific-publications'
+                            | translate}}</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" [ngClass]="{'active': activeTab === 'academic-publications' }"
+                            id="academic-publications-tab" (click)="changeTab('academic-publications')"
+                            data-bs-toggle="tab" href="JavaScript:void(0)" role="tab"
+                            aria-controls="academic-publications"
+                            [attr.aria-selected]="activeTab === 'academic-publications'">{{'scientific-production.academic-publications'
+                            | translate}}</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" [ngClass]="{'active': activeTab === 'other-publications' }"
+                            id="other-publications-atb" (click)="changeTab('other-publications')" data-bs-toggle="tab"
+                            href="JavaScript:void(0)" role="tab" aria-controls="other-publications"
+                            [attr.aria-selected]="activeTab === 'other-publications'">{{'scientific-production.other-publications'
+                            | translate}}</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" [ngClass]="{'active': activeTab === 'events' }" id="events-tab"
+                            (click)="changeTab('events')" data-bs-toggle="tab" href="JavaScript:void(0)" role="tab"
+                            aria-controls="events"
+                            [attr.aria-selected]="activeTab === 'events'">{{'scientific-production.events' |
+                            translate}}</a>
+                    </li>
+                </ul>
             </div>
-            <div class="tab-pane fade"
-                [ngClass]="{'show': activeTab === 'academic-publications', 'active': activeTab === 'academic-publications' }"
-                id="academic-publications" role="tabpanel" aria-labelledby="academic-publications-tab">
-                <app-documents [idPrefix]="'academic'" [url]="'../document'"
-                    [selectDocumentType]="[{ name: 'book', value: 'Books' }, { name: 'articles', value: 'Articles' }]"
-                    [isTreeVisible]="false" [filterDocumentType]="['Master-Thesis', 'Doctoral-Thesis']">
-                </app-documents>
-            </div>
-            <div class="tab-pane fade" id="other-publications"
-                [ngClass]="{'show': activeTab === 'other-publications', 'active': activeTab === 'other-publications' }"
-                role="tabpanel" aria-labelledby="other-publications-tab">
-                <app-documents [idPrefix]="'other'" [url]="'../document'"
-                    [selectDocumentType]="[{ name: 'book', value: 'Books' }, { name: 'articles', value: 'Articles' }]"
-                    [isTreeVisible]="false" [filterDocumentType]="['Book', 'Article']"></app-documents>
-            </div>
-            <div class="tab-pane fade" id="events"
-                [ngClass]="{'show': activeTab === 'events', 'active': activeTab === 'events' }" role="tabpanel"
-                aria-labelledby="events-tab">
-                <app-events [url]="'../event/'" [idPrefix]="'events'"></app-events>
+            <div id="datatables-dashboard-markets_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade"
+                        [ngClass]="{'show': activeTab === 'scientific-publications', 'active': activeTab === 'scientific-publications' }"
+                        id="scientific-publications" role="tabpanel" aria-labelledby="scientific-publications-tab">
+                        <app-documents [url]="'../document'" [idPrefix]="'publications'" [isTreeVisible]="false"
+                            [filterDocumentType]="['Book', 'Article']"></app-documents>
+                    </div>
+                    <div class="tab-pane fade"
+                        [ngClass]="{'show': activeTab === 'academic-publications', 'active': activeTab === 'academic-publications' }"
+                        id="academic-publications" role="tabpanel" aria-labelledby="academic-publications-tab">
+                        <app-documents [idPrefix]="'academic'" [url]="'../document'"
+                            [selectDocumentType]="[{ name: 'book', value: 'Books' }, { name: 'articles', value: 'Articles' }]"
+                            [isTreeVisible]="false" [filterDocumentType]="['Master-Thesis', 'Doctoral-Thesis']">
+                        </app-documents>
+                    </div>
+                    <div class="tab-pane fade" id="other-publications"
+                        [ngClass]="{'show': activeTab === 'other-publications', 'active': activeTab === 'other-publications' }"
+                        role="tabpanel" aria-labelledby="other-publications-tab">
+                        <app-documents [idPrefix]="'other'" [url]="'../document'"
+                            [selectDocumentType]="[{ name: 'book', value: 'Books' }, { name: 'articles', value: 'Articles' }]"
+                            [isTreeVisible]="false" [filterDocumentType]="['Book', 'Article']"></app-documents>
+                    </div>
+                    <div class="tab-pane fade" id="events"
+                        [ngClass]="{'show': activeTab === 'events', 'active': activeTab === 'events' }" role="tabpanel"
+                        aria-labelledby="events-tab">
+                        <app-events [url]="'../event/'" [idPrefix]="'events'"></app-events>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

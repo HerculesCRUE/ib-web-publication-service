@@ -1,35 +1,35 @@
-<div class="row cursor">
-    <div class="col-12" *ngFor="let area of data.children">
-        <span
-            [ngStyle]="{'text-decoration': area.selected ? 'underline' : 'none', 'font-weight': area.selected ? 'bold' : 'normal'  }"
-            (click)="area.selected = !area.selected; areaClicked(area, null);">
-            <label>
-                <input type="checkbox">{{area.name}}
-            </label></span>
-        <ol *ngIf="area.selected && area.children">
-            <li class="myBorder slide-right" *ngFor="let area2 of area?.children">
-                <span class="oi oi-arrow-right"></span>
-                <span
-                    [ngStyle]="{'text-decoration': area2.selected ? 'underline' : 'none', 'font-weight': area2.selected ? 'bold' : 'normal' }"
-                    (click)="area2.selected = !area2.selected; areaClicked(area2, area);">
-                    <label>
-                        <input type="checkbox">{{area2.name}} </label></span>
+<div class="newTree">
+    <div class="row cursor">
+        <div class="col-12" *ngFor="let area of data.children">
+            <span
+                [ngStyle]="{'text-decoration': area.selected ? 'underline' : 'none', 'font-weight': area.selected ? 'bold' : 'normal'  }">
+                <label (click)="area.selected = !area.selected; areaClicked(area, null);">
+                    <input type="checkbox">{{area.name}}
+                </label></span>
+            <ol *ngIf="area.selected && area.children">
+                <li class="myBorder slide-right" *ngFor="let area2 of area?.children">
+                    <span class="oi oi-arrow-right"></span>
+                    <span
+                        [ngStyle]="{'text-decoration': area2.selected ? 'underline' : 'none', 'font-weight': area2.selected ? 'bold' : 'normal' }">
+                        <label (click)="area2.selected = !area2.selected; areaClicked(area2, area);">
+                            <input type="checkbox">{{area2.name}} </label></span>
 
 
 
-                <ol *ngIf="area2.selected && area2.children">
-                    <li class="myBorder slide-right" *ngFor="let area3 of area2?.children">
-                        <span class="oi oi-arrow-right"></span>
-                        <span
-                            [ngStyle]="{'text-decoration': area3.selected ? 'underline' : 'none', 'font-weight': area3.selected ? 'bold' : 'normal'}"
-                            (click)="area3.selected = !area3.selected; areaClicked(area3, area2);">
+                    <ol *ngIf="area2.selected && area2.children">
+                        <li class="myBorder slide-right" *ngFor="let area3 of area2?.children">
+                            <span class="oi oi-arrow-right"></span>
+                            <span
+                                [ngStyle]="{'text-decoration': area3.selected ? 'underline' : 'none', 'font-weight': area3.selected ? 'bold' : 'normal'}">
 
-                            <label><input type="checkbox">{{area3.name}}
-                            </label>
-                        </span>
-                    </li>
-                </ol>
-            </li>
-        </ol>
+                                <label (click)="area3.selected = !area3.selected; areaClicked(area3, area2);"><input
+                                        type="checkbox">{{area3.name}}
+                                </label>
+                            </span>
+                        </li>
+                    </ol>
+                </li>
+            </ol>
+        </div>
     </div>
 </div>

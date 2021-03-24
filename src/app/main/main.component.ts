@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { LoginService } from '../_services/login.service';
+import { TranslateHelperService } from '../_services/translate-helper.service';
 
 /**
  * Componente principal. Se trata del componente padre
@@ -10,18 +12,37 @@ import { Component } from '@angular/core';
   selector: 'app-main',
   templateUrl: './main.component.html',
 })
-export class MainComponent {
+export class MainComponent implements OnInit {
   /**
    * Indica si el menú está colapsado.
    */
   isMenuCollapsed = false;
+  isLogged: boolean;
+  constructor(public translateHelperService: TranslateHelperService,
+    private loginService: LoginService) { }
 
-  constructor() {}
-
+  ngOnInit() {
+    this.loginService.keycloakIsActive().subscribe(data => {
+      this.isLogged = data;
+    });
+  }
   /**
    * Abre y cierra el menú.
    */
   toggleMenu() {
     this.isMenuCollapsed = !this.isMenuCollapsed;
+  }
+
+  /**
+  * Realiza el logout del usuario.
+  */
+  logout() {
+    this.loginService.logoutKC().subscribe(data => {
+      this.windowReload();
+    });
+  }
+
+  windowReload() {
+    window.location.reload();
   }
 }

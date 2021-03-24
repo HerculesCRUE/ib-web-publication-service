@@ -19,59 +19,62 @@
             <label for="type" class="col-sm-4 control-label">{{ "scientist.area" | translate }}</label>
             <app-tree [treeType]="'area'"></app-tree>
         </div>
-        <!-- type -->
-        <!--  <div class="form-group col-lg-6">
-            <label for="typeScientist" class="col-sm-4 control-label">{{ "scientist.type" | translate }}</label>
-            <div class="col-sm-8">
-                <select [attr.aria-label]="'scientist.type' | translate" (change)="filterTop($event, 'type')"
-                    id="typeScientist{{idPrefix}}" name="typeScientist" class="form-control"
-                    [(ngModel)]="findRequest.filter.type" #type="ngModel">
-                    <option [value]="undefined">{{ "form.select" | translate }}</option>
-                    <option [value]="'Docente'">Docente</option>
-                    <option [value]="'Personal Investigador'">Personal Investigador</option>
-                    <option [value]="'Investigador'">Investigador</option>
-                </select>
-            </div>
-        </div>-->
     </div>
 
-
-    <div class="container-fluid">
-        <div class="row justify-content-end">
-            <div class="input-group col-md-1">
-                <button [attr.aria-label]="'form.clean' | translate " role="button" aria-pressed="false"
-                    class="btn btn-secondary" (click)="f.resetForm(); filterTop(undefined, '')">{{'form.clean' |
-                    translate }}</button>
-            </div>
-            <div class="input-group col-md-4" role="search">
-                <input class="form-control py-2 border-right-0 border" type="search" name="search" #search="ngModel"
-                    placeholder="{{'form.search-by-title' | translate }}" (keyup.enter)="filterTop($event, 'name')"
-                    [(ngModel)]="findRequest.filter.name">
-                <span class="input-group-append">
-                    <button [attr.aria-label]="'form.search-by-name' | translate" role="button" aria-pressed="false"
-                        (click)="filterTop($event, 'name')" class="btn btn-outline-secondary border-left-0 border"
-                        type="button">
-                        <em class="oi oi-magnifying-glass "></em>
-                    </button>
-                </span>
-            </div>
-
-        </div>
-    </div>
 </form>
-<div class="loader" *ngIf="!loaded"></div>
-<div class="container-fluid" *ngIf="loaded && allScientificsFiltered?.content.length === 0">
-    <div class="row">
-        <div class="col-12">
-            <p>{{'form.no-result' | translate}}</p>
+<div class="row">
+    <div class="col-12">
+        <div class="card flex-fill">
+            <div class="card-header">
+                <h5 class="card-title mb-0" *ngIf="loaded && allScientificsFiltered?.content.length === 0">
+                    {{'form.no-result' | translate}}</h5>
+                <h5 class="card-title mb-0" *ngIf="loaded && allScientificsFiltered?.content.length !== 0">
+                    {{'form.results-amount' | translate}} {{allScientificsFiltered.totalElements}}</h5>
+                <div class="container-fluid">
+                    <div class="row justify-content-end">
+
+                        <div class="input-group col-md-4" role="search">
+                            <input class="form-control py-2 border-right-0 border" type="search" name="search"
+                                #search="ngModel" placeholder="{{'form.search-by-title' | translate }}"
+                                [(ngModel)]="findRequest.filter.name" (keyup.enter)="filterTop($event, 'name')">
+                            <span class="input-group-append">
+                                <button (click)="filterTop($event, 'name')"
+                                    [attr.aria-label]="'form.search-by-name' | translate" role="button"
+                                    aria-pressed="false" class="btn btn-outline-secondary border-left-0 border"
+                                    type="button">
+                                    <em class="oi oi-magnifying-glass "></em>
+                                </button>
+                            </span>
+                        </div>
+                        <div class="input-group col-md-2 text-right">
+                            <button id="clean" [attr.aria-label]="'form.clean' | translate " role="button"
+                                aria-pressed="false" class="btn btn-secondary" (click)="f.resetForm();">{{'form.clean' |
+                                translate }}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="loader" *ngIf="!loaded"></div>
+
+            <app-table-results-dto [findRequest]="findRequest" [routerNameLink]="url" [routerField]="'id'"
+                *ngIf="loaded && allScientificsFiltered?.content.length !== 0" [data]="allScientificsFiltered.content"
+                [dtoTypeTranslate]="'scientist'" [extra]="'2'" [pageInfo]="allScientificsFiltered"
+                (pageChanged)="allScientistsFilteredPageChanged($event)"
+                (sizeChanged)="allScientistsFilteredSizeChanged($event)"
+                (sortChanged)="allScientistsFilteredSortChanged($event)">
+            </app-table-results-dto>
+
         </div>
     </div>
 </div>
-<app-table-results-dto [findRequest]="findRequest" [routerNameLink]="url" [routerField]="'id'"
-    *ngIf="loaded && allScientificsFiltered?.content.length !== 0" [data]="allScientificsFiltered.content"
-    [dtoTypeTranslate]="'scientist'" [extra]="'2'" [pageInfo]="allScientificsFiltered"
-    (pageChanged)="allScientistsFilteredPageChanged($event)" (sizeChanged)="allScientistsFilteredSizeChanged($event)"
-    (sortChanged)="allScientistsFilteredSortChanged($event)">
-</app-table-results-dto>
 
-<div echarts [options]="echartOptions" class="sector-chart"></div>
+<div class="row">
+    <div class="col-12">
+        <div class="card flex-fill">
+            <div class="card-header">
+
+            </div>
+            <div echarts [options]="echartOptions" class="sector-chart"></div>
+        </div>
+    </div>
+</div>

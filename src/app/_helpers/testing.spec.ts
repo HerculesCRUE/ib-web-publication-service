@@ -108,6 +108,7 @@ export class TestingHelper {
         TranslatePipeStub,
         PatentsComponent,
         LoginComponent,
+        MainComponent,
         HomeComponent,
         SPARQLEditorComponent,
         ScientistSearchComponent,

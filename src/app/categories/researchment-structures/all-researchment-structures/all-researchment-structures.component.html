@@ -3,6 +3,7 @@
     <form class="form-horizontal" #f="ngForm" (keydown.enter)="$event.preventDefault()">
         <div class="row">
 
+
             <div class="form-group col-lg-4">
                 <label for="type" class="control-label">{{ "researchmentStructure.type" | translate }}</label>
                 <div>
@@ -16,72 +17,61 @@
                 </div>
             </div>
         </div>
-        <!--  
-            <div class="form-group col-lg-4">
-                <label for="financing" class="control-label">{{ "researchmentStructure.financing" | translate }}</label>
-                <div>
-                    <select [attr.aria-label]="'researchmentStructure.financing' | translate " id="financing"
-                        name="financing" class="form-control" [(ngModel)]="findRequest.filter.financing"
-                        #financing="ngModel" (change)="filterResearchmentStructures()">
-                        <option [value]="undefined">{{ "form.select" | translate }}</option>
-                        <option value="Proyectos H2020">Proyectos H2020</option>
-                        <option value="Proyecto del Plan Estatal">
-                            Proyecto del Plan Estatal
-                        </option>
-                    </select>
-                </div>
-            </div>
 
-            <div class="form-group col-lg-4">
-                <label for="qa" class="control-label">{{ "researchmentStructure.qa" | translate }}</label>
-                <div>
-                    <select [attr.aria-label]="'researchmentStructure.qa' | translate " id="qa" name="qa"
-                        class="form-control" [(ngModel)]="findRequest.filter.qa" #qa="ngModel"
-                        (change)="filterResearchmentStructures()">
-                        <option [value]="undefined">{{ "form.select" | translate }}</option>
-                        <option [value]="'Severo Ochoa'">Severo Ochoa</option>
-                    </select>
-                </div>
-            </div>
-        </div>-->
-
-
-        <div class="container-fluid">
-            <div class="row justify-content-end">
-                <div class="input-group col-md-1">
-                    <button id="clean" [attr.aria-label]="'form.clean' | translate " role="button" aria-pressed="false"
-                        class="btn btn-secondary" (click)="f.resetForm();">{{'form.clean' |
-                        translate }}</button>
-                </div>
-                <div class="input-group col-md-4" role="search">
-                    <input class="form-control py-2 border-right-0 border" type="search" name="search" #search="ngModel"
-                        placeholder="{{'form.search-by-title' | translate }}" [(ngModel)]="findRequest.filter.name"
-                        (keyup.enter)="filterResearchmentStructures()">
-                    <span class="input-group-append">
-                        <button (click)="filterResearchmentStructures()"
-                            [attr.aria-label]="'form.search-by-name' | translate" role="button" aria-pressed="false"
-                            class="btn btn-outline-secondary border-left-0 border" type="button">
-                            <em class="oi oi-magnifying-glass "></em>
-                        </button>
-                    </span>
-                </div>
-            </div>
-        </div>
     </form>
 </fieldset>
-<div class="loader" *ngIf="!loaded"></div>
-<div class="container-fluid" *ngIf="loaded && allResearchmentStructuresFiltered?.content.length === 0">
-    <div class="row">
-        <div class="col-12">
-            <h3>{{'form.no-result' | translate}}</h3>
+<div class="row">
+    <div class="col-12">
+        <div class="card flex-fill">
+            <div class="card-header">
+
+
+                <div class="container-fluid">
+                    <div class="row justify-content-end">
+
+                        <div class="input-group col-md-4" role="search">
+                            <input class="form-control py-2 border-right-0 border" type="search" name="search"
+                                #search="ngModel" placeholder="{{'form.search-by-title' | translate }}"
+                                [(ngModel)]="findRequest.filter.name" (keyup.enter)="filterResearchmentStructures()">
+                            <span class="input-group-append">
+                                <button (click)="filterResearchmentStructures()"
+                                    [attr.aria-label]="'form.search-by-name' | translate" role="button"
+                                    aria-pressed="false" class="btn btn-outline-secondary border-left-0 border"
+                                    type="button">
+                                    <em class="oi oi-magnifying-glass "></em>
+                                </button>
+                            </span>
+                        </div>
+                        <div class="input-group col-md-2 text-right">
+                            <button id="clean" [attr.aria-label]="'form.clean' | translate " role="button"
+                                aria-pressed="false" class="btn btn-secondary" (click)="f.resetForm();">{{'form.clean' |
+                                translate }}</button>
+                        </div>
+                    </div>
+                </div>
+                <h5 class="card-title mb-0" *ngIf="loaded && allResearchmentStructuresFiltered?.content.length === 0">
+                    {{'form.no-result' | translate}}</h5>
+                <h5 class="card-title mb-0" *ngIf="loaded && allResearchmentStructuresFiltered?.content.length !== 0">
+                    {{'form.results-amount' | translate}} {{allResearchmentStructuresFiltered.totalElements}}</h5>
+            </div>
+            <div id="datatables-dashboard-markets_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="loader" *ngIf="!loaded"></div>
+                        <app-table-results-dto [findRequest]="findRequest"
+                            *ngIf="loaded && allResearchmentStructuresFiltered?.content.length !== 0"
+                            [dtoTypeTranslate]="'researchmentStructure'" [extra]="'2'"
+                            [data]="allResearchmentStructuresFiltered.content"
+                            [pageInfo]="allResearchmentStructuresFiltered" [routerFieldSecondary]="'type'"
+                            [routerField]="'id'" (pageChanged)="allResearchmentStructuresFilteredPageChanged($event)"
+                            (sizeChanged)="allResearchmentStructuresFilteredSizeChanged($event)"
+                            (sortChanged)="allResearchmentStructuresFilteredSortChanged($event)">
+                        </app-table-results-dto>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
 </div>
-<app-table-results-dto [findRequest]="findRequest"
-    *ngIf="loaded && allResearchmentStructuresFiltered?.content.length !== 0"
-    [dtoTypeTranslate]="'researchmentStructure'" [extra]="'2'" [data]="allResearchmentStructuresFiltered.content"
-    [pageInfo]="allResearchmentStructuresFiltered" [routerFieldSecondary]="'type'" [routerField]="'id'"
-    (pageChanged)="allResearchmentStructuresFilteredPageChanged($event)"
-    (sizeChanged)="allResearchmentStructuresFilteredSizeChanged($event)"
-    (sortChanged)="allResearchmentStructuresFilteredSortChanged($event)">
-</app-table-results-dto>

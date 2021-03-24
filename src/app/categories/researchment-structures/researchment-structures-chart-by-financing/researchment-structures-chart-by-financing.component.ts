@@ -34,26 +34,30 @@ export class ResearchmentStructuresByFinancingComponent implements OnInit {
           text: 'Núm. Universidades [Sello de Calidad]',
           left: 'center',
         },
+        color: ["#264653", "#2a9d8f", "#e9c46a", "#f4a261", "#e76f51"],
         tooltip: {
           trigger: 'item',
           formatter: '{a} <br/>{b} : {c} ({d}%)',
         },
         legend: {
-          type: 'scroll',
+          type: 'plain',
           orient: 'horizontal',
-          right: 10,
+          left: "left",
           top: 30,
           bottom: 0,
           data: data.legendData,
-
+          textStyle: {
+            fontFamily: "Poppins"
+          },
+          color: '#333',
           selected: data.selected,
         },
         series: [
           {
             name: 'Sello de Calidad',
             type: 'pie',
+            top: '10%',
             radius: '55%',
-            center: ['40%', '50%'],
             data: data.seriesData,
             emphasis: {
               itemStyle: {

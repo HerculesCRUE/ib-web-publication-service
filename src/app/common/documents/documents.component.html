@@ -53,40 +53,48 @@
         </div>
     </div>
 
-    <div class="container-fluid">
-        <div class="row justify-content-end">
-            <div class="input-group col-md-1">
-                <button [attr.aria-label]="'form.clean' | translate " role="button" aria-pressed="false"
-                    class="btn btn-secondary"
-                    (click)="f.resetForm(); filterDocuments(); dateFin = null; dateIni = null">{{'form.clean' |
-                    translate }}</button>
-            </div>
-            <div class="input-group col-md-4" role="search">
-                <input class="form-control py-2 border-right-0 border" type="text" name="search{{idPrefix}}"
-                    #search="ngModel" placeholder="{{'form.search-by-title' | translate }}"
-                    [(ngModel)]="findRequest.filter.name" id="search-documents{{idPrefix}}">
-                <span class="input-group-append" (keyup.enter)="filterDocuments()">
-                    <button [attr.aria-label]="'form.search-by-name' | translate" role="button" aria-pressed="false"
-                        (click)="filterDocuments()" class="btn btn-outline-secondary border-left-0 border"
-                        type="button">
-                        <em class="oi oi-magnifying-glass "></em>
-                    </button>
-                </span>
-            </div>
-        </div>
-    </div>
 </form>
-<div class="loader" *ngIf="!loaded"></div>
-<div class="container-fluid" *ngIf="loaded && allDocumentFiltered?.content.length === 0">
-    <div class="row">
-        <div class="col-12">
-            <p>{{'form.no-result' | translate}}</p>
+<div class="row">
+    <div class="col-12">
+        <div class="card flex-fill">
+            <div class="card-header">
+                <h5 class="card-title mb-0" *ngIf="loaded && allDocumentFiltered?.content.length === 0">
+                    {{'form.no-result' | translate}}</h5>
+                <h5 class="card-title mb-0" *ngIf="loaded && allDocumentFiltered?.content.length !== 0">
+                    {{'form.results-amount' | translate}} {{allDocumentFiltered.totalElements}}</h5>
+                <div class="container-fluid">
+                    <div class="row justify-content-end">
+
+                        <div class="input-group col-md-4" role="search">
+                            <input class="form-control py-2 border-right-0 border" type="search" name="search"
+                                #search="ngModel" placeholder="{{'form.search-by-title' | translate }}"
+                                [(ngModel)]="findRequest.filter.name" (keyup.enter)="filterDocuments()">
+                            <span class="input-group-append">
+                                <button (click)="filterDocuments()"
+                                    [attr.aria-label]="'form.search-by-name' | translate" role="button"
+                                    aria-pressed="false" class="btn btn-outline-secondary border-left-0 border"
+                                    type="button">
+                                    <em class="oi oi-magnifying-glass "></em>
+                                </button>
+                            </span>
+                        </div>
+                        <div class="input-group col-md-2 text-right">
+                            <button id="clean" [attr.aria-label]="'form.clean' | translate " role="button"
+                                aria-pressed="false" class="btn btn-secondary" (click)="f.resetForm();">{{'form.clean' |
+                                translate }}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="datatables-dashboard-markets_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                <app-table-results-dto [findRequest]="findRequest" [dtoTypeTranslate]="'documents'" [extra]="idPrefix"
+                    *ngIf="loaded && allDocumentFiltered?.content.length !== 0" [data]="allDocumentFiltered.content"
+                    [routerNameLink]="url" [routerField]="'id'" [routerFieldSecondary]="'type'"
+                    [pageInfo]="allDocumentFiltered" (pageChanged)="allprojectsFilteredPageChanged($event)"
+                    (sizeChanged)="allprojectsFilteredSizeChanged($event)"
+                    (sortChanged)="allprojectsFilteredSortChanged($event)">
+                </app-table-results-dto>
+            </div>
         </div>
     </div>
 </div>
-<app-table-results-dto [findRequest]="findRequest" [dtoTypeTranslate]="'documents'" [extra]="idPrefix"
-    *ngIf="loaded && allDocumentFiltered?.content.length !== 0" [data]="allDocumentFiltered.content"
-    [routerNameLink]="url" [routerField]="'id'" [routerFieldSecondary]="'type'" [pageInfo]="allDocumentFiltered"
-    (pageChanged)="allprojectsFilteredPageChanged($event)" (sizeChanged)="allprojectsFilteredSizeChanged($event)"
-    (sortChanged)="allprojectsFilteredSortChanged($event)">
-</app-table-results-dto>

@@ -1,17 +1,25 @@
 <div class="row" *ngIf="loaded">
-    <div class="col-lg-12 margin-bottom">
-        <legend class="legend">{{ patentDetail.title}}</legend>
-    </div>
-</div>
-<div class="row" *ngIf="loaded">
     <div class="col-12">
-        <p><strong>{{'patent.doi' | translate}}:</strong> {{patentDetail.doi}}</p>
-        <p><strong>{{'patent.startPage' | translate}}:</strong> {{patentDetail.startPage}}</p>
-        <p><strong>{{'patent.endPage' | translate}}:</strong> {{patentDetail.endPage}}</p>
-        <p><strong>{{'patent.keyword' | translate}}:</strong> {{patentDetail.keyword}}</p>
-        <p><strong>{{'patent.mode' | translate}}:</strong> {{patentDetail.mode}}</p>
-        <p><strong>{{'patent.startDate' | translate}}:</strong> {{patentDetail.startDate}}</p>
-        <p><strong>{{'patent.endDate' | translate}}:</strong> {{patentDetail.endDate}}</p>
-        <p><strong>{{'patent.summary' | translate}}:</strong> {{patentDetail.summary}}</p>
+        <div class="card flex-fill">
+            <div class="card-header">
+                <legend class="legend">{{ patentDetail.title}}</legend>
+            </div>
+            <div id="datatables-dashboard-markets_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                <div class="detail-container">
+                    <div class="row">
+                        <div class="col-12">
+                            <p><strong>{{'patent.doi' | translate}}:</strong> {{patentDetail.doi}}</p>
+                            <p><strong>{{'patent.startPage' | translate}}:</strong> {{patentDetail.startPage}}</p>
+                            <p><strong>{{'patent.endPage' | translate}}:</strong> {{patentDetail.endPage}}</p>
+                            <p><strong>{{'patent.keyword' | translate}}:</strong> {{patentDetail.keyword}}</p>
+                            <p><strong>{{'patent.mode' | translate}}:</strong> {{patentDetail.mode}}</p>
+                            <p><strong>{{'patent.startDate' | translate}}:</strong> {{patentDetail.startDate}}</p>
+                            <p><strong>{{'patent.endDate' | translate}}:</strong> {{patentDetail.endDate}}</p>
+                            <p><strong>{{'patent.summary' | translate}}:</strong> {{patentDetail.summary}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

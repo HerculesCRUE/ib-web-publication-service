@@ -1,4 +1,4 @@
-.icons-menu {
+/*.icons-menu {
   font-size: 16px;
   margin-right: 10px;
 }
@@ -21,4 +21,8 @@
   display: flex;
   align-items: baseline;
   justify-content: flex-start;
+}*/
+
+#sidebar-wrapper {
+  background-color: #293042;
 }

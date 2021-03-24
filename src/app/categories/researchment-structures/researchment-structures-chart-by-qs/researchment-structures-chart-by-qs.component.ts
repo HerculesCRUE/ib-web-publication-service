@@ -42,26 +42,31 @@ export class ResearchmentStructuresByQSComponent implements OnInit {
           text: 'Núm. Universidades [Financiación]',
           left: 'center',
         },
+        color: ["#264653", "#2a9d8f", "#e9c46a", "#f4a261", "#e76f51"],
         tooltip: {
           trigger: 'item',
           formatter: '{a} <br/>{b} : {c} ({d}%)',
         },
         legend: {
-          type: 'scroll',
+          type: 'plain',
           orient: 'horizontal',
+          left: "left",
           right: 10,
           top: 30,
           bottom: 0,
           data: data.legendData,
-
+          textStyle: {
+            fontFamily: "Poppins"
+          },
+          color: '#333',
           selected: data.selected,
         },
         series: [
           {
-            name: 'Financiación',
+            name: 'Sello de Calidad',
             type: 'pie',
+            top: '10%',
             radius: '55%',
-            center: ['40%', '50%'],
             data: data.seriesData,
             emphasis: {
               itemStyle: {

@@ -40,41 +40,62 @@
         </div>
     </div>
 
-    <div class="container-fluid">
-        <div class="row justify-content-end">
-            <div class="input-group col-md-1">
-                <button [attr.aria-label]="'form.clean' | translate " role="button" aria-pressed="false"
-                    class="btn btn-secondary" (click)="f.resetForm(); filterPatents();">{{'form.clean' |
-                    translate }}</button>
-            </div>
-            <div class="input-group col-md-4" role="search">
-                <input class="form-control py-2 border-right-0 border" type="search" name="search" #search="ngModel"
-                    placeholder="{{'form.search-by-title' | translate }}" [(ngModel)]="findRequest.filter.name"
-                    id="search-patents" (keyup.enter)="filterPatents()">
-                <span class="input-group-append">
-                    <button [attr.aria-label]="'form.search-by-name' | translate" role="button" aria-pressed="false"
-                        (click)="filterPatents()" class="btn btn-outline-secondary border-left-0 border" type="button">
-                        <em class="oi oi-magnifying-glass "></em>
-                    </button>
-                </span>
-            </div>
-        </div>
-    </div>
 </form>
-<div class="loader" *ngIf="!loaded"></div>
-<div class="container-fluid" *ngIf="loaded && allPatentFiltered?.content.length === 0">
-    <div class="row">
-        <div class="col-12">
-            <p>{{'form.no-result' | translate}}</p>
+<div class="row">
+    <div class="col-12">
+        <div class="card flex-fill">
+            <div class="card-header">
+                <h5 class="card-title mb-0" *ngIf="loaded && allPatentFiltered?.content.length === 0">
+                    {{'form.no-result' | translate}}</h5>
+                <h5 class="card-title mb-0" *ngIf="loaded && allPatentFiltered?.content.length !== 0">
+                    {{'form.results-amount' | translate}} {{allPatentFiltered.totalElements}}</h5>
+                <div class="container-fluid">
+                    <div class="row justify-content-end">
+
+                        <div class="input-group col-md-4" role="search">
+                            <input class="form-control py-2 border-right-0 border" type="search" name="search"
+                                #search="ngModel" placeholder="{{'form.search-by-title' | translate }}"
+                                [(ngModel)]="findRequest.filter.name" (keyup.enter)="filterPatents()">
+                            <span class="input-group-append">
+                                <button (click)="filterPatents()" [attr.aria-label]="'form.search-by-name' | translate"
+                                    role="button" aria-pressed="false"
+                                    class="btn btn-outline-secondary border-left-0 border" type="button">
+                                    <em class="oi oi-magnifying-glass "></em>
+                                </button>
+                            </span>
+                        </div>
+                        <div class="input-group col-md-2 text-right">
+                            <button id="clean" [attr.aria-label]="'form.clean' | translate " role="button"
+                                aria-pressed="false" class="btn btn-secondary" (click)="f.resetForm();">{{'form.clean' |
+                                translate }}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="datatables-dashboard-markets_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                <app-table-results-dto [findRequest]="findRequest" [dtoTypeTranslate]="'patent'" [extra]="'4'"
+                    *ngIf="loaded && allPatentFiltered?.content.length !== 0" [data]="allPatentFiltered.content"
+                    [routerNameLink]="url" [routerField]="'id'" [pageInfo]="allPatentFiltered"
+                    (pageChanged)="allPatentsFilteredPageChanged($event)"
+                    (sizeChanged)="allPatentsFilteredSizeChanged($event)"
+                    (sortChanged)="allPatentsFilteredSortChanged($event)">
+                </app-table-results-dto>
+            </div>
         </div>
     </div>
 </div>
 
-<app-table-results-dto [findRequest]="findRequest" [dtoTypeTranslate]="'patent'" [extra]="'4'"
-    *ngIf="loaded && allPatentFiltered?.content.length !== 0" [data]="allPatentFiltered.content" [routerNameLink]="url"
-    [routerField]="'id'" [pageInfo]="allPatentFiltered" (pageChanged)="allPatentsFilteredPageChanged($event)"
-    (sizeChanged)="allPatentsFilteredSizeChanged($event)" (sortChanged)="allPatentsFilteredSortChanged($event)">
-</app-table-results-dto>
 
 
-<div style="min-width:600px;height: 450px" echarts [options]="echartOptions" class="sector-chart"></div>
+<div class="row">
+    <div class="col-12">
+        <div class="card flex-fill">
+            <div class="card-header">
+
+            </div>
+            <div id="datatables-dashboard-markets_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                <div style="min-width:600px;height: 450px" echarts [options]="echartOptions" class="sector-chart"></div>
+            </div>
+        </div>
+    </div>
+</div>

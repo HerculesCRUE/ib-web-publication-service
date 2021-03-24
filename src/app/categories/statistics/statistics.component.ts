@@ -25,6 +25,7 @@ export class StatisticsComponent implements OnInit {
   constructor(private statisticService: StatisticService) { }
 
   ngOnInit(): void {
+
     let treeData;
     this.statisticService.topPatents().subscribe(data => {
       treeData = data;
@@ -45,4 +46,7 @@ export class StatisticsComponent implements OnInit {
     };
   }
 
+  doSomethingOnScroll($event) {
+    console.log($event, 'hello');
+  }
 }

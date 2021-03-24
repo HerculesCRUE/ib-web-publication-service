@@ -1,10 +1,8 @@
-import { Component, OnChanges, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MenuService } from '../_services/menu.service';
 import { MenuItem } from '../_models/menu';
 import { LoginService } from '../_services/login.service';
-import { Router } from '@angular/router';
 import { TranslateHelperService } from '../_services/translate-helper.service';
-import { KeycloakService } from 'keycloak-angular';
 
 /**
  * Componente que muestra el menú de la aplicación.
@@ -25,7 +23,6 @@ export class MenuComponent implements OnInit {
 
   constructor(
     public translateHelperService: TranslateHelperService,
-    private router: Router,
     private menuService: MenuService,
     private loginService: LoginService
   ) { }
@@ -41,18 +38,7 @@ export class MenuComponent implements OnInit {
   }
 
 
-  /**
-   * Realiza el logout del usuario.
-   */
-  logout() {
-    this.loginService.logoutKC().subscribe(data => {
-      this.windowReload();
-    });
-  }
 
-  windowReload() {
-    window.location.reload();
-  }
 
 
 }
