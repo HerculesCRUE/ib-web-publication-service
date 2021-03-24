@@ -26,10 +26,7 @@
     <div class="col-12">
         <div class="card flex-fill">
             <div class="card-header">
-                <h5 class="card-title mb-0" *ngIf="loaded && allScientificsFiltered?.content.length === 0">
-                    {{'form.no-result' | translate}}</h5>
-                <h5 class="card-title mb-0" *ngIf="loaded && allScientificsFiltered?.content.length !== 0">
-                    {{'form.results-amount' | translate}} {{allScientificsFiltered.totalElements}}</h5>
+
                 <div class="container-fluid">
                     <div class="row justify-content-end">
 
@@ -53,6 +50,10 @@
                         </div>
                     </div>
                 </div>
+                <h5 class="card-title mb-0" *ngIf="loaded && allScientificsFiltered?.content.length === 0">
+                    {{'form.no-result' | translate}}</h5>
+                <h5 class="card-title mb-0" *ngIf="loaded && allScientificsFiltered?.content.length !== 0">
+                    {{'form.results-amount' | translate}} {{allScientificsFiltered.totalElements}}</h5>
             </div>
             <div class="loader" *ngIf="!loaded"></div>
 

@@ -58,10 +58,7 @@
     <div class="col-12">
         <div class="card flex-fill">
             <div class="card-header">
-                <h5 class="card-title mb-0" *ngIf="loaded && allDocumentFiltered?.content.length === 0">
-                    {{'form.no-result' | translate}}</h5>
-                <h5 class="card-title mb-0" *ngIf="loaded && allDocumentFiltered?.content.length !== 0">
-                    {{'form.results-amount' | translate}} {{allDocumentFiltered.totalElements}}</h5>
+
                 <div class="container-fluid">
                     <div class="row justify-content-end">
 
@@ -85,6 +82,10 @@
                         </div>
                     </div>
                 </div>
+                <h5 class="card-title mb-0" *ngIf="loaded && allDocumentFiltered?.content.length === 0">
+                    {{'form.no-result' | translate}}</h5>
+                <h5 class="card-title mb-0" *ngIf="loaded && allDocumentFiltered?.content.length !== 0">
+                    {{'form.results-amount' | translate}} {{allDocumentFiltered.totalElements}}</h5>
             </div>
             <div id="datatables-dashboard-markets_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                 <app-table-results-dto [findRequest]="findRequest" [dtoTypeTranslate]="'documents'" [extra]="idPrefix"
