@@ -90,7 +90,7 @@ export class PatentsComponent implements OnInit {
     if (this.authorId) {
       this.findRequest.filter.authorId = this.authorId;
     }
-    this.findRequest.pageRequest.page = 1;
+    this.findRequest.pageRequest.page = 0;
     this.findRequest.pageRequest.size = 10;
     this.findRequest.pageRequest.direction = Direction.ASC;
     this.patentService.find(this.findRequest).subscribe(res => {

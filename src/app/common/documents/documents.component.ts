@@ -107,7 +107,7 @@ export class DocumentsComponent implements OnInit {
     if (this.idPrefix === 'prodScientist') {
       this.url = '../../../document/';
     }
-    this.findRequest.pageRequest.page = 1;
+    this.findRequest.pageRequest.page = 0;
     this.findRequest.pageRequest.size = 10;
     this.findRequest.pageRequest.direction = Direction.ASC;
     this.findRequest.filter.types = this.filterDocumentType;

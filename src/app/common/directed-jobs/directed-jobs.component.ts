@@ -46,7 +46,7 @@ export class DirectedJobsComponent implements OnInit {
   constructor(private documentService: DocumentService) { }
 
   ngOnInit(): void {
-    this.findRequest.pageRequest.page = 1;
+    this.findRequest.pageRequest.page = 0;
     this.findRequest.pageRequest.size = 10;
     this.findRequest.pageRequest.direction = Direction.ASC;
     this.findRequest.filter.directedBy = this.scientificId;
