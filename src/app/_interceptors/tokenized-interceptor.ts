@@ -59,6 +59,8 @@ export class TokenizedInterceptor extends AbstractHttpInterceptor {
 
     if (error.status === 401) {
       this.loginService.checkIsValidToken().subscribe(data => {
+
+      }, (e) => {
         localStorage.removeItem('access_token');
         localStorage.removeItem('refresh_token');
         this.router.navigate(['./main/login']);
