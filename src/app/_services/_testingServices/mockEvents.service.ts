@@ -64,5 +64,16 @@ export class MockEventsService extends AbstractService {
         return of({});
     }
 
+    getConferenceByParticipantID(findrequest) {
+        const page: Page<Event> = new Page<Event>();
+        const results: Event[] = this.DUMMY_DATA;
+        page.number = 0;
+        page.numberOfElements = 10;
+        page.size = 10;
+        page.totalElements = 10;
+        // TODO sort
+        page.content = results;
+        return of(page);
+    }
 
 }

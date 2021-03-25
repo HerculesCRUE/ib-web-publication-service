@@ -63,6 +63,22 @@ export class EventsService extends AbstractService {
             );
     }
 
+    getConferenceByParticipantID(findRequest: FindRequest): Observable<Page<Event>> {
+        let parameters = new HttpParams();
+        parameters = Helper.addParam(parameters, 'date', findRequest.filter.start);
+        parameters = Helper.addParam(parameters, 'types', findRequest.filter.type);
+        parameters = Helper.addParam(parameters, 'participantId', findRequest.filter.participantId);
+        // Pagination params
+        parameters = Helper.addPaginationParams(parameters, findRequest.pageRequest);
+
+        return this.httpClient
+            .get(Helper.getUrl('/conference/search'), {
+                params: parameters
+            }).pipe(
+                catchError(this.handleError)
+            );
+    }
+
 
 
 }

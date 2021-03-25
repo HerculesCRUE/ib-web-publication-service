@@ -12,6 +12,7 @@ import { EventsService } from 'src/app/_services/events.service';
 export class EventsComponent implements OnInit {
   @Input() idPrefix: string;
   @Input() url: string;
+  @Input() participantId: string;
   findRequest: FindRequest = new FindRequest();
   dateIni;
   dateFin;
@@ -25,10 +26,21 @@ export class EventsComponent implements OnInit {
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = 1;
     pageRequest.size = 10;
-    this.eventsService.find(this.findRequest).subscribe(data => {
-      this.loaded = true;
-      this.allEvents = data;
-    });
+    if (this.participantId) {
+      this.findRequest.filter.participantId = this.participantId;
+    }
+    if (this.participantId) {
+      this.eventsService.getConferenceByParticipantID(this.findRequest).subscribe(data => {
+        this.loaded = true;
+        this.allEvents = data;
+      });
+    } else {
+      this.eventsService.find(this.findRequest).subscribe(data => {
+        this.loaded = true;
+        this.allEvents = data;
+      });
+    }
+
 
   }
 
@@ -44,10 +56,17 @@ export class EventsComponent implements OnInit {
       } else {
         this.findRequest.filter.start = null;
       }
-      this.eventsService.find(this.findRequest).subscribe((data) => {
-        this.allEvents = data;
-        this.loaded = true;
-      });
+      if (this.participantId) {
+        this.eventsService.getConferenceByParticipantID(this.findRequest).subscribe(data => {
+          this.loaded = true;
+          this.allEvents = data;
+        });
+      } else {
+        this.eventsService.find(this.findRequest).subscribe(data => {
+          this.loaded = true;
+          this.allEvents = data;
+        });
+      }
     }, 0);
   }
 
@@ -61,10 +80,17 @@ export class EventsComponent implements OnInit {
     this.loaded = false;
     this.findRequest.pageRequest.page = i - 1;
     this.findRequest.pageRequest.size = this.allEvents.size;
-    this.eventsService.find(this.findRequest).subscribe((data) => {
-      this.allEvents = data;
-      this.loaded = true;
-    });
+    if (this.participantId) {
+      this.eventsService.getConferenceByParticipantID(this.findRequest).subscribe(data => {
+        this.loaded = true;
+        this.allEvents = data;
+      });
+    } else {
+      this.eventsService.find(this.findRequest).subscribe(data => {
+        this.loaded = true;
+        this.allEvents = data;
+      });
+    }
   }
 
 
@@ -81,10 +107,17 @@ export class EventsComponent implements OnInit {
     pageRequest.size = i;
     pageRequest.direction = this.allEvents.direction;
     this.findRequest.pageRequest = pageRequest;
-    this.eventsService.find(this.findRequest).subscribe((data) => {
-      this.allEvents = data;
-      this.loaded = true;
-    });
+    if (this.participantId) {
+      this.eventsService.getConferenceByParticipantID(this.findRequest).subscribe(data => {
+        this.loaded = true;
+        this.allEvents = data;
+      });
+    } else {
+      this.eventsService.find(this.findRequest).subscribe(data => {
+        this.loaded = true;
+        this.allEvents = data;
+      });
+    }
   }
 
 
@@ -102,10 +135,17 @@ export class EventsComponent implements OnInit {
     newPageRequest.property = pageRequest.property;
     newPageRequest.direction = pageRequest.direction;
     this.findRequest.pageRequest = pageRequest;
-    this.eventsService.find(this.findRequest).subscribe((data) => {
-      this.allEvents = data;
-      this.loaded = true;
-    });
+    if (this.participantId) {
+      this.eventsService.getConferenceByParticipantID(this.findRequest).subscribe(data => {
+        this.loaded = true;
+        this.allEvents = data;
+      });
+    } else {
+      this.eventsService.find(this.findRequest).subscribe(data => {
+        this.loaded = true;
+        this.allEvents = data;
+      });
+    }
   }
 
 }
