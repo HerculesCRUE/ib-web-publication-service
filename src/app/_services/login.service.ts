@@ -193,6 +193,10 @@ export class LoginService extends AbstractService {
     return this.httpClient.get(Helper.getUrl('/keycloak/isActive'));
   }
 
+  keycloakIsAdmin(): Observable<any> {
+    return this.httpClient.get(Helper.getUrl('/keycloak/isAdmin'));
+  }
+
   /**
    *
    *  Se usa solo si se quiere realiza el login 

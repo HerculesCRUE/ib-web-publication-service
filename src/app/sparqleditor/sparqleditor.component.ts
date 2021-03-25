@@ -17,7 +17,7 @@ export class SPARQLEditorComponent implements OnInit {
   constructor(private loginService: LoginService) { }
 
   ngOnInit(): void {
-    this.loginService.keycloakIsActive().subscribe(data => {
+    this.loginService.keycloakIsAdmin().subscribe(data => {
       this.federatedItem = data;
     });
     Yasgui.defaults.requestConfig.endpoint = yasgui.endpoint;
