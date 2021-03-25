@@ -57,6 +57,11 @@ export class TokenizedInterceptor extends AbstractHttpInterceptor {
     next: HttpHandler
   ) {
 
+    if (error.status === 401) {
+      this.loginService.checkIsValidToken().subscribe(data => {
+        console.log(data);
+      });
+    }
 
     return throwError(error);
   }
