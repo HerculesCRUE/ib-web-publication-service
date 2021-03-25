@@ -44,6 +44,7 @@ export class EventsService extends AbstractService {
         parameters = Helper.addParam(parameters, 'date', findRequest.filter.start);
         parameters = Helper.addParam(parameters, 'types', findRequest.filter.type);
         parameters = Helper.addParam(parameters, 'id', findRequest.filter.id);
+        parameters = Helper.addParam(parameters, 'participantId', findRequest.filter.participantId);
         // Pagination params
         parameters = Helper.addPaginationParams(parameters, findRequest.pageRequest);
 

@@ -90,6 +90,7 @@ export class DocumentsComponent implements OnInit {
    * @memberof DocumentsComponent
    */
   normalTree = true;
+  @Input() authorId: string;
 
 
   /**
@@ -100,6 +101,9 @@ export class DocumentsComponent implements OnInit {
   constructor(private documentService: DocumentService) { }
 
   ngOnInit(): void {
+    if (this.authorId) {
+      this.findRequest.filter.authorId = this.authorId;
+    }
     if (this.idPrefix === 'prodScientist') {
       this.url = '../../../document/';
     }

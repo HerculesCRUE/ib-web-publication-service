@@ -76,8 +76,8 @@
                                                 </div>
                                                 <div id="datatables-dashboard-markets_wrapper"
                                                     class="dataTables_wrapper dt-bootstrap4 no-footer p-3">
-                                                    <app-directed-jobs [scientificId]="scientificId" [idPrefix]="'dos'">
-                                                    </app-directed-jobs>
+                                                    <app-documents [authorId]="scientificId" [idPrefix]="'dos'">
+                                                    </app-documents>
                                                 </div>
                                             </div>
                                             <div class="card flex-fill">
@@ -104,8 +104,8 @@
                                         </div>
                                         <div id="datatables-dashboard-markets_wrapper"
                                             class="dataTables_wrapper dt-bootstrap4 no-footer p-3">
-                                            <app-events [participantId]="scientificId" [url]="'../../event/'"
-                                                [idPrefix]="'events'"></app-events>
+                                            <app-events [types]="'Conference'" [participantId]="scientificId"
+                                                [url]="'../../event/'" [idPrefix]="'events'"></app-events>
                                         </div>
                                     </div>
 

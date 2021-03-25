@@ -7,7 +7,7 @@
     <div class="row">
 
         <!-- rol -->
-        <div class="form-group col-lg-6">
+        <div class="form-group col-lg-6" *ngIf="types !== 'Conference'">
             <label for="type" class="control-label">{{ "events.type" | translate }}</label>
             <div>
                 <select name="type" class="form-control" (change)="filterEvents()" [(ngModel)]="findRequest.filter.type"
