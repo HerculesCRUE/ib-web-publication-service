@@ -100,5 +100,8 @@ export class MockLoginService {
     return of(true);
   }
 
+  keycloakIsAdmin() {
+    return of(true);
+  }
 
 }
