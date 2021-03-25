@@ -1,8 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { PatentDetailComponent } from 'src/app/common/patent-detail/patent-detail.component';
 import { TestingHelper } from 'src/app/_helpers/testing.spec';
 import { DocumentService } from 'src/app/_services/document.service';
 import { EventsService } from 'src/app/_services/events.service';
+import { PatentService } from 'src/app/_services/patent.service';
 import { ResearchStaffService } from 'src/app/_services/research-staff.service';
 import { MockDocumentService } from 'src/app/_services/_testingServices/mockDocument.service';
 import { MockEventsService } from 'src/app/_services/_testingServices/mockEvents.service';
@@ -22,7 +22,7 @@ describe('ScientisDetailComponent', () => {
       providers: [{ provide: ResearchStaffService, useClass: MockResearchStaffService },
       { provide: DocumentService, useClass: MockDocumentService },
       { provide: EventsService, useClass: MockEventsService },
-      { provide: PatentDetailComponent, useClass: MockPatentService }]
+      { provide: PatentService, useClass: MockPatentService }]
     }).compileComponents();
   }));
 
