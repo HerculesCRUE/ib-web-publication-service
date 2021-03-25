@@ -27547,7 +27547,7 @@ text {
 
 .simplebar-height-auto-observer-wrapper {
 	box-sizing: inherit!important;
-	height: 100%;
+	/*height: 100%;*/
 	width: 100%;
 	max-width: 1px;
 	position: relative;
@@ -30197,7 +30197,7 @@ padding-top: 0;
   position: fixed;
   left: 250px;
   width: 0;
-  height: 100%;
+  /*height: 100%;*/
   margin-left: -250px;
   overflow-y: auto;
   background: #313941;

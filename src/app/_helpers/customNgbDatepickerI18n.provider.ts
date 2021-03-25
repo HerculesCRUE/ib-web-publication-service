@@ -41,10 +41,22 @@ export class CustomNgbDatepickerI18n extends NgbDatepickerI18n {
     }*/
 
     getWeekdayShortName(weekday: number): string {
-        return I18N_VALUES[this.translateHelperService.getLocalLang()].weekdays[weekday - 1];
+        let lang = 'es';
+        if (!this.translateHelperService.getLocalLang()) {
+            lang = 'es';
+        } else {
+            lang = this.translateHelperService.getLocalLang();
+        }
+        return I18N_VALUES[lang].weekdays[weekday - 1];
     }
     getMonthShortName(month: number): string {
-        return I18N_VALUES[this.translateHelperService.getLocalLang()].months[month - 1];
+        let lang = 'es';
+        if (!this.translateHelperService.getLocalLang()) {
+            lang = 'es';
+        } else {
+            lang = this.translateHelperService.getLocalLang();
+        }
+        return I18N_VALUES[lang].months[month - 1];
     }
     getMonthFullName(month: number): string {
         return this.getMonthShortName(month);
