@@ -18,7 +18,7 @@ import { AbstractHttpInterceptor } from '../_helpers/abstract-http-interceptor';
 
 @Injectable()
 export class TokenizedInterceptor extends AbstractHttpInterceptor {
-  constructor(private loginService: LoginService, private router: Router) {
+  constructor(private loginService: LoginService, private router: Router,) {
     super();
   }
 
@@ -59,7 +59,9 @@ export class TokenizedInterceptor extends AbstractHttpInterceptor {
 
     if (error.status === 401) {
       this.loginService.checkIsValidToken().subscribe(data => {
-        console.log(data);
+        localStorage.removeItem('access_token');
+        localStorage.removeItem('refresh_token');
+        this.router.navigate(['./main/login']);
       });
     }
 
