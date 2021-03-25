@@ -1,5 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { PatentDetail } from 'src/app/_models/patentDetail';
 import { PatentService } from 'src/app/_services/patent.service';
 
@@ -12,10 +13,11 @@ export class PatentDetailComponent implements OnInit {
   patentDetail: PatentDetail = new PatentDetail();
   loaded: boolean;
   constructor(private patentService: PatentService,
-    private _location: Location) { }
+    private locationS: Location, private rutaActiva: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.patentService.getPatent('2882').subscribe(data => {
+    const id = this.rutaActiva.snapshot.params.id;
+    this.patentService.getPatent(id).subscribe(data => {
       this.patentDetail = data;
       this.loaded = true;
     });
@@ -23,7 +25,7 @@ export class PatentDetailComponent implements OnInit {
 
 
   backClicked() {
-    this._location.back();
+    this.locationS.back();
   }
 
 }

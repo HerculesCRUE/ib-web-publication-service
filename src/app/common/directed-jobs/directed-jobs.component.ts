@@ -1,9 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
+import { Direction, FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
 import { Helper } from 'src/app/_helpers/utils';
-import { SparqlResults } from 'src/app/_models/sparql';
-import { TableResultsHeaderItem } from 'src/app/_models/table-results';
-import { DirectedJobsService } from 'src/app/_services/directedJobs.service';
+import { AcademicPublication } from 'src/app/_models/academicPublication';
+import { DocumentService } from 'src/app/_services/document.service';
 
 /**
  *
@@ -25,43 +24,17 @@ export class DirectedJobsComponent implements OnInit {
    */
   findRequest: FindRequest = new FindRequest();
   @Input() idPrefix: string;
+  @Input() scientificId: string;
   /**
    *
    *
    * @memberof DirectedJobsComponent
    */
   loaded = false;
-  /**
-   *
-   *
-   * @type {Page<SparqlResults>}
-   * @memberof DirectedJobsComponent
-   */
-  allDirectedJobs: Page<SparqlResults> = new Page();
-  /**
-   *
-   *
-   * @type {TableResultsHeaderItem[]}
-   * @memberof DirectedJobsComponent
-   */
-  headerData: TableResultsHeaderItem[] = [
-    {
-      textToTranslate: 'directed-jobs.table-header.title',
-      columnName: 'title'
-    },
-    {
-      textToTranslate: 'directed-jobs.table-header.type',
-      columnName: 'type'
-    },
-    {
-      textToTranslate: 'directed-jobs.table-header.keywords',
-      columnName: 'keywords'
-    },
-    {
-      textToTranslate: 'directed-jobs.table-header.release-year',
-      columnName: 'releaseYear'
-    }
-  ];
+  dateIni;
+
+  allDirectedJobs: Page<AcademicPublication> = new Page();
+
   /**
    *
    *
@@ -70,16 +43,18 @@ export class DirectedJobsComponent implements OnInit {
   yearsForSelect = Helper.getYears();
   filters: Map<string, string> = new Map();
 
-  constructor(private directedJobsService: DirectedJobsService) { }
+  constructor(private documentService: DocumentService) { }
 
   ngOnInit(): void {
-    const pageRequest: PageRequest = new PageRequest();
-    pageRequest.page = 1;
-    pageRequest.size = 10;
-    this.allDirectedJobs = this.directedJobsService.find(
-      null, pageRequest
-    );
-    this.loaded = true;
+    this.findRequest.pageRequest.page = 1;
+    this.findRequest.pageRequest.size = 10;
+    this.findRequest.pageRequest.direction = Direction.ASC;
+    this.findRequest.filter.directedBy = this.scientificId;
+    this.documentService.findAcademicPublication(this.findRequest).subscribe(data => {
+      this.allDirectedJobs = data;
+      this.loaded = true;
+    });
+
   }
 
   /**
@@ -88,6 +63,20 @@ export class DirectedJobsComponent implements OnInit {
    * @memberof DirectedJobsComponent
    */
   filteDirectedJobs() {
+    setTimeout(() => {
+      if (this.dateIni) {
+        const currentDate = Helper.parse(this.dateIni);
+        if (currentDate) {
+          this.findRequest.filter.date = currentDate;
+        }
+      } else {
+        this.findRequest.filter.date = null;
+      }
+      this.documentService.findAcademicPublication(this.findRequest).subscribe(data => {
+        this.allDirectedJobs = data;
+        this.loaded = true;
+      });
+    }, 0);
     this.loaded = true;
   }
   /**
@@ -97,15 +86,13 @@ export class DirectedJobsComponent implements OnInit {
    * @memberof DirectedJobsComponent
    */
   allDirectedFilteredPageChanged(i: number) {
-    this.loaded = true;
-    const pageRequest: PageRequest = new PageRequest();
-    pageRequest.page = i;
-    pageRequest.size = this.allDirectedJobs.size;
-    pageRequest.property = this.allDirectedJobs.sort;
-    pageRequest.direction = this.allDirectedJobs.direction;
-    this.allDirectedJobs = this.directedJobsService.findByFilters(
-      this.filters, pageRequest
-    );
+    this.loaded = false;
+    this.findRequest.pageRequest.page = i - 1;
+    this.findRequest.pageRequest.size = this.allDirectedJobs.size;
+    this.documentService.findAcademicPublication(this.findRequest).subscribe(data => {
+      this.allDirectedJobs = data;
+      this.loaded = true;
+    });
   }
   /**
    *
@@ -114,16 +101,16 @@ export class DirectedJobsComponent implements OnInit {
    * @memberof DirectedJobsComponent
    */
   allDirectedFilteredSizeChanged(i: number) {
-    this.loaded = true;
+    this.loaded = false;
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = this.allDirectedJobs.number;
     pageRequest.size = i;
-    pageRequest.property = this.allDirectedJobs.sort;
-    pageRequest.direction = this.allDirectedJobs.direction;
+    this.findRequest.pageRequest = pageRequest;
 
-    this.allDirectedJobs = this.directedJobsService.findByFilters(
-      this.filters, pageRequest
-    );
+    this.documentService.findAcademicPublication(this.findRequest).subscribe(data => {
+      this.allDirectedJobs = data;
+      this.loaded = true;
+    });
   }
   /**
    *
@@ -132,15 +119,17 @@ export class DirectedJobsComponent implements OnInit {
    * @memberof DirectedJobsComponent
    */
   allDirectedFilteredSortChanged(pageRequest: PageRequest) {
-    this.loaded = true;
+    this.loaded = false;
     const newPageRequest: PageRequest = new PageRequest();
     newPageRequest.page = this.allDirectedJobs.number;
     newPageRequest.size = this.allDirectedJobs.size;
     newPageRequest.property = pageRequest.property;
-    newPageRequest.direction = pageRequest.direction;
+    newPageRequest.direction = pageRequest.direction === Direction.ASC ? Direction.DESC : Direction.ASC;
+    this.findRequest.pageRequest = pageRequest;
 
-    this.allDirectedJobs = this.directedJobsService.findByFilters(
-      this.filters, pageRequest
-    );
+    this.documentService.findAcademicPublication(this.findRequest).subscribe(data => {
+      this.allDirectedJobs = data;
+      this.loaded = true;
+    });
   }
 }

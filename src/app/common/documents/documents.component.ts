@@ -248,7 +248,6 @@ export class DocumentsComponent implements OnInit {
    * @memberof PatentsComponent
    */
   allprojectsFilteredSortChanged(pageRequest: PageRequest) {
-    console.log(pageRequest);
     this.loaded = false;
     const newPageRequest: PageRequest = new PageRequest();
     newPageRequest.page = this.allDocumentFiltered.number;

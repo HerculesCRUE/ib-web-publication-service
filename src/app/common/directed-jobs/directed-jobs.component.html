@@ -6,15 +6,14 @@
     </div>
     <div class="row">
         <!-- year -->
-        <div class="form-group col-lg-6">
-            <label for="anyo{{idPrefix}}" class="col-sm-4 control-label">{{ "participant.year" | translate }}</label>
-            <div class="col-sm-8">
-                <select name="anyo{{idPrefix}}" [attr.aria-label]="'participant.year' | translate" class="form-control"
-                    [(ngModel)]="findRequest.filter.anyo" #type="ngModel">
-                    <option [value]="undefined">{{ "form.select" | translate }}</option>
-                    <option *ngFor="let year of yearsForSelect" [value]="year">{{year}}</option>
-                </select>
-            </div>
+        <div class="form-group col-lg-3">
+            <label for="dateFrom{{idPrefix}}" class="control-label">{{'documents.date' | translate }}</label>
+            <input class="form-control ngbdatepicker" name="dateFrom{{idPrefix}}" id="dateFrom{{idPrefix}}" required
+                (ngModelChange)="filteDirectedJobs()" [readOnly]="true" [minDate]="{year: 1950, month: 1, day: 1}"
+                placeholder="{{'form.datepicker-placeholder' | translate}}" ngbDatepicker #decisionDate="ngbDatepicker"
+                (click)="decisionDate.toggle();"
+                (keydown)="($event.key === 'Escape' || $event.key === 'Tab') ? decisionDate.close() : decisionDate.toggle();"
+                #dateFrom{{idPrefix}}="ngModel" [(ngModel)]="dateIni" />
         </div>
     </div>
 </form>
@@ -54,12 +53,18 @@
             </div>
             <div id="datatables-dashboard-markets_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                 <div class="loader" *ngIf="!loaded"></div>
-                <app-table-results *ngIf="loaded" [data]="allDirectedJobs.content[0]" [pageInfo]="allDirectedJobs"
+                <app-table-results-dto [findRequest]="findRequest" [dtoTypeTranslate]="'documents'" [extra]="idPrefix"
+                    *ngIf="loaded && allDirectedJobs?.content.length !== 0" [data]="allDirectedJobs.content"
+                    [pageInfo]="allDirectedJobs" (pageChanged)="allDirectedFilteredPageChanged($event)"
+                    (sizeChanged)="allDirectedFilteredSizeChanged($event)"
+                    (sortChanged)="allDirectedFilteredSortChanged($event)">
+                </app-table-results-dto>
+                <!--<app-table-results *ngIf="loaded" [data]="allDirectedJobs.content[0]" [pageInfo]="allDirectedJobs"
                     [dtoTypeTranslate]="'directed'" [extra]="idPrefix"
                     (pageChanged)="allDirectedFilteredPageChanged($event)" [headerData]="headerData"
                     (sizeChanged)="allDirectedFilteredSizeChanged($event)"
                     (sortChanged)="allDirectedFilteredSortChanged($event)">
-                </app-table-results>
+                </app-table-results>-->
             </div>
         </div>
     </div>

@@ -2,7 +2,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { PageRequest } from 'src/app/_helpers/search';
 import { TestingHelper } from 'src/app/_helpers/testing.spec';
 import { DirectedJobsService } from 'src/app/_services/directedJobs.service';
+import { DocumentService } from 'src/app/_services/document.service';
 import { MockDirectedJobsService } from 'src/app/_services/_testingServices/mockDirectedJobs.service';
+import { MockDocumentService } from 'src/app/_services/_testingServices/mockDocument.service';
 
 import { DirectedJobsComponent } from './directed-jobs.component';
 
@@ -14,7 +16,8 @@ describe('DirectedJobsComponent', () => {
     TestingHelper.configureTest()
       .compileComponents();
     TestBed.configureTestingModule({
-      providers: [{ provide: DirectedJobsService, useClass: MockDirectedJobsService }]
+      providers: [{ provide: DirectedJobsService, useClass: MockDirectedJobsService },
+      { provide: DocumentService, useClass: MockDocumentService }]
     }).compileComponents();
   }));
 

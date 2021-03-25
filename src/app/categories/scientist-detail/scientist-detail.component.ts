@@ -37,6 +37,7 @@ export class ScientistDetailComponent implements OnInit {
    * @memberof ScientistDetailComponent
    */
   activeTab: string;
+  scientificId: string;
   constructor(private researchStaffService: ResearchStaffService, private rutaActiva: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -45,6 +46,7 @@ export class ScientistDetailComponent implements OnInit {
     const data1: Array<any> = [];
     const data2: Array<any> = [];
     const id = this.rutaActiva.snapshot.params.id;
+    this.scientificId = id;
     this.researchStaffService.getPerson(id).subscribe(data => {
       this.scientist = data;
     });

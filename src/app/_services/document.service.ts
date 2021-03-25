@@ -70,6 +70,8 @@ export class DocumentService extends AbstractService {
         parameters = Helper.addParam(parameters, 'title', findRequest.filter.name);
         parameters = Helper.addParam(parameters, 'yearFrom', findRequest.filter.yearFrom);
         parameters = Helper.addParam(parameters, 'yearTo', findRequest.filter.yearTo);
+        parameters = Helper.addParam(parameters, 'directedBy', findRequest.filter.directedBy);
+        parameters = Helper.addParam(parameters, 'date', findRequest.filter.date);
         // Pagination params
         parameters = Helper.addPaginationParams(parameters, findRequest.pageRequest);
 
