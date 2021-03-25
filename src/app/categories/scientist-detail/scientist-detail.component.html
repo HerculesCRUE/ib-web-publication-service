@@ -86,10 +86,9 @@
                                                 </div>
                                                 <div id="datatables-dashboard-markets_wrapper"
                                                     class="dataTables_wrapper dt-bootstrap4 no-footer p-3">
-                                                    <app-documents [url]="'../../document'"
-                                                        [idPrefix]="'prodScientistdos'"
-                                                        [filterDocumentType]="['Book', 'Article']">
-                                                    </app-documents>
+                                                    <app-patents [authorId]="scientificId" [url]="'../../patent'"
+                                                        [idPrefix]="'prodScientistdos'">
+                                                    </app-patents>
                                                 </div>
                                             </div>
                                         </div>

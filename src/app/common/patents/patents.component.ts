@@ -68,6 +68,7 @@ export class PatentsComponent implements OnInit {
   normalTree = true;
   dateIni;
   dateFin;
+  @Input() authorId: string;
   /**
    * Creates an instance of PatentsComponent.
    * @param {PatentService} patentService
@@ -86,7 +87,9 @@ export class PatentsComponent implements OnInit {
    */
   ngOnInit(): void {
 
-
+    if (this.authorId) {
+      this.findRequest.filter.authorId = this.authorId;
+    }
     this.findRequest.pageRequest.page = 1;
     this.findRequest.pageRequest.size = 10;
     this.findRequest.pageRequest.direction = Direction.ASC;
