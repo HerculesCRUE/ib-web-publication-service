@@ -230,7 +230,8 @@
     "modality": "Modality",
     "needsEthicalValidation": "Needs Ethical Validation",
     "startDate": "Start date",
-    "status": "status"
+    "status": "status",
+    "projectClassification": "Classification"
   },
   "investigation-actions": {
     "title": "Investigation actions",

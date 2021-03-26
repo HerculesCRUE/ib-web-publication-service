@@ -243,7 +243,8 @@
     "modality": "Modalidad",
     "needsEthicalValidation": "Validación etica",
     "startDate": "Fecha inicio",
-    "status": "Estado"
+    "status": "Estado",
+    "projectClassification": "Clasificación"
   },
   "investigation-actions": {
     "title": "Acciones de investigación",
