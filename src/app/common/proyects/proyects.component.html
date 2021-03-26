@@ -51,48 +51,6 @@
                           decisionTo.toggle();" />
             </div>
 
-            <!-- <div class="form-group col-lg-6">
-                <label for="dateFromProyectend{{idPrefix}}" class="control-label">{{'projects.date-end-from' |
-                    translate
-                    }}</label>
-                <input class="form-control" name="dateFromProyect" id="dateFromProyectend{{idPrefix}}" required
-                    (ngModelChange)="filterProjects()" placeholder="{{'form.datepicker-placeholder' | translate}}"
-                    ngbDatepicker [readonly]="true" #decisionDated="ngbDatepicker" (click)="decisionDated.toggle();"
-                    (keydown)="($event.key === 'Escape' || $event.key === 'Tab') ? decisionDated.close() :
-                            decisionDated.toggle();" #dateFrom="ngModel" [(ngModel)]="dateIni" />
-            </div>
-            <div class="form-group col-lg-6">
-                <label for="dateToProyectend{{idPrefix}}" class="control-label">{{'projects.date-end-to' |
-                    translate }}</label>
-                <input class="form-control" name="dateToProyect" id="dateToProyectend{{idPrefix}}" required
-                    (ngModelChange)="filterProjects()" (keydown)="($event.key === 'Escape' || $event.key === 'Tab') ? decisionTod.close() :
-                            decisionTod.toggle();" placeholder="{{'form.datepicker-placeholder' | translate}}"
-                    ngbDatepicker [readonly]="true" #decisionTod="ngbDatepicker" (click)="decisionTod.toggle();"
-                    #dateTo="ngModel" [(ngModel)]="dateFin" />
-            </div>
-
-            <div class="form-group col-lg-6">
-                <label for="competitive{{idPrefix}}" class="control-label">{{'projects.competitive' | translate
-                    }}</label>
-                <select (change)="filterProjects()" id="competitive{{idPrefix}}" name="competitive" class="form-control"
-                    [(ngModel)]="findRequest.filter.competitive" #competitive="ngModel">
-                    <option [value]="undefined">{{ "form.select" | translate }}</option>
-                    <option value="Competitivo">Competitivo</option>
-                    <option value="No Competitivo">No Competitivo</option>
-                </select>
-            </div>
-            <div class="form-group col-lg-6">
-                <label for="level{{idPrefix}}" class="control-label">{{'projects.level' | translate }}</label>
-                <select (change)="filterProjects()" id="level{{idPrefix}}" name="level" class="form-control"
-                    [(ngModel)]="findRequest.filter.level" #level="ngModel">
-                    <option [value]="undefined">{{ "form.select" | translate }}</option>
-                    <option value="Europeo">Europeo</option>
-                    <option value="Interno">Interno</option>
-                    <option value="Nacional">Nacional</option>
-                    <option value="Internacional">Internacional</option>
-                    <option value="Regional">Regional</option>
-                </select>
-            </div>-->
         </div>
     </div>
 
@@ -100,10 +58,10 @@
         <div class="col-12">
             <div class="card flex-fill">
                 <div class="card-header">
-                    <h5 class="card-title mb-0" *ngIf="loaded && allProjectFiltered?.content.length === 0">
+                    <h5 class="card-title mb-0" *ngIf="loaded && resultObject?.content?.length === 0">
                         {{'form.no-result' | translate}}</h5>
-                    <h5 class="card-title mb-0" *ngIf="loaded && allProjectFiltered?.content.length !== 0">
-                        {{'form.results-amount' | translate}} {{allProjectFiltered.totalElements}}</h5>
+                    <h5 class="card-title mb-0" *ngIf="loaded && resultObject?.content?.length !== 0">
+                        {{'form.results-amount' | translate}} {{resultObject?.totalElements}}</h5>
                     <div class="container-fluid">
                         <div class="row justify-content-end">
 
@@ -131,13 +89,15 @@
                 </div>
                 <div id="datatables-dashboard-markets_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                     <div class="loader" *ngIf="!loaded"></div>
-                    <app-table-results-dto [findRequest]="findRequest" [dtoTypeTranslate]="'projects'" [extra]="'5'"
-                        [routerNameLink]="url" *ngIf="loaded && allProjectFiltered?.content.length !== 0"
-                        [routerField]="'id'" [data]="allProjectFiltered.content" [pageInfo]="allProjectFiltered"
-                        (pageChanged)="allprojectsFilteredPageChanged($event)"
-                        (sizeChanged)="allprojectsFilteredSizeChanged($event)"
+                    <app-table-results-dto [displayPagination]="false" [findRequest]="findRequest"
+                        [dtoTypeTranslate]="'projects'" [extra]="'5'" [routerNameLink]="url"
+                        *ngIf="loaded && resultObject?.content?.length !== 0" [routerField]="'id'"
+                        [data]="resultObject?.content" [pageInfo]="resultObject"
                         (sortChanged)="allprojectsFilteredSortChanged($event)">
                     </app-table-results-dto>
+                    <app-pagination [resultObject]="resultObject" (pageChanged)="showPage($event)"
+                        (sizeChanged)="changeSize($event)">
+                    </app-pagination>
                 </div>
             </div>
         </div>

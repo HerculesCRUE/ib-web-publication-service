@@ -1,11 +1,15 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
+import { Direction, FindRequest, Order, Page, PageRequest, PaginatedSearchComponent } from 'src/app/_helpers/search';
 import { ProjectService } from 'src/app/_services/project.service';
 import { Helper } from 'src/app/_helpers/utils';
 import { HelperGraphics } from 'src/app/_helpers/helperGraphics';
 import { SeriesBarData } from 'src/app/_models/seriesBarData';
 import { Project } from 'src/app/_models/project';
 import { GraphicService } from 'src/app/_services/graphic.service';
+import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import { ToastrService } from 'ngx-toastr';
+import { Observable, of } from 'rxjs';
 
 /**
  *
@@ -18,7 +22,7 @@ import { GraphicService } from 'src/app/_services/graphic.service';
   selector: 'app-proyects',
   templateUrl: './proyects.component.html'
 })
-export class ProyectsComponent implements OnInit {
+export class ProyectsComponent extends PaginatedSearchComponent<Project> implements OnInit {
   /**
    *
    *
@@ -34,13 +38,6 @@ export class ProyectsComponent implements OnInit {
    * @memberof ProyectsComponent
    */
   @Input() chartType: string;
-  /**
-   *
-   *
-   * @type {Page<SparqlResults>}
-   * @memberof ProyectsComponent
-   */
-  allProjectFiltered: Page<Project>;
   /**
    *
    *
@@ -95,8 +92,12 @@ export class ProyectsComponent implements OnInit {
    */
   constructor(
     private projectService: ProjectService,
-    private graphicServcice: GraphicService
+    private graphicServcice: GraphicService,
+    router: Router,
+    translate: TranslateService,
+    toastr: ToastrService
   ) {
+    super(router, translate, toastr);
   }
 
   /**
@@ -105,15 +106,6 @@ export class ProyectsComponent implements OnInit {
    * @memberof ProyectsComponent
    */
   ngOnInit(): void {
-    const pageRequest: PageRequest = new PageRequest();
-    pageRequest.page = 0;
-    pageRequest.size = 10;
-    this.findRequest.pageRequest = pageRequest;
-    this.projectService.find(this.findRequest).subscribe((data) => {
-      this.allProjectFiltered = data;
-      this.loaded = true;
-    });
-
     let xAxisData: Array<string> = [];
     let data1: Array<any> = [];
     let data2: Array<any> = [];
@@ -150,6 +142,27 @@ export class ProyectsComponent implements OnInit {
   }
 
 
+  protected findInternal(findRequest: FindRequest): Observable<Page<Project>> {
+
+    const result = this.projectService.find(findRequest);
+    result.subscribe(data => {
+      this.loaded = true;
+    });
+    return result;
+  }
+
+  protected removeInternal(entity: any): Observable<any> {
+    return of({});
+  }
+
+  protected getDefaultOrder(): Order {
+    return {
+      property: 'id',
+      direction: Direction.ASC
+    };
+  }
+
+
 
   /**
    *
@@ -161,41 +174,7 @@ export class ProyectsComponent implements OnInit {
   }
 
 
-  /**
-   *
-   *
-   * @param {number} i
-   * @memberof ProyectsComponent
-   */
-  allprojectsFilteredPageChanged(i: number): void {
-    this.loaded = false;
-    this.findRequest.pageRequest.page = i - 1;
-    this.findRequest.pageRequest.size = this.allProjectFiltered.size;
-    this.projectService.find(this.findRequest).subscribe((data) => {
-      this.allProjectFiltered = data;
-      this.loaded = true;
-    });
-  }
 
-
-  /**
-   *
-   *
-   * @param {number} i
-   * @memberof ProyectsComponent
-   */
-  allprojectsFilteredSizeChanged(i: number): void {
-    this.loaded = false;
-    const pageRequest: PageRequest = new PageRequest();
-    pageRequest.page = this.allProjectFiltered.number;
-    pageRequest.size = i;
-    pageRequest.direction = this.allProjectFiltered.direction;
-    this.findRequest.pageRequest = pageRequest;
-    this.projectService.find(this.findRequest).subscribe((data) => {
-      this.allProjectFiltered = data;
-      this.loaded = true;
-    });
-  }
 
 
   /**
@@ -205,15 +184,10 @@ export class ProyectsComponent implements OnInit {
    * @memberof ProyectsComponent
    */
   allprojectsFilteredSortChanged(pageRequest: PageRequest) {
-    this.loaded = false;
-    const newPageRequest: PageRequest = new PageRequest();
-    newPageRequest.page = this.allProjectFiltered.number;
-    newPageRequest.size = this.allProjectFiltered.size;
-    newPageRequest.property = pageRequest.property;
-    newPageRequest.direction = pageRequest.direction;
-    this.findRequest.pageRequest = pageRequest;
+    this.findRequest.pageRequest.property = pageRequest.property;
+    this.findRequest.pageRequest.direction = pageRequest.direction;
     this.projectService.find(this.findRequest).subscribe((data) => {
-      this.allProjectFiltered = data;
+      this.resultObject = data;
       this.loaded = true;
     });
   }
@@ -226,10 +200,6 @@ export class ProyectsComponent implements OnInit {
    * @memberof ProyectsComponent
    */
   filterProjects() {
-    const pageRequest: PageRequest = new PageRequest();
-    pageRequest.page = 0;
-    pageRequest.size = this.allProjectFiltered.size;
-    this.findRequest.pageRequest = pageRequest;
     setTimeout(() => {
       if (this.dateIni) {
         const currentDate = Helper.parse(this.dateIni);
@@ -249,7 +219,7 @@ export class ProyectsComponent implements OnInit {
         this.findRequest.filter.end = null;
       }
       this.projectService.find(this.findRequest).subscribe((data) => {
-        this.allProjectFiltered = data;
+        this.resultObject = data;
         this.loaded = true;
       });
     }, 0);
