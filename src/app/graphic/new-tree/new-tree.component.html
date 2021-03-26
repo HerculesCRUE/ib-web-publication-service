@@ -3,8 +3,9 @@
         <div class="col-12" *ngFor="let area of data.children">
             <span
                 [ngStyle]="{'text-decoration': area.selected ? 'underline' : 'none', 'font-weight': area.selected ? 'bold' : 'normal'  }">
-                <label (click)="area.selected = !area.selected; areaClicked(area, null);">
-                    <input type="checkbox">{{area.name}}
+                <label for="{{area.value}}">
+                    <input (change)="area.selected = !area.selected; areaClicked(area, null);" id="{{area.value}}"
+                        type="checkbox">{{area.name}}
                 </label></span>
             <ol *ngIf="area.selected && area.children">
                 <li class="myBorder slide-right" *ngFor="let area2 of area?.children">
