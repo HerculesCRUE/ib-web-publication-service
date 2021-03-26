@@ -36,15 +36,6 @@ describe('DirectedJobsComponent', () => {
     expect(component.loaded).toBeTruthy();
   });
 
-  it('should allDirectedFilteredPageChanged', () => {
-    component.allDirectedFilteredPageChanged(1);
-    expect(component.loaded).toBeTruthy();
-  });
-  it('should allDirectedFilteredSizeChanged', () => {
-    component.allDirectedFilteredSizeChanged(1);
-    expect(component.loaded).toBeTruthy();
-  });
-
   it('should allDirectedFilteredSortChanged', () => {
     const page: PageRequest = new PageRequest();
     component.allDirectedFilteredSortChanged(page);

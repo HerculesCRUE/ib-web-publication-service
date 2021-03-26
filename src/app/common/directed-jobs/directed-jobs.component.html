@@ -46,25 +46,21 @@
                         </div>
                     </div>
                 </div>
-                <h5 class="card-title mb-0" *ngIf="loaded && allDirectedJobs?.content.length === 0">
+                <h5 class="card-title mb-0" *ngIf="loaded && resultObject?.content?.length === 0">
                     {{'form.no-result' | translate}}</h5>
-                <h5 class="card-title mb-0" *ngIf="loaded && allDirectedJobs?.content.length !== 0">
-                    {{'form.results-amount' | translate}} {{allDirectedJobs.totalElements}}</h5>
+                <h5 class="card-title mb-0" *ngIf="loaded && resultObject?.content?.length !== 0">
+                    {{'form.results-amount' | translate}} {{resultObject.totalElements}}</h5>
             </div>
             <div id="datatables-dashboard-markets_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                 <div class="loader" *ngIf="!loaded"></div>
-                <app-table-results-dto [findRequest]="findRequest" [dtoTypeTranslate]="'documents'" [extra]="idPrefix"
-                    *ngIf="loaded && allDirectedJobs?.content.length !== 0" [data]="allDirectedJobs.content"
-                    [pageInfo]="allDirectedJobs" (pageChanged)="allDirectedFilteredPageChanged($event)"
-                    (sizeChanged)="allDirectedFilteredSizeChanged($event)"
-                    (sortChanged)="allDirectedFilteredSortChanged($event)">
+                <app-table-results-dto [displayPagination]="false" [findRequest]="findRequest"
+                    [dtoTypeTranslate]="'documents'" [extra]="idPrefix"
+                    *ngIf="loaded && resultObject?.content?.length !== 0" [data]="resultObject?.content"
+                    [pageInfo]="resultObject" (sortChanged)="allDirectedFilteredSortChanged($event)">
                 </app-table-results-dto>
-                <!--<app-table-results *ngIf="loaded" [data]="allDirectedJobs.content[0]" [pageInfo]="allDirectedJobs"
-                    [dtoTypeTranslate]="'directed'" [extra]="idPrefix"
-                    (pageChanged)="allDirectedFilteredPageChanged($event)" [headerData]="headerData"
-                    (sizeChanged)="allDirectedFilteredSizeChanged($event)"
-                    (sortChanged)="allDirectedFilteredSortChanged($event)">
-                </app-table-results>-->
+                <app-pagination [resultObject]="resultObject" (pageChanged)="showPage($event)"
+                    (sizeChanged)="changeSize($event)">
+                </app-pagination>
             </div>
         </div>
     </div>
