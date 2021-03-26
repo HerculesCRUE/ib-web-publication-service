@@ -6,6 +6,15 @@
  */
 export class ResearchGroup {
 
+    /**
+         * The id
+         */
+    id: string;
+
+    /**
+     * The title
+     */
+    title: string;
 
     /**
      * The abbreviation
@@ -28,22 +37,12 @@ export class ResearchGroup {
     excellenceLabel: string;
 
     /**
-     * The homepage
-     */
-    homepage: string;
-
-    /**
-     * The id
-     */
-    id: string;
-
-    /**
      * The startDate
      */
     startDate: string;
 
     /**
-     * The title
+     * The ScientificDomain (uppercase S)
      */
-    title: string;
+    ScientificDomain: string;
 }

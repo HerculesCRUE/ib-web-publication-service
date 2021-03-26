@@ -56,4 +56,6 @@ export class Patent {
      * The title
      */
     title: string;
+    pageEnd: string;
+    pageStart: string;
 }

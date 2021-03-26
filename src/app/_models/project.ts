@@ -60,4 +60,5 @@ export class Project {
      * The title 
      */
     title: string;
+    projectClassification: string;
 }

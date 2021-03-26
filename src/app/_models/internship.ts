@@ -1,15 +1,14 @@
-/**
- *
- *
- * @export
- * @class Exhibit
- */
-export class Exhibit {
+export class InternshipDto {
 
     /**
-     * The abbreviation
+     * The id
      */
-    abbreviation: string;
+    id: string;
+
+    /**
+     * The title
+     */
+    title: string;
 
     /**
      * The contactInformation
@@ -17,19 +16,14 @@ export class Exhibit {
     contactInformation: string;
 
     /**
-     * The date
-     */
-    date: string;
-
-    /**
      * The description
      */
     description: string;
 
     /**
-     * The id
+     * The endDate
      */
-    id: string;
+    endDate: string;
 
     /**
      * The locality
@@ -42,8 +36,12 @@ export class Exhibit {
     locatedIn: string;
 
     /**
-     * The title
+     * The participatedBy
      */
-    title: string;
     participatedBy: string;
+
+    /**
+     * The startDate
+     */
+    startDate: string;
 }

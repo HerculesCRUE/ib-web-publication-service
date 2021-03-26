@@ -80,4 +80,5 @@ export class Person {
      * The title
      */
     title: string;
+    subjectArea: string;
 }

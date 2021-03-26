@@ -1,10 +1,4 @@
-/**
- *
- *
- * @export
- * @class University
- */
-export class University {
+export class ResearchField {
 
     /**
      * The id
@@ -12,8 +6,12 @@ export class University {
     id: string;
 
     /**
-     * The name
+     * The title
      */
     title: string;
+
+    /**
+     * The type
+     */
     type: string;
 }

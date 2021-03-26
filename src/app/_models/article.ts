@@ -39,4 +39,11 @@ export class Article {
      * The title
      */
     title: string;
+    /**
+     *
+     *
+     * @type {string}
+     * @memberof Article
+     */
+    summary: string;
 }
