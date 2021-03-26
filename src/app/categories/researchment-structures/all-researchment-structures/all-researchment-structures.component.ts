@@ -71,51 +71,6 @@ export class AllResearchmentStructuresComponent extends PaginatedSearchComponent
 
   }
 
-
-
-  /**
-   * Function called on pageChanged event of TableResultsComponent
-   *
-   * @param {number} i
-   * @memberof AllResearchmentStructuresComponent
-   
-  allResearchmentStructuresFilteredPageChanged(i: number): void {
-    this.loaded = false;
-    const pageRequest: PageRequest = new PageRequest();
-    pageRequest.page = i - 1;
-    pageRequest.size = this.allResearchmentStructuresFiltered.size;
-    pageRequest.property = this.findRequest.pageRequest.property;
-    pageRequest.direction = this.findRequest.pageRequest.direction;
-    this.findRequest.pageRequest = pageRequest;
-
-    this.researchmentStructureService.find(this.findRequest).subscribe((data) => {
-      this.allResearchmentStructuresFiltered = data;
-      this.loaded = true;
-    });
-  }*/
-
-  /**
-   * Function called on sizeChanged event of TableResultsComponent
-   *
-   * @param {number} i
-   * @memberof AllResearchmentStructuresComponent
-   
-  allResearchmentStructuresFilteredSizeChanged(i: number): void {
-    this.loaded = false;
-    const pageRequest: PageRequest = new PageRequest();
-    pageRequest.page = this.allResearchmentStructuresFiltered.number;
-    pageRequest.size = i;
-    pageRequest.property = this.findRequest.pageRequest.property;
-    pageRequest.direction = this.findRequest.pageRequest.direction;
-    this.findRequest.pageRequest = pageRequest;
-
-    this.researchmentStructureService.find(this.findRequest).subscribe((data) => {
-      this.allResearchmentStructuresFiltered = data;
-      this.loaded = true;
-    });
-  }*/
-
-
   /**
    * Function called on sortChanged event of TableResultsComponent
    *

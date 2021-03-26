@@ -41,7 +41,10 @@ export class TableResultsDtoComponent
    */
   @Input()
   set data(val: any) {
-    this.dataComplete = JSON.parse(JSON.stringify(val));
+    if (val) {
+      this.dataComplete = JSON.parse(JSON.stringify(val));
+    }
+
   }
 
   get data(): any {
@@ -138,7 +141,7 @@ export class TableResultsDtoComponent
 
   ngOnChanges(changes: SimpleChanges): void {
     // obtengo los headers
-    if (this.data.length > 0) {
+    if (this.data?.length > 0) {
       this.hedearDTO = Object.keys(this.data[0]);
     }
     if (!!this.pageInfo) {
@@ -161,7 +164,7 @@ export class TableResultsDtoComponent
       }
 
 
-      page.numberOfElements = Math.min(page.content.length, this.pageInfo.size);
+      page.numberOfElements = Math.min(page.content?.length, this.pageInfo?.size);
       page.size = this.pageInfo.size;
       page.totalElements = this.pageInfo.totalElements;
 

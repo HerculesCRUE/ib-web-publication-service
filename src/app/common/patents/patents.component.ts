@@ -1,6 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import { ToastrService } from 'ngx-toastr';
+import { Observable, of } from 'rxjs';
 import { HelperGraphics } from 'src/app/_helpers/helperGraphics';
-import { Direction, FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
+import { Direction, FindRequest, Order, Page, PageRequest, PaginatedSearchComponent } from 'src/app/_helpers/search';
 import { Helper } from 'src/app/_helpers/utils';
 import { Patent } from 'src/app/_models/patent';
 import { GraphicService } from 'src/app/_services/graphic.service';
@@ -18,7 +22,7 @@ import { PatentService } from 'src/app/_services/patent.service';
   selector: 'app-patents',
   templateUrl: './patents.component.html'
 })
-export class PatentsComponent implements OnInit {
+export class PatentsComponent extends PaginatedSearchComponent<Patent> implements OnInit {
   /**
    * university id for filter
    *
@@ -33,7 +37,7 @@ export class PatentsComponent implements OnInit {
    * @type {Page<SparqlResults>}
    * @memberof PatentsComponent
    */
-  allPatentFiltered: Page<Patent>;
+
   /**
    *
    *  find request
@@ -76,9 +80,13 @@ export class PatentsComponent implements OnInit {
    */
   constructor(
     private patentService: PatentService,
-    private graphicServcice: GraphicService) {
+    private graphicServcice: GraphicService,
+    router: Router,
+    translate: TranslateService,
+    toastr: ToastrService
+  ) {
+    super(router, translate, toastr);
   }
-
 
   /**
    *
@@ -90,13 +98,6 @@ export class PatentsComponent implements OnInit {
     if (this.authorId) {
       this.findRequest.filter.authorId = this.authorId;
     }
-    this.findRequest.pageRequest.page = 0;
-    this.findRequest.pageRequest.size = 10;
-    this.findRequest.pageRequest.direction = Direction.ASC;
-    this.patentService.find(this.findRequest).subscribe(res => {
-      this.allPatentFiltered = res;
-      this.loaded = true;
-    });
     let xAxisData: Array<string> = [];
     let data1: Array<any> = [];
     let data2: Array<any> = [];
@@ -115,40 +116,27 @@ export class PatentsComponent implements OnInit {
   }
 
 
-  /**
-   *
-   *
-   * @param {number} i
-   * @memberof PatentsComponent
-   */
-  allPatentsFilteredPageChanged(i: number): void {
-    this.loaded = false;
-    this.findRequest.pageRequest.page = i - 1;
-    this.findRequest.pageRequest.size = this.allPatentFiltered.size;
-    this.patentService.find(this.findRequest).subscribe((data) => {
-      this.allPatentFiltered = data;
+  protected findInternal(findRequest: FindRequest): Observable<Page<Patent>> {
+
+    const result = this.patentService.find(findRequest);
+    result.subscribe(data => {
       this.loaded = true;
     });
+    return result;
+  }
+
+  protected removeInternal(entity: any): Observable<any> {
+    return of({});
+  }
+
+  protected getDefaultOrder(): Order {
+    return {
+      property: 'id',
+      direction: Direction.ASC
+    };
   }
 
 
-  /**
-   *
-   *
-   * @param {number} i
-   * @memberof PatentsComponent
-   */
-  allPatentsFilteredSizeChanged(i: number): void {
-    this.loaded = false;
-    const pageRequest: PageRequest = new PageRequest();
-    pageRequest.page = this.allPatentFiltered.number;
-    pageRequest.size = i;
-    this.findRequest.pageRequest = pageRequest;
-    this.patentService.find(this.findRequest).subscribe((data) => {
-      this.allPatentFiltered = data;
-      this.loaded = true;
-    });
-  }
 
 
   /**
@@ -158,15 +146,10 @@ export class PatentsComponent implements OnInit {
    * @memberof PatentsComponent
    */
   allPatentsFilteredSortChanged(pageRequest: PageRequest) {
-    const newPageRequest: PageRequest = new PageRequest();
-    newPageRequest.page = this.allPatentFiltered.number;
-    newPageRequest.size = this.allPatentFiltered.size;
-    newPageRequest.property = pageRequest.property;
-    newPageRequest.direction = pageRequest.direction;
-    this.findRequest.pageRequest = pageRequest;
-
+    this.findRequest.pageRequest.property = pageRequest.property;
+    this.findRequest.pageRequest.direction = pageRequest.direction;
     this.patentService.find(this.findRequest).subscribe((data) => {
-      this.allPatentFiltered = data;
+      this.resultObject = data;
       this.loaded = true;
     });
   }
@@ -178,10 +161,6 @@ export class PatentsComponent implements OnInit {
    */
   filterPatents() {
     this.loaded = false;
-    const pageRequest: PageRequest = new PageRequest();
-    pageRequest.page = 0;
-    pageRequest.size = this.allPatentFiltered.size;
-    this.findRequest.pageRequest = pageRequest;
     setTimeout(() => {
       if (this.dateIni) {
         const currentDate = Helper.parse(this.dateIni);
@@ -201,7 +180,7 @@ export class PatentsComponent implements OnInit {
         this.findRequest.filter.end = null;
       }
       this.patentService.find(this.findRequest).subscribe((data) => {
-        this.allPatentFiltered = data;
+        this.resultObject = data;
         this.loaded = true;
       });
     }, 0);
