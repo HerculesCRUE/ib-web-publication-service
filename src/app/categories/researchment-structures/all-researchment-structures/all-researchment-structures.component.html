@@ -61,7 +61,7 @@
                             <div class="col-sm-12">
                                 <div class="loader" *ngIf="!loaded"></div>
                                 <app-table-results-dto [displayPagination]="false" [findRequest]="findRequest"
-                                    *ngIf="loaded && resultObject?.content.length !== 0"
+                                    *ngIf="loaded && resultObject?.content?.length !== 0"
                                     [dtoTypeTranslate]="'researchmentStructure'" [extra]="'2'"
                                     [data]="resultObject?.content" [pageInfo]="resultObject"
                                     [routerFieldSecondary]="'type'" [routerField]="'id'"
