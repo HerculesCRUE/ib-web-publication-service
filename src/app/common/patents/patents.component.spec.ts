@@ -35,13 +35,6 @@ describe('PatentsComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  describe('all proyects Filtered Page Changed', () => {
-    it('should change to page 1 and a result to show of 5', () => {
-      component.allPatentsFilteredPageChanged(2);
-      spyOn(patentService, 'find').and.callThrough();
-      expect(component.findRequest.pageRequest.page).toBe(1);
-    });
-  });
 
   describe('test filterProjects', () => {
     it('expect to call service function findProjectByFilters', fakeAsync(() => {
@@ -115,11 +108,4 @@ describe('PatentsComponent', () => {
     });
   });
 
-  describe('all proyects Filtered Page Changed', () => {
-    it('should change to page 1 and a result to show of 5', () => {
-      component.allPatentsFilteredSizeChanged(20);
-      spyOn(patentService, 'find').and.callThrough();
-      expect(component.findRequest.pageRequest.size).toBe(20);
-    });
-  });
 });

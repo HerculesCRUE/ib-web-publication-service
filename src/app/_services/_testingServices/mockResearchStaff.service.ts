@@ -33,7 +33,7 @@ export class MockResearchStaffService {
             personalMaibox: '',
             researchLine: '',
             surname: '',
-            taxId: ''
+            taxId: '', subjectArea: ''
         },
         {
             id: '148071',
@@ -50,7 +50,7 @@ export class MockResearchStaffService {
             personalMaibox: '',
             researchLine: '',
             surname: '',
-            taxId: ''
+            taxId: '', subjectArea: ''
         },
         {
             id: '603742',
@@ -67,7 +67,7 @@ export class MockResearchStaffService {
             personalMaibox: '',
             researchLine: '',
             surname: '',
-            taxId: ''
+            taxId: '', subjectArea: ''
         },
         {
             id: '12019',
@@ -84,7 +84,7 @@ export class MockResearchStaffService {
             personalMaibox: '',
             researchLine: '',
             surname: '',
-            taxId: ''
+            taxId: '', subjectArea: ''
         },
         {
             id: '60203',
@@ -101,7 +101,7 @@ export class MockResearchStaffService {
             personalMaibox: '',
             researchLine: '',
             surname: '',
-            taxId: ''
+            taxId: '', subjectArea: ''
         }
     ];
 

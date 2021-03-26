@@ -27,7 +27,7 @@ export class MockPatentService {
             keyword: '',
             mode: '',
             startDate: '',
-            startPage: ''
+            startPage: '', pageEnd: '', pageStart: ''
         },
         {
             id: '9',
@@ -39,7 +39,7 @@ export class MockPatentService {
             keyword: '',
             mode: '',
             startDate: '',
-            startPage: ''
+            startPage: '', pageEnd: '', pageStart: ''
         },
         {
             id: '12',
@@ -51,7 +51,7 @@ export class MockPatentService {
             keyword: '',
             mode: '',
             startDate: '1997-05-15',
-            startPage: ''
+            startPage: '', pageEnd: '', pageStart: ''
         },
         {
             id: '13',
@@ -63,7 +63,7 @@ export class MockPatentService {
             keyword: '',
             mode: '',
             startDate: '',
-            startPage: ''
+            startPage: '', pageEnd: '', pageStart: ''
         },
         {
             id: '39',
@@ -75,7 +75,7 @@ export class MockPatentService {
             keyword: '',
             mode: '',
             startDate: '',
-            startPage: ''
+            startPage: '', pageEnd: '', pageStart: ''
         },
         {
             id: '44',
@@ -87,7 +87,7 @@ export class MockPatentService {
             keyword: '',
             mode: '',
             startDate: '',
-            startPage: ''
+            startPage: '', pageEnd: '', pageStart: ''
         },
         {
             id: '45',
@@ -99,7 +99,7 @@ export class MockPatentService {
             keyword: '',
             mode: '',
             startDate: '',
-            startPage: ''
+            startPage: '', pageEnd: '', pageStart: ''
         },
         {
             id: '46',
@@ -111,7 +111,7 @@ export class MockPatentService {
             keyword: '',
             mode: '',
             startDate: '',
-            startPage: ''
+            startPage: '', pageEnd: '', pageStart: ''
         },
         {
             id: '47',
@@ -123,7 +123,7 @@ export class MockPatentService {
             keyword: '',
             mode: '',
             startDate: '2003-07-15',
-            startPage: ''
+            startPage: '', pageEnd: '', pageStart: ''
         },
         {
             id: '48',
@@ -135,7 +135,7 @@ export class MockPatentService {
             keyword: '',
             mode: '',
             startDate: '',
-            startPage: ''
+            startPage: '', pageEnd: '', pageStart: ''
         }
     ];
 
