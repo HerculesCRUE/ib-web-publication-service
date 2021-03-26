@@ -47,6 +47,7 @@ export class TableResultsDtoComponent
   get data(): any {
     return this.dataComplete;
   }
+  @Input() displayPagination = true;
 
   /**
    * Data needed to set pagination if we have server pagination

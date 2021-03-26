@@ -42,7 +42,7 @@ export class PaginationComponent implements OnChanges {
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.resultObject != null) {
+    /*if (this.resultObject != null) {
       this.min = (this.resultObject.number + 1) * this.resultObject.size + 1;
       this.max = Math.min(
         (this.resultObject.number + 1) * this.resultObject.size +
@@ -51,6 +51,13 @@ export class PaginationComponent implements OnChanges {
       if (!this.max) {
         this.max = 0;
       }
+      this.pageSize = this.resultObject.size;
+    }*/
+
+    if (this.resultObject != null) {
+      this.min = this.resultObject.number * this.resultObject.size + 1;
+      this.max = this.resultObject.number * this.resultObject.size + this.resultObject.numberOfElements;
+      this.totalElements = this.resultObject.totalElements || 0;
       this.pageSize = this.resultObject.size;
     }
   }

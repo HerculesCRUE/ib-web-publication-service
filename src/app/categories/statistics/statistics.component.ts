@@ -47,6 +47,6 @@ export class StatisticsComponent implements OnInit {
   }
 
   doSomethingOnScroll($event) {
-    console.log($event, 'hello');
+
   }
 }

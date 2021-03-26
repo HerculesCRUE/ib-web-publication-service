@@ -262,7 +262,7 @@ export abstract class PaginatedSearchComponent<T> implements AfterContentInit {
    * @param property Propiedad por la que se pretende ordenar.
    */
   sort(property: string) {
-    console.log(this.findRequest.pageRequest.direction);
+
     if (this.findRequest.pageRequest.property === property) {
       if (this.findRequest.pageRequest.direction === Direction.DESC) {
         this.findRequest.pageRequest.direction = Direction.ASC;
@@ -273,7 +273,7 @@ export abstract class PaginatedSearchComponent<T> implements AfterContentInit {
       this.findRequest.pageRequest.property = property;
       this.findRequest.pageRequest.direction = Direction.ASC;
     }
-    // this.find();
+    this.find();
     this.sortChanged.emit(this.findRequest.pageRequest);
   }
 

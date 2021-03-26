@@ -46,8 +46,8 @@
           </ng-container>
         </tbody>
       </table>
-      <app-pagination [resultObject]="resultObject" (pageChanged)="callShowPageWhenPageChanges($event)"
-        (sizeChanged)="callShowPageWhenSizeChanges($event)">
+      <app-pagination *ngIf="displayPagination" [resultObject]="resultObject"
+        (pageChanged)="callShowPageWhenPageChanges($event)" (sizeChanged)="callShowPageWhenSizeChanges($event)">
       </app-pagination>
     </div>
   </div>
