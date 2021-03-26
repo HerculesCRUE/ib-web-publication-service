@@ -88,21 +88,22 @@
                             </div>
                         </div>
                     </div>
-                    <h5 class="card-title mb-0" *ngIf="loaded && allDocumentFiltered?.content.length === 0">
+                    <h5 class="card-title mb-0" *ngIf="loaded && resultObject?.content?.length === 0">
                         {{'form.no-result' | translate}}</h5>
-                    <h5 class="card-title mb-0" *ngIf="loaded && allDocumentFiltered?.content.length !== 0">
-                        {{'form.results-amount' | translate}} {{allDocumentFiltered.totalElements}}</h5>
+                    <h5 class="card-title mb-0" *ngIf="loaded && resultObject?.content?.length !== 0">
+                        {{'form.results-amount' | translate}} {{resultObject?.totalElements}}</h5>
                 </div>
                 <div id="datatables-dashboard-markets_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                     <div class="loader" *ngIf="!loaded"></div>
-                    <app-table-results-dto [findRequest]="findRequest" [dtoTypeTranslate]="'documents'"
-                        [extra]="idPrefix" *ngIf="loaded && allDocumentFiltered?.content.length !== 0"
-                        [data]="allDocumentFiltered.content" [routerNameLink]="url" [routerField]="'id'"
-                        [routerFieldSecondary]="'type'" [pageInfo]="allDocumentFiltered"
-                        (pageChanged)="allprojectsFilteredPageChanged($event)"
-                        (sizeChanged)="allprojectsFilteredSizeChanged($event)"
-                        (sortChanged)="allprojectsFilteredSortChanged($event)">
+                    <app-table-results-dto [displayPagination]="false" [findRequest]="findRequest"
+                        [dtoTypeTranslate]="'documents'" [extra]="idPrefix"
+                        *ngIf="loaded && resultObject?.content?.length !== 0" [data]="resultObject?.content"
+                        [routerNameLink]="url" [routerField]="'id'" [routerFieldSecondary]="'type'"
+                        [pageInfo]="resultObject" (sortChanged)="allprojectsFilteredSortChanged($event)">
                     </app-table-results-dto>
+                    <app-pagination [resultObject]="resultObject" (pageChanged)="showPage($event)"
+                        (sizeChanged)="changeSize($event)">
+                    </app-pagination>
                 </div>
             </div>
         </div>

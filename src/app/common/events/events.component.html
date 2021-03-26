@@ -60,20 +60,22 @@
                         </div>
                     </div>
                 </div>
-                <h5 class="card-title mb-0" *ngIf="loaded && allEvents?.content.length === 0">
+                <h5 class="card-title mb-0" *ngIf="loaded && resultObject?.content?.length === 0">
                     {{'form.no-result' | translate}}</h5>
-                <h5 class="card-title mb-0" *ngIf="loaded && allEvents?.content.length !== 0">
-                    {{'form.results-amount' | translate}} {{allEvents.totalElements}}</h5>
+                <h5 class="card-title mb-0" *ngIf="loaded && resultObject?.content?.length !== 0">
+                    {{'form.results-amount' | translate}} {{resultObject?.totalElements}}</h5>
             </div>
             <div id="datatables-dashboard-markets_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                 <div class="loader" *ngIf="!loaded"></div>
-                <app-table-results-dto [findRequest]="findRequest" *ngIf="loaded && allEvents?.content.length !== 0"
-                    [data]="allEvents.content" [pageInfo]="allEvents" [dtoTypeTranslate]="'events'" [extra]="'2'"
-                    [routerField]="'id'" [routerNameLink]="url" [routerField]="'id'" [routerFieldSecondary]="'type'"
-                    (pageChanged)="allEventsFilteredPageChanged($event)"
-                    (sizeChanged)="allEventsFilteredSizeChanged($event)"
+                <app-table-results-dto [displayPagination]="false" [findRequest]="findRequest"
+                    *ngIf="loaded && resultObject?.content?.length !== 0" [data]="resultObject?.content"
+                    [pageInfo]="resultObject" [dtoTypeTranslate]="'events'" [extra]="'2'" [routerField]="'id'"
+                    [routerNameLink]="url" [routerField]="'id'" [routerFieldSecondary]="'type'"
                     (sortChanged)="allEventsFilteredSortChanged($event)">
                 </app-table-results-dto>
+                <app-pagination [resultObject]="resultObject" (pageChanged)="showPage($event)"
+                    (sizeChanged)="changeSize($event)">
+                </app-pagination>
             </div>
         </div>
     </div>

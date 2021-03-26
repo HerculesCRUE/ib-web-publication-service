@@ -1,5 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
+import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import { ToastrService } from 'ngx-toastr';
+import { Observable, of } from 'rxjs';
+import { Direction, FindRequest, Order, Page, PageRequest, PaginatedSearchComponent } from 'src/app/_helpers/search';
 import { Helper } from 'src/app/_helpers/utils';
 import { Event } from 'src/app/_models/event';
 import { SparqlResults } from 'src/app/_models/sparql';
@@ -9,7 +13,7 @@ import { EventsService } from 'src/app/_services/events.service';
   selector: 'app-events',
   templateUrl: './events.component.html'
 })
-export class EventsComponent implements OnInit {
+export class EventsComponent extends PaginatedSearchComponent<Event> implements OnInit {
   @Input() idPrefix: string;
   @Input() url: string;
   @Input() participantId: string;
@@ -17,32 +21,48 @@ export class EventsComponent implements OnInit {
   findRequest: FindRequest = new FindRequest();
   dateIni;
   dateFin;
-  allEvents: Page<Event>;
   loaded: boolean;
 
 
-  constructor(private eventsService: EventsService) { }
+  constructor(private eventsService: EventsService,
+    router: Router,
+    translate: TranslateService,
+    toastr: ToastrService
+  ) {
+    super(router, translate, toastr);
+  }
 
   ngOnInit(): void {
     if (this.types === 'Conference') {
       this.findRequest.filter.type = 'Conference';
     }
-    const pageRequest: PageRequest = new PageRequest();
-    pageRequest.page = 1;
-    pageRequest.size = 10;
     if (this.participantId) {
       this.findRequest.filter.participantId = this.participantId;
     }
-    this.eventsService.find(this.findRequest).subscribe(data => {
-      this.loaded = true;
-      this.allEvents = data;
-    });
 
   }
 
-  filterEvents() {
+  protected findInternal(findRequest: FindRequest): Observable<Page<Event>> {
 
-    this.loaded = false;
+    const result = this.eventsService.find(findRequest);
+    result.subscribe(data => {
+      this.loaded = true;
+    });
+    return result;
+  }
+
+  protected removeInternal(entity: any): Observable<any> {
+    return of({});
+  }
+
+  protected getDefaultOrder(): Order {
+    return {
+      property: 'id',
+      direction: Direction.ASC
+    };
+  }
+
+  filterEvents() {
     setTimeout(() => {
       if (this.dateIni) {
         const currentDate = Helper.parse(this.dateIni);
@@ -53,47 +73,13 @@ export class EventsComponent implements OnInit {
         this.findRequest.filter.start = null;
       }
       this.eventsService.find(this.findRequest).subscribe((data) => {
-        this.allEvents = data;
+        this.resultObject = data;
         this.loaded = true;
       });
     }, 0);
   }
 
-  /**
-   *
-   *
-   * @param {number} i
-   * @memberof EventsComponent
-   */
-  allEventsFilteredPageChanged(i: number) {
-    this.loaded = false;
-    this.findRequest.pageRequest.page = i - 1;
-    this.findRequest.pageRequest.size = this.allEvents.size;
-    this.eventsService.find(this.findRequest).subscribe((data) => {
-      this.allEvents = data;
-      this.loaded = true;
-    });
-  }
 
-
-  /**
-   *
-   *
-   * @param {number} i
-   * @memberof EventsComponent
-   */
-  allEventsFilteredSizeChanged(i: number) {
-    this.loaded = false;
-    const pageRequest: PageRequest = new PageRequest();
-    pageRequest.page = this.allEvents.number;
-    pageRequest.size = i;
-    pageRequest.direction = this.allEvents.direction;
-    this.findRequest.pageRequest = pageRequest;
-    this.eventsService.find(this.findRequest).subscribe((data) => {
-      this.allEvents = data;
-      this.loaded = true;
-    });
-  }
 
 
   /**
@@ -103,15 +89,10 @@ export class EventsComponent implements OnInit {
    * @memberof EventsComponent
    */
   allEventsFilteredSortChanged(pageRequest: PageRequest) {
-    this.loaded = false;
-    const newPageRequest: PageRequest = new PageRequest();
-    newPageRequest.page = this.allEvents.number;
-    newPageRequest.size = this.allEvents.size;
-    newPageRequest.property = pageRequest.property;
-    newPageRequest.direction = pageRequest.direction;
-    this.findRequest.pageRequest = pageRequest;
+    this.findRequest.pageRequest.property = pageRequest.property;
+    this.findRequest.pageRequest.direction = pageRequest.direction;
     this.eventsService.find(this.findRequest).subscribe((data) => {
-      this.allEvents = data;
+      this.resultObject = data;
       this.loaded = true;
     });
   }

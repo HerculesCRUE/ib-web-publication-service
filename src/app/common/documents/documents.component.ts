@@ -1,5 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Direction, FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
+import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import { ToastrService } from 'ngx-toastr';
+import { Observable, of } from 'rxjs';
+import { Direction, FindRequest, Order, Page, PageRequest, PaginatedSearchComponent } from 'src/app/_helpers/search';
 import { Helper } from 'src/app/_helpers/utils';
 import { AcademicPublication } from 'src/app/_models/academicPublication';
 import { Document } from 'src/app/_models/document';
@@ -16,7 +20,7 @@ import { DocumentService } from 'src/app/_services/document.service';
   selector: 'app-documents',
   templateUrl: './documents.component.html'
 })
-export class DocumentsComponent implements OnInit {
+export class DocumentsComponent extends PaginatedSearchComponent<Document | AcademicPublication> implements OnInit {
   /**
    * Data to show on select type
    *
@@ -80,13 +84,6 @@ export class DocumentsComponent implements OnInit {
   /**
    *
    *
-   * @type {Page<SparqlResults>}
-   * @memberof DocumentsComponent
-   */
-  allDocumentFiltered: Page<Document | AcademicPublication> = new Page();
-  /**
-   *
-   *
    * @memberof DocumentsComponent
    */
   normalTree = true;
@@ -98,7 +95,13 @@ export class DocumentsComponent implements OnInit {
    * @param {ProjectService} projectService
    * @memberof DocumentsComponent
    */
-  constructor(private documentService: DocumentService) { }
+  constructor(private documentService: DocumentService,
+    router: Router,
+    translate: TranslateService,
+    toastr: ToastrService
+  ) {
+    super(router, translate, toastr);
+  }
 
   ngOnInit(): void {
     if (this.authorId) {
@@ -107,22 +110,33 @@ export class DocumentsComponent implements OnInit {
     if (this.idPrefix === 'prodScientist') {
       this.url = '../../../document/';
     }
-    this.findRequest.pageRequest.page = 0;
-    this.findRequest.pageRequest.size = 10;
-    this.findRequest.pageRequest.direction = Direction.ASC;
-    this.findRequest.filter.types = this.filterDocumentType;
-    if (this.idPrefix === 'academic') {
-      this.documentService.findAcademicPublication(this.findRequest).subscribe((data) => {
-        this.allDocumentFiltered = data;
-        this.loaded = true;
-      });
-    } else {
-      this.documentService.find(this.findRequest).subscribe((data) => {
-        this.allDocumentFiltered = data;
-        this.loaded = true;
-      });
-    }
 
+
+  }
+
+  protected findInternal(findRequest: FindRequest): Observable<Page<Document | AcademicPublication>> {
+    let result;
+    if (this.idPrefix === 'academic') {
+      result = this.documentService.findAcademicPublication(this.findRequest);
+    } else {
+      result = this.documentService.find(this.findRequest);
+    }
+    result.subscribe(data => {
+      this.loaded = true;
+    });
+    return result;
+
+  }
+
+  protected removeInternal(entity: any): Observable<any> {
+    return of({});
+  }
+
+  protected getDefaultOrder(): Order {
+    return {
+      property: 'id',
+      direction: Direction.ASC
+    };
   }
 
 
@@ -134,7 +148,6 @@ export class DocumentsComponent implements OnInit {
    * @memberof ScientificProductionComponent
    */
   filterProjects() {
-    this.loaded = false;
     setTimeout(() => {
       if (this.dateIni) {
         const currentDate = Helper.parseYear(this.dateIni);
@@ -156,12 +169,12 @@ export class DocumentsComponent implements OnInit {
 
       if (this.idPrefix === 'academic') {
         this.documentService.findAcademicPublication(this.findRequest).subscribe((data) => {
-          this.allDocumentFiltered = data;
+          this.resultObject = data;
           this.loaded = true;
         });
       } else {
         this.documentService.find(this.findRequest).subscribe((data) => {
-          this.allDocumentFiltered = data;
+          this.resultObject = data;
           this.loaded = true;
         });
       }
@@ -169,29 +182,7 @@ export class DocumentsComponent implements OnInit {
     }, 0);
   }
 
-  /**
-   *
-   *
-   * @param {number} i
-   * @memberof ScientificProductionComponent
-   */
-  allprojectsFilteredPageChanged(i: number): void {
-    this.loaded = false;
-    this.findRequest.pageRequest.page = i - 1;
-    this.findRequest.pageRequest.size = this.allDocumentFiltered.size;
-    if (this.idPrefix === 'academic') {
-      this.documentService.findAcademicPublication(this.findRequest).subscribe((data) => {
-        this.allDocumentFiltered = data;
-        this.loaded = true;
-      });
-    } else {
-      this.documentService.find(this.findRequest).subscribe((data) => {
-        this.allDocumentFiltered = data;
-        this.loaded = true;
-      });
-    }
 
-  }
 
   /**
    *
@@ -199,19 +190,15 @@ export class DocumentsComponent implements OnInit {
    * @memberof DocumentsComponent
    */
   filterDocuments() {
-    this.loaded = false;
-    const pageRequest: PageRequest = new PageRequest();
-    pageRequest.page = 0;
-    pageRequest.size = this.allDocumentFiltered.size;
-    this.findRequest.pageRequest = pageRequest;
+
     if (this.idPrefix === 'academic') {
       this.documentService.findAcademicPublication(this.findRequest).subscribe((data) => {
-        this.allDocumentFiltered = data;
+        this.resultObject = data;
         this.loaded = true;
       });
     } else {
       this.documentService.find(this.findRequest).subscribe((data) => {
-        this.allDocumentFiltered = data;
+        this.resultObject = data;
         this.loaded = true;
       });
     }
@@ -219,31 +206,7 @@ export class DocumentsComponent implements OnInit {
 
   }
 
-  /**
-   *
-   *
-   * @param {number} i
-   * @memberof PatentsComponent
-   */
-  allprojectsFilteredSizeChanged(i: number): void {
-    this.loaded = false;
-    const pageRequest: PageRequest = new PageRequest();
-    pageRequest.page = this.allDocumentFiltered.number;
-    pageRequest.size = i;
-    this.findRequest.pageRequest = pageRequest;
-    if (this.idPrefix === 'academic') {
-      this.documentService.findAcademicPublication(this.findRequest).subscribe((data) => {
-        this.allDocumentFiltered = data;
-        this.loaded = true;
-      });
-    } else {
-      this.documentService.find(this.findRequest).subscribe((data) => {
-        this.allDocumentFiltered = data;
-        this.loaded = true;
-      });
-    }
 
-  }
 
   /**
    *
@@ -252,22 +215,17 @@ export class DocumentsComponent implements OnInit {
    * @memberof PatentsComponent
    */
   allprojectsFilteredSortChanged(pageRequest: PageRequest) {
-    this.loaded = false;
-    const newPageRequest: PageRequest = new PageRequest();
-    newPageRequest.page = this.allDocumentFiltered.number;
-    newPageRequest.size = this.allDocumentFiltered.size;
-    newPageRequest.property = pageRequest.property;
-    newPageRequest.direction = pageRequest.direction === Direction.ASC ? Direction.DESC : Direction.ASC;
-    this.findRequest.pageRequest = pageRequest;
+    this.findRequest.pageRequest.property = pageRequest.property;
+    this.findRequest.pageRequest.direction = pageRequest.direction;
 
     if (this.idPrefix === 'academic') {
       this.documentService.findAcademicPublication(this.findRequest).subscribe((data) => {
-        this.allDocumentFiltered = data;
+        this.resultObject = data;
         this.loaded = true;
       });
     } else {
       this.documentService.find(this.findRequest).subscribe((data) => {
-        this.allDocumentFiltered = data;
+        this.resultObject = data;
         this.loaded = true;
       });
     }
