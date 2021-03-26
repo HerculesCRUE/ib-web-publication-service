@@ -49,9 +49,9 @@
                                 </div>
                             </div>
                         </div>
-                        <h5 class="card-title mb-0" *ngIf="loaded && resultObject?.content.length === 0">
+                        <h5 class="card-title mb-0" *ngIf="loaded && resultObject?.content?.length === 0">
                             {{'form.no-result' | translate}}</h5>
-                        <h5 class="card-title mb-0" *ngIf="loaded && resultObject?.content.length !== 0">
+                        <h5 class="card-title mb-0" *ngIf="loaded && resultObject?.content?.length !== 0">
                             {{'form.results-amount' | translate}} {{resultObject?.totalElements}}
                         </h5>
                     </div>

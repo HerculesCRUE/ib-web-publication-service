@@ -33,13 +33,7 @@ export class AllResearchmentStructuresComponent extends PaginatedSearchComponent
   }
 
   ngOnInit(): void {
-    this.findRequest.pageRequest.page = 0;
-    this.findRequest.pageRequest.size = 10;
-    this.findRequest.pageRequest.direction = Direction.ASC;
-    /* this.researchmentStructureService.find(this.findRequest).subscribe((data) => {
-       this.resultObject = data;
-       this.loaded = true;
-     });*/
+
   }
 
   protected findInternal(findRequest: FindRequest): Observable<Page<University>> {
@@ -129,13 +123,8 @@ export class AllResearchmentStructuresComponent extends PaginatedSearchComponent
    * @memberof AllResearchmentStructuresComponent
    */
   allResearchmentStructuresFilteredSortChanged(pageRequest: PageRequest): void {
-
-    const newPageRequest: PageRequest = new PageRequest();
-    newPageRequest.page = this.resultObject.number;
-    newPageRequest.size = this.resultObject.size;
-    newPageRequest.property = pageRequest.property;
-    newPageRequest.direction = pageRequest.direction;
-    this.findRequest.pageRequest = pageRequest;
+    this.findRequest.pageRequest.property = pageRequest.property;
+    this.findRequest.pageRequest.direction = pageRequest.direction;
     this.researchmentStructureService.find(this.findRequest).subscribe((data) => {
       this.resultObject = data;
       this.loaded = true;
