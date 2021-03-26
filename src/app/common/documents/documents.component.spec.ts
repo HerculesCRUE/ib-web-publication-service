@@ -32,8 +32,8 @@ describe('DocumentsComponent', () => {
     const spy = spyOn(docService1, 'find').and.callThrough();
     component.ngOnInit();
     fixture.detectChanges();
-    expect(component.allDocumentFiltered.content.length).toBe(10);
-    expect(component.allDocumentFiltered.content.length).not.toBe(0);
+    expect(component.resultObject.content.length).toBe(10);
+    expect(component.resultObject.content.length).not.toBe(0);
   });
 
   describe('on component Init', () => {
@@ -45,26 +45,11 @@ describe('DocumentsComponent', () => {
       pageRequest.size = 10;
       component.ngOnInit();
       fixture.detectChanges();
-      expect(component.allDocumentFiltered.totalElements).toBe(10);
+      expect(component.resultObject.totalElements).toBe(10);
     });
   });
 
-  describe('all proyects Filtered Page Changed', () => {
-    it('should change to page 1 and a result to show of 5', () => {
-      component.allprojectsFilteredPageChanged(2);
-      spyOn(documentService, 'find').and.callThrough();
-      expect(component.findRequest.pageRequest.page).toBe(1);
-    });
 
-    it('should change to page 1 and a result to show of 5 and call academic service', () => {
-      component.idPrefix = 'academic';
-      const docService1 = fixture.debugElement.injector.get(DocumentService);
-      const spy = spyOn(docService1, 'findAcademicPublication').and.callThrough();
-      component.allprojectsFilteredPageChanged(2);
-      expect(component.findRequest.pageRequest.page).toBe(1);
-      expect(spy).toHaveBeenCalled();
-    });
-  });
 
   describe('test filterProjects', () => {
     it('should change the ini value sent to the back to corrent form', fakeAsync(() => {
@@ -160,20 +145,5 @@ describe('DocumentsComponent', () => {
     }));
   });
 
-  describe('all proyects Filtered Page Changed', () => {
-    it('should change to page 1 and a result to show of 5', () => {
-      component.allprojectsFilteredSizeChanged(20);
-      spyOn(documentService, 'find').and.callThrough();
-      expect(component.findRequest.pageRequest.size).toBe(20);
-    });
 
-    it('should change to page 1 and call academin service call', () => {
-      component.idPrefix = 'academic';
-      const docService = fixture.debugElement.injector.get(DocumentService);
-      const spy = spyOn(docService, 'findAcademicPublication').and.callThrough();
-      component.allprojectsFilteredSizeChanged(20);
-      expect(component.findRequest.pageRequest.size).toBe(20);
-      expect(spy).toHaveBeenCalled();
-    });
-  });
 });

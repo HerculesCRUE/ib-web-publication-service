@@ -42,8 +42,8 @@ describe('ProyectsComponent', () => {
     spyOn(graphicService, 'projectInvestigation').and.callThrough();
     spyOn(component, 'ngOnInit').and.callThrough();
     fixture.detectChanges();
-    expect(component.allProjectFiltered.content.length).toBe(5);
-    expect(component.allProjectFiltered.content.length).not.toBe(0);
+    expect(component.resultObject.content.length).toBe(5);
+    expect(component.resultObject.content.length).not.toBe(0);
   });
 
   describe('on component Init', () => {
@@ -54,7 +54,7 @@ describe('ProyectsComponent', () => {
       pageRequest.size = 10;
       component.ngOnInit();
       fixture.detectChanges();
-      expect(component.allProjectFiltered.totalElements).toBe(10);
+      expect(component.resultObject.totalElements).toBe(10);
     });
   });
 
@@ -78,13 +78,7 @@ describe('ProyectsComponent', () => {
     });
   });
 
-  describe('all proyects Filtered Page Changed', () => {
-    it('should change to page 1 and a result to show of 5', () => {
-      component.allprojectsFilteredPageChanged(2);
-      spyOn(projectService, 'find').and.callThrough();
-      expect(component.findRequest.pageRequest.page).toBe(1);
-    });
-  });
+
 
   describe('test filterProjects', () => {
     it('should change the ini value sent to the back to corrent form', fakeAsync(() => {
@@ -119,14 +113,6 @@ describe('ProyectsComponent', () => {
       fixture.detectChanges();
       expect(component.findRequest.filter.fin).toBeUndefined();
     }));
-  });
-
-  describe('all proyects Filtered Page Changed', () => {
-    it('should change to page 1 and a result to show of 5', () => {
-      component.allprojectsFilteredSizeChanged(20);
-      spyOn(projectService, 'find').and.callThrough();
-      expect(component.findRequest.pageRequest.size).toBe(20);
-    });
   });
 
   describe('test allprojectsFilteredSortChanged', () => {
