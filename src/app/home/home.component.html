@@ -2,7 +2,8 @@
   <div class="row">
     <div class="col-lg-12">
       <ng-container *ngFor="let groupItem of groupItems">
-        <h1 class="h3 mb-3">{{ groupItem.title | translate }}</h1>
+        <h1 class="h3 mb-3" [ngClass]="{'hidden': (groupItem.title === 'home.service' && !isLogged) }">{{
+          groupItem.title | translate }}</h1>
         <div class="row">
           <div class="col-lg-4 col-xl-2 d-flex cursor home-cards" *ngFor="let item of groupItem.homeItems"
             [ngClass]="{'hidden': (item.title === 'home.sparql' && !isLogged) || (item.title === 'home.users' && !isLogged)}">
