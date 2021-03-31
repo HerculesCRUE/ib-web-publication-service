@@ -16,13 +16,13 @@
         <div class="card flex-fill">
             <div class="card-header">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    <!-- <li class="nav-item" role="presentation">
+                    <li class="nav-item" role="presentation">
                         <a class="nav-link" [ngClass]="{'active': activeTab === 'scientist' }" id="scientist-tab"
                             (click)="changeTab('scientist')" data-bs-toggle="tab" href="JavaScript:void(0)" role="tab"
                             aria-controls="scientist"
                             [attr.aria-selected]="activeTab === 'scientist'">{{'researchmentStructure.scientist' |
                             translate}}</a>
-                    </li>-->
+                    </li>
                     <li class="nav-item" role="presentation">
                         <a class="nav-link" [ngClass]="{'active': activeTab === 'prod-scientist' }"
                             id="prod-scientist-tab" (click)="changeTab('prod-scientist')" data-bs-toggle="tab"
@@ -50,12 +50,12 @@
             </div>
             <div id="datatables-dashboard-markets_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                 <div class="tab-content" id="myTabContent">
-                    <!-- <div class="tab-pane fade"
+                    <div class="tab-pane fade"
                         [ngClass]="{'show': activeTab === 'scientist', 'active': activeTab === 'scientist' }"
                         id="scientist" role="tabpanel" aria-labelledby="scientist-tab">
                         <app-scientist-search [url]="'../../../scientist'" [idPrefix]="'scientist'">
                         </app-scientist-search>
-                    </div>-->
+                    </div>
                     <div class="tab-pane fade"
                         [ngClass]="{'show': activeTab === 'prod-scientist', 'active': activeTab === 'prod-scientist' }"
                         id="prod-scientist" role="tabpanel" aria-labelledby="prod-scientist-tab">
