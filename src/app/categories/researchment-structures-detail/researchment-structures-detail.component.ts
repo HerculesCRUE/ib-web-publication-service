@@ -46,7 +46,7 @@ export class ResearchmentStructuresDetailComponent implements OnInit {
 
     this.route.params.subscribe((params: Params) => {
       this.id = params.id; // (+) converts string 'id' to a number
-      this.activeTab = 'scientist';
+      this.activeTab = 'prod-scientist';
       const type = params.type;
       if (type) {
         const typeFromURL = type.split('/');
