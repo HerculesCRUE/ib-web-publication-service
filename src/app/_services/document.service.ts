@@ -6,6 +6,7 @@ import { AbstractService } from '../_helpers/abstract';
 import { FindRequest, Page } from '../_helpers/search';
 import { Helper } from '../_helpers/utils';
 import { AcademicPublication } from '../_models/academicPublication';
+import { BookSection } from '../_models/bookSection';
 import { Document } from '../_models/document';
 import { DocumentDetail } from '../_models/documentDetail';
 
@@ -78,6 +79,27 @@ export class DocumentService extends AbstractService {
 
         return this.httpClient
             .get(Helper.getUrl('/academicpublication/search'), {
+                params: parameters
+            }).pipe(
+                catchError(this.handleError)
+            );
+    }
+    /**
+     *
+     *
+     * @param {FindRequest} findRequest
+     * @return {*}  {Observable<Page<AcademicPublication>>}
+     * @memberof DocumentService
+     */
+    getBookSection(findRequest: FindRequest): Observable<Page<BookSection>> {
+        // Filter params
+        let parameters = new HttpParams();
+        parameters = Helper.addParam(parameters, 'bookId', findRequest.filter.id);
+        // Pagination params
+        parameters = Helper.addPaginationParams(parameters, findRequest.pageRequest);
+
+        return this.httpClient
+            .get(Helper.getUrl('/booksection/search/'), {
                 params: parameters
             }).pipe(
                 catchError(this.handleError)

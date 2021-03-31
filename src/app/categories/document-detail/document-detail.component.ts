@@ -1,6 +1,11 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import { ToastrService } from 'ngx-toastr';
+import { Observable, of } from 'rxjs';
+import { Direction, FindRequest, Order, Page, PageRequest, PaginatedSearchComponent } from 'src/app/_helpers/search';
+import { BookSection } from 'src/app/_models/bookSection';
 import { DocumentDetail } from 'src/app/_models/documentDetail';
 import { DocumentService } from 'src/app/_services/document.service';
 
@@ -15,7 +20,7 @@ import { DocumentService } from 'src/app/_services/document.service';
   selector: 'app-document-detail',
   templateUrl: './document-detail.component.html'
 })
-export class DocumentDetailComponent implements OnInit {
+export class DocumentDetailComponent extends PaginatedSearchComponent<BookSection> implements OnInit {
 
 
   /**
@@ -27,16 +32,33 @@ export class DocumentDetailComponent implements OnInit {
   document: any;
   loaded: boolean;
   lastItem = '';
-  constructor(private documentService: DocumentService, private rutaActiva: ActivatedRoute, private _location: Location) { }
+  findRequest: FindRequest = new FindRequest();
+  isBook: boolean;
+  constructor(private documentService: DocumentService, private rutaActiva: ActivatedRoute,
+    private _location: Location,
+    router: Router,
+    translate: TranslateService,
+    toastr: ToastrService
+  ) {
+    super(router, translate, toastr);
+  }
 
   ngOnInit(): void {
     const id = this.rutaActiva.snapshot.params.id;
     const type = this.rutaActiva.snapshot.params.type;
+
     if (type) {
       const typeFromURL = type.split('/');
       this.lastItem = typeFromURL.pop();
     }
 
+    if (this.lastItem === 'Book') {
+      this.isBook = true;
+      this.findRequest.filter.id = id;
+      this.documentService.getBookSection(this.findRequest).subscribe(data => {
+        console.log(data);
+      });
+    }
     this.documentService.getDocumentByIdAndType(id, btoa(this.lastItem)).subscribe(data => {
       if (data) {
         this.document = data;
@@ -47,6 +69,37 @@ export class DocumentDetailComponent implements OnInit {
 
   backClicked() {
     this._location.back();
+  }
+
+
+  protected findInternal(findRequest: FindRequest): Observable<Page<BookSection>> {
+
+    const result = this.documentService.getBookSection(findRequest);
+    result.subscribe(data => {
+      this.loaded = true;
+    });
+    return result;
+  }
+
+  protected removeInternal(entity: any): Observable<any> {
+    return of({});
+  }
+
+  protected getDefaultOrder(): Order {
+    return {
+      property: 'id',
+      direction: Direction.ASC
+    };
+  }
+
+
+  allDocumentSortChanged(pageRequest: PageRequest): void {
+    this.findRequest.pageRequest.property = pageRequest.property;
+    this.findRequest.pageRequest.direction = pageRequest.direction;
+    this.documentService.getBookSection(this.findRequest).subscribe((data) => {
+      this.resultObject = data;
+      this.loaded = true;
+    });
   }
 
 

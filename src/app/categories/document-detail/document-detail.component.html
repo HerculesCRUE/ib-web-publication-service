@@ -34,16 +34,22 @@
         </div>
     </div>
 </div>
-<!-- <table class="table table-bordered">
-                    <caption>{{ "document.other-authors" | translate }}</caption>
-                    <thead>
-                        <tr class="sortable">
-                            <th scope="col">{{'document.name' | translate}}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let item of document.otherAuthors">
-                            <td>{{item}}</td>
-                        </tr>
-                    </tbody>
-                </table>-->
+<div class="row" *ngIf="isBook">
+    <div class="col-12">
+        <div class="card flex-fill">
+            <div class="card-header">
+                <legend class="legend">{{ "document.document-sections" | translate }}</legend>
+            </div>
+            <div id="datatables-dashboard-markets_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                <app-table-results-dto [displayPagination]="false" [findRequest]="findRequest"
+                    *ngIf="loaded && resultObject?.content?.length !== 0" [dtoTypeTranslate]="'researchmentStructure'"
+                    [extra]="'2'" [data]="resultObject?.content" [pageInfo]="resultObject"
+                    [routerFieldSecondary]="'type'" [routerField]="'id'" (sortChanged)="allDocumentSortChanged($event)">
+                </app-table-results-dto>
+                <app-pagination [resultObject]="resultObject" (pageChanged)="showPage($event)"
+                    (sizeChanged)="changeSize($event)">
+                </app-pagination>
+            </div>
+        </div>
+    </div>
+</div>

@@ -153,8 +153,36 @@ export class MockDocumentService {
         return of(page);
     }
 
+    /**
+     *
+     *
+     * @param {*} id
+     * @param {*} type
+     * @return {*} 
+     * @memberof MockDocumentService
+     */
     getDocumentByIdAndType(id, type) {
         return of({});
+    }
+
+    /**
+     *
+     *
+     * @param {FindRequest} findRequest
+     * @return {*}  {Observable<Page<Document>>}
+     * @memberof MockDocumentService
+     */
+    getBookSection(findRequest: FindRequest): Observable<Page<Document>> {
+        // Filter params
+        const page: Page<Document> = new Page<Document>();
+        const results: Document[] = this.DUMMY_DATA;
+        page.number = 0;
+        page.numberOfElements = 10;
+        page.size = 10;
+        page.totalElements = 10;
+        // TODO sort
+        page.content = results;
+        return of(page);
     }
 
 

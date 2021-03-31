@@ -364,7 +364,8 @@
     "resume": "Resumen",
     "other-authors": "Otros authores",
     "name": "Nombre",
-    "type": "Tipo"
+    "type": "Tipo",
+    "document-sections": "Secciones"
   },
   "event": {
     "id": "Identificador",

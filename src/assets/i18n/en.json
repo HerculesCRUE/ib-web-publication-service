@@ -351,7 +351,8 @@
     "resume": "Resume",
     "other-authors": "Other authors",
     "name": "Name",
-    "type":"Type"
+    "type":"Type",
+    "document-sections": "Secctions"
   },
   "event": {
     "id": "Id",
