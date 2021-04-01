@@ -31,6 +31,8 @@ export class PatentsComponent extends PaginatedSearchComponent<Patent> implement
    */
   @Input() idPrefix: string;
   @Input() url = '';
+  @Input() authorId: string;
+  @Input() organizationId: string;
   /**
    * all data shown on table
    *
@@ -72,7 +74,7 @@ export class PatentsComponent extends PaginatedSearchComponent<Patent> implement
   normalTree = true;
   dateIni;
   dateFin;
-  @Input() authorId: string;
+
   /**
    * Creates an instance of PatentsComponent.
    * @param {PatentService} patentService
@@ -98,6 +100,9 @@ export class PatentsComponent extends PaginatedSearchComponent<Patent> implement
     if (this.authorId) {
       this.findRequest.filter.authorId = this.authorId;
     }
+    if (this.organizationId) {
+      this.findRequest.filter.organizationId = this.organizationId;
+    }
     let xAxisData: Array<string> = [];
     let data1: Array<any> = [];
     let data2: Array<any> = [];
@@ -117,7 +122,12 @@ export class PatentsComponent extends PaginatedSearchComponent<Patent> implement
 
 
   protected findInternal(findRequest: FindRequest): Observable<Page<Patent>> {
-
+    if (this.authorId) {
+      this.findRequest.filter.authorId = this.authorId;
+    }
+    if (this.organizationId) {
+      this.findRequest.filter.organizationId = this.organizationId;
+    }
     const result = this.patentService.find(findRequest);
     result.subscribe(data => {
       this.loaded = true;

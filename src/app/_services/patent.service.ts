@@ -45,6 +45,8 @@ export class PatentService extends AbstractService {
         parameters = Helper.addParam(parameters, 'startDate', findRequest.filter.ini);
         parameters = Helper.addParam(parameters, 'endDate', findRequest.filter.fin);
         parameters = Helper.addParam(parameters, 'authorId', findRequest.filter.authorId);
+        parameters = Helper.addParam(parameters, 'organizationId', findRequest.filter.organizationId);
+
         // Pagination params
         parameters = Helper.addPaginationParams(parameters, findRequest.pageRequest);
 

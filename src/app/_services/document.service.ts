@@ -47,6 +47,8 @@ export class DocumentService extends AbstractService {
         parameters = Helper.addParam(parameters, 'dateFrom', findRequest.filter.yearFrom);
         parameters = Helper.addParam(parameters, 'dateTo', findRequest.filter.yearTo);
         parameters = Helper.addParam(parameters, 'authorId', findRequest.filter.authorId);
+        parameters = Helper.addParam(parameters, 'organizationId', findRequest.filter.organizationId);
+
         // Pagination params
         parameters = Helper.addPaginationParams(parameters, findRequest.pageRequest);
 
@@ -74,6 +76,8 @@ export class DocumentService extends AbstractService {
         parameters = Helper.addParam(parameters, 'yearTo', findRequest.filter.yearTo);
         parameters = Helper.addParam(parameters, 'directedBy', findRequest.filter.directedBy);
         parameters = Helper.addParam(parameters, 'date', findRequest.filter.date);
+        parameters = Helper.addParam(parameters, 'authorId', findRequest.filter.authorId);
+        parameters = Helper.addParam(parameters, 'organizationId', findRequest.filter.organizationId);
         // Pagination params
         parameters = Helper.addPaginationParams(parameters, findRequest.pageRequest);
 

@@ -53,6 +53,7 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
    * @memberof DocumentsComponent
    */
   @Input() isTreeVisible = true;
+  @Input() organizationId: string;
   isNormalTree = true;
   /**
    *
@@ -107,6 +108,12 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
     if (this.authorId) {
       this.findRequest.filter.authorId = this.authorId;
     }
+
+    if (this.organizationId) {
+      this.findRequest.filter.organizationId = this.organizationId;
+    }
+
+
     if (this.idPrefix === 'prodScientist') {
       this.url = '../../../document/';
     }
@@ -116,6 +123,13 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
 
   protected findInternal(findRequest: FindRequest): Observable<Page<Document | AcademicPublication>> {
     let result;
+    if (this.authorId) {
+      this.findRequest.filter.authorId = this.authorId;
+    }
+
+    if (this.organizationId) {
+      this.findRequest.filter.organizationId = this.organizationId;
+    }
     if (this.idPrefix === 'academic') {
       result = this.documentService.findAcademicPublication(this.findRequest);
     } else {
