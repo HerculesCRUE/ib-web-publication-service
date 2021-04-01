@@ -105,6 +105,7 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
   }
 
   ngOnInit(): void {
+    this.findRequest.filter.types = this.filterDocumentType;
     if (this.authorId) {
       this.findRequest.filter.authorId = this.authorId;
     }
@@ -122,6 +123,7 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
   }
 
   protected findInternal(findRequest: FindRequest): Observable<Page<Document | AcademicPublication>> {
+    this.findRequest.filter.types = this.filterDocumentType;
     let result;
     if (this.authorId) {
       this.findRequest.filter.authorId = this.authorId;

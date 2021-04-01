@@ -21,12 +21,12 @@
     <!-- categorias tree -->
     <div class="col-lg-12" *ngIf="!normalTree">
         <label for="type" class="col-sm-4 control-label">{{ "scientist.area" | translate }}</label>
-        <app-new-tree [treeType]="'documents'"></app-new-tree>
+        <app-new-tree [treeType]="'area'"></app-new-tree>
     </div>
     <!-- categorias tree -->
     <div class="col-lg-12" *ngIf="normalTree">
         <label for="type" class="col-sm-4 control-label">{{ "scientist.area" | translate }}</label>
-        <app-tree [treeType]="'documents'"></app-tree>
+        <app-tree [treeType]="'area'"></app-tree>
     </div>
 </div>
 
@@ -88,7 +88,7 @@
                         role="tabpanel" aria-labelledby="other-publications-tab">
                         <app-documents [idPrefix]="'other'" [url]="'../document'"
                             [selectDocumentType]="[{ name: 'book', value: 'Books' }, { name: 'articles', value: 'Articles' }]"
-                            [isTreeVisible]="false" [filterDocumentType]="['Book', 'Article']"></app-documents>
+                            [isTreeVisible]="false" [filterDocumentType]="['Dossier']"></app-documents>
                     </div>
                     <div class="tab-pane fade" id="events"
                         [ngClass]="{'show': activeTab === 'events', 'active': activeTab === 'events' }" role="tabpanel"
