@@ -183,6 +183,10 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
         this.findRequest.filter.yearTo = null;
       }
 
+      if (this.findRequest.filter.type) {
+        this.findRequest.filter.types = this.findRequest.filter.type;
+      }
+
       if (this.idPrefix === 'academic') {
         this.documentService.findAcademicPublication(this.findRequest).subscribe((data) => {
           this.resultObject = data;
