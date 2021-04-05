@@ -264,7 +264,9 @@
     "edition": "Edition",
     "book": "Books",
     "articles": "Articles",
-    "dossiers": "Dossiers"
+    "dossiers": "Dossiers",
+    "doctoral-thesis": "Doctoral Thesis",
+    "master-thesis": "Master Thesis"
   },
   "participant": {
     "title": "Participants",

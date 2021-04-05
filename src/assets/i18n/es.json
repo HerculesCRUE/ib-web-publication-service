@@ -277,7 +277,9 @@
     "edition": "Edición",
     "book": "Libros",
     "articles": "Articulos",
-    "dossiers": "Dossiers"
+    "dossiers": "Dossiers",
+    "doctoral-thesis": "Tesis doctoral",
+    "master-thesis": "Tesis de master"
   },
   "participant": {
     "title": "Participantes",
