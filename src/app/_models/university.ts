@@ -15,5 +15,20 @@ export class University {
      * The name
      */
     title: string;
+    /**
+     *
+     *
+     * @type {string}
+     * @memberof University
+     */
     type: string;
+    /**
+     *
+     *
+     * @type {string}
+     * @memberof University
+     */
+    abbreviation: string;
+
+    publicCompany: string;
 }
