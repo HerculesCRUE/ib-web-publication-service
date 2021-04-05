@@ -134,6 +134,8 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
     }
     if (this.idPrefix === 'academic') {
       result = this.documentService.findAcademicPublication(this.findRequest);
+    } if (this.idPrefix === 'other') {
+      result = this.documentService.findOtherPublications(this.findRequest);
     } else {
       result = this.documentService.find(this.findRequest);
     }
@@ -192,6 +194,11 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
           this.resultObject = data;
           this.loaded = true;
         });
+      } if (this.idPrefix === 'other') {
+        this.documentService.findOtherPublications(this.findRequest).subscribe((data) => {
+          this.resultObject = data;
+          this.loaded = true;
+        });
       } else {
         this.documentService.find(this.findRequest).subscribe((data) => {
           this.resultObject = data;
@@ -213,6 +220,11 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
 
     if (this.idPrefix === 'academic') {
       this.documentService.findAcademicPublication(this.findRequest).subscribe((data) => {
+        this.resultObject = data;
+        this.loaded = true;
+      });
+    } if (this.idPrefix === 'other') {
+      this.documentService.findOtherPublications(this.findRequest).subscribe((data) => {
         this.resultObject = data;
         this.loaded = true;
       });
@@ -240,6 +252,11 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
 
     if (this.idPrefix === 'academic') {
       this.documentService.findAcademicPublication(this.findRequest).subscribe((data) => {
+        this.resultObject = data;
+        this.loaded = true;
+      });
+    } if (this.idPrefix === 'other') {
+      this.documentService.findOtherPublications(this.findRequest).subscribe((data) => {
         this.resultObject = data;
         this.loaded = true;
       });

@@ -145,13 +145,13 @@
     "patents": "Patentes",
     "area": "Area",
     "id": "ID",
-    "abbreviation":"Abbreviation",
-    "description":"Descripctio",
-    "endDate":"End Date",
-    "homepage":"Home page",
+    "abbreviation": "Abbreviation",
+    "description": "Descripctio",
+    "endDate": "End Date",
+    "homepage": "Home page",
     "isStartup": "Is startup",
     "publicCompany": "CPublic company",
-    "startDate":"Start date"
+    "startDate": "Start date"
   },
   "scientist": {
     "title": "Research staff",
@@ -262,8 +262,9 @@
     "abbreviation": "Abbreviation",
     "placeOfPublication": "Place of publication",
     "edition": "Edition",
-    "book":"Books",
-    "articles": "Articles"
+    "book": "Books",
+    "articles": "Articles",
+    "dossiers": "Dossiers"
   },
   "participant": {
     "title": "Participants",
@@ -301,7 +302,7 @@
     "startDate": "Start date",
     "startPage": "Start page",
     "title": "Title",
-    "summary":"Summary"
+    "summary": "Summary"
   },
   "directed-jobs": {
     "table-header": {
@@ -331,14 +332,14 @@
   "events": {
     "rol": "Rol",
     "type": "Type",
-    "id":"ID",
-    "title":"Title",
-    "date":"Date",
+    "id": "ID",
+    "title": "Title",
+    "date": "Date",
     "locality": "Locality",
     "conference": "Conference",
     "exhibit": "Exhibit",
     "abbreviation": "Abbreviation",
-    "description":"Descriptio",
+    "description": "Descriptio",
     "locatedIn": "Located in",
     "presents": "Presents"
   },
@@ -351,7 +352,7 @@
     "resume": "Resume",
     "other-authors": "Other authors",
     "name": "Name",
-    "type":"Type",
+    "type": "Type",
     "document-sections": "Secctions"
   },
   "event": {

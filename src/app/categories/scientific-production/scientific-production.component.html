@@ -79,7 +79,7 @@
                         [ngClass]="{'show': activeTab === 'academic-publications', 'active': activeTab === 'academic-publications' }"
                         id="academic-publications" role="tabpanel" aria-labelledby="academic-publications-tab">
                         <app-documents [idPrefix]="'academic'" [url]="'../document'"
-                            [selectDocumentType]="[{ name: 'book', value: 'Books' }, { name: 'articles', value: 'Articles' }]"
+                            [selectDocumentType]="[{ name: 'doctoral-thesis', value: 'Doctoral-Thesis' }, { name: 'master-thesis', value: 'Master-Thesis' }]"
                             [isTreeVisible]="false" [filterDocumentType]="['Master-Thesis', 'Doctoral-Thesis']">
                         </app-documents>
                     </div>
@@ -87,8 +87,8 @@
                         [ngClass]="{'show': activeTab === 'other-publications', 'active': activeTab === 'other-publications' }"
                         role="tabpanel" aria-labelledby="other-publications-tab">
                         <app-documents [idPrefix]="'other'" [url]="'../document'"
-                            [selectDocumentType]="[{ name: 'book', value: 'Books' }, { name: 'articles', value: 'Articles' }]"
-                            [isTreeVisible]="false" [filterDocumentType]="['Dossier']"></app-documents>
+                            [selectDocumentType]="[{ name: 'dossiers', value: 'Dossier' }]" [isTreeVisible]="false"
+                            [filterDocumentType]="['Dossier']"></app-documents>
                     </div>
                     <div class="tab-pane fade" id="events"
                         [ngClass]="{'show': activeTab === 'events', 'active': activeTab === 'events' }" role="tabpanel"
