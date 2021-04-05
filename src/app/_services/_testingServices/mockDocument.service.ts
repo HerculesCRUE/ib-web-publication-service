@@ -3,6 +3,7 @@ import { Observable, of } from 'rxjs';
 import { FindRequest, Page } from 'src/app/_helpers/search';
 import { AcademicPublication } from 'src/app/_models/academicPublication';
 import { Document } from 'src/app/_models/document';
+import { OtherPublication } from 'src/app/_models/otherPublication';
 
 
 @Injectable({
@@ -144,6 +145,27 @@ export class MockDocumentService {
         // Filter params
         const page: Page<AcademicPublication> = new Page<AcademicPublication>();
         const results: AcademicPublication[] = [];
+        page.number = 0;
+        page.numberOfElements = 10;
+        page.size = 10;
+        page.totalElements = 10;
+        // TODO sort
+        page.content = results;
+        return of(page);
+    }
+
+
+    /**
+     *
+     *
+     * @param {FindRequest} findRequest
+     * @return {*}  {Observable<Page<AcademicPublication>>}
+     * @memberof MockDocumentService
+     */
+    findOtherPublications(findRequest: FindRequest): Observable<Page<OtherPublication>> {
+        // Filter params
+        const page: Page<OtherPublication> = new Page<OtherPublication>();
+        const results: OtherPublication[] = [];
         page.number = 0;
         page.numberOfElements = 10;
         page.size = 10;

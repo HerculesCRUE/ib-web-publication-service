@@ -9,6 +9,7 @@ import { AcademicPublication } from '../_models/academicPublication';
 import { BookSection } from '../_models/bookSection';
 import { Document } from '../_models/document';
 import { DocumentDetail } from '../_models/documentDetail';
+import { OtherPublication } from '../_models/otherPublication';
 
 /**
  *  Service for Document
@@ -89,7 +90,7 @@ export class DocumentService extends AbstractService {
             );
     }
 
-    findOtherPublications(findRequest: FindRequest): Observable<Page<AcademicPublication>> {
+    findOtherPublications(findRequest: FindRequest): Observable<Page<OtherPublication>> {
 
         // Filter params
         let parameters = new HttpParams();

@@ -7,6 +7,7 @@ import { Direction, FindRequest, Order, Page, PageRequest, PaginatedSearchCompon
 import { Helper } from 'src/app/_helpers/utils';
 import { AcademicPublication } from 'src/app/_models/academicPublication';
 import { Document } from 'src/app/_models/document';
+import { OtherPublication } from 'src/app/_models/otherPublication';
 import { DocumentService } from 'src/app/_services/document.service';
 
 /**
@@ -20,7 +21,7 @@ import { DocumentService } from 'src/app/_services/document.service';
   selector: 'app-documents',
   templateUrl: './documents.component.html'
 })
-export class DocumentsComponent extends PaginatedSearchComponent<Document | AcademicPublication> implements OnInit {
+export class DocumentsComponent extends PaginatedSearchComponent<Document | AcademicPublication | OtherPublication> implements OnInit {
   /**
    * Data to show on select type
    *

@@ -98,6 +98,17 @@ describe('DocumentsComponent', () => {
       fixture.detectChanges();
       expect(spy).toHaveBeenCalled();
     }));
+
+    it('should call other publications service', fakeAsync(() => {
+      component.idPrefix = 'other';
+      const docService1 = fixture.debugElement.injector.get(DocumentService);
+      const spy = spyOn(docService1, 'findOtherPublications').and.callThrough();
+      component.dateIni = 138504334344378400000;
+      component.filterProjects();
+      tick(300);
+      fixture.detectChanges();
+      expect(spy).toHaveBeenCalled();
+    }));
   });
 
   describe('filterDocuments', () => {
@@ -107,15 +118,20 @@ describe('DocumentsComponent', () => {
       component.filterDocuments();
       expect(spy).toHaveBeenCalled();
     });
-    it('should filter document data and call service', () => {
+    it('should filter document data and call adecamic publication service', () => {
       component.idPrefix = 'academic';
       const docService = fixture.debugElement.injector.get(DocumentService);
       const spy = spyOn(docService, 'findAcademicPublication').and.callThrough();
       component.filterDocuments();
       expect(spy).toHaveBeenCalled();
     });
-
-
+    it('should filter document data and call other publication service', () => {
+      component.idPrefix = 'other';
+      const docService = fixture.debugElement.injector.get(DocumentService);
+      const spy = spyOn(docService, 'findOtherPublications').and.callThrough();
+      component.filterDocuments();
+      expect(spy).toHaveBeenCalled();
+    });
 
   });
 
@@ -139,6 +155,18 @@ describe('DocumentsComponent', () => {
       component.findRequest.pageRequest = newPageRequest;
       const docService = fixture.debugElement.injector.get(DocumentService);
       const spy = spyOn(docService, 'findAcademicPublication').and.callThrough();
+      fixture.detectChanges();
+      component.allprojectsFilteredSortChanged(component.findRequest.pageRequest);
+      expect(spy).toHaveBeenCalledWith(component.findRequest);
+    }));
+    it('should call other publications service', fakeAsync(() => {
+      component.idPrefix = 'other';
+      const newPageRequest: PageRequest = new PageRequest();
+      newPageRequest.page = 0;
+      newPageRequest.size = 10;
+      component.findRequest.pageRequest = newPageRequest;
+      const docService = fixture.debugElement.injector.get(DocumentService);
+      const spy = spyOn(docService, 'findOtherPublications').and.callThrough();
       fixture.detectChanges();
       component.allprojectsFilteredSortChanged(component.findRequest.pageRequest);
       expect(spy).toHaveBeenCalledWith(component.findRequest);
