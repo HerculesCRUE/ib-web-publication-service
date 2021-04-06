@@ -20,12 +20,12 @@ export class Patent {
     /**
      * The endDate
      */
-    endDate: string;
+    // endDate: string;
 
     /**
      * The endPage
      */
-    endPage: string;
+    // endPage: string;
 
     /**
      * The id
@@ -45,17 +45,17 @@ export class Patent {
     /**
      * The startDate
      */
-    startDate: string;
+    // startDate: string;
 
     /**
      * The startPage
      */
-    startPage: string;
+    // startPage: string;
 
     /**
      * The title
      */
     title: string;
-    pageEnd: string;
-    pageStart: string;
+    // pageEnd: string;
+    // pageStart: string;
 }
