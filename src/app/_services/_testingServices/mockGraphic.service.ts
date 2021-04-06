@@ -55,4 +55,8 @@ export class MockGraphicService {
     projectInvestigation(): Observable<any> {
         return of();
     }
+
+    projectAreasPerYear(): Observable<any> {
+        return of();
+    }
 }

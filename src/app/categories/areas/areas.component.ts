@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HelperGraphics } from 'src/app/_helpers/helperGraphics';
 import { FindRequest } from 'src/app/_helpers/search';
 import { Helper } from 'src/app/_helpers/utils';
+import { GraphicService } from 'src/app/_services/graphic.service';
 
 
 @Component({
@@ -38,9 +39,16 @@ export class AreasComponent implements OnInit {
    * @memberof AreasComponent
    */
   yearsForSelect = Helper.getYears();
-  constructor() { }
+  yearSelected;
+  loaded: boolean;
+  constructor(private graphicService: GraphicService) { }
 
   ngOnInit(): void {
+    this.yearSelected = new Date().getFullYear();
+    this.graphicService.projectAreasPerYear(this.yearSelected).subscribe(data => {
+      this.loaded = true;
+      this.echartOptions = HelperGraphics.configChartPie(data, 'DATA 1', 'DATA2');
+    });
     const xAxisData: Array<string> = [];
     const data1: Array<any> = [];
     const data2: Array<any> = [];
@@ -51,10 +59,22 @@ export class AreasComponent implements OnInit {
       data2.push((Math.cos(i / 5) * (i / 5 - 10) + i / 6) * 5);
     }
 
-    const data = Helper.genData(2);
-    this.echartOptions = HelperGraphics.configChartPie(data, 'DATA 1', 'DATA2');
+
+
     const treeData = HelperGraphics.returnSquareData();
     this.echartOptions2 = HelperGraphics.configChartTree(treeData);
+  }
+
+
+  changeYearChart() {
+    this.loaded = false;
+    setTimeout(() => {
+      this.graphicService.projectAreasPerYear(this.yearSelected).subscribe(data => {
+        this.loaded = true;
+        this.echartOptions = HelperGraphics.configChartPie(data, 'DATA 1', 'DATA2');
+      });
+    }, 10);
+
   }
 
 }

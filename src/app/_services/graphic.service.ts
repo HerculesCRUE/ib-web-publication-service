@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -90,5 +90,17 @@ export class GraphicService extends AbstractService {
                 catchError(this.handleError)
             );
     }
+
+    projectAreasPerYear(year: string): Observable<any> {
+        let parameters = new HttpParams();
+        parameters = Helper.addParam(parameters, 'year', year);
+        return this.httpClient
+            .get(Helper.getUrl('/areas/projectArea'), {
+                params: parameters
+            }).pipe(
+                catchError(this.handleError)
+            );
+    }
+
 
 }
