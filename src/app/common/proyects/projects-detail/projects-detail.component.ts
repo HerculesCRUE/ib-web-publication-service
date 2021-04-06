@@ -71,6 +71,11 @@ export class ProjectsDetailComponent implements OnInit {
     this.activeTab = tabName;
   }
 
+  /**
+   *
+   *
+   * @memberof ProjectsDetailComponent
+   */
   backClicked() {
     this._location.back();
   }
