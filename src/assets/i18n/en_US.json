@@ -184,7 +184,8 @@
     "researchLine": "Research Line",
     "surname": "Surname",
     "taxId": "Tax ID",
-    "image": "Image"
+    "image": "Image",
+    "subjectArea": "Subject area"
   },
   "scientific-production": {
     "title": "Scientific production",
