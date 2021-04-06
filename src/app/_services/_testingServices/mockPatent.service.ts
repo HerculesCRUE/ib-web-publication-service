@@ -22,120 +22,122 @@ export class MockPatentService {
             title: 'PROGRAMA DE ORDENADOR PARA LA APLICACION DE LA ISO 9000 EN CENTROS DE HEMODONACIÓN',
             dateIssued: '',
             doi: '',
-            endDate: '',
-            endPage: '',
+            // endDate: '',
+            // endPage: '',
             keyword: '',
             mode: '',
-            startDate: '',
-            startPage: '', pageEnd: '', pageStart: ''
+            // startDate: '',
+            // startPage: '', pageEnd: '', pageStart: ''
         },
         {
             id: '9',
             title: 'P-MMAN PREVENTIVE MAINTENANCE MANAGEMENT PROGRAM V1.0',
             dateIssued: '',
             doi: '',
-            endDate: '',
-            endPage: '',
+            // endDate: '',
+            // endPage: '',
             keyword: '',
             mode: '',
-            startDate: '',
-            startPage: '', pageEnd: '', pageStart: ''
+            // startDate: '',
+            // startPage: '', pageEnd: '', pageStart: ''
         },
         {
             id: '12',
             title: 'DISPOSITIVO PARA REALIZAR RADIOGRAFIAS PANORAMICAS DE MUÑECA',
             dateIssued: '',
             doi: '',
-            endDate: '',
-            endPage: '',
+            // endDate: '',
+            // endPage: '',
             keyword: '',
             mode: '',
-            startDate: '1997-05-15',
-            startPage: '', pageEnd: '', pageStart: ''
+            // startDate: '1997-05-15',
+            // startPage: '', pageEnd: '', pageStart: ''
         },
         {
             id: '13',
             title: 'CIRCADIANWARE',
             dateIssued: '',
             doi: '',
-            endDate: '',
-            endPage: '',
+            // endDate: '',
+            // endPage: '',
             keyword: '',
             mode: '',
-            startDate: '',
-            startPage: '', pageEnd: '', pageStart: ''
+            // startDate: '',
+            // startPage: '', pageEnd: '', pageStart: ''
         },
         {
             id: '39',
             title: 'DISPOSITIVO Y MÉTODO PARA INTRODUCIR YO RECOGER FLUIDOS EN EL INTERIOR DEL ÚTERO DE UN ANIMAL',
             dateIssued: '',
             doi: '',
-            endDate: '',
-            endPage: '',
+            // endDate: '',
+            // endPage: '',
             keyword: '',
             mode: '',
-            startDate: '',
-            startPage: '', pageEnd: '', pageStart: ''
+            // startDate: '',
+            // startPage: '', pageEnd: '', pageStart: ''
         },
         {
             id: '44',
             title: 'FAOK',
             dateIssued: '',
             doi: '',
-            endDate: '',
-            endPage: '',
+            // endDate: '',
+            // endPage: '',
             keyword: '',
             mode: '',
-            startDate: '',
-            startPage: '', pageEnd: '', pageStart: ''
+            // startDate: '',
+            // startPage: '', pageEnd: '', pageStart: ''
         },
         {
             id: '45',
             title: 'LOGIC NEGOTIATOR',
             dateIssued: '',
             doi: '',
-            endDate: '',
-            endPage: '',
+            // endDate: '',
+            // endPage: '',
             keyword: '',
             mode: '',
-            startDate: '',
-            startPage: '', pageEnd: '', pageStart: ''
+            // startDate: '',
+            // // startPage: '', 
+            // pageEnd: '', 
+            // pageStart: ''
         },
         {
             id: '46',
             title: 'GRACE: GRAPHED CASE ENVIRONMENT',
             dateIssued: '',
             doi: '',
-            endDate: '',
-            endPage: '',
+            // endDate: '',
+            // endPage: '',
             keyword: '',
             mode: '',
-            startDate: '',
-            startPage: '', pageEnd: '', pageStart: ''
+            // startDate: '',
+            // startPage: '', pageEnd: '', pageStart: ''
         },
         {
             id: '47',
             title: 'ENZIMA CON ACTIVIDAD PEROXIDASA AISLADA DE LA ALCACHOFA (CYNARA SCOLYMUS, L.) PROCEDIMIENTO PARA SU AISLAMIENTO Y PURIFICACION Y APLICACIONES.',
             dateIssued: '',
             doi: '',
-            endDate: '',
-            endPage: '',
+            // endDate: '',
+            // endPage: '',
             keyword: '',
             mode: '',
-            startDate: '2003-07-15',
-            startPage: '', pageEnd: '', pageStart: ''
+            // startDate: '2003-07-15',
+            // startPage: '', pageEnd: '', pageStart: ''
         },
         {
             id: '48',
             title: 'NIP IMPERFECTION PROCESSOR',
             dateIssued: '',
             doi: '',
-            endDate: '',
-            endPage: '',
+            // endDate: '',
+            // endPage: '',
             keyword: '',
             mode: '',
-            startDate: '',
-            startPage: '', pageEnd: '', pageStart: ''
+            // startDate: '',
+            // startPage: '', pageEnd: '', pageStart: ''
         }
     ];
 
