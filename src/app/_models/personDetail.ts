@@ -4,17 +4,17 @@
  * @export
  * @class Person
  */
-export class Person {
+export class PersonDetail {
 
     /**
      * The birthDate
      */
-    // birthDate: string;
+    birthDate: string;
 
     /**
      * The description
      */
-    // description: string;
+    description: string;
 
     /**
      * The firstName
@@ -29,12 +29,12 @@ export class Person {
     /**
      * The hasContactInfo
      */
-    // hasContactInfo: string;
+    hasContactInfo: string;
 
     /**
      * The homepage
      */
-    // homepage: string;
+    homepage: string;
 
     /**
      * The id
@@ -44,12 +44,12 @@ export class Person {
     /**
      * The image
      */
-    // image: string;
+    image: string;
 
     /**
      * The name
      */
-    // name: string;
+    name: string;
 
     /**
      * The nickname
@@ -59,7 +59,7 @@ export class Person {
     /**
      * The personalMailBox
      */
-    // personalMaibox: string;
+    personalMaibox: string;
 
     /**
      * The researchLine
@@ -74,17 +74,11 @@ export class Person {
     /**
      * The taxId
      */
-    // taxId: string;
+    taxId: string;
 
     /**
      * The title
      */
     title: string;
-    /**
-     *
-     *
-     * @type {string}
-     * @memberof Person
-     */
     subjectArea: string;
 }

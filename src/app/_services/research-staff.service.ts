@@ -6,6 +6,7 @@ import { AbstractService } from '../_helpers/abstract';
 import { FindRequest, Page } from '../_helpers/search';
 import { Helper } from '../_helpers/utils';
 import { Person } from '../_models/person';
+import { PersonDetail } from '../_models/personDetail';
 
 /**
  *
@@ -48,7 +49,7 @@ export class ResearchStaffService extends AbstractService {
       );
   }
 
-  getPerson(id: string): Observable<Person> {
+  getPerson(id: string): Observable<PersonDetail> {
     // Filter params
     return this.httpClient
       .get(Helper.getUrl('/person/' + id)).pipe(

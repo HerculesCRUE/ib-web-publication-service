@@ -3,6 +3,7 @@ import { Observable, of } from 'rxjs';
 import { FindRequest, Page } from 'src/app/_helpers/search';
 import { Patent } from 'src/app/_models/patent';
 import { Person } from 'src/app/_models/person';
+import { PersonDetail } from 'src/app/_models/personDetail';
 
 
 /**
@@ -21,73 +22,98 @@ export class MockResearchStaffService {
         {
             id: '142006',
             title: '',
-            birthDate: '',
-            description: '',
+            // birthDate: '',
+            // description: '',
             firstName: '',
             gender: '',
-            hasContactInfo: '',
-            homepage: '',
-            image: '',
-            name: '',
+            // hasContactInfo: '',
+            // homepage: '',
+            // image: '',
+            // name: '',
             nickname: '',
-            personalMaibox: '',
+            // personalMaibox: '',
             researchLine: '',
             surname: '',
-            taxId: '', subjectArea: ''
+            // taxId: '', 
+            subjectArea: ''
         },
         {
             id: '148071',
             title: '',
-            birthDate: '',
-            description: '',
+            // birthDate: '',
+            // description: '',
             firstName: '',
             gender: '',
-            hasContactInfo: '',
-            homepage: '',
-            image: '',
-            name: '',
+            // hasContactInfo: '',
+            // homepage: '',
+            // image: '',
+            // name: '',
             nickname: '',
-            personalMaibox: '',
+            // personalMaibox: '',
             researchLine: '',
             surname: '',
-            taxId: '', subjectArea: ''
+            // taxId: '', 
+            subjectArea: ''
         },
         {
             id: '603742',
             title: '',
-            birthDate: '',
-            description: '',
+            // birthDate: '',
+            // description: '',
             firstName: '',
             gender: '',
-            hasContactInfo: '',
-            homepage: '',
-            image: '',
-            name: '',
+            // hasContactInfo: '',
+            // homepage: '',
+            // image: '',
+            // name: '',
             nickname: '',
-            personalMaibox: '',
+            // personalMaibox: '',
             researchLine: '',
             surname: '',
-            taxId: '', subjectArea: ''
+            // taxId: '', 
+            subjectArea: ''
         },
         {
             id: '12019',
             title: '',
-            birthDate: '',
-            description: '',
+            // birthDate: '',
+            // description: '',
             firstName: '',
             gender: '',
-            hasContactInfo: '',
-            homepage: '',
-            image: '',
-            name: '',
+            // hasContactInfo: '',
+            // homepage: '',
+            // image: '',
+            // name: '',
             nickname: '',
-            personalMaibox: '',
+            // personalMaibox: '',
             researchLine: '',
             surname: '',
-            taxId: '', subjectArea: ''
+            // taxId: '', 
+            subjectArea: ''
         },
         {
             id: '60203',
+            title: '',
+            // birthDate: '',
+            // description: '',
+            firstName: '',
+            gender: '',
+            // hasContactInfo: '',
+            // homepage: '',
+            // image: '',
+            // name: '',
+            nickname: '',
+            // personalMaibox: '',
+            researchLine: '',
+            surname: '',
+            // taxId: '', 
+            subjectArea: ''
+        }
+    ];
+
+    DUMMY_DATA_DETAIL: PersonDetail[] = [
+        {
+            id: '142006',
             title: '',
             birthDate: '',
             description: '',
@@ -128,7 +154,7 @@ export class MockResearchStaffService {
 
 
     getPerson() {
-        return of({});
+        return of(this.DUMMY_DATA_DETAIL);
     }
 
 

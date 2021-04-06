@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HelperGraphics } from 'src/app/_helpers/helperGraphics';
 import { Person } from 'src/app/_models/person';
+import { PersonDetail } from 'src/app/_models/personDetail';
 import { SeriesBarData } from 'src/app/_models/seriesBarData';
 import { ResearchStaffService } from 'src/app/_services/research-staff.service';
 
@@ -16,7 +17,7 @@ export class ScientistDetailComponent implements OnInit {
    * @type {*}
    * @memberof ScientistDetailComponent
    */
-  scientist: Person = new Person();
+  scientist: PersonDetail = new PersonDetail();
   /**
    *
    *
