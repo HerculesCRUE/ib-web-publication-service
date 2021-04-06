@@ -143,7 +143,8 @@ export class ProyectsComponent extends PaginatedSearchComponent<Project> impleme
   }
   makeDataForTree(data: Array<GraphicModelTree>) {
     const result = [];
-    if (data) {
+
+    if (data.length > 1) {
       data.forEach(element => {
         result.push({ name: element.modality, value: element.count });
       });
