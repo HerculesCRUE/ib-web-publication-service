@@ -14,7 +14,7 @@ export class Project {
     /**
      * The description
      */
-    description: string;
+    // description: string;
 
     /**
      * The endDate
@@ -24,7 +24,7 @@ export class Project {
     /**
      * The foreseenJustificationDate
      */
-    foreseenJustificationDate: string;
+    // foreseenJustificationDate: string;
 
     /** 
      * The id
@@ -34,17 +34,17 @@ export class Project {
     /**
      * The keyword
      */
-    keyword: string;
+    // keyword: string;
 
     /**
      * The modality
      */
-    modality: string;
+    // modality: string;
 
     /**
      * The needsEthicalValidation
      */
-    needsEthicalValidation: string;
+    // needsEthicalValidation: string;
 
     /** 
      * The startDate 
@@ -60,5 +60,12 @@ export class Project {
      * The title 
      */
     title: string;
+
+    /**
+     *
+     *
+     * @type {string}
+     * @memberof Project
+     */
     projectClassification: string;
 }

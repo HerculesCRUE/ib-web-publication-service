@@ -30,5 +30,11 @@ export class University {
      */
     abbreviation: string;
 
+    /**
+     *
+     *
+     * @type {string}
+     * @memberof University
+     */
     publicCompany: string;
 }
