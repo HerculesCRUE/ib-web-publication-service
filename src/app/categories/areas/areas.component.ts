@@ -39,33 +39,54 @@ export class AreasComponent implements OnInit {
    * @memberof AreasComponent
    */
   yearsForSelect = Helper.getYears();
+  /**
+   *
+   *
+   * @memberof AreasComponent
+   */
   yearSelected;
+  /**
+   *
+   *
+   * @memberof AreasComponent
+   */
+  secondYearSelected;
+  /**
+   *
+   *
+   * @type {boolean}
+   * @memberof AreasComponent
+   */
   loaded: boolean;
+  /**
+   *
+   *
+   * @type {boolean}
+   * @memberof AreasComponent
+   */
+  loaded2: boolean;
   constructor(private graphicService: GraphicService) { }
 
   ngOnInit(): void {
     this.yearSelected = new Date().getFullYear();
+    this.secondYearSelected = new Date().getFullYear();
     this.graphicService.projectAreasPerYear(this.yearSelected).subscribe(data => {
       this.loaded = true;
       this.echartOptions = HelperGraphics.configChartPie(data, 'DATA 1', 'DATA2');
     });
-    const xAxisData: Array<string> = [];
-    const data1: Array<any> = [];
-    const data2: Array<any> = [];
+    this.graphicService.AreasPerYear(this.secondYearSelected).subscribe(data => {
+      this.loaded2 = true;
+      this.echartOptions2 = HelperGraphics.configChartTree(data);
+    });
 
-    for (let i = 0; i < 100; i++) {
-      xAxisData.push(`category${i}`);
-      data1.push((Math.sin(i / 5) * (i / 5 - 10) + i / 6) * 5);
-      data2.push((Math.cos(i / 5) * (i / 5 - 10) + i / 6) * 5);
-    }
-
-
-
-    const treeData = HelperGraphics.returnSquareData();
-    this.echartOptions2 = HelperGraphics.configChartTree(treeData);
   }
 
 
+  /**
+   *
+   *
+   * @memberof AreasComponent
+   */
   changeYearChart() {
     this.loaded = false;
     setTimeout(() => {
@@ -75,6 +96,21 @@ export class AreasComponent implements OnInit {
       });
     }, 10);
 
+  }
+
+  /**
+   *
+   *
+   * @memberof AreasComponent
+   */
+  changeYearSquareChart() {
+    this.loaded2 = false;
+    setTimeout(() => {
+      this.graphicService.AreasPerYear(this.secondYearSelected).subscribe(data => {
+        this.loaded2 = true;
+        this.echartOptions2 = HelperGraphics.configChartTree(data);
+      });
+    }, 10);
   }
 
 }

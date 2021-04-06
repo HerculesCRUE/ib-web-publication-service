@@ -91,11 +91,36 @@ export class GraphicService extends AbstractService {
             );
     }
 
+    /**
+     *
+     *
+     * @param {string} year
+     * @return {*}  {Observable<any>}
+     * @memberof GraphicService
+     */
     projectAreasPerYear(year: string): Observable<any> {
         let parameters = new HttpParams();
         parameters = Helper.addParam(parameters, 'year', year);
         return this.httpClient
             .get(Helper.getUrl('/areas/projectArea'), {
+                params: parameters
+            }).pipe(
+                catchError(this.handleError)
+            );
+    }
+
+    /**
+     *
+     *
+     * @param {string} year
+     * @return {*}  {Observable<any>}
+     * @memberof GraphicService
+     */
+    AreasPerYear(year: string): Observable<any> {
+        let parameters = new HttpParams();
+        parameters = Helper.addParam(parameters, 'year', year);
+        return this.httpClient
+            .get(Helper.getUrl('/areas/yearArea'), {
                 params: parameters
             }).pipe(
                 catchError(this.handleError)

@@ -59,8 +59,8 @@
                                 <label for="anyodos" class="col-sm-4 control-label">{{ "participant.year" | translate
                                     }}</label>
                                 <div class="col-sm-8">
-                                    <select id="anyodos" name="anyodos" class="form-control"
-                                        [(ngModel)]="findRequest.filter.anyodos" #type="ngModel">
+                                    <select (ngModelChange)="changeYearSquareChart()" id="anyodos" name="anyodos"
+                                        class="form-control" [(ngModel)]="secondYearSelected" #type="ngModel">
                                         <option [value]="undefined">{{ "form.select" | translate }}</option>
                                         <option *ngFor="let year of yearsForSelect" [value]="year">{{year}}</option>
                                     </select>
@@ -78,7 +78,8 @@
                                     </div>
                                     <div id="datatables-dashboard-markets_wrapper"
                                         class="dataTables_wrapper dt-bootstrap4 no-footer">
-                                        <div style="min-width: 600px; width:100%; height:450px" echarts
+                                        <div class="loader" *ngIf="!loaded2"></div>
+                                        <div *ngIf="loaded2" style="min-width: 600px; width:100%; height:450px" echarts
                                             [options]="echartOptions2" class="demo-chart">
                                         </div>
                                     </div>
