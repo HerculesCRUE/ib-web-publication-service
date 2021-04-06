@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, of } from 'rxjs';
+import { GraphicModelTree } from 'src/app/_models/graphicModelTree';
 
 /**
  *
@@ -133,14 +134,21 @@ export class ProyectsComponent extends PaginatedSearchComponent<Project> impleme
     } else {
 
       this.graphicServcice.projectInvestigation().subscribe(treeData => {
-        this.echartOptions = HelperGraphics.configChartTree(treeData);
+        this.echartOptions = HelperGraphics.configChartTree(this.makeDataForTree(treeData));
       });
 
     }
 
 
   }
+  makeDataForTree(data: Array<GraphicModelTree>) {
+    const result = [];
+    data.forEach(element => {
+      result.push({ name: element.modality, value: element.count });
+    });
+    return result;
 
+  }
 
   protected findInternal(findRequest: FindRequest): Observable<Page<Project>> {
 
