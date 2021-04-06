@@ -135,7 +135,8 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
     }
     if (this.idPrefix === 'academic') {
       result = this.documentService.findAcademicPublication(this.findRequest);
-    } if (this.idPrefix === 'other') {
+    }
+    if (this.idPrefix === 'other') {
       result = this.documentService.findOtherPublications(this.findRequest);
     } else {
       result = this.documentService.find(this.findRequest);

@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
@@ -97,7 +98,8 @@ describe('ProjectsDetailComponent', () => {
           find: () => of(page),
           findPerson: () => of(page),
         }
-      }, { provide: ResearchStaffService, useClass: MockResearchStaffService }]
+      }, { provide: ResearchStaffService, useClass: MockResearchStaffService },
+      ]
     }).compileComponents();
   }));
 
@@ -151,4 +153,12 @@ describe('ProjectsDetailComponent', () => {
     component.changeTab('scientis');
     expect(component.activeTab).toBe('scientis');
   });
+
+  it('backClicked', () => {
+    const locat = fixture.debugElement.injector.get(Location);
+    const spy = spyOn(locat, 'back').and.callThrough();
+    component.backClicked();
+    expect(spy).toHaveBeenCalled();
+  });
+
 });

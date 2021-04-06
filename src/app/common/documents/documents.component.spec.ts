@@ -1,6 +1,7 @@
 import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
-import { PageRequest } from 'src/app/_helpers/search';
+import { FindRequest, PageRequest } from 'src/app/_helpers/search';
 import { TestingHelper } from 'src/app/_helpers/testing.spec';
+import { AcademicPublication } from 'src/app/_models/academicPublication';
 import { DocumentService } from 'src/app/_services/document.service';
 import { MockDocumentService } from 'src/app/_services/_testingServices/mockDocument.service';
 
@@ -46,6 +47,30 @@ describe('DocumentsComponent', () => {
       component.ngOnInit();
       fixture.detectChanges();
       expect(component.resultObject.totalElements).toBe(10);
+    });
+
+    it('should populate authorId filter', () => {
+      const docService1 = fixture.debugElement.injector.get(DocumentService);
+      const spy = spyOn(docService1, 'find').and.callThrough();
+      component.authorId = '1234';
+      const pageRequest: PageRequest = new PageRequest();
+      pageRequest.page = 1;
+      pageRequest.size = 10;
+      component.ngOnInit();
+      fixture.detectChanges();
+      expect(component.findRequest.filter.authorId).toBe('1234');
+    });
+
+    it('should populate organization id ', () => {
+      const docService1 = fixture.debugElement.injector.get(DocumentService);
+      const spy = spyOn(docService1, 'find').and.callThrough();
+      component.organizationId = '1234';
+      const pageRequest: PageRequest = new PageRequest();
+      pageRequest.page = 1;
+      pageRequest.size = 10;
+      component.ngOnInit();
+      fixture.detectChanges();
+      expect(component.findRequest.filter.organizationId).toBe('1234');
     });
   });
 
@@ -109,6 +134,19 @@ describe('DocumentsComponent', () => {
       fixture.detectChanges();
       expect(spy).toHaveBeenCalled();
     }));
+
+    it('should call other publications service', fakeAsync(() => {
+      component.idPrefix = 'other';
+      const docService1 = fixture.debugElement.injector.get(DocumentService);
+      const spy = spyOn(docService1, 'findOtherPublications').and.callThrough();
+      component.dateIni = 138504334344378400000;
+      component.findRequest.filter.type = 'Academic';
+      component.filterProjects();
+      tick(300);
+      fixture.detectChanges();
+      expect(spy).toHaveBeenCalled();
+      expect(component.findRequest.filter.type).toBe('Academic');
+    }));
   });
 
   describe('filterDocuments', () => {
@@ -171,6 +209,15 @@ describe('DocumentsComponent', () => {
       component.allprojectsFilteredSortChanged(component.findRequest.pageRequest);
       expect(spy).toHaveBeenCalledWith(component.findRequest);
     }));
+  });
+
+  it('findInternal', () => {
+    component.authorId = '12345';
+    component.organizationId = 'Academic';
+    component.find();
+    const doc = new AcademicPublication();
+    component.remove(doc);
+    expect(component.authorId).toBe('12345');
   });
 
 

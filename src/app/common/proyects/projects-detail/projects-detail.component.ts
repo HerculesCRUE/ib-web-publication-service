@@ -40,7 +40,7 @@ export class ProjectsDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private projectService: ProjectService,
-    private _location: Location) { }
+    private alocation: Location) { }
 
   ngOnInit(): void {
     this.activeTab = 'general-info';
@@ -77,7 +77,7 @@ export class ProjectsDetailComponent implements OnInit {
    * @memberof ProjectsDetailComponent
    */
   backClicked() {
-    this._location.back();
+    this.alocation.back();
   }
 
 }
