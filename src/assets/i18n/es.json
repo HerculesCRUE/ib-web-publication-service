@@ -279,7 +279,9 @@
     "articles": "Articulos",
     "dossiers": "Dossiers",
     "doctoral-thesis": "Tesis doctoral",
-    "master-thesis": "Tesis de master"
+    "master-thesis": "Tesis de master",
+    "description": "Descripción",
+    "ocicnum": "Ocicnum"
   },
   "participant": {
     "title": "Participantes",

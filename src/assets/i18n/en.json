@@ -266,7 +266,9 @@
     "articles": "Articles",
     "dossiers": "Dossiers",
     "doctoral-thesis": "Doctoral Thesis",
-    "master-thesis": "Master Thesis"
+    "master-thesis": "Master Thesis",
+    "description":"Description",
+    "ocicnum": "Ocicnum"
   },
   "participant": {
     "title": "Participants",
