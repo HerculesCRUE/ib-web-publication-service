@@ -7,6 +7,7 @@ import { ProyectsComponent } from './proyects.component';
 import { FindRequest, PageRequest } from 'src/app/_helpers/search';
 import { GraphicService } from 'src/app/_services/graphic.service';
 import { MockGraphicService } from 'src/app/_services/_testingServices/mockGraphic.service';
+import { Observable, of } from 'rxjs';
 
 describe('ProyectsComponent', () => {
   let component: ProyectsComponent;
@@ -33,13 +34,13 @@ describe('ProyectsComponent', () => {
   });
 
   it('should create', () => {
-    spyOn(graphicService, 'projectInvestigation').and.callThrough();
+    spyOn(graphicService, 'projectInvestigation').and.returnValue(of({}));
     expect(component).toBeTruthy();
   });
 
   it('should create execute ngOnInit and populate data table to show', () => {
     spyOn(projectService, 'find').and.callThrough();
-    spyOn(graphicService, 'projectInvestigation').and.callThrough();
+    spyOn(graphicService, 'projectInvestigation').and.returnValue(of({}));
     spyOn(component, 'ngOnInit').and.callThrough();
     fixture.detectChanges();
     expect(component.resultObject.content.length).toBe(5);
@@ -48,19 +49,20 @@ describe('ProyectsComponent', () => {
 
   describe('on component Init', () => {
     it('should change load all elements', () => {
-      spyOn(graphicService, 'projectInvestigation').and.callThrough();
+      const graphicService1 = fixture.debugElement.injector.get(GraphicService);
+      const spy = spyOn(graphicService1, 'projectInvestigation').and.callThrough();
       const pageRequest: PageRequest = new PageRequest();
       pageRequest.page = 1;
       pageRequest.size = 10;
       component.ngOnInit();
-      fixture.detectChanges();
+      expect(spy).toHaveBeenCalled();
       expect(component.resultObject.totalElements).toBe(10);
     });
   });
 
   describe('on component Init', () => {
     it('should change load all elements and start bar graphic', () => {
-      spyOn(graphicService, 'projectInvestigation').and.callThrough();
+      const sypGraphic = spyOn(graphicService, 'projectInvestigation').and.returnValue(of({}));
       const pageRequest: PageRequest = new PageRequest();
       pageRequest.page = 1;
       pageRequest.size = 10;
