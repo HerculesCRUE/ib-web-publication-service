@@ -212,7 +212,7 @@ export class ProyectsComponent extends PaginatedSearchComponent<Project> impleme
    * @memberof ProyectsComponent
    */
   filterProjects() {
-    this.findRequest.pageRequest.page = 1;
+    this.findRequest.pageRequest.page = 0;
     setTimeout(() => {
       if (this.dateIni) {
         const currentDate = Helper.parse(this.dateIni);
