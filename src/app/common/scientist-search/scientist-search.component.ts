@@ -136,13 +136,9 @@ export class ScientistSearchComponent implements OnInit {
    * @memberof ScientificProductionComponent
    */
   filterTop(event, filterName: string) {
+    this.findRequest.pageRequest.page = 1;
     this.loaded = false;
     event !== 'undefined' ? this.filters.set(filterName, event) : this.filters.set(filterName, '');
-    const pageRequest: PageRequest = new PageRequest();
-    pageRequest.page = 1;
-    pageRequest.size = this.allScientificsFiltered.size;
-    pageRequest.property = this.allScientificsFiltered.sort;
-    pageRequest.direction = this.allScientificsFiltered.direction;
     // Call service to load data filtered
     this.researchStaffServices.find(this.findRequest).subscribe(res => {
       this.allScientificsFiltered = res;

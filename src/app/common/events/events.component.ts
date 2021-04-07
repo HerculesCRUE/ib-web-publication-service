@@ -63,6 +63,7 @@ export class EventsComponent extends PaginatedSearchComponent<Event> implements 
   }
 
   filterEvents() {
+    this.findRequest.pageRequest.page = 1;
     setTimeout(() => {
       if (this.dateIni) {
         const currentDate = Helper.parse(this.dateIni);

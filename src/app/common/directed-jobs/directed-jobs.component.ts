@@ -84,6 +84,7 @@ export class DirectedJobsComponent extends PaginatedSearchComponent<AcademicPubl
    * @memberof DirectedJobsComponent
    */
   filteDirectedJobs() {
+    this.findRequest.pageRequest.page = 1;
     setTimeout(() => {
       if (this.dateIni) {
         const currentDate = Helper.parse(this.dateIni);

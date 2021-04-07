@@ -63,6 +63,7 @@ export class AllResearchmentStructuresComponent extends PaginatedSearchComponent
    * @memberof AllResearchmentStructuresComponent
    */
   filterResearchmentStructures() {
+    this.findRequest.pageRequest.page = 1;
     this.loaded = false;
     this.researchmentStructureService.find(this.findRequest).subscribe((data) => {
       this.resultObject = data;

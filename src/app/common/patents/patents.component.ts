@@ -170,6 +170,7 @@ export class PatentsComponent extends PaginatedSearchComponent<Patent> implement
    * @memberof PatentsComponent
    */
   filterPatents() {
+    this.findRequest.pageRequest.page = 1;
     this.loaded = false;
     setTimeout(() => {
       if (this.dateIni) {

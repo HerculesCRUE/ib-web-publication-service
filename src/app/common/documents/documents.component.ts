@@ -168,6 +168,8 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
    * @memberof ScientificProductionComponent
    */
   filterProjects() {
+    this.findRequest.pageRequest.page = 1;
+    console.log('hello');
     setTimeout(() => {
       if (this.dateIni) {
         const currentDate = Helper.parseYear(this.dateIni);
@@ -196,7 +198,8 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
           this.resultObject = data;
           this.loaded = true;
         });
-      } if (this.idPrefix === 'other') {
+      }
+      if (this.idPrefix === 'other') {
         this.documentService.findOtherPublications(this.findRequest).subscribe((data) => {
           this.resultObject = data;
           this.loaded = true;
@@ -219,13 +222,14 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
    * @memberof DocumentsComponent
    */
   filterDocuments() {
-
+    this.findRequest.pageRequest.page = 1;
     if (this.idPrefix === 'academic') {
       this.documentService.findAcademicPublication(this.findRequest).subscribe((data) => {
         this.resultObject = data;
         this.loaded = true;
       });
-    } if (this.idPrefix === 'other') {
+    }
+    if (this.idPrefix === 'other') {
       this.documentService.findOtherPublications(this.findRequest).subscribe((data) => {
         this.resultObject = data;
         this.loaded = true;
