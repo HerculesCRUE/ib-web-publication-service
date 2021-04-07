@@ -252,6 +252,7 @@
     "date-ini": "Start Date",
     "types": "Type",
     "title": "Title",
+    "name": "Name",
     "id": "ID",
     "startPage": "Start page",
     "endPage": "End page",
@@ -268,7 +269,7 @@
     "dossiers": "Dossiers",
     "doctoral-thesis": "Doctoral Thesis",
     "master-thesis": "Master Thesis",
-    "description":"Description",
+    "description": "Description",
     "ocicnum": "Ocicnum"
   },
   "participant": {
