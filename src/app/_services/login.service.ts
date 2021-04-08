@@ -102,6 +102,11 @@ export class LoginService extends AbstractService {
   }
 
 
+  returnInstanceck(): KeycloakInstance {
+    return this.keycloackService;
+  }
+
+
   /**
    *
    *

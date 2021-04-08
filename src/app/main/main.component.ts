@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { KeycloakInstance } from 'keycloak-js';
 import { KEYCLOACK } from '../configuration';
-import { Helper } from '../_helpers/utils';
 import { LoginService } from '../_services/login.service';
 import { TranslateHelperService } from '../_services/translate-helper.service';
 
@@ -57,7 +56,7 @@ export class MainComponent implements OnInit {
     /* this.loginService.logoutKC().subscribe(data => {
        this.windowReload();
      });*/
-    const config = {
+    /*const config = {
       url: Helper.getKeyCloackUrl().authUrl,
       realm: Helper.getKeyCloackUrl().realm,
       clientId: Helper.getKeyCloackUrl().clientId
@@ -75,7 +74,15 @@ export class MainComponent implements OnInit {
       this.keycloakAuth.logout(options).then(data => {
         console.log(data);
       });
-    });
+    });*/
+    console.log(this.loginService.returnInstanceck());
+    this.keycloakAuth = this.loginService.returnInstanceck();
+    const options = {
+      redirectUri: KEYCLOACK.redirectUrl,
+      realm: KEYCLOACK.realm,
+      clientId: KEYCLOACK.clientId
+    };
+    this.keycloakAuth.logout(options);
   }
 
   windowReload() {
