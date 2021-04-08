@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { KeycloakInstance } from 'keycloak-js';
+import { KEYCLOACK } from '../configuration';
 import { Helper } from '../_helpers/utils';
 import { LoginService } from '../_services/login.service';
 import { TranslateHelperService } from '../_services/translate-helper.service';
@@ -67,8 +68,12 @@ export class MainComponent implements OnInit {
       localStorage.removeItem('access_token');
       localStorage.removeItem('refresh_token');
       localStorage.removeItem('username');
-      this.keycloakAuth.logout().then(() => {
-        this.windowReload();
+      const options = {
+        redirectUri: KEYCLOACK.redirectUrl
+      };
+      console.log(this.keycloakAuth);
+      this.keycloakAuth.logout(options).then(data => {
+        console.log(data);
       });
     });
   }
