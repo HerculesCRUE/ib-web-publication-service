@@ -113,7 +113,6 @@ export class LoginService extends AbstractService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/x-www-form-urlencoded',
-
       })
     };
 

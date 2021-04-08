@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { KeycloakInstance } from 'keycloak-js';
+import { Helper } from '../_helpers/utils';
 import { LoginService } from '../_services/login.service';
 import { TranslateHelperService } from '../_services/translate-helper.service';
 
@@ -17,8 +19,22 @@ export class MainComponent implements OnInit {
    * Indica si el menú está colapsado.
    */
   isMenuCollapsed = false;
+  /**
+   *
+   *
+   * @type {KeycloakInstance}
+   * @memberof MainComponent
+   */
+  keycloakAuth: KeycloakInstance;
+  /**
+   *
+   *
+   * @type {boolean}
+   * @memberof MainComponent
+   */
   isLogged: boolean;
-  constructor(public translateHelperService: TranslateHelperService,
+  constructor(
+    public translateHelperService: TranslateHelperService,
     private loginService: LoginService) { }
 
   ngOnInit() {
@@ -34,11 +50,26 @@ export class MainComponent implements OnInit {
   }
 
   /**
-  * Realiza el logout del usuario.
-  */
+   * Realiza el logout del usuario.
+   */
   logout() {
-    this.loginService.logoutKC().subscribe(data => {
-      this.windowReload();
+    /* this.loginService.logoutKC().subscribe(data => {
+       this.windowReload();
+     });*/
+    const config = {
+      url: Helper.getKeyCloackUrl().authUrl,
+      realm: Helper.getKeyCloackUrl().realm,
+      clientId: Helper.getKeyCloackUrl().clientId
+    };
+    // @ts-ignore
+    this.keycloakAuth = new Keycloak(config);
+    this.keycloakAuth.init({ onLoad: 'login-required' }).then(() => {
+      localStorage.removeItem('access_token');
+      localStorage.removeItem('refresh_token');
+      localStorage.removeItem('username');
+      this.keycloakAuth.logout().then(() => {
+        this.windowReload();
+      });
     });
   }
 
