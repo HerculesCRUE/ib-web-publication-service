@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { KeycloakInstance } from 'keycloak-js';
-import { KEYCLOACK } from '../configuration';
 import { Helper } from '../_helpers/utils';
 import { LoginService } from '../_services/login.service';
 import { TranslateHelperService } from '../_services/translate-helper.service';
@@ -20,13 +18,6 @@ export class MainComponent implements OnInit {
    * Indica si el menú está colapsado.
    */
   isMenuCollapsed = false;
-  /**
-   *
-   *
-   * @type {KeycloakInstance}
-   * @memberof MainComponent
-   */
-  keycloakAuth: KeycloakInstance;
   /**
    *
    *
@@ -54,33 +45,14 @@ export class MainComponent implements OnInit {
    * Realiza el logout del usuario.
    */
   logout() {
-    /* this.loginService.logoutKC().subscribe(data => {
-       this.windowReload();
-     });*/
-    const config = {
-      url: Helper.getKeyCloackUrl().authUrl,
-      realm: Helper.getKeyCloackUrl().realm,
-      clientId: Helper.getKeyCloackUrl().clientId
-    };
-    // @ts-ignore
-    this.keycloakAuth = new Keycloak(config);
-    this.keycloakAuth.init({ onLoad: 'login-required' }).then(() => {
-
-      const options1 = {
-        redirectUri: Helper.getKeyCloackUrl().redirectUrl,
-        realm: Helper.getKeyCloackUrl().realm,
-        clientId: Helper.getKeyCloackUrl().clientId
-      };
-      this.keycloakAuth.logout(options1);
+    this.loginService.logoutKC().then(data => {
+      console.log('logout login service in main');
+      this.windowReload();
+    }).catch(e => {
+      console.log('error', e);
     });
-    /*
-    this.keycloakAuth = this.loginService.returnInstanceck();
-    const options = {
-      redirectUri: KEYCLOACK.redirectUrl,
-      realm: KEYCLOACK.realm,
-      clientId: KEYCLOACK.clientId
-    };
-    this.keycloakAuth.logout(options);*/
+
+
   }
 
   windowReload() {

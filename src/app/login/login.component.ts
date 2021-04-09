@@ -29,8 +29,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private loginService: LoginService,
     private sanitizer: DomSanitizer,
-    private router: Router,
-    private keycloackService: KeycloakService
+    private router: Router
 
   ) { }
 

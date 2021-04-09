@@ -22,7 +22,18 @@ export class LoginService extends AbstractService {
   token: Promise<string>;
   keycloackService: KeycloakInstance;
   constructor(private httpClient: HttpClient, private keycloakAuth: KeycloakService) {
+
+
     super();
+    console.log('constructor');
+    const config = {
+      url: Helper.getKeyCloackUrl().authUrl,
+      realm: Helper.getKeyCloackUrl().realm,
+      clientId: Helper.getKeyCloackUrl().clientId
+    };
+    // @ts-ignore
+    this.keycloakAuth = new Keycloak(config);
+    this.keycloakAuth.init();
   }
 
 
@@ -113,28 +124,29 @@ export class LoginService extends AbstractService {
    * @return {*}  {Observable<any>}
    * @memberof LoginService
    */
-  logoutKC(): Observable<any> {
+  logoutKC(): Promise<any> {
 
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/x-www-form-urlencoded',
-      })
-    };
+    /* const httpOptions = {
+       headers: new HttpHeaders({
+         'Content-Type': 'application/x-www-form-urlencoded',
+       })
+     };
+ 
+     const params = new HttpParams({
+       fromObject: {
+         client_id: 'login-app',
+         refresh_token: localStorage.getItem('refresh_token')
+       }
+     });
+ 
+     
+     return this.httpClient.post(Helper.getKeyCloackUrl().logout, params, httpOptions)
+       .pipe(tap((response: any) => {
+ 
+       }));*/
+    console.log('logout login service');
+    return this.keycloakAuth.logout(Helper.getKeyCloackUrl().redirectUrl);
 
-    const params = new HttpParams({
-      fromObject: {
-        client_id: 'login-app',
-        refresh_token: localStorage.getItem('refresh_token')
-      }
-    });
-
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('refresh_token');
-    localStorage.removeItem('username');
-    return this.httpClient.post(Helper.getKeyCloackUrl().logout, params, httpOptions)
-      .pipe(tap((response: any) => {
-
-      }));
   }
 
   /**
