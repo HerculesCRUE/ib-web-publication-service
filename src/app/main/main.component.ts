@@ -45,12 +45,7 @@ export class MainComponent implements OnInit {
    * Realiza el logout del usuario.
    */
   logout() {
-    this.loginService.logoutKC().then(data => {
-      console.log('logout login service in main');
-      this.windowReload();
-    }).catch(e => {
-      console.log('error', e);
-    });
+    this.loginService.logoutKC();
 
 
   }

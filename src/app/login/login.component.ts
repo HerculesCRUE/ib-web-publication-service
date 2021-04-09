@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
-import { KeycloakService } from 'keycloak-angular';
 import { KeycloakInstance } from 'keycloak-js';
 import { Helper } from '../_helpers/utils';
 import { LoginService } from '../_services/login.service';

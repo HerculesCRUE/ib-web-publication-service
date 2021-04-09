@@ -7,6 +7,7 @@ import { User } from '../_models/user';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { KeycloakService } from 'keycloak-angular';
 import { KeycloakInstance } from 'keycloak-js';
+import * as Keycloak from 'keycloak-js';
 
 /**
  * Servicio para la gestión del login.
@@ -24,25 +25,6 @@ export class LoginService extends AbstractService {
   constructor(private httpClient: HttpClient, private keycloakAuth: KeycloakService) {
     super();
   }
-
-
-  init(): Promise<any> {
-    return new Promise((resolve, reject) => {
-      const config = {
-        url: Helper.getKeyCloackUrl().authUrl,
-        realm: Helper.getKeyCloackUrl().realm,
-        clientId: Helper.getKeyCloackUrl().clientId
-      };
-      // @ts-ignore
-      this.keycloakAuth = new Keycloak(config);
-      this.keycloakAuth.init()
-        .then(() => {
-
-        });
-    });
-  }
-
-
 
   /**
    * Obtiene los datos del usuario actual.
@@ -119,10 +101,6 @@ export class LoginService extends AbstractService {
   }
 
 
-  returnInstanceck(): KeycloakInstance {
-    return this.keycloackService;
-  }
-
 
   /**
    *
@@ -130,37 +108,35 @@ export class LoginService extends AbstractService {
    * @return {*}  {Observable<any>}
    * @memberof LoginService
    */
-  logoutKC(): Promise<any> {
+  logoutKC() {
 
-    /* const httpOptions = {
-       headers: new HttpHeaders({
-         'Content-Type': 'application/x-www-form-urlencoded',
-       })
-     };
- 
-     const params = new HttpParams({
-       fromObject: {
-         client_id: 'login-app',
-         refresh_token: localStorage.getItem('refresh_token')
-       }
-     });
- 
-     
-     return this.httpClient.post(Helper.getKeyCloackUrl().logout, params, httpOptions)
-       .pipe(tap((response: any) => {
- 
-       }));*/
-    console.log('logout login service');
     const config = {
       url: Helper.getKeyCloackUrl().authUrl,
       realm: Helper.getKeyCloackUrl().realm,
       clientId: Helper.getKeyCloackUrl().clientId
     };
     // @ts-ignore
-    this.keycloakAuth = new Keycloak(config);
-    this.keycloakAuth.init();
-    return this.keycloakAuth.logout(Helper.getKeyCloackUrl().redirectUrl);
+    this.keycloackService = new Keycloak(config);
+    this.keycloackService.init({ onLoad: 'login-required' }).then(() => {
 
+      const config1 = {
+        redirectUri: Helper.getKeyCloackUrl().redirectUrl,
+        realm: Helper.getKeyCloackUrl().realm,
+        clientId: Helper.getKeyCloackUrl().clientId
+      };
+      console.log('im in');
+      // @ts-ignore
+      this.keycloackService.logout(config1).then(() => {
+        this.windowReload();
+      });
+
+    });
+
+
+  }
+
+  windowReload() {
+    window.location.replace('./');
   }
 
   /**
