@@ -130,9 +130,9 @@ export class LoginService extends AbstractService {
     localStorage.removeItem('access_token');
     localStorage.removeItem('refresh_token');
     localStorage.removeItem('username');
+    console.log('del');
     this.deleteAllCookies();
     console.log('del');
-    this.keycloackService.clearToken();
     this.keycloackService.logout(config1).then(() => {
       console.log('logout');
       this.windowReload();
@@ -146,12 +146,14 @@ export class LoginService extends AbstractService {
     console.log('delete cookies');
     const cookies = document.cookie.split(';');
 
-    for (let i = 0; i < cookies.length; i++) {
-      const cookie = cookies[i];
+    cookies.forEach(element => {
+      console.log(element);
+      const cookie = element;
       const eqPos = cookie.indexOf('=');
       const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+
       document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT';
-    }
+    });
   }
 
   windowReload() {
