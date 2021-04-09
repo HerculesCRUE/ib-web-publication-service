@@ -22,18 +22,24 @@ export class LoginService extends AbstractService {
   token: Promise<string>;
   keycloackService: KeycloakInstance;
   constructor(private httpClient: HttpClient, private keycloakAuth: KeycloakService) {
-
-
     super();
-    console.log('constructor');
-    const config = {
-      url: Helper.getKeyCloackUrl().authUrl,
-      realm: Helper.getKeyCloackUrl().realm,
-      clientId: Helper.getKeyCloackUrl().clientId
-    };
-    // @ts-ignore
-    this.keycloakAuth = new Keycloak(config);
-    this.keycloakAuth.init();
+  }
+
+
+  init(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      const config = {
+        url: Helper.getKeyCloackUrl().authUrl,
+        realm: Helper.getKeyCloackUrl().realm,
+        clientId: Helper.getKeyCloackUrl().clientId
+      };
+      // @ts-ignore
+      this.keycloakAuth = new Keycloak(config);
+      this.keycloakAuth.init()
+        .then(() => {
+
+        });
+    });
   }
 
 
@@ -145,6 +151,14 @@ export class LoginService extends AbstractService {
  
        }));*/
     console.log('logout login service');
+    const config = {
+      url: Helper.getKeyCloackUrl().authUrl,
+      realm: Helper.getKeyCloackUrl().realm,
+      clientId: Helper.getKeyCloackUrl().clientId
+    };
+    // @ts-ignore
+    this.keycloakAuth = new Keycloak(config);
+    this.keycloakAuth.init();
     return this.keycloakAuth.logout(Helper.getKeyCloackUrl().redirectUrl);
 
   }
