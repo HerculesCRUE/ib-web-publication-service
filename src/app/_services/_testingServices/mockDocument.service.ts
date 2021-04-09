@@ -187,6 +187,13 @@ export class MockDocumentService {
         return of({});
     }
 
+    getotherByIdAndType(id, type) {
+        return of({});
+    }
+
+    getacademicByIdAndType(id, type) {
+        return of({});
+    }
     /**
      *
      *
