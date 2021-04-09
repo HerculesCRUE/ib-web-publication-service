@@ -49,10 +49,11 @@ export class ProjectsDetailComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       this.id = params.id; // (+) converts string 'id' to a number
       if (this.id) {
+
         this.findRequest.filter.id = this.id;
-        this.projectService.find(this.findRequest).subscribe(data => {
-          if (data.content[0]) {
-            this.proyect = data.content[0];
+        this.projectService.findbyId(this.id).subscribe(data => {
+          if (data) {
+            this.proyect = data;
             this.loaded = true;
           }
 

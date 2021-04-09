@@ -53,4 +53,15 @@ export class ProjectService extends AbstractService {
             );
     }
 
+
+    findbyId(id: string): Observable<Project> {
+        // Filter params
+
+
+        return this.httpClient
+            .get(Helper.getUrl('/project/' + id)).pipe(
+                catchError(this.handleError)
+            );
+    }
+
 }

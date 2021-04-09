@@ -117,9 +117,7 @@ export class LoginService extends AbstractService {
     };
     // @ts-ignore
     this.keycloackService = new Keycloak(config);
-    this.keycloackService.init({}).then(() => {
-      console.log('hello');
-    });
+    this.keycloackService.init({}).then(() => { });
     const config1 = {
       redirectUri: Helper.getAPPURL(),
       realm: Helper.getKeyCloackUrl().realm,
@@ -130,9 +128,7 @@ export class LoginService extends AbstractService {
     localStorage.removeItem('access_token');
     localStorage.removeItem('refresh_token');
     localStorage.removeItem('username');
-    console.log('del');
-    this.deleteAllCookies();
-    console.log('del');
+    console.log('im in 2');
     this.keycloackService.logout(config1).then(() => {
       console.log('logout');
       this.windowReload();
@@ -141,20 +137,6 @@ export class LoginService extends AbstractService {
 
   }
 
-
-  deleteAllCookies() {
-    console.log('delete cookies');
-    const cookies = document.cookie.split(';');
-
-    cookies.forEach(element => {
-      console.log(element);
-      const cookie = element;
-      const eqPos = cookie.indexOf('=');
-      const name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-
-      document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:00 GMT';
-    });
-  }
 
   windowReload() {
     window.location.replace('./');
