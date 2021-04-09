@@ -7,7 +7,7 @@
         </div>
     </div>
 </div>
-<div class="row" *ngIf="loaded">
+<div class="row" *ngIf="loaded && document">
     <div class="col-12">
         <div class="card flex-fill">
             <div class="card-header">
@@ -23,7 +23,8 @@
                             <p><strong>{{'documents.edition' | translate}}:</strong> {{document.edition}}</p>
                             <p><strong>{{'documents.startPage' | translate}}:</strong> {{document.startPage}}</p>
                             <p><strong>{{'documents.endPage' | translate}}:</strong> {{document.endPage}}</p>
-                            <p><strong>{{'documents.summary' | translate}}:</strong> {{document.summary}}</p>
+                            <p><strong>{{'documents.summary' | translate}}:</strong> {{document.summary}}
+                                {{document.description}}</p>
                             <p><strong>{{'documents.placeOfPublication' | translate}}:</strong>
                                 {{document.placeOfPublication}}</p>
                             <p><strong>{{'documents.publishedIn' | translate}}:</strong> {{document.publishedIn}}</p>

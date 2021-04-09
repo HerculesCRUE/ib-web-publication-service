@@ -59,12 +59,31 @@ export class DocumentDetailComponent extends PaginatedSearchComponent<BookSectio
         console.log(data);
       });
     }
-    this.documentService.getDocumentByIdAndType(id, btoa(this.lastItem)).subscribe(data => {
-      if (data) {
-        this.document = data;
-        this.loaded = true;
-      }
-    });
+
+
+    if (this.lastItem === 'Dossier') {
+      this.documentService.getotherByIdAndType(id, btoa(this.lastItem)).subscribe(data => {
+        if (data) {
+          this.document = data;
+          this.loaded = true;
+        }
+      });
+    } else if (this.lastItem === 'Book' || this.lastItem === 'Article') {
+      this.documentService.getDocumentByIdAndType(id, btoa(this.lastItem)).subscribe(data => {
+        if (data) {
+          this.document = data;
+          this.loaded = true;
+        }
+      });
+    } else {
+      this.documentService.getacademicByIdAndType(id, btoa(this.lastItem)).subscribe(data => {
+        if (data) {
+          this.document = data;
+          this.loaded = true;
+        }
+      });
+    }
+
   }
 
   backClicked() {

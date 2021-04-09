@@ -147,4 +147,20 @@ export class DocumentService extends AbstractService {
             );
     }
 
+    getotherByIdAndType(id: string, type: string): Observable<DocumentDetail> {
+
+        return this.httpClient
+            .get(Helper.getUrl('/otherpublication/' + id + '/' + type)).pipe(
+                catchError(this.handleError)
+            );
+    }
+
+    getacademicByIdAndType(id: string, type: string): Observable<DocumentDetail> {
+
+        return this.httpClient
+            .get(Helper.getUrl('/academicpublication/' + id + '/' + type)).pipe(
+                catchError(this.handleError)
+            );
+    }
+
 }

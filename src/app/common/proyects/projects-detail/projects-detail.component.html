@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-lg-12 margin-bottom">
-        <legend class="legend" *ngIf="loaded">{{proyect[0]?.name?.value}}</legend>
+        <legend class="legend" *ngIf="loaded">{{proyect?.title}}</legend>
     </div>
 </div>
 <div class="container-fluid">
@@ -49,16 +49,18 @@
                         <div class="row">
                             <div class="col-12 mt-40">
                                 <p><strong>{{ 'projects.project-name' | translate}}:</strong><span *ngIf="loaded">
-                                        {{proyect[0]?.name?.value}} </span> </p>
-                                <p><strong>{{ 'projects.key-words' | translate}}:</strong>- web, universidades </p>
+                                        {{proyect?.title}} </span> </p>
                                 <p><strong>{{ 'projects.project-type' | translate}}:</strong><span *ngIf="loaded">
-                                        {{proyect[0]?.tipo?.value}} </span> </p>
+                                        {{proyect?.tipo}} </span> </p>
                                 <p><strong>{{ 'projects.financing-type' | translate}}:</strong> <span *ngIf="loaded">
-                                        {{proyect[0]?.fund?.value}} </span></p>
-                                <p><strong>{{ 'projects.call-type' | translate}}:</strong>- Público </p>
-                                <p><strong>{{ 'projects.people-involved' | translate}}:</strong>- 23 </p>
-                                <p><strong>{{ 'projects.main-researcher' | translate}}:</strong>- Maria Hernandez Reyes
-                                    Mora
+                                        {{proyect?.fund}} </span></p>
+                                <p><strong>{{ 'projects.call-type' | translate}}:</strong> <span *ngIf="loaded">
+                                        {{proyect?.projectClassification}} </span> </p>
+                                <p><strong>{{ 'projects.startDate' | translate}}:</strong><span *ngIf="loaded">
+                                        {{proyect?.endDate}} </span> </p>
+                                <p><strong>{{ 'projects.endDate' | translate}}:</strong><span *ngIf="loaded">
+                                        {{proyect?.startDate}} </span>
+
                                 </p>
                             </div>
                         </div>

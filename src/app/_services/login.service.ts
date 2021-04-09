@@ -121,7 +121,7 @@ export class LoginService extends AbstractService {
       console.log('hello');
     });
     const config1 = {
-      redirectUri: Helper.getKeyCloackUrl().redirectUrl,
+      redirectUri: Helper.getUrl(''),
       realm: Helper.getKeyCloackUrl().realm,
       clientId: Helper.getKeyCloackUrl().clientId
     };
