@@ -73,7 +73,7 @@
           {{ "menu.login" | translate }}
 
         </li>
-        <li class="nav-item ml-15 cursor" (click)="logout()" *ngIf="!isLogged">
+        <li class="nav-item ml-15 cursor" (click)="logout()" *ngIf="isLogged">
           <em class="oi oi-account-logout icons-menu"></em>
           {{ "menu.logout" | translate }}
         </li>
