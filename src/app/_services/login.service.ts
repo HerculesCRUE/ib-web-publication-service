@@ -119,7 +119,7 @@ export class LoginService extends AbstractService {
     this.keycloackService = new Keycloak(config);
     this.keycloackService.init({}).then(() => { });
     const config1 = {
-      redirectUri: Helper.getAPPURL(),
+      redirectUri: this.encode(Helper.getAPPURL()),
       realm: Helper.getKeyCloackUrl().realm,
       clientId: Helper.getKeyCloackUrl().clientId
     };
@@ -129,13 +129,16 @@ export class LoginService extends AbstractService {
     localStorage.removeItem('refresh_token');
     localStorage.removeItem('username');
     console.log('im in 2');
-    this.keycloackService.logout(config1).then(() => {
-      console.log('logout');
-      this.windowReload();
-    });
+    this.keycloackService.logout(config1);
 
 
   }
+
+  encode(url) {
+    return encodeURIComponent(url).replace(/'/g, '%27').replace(/"/g, '%22');
+  }
+
+
 
 
   windowReload() {
