@@ -117,22 +117,22 @@ export class LoginService extends AbstractService {
     };
     // @ts-ignore
     this.keycloackService = new Keycloak(config);
-    this.keycloackService.init({ onLoad: 'login-required' }).then(() => {
-
-      const config1 = {
-        redirectUri: Helper.getKeyCloackUrl().redirectUrl,
-        realm: Helper.getKeyCloackUrl().realm,
-        clientId: Helper.getKeyCloackUrl().clientId
-      };
-      console.log('im in');
-      // @ts-ignore
-      localStorage.removeItem('access_token');
-      localStorage.removeItem('refresh_token');
-      localStorage.removeItem('username');
-      this.keycloackService.logout(config1).then(() => {
-        this.windowReload();
-      });
-
+    this.keycloackService.init({}).then(() => {
+      console.log('hello');
+    });
+    const config1 = {
+      redirectUri: Helper.getKeyCloackUrl().redirectUrl,
+      realm: Helper.getKeyCloackUrl().realm,
+      clientId: Helper.getKeyCloackUrl().clientId
+    };
+    console.log('im in');
+    // @ts-ignore
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('refresh_token');
+    localStorage.removeItem('username');
+    this.keycloackService.logout(config1).then(() => {
+      console.log('logout');
+      this.windowReload();
     });
 
 
