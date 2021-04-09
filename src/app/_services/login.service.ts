@@ -126,6 +126,9 @@ export class LoginService extends AbstractService {
       };
       console.log('im in');
       // @ts-ignore
+      localStorage.removeItem('access_token');
+      localStorage.removeItem('refresh_token');
+      localStorage.removeItem('username');
       this.keycloackService.logout(config1).then(() => {
         this.windowReload();
       });
