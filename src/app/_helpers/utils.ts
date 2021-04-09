@@ -1,4 +1,4 @@
-import { BASE_URL, KEYCLOACK, LPDURL } from '../configuration';
+import { BASE_APP_URL, BASE_URL, KEYCLOACK, LPDURL } from '../configuration';
 import { HttpParams } from '@angular/common/http';
 import { Direction, Page, PageRequest } from './search';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
@@ -24,6 +24,9 @@ export class Helper {
     return LPDURL;
   }
 
+  static getAPPURL() {
+    return BASE_APP_URL;
+  }
 
 
   /**
