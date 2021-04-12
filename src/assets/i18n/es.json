@@ -161,7 +161,9 @@
     "homepage": "Pag. Inicio",
     "isStartup": "Es startup",
     "publicCompany": "Compania publica",
-    "startDate": "Fecha inicio"
+    "dateStart": "Fecha inicio",
+    "dateEnd": "Fecha fin",
+    "keyword":"Palabra clave"
   },
   "scientist": {
     "title": "Titulo",
@@ -321,7 +323,9 @@
     "startDate": "Fecha inicio",
     "startPage": "Página inicio",
     "title": "Titulo",
-    "summary": "Sumario"
+    "summary": "Sumario",
+    "pageStart": "Página inicio",
+    "pageEnd": "Página fin"
   },
   "directed-jobs": {
     "table-header": {

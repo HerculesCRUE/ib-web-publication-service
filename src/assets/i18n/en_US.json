@@ -151,7 +151,9 @@
     "homepage": "Home page",
     "isStartup": "Is startup",
     "publicCompany": "CPublic company",
-    "startDate": "Start date"
+    "dateStart": "Start date",
+    "dateEnd": "Date end",
+    "keyword":"Keyword"
   },
   "scientist": {
     "title": "Research staff",
@@ -308,7 +310,9 @@
     "startDate": "Start date",
     "startPage": "Start page",
     "title": "Title",
-    "summary": "Summary"
+    "summary": "Summary",
+    "pageStart": "Page start",
+    "pageEnd": "Páage end"
   },
   "directed-jobs": {
     "table-header": {
