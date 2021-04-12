@@ -3,6 +3,7 @@ import { HelperGraphics } from 'src/app/_helpers/helperGraphics';
 import { FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
 import { Helper } from 'src/app/_helpers/utils';
 import { Person } from 'src/app/_models/person';
+import { PersonGraphic } from 'src/app/_models/personGraphic';
 import { SparqlResults } from 'src/app/_models/sparql';
 import { TableResultsHeaderItem } from 'src/app/_models/table-results';
 import { GraphicService } from 'src/app/_services/graphic.service';
@@ -105,10 +106,25 @@ export class ScientistSearchComponent implements OnInit {
 
 
     this.graphicService.personArea().subscribe(data => {
-      this.echartOptions = HelperGraphics.configChartPie(data, '');
+      this.echartOptions = HelperGraphics.configChartPie(this.newData(data), 'Num personas por area');
     });
   }
 
+
+  newData(data: Array<PersonGraphic>) {
+    const result = [];
+
+    if (data.length > 1) {
+      data.forEach(element => {
+        result.push({ name: element.subjectArea, value: element.count });
+      });
+    }
+
+    return {
+      seriesData: result
+    };
+
+  }
   /**
    *
    *
