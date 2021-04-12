@@ -7,19 +7,34 @@
 export class Person {
 
     /**
+     * The id
+     */
+    id: string;
+
+    /**
+     * The title
+     */
+    title: string;
+
+    /**
      * The birthDate
      */
-    // birthDate: string;
+    birthDate: string;
 
     /**
      * The description
      */
-    // description: string;
+    description: string;
 
     /**
      * The firstName
      */
     firstName: string;
+
+    /**
+     * The surname
+     */
+    surname: string;
 
     /**
      * The gender
@@ -29,27 +44,22 @@ export class Person {
     /**
      * The hasContactInfo
      */
-    // hasContactInfo: string;
+    hasContactInfo: string;
 
     /**
      * The homepage
      */
-    // homepage: string;
-
-    /**
-     * The id
-     */
-    id: string;
+    homepage: string;
 
     /**
      * The image
      */
-    // image: string;
+    image: string;
 
     /**
      * The name
      */
-    // name: string;
+    name: string;
 
     /**
      * The nickname
@@ -59,7 +69,7 @@ export class Person {
     /**
      * The personalMailBox
      */
-    // personalMaibox: string;
+    personalMaibox: string;
 
     /**
      * The researchLine
@@ -67,24 +77,13 @@ export class Person {
     researchLine: string;
 
     /**
-     * The surname
+     * The subjectArea
      */
-    surname: string;
+    subjectArea: string;
+
 
     /**
      * The taxId
      */
-    // taxId: string;
-
-    /**
-     * The title
-     */
-    title: string;
-    /**
-     *
-     *
-     * @type {string}
-     * @memberof Person
-     */
-    subjectArea: string;
+    taxId: string;
 }

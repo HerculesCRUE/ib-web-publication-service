@@ -6,7 +6,6 @@
  */
 export class Patent {
 
-
     /**
      * The dateIssued
      */
@@ -20,17 +19,7 @@ export class Patent {
     /**
      * The endDate
      */
-    // endDate: string;
-
-    /**
-     * The endPage
-     */
-    // endPage: string;
-
-    /**
-     * The id
-     */
-    id: string;
+    endDate: string;
 
     /**
      * The keyword
@@ -43,19 +32,22 @@ export class Patent {
     mode: string;
 
     /**
+     * The pageEnd
+     */
+    pageEnd: string;
+
+    /**
+     * The pageStart
+     */
+    pageStart: string;
+
+    /**
      * The startDate
      */
-    // startDate: string;
+    startDate: string;
 
     /**
-     * The startPage
+     * The summary
      */
-    // startPage: string;
-
-    /**
-     * The title
-     */
-    title: string;
-    // pageEnd: string;
-    // pageStart: string;
+    summary: string;
 }

@@ -21,13 +21,6 @@ export class University {
      * @type {string}
      * @memberof University
      */
-    type: string;
-    /**
-     *
-     *
-     * @type {string}
-     * @memberof University
-     */
     abbreviation: string;
 
     /**
@@ -36,5 +29,6 @@ export class University {
      * @type {string}
      * @memberof University
      */
-    publicCompany: string;
+    description: string;
+    keyword: string;
 }

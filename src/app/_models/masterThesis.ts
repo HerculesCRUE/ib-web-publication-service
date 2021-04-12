@@ -28,7 +28,7 @@ export class MasterThesis {
     /**
      * The name
      */
-    name: string;
+    title: string;
 
     /**
      * The placeOfPublication

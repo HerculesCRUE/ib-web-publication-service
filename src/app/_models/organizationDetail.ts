@@ -1,23 +1,42 @@
 export class OrganizationDetail {
+
+    /**
+     * The id
+     */
     id: string;
+
+    /**
+     * The title
+     */
     title: string;
+
+    /**
+     * The abbreviation
+     */
     abbreviation: string;
+
+    /**
+     * The dateEnd
+     */
+    dateEnd: string;
+
+    /**
+     * The dateStart
+     */
+    dateStart: string;
+
+    /** 
+     * The description. 
+     */
     description: string;
-    endDate: string;
-    homepage: string;
-    isStartup: string;
-    publicCompany: string;
-    startDate: string;
-    hasKnowledgeArea: string;
-    hasContactInfo: string;
-    provides: string;
-    locatedIn: string;
-    hasAcreditation: string;
-    hasPredecessorOrganization: string;
-    contains: string;
-    participates: string;
-    hasSuccessorOrganization: string;
-    hasReservable: string;
-    freetextKeyword: string;
-    relatedBy: string;
+
+    /**
+     * The keyword
+     */
+    keyword: string;
+
+    /** 
+     * The type. 
+     */
+    type: string;
 }

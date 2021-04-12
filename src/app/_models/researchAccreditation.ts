@@ -17,11 +17,6 @@ export class ResearchAccreditation {
     description: string;
 
     /**
-     * The governingAuthority
-     */
-    governingAuthority: string;
-
-    /**
      * The hasSubjectArea
      */
     hasSubjectArea: string;

@@ -6,6 +6,16 @@
  */
 export class Project {
 
+    /** 
+     * The id
+     */
+    id: string;
+
+    /** 
+     * The title 
+     */
+    title: string;
+
     /**
      * The abbreviation
      */
@@ -14,7 +24,7 @@ export class Project {
     /**
      * The description
      */
-    // description: string;
+    description: string;
 
     /**
      * The endDate
@@ -24,27 +34,27 @@ export class Project {
     /**
      * The foreseenJustificationDate
      */
-    // foreseenJustificationDate: string;
-
-    /** 
-     * The id
-     */
-    id: string;
+    foreseenJustificationDate: string;
 
     /**
      * The keyword
      */
-    // keyword: string;
+    keyword: string;
 
     /**
      * The modality
      */
-    // modality: string;
+    modality: string;
 
     /**
      * The needsEthicalValidation
      */
-    // needsEthicalValidation: string;
+    needsEthicalValidation: string;
+
+    /**
+     * The projectClassification
+     */
+    projectClassification: string;
 
     /** 
      * The startDate 
@@ -55,17 +65,4 @@ export class Project {
      * The status 
      */
     status: string;
-
-    /** 
-     * The title 
-     */
-    title: string;
-
-    /**
-     *
-     *
-     * @type {string}
-     * @memberof Project
-     */
-    projectClassification: string;
 }

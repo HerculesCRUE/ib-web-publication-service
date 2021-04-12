@@ -36,11 +36,6 @@ export class InternshipDto {
     locatedIn: string;
 
     /**
-     * The participatedBy
-     */
-    participatedBy: string;
-
-    /**
      * The startDate
      */
     startDate: string;
