@@ -104,6 +104,8 @@ export class PatentsComponent extends PaginatedSearchComponent<Patent> implement
     if (this.organizationId) {
       this.findRequest.filter.organizationId = this.organizationId;
     }
+
+
     let xAxisData: Array<string> = [];
     let data1: Array<any> = [];
     let data2: Array<any> = [];
@@ -145,9 +147,7 @@ export class PatentsComponent extends PaginatedSearchComponent<Patent> implement
       this.findRequest.filter.organizationId = this.organizationId;
     }
     const result = this.patentService.find(findRequest);
-    result.subscribe(data => {
-      this.loaded = true;
-    });
+    this.loaded = true;
     return result;
   }
 

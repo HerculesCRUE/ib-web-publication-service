@@ -110,17 +110,12 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
     if (this.authorId) {
       this.findRequest.filter.authorId = this.authorId;
     }
-
     if (this.organizationId) {
       this.findRequest.filter.organizationId = this.organizationId;
     }
-
-
     if (this.idPrefix === 'prodScientist') {
       this.url = '../../../document/';
     }
-
-
   }
 
   protected findInternal(findRequest: FindRequest): Observable<Page<Document | AcademicPublication>> {
@@ -141,9 +136,7 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
     } else {
       result = this.documentService.find(this.findRequest);
     }
-    result.subscribe(data => {
-      this.loaded = true;
-    });
+    this.loaded = true;
     return result;
 
   }

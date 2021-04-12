@@ -45,9 +45,7 @@ export class EventsComponent extends PaginatedSearchComponent<Event> implements 
   protected findInternal(findRequest: FindRequest): Observable<Page<Event>> {
 
     const result = this.eventsService.find(findRequest);
-    result.subscribe(data => {
-      this.loaded = true;
-    });
+    this.loaded = true;
     return result;
   }
 

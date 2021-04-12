@@ -201,9 +201,6 @@ export abstract class PaginatedSearchComponent<T> implements AfterContentInit {
   ) { }
 
   ngAfterContentInit(): void {
-    /*const lastSearch: FindRequest = JSON.parse(
-      localStorage.getItem(`searchform-${this.router.url}`)
-    );*/
     const lastSearch = undefined;
     if (lastSearch) {
       this.findRequest = new FindRequest(lastSearch);

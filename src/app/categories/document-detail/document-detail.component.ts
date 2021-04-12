@@ -94,9 +94,7 @@ export class DocumentDetailComponent extends PaginatedSearchComponent<BookSectio
   protected findInternal(findRequest: FindRequest): Observable<Page<BookSection>> {
 
     const result = this.documentService.getBookSection(findRequest);
-    result.subscribe(data => {
-      this.loaded = true;
-    });
+    this.loaded = true;
     return result;
   }
 

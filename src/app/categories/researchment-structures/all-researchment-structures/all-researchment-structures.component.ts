@@ -39,9 +39,7 @@ export class AllResearchmentStructuresComponent extends PaginatedSearchComponent
   protected findInternal(findRequest: FindRequest): Observable<Page<University>> {
 
     const result = this.researchmentStructureService.find(findRequest);
-    result.subscribe(data => {
-      this.loaded = true;
-    });
+    this.loaded = true;
     return result;
   }
 

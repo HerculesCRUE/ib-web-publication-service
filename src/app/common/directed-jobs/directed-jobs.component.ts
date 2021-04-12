@@ -61,9 +61,7 @@ export class DirectedJobsComponent extends PaginatedSearchComponent<AcademicPubl
   protected findInternal(findRequest: FindRequest): Observable<Page<AcademicPublication>> {
 
     const result = this.documentService.findAcademicPublication(findRequest);
-    result.subscribe(data => {
-      this.loaded = true;
-    });
+    this.loaded = true;
     return result;
   }
 

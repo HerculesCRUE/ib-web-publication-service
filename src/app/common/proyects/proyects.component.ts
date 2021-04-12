@@ -164,9 +164,7 @@ export class ProyectsComponent extends PaginatedSearchComponent<Project> impleme
   protected findInternal(findRequest: FindRequest): Observable<Page<Project>> {
 
     const result = this.projectService.find(findRequest);
-    result.subscribe(data => {
-      this.loaded = true;
-    });
+    this.loaded = true;
     return result;
   }
 
