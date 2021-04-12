@@ -54,7 +54,6 @@ export class ResearchmentStructuresDetailComponent implements OnInit {
       }
       this.researchmentStructureService.getById(this.id, btoa(this.lastItem)).subscribe(data => {
         this.researchment = data;
-        console.log(this.researchment);
       });
     });
   }

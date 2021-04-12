@@ -72,7 +72,7 @@ export class AreasComponent implements OnInit {
     this.secondYearSelected = new Date().getFullYear();
     this.graphicService.projectAreasPerYear(this.yearSelected).subscribe(data => {
       this.loaded = true;
-      this.echartOptions = HelperGraphics.configChartPie(data, 'DATA 1', 'DATA2');
+      this.echartOptions = HelperGraphics.configChartPie(data, '');
     });
     this.graphicService.AreasPerYear(this.secondYearSelected).subscribe(data => {
       this.loaded2 = true;
@@ -92,7 +92,7 @@ export class AreasComponent implements OnInit {
     setTimeout(() => {
       this.graphicService.projectAreasPerYear(this.yearSelected).subscribe(data => {
         this.loaded = true;
-        this.echartOptions = HelperGraphics.configChartPie(data, 'DATA 1', 'DATA2');
+        this.echartOptions = HelperGraphics.configChartPie(data, '');
       });
     }, 10);
 

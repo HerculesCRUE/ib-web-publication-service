@@ -18,13 +18,12 @@ export class HelperGraphics {
      * @return {*} 
      * @memberof HelperGraphics
      */
-    static configChartPie(data: any, seriesName: string, titleText: string) {
+    static configChartPie(data: any, title: string) {
         return {
             title: {
-                text: 'Núm. Universidades [Financiación]',
+                text: title,
                 left: 'center',
             },
-            color: ["#264653", "#2a9d8f", "#e9c46a", "#f4a261", "#e76f51"],
             tooltip: {
                 trigger: 'item',
                 formatter: '{a} <br/>{b} : {c} ({d}%)',
@@ -32,13 +31,13 @@ export class HelperGraphics {
             legend: {
                 type: 'plain',
                 orient: 'horizontal',
-                left: "left",
+                left: 'left',
                 right: 10,
                 top: 30,
                 bottom: 0,
                 data: data.legendData,
                 textStyle: {
-                    fontFamily: "Poppins"
+                    fontFamily: 'Poppins'
                 },
                 color: '#333',
                 selected: data.selected,
@@ -194,14 +193,12 @@ export class HelperGraphics {
                     show: true,
                     normal: {
                         position: 'insideTopLeft',
-                        formatter: function (params) {
-                            var arr = [
+                        formatter: (params) => {
+                            const arr = [
                                 '{name|' + params.name + '}',
                                 '{hr|}',
                                 '{budget| ' + params.value + '}'
                             ];
-
-
                             return arr.join('\n');
                         },
                         rich: {

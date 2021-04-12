@@ -141,6 +141,13 @@ export class ProyectsComponent extends PaginatedSearchComponent<Project> impleme
 
 
   }
+  /**
+   *
+   *
+   * @param {Array<GraphicModelTree>} data
+   * @return {*} 
+   * @memberof ProyectsComponent
+   */
   makeDataForTree(data: Array<GraphicModelTree>) {
     const result = [];
 

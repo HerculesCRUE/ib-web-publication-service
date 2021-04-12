@@ -105,7 +105,7 @@ export class ScientistSearchComponent implements OnInit {
 
 
     this.graphicService.personArea().subscribe(data => {
-      this.echartOptions = HelperGraphics.configChartPie(data, 'Sello de Calidad', 'Personal por tipo filtrado por area');
+      this.echartOptions = HelperGraphics.configChartPie(data, '');
     });
   }
 
