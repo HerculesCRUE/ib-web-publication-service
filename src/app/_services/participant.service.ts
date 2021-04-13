@@ -5,6 +5,7 @@ import { catchError } from 'rxjs/operators';
 import { AbstractService } from '../_helpers/abstract';
 import { FindRequest, Page, PageRequest } from '../_helpers/search';
 import { Helper } from '../_helpers/utils';
+import { Person } from '../_models/person';
 import { SparqlResults } from '../_models/sparql';
 
 
@@ -117,7 +118,7 @@ export class ParticipantService extends AbstractService {
     }
 
 
-    findPerson(findRequest: FindRequest): Observable<Page<SparqlResults>> {
+    findPerson(findRequest: FindRequest): Observable<Page<Person>> {
         // Filter params
         let parameters = new HttpParams();
         parameters = Helper.addParam(parameters, 'tipo', findRequest.filter.type);

@@ -9,7 +9,8 @@
         <div class="form-group col-lg-6">
             <label for="type" class="col-sm-4 control-label">{{ "participant.level" | translate }}</label>
             <div class="col-sm-8">
-                <select name="type" class="form-control" [(ngModel)]="findRequest.filter.level" #type="ngModel">
+                <select name="type" (change)="changePersonProyect()" class="form-control"
+                    [(ngModel)]="findRequest.filter.level" #type="ngModel">
                     <option [value]="undefined">{{ "form.select" | translate }}</option>
                     <option [value]="'Regional'">Regional</option>
                     <option [value]="'Internacional'">Internacional</option>
@@ -20,8 +21,8 @@
         <div class="form-group col-lg-6">
             <label for="anyo" class="col-sm-4 control-label">{{ "participant.year" | translate }}</label>
             <div class="col-sm-8">
-                <select name="anyo" [attr.aria-label]="'participant.year' | translate" class="form-control"
-                    [(ngModel)]="findRequest.filter.anyo" #type="ngModel">
+                <select name="anyo" (change)="changePersonProyect()" [attr.aria-label]="'participant.year' | translate"
+                    class="form-control" [(ngModel)]="findRequest.filter.anyo" #type="ngModel">
                     <option [value]="undefined">{{ "form.select" | translate }}</option>
                     <option *ngFor="let year of yearsForSelect" [value]="year">{{year}}</option>
                 </select>
@@ -63,26 +64,33 @@
                             </div>
                         </div>
                     </div>
-                    <h5 class="card-title mb-0" *ngIf="loaded && allDataParticipants?.content.length === 0">
+                    <h5 class="card-title mb-0" *ngIf="loaded && resultObject?.content?.length === 0">
                         {{'form.no-result' | translate}}</h5>
-                    <h5 class="card-title mb-0" *ngIf="loaded && allDataParticipants?.content.length !== 0">
-                        {{'form.results-amount' | translate}} {{allDataParticipants.totalElements}}</h5>
+                    <h5 class="card-title mb-0" *ngIf="loaded && resultObject?.content?.length !== 0">
+                        {{'form.results-amount' | translate}} {{resultObject?.totalElements}}</h5>
                 </div>
                 <div id="datatables-dashboard-markets_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                     <div class="loader" *ngIf="!loaded"></div>
-                    <app-table-results-dto [findRequest]="findRequest"
+                    <!--  <app-table-results-dto [findRequest]="findRequest"
                         *ngIf="loaded && allDataParticipants?.content.length !== 0" [dtoTypeTranslate]="'scientist'"
                         [extra]="'2'" [data]="allDataParticipants.content" [pageInfo]="allDataParticipants"
-                        (pageChanged)="allParticipantsFilteredPageChanged($event)"
-                        (sizeChanged)="allParticipantsFilteredSizeChanged($event)"
                         (sortChanged)="allParticipantsFilteredSortChanged($event)">
+                    </app-table-results-dto>-->
+                    <app-table-results-dto [displayPagination]="false" [findRequest]="findRequest"
+                        [dtoTypeTranslate]="'scientist'" [extra]="'4'"
+                        *ngIf="loaded && resultObject?.content?.length !== 0" [data]="resultObject?.content"
+                        [pageInfo]="resultObject" (sortChanged)="allParticipantsFilteredSortChanged($event)">
                     </app-table-results-dto>
+                    <app-pagination [resultObject]="resultObject" (pageChanged)="showPage($event)"
+                        (sizeChanged)="changeSize($event)">
+                    </app-pagination>
                 </div>
 
             </div>
         </div>
     </div>
 </form>
+<!--
 <div class="row">
 
     <div class="col-12">
@@ -134,7 +142,8 @@
         </div>
     </div>
 </div>
-
+-->
+<!--
 <div class="row">
 
     <div class="col-12">
@@ -187,4 +196,4 @@
 
         </div>
     </div>
-</div>
+</div>-->
