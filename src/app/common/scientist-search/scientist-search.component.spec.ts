@@ -35,14 +35,6 @@ describe('ScientistSearchComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  describe('all Scientists Filtered Page Changed', () => {
-    it('should change to page 2 and a result to show of 0', () => {
-      component.allScientistsFilteredPageChanged(2);
-      spyOn(researchStaffService, 'find').and.callThrough();
-      expect(component.allScientificsFiltered.number).toBe(0);
-      expect(component.allScientificsFiltered.content.length).toBe(5);
-    });
-  });
 
   describe('filter Top results', () => {
     it('should filter by type', () => {
