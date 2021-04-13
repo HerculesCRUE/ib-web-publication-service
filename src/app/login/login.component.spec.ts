@@ -47,4 +47,5 @@ describe('LoginComponent', () => {
       expect(loginService.loginKC).toHaveBeenCalled();
     });
   });
+
 });

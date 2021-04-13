@@ -5,6 +5,8 @@ import { TestingHelper } from '../_helpers/testing.spec';
 import { yasgui } from 'src/environments/environment';
 import { MockLoginService } from '../_services/_testingServices/mockLogin.service';
 import { LoginService } from '../_services/login.service';
+import { GraphicService } from '../_services/graphic.service';
+import { MockGraphicService } from '../_services/_testingServices/mockGraphic.service';
 
 describe('SPARQLEditorComponent', () => {
   let component: SPARQLEditorComponent;
@@ -13,7 +15,8 @@ describe('SPARQLEditorComponent', () => {
   beforeEach(async(() => {
     TestingHelper.configureTest().compileComponents();
     TestBed.configureTestingModule({
-      providers: [{ provide: LoginService, useClass: MockLoginService }]
+      providers: [{ provide: LoginService, useClass: MockLoginService },
+      { provide: GraphicService, useClass: MockGraphicService }]
     }).compileComponents();
   }));
 

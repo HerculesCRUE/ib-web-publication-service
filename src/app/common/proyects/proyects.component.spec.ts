@@ -37,15 +37,15 @@ describe('ProyectsComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  /* it('should create execute ngOnInit and populate data table to show', () => {
-     spyOn(projectService, 'find').and.callThrough();
-     spyOn(graphicService, 'projectInvestigation').and.returnValue(of({}));
-     spyOn(component, 'ngOnInit').and.callThrough();
-     fixture.detectChanges();
-     expect(component.resultObject.content.length).toBe(5);
-     expect(component.resultObject.content.length).not.toBe(0);
-   });
- */
+  it('should create execute ngOnInit and populate data table to show', () => {
+    const graphicService1 = fixture.debugElement.injector.get(GraphicService);
+    const spy = spyOn(graphicService1, 'projectInvestigation').and.callThrough();
+    spyOn(component, 'ngOnInit').and.callThrough();
+    fixture.detectChanges();
+    expect(component.resultObject.content.length).toBe(5);
+    expect(component.resultObject.content.length).not.toBe(0);
+  });
+
   describe('on component Init', () => {
     it('should change load all elements', () => {
       const graphicService1 = fixture.debugElement.injector.get(GraphicService);
