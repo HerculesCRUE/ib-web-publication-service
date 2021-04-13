@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, of } from 'rxjs';
+import { catchError, map, timeout } from 'rxjs/operators';
 import { HelperGraphics } from 'src/app/_helpers/helperGraphics';
 import { Direction, FindRequest, Order, Page, PageRequest, PaginatedSearchComponent } from 'src/app/_helpers/search';
 import { Helper } from 'src/app/_helpers/utils';
@@ -117,11 +118,13 @@ export class ScientistSearchComponent extends PaginatedSearchComponent<Person> i
   }
 
   protected findInternal(findRequest: FindRequest): Observable<Page<Person>> {
-
-    const result = this.researchStaffServices.find(findRequest);
-    setTimeout(() => {
-      this.loaded = true;
-    }, 7000);
+    const page: Page<Person> = new Page();
+    const result = this.researchStaffServices.find(findRequest).pipe(
+      map((x) => {
+        this.loaded = true;
+        return x;
+      }), // return the received value true/false
+      catchError(() => of(page)));
     return result;
   }
 
