@@ -115,14 +115,20 @@ export class LoginService extends AbstractService {
       realm: Helper.getKeyCloackUrl().realm,
       clientId: Helper.getKeyCloackUrl().clientId
     };
-    // @ts-ignore
-    this.keycloackService = new Keycloak(config);
-    this.keycloackService.init({}).then(() => { });
     const config1 = {
       redirectUri: this.encode(Helper.getAPPURL()),
       realm: Helper.getKeyCloackUrl().realm,
       clientId: Helper.getKeyCloackUrl().clientId
     };
+    // @ts-ignore
+    this.keycloackService = new Keycloak(config);
+    this.keycloackService.init({ onLoad: 'check-sso' }).then(() => {
+      localStorage.removeItem('access_token');
+      localStorage.removeItem('refresh_token');
+      localStorage.removeItem('username');
+      this.keycloackService.logout(config1);
+    });
+
     localStorage.removeItem('access_token');
     localStorage.removeItem('refresh_token');
     localStorage.removeItem('username');
