@@ -119,7 +119,9 @@ export class ScientistSearchComponent extends PaginatedSearchComponent<Person> i
   protected findInternal(findRequest: FindRequest): Observable<Page<Person>> {
 
     const result = this.researchStaffServices.find(findRequest);
-    this.loaded = true;
+    setTimeout(() => {
+      this.loaded = true;
+    }, 7000);
     return result;
   }
 
