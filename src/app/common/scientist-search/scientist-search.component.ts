@@ -1,6 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import { ToastrService } from 'ngx-toastr';
+import { Observable, of } from 'rxjs';
 import { HelperGraphics } from 'src/app/_helpers/helperGraphics';
-import { FindRequest, Page, PageRequest } from 'src/app/_helpers/search';
+import { Direction, FindRequest, Order, Page, PageRequest, PaginatedSearchComponent } from 'src/app/_helpers/search';
 import { Helper } from 'src/app/_helpers/utils';
 import { Person } from 'src/app/_models/person';
 import { PersonGraphic } from 'src/app/_models/personGraphic';
@@ -19,7 +23,7 @@ import { ResearchStaffService } from 'src/app/_services/research-staff.service';
   selector: 'app-scientist-search',
   templateUrl: './scientist-search.component.html'
 })
-export class ScientistSearchComponent implements OnInit {
+export class ScientistSearchComponent extends PaginatedSearchComponent<Person> implements OnInit {
   /**
    * university Id for search filter in case of necessary
    */
@@ -77,22 +81,24 @@ export class ScientistSearchComponent implements OnInit {
    */
   constructor(
     private researchStaffServices: ResearchStaffService,
-    private graphicService: GraphicService) {
+    private graphicService: GraphicService,
+    router: Router,
+    translate: TranslateService,
+    toastr: ToastrService
+  ) {
+    super(router, translate, toastr);
   }
-
   /**
    *
    *
    * @memberof ScientistSearchComponent
    */
   ngOnInit(): void {
-    const pageRequest: PageRequest = new PageRequest();
-    pageRequest.page = 1;
-    pageRequest.size = 10;
-    this.researchStaffServices.find(this.findRequest).subscribe(res => {
-      this.allScientificsFiltered = res;
-      this.loaded = true;
-    });
+    /*
+        this.researchStaffServices.find(this.findRequest).subscribe(res => {
+          this.allScientificsFiltered = res;
+          this.loaded = true;
+        });*/
 
     const xAxisData: Array<string> = [];
     const data1: Array<any> = [];
@@ -110,6 +116,24 @@ export class ScientistSearchComponent implements OnInit {
     });
   }
 
+  protected findInternal(findRequest: FindRequest): Observable<Page<Person>> {
+
+    const result = this.researchStaffServices.find(findRequest);
+    this.loaded = true;
+    return result;
+  }
+
+  protected removeInternal(entity: any): Observable<any> {
+    return of({});
+  }
+
+  protected getDefaultOrder(): Order {
+    return {
+      property: 'id',
+      direction: Direction.ASC
+    };
+  }
+
 
   newData(data: Array<PersonGraphic>) {
     const result = [];
@@ -125,24 +149,7 @@ export class ScientistSearchComponent implements OnInit {
     };
 
   }
-  /**
-   *
-   *
-   * @param {number} i
-   * @memberof ScientificProductionComponent
-   */
-  allScientistsFilteredPageChanged(i: number): void {
-    this.loaded = false;
-    const pageRequest: PageRequest = new PageRequest();
-    pageRequest.page = i;
-    pageRequest.size = this.allScientificsFiltered.size;
-    pageRequest.property = this.allScientificsFiltered.sort;
-    pageRequest.direction = this.allScientificsFiltered.direction;
-    this.researchStaffServices.find(this.findRequest).subscribe(res => {
-      this.allScientificsFiltered = res;
-      this.loaded = true;
-    });
-  }
+
 
   /**
    *
@@ -157,29 +164,12 @@ export class ScientistSearchComponent implements OnInit {
     event !== 'undefined' ? this.filters.set(filterName, event) : this.filters.set(filterName, '');
     // Call service to load data filtered
     this.researchStaffServices.find(this.findRequest).subscribe(res => {
-      this.allScientificsFiltered = res;
+      this.resultObject = res;
       this.loaded = true;
     });
   }
 
-  /**
-   *
-   *
-   * @param {number} i
-   * @memberof ScientistSearchComponent
-   */
-  allScientistsFilteredSizeChanged(i: number): void {
-    this.loaded = false;
-    const pageRequest: PageRequest = new PageRequest();
-    pageRequest.page = this.allScientificsFiltered.number;
-    pageRequest.size = i;
-    pageRequest.direction = this.allScientificsFiltered.direction;
-    this.findRequest.pageRequest = pageRequest;
-    this.researchStaffServices.find(this.findRequest).subscribe((data) => {
-      this.allScientificsFiltered = data;
-      this.loaded = true;
-    });
-  }
+
 
   /**
    *
@@ -188,15 +178,10 @@ export class ScientistSearchComponent implements OnInit {
    * @memberof ScientistSearchComponent
    */
   allScientistsFilteredSortChanged(pageRequest: PageRequest) {
-    this.loaded = false;
-    const newPageRequest: PageRequest = new PageRequest();
-    newPageRequest.page = this.allScientificsFiltered.number;
-    newPageRequest.size = this.allScientificsFiltered.size;
-    newPageRequest.property = pageRequest.property;
-    newPageRequest.direction = pageRequest.direction;
-    this.findRequest.pageRequest = pageRequest;
+    this.findRequest.pageRequest.property = pageRequest.property;
+    this.findRequest.pageRequest.direction = pageRequest.direction;
     this.researchStaffServices.find(this.findRequest).subscribe((data) => {
-      this.allScientificsFiltered = data;
+      this.resultObject = data;
       this.loaded = true;
     });
   }
