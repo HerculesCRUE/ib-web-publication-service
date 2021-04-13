@@ -71,11 +71,6 @@
                 </div>
                 <div id="datatables-dashboard-markets_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                     <div class="loader" *ngIf="!loaded"></div>
-                    <!--  <app-table-results-dto [findRequest]="findRequest"
-                        *ngIf="loaded && allDataParticipants?.content.length !== 0" [dtoTypeTranslate]="'scientist'"
-                        [extra]="'2'" [data]="allDataParticipants.content" [pageInfo]="allDataParticipants"
-                        (sortChanged)="allParticipantsFilteredSortChanged($event)">
-                    </app-table-results-dto>-->
                     <app-table-results-dto [displayPagination]="false" [findRequest]="findRequest"
                         [dtoTypeTranslate]="'scientist'" [extra]="'4'"
                         *ngIf="loaded && resultObject?.content?.length !== 0" [data]="resultObject?.content"
@@ -90,6 +85,7 @@
         </div>
     </div>
 </form>
+<app-people-involved></app-people-involved>
 <!--
 <div class="row">
 

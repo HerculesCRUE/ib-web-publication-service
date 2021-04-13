@@ -65,58 +65,6 @@ export class ParticipantsComponent extends PaginatedSearchComponent<Person> impl
   /**
    *
    *
-   * @type {TableResultsHeaderItem[]}
-   * @memberof ParticipantsComponent
-   */
-  headerData: TableResultsHeaderItem[] = [
-    {
-      textToTranslate: 'participant.table-header.centro',
-      columnName: 'Centro'
-    },
-    {
-      textToTranslate: 'participant.table-header.dpto',
-      columnName: 'Dpto'
-    },
-    {
-      textToTranslate: 'participant.table-header.id',
-      columnName: 'id'
-    }
-  ];
-  /**
-   *
-   *
-   * @type {TableResultsHeaderItem[]}
-   * @memberof ParticipantsComponent
-   */
-  headerData2: TableResultsHeaderItem[] = [
-    {
-      textToTranslate: 'scientist.table-header.name',
-      columnName: 'name'
-    },
-    {
-      textToTranslate: 'scientist.table-header.area',
-      columnName: 'area'
-    },
-    {
-      textToTranslate: 'scientist.table-header.type',
-      columnName: 'type'
-    },
-    {
-      textToTranslate: 'scientist.table-header.appointments',
-      columnName: 'appointments'
-    },
-    {
-      textToTranslate: 'scientist.table-header.h-index',
-      columnName: 'hIndex'
-    },
-    {
-      textToTranslate: 'scientist.table-header.publications',
-      columnName: 'publications'
-    }
-  ];
-  /**
-   *
-   *
    * @memberof ParticipantsComponent
    */
   yearsForSelect = Helper.getYears();
@@ -133,18 +81,18 @@ export class ParticipantsComponent extends PaginatedSearchComponent<Person> impl
 
 
   ngOnInit(): void {
-
-    /* this.researchStaff.find(this.findRequest).subscribe(data => {
-       this.allDataPerson = data;
-       this.loaded2 = true;
-     });
- 
-     const findRequest: FindRequest = new FindRequest();
-     this.participantService.findPerson(findRequest).subscribe(data => {
-       this.allDataParticipants = data;
-       this.allDataParticipantsSecondTable = data;
-       this.loaded = true;
-     });*/
+    /*
+         this.researchStaff.find(this.findRequest).subscribe(data => {
+           this.allDataPerson = data;
+           this.loaded2 = true;
+         });
+     
+         const findRequest: FindRequest = new FindRequest();
+         this.participantService.findPerson(findRequest).subscribe(data => {
+           this.allDataParticipants = data;
+           this.allDataParticipantsSecondTable = data;
+           this.loaded = true;
+         });*/
 
   }
 

@@ -76,6 +76,7 @@ import { ResearchmentStructuresDetailComponent } from '../categories/researchmen
 import { KeycloakService } from 'keycloak-angular';
 import { LoginService } from '../_services/login.service';
 import { MockLoginService } from '../_services/_testingServices/mockLogin.service';
+import { PeopleInvolvedComponent } from '../common/people-involved/people-involved.component';
 
 
 /**
@@ -108,6 +109,7 @@ export class TestingHelper {
         TranslatePipeStub,
         PatentsComponent,
         LoginComponent,
+        PeopleInvolvedComponent,
         MainComponent,
         HomeComponent,
         SPARQLEditorComponent,

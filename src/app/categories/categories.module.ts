@@ -36,6 +36,7 @@ import { ScientificProductionComponent } from './scientific-production/scientifi
 import { DocumentDetailComponent } from './document-detail/document-detail.component';
 import { EventDetailComponent } from './event-detail/event-detail.component';
 import { StatisticsComponent } from './statistics/statistics.component';
+import { PeopleInvolvedComponent } from '../common/people-involved/people-involved.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { StatisticsComponent } from './statistics/statistics.component';
     ProyectsComponent, ScientistSearchComponent, DocumentsComponent,
     ProjectsDetailComponent, ParticipantsComponent, DeliverableComponent, ScientistComponent, ScientistDetailComponent,
     DirectedJobsComponent, StartupComponent, AreasComponent, EventsComponent, AreasDetailComponent,
-    BusinessComponent, ScientificProductionComponent, DocumentDetailComponent, EventDetailComponent, StatisticsComponent
+    BusinessComponent, ScientificProductionComponent, DocumentDetailComponent, EventDetailComponent, StatisticsComponent,
+    PeopleInvolvedComponent
   ],
   imports: [
     NgxEchartsModule,
