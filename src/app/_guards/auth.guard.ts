@@ -6,7 +6,8 @@ import {
   UrlTree,
   Router,
 } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { catchError, map, timeout } from 'rxjs/operators';
 import { LoginService } from '../_services/login.service';
 
 /**
@@ -17,7 +18,7 @@ import { LoginService } from '../_services/login.service';
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  constructor(private router: Router, private loginService: LoginService) {}
+  constructor(private router: Router, private loginService: LoginService) { }
 
   canActivate(
     next: ActivatedRouteSnapshot,
@@ -27,13 +28,23 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (this.loginService.isLoggedIn()) {
-      // logged in so return true
-      return true;
-    } else {
-      // not logged in so redirect to login page
-      this.router.navigate(['/login']);
-      return false;
-    }
+
+    return this.loginService.keycloakIsActive().pipe(
+      timeout(10000), // wait for 10 seconds before fail.
+      map((x) => {
+        if (x) {
+          return true;
+        } else {
+          this.router.navigate(['main/login']);
+          return false;
+        }
+      }), // return the received value true/false
+      catchError(() => {
+        this.router.navigate(['main/login']);
+        return of(false);
+      })
+    );
+
+
   }
 }

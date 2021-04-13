@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Injectable, NgModule } from '@angular/core';
+import { Routes, RouterModule, CanActivate, Router, ActivatedRouteSnapshot } from '@angular/router';
 
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './_guards/auth.guard';
@@ -9,6 +9,8 @@ import { NoAuthGuard } from './_guards/no-auth.guard';
 import { GraphicComponent } from './graphic/graphic.component';
 import { LinksComponent } from './links/links.component';
 import { AccesibilityComponent } from './accesibility/accesibility.component';
+import { LoginService } from './_services/login.service';
+import { Observable } from 'rxjs';
 
 /**
  * **********************************************
@@ -24,6 +26,8 @@ const secureRoutes: Routes = [
   //   component: UserModule,
   // },
 ];
+
+
 
 /**
  * *************************************************
@@ -43,6 +47,7 @@ const noSecureRoutes: Routes = [
 
   {
     path: 'sparql',
+    canActivate: [AuthGuard],
     loadChildren: () =>
       import('./sparqleditor/sparqleditor.module').then(
         (m) => m.SparqleditorModule

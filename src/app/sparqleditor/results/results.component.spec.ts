@@ -2,6 +2,8 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { GraphicService } from 'src/app/_services/graphic.service';
+import { MockGraphicService } from 'src/app/_services/_testingServices/mockGraphic.service';
 
 import { ResultsComponent } from './results.component';
 
@@ -14,6 +16,10 @@ describe('ResultsComponent', () => {
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       declarations: [ResultsComponent],
       imports: [TabsModule.forRoot(), TranslateModule.forRoot()],
+    }).compileComponents();
+    TestBed.configureTestingModule({
+      providers: [
+        { provide: GraphicService, useClass: MockGraphicService }]
     }).compileComponents();
   }));
 
