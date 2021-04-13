@@ -5,7 +5,8 @@
  * @class Patent
  */
 export class Patent {
-
+    id: string;
+    title: string;
     /**
      * The dateIssued
      */
