@@ -35,24 +35,4 @@ describe('ParticipantsComponent', () => {
     tick(450);
     expect(component.loaded).toBeTruthy();
   }));
-
-  it('allfilter', () => {
-    component.allScientistsFilteredPageChanged(1);
-    expect(component.loaded).toBeTruthy();
-  });
-
-  it('allParticipantsFilteredPageChanged', () => {
-    component.allParticipantsFilteredPageChanged(1);
-    expect(component.loaded).toBeTruthy();
-  });
-
-  it('allParticipantsFilteredSizeChanged', () => {
-    component.allParticipantsFilteredSizeChanged(1);
-    expect(component.loaded).toBeTruthy();
-  });
-  it('allParticipantsFilteredSortChanged', () => {
-    const pager: PageRequest = new PageRequest();
-    component.allParticipantsFilteredSortChanged(pager);
-    expect(component.loaded).toBeTruthy();
-  });
 });
