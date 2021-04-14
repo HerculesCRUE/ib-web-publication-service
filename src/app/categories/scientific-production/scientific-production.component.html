@@ -72,13 +72,13 @@
                     <div class="tab-pane fade"
                         [ngClass]="{'show': activeTab === 'scientific-publications', 'active': activeTab === 'scientific-publications' }"
                         id="scientific-publications" role="tabpanel" aria-labelledby="scientific-publications-tab">
-                        <app-documents [url]="'../document'" [idPrefix]="'publications'" [isTreeVisible]="false"
-                            [filterDocumentType]="['Book', 'Article']"></app-documents>
+                        <app-documents [url]="'../scientificpublication'" [idPrefix]="'publications'"
+                            [isTreeVisible]="false" [filterDocumentType]="['Book', 'Article']"></app-documents>
                     </div>
                     <div class="tab-pane fade"
                         [ngClass]="{'show': activeTab === 'academic-publications', 'active': activeTab === 'academic-publications' }"
                         id="academic-publications" role="tabpanel" aria-labelledby="academic-publications-tab">
-                        <app-documents [idPrefix]="'academic'" [url]="'../document'"
+                        <app-documents [idPrefix]="'academic'" [url]="'../document'" [routerFieldSecondary]="'type'"
                             [selectDocumentType]="[{ name: 'doctoral-thesis', value: 'Doctoral-Thesis' }, { name: 'master-thesis', value: 'Master-Thesis' }]"
                             [isTreeVisible]="false" [filterDocumentType]="['Master-Thesis', 'Doctoral-Thesis']">
                         </app-documents>
@@ -86,7 +86,7 @@
                     <div class="tab-pane fade" id="other-publications"
                         [ngClass]="{'show': activeTab === 'other-publications', 'active': activeTab === 'other-publications' }"
                         role="tabpanel" aria-labelledby="other-publications-tab">
-                        <app-documents [idPrefix]="'other'" [url]="'../document'"
+                        <app-documents [idPrefix]="'other'" [url]="'../document'" [routerFieldSecondary]="'type'"
                             [selectDocumentType]="[{ name: 'dossiers', value: 'Dossier' }]" [isTreeVisible]="false"
                             [filterDocumentType]="['Dossier']"></app-documents>
                     </div>
