@@ -37,9 +37,10 @@
             </div>
             <div id="datatables-dashboard-markets_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                 <div class="loader" *ngIf="!loaded"></div>
-                <app-table-results-dto [findRequest]="findRequest" *ngIf="loaded && resultObject?.content?.length !== 0"
-                    [dtoTypeTranslate]="'scientist'" [extra]="'2'" [data]="resultObject?.content"
-                    [pageInfo]="resultObject" (sortChanged)="allParticipantsFilteredSortChanged($event)">
+                <app-table-results-dto [findRequest]="findRequest" [displayPagination]="false"
+                    *ngIf="loaded && resultObject?.content?.length !== 0" [dtoTypeTranslate]="'scientist'" [extra]="'2'"
+                    [data]="resultObject?.content" [pageInfo]="resultObject"
+                    (sortChanged)="allParticipantsFilteredSortChanged($event)">
                 </app-table-results-dto>
                 <app-pagination [resultObject]="resultObject" (pageChanged)="showPage($event)"
                     (sizeChanged)="changeSize($event)">
