@@ -126,13 +126,11 @@ export class PatentsComponent extends PaginatedSearchComponent<Patent> implement
   transformData(data: Array<GraphicPatent>) {
 
     const result = [];
-
     if (data.length > 1) {
       data.forEach(element => {
         result.push({ name: element.ownerOrganization, value: element.count });
       });
     }
-
     return {
       seriesData: result
     };

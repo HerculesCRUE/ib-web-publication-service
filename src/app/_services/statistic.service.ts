@@ -5,6 +5,7 @@ import { catchError } from 'rxjs/operators';
 import { AbstractService } from '../_helpers/abstract';
 import { FindRequest, Page } from '../_helpers/search';
 import { Helper } from '../_helpers/utils';
+import { Graphic } from '../_models/graphic';
 import { Project } from '../_models/project';
 
 
@@ -38,10 +39,18 @@ export class StatisticService extends AbstractService {
      * @return {*}  {Observable<any>}
      * @memberof StatisticService
      */
-    topPatents(): Observable<any> {
+    projectByClassification(): Observable<Array<Graphic>> {
 
         return this.httpClient
-            .get(Helper.getUrl('/statistics/topPatents')).pipe(
+            .get(Helper.getUrl('/statistics/projectByClassification')).pipe(
+                catchError(this.handleError)
+            );
+    }
+
+    articlesByPublishedIn(): Observable<Array<Graphic>> {
+
+        return this.httpClient
+            .get(Helper.getUrl('/statistics/articlesByPublishedIn')).pipe(
                 catchError(this.handleError)
             );
     }

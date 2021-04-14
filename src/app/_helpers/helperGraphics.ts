@@ -44,7 +44,7 @@ export class HelperGraphics {
             },
             series: [
                 {
-                    name: 'Sello de Calidad',
+                    name: title,
                     type: 'pie',
                     top: '10%',
                     radius: '55%',

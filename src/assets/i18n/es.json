@@ -391,8 +391,8 @@
   },
   "statistics": {
     "title": "Estadísticas",
-    "legend-top": "Top organizaciones con más contenido por tipo de plublicación",
-    "legend-top-patents": "Top organizaciones con mas patentes",
+    "legend-top": "Proyectos por clasificación",
+    "legend-top-patents": "Artículos por medio de publicación",
     "legend-top-genre": "Top actividades por género",
     "legend-top-location": "Ubicación de actividades por tipo en el último mes"
   },

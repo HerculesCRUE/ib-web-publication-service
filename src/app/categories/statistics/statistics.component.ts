@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { latLng, tileLayer } from 'leaflet';
 import { HelperGraphics } from 'src/app/_helpers/helperGraphics';
+import { Graphic } from 'src/app/_models/graphic';
 import { GraphicModelTree } from 'src/app/_models/graphicModelTree';
 import { GraphicService } from 'src/app/_services/graphic.service';
 import { StatisticService } from 'src/app/_services/statistic.service';
@@ -30,25 +31,44 @@ export class StatisticsComponent implements OnInit {
   ngOnInit(): void {
 
 
-    this.statisticService.topPatents().subscribe(data => {
-      this.echartOptions = HelperGraphics.configChartTree(data);
+    this.statisticService.projectByClassification().subscribe(data => {
+      console.log(data);
+      this.echartOptions = HelperGraphics.configChartPie(this.transformData(data), '');
     });
-    this.graphicServcice.projectInvestigation().subscribe(treeData => {
-      this.echartOptions2 = HelperGraphics.configChartTree(this.makeDataTree(treeData));
+    this.statisticService.articlesByPublishedIn().subscribe(treeData => {
+      this.echartOptions2 = HelperGraphics.configChartPie(this.transformDataArticle(treeData), '');
     });
-    // leaflet map
-    this.options = {
-      layers: [
-        tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          maxZoom: 19,
-          attribution:
-            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        }),
-      ],
-      zoom: 16,
-      center: latLng(43.53573, -5.66152),
-    };
+
   }
+
+  transformData(data: Array<Graphic>) {
+    const result = [];
+    if (data.length > 1) {
+      data.forEach(element => {
+        result.push({ name: element.projectClassification, value: element.count });
+      });
+    }
+    return {
+      seriesData: result
+    };
+
+  }
+
+  transformDataArticle(data: Array<Graphic>) {
+    const result = [];
+    if (data && data.length > 1) {
+      data.forEach(element => {
+        result.push({ name: element.publishedIn, value: element.count });
+      });
+    }
+    return {
+      seriesData: result
+    };
+
+  }
+
+
+
 
   doSomethingOnScroll($event) {
 

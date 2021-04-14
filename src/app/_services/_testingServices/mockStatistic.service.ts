@@ -28,7 +28,11 @@ export class MockStatisticService extends AbstractService {
     }
 
 
-    topPatents() {
+    projectByClassification() {
+        return of({});
+    }
+
+    articlesByPublishedIn() {
         return of({});
     }
 
