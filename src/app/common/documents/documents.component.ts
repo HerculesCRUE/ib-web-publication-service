@@ -32,6 +32,8 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
     { name: 'book', value: 'Book' }, { name: 'articles', value: 'Article' }
   ];
 
+  @Input() routerFieldSecondary;
+
   @Input() url = './';
   /**
    *

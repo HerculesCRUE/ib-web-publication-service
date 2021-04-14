@@ -8,6 +8,7 @@ import { Project } from 'src/app/_models/project';
 import { ParticipantService } from 'src/app/_services/participant.service';
 import { ProjectService } from 'src/app/_services/project.service';
 import { ResearchStaffService } from 'src/app/_services/research-staff.service';
+import { MockParticipantService } from 'src/app/_services/_testingServices/mockParticipant.service';
 import { MockProjectService } from 'src/app/_services/_testingServices/mockProject.service';
 import { MockResearchStaffService } from 'src/app/_services/_testingServices/mockResearchStaff.service';
 import { ProjectsDetailComponent } from './projects-detail.component';
@@ -97,6 +98,7 @@ describe('ProjectsDetailComponent', () => {
         provide: ParticipantService, useValue: {
           find: () => of(page),
           findPerson: () => of(page),
+          findParticipantsByProject: () => of(page),
         }
       }, { provide: ResearchStaffService, useClass: MockResearchStaffService },
       ]
@@ -107,6 +109,7 @@ describe('ProjectsDetailComponent', () => {
     fixture = TestBed.createComponent(ProjectsDetailComponent);
     component = fixture.componentInstance;
     projectService = TestBed.inject(MockProjectService);
+    component.proyect = { id: '123' };
     fixture.detectChanges();
   });
 
@@ -155,6 +158,7 @@ describe('ProjectsDetailComponent', () => {
   });
 
   it('backClicked', () => {
+    component.id = '111';
     const locat = fixture.debugElement.injector.get(Location);
     const spy = spyOn(locat, 'back').and.callThrough();
     component.backClicked();

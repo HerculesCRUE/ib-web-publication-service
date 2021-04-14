@@ -318,4 +318,17 @@ export class MockParticipantService extends AbstractService {
         return of(page);
     }
 
+    findParticipantsByProject(findRequest: FindRequest): Observable<Page<SparqlResults>> {
+        // Filter params
+        const page: Page<SparqlResults> = new Page<SparqlResults>();
+        const results: SparqlResults = this.DUMMY_DATA_TOP;
+        page.number = 0;
+        page.numberOfElements = 10;
+        page.size = 10;
+        page.totalElements = 10;
+        // TODO sort
+        page.content = [results];
+        return of(page);
+    }
+
 }
