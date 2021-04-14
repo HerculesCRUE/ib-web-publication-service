@@ -1,0 +1,37 @@
+<div class="container-fluid">
+    <div class="row text-muted">
+        <div class="col-12 text-right">
+            <p>
+                <a (click)="backClicked()" class="text-muted"> {{'form.back' | translate}} </a>
+            </p>
+        </div>
+    </div>
+</div>
+<div class="row" *ngIf="loaded && publication">
+    <div class="col-12">
+        <div class="card flex-fill">
+            <div class="card-header">
+                <legend class="legend">{{ publication.title}}</legend>
+            </div>
+            <div id="datatables-dashboard-markets_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                <div class="detail-container">
+                    <div class="row">
+                        <div class="col-12">
+                            <p><strong>{{'documents.id' | translate}}:</strong> {{publication.id}}</p>
+                            <p><strong>{{'documents.title' | translate}}:</strong> {{publication.title}}</p>
+                            <p><strong>{{'documents.abbreviation' | translate}}:</strong> {{publication.abbreviation}}
+                            </p>
+                            <p><strong>{{'documents.date' | translate}}:</strong> {{publication.date}}</p>
+                            <p><strong>{{'documents.description' | translate}}:</strong> {{publication.description}}</p>
+                            <p><strong>{{'documents.homepage' | translate}}:</strong> {{publication.homepage}}</p>
+                            <p><strong>{{'documents.isStartup' | translate}}:</strong> {{publication.isStartup}}</p>
+                            <p><strong>{{'documents.keyword' | translate}}:</strong> {{publication.keyword}}</p>
+                            <p><strong>{{'documents.publicCompany' | translate}}:</strong> {{publication.publicCompany}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

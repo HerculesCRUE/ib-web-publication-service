@@ -22,7 +22,7 @@ export class ScientificPublicationService extends AbstractService {
         super();
     }
 
-    getPerson(id: string): Observable<ScientificPublication> {
+    get(id: string): Observable<ScientificPublication> {
         return this.httpClient
             .get(Helper.getUrl('/scientificpublication/' + id)).pipe(
                 catchError(this.handleError)

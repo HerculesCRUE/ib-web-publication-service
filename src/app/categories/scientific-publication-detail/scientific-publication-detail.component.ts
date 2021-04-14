@@ -32,7 +32,7 @@ export class ScientificPublicationDetailComponent implements OnInit {
      * @type {*}
      * @memberof DocumentDetailComponent
      */
-    document: any;
+    publication: any;
     loaded: boolean;
 
     constructor(
@@ -45,6 +45,11 @@ export class ScientificPublicationDetailComponent implements OnInit {
 
     ngOnInit(): void {
         const id = this.rutaActiva.snapshot.params.id;
+
+        this.scientificPublicationService.get(id).subscribe((result) => {
+            this.publication = result;
+            this.loaded = true;
+        });
     }
 
     backClicked() {
