@@ -77,6 +77,7 @@ import { KeycloakService } from 'keycloak-angular';
 import { LoginService } from '../_services/login.service';
 import { MockLoginService } from '../_services/_testingServices/mockLogin.service';
 import { PeopleInvolvedComponent } from '../common/people-involved/people-involved.component';
+import { CollaboratorsComponent } from '../common/collaborators/collaborators.component';
 
 
 /**
@@ -106,6 +107,7 @@ export class TestingHelper {
     return TestBed.configureTestingModule({
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       declarations: [
+        CollaboratorsComponent,
         TranslatePipeStub,
         PatentsComponent,
         LoginComponent,
