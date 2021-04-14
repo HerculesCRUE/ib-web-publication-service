@@ -122,7 +122,7 @@ export class LoginService extends AbstractService {
     };
     // @ts-ignore
     this.keycloackService = new Keycloak(config);
-    // this.keycloackService.init({}).then(() => { });
+    this.keycloackService.init({}).then(() => { });
 
     localStorage.removeItem('access_token');
     localStorage.removeItem('refresh_token');

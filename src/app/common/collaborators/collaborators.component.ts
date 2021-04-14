@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
@@ -7,48 +7,15 @@ import { Direction, FindRequest, Order, Page, PageRequest, PaginatedSearchCompon
 import { Helper } from 'src/app/_helpers/utils';
 import { Person } from 'src/app/_models/person';
 import { SparqlResults } from 'src/app/_models/sparql';
-import { TableResultsHeaderItem } from 'src/app/_models/table-results';
 import { ParticipantService } from 'src/app/_services/participant.service';
-import { ResearchStaffService } from 'src/app/_services/research-staff.service';
 
-/**
- *
- *
- * @export
- * @class ParticipantsComponent
- * @implements {OnInit}
- */
 @Component({
-  selector: 'app-participants',
-  templateUrl: './participants.component.html'
+  selector: 'app-collaborators',
+  templateUrl: './collaborators.component.html',
+  styleUrls: ['./collaborators.component.css']
 })
-export class ParticipantsComponent extends PaginatedSearchComponent<Person> implements OnInit {
-  /**
-   * university Id for search filter in case of necessary
-   */
-  @Input() universityId: string;
-  /**
-   *
-   *
-   * @type {Page<SparqlResults>}
-   * @memberof ParticipantsComponent
-   */
-  allDataParticipants: Page<SparqlResults> = new Page();
-  /**
-   *
-   *
-   * @type {Page<SparqlResults>}
-   * @memberof ParticipantsComponent
-   */
-  allDataParticipantsSecondTable: Page<SparqlResults> = new Page();
+export class CollaboratorsComponent extends PaginatedSearchComponent<Person> implements OnInit {
 
-  /**
-   *
-   *
-   * @type {Page<Person>}
-   * @memberof ParticipantsComponent
-   */
-  allDataPerson: Page<Person> = new Page();
   /**
    *
    *
@@ -62,16 +29,9 @@ export class ParticipantsComponent extends PaginatedSearchComponent<Person> impl
    * @memberof ParticipantsComponent
    */
   loaded = false;
-  /**
-   *
-   *
-   * @memberof ParticipantsComponent
-   */
-  yearsForSelect = Helper.getYears();
-  loaded2 = false;
+
   constructor(
     private participantService: ParticipantService,
-    private researchStaff: ResearchStaffService,
     router: Router,
     translate: TranslateService,
     toastr: ToastrService

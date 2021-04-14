@@ -55,6 +55,7 @@ import { LangInterceptor } from './_helpers/lang-intercetor';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { PatentDetailComponent } from './common/patent-detail/patent-detail.component';
 import { PeopleInvolvedComponent } from './common/people-involved/people-involved.component';
+import { CollaboratorsComponent } from './common/collaborators/collaborators.component';
 
 const keycloakService = new KeycloakService();
 

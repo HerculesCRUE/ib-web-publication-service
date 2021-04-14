@@ -4,31 +4,6 @@
             <h5 class="card-title"> {{'form.search-form' | translate}}</h5>
         </div>
     </div>
-    <div class="row">
-        <!-- type -->
-        <div class="form-group col-lg-6">
-            <label for="type" class="col-sm-4 control-label">{{ "participant.level" | translate }}</label>
-            <div class="col-sm-8">
-                <select name="type" (change)="changePersonProyect()" class="form-control"
-                    [(ngModel)]="findRequest.filter.level" #type="ngModel">
-                    <option [value]="undefined">{{ "form.select" | translate }}</option>
-                    <option [value]="'Regional'">Regional</option>
-                    <option [value]="'Internacional'">Internacional</option>
-                </select>
-            </div>
-        </div>
-        <!-- year -->
-        <div class="form-group col-lg-6">
-            <label for="anyo" class="col-sm-4 control-label">{{ "participant.year" | translate }}</label>
-            <div class="col-sm-8">
-                <select name="anyo" (change)="changePersonProyect()" [attr.aria-label]="'participant.year' | translate"
-                    class="form-control" [(ngModel)]="findRequest.filter.anyo" #type="ngModel">
-                    <option [value]="undefined">{{ "form.select" | translate }}</option>
-                    <option *ngFor="let year of yearsForSelect" [value]="year">{{year}}</option>
-                </select>
-            </div>
-        </div>
-    </div>
 
     <div class="row">
 
@@ -37,7 +12,7 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-12">
-                            <h1 class="legend">{{'participant.title' | translate}}</h1>
+                            <h1 class="legend">{{'participant.proyect-participants' | translate}}</h1>
                         </div>
                     </div>
                     <div class="container-fluid">
@@ -85,5 +60,3 @@
         </div>
     </div>
 </form>
-<app-people-involved></app-people-involved>
-<app-collaborators></app-collaborators>
