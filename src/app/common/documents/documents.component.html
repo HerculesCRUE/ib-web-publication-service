@@ -44,7 +44,7 @@
         </div>
 
         <!-- type -->
-        <div class="form-group col-lg-6">
+        <div class="form-group col-lg-6" *ngIf="!hideTypes">
             <label for="type{{idPrefix}}" class="col-sm-4 control-label">{{ "documents.types" | translate }}</label>
             <div class="col-sm-8">
                 <select (change)="filterProjects()" id="type{{idPrefix}}" name="type{{idPrefix}}" class="form-control"

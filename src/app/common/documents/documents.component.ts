@@ -92,6 +92,8 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
   @Input() authorId: string;
 
 
+  @Input() hideTypes: boolean;
+
   /**
    * Creates an instance of DocumentsComponent.
    * @param {ProjectService} projectService
@@ -113,9 +115,9 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
     if (this.organizationId) {
       this.findRequest.filter.organizationId = this.organizationId;
     }
-    if (this.idPrefix === 'prodScientist') {
-      this.url = '../../../document/';
-    }
+    // if (this.idPrefix === 'prodScientist') {
+    //   this.url = '../../scientificpublication/';
+    // }
   }
 
   protected findInternal(findRequest: FindRequest): Observable<Page<Document | AcademicPublication>> {
@@ -128,7 +130,10 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
     if (this.organizationId) {
       this.findRequest.filter.organizationId = this.organizationId;
     }
-    if (this.idPrefix === 'academic') {
+
+    if (this.idPrefix === 'document') {
+      result = this.documentService.find(this.findRequest);
+    } else if (this.idPrefix === 'academic') {
       result = this.documentService.findAcademicPublication(this.findRequest);
     }
     else if (this.idPrefix === 'other') {
@@ -186,7 +191,15 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
         this.findRequest.filter.types = this.findRequest.filter.type;
       }
 
-      if (this.idPrefix === 'academic') {
+      if (this.idPrefix === 'document') {
+        this.documentService.find(this.findRequest).subscribe((data) => {
+          this.resultObject = data;
+          this.loaded = true;
+        }, () => {
+          this.loaded = true;
+        });
+      }
+      else if (this.idPrefix === 'academic') {
         this.documentService.findAcademicPublication(this.findRequest).subscribe((data) => {
           this.resultObject = data;
           this.loaded = true;
@@ -222,7 +235,15 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
    */
   filterDocuments() {
     this.findRequest.pageRequest.page = 0;
-    if (this.idPrefix === 'academic') {
+    if (this.idPrefix === 'document') {
+      this.documentService.find(this.findRequest).subscribe((data) => {
+        this.resultObject = data;
+        this.loaded = true;
+      }, () => {
+        this.loaded = true;
+      });
+    }
+    else if (this.idPrefix === 'academic') {
       this.documentService.findAcademicPublication(this.findRequest).subscribe((data) => {
         this.resultObject = data;
         this.loaded = true;
@@ -261,7 +282,14 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
     this.findRequest.pageRequest.property = pageRequest.property;
     this.findRequest.pageRequest.direction = pageRequest.direction;
 
-    if (this.idPrefix === 'academic') {
+    if (this.idPrefix === 'document') {
+      this.documentService.find(this.findRequest).subscribe((data) => {
+        this.resultObject = data;
+        this.loaded = true;
+      }, () => {
+        this.loaded = true;
+      });
+    } else if (this.idPrefix === 'academic') {
       this.documentService.findAcademicPublication(this.findRequest).subscribe((data) => {
         this.resultObject = data;
         this.loaded = true;

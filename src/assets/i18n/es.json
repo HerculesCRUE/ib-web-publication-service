@@ -163,7 +163,7 @@
     "publicCompany": "Compania publica",
     "dateStart": "Fecha inicio",
     "dateEnd": "Fecha fin",
-    "keyword":"Palabra clave"
+    "keyword": "Palabra clave"
   },
   "scientist": {
     "title": "Titulo",
@@ -286,7 +286,11 @@
     "doctoral-thesis": "Tesis doctoral",
     "master-thesis": "Tesis de master",
     "description": "Descripción",
-    "ocicnum": "Ocicnum"
+    "ocicnum": "Ocicnum",
+    "homepage": "Pag. Inicio",
+    "isStartup": "Es startup",
+    "keyword": "Keyword",
+    "publicCompany": "Compañía pública"
   },
   "participant": {
     "title": "Participantes",

@@ -23,6 +23,7 @@ import { LoginService } from './_services/login.service';
 import { MenuService } from './_services/menu.service';
 import { UserService } from './_services/user.service';
 import { ResearchmentStructuresService } from './_services/researchment.structures.service';
+import { ScientificPublicationService } from './_services/scientific-publication.service';
 
 // -------------- Components --------------
 import { AppComponent } from './app.component';
@@ -101,6 +102,7 @@ const keycloakService = new KeycloakService();
     LoginService,
     MenuService,
     ResearchmentStructuresService,
+    ScientificPublicationService,
     UserService,
     {
       provide: HTTP_INTERCEPTORS,

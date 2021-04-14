@@ -14,6 +14,7 @@ import { EventDetailComponent } from './event-detail/event-detail.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { PatentDetail } from '../_models/patentDetail';
 import { PatentDetailComponent } from '../common/patent-detail/patent-detail.component';
+import { ScientificPublicationDetailComponent } from './scientific-publication-detail/scientific-publication-detail.component';
 
 const routes: Routes = [
   {
@@ -72,6 +73,10 @@ const routes: Routes = [
   {
     path: 'patent/:id',
     component: PatentDetailComponent
+  },
+  {
+    path: 'scientificpublication/:id',
+    component: ScientificPublicationDetailComponent
   }
 ];
 

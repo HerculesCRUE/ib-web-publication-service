@@ -153,7 +153,7 @@
     "publicCompany": "CPublic company",
     "dateStart": "Start date",
     "dateEnd": "Date end",
-    "keyword":"Keyword"
+    "keyword": "Keyword"
   },
   "scientist": {
     "title": "Research staff",
@@ -273,7 +273,11 @@
     "doctoral-thesis": "Doctoral Thesis",
     "master-thesis": "Master Thesis",
     "description": "Description",
-    "ocicnum": "Ocicnum"
+    "ocicnum": "Ocicnum",
+    "homepage": "Homepage",
+    "isStartup": "Is startup",
+    "keyword": "Keyword",
+    "publicCompany": "Public company"
   },
   "participant": {
     "title": "Participants",
