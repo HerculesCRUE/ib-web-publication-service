@@ -190,16 +190,22 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
         this.documentService.findAcademicPublication(this.findRequest).subscribe((data) => {
           this.resultObject = data;
           this.loaded = true;
+        }, () => {
+          this.loaded = true;
         });
       }
       else if (this.idPrefix === 'other') {
         this.documentService.findOtherPublications(this.findRequest).subscribe((data) => {
           this.resultObject = data;
           this.loaded = true;
+        }, () => {
+          this.loaded = true;
         });
       } else {
         this.documentService.find(this.findRequest).subscribe((data) => {
           this.resultObject = data;
+          this.loaded = true;
+        }, () => {
           this.loaded = true;
         });
       }
@@ -220,16 +226,22 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
       this.documentService.findAcademicPublication(this.findRequest).subscribe((data) => {
         this.resultObject = data;
         this.loaded = true;
+      }, () => {
+        this.loaded = true;
       });
     }
     else if (this.idPrefix === 'other') {
       this.documentService.findOtherPublications(this.findRequest).subscribe((data) => {
         this.resultObject = data;
         this.loaded = true;
+      }, () => {
+        this.loaded = true;
       });
     } else {
       this.documentService.find(this.findRequest).subscribe((data) => {
         this.resultObject = data;
+        this.loaded = true;
+      }, () => {
         this.loaded = true;
       });
     }
@@ -253,16 +265,22 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
       this.documentService.findAcademicPublication(this.findRequest).subscribe((data) => {
         this.resultObject = data;
         this.loaded = true;
+      }, () => {
+        this.loaded = true;
       });
     }
     else if (this.idPrefix === 'other') {
       this.documentService.findOtherPublications(this.findRequest).subscribe((data) => {
         this.resultObject = data;
         this.loaded = true;
+      }, () => {
+        this.loaded = true;
       });
     } else {
       this.documentService.find(this.findRequest).subscribe((data) => {
         this.resultObject = data;
+        this.loaded = true;
+      }, () => {
         this.loaded = true;
       });
     }

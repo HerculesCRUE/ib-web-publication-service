@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { Direction, FindRequest, Order, Page, PageRequest, PaginatedSearchComponent } from 'src/app/_helpers/search';
 import { Helper } from 'src/app/_helpers/utils';
 import { AcademicPublication } from 'src/app/_models/academicPublication';
@@ -59,9 +60,16 @@ export class DirectedJobsComponent extends PaginatedSearchComponent<AcademicPubl
 
 
   protected findInternal(findRequest: FindRequest): Observable<Page<AcademicPublication>> {
-
-    const result = this.documentService.findAcademicPublication(findRequest);
-    this.loaded = true;
+    const page: Page<AcademicPublication> = new Page();
+    const result = this.documentService.findAcademicPublication(findRequest).pipe(
+      map((x) => {
+        this.loaded = true;
+        return x;
+      }), // return the received value true/false
+      catchError((err) => {
+        this.loaded = true;
+        return of(page)
+      }));
     return result;
   }
 
@@ -95,6 +103,8 @@ export class DirectedJobsComponent extends PaginatedSearchComponent<AcademicPubl
       this.documentService.findAcademicPublication(this.findRequest).subscribe(data => {
         this.resultObject = data;
         this.loaded = true;
+      }, () => {
+        this.loaded = true;
       });
     }, 0);
     this.loaded = true;
@@ -111,6 +121,8 @@ export class DirectedJobsComponent extends PaginatedSearchComponent<AcademicPubl
     this.findRequest.pageRequest.direction = pageRequest.direction;
     this.documentService.findAcademicPublication(this.findRequest).subscribe(data => {
       this.resultObject = data;
+      this.loaded = true;
+    }, () => {
       this.loaded = true;
     });
   }

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { Direction, FindRequest, Order, Page, PageRequest, PaginatedSearchComponent } from 'src/app/_helpers/search';
 import { Helper } from 'src/app/_helpers/utils';
 import { Person } from 'src/app/_models/person';
@@ -45,8 +46,16 @@ export class CollaboratorsComponent extends PaginatedSearchComponent<Person> imp
 
 
   protected findInternal(findRequest: FindRequest): Observable<Page<Person>> {
-    const result = this.participantService.findPerson(findRequest);
-    this.loaded = true;
+    const page: Page<Person> = new Page();
+    const result = this.participantService.findPerson(findRequest).pipe(
+      map((x) => {
+        this.loaded = true;
+        return x;
+      }), // return the received value true/false
+      catchError((err) => {
+        this.loaded = true;
+        return of(page)
+      }));
     return result;
   }
 
@@ -67,12 +76,16 @@ export class CollaboratorsComponent extends PaginatedSearchComponent<Person> imp
     this.participantService.findPerson(this.findRequest).subscribe((data) => {
       this.resultObject = data;
       this.loaded = true;
+    }, () => {
+      this.loaded = true;
     });
   }
 
   changePersonProyect() {
     this.participantService.findPerson(this.findRequest).subscribe((data) => {
       this.resultObject = data;
+      this.loaded = true;
+    }, () => {
       this.loaded = true;
     });
 

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { Direction, FindRequest, Order, Page, PageRequest, PaginatedSearchComponent } from 'src/app/_helpers/search';
 import { Helper } from 'src/app/_helpers/utils';
 import { Event } from 'src/app/_models/event';
@@ -43,9 +44,16 @@ export class EventsComponent extends PaginatedSearchComponent<Event> implements 
   }
 
   protected findInternal(findRequest: FindRequest): Observable<Page<Event>> {
-
-    const result = this.eventsService.find(findRequest);
-    this.loaded = true;
+    const page: Page<Event> = new Page();
+    const result = this.eventsService.find(findRequest).pipe(
+      map((x) => {
+        this.loaded = true;
+        return x;
+      }), // return the received value true/false
+      catchError((err) => {
+        this.loaded = true;
+        return of(page)
+      }));
     return result;
   }
 
@@ -74,6 +82,8 @@ export class EventsComponent extends PaginatedSearchComponent<Event> implements 
       this.eventsService.find(this.findRequest).subscribe((data) => {
         this.resultObject = data;
         this.loaded = true;
+      }, () => {
+        this.loaded = true;
       });
     }, 0);
   }
@@ -92,6 +102,8 @@ export class EventsComponent extends PaginatedSearchComponent<Event> implements 
     this.findRequest.pageRequest.direction = pageRequest.direction;
     this.eventsService.find(this.findRequest).subscribe((data) => {
       this.resultObject = data;
+      this.loaded = true;
+    }, () => {
       this.loaded = true;
     });
   }

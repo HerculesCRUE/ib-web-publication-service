@@ -11,6 +11,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, of } from 'rxjs';
 import { GraphicModelTree } from 'src/app/_models/graphicModelTree';
+import { catchError, map } from 'rxjs/operators';
 
 /**
  *
@@ -163,8 +164,16 @@ export class ProyectsComponent extends PaginatedSearchComponent<Project> impleme
 
   protected findInternal(findRequest: FindRequest): Observable<Page<Project>> {
 
-    const result = this.projectService.find(findRequest);
-    this.loaded = true;
+    const page: Page<Project> = new Page();
+    const result = this.projectService.find(findRequest).pipe(
+      map((x) => {
+        this.loaded = true;
+        return x;
+      }), // return the received value true/false
+      catchError((err) => {
+        this.loaded = true;
+        return of(page)
+      }));
     return result;
   }
 
@@ -206,6 +215,8 @@ export class ProyectsComponent extends PaginatedSearchComponent<Project> impleme
     this.projectService.find(this.findRequest).subscribe((data) => {
       this.resultObject = data;
       this.loaded = true;
+    }, () => {
+      this.loaded = true;
     });
   }
 
@@ -238,6 +249,8 @@ export class ProyectsComponent extends PaginatedSearchComponent<Project> impleme
       }
       this.projectService.find(this.findRequest).subscribe((data) => {
         this.resultObject = data;
+        this.loaded = true;
+      }, () => {
         this.loaded = true;
       });
     }, 0);

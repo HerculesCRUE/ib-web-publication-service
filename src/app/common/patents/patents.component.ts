@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { HelperGraphics } from 'src/app/_helpers/helperGraphics';
 import { Direction, FindRequest, Order, Page, PageRequest, PaginatedSearchComponent } from 'src/app/_helpers/search';
 import { Helper } from 'src/app/_helpers/utils';
@@ -146,8 +147,17 @@ export class PatentsComponent extends PaginatedSearchComponent<Patent> implement
     if (this.organizationId) {
       this.findRequest.filter.organizationId = this.organizationId;
     }
-    const result = this.patentService.find(findRequest);
-    this.loaded = true;
+
+    const page: Page<Patent> = new Page();
+    const result = this.patentService.find(findRequest).pipe(
+      map((x) => {
+        this.loaded = true;
+        return x;
+      }), // return the received value true/false
+      catchError((err) => {
+        this.loaded = true;
+        return of(page)
+      }));
     return result;
   }
 
@@ -176,6 +186,8 @@ export class PatentsComponent extends PaginatedSearchComponent<Patent> implement
     this.findRequest.pageRequest.direction = pageRequest.direction;
     this.patentService.find(this.findRequest).subscribe((data) => {
       this.resultObject = data;
+      this.loaded = true;
+    }, () => {
       this.loaded = true;
     });
   }
@@ -208,6 +220,8 @@ export class PatentsComponent extends PaginatedSearchComponent<Patent> implement
       }
       this.patentService.find(this.findRequest).subscribe((data) => {
         this.resultObject = data;
+        this.loaded = true;
+      }, () => {
         this.loaded = true;
       });
     }, 0);

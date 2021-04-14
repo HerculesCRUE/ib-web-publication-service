@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { Direction, FindRequest, Order, Page, PageRequest, PaginatedSearchComponent } from 'src/app/_helpers/search';
 import { University } from 'src/app/_models/university';
 import { ResearchmentStructuresService } from 'src/app/_services/researchment.structures.service';
@@ -37,9 +38,16 @@ export class AllResearchmentStructuresComponent extends PaginatedSearchComponent
   }
 
   protected findInternal(findRequest: FindRequest): Observable<Page<University>> {
-
-    const result = this.researchmentStructureService.find(findRequest);
-    this.loaded = true;
+    const page: Page<University> = new Page();
+    const result = this.researchmentStructureService.find(findRequest).pipe(
+      map((x) => {
+        this.loaded = true;
+        return x;
+      }), // return the received value true/false
+      catchError((err) => {
+        this.loaded = true;
+        return of(page)
+      }));
     return result;
   }
 
@@ -66,6 +74,8 @@ export class AllResearchmentStructuresComponent extends PaginatedSearchComponent
     this.researchmentStructureService.find(this.findRequest).subscribe((data) => {
       this.resultObject = data;
       this.loaded = true;
+    }, () => {
+      this.loaded = true;
     });
 
   }
@@ -81,6 +91,8 @@ export class AllResearchmentStructuresComponent extends PaginatedSearchComponent
     this.findRequest.pageRequest.direction = pageRequest.direction;
     this.researchmentStructureService.find(this.findRequest).subscribe((data) => {
       this.resultObject = data;
+      this.loaded = true;
+    }, () => {
       this.loaded = true;
     });
   }

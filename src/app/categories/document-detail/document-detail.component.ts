@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 import { Direction, FindRequest, Order, Page, PageRequest, PaginatedSearchComponent } from 'src/app/_helpers/search';
 import { BookSection } from 'src/app/_models/bookSection';
 import { DocumentDetail } from 'src/app/_models/documentDetail';
@@ -92,9 +93,16 @@ export class DocumentDetailComponent extends PaginatedSearchComponent<BookSectio
 
 
   protected findInternal(findRequest: FindRequest): Observable<Page<BookSection>> {
-
-    const result = this.documentService.getBookSection(findRequest);
-    this.loaded = true;
+    const page: Page<BookSection> = new Page();
+    const result = this.documentService.getBookSection(findRequest).pipe(
+      map((x) => {
+        this.loaded = true;
+        return x;
+      }), // return the received value true/false
+      catchError((err) => {
+        this.loaded = true;
+        return of(page)
+      }));
     return result;
   }
 
@@ -115,6 +123,8 @@ export class DocumentDetailComponent extends PaginatedSearchComponent<BookSectio
     this.findRequest.pageRequest.direction = pageRequest.direction;
     this.documentService.getBookSection(this.findRequest).subscribe((data) => {
       this.resultObject = data;
+      this.loaded = true;
+    }, () => {
       this.loaded = true;
     });
   }

@@ -35,7 +35,10 @@ export class PeopleInvolvedComponent extends PaginatedSearchComponent<Person> im
         this.loaded = true;
         return x;
       }), // return the received value true/false
-      catchError(() => of(page)));
+      catchError((err) => {
+        this.loaded = true;
+        return of(page)
+      }));
     return result;
   }
 
