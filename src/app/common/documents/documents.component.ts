@@ -134,7 +134,7 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
     else if (this.idPrefix === 'other') {
       result = this.documentService.findOtherPublications(this.findRequest);
     } else {
-      result = this.documentService.find(this.findRequest);
+      result = this.documentService.findscientificpublication(this.findRequest);
     }
     this.loaded = true;
     return result;
@@ -202,7 +202,7 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
           this.loaded = true;
         });
       } else {
-        this.documentService.find(this.findRequest).subscribe((data) => {
+        this.documentService.findscientificpublication(this.findRequest).subscribe((data) => {
           this.resultObject = data;
           this.loaded = true;
         }, () => {
@@ -238,7 +238,7 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
         this.loaded = true;
       });
     } else {
-      this.documentService.find(this.findRequest).subscribe((data) => {
+      this.documentService.findscientificpublication(this.findRequest).subscribe((data) => {
         this.resultObject = data;
         this.loaded = true;
       }, () => {
@@ -277,7 +277,7 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
         this.loaded = true;
       });
     } else {
-      this.documentService.find(this.findRequest).subscribe((data) => {
+      this.documentService.findscientificpublication(this.findRequest).subscribe((data) => {
         this.resultObject = data;
         this.loaded = true;
       }, () => {

@@ -194,6 +194,19 @@ export class MockDocumentService {
     getacademicByIdAndType(id, type) {
         return of({});
     }
+
+    findscientificpublication(findRequest: FindRequest): Observable<Page<Document>> {
+        // Filter params
+        const page: Page<Document> = new Page<Document>();
+        const results: Document[] = this.DUMMY_DATA;
+        page.number = 0;
+        page.numberOfElements = 10;
+        page.size = 10;
+        page.totalElements = 10;
+        // TODO sort
+        page.content = results;
+        return of(page);
+    }
     /**
      *
      *

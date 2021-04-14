@@ -61,6 +61,34 @@ export class DocumentService extends AbstractService {
             );
     }
 
+
+    /**
+     *
+     *
+     * @param {FindRequest} findRequest
+     * @return {*}  {Observable<Page<Document>>}
+     * @memberof DocumentService
+     */
+    findscientificpublication(findRequest: FindRequest): Observable<Page<Document>> {
+        // Filter params
+        let parameters = new HttpParams();
+        parameters = Helper.addParam(parameters, 'title', findRequest.filter.name);
+        parameters = Helper.addParam(parameters, 'dateFrom', findRequest.filter.yearFrom);
+        parameters = Helper.addParam(parameters, 'dateTo', findRequest.filter.yearTo);
+        parameters = Helper.addParam(parameters, 'authorId', findRequest.filter.authorId);
+        parameters = Helper.addParam(parameters, 'organizationId', findRequest.filter.organizationId);
+
+        // Pagination params
+        parameters = Helper.addPaginationParams(parameters, findRequest.pageRequest);
+
+        return this.httpClient
+            .get(Helper.getUrl('/scientificpublication/search'), {
+                params: parameters
+            }).pipe(
+                catchError(this.handleError)
+            );
+    }
+
     /**
      *
      *
@@ -71,6 +99,7 @@ export class DocumentService extends AbstractService {
     findAcademicPublication(findRequest: FindRequest): Observable<Page<AcademicPublication>> {
         // Filter params
         let parameters = new HttpParams();
+        parameters = Helper.addParam(parameters, 'types', findRequest.filter.types);
         parameters = Helper.addParam(parameters, 'title', findRequest.filter.name);
         parameters = Helper.addParam(parameters, 'yearFrom', findRequest.filter.yearFrom);
         parameters = Helper.addParam(parameters, 'yearTo', findRequest.filter.yearTo);
@@ -82,7 +111,7 @@ export class DocumentService extends AbstractService {
         parameters = Helper.addPaginationParams(parameters, findRequest.pageRequest);
 
         return this.httpClient
-            .get(Helper.getUrl('/scientificpublication/search'), {
+            .get(Helper.getUrl('/academicpublication/search'), {
                 params: parameters
             }).pipe(
                 catchError(this.handleError)
