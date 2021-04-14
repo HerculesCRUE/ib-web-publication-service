@@ -234,7 +234,8 @@
     "needsEthicalValidation": "Needs Ethical Validation",
     "startDate": "Start date",
     "status": "status",
-    "projectClassification": "Classification"
+    "projectClassification": "Classification",
+    "graph-title": "Project by mobility"
   },
   "investigation-actions": {
     "title": "Investigation actions",

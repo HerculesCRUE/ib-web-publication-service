@@ -247,7 +247,8 @@
     "needsEthicalValidation": "Validación etica",
     "startDate": "Fecha inicio",
     "status": "Estado",
-    "projectClassification": "Clasificación"
+    "projectClassification": "Clasificación",
+    "graph-title": "Proyectos por modalidad"
   },
   "investigation-actions": {
     "title": "Acciones de investigación",
