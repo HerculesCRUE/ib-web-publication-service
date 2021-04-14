@@ -28,6 +28,8 @@ export class ParticipantsComponent extends PaginatedSearchComponent<Person> impl
    * university Id for search filter in case of necessary
    */
   @Input() universityId: string;
+
+  @Input() projectId: string;
   /**
    *
    *
@@ -87,14 +89,14 @@ export class ParticipantsComponent extends PaginatedSearchComponent<Person> impl
 
   protected findInternal(findRequest: FindRequest): Observable<Page<Person>> {
     const page: Page<Person> = new Page();
-    const result = this.participantService.findPerson(findRequest).pipe(
+    const result = this.participantService.findParticipantsByProject(findRequest, this.projectId).pipe(
       map((x) => {
         this.loaded = true;
         return x;
       }), // return the received value true/false
       catchError((err) => {
         this.loaded = true;
-        return of(page)
+        return of(page);
       }));
     return result;
   }
