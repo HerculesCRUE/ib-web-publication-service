@@ -152,7 +152,7 @@ describe('DocumentsComponent', () => {
   describe('filterDocuments', () => {
     it('should filter document data and call service', () => {
       const documentService1 = fixture.debugElement.injector.get(DocumentService);
-      const spy = spyOn(documentService1, 'find').and.callThrough();
+      const spy = spyOn(documentService1, 'findscientificpublication').and.callThrough();
       component.filterDocuments();
       expect(spy).toHaveBeenCalled();
     });
@@ -180,7 +180,7 @@ describe('DocumentsComponent', () => {
       newPageRequest.size = 10;
       component.findRequest.pageRequest = newPageRequest;
       const docService = fixture.debugElement.injector.get(DocumentService);
-      const spy = spyOn(docService, 'find').and.callThrough();
+      const spy = spyOn(docService, 'findscientificpublication').and.callThrough();
       fixture.detectChanges();
       component.allprojectsFilteredSortChanged(component.findRequest.pageRequest);
       expect(spy).toHaveBeenCalledWith(component.findRequest);
