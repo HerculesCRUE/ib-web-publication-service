@@ -71,7 +71,6 @@ export class DocumentService extends AbstractService {
     findAcademicPublication(findRequest: FindRequest): Observable<Page<AcademicPublication>> {
         // Filter params
         let parameters = new HttpParams();
-        parameters = Helper.addParam(parameters, 'types', findRequest.filter.types);
         parameters = Helper.addParam(parameters, 'title', findRequest.filter.name);
         parameters = Helper.addParam(parameters, 'yearFrom', findRequest.filter.yearFrom);
         parameters = Helper.addParam(parameters, 'yearTo', findRequest.filter.yearTo);
@@ -83,7 +82,7 @@ export class DocumentService extends AbstractService {
         parameters = Helper.addPaginationParams(parameters, findRequest.pageRequest);
 
         return this.httpClient
-            .get(Helper.getUrl('/academicpublication/search'), {
+            .get(Helper.getUrl('/scientificpublication/search'), {
                 params: parameters
             }).pipe(
                 catchError(this.handleError)
