@@ -33,6 +33,9 @@ export class MockGraphicService {
         return of();
     }
 
+    publicationByPerson(): Observable<any> {
+        return of();
+    }
     /**
      *
      *

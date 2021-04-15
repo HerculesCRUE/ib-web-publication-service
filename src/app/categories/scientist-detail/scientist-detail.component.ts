@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HelperGraphics } from 'src/app/_helpers/helperGraphics';
+import { Graphic } from 'src/app/_models/graphic';
 import { Person } from 'src/app/_models/person';
 import { PersonDetail } from 'src/app/_models/personDetail';
 import { SeriesBarData } from 'src/app/_models/seriesBarData';
+import { GraphicService } from 'src/app/_services/graphic.service';
 import { ResearchStaffService } from 'src/app/_services/research-staff.service';
 
 @Component({
@@ -39,7 +41,8 @@ export class ScientistDetailComponent implements OnInit {
    */
   activeTab: string;
   scientificId: string;
-  constructor(private researchStaffService: ResearchStaffService, private rutaActiva: ActivatedRoute) { }
+  constructor(private researchStaffService: ResearchStaffService, private rutaActiva: ActivatedRoute,
+    private graphicServcice: GraphicService) { }
 
   ngOnInit(): void {
     this.activeTab = 'acction-inves';
@@ -51,38 +54,30 @@ export class ScientistDetailComponent implements OnInit {
     this.researchStaffService.getPerson(id).subscribe(data => {
       this.scientist = data;
     });
-    for (let i = 0; i < 100; i++) {
-      xAxisData.push(`category${i}`);
-      data1.push((Math.sin(i / 5) * (i / 5 - 10) + i / 6) * 5);
-      data2.push((Math.cos(i / 5) * (i / 5 - 10) + i / 6) * 5);
-    }
-    const legend = ['Proyectos', 'Tesis dirigidas/ codirigidas', 'Congresos', 'Acciones científicas'];
-    const barData: Array<SeriesBarData> = [{
-      name: 'Proyectos',
-      type: 'bar',
-      data: data1,
-      animationDelay: (idx) => idx * 10,
-    },
-    {
-      name: 'Tesis dirigidas/ codirigidas',
-      type: 'bar',
-      data: data2,
-      animationDelay: (idx) => idx * 10 + 100,
-    }, {
-      name: 'Congresos',
-      type: 'bar',
-      data: data1,
-      animationDelay: (idx) => idx * 9,
-    },
-    {
-      name: 'Acciones científicas',
-      type: 'bar',
-      data: data2,
-      animationDelay: (idx) => idx * 11 + 100,
-    }];
-    this.echartOptions = HelperGraphics.configChartBar(xAxisData, barData, legend);
+    this.graphicServcice.publicationByPerson(this.scientificId).subscribe(data => {
+      this.echartOptions = HelperGraphics.configChartPie(this.transformData(data), 'Patentes por Organizacion');
+    });
   }
 
+
+  returnLastValue(url) {
+    const typeFromURL = url.split('/');
+    return typeFromURL.pop();
+  }
+
+  transformData(data: Array<Graphic>) {
+
+    const result = [];
+    if (data.length > 1) {
+      data.forEach(element => {
+        result.push({ name: this.returnLastValue(element.type), value: element.count });
+      });
+    }
+    return {
+      seriesData: result
+    };
+
+  }
   /**
    *
    *

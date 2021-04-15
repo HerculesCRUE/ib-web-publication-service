@@ -31,6 +31,7 @@ export class PatentsComponent extends PaginatedSearchComponent<Patent> implement
    * @type {string}
    * @memberof PatentsComponent
    */
+  @Input() isChatHiden: boolean;
   @Input() idPrefix: string;
   @Input() url = '';
   @Input() authorId: string;
