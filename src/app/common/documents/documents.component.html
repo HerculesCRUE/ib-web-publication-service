@@ -30,7 +30,7 @@
             <input (dateSelect)="onDateSelect($event)" class="form-control ngbdatepicker" name="dateFrom{{idPrefix}}"
                 id="dateFrom{{idPrefix}}" required (ngModelChange)="filterProjects();onDateSelect($event)"
                 [readOnly]="true" [minDate]="{year: 1950, month: 1, day: 1}"
-                placeholder="{{showOnlyYEar ? 'YYYY': 'YYYY-MM-DD'}}" ngbDatepicker #decisionDate="ngbDatepicker"
+                placeholder="{{showOnlyYEar ? 'YYYY': 'DD-MM-YYYY'}}" ngbDatepicker #decisionDate="ngbDatepicker"
                 (click)="decisionDate.toggle();onDateSelect($event)"
                 (keydown)="($event.key === 'Escape' || $event.key === 'Tab') ? decisionDate.close() : decisionDate.toggle();"
                 #dateFrom{{idPrefix}}="ngModel" [(ngModel)]="dateIni" />
@@ -41,7 +41,7 @@
                 id="dateTo{{idPrefix}}" required
                 (keydown)="($event.key === 'Escape' || $event.key === 'Tab') ? decisionTo.close() : decisionTo.toggle();"
                 [readOnly]="true" (ngModelChange)="filterProjects()" [minDate]="{year: 1950, month: 1, day: 1}"
-                placeholder="{{showOnlyYEar ? 'YYYY': 'YYYY-MM-DD'}}" ngbDatepicker #decisionTo="ngbDatepicker"
+                placeholder="{{showOnlyYEar ? 'YYYY': 'DD-MM-YYYY'}}" ngbDatepicker #decisionTo="ngbDatepicker"
                 (click)="decisionTo.toggle();onDateSelect($event)" #dateTo{{idPrefix}}="ngModel"
                 [(ngModel)]="dateFin" />
         </div>
