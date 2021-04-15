@@ -5,6 +5,7 @@ import { catchError } from 'rxjs/operators';
 import { AbstractService } from '../_helpers/abstract';
 import { Page } from '../_helpers/search';
 import { Helper } from '../_helpers/utils';
+import { Graphic } from '../_models/graphic';
 import { GraphicModelTree } from '../_models/graphicModelTree';
 
 
@@ -33,9 +34,9 @@ export class GraphicService extends AbstractService {
      * @return {*}  {Observable<Page<any>>}
      * @memberof GraphicService
      */
-    universityFinancing(): Observable<any> {
+    universityFinancing(): Observable<Array<Graphic>> {
         return this.httpClient
-            .get(Helper.getUrl('/university/financing')).pipe(
+            .get(Helper.getUrl('/university/organizationByType')).pipe(
                 catchError(this.handleError)
             );
     }

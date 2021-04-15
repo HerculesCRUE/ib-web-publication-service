@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { HelperGraphics } from 'src/app/_helpers/helperGraphics';
 import { Helper } from 'src/app/_helpers/utils';
+import { Graphic } from 'src/app/_models/graphic';
 import { GraphicService } from 'src/app/_services/graphic.service';
 
 @Component({
@@ -29,48 +31,25 @@ export class ResearchmentStructuresByFinancingComponent implements OnInit {
     }
 
     this.graphicServcice.universityFinancing().subscribe((data: any) => {
-      this.echartOptions = {
-        title: {
-          text: 'Núm. Universidades [Sello de Calidad]',
-          left: 'center',
-        },
-        color: ["#264653", "#2a9d8f", "#e9c46a", "#f4a261", "#e76f51"],
-        tooltip: {
-          trigger: 'item',
-          formatter: '{a} <br/>{b} : {c} ({d}%)',
-        },
-        legend: {
-          type: 'plain',
-          orient: 'horizontal',
-          left: "left",
-          top: 30,
-          bottom: 0,
-          data: data.legendData,
-          textStyle: {
-            fontFamily: "Poppins"
-          },
-          color: '#333',
-          selected: data.selected,
-        },
-        series: [
-          {
-            name: 'Sello de Calidad',
-            type: 'pie',
-            top: '10%',
-            radius: '55%',
-            data: data.seriesData,
-            emphasis: {
-              itemStyle: {
-                shadowBlur: 10,
-                shadowOffsetX: 0,
-                shadowColor: 'rgba(0, 0, 0, 0.5)',
-              },
-            },
-          },
-        ],
-      };
+      console.log('hello');
+      this.echartOptions = HelperGraphics.configChartPie(this.transformData(data), 'Num. estructuras por tipo');
     });
 
+
+  }
+
+
+  transformData(data: Array<Graphic>) {
+
+    const result = [];
+    if (data.length > 1) {
+      data.forEach(element => {
+        result.push({ name: element.type, value: element.count });
+      });
+    }
+    return {
+      seriesData: result
+    };
 
   }
 

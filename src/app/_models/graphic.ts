@@ -16,4 +16,5 @@ export class Graphic {
     subjectArea: string;
 
     modality: string;
+    type: string;
 }
