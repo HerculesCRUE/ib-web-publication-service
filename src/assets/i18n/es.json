@@ -265,8 +265,8 @@
   },
   "documents": {
     "document": "Documentos",
-    "date-fin": "Fecha Fin",
-    "date-ini": "Fecha Inicio",
+    "date-fin": "Fecha hasta",
+    "date-ini": "Fecha desde",
     "types": "Tipo",
     "title": "Titulo",
     "name": "Nombre",

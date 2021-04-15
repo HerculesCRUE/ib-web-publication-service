@@ -58,6 +58,7 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
   @Input() isTreeVisible = true;
   @Input() organizationId: string;
   isNormalTree = true;
+  returnFullDate = true;
   /**
    *
    *
@@ -117,9 +118,6 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
     if (this.organizationId) {
       this.findRequest.filter.organizationId = this.organizationId;
     }
-    // if (this.idPrefix === 'prodScientist') {
-    //   this.url = '../../scientificpublication/';
-    // }
   }
 
   protected findInternal(findRequest: FindRequest): Observable<Page<Document | AcademicPublication>> {
@@ -133,16 +131,21 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
       this.findRequest.filter.organizationId = this.organizationId;
     }
 
-    if (this.idPrefix === 'document') {
-      result = this.documentService.find(this.findRequest);
-    } else if (this.idPrefix === 'academic') {
-      result = this.documentService.findAcademicPublication(this.findRequest);
+    switch (this.idPrefix) {
+      case 'document':
+        result = this.documentService.find(this.findRequest);
+        break;
+      case 'academic':
+        result = this.documentService.findAcademicPublication(this.findRequest);
+        break;
+      case 'other':
+        result = this.documentService.findOtherPublications(this.findRequest);
+        break;
+      default:
+        result = this.documentService.findscientificpublication(this.findRequest);
+        break;
     }
-    else if (this.idPrefix === 'other') {
-      result = this.documentService.findOtherPublications(this.findRequest);
-    } else {
-      result = this.documentService.findscientificpublication(this.findRequest);
-    }
+
     this.loaded = true;
     return result;
 
@@ -168,8 +171,6 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
    * @memberof ScientificProductionComponent
    */
   filterProjects() {
-    this.findRequest.pageRequest.page = 0;
-    console.log('hello');
     setTimeout(() => {
       if (this.dateIni) {
         const currentDate = Helper.parseYear(this.dateIni);
