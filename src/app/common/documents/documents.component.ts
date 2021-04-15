@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgbDateAdapter, NgbDateParserFormatter, NgbDatepicker } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, of } from 'rxjs';
@@ -9,6 +10,7 @@ import { AcademicPublication } from 'src/app/_models/academicPublication';
 import { Document } from 'src/app/_models/document';
 import { OtherPublication } from 'src/app/_models/otherPublication';
 import { DocumentService } from 'src/app/_services/document.service';
+import { CustomDateAdapter, CustomDateParserFormatter, MaskController } from './datepicker-auxiliar';
 
 /**
  *
@@ -19,7 +21,9 @@ import { DocumentService } from 'src/app/_services/document.service';
  */
 @Component({
   selector: 'app-documents',
-  templateUrl: './documents.component.html'
+  templateUrl: './documents.component.html',
+  providers: [{ provide: NgbDateAdapter, useClass: CustomDateAdapter },
+  { provide: NgbDateParserFormatter, useClass: CustomDateParserFormatter }]
 })
 export class DocumentsComponent extends PaginatedSearchComponent<Document | AcademicPublication | OtherPublication> implements OnInit {
   /**
@@ -31,6 +35,9 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
   @Input() selectDocumentType: Array<any> = [
     { name: 'book', value: 'Book' }, { name: 'articles', value: 'Article' }
   ];
+
+
+  @Input() showOnlyYEar: boolean;
 
   @Input() routerFieldSecondary;
 
@@ -96,21 +103,23 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
 
 
   @Input() hideTypes: boolean;
-
   /**
    * Creates an instance of DocumentsComponent.
    * @param {ProjectService} projectService
    * @memberof DocumentsComponent
    */
   constructor(private documentService: DocumentService,
+    private maskController: MaskController,
     router: Router,
     translate: TranslateService,
-    toastr: ToastrService
+    toastr: ToastrService,
   ) {
     super(router, translate, toastr);
   }
 
   ngOnInit(): void {
+
+
     this.findRequest.filter.types = this.filterDocumentType;
     if (this.authorId) {
       this.findRequest.filter.authorId = this.authorId;
@@ -229,7 +238,13 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
     }, 0);
   }
 
-
+  onDateSelect($event) {
+    if (this.showOnlyYEar) {
+      this.maskController.setMask('YYYY');
+    } else {
+      this.maskController.setMask('DD/MM/YYYY');
+    }
+  }
 
   /**
    *
@@ -317,5 +332,7 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
     }
 
   }
+
+
 
 }

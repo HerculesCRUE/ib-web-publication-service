@@ -4,7 +4,7 @@ import * as moment from 'moment';
 
 @Injectable()
 export class CustomNgbDateFormatter extends NgbDateParserFormatter {
-
+  formatDate = 'YYYY-MM-DD';
   /**
    * Parses the given value to an NgbDateStruct. Implementations should try their best to provide a result, even
    * partial. They must return null if the value can't be parsed.
@@ -40,10 +40,14 @@ export class CustomNgbDateFormatter extends NgbDateParserFormatter {
       newDate.set('month', date.month - 1);
       newDate.set('date', date.day);
       newDate.startOf('day');
-      result = newDate.format('YYYY-MM-DD');
+      result = newDate.format(this.formatDate);
     }
 
     return result;
+  }
+
+  setOtherFormat(format) {
+    this.formatDate = format;
   }
 
 }

@@ -27,20 +27,23 @@
         <!-- dates -->
         <div class="form-group col-lg-3">
             <label for="dateFrom{{idPrefix}}" class="control-label">{{'documents.date-ini' | translate }}</label>
-            <input class="form-control ngbdatepicker" name="dateFrom{{idPrefix}}" id="dateFrom{{idPrefix}}" required
-                (ngModelChange)="filterProjects()" [readOnly]="true" [minDate]="{year: 1950, month: 1, day: 1}"
+            <input (dateSelect)="onDateSelect($event)" class="form-control ngbdatepicker" name="dateFrom{{idPrefix}}"
+                id="dateFrom{{idPrefix}}" required (ngModelChange)="filterProjects();onDateSelect($event)"
+                [readOnly]="true" [minDate]="{year: 1950, month: 1, day: 1}"
                 placeholder="{{'form.datepicker-placeholder' | translate}}" ngbDatepicker #decisionDate="ngbDatepicker"
-                (click)="decisionDate.toggle();"
+                (click)="decisionDate.toggle();onDateSelect($event)"
                 (keydown)="($event.key === 'Escape' || $event.key === 'Tab') ? decisionDate.close() : decisionDate.toggle();"
                 #dateFrom{{idPrefix}}="ngModel" [(ngModel)]="dateIni" />
         </div>
         <div class="form-group col-lg-3">
             <label for="dateTo{{idPrefix}}" class="control-label">{{'documents.date-fin' | translate }}</label>
-            <input class="form-control ngbdatepicker" name="dateTo{{idPrefix}}" id="dateTo{{idPrefix}}" required
+            <input (dateSelect)="onDateSelect($event)" class="form-control ngbdatepicker" name="dateTo{{idPrefix}}"
+                id="dateTo{{idPrefix}}" required
                 (keydown)="($event.key === 'Escape' || $event.key === 'Tab') ? decisionTo.close() : decisionTo.toggle();"
                 [readOnly]="true" (ngModelChange)="filterProjects()" [minDate]="{year: 1950, month: 1, day: 1}"
                 placeholder="{{'form.datepicker-placeholder' | translate}}" ngbDatepicker #decisionTo="ngbDatepicker"
-                (click)="decisionTo.toggle();" #dateTo{{idPrefix}}="ngModel" [(ngModel)]="dateFin" />
+                (click)="decisionTo.toggle();onDateSelect($event)" #dateTo{{idPrefix}}="ngModel"
+                [(ngModel)]="dateFin" />
         </div>
 
         <!-- type -->
