@@ -1,3 +1,4 @@
+import { utils } from "protractor";
 import { Helper } from "../_helpers/utils";
 
 /**
@@ -119,8 +120,8 @@ export const HOME_ITEMS: HomeGroupItem[] = [{
       iconName: 'oi-person',
       iconCircle: false,
       url: null,
-      disabled: true,
-      urlExterna: ''
+      disabled: false,
+      urlExterna: Helper.getKeyCloackUrl().authUrl
     },
   ]
 },
