@@ -34,7 +34,7 @@ export class HelperGraphics {
                 left: 'left',
                 right: 10,
                 top: 30,
-                bottom: 0,
+                bottom: 50,
                 data: data.legendData,
                 textStyle: {
                     fontFamily: 'Poppins'
@@ -46,7 +46,7 @@ export class HelperGraphics {
                 {
                     name: title,
                     type: 'pie',
-                    top: '10%',
+                    top: '25%',
                     radius: '55%',
                     data: data.seriesData,
                     emphasis: {

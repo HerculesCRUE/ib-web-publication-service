@@ -123,12 +123,18 @@ export class PatentsComponent extends PaginatedSearchComponent<Patent> implement
     });
   }
 
+
+  returnLastValue(url) {
+    const typeFromURL = url.split('/');
+    return typeFromURL.pop();
+  }
+
   transformData(data: Array<GraphicPatent>) {
 
     const result = [];
     if (data.length > 1) {
       data.forEach(element => {
-        result.push({ name: element.ownerOrganization, value: element.count });
+        result.push({ name: this.returnLastValue(element.ownerOrganization), value: element.count });
       });
     }
     return {

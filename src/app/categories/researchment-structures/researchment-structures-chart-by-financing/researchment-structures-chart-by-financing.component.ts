@@ -38,13 +38,30 @@ export class ResearchmentStructuresByFinancingComponent implements OnInit {
 
   }
 
-
+  /**
+   *
+   *
+   * @param {*} url
+   * @return {*} 
+   * @memberof ResearchmentStructuresByFinancingComponent
+   */
+  returnLastValue(url) {
+    const typeFromURL = url.split('/');
+    return typeFromURL.pop();
+  }
+  /**
+   *
+   *
+   * @param {Array<Graphic>} data
+   * @return {*} 
+   * @memberof ResearchmentStructuresByFinancingComponent
+   */
   transformData(data: Array<Graphic>) {
 
     const result = [];
     if (data.length > 1) {
       data.forEach(element => {
-        result.push({ name: element.type, value: element.count });
+        result.push({ name: this.returnLastValue(element.type), value: element.count });
       });
     }
     return {
