@@ -21,7 +21,7 @@ export class MockResearchStaffService {
     DUMMY_DATA: Person[] = [
         {
             id: '142006',
-            title: '',
+            // title: '',
             birthDate: '',
             description: '',
             firstName: '',
@@ -39,7 +39,7 @@ export class MockResearchStaffService {
         },
         {
             id: '148071',
-            title: '',
+            //title: '',
             birthDate: '',
             description: '',
             firstName: '',
@@ -57,7 +57,7 @@ export class MockResearchStaffService {
         },
         {
             id: '603742',
-            title: '',
+            // title: '',
             birthDate: '',
             description: '',
             firstName: '',
@@ -75,7 +75,7 @@ export class MockResearchStaffService {
         },
         {
             id: '12019',
-            title: '',
+            //title: '',
             birthDate: '',
             description: '',
             firstName: '',
@@ -93,7 +93,7 @@ export class MockResearchStaffService {
         },
         {
             id: '60203',
-            title: '',
+            //title: '',
             birthDate: '',
             description: '',
             firstName: '',
