@@ -39,7 +39,8 @@
     "change-tree-normal": "Vista listado",
     "no-result": "Lo sentimos, no hay resultados para esta búsqueda",
     "results-amount": "Resultados totales: ",
-    "back": "Volver"
+    "back": "Volver",
+    "reset": "Limpiar"
   },
   "menu": {
     "home": "Inicio",

@@ -5,13 +5,23 @@
                 <h1 class="legend">{{'menu.sparql' | translate }}</h1>
             </div>
             <div class="card-body">
-                <div class="col-md-2 ms-auto">
-                    <label *ngIf="federatedItem">
-                        <input type="checkbox" (change)="federChangeCheck($event.target.checked)">
-                        {{'sparql.main.federated'
-                        |
-                        translate}} </label>
+                <div class="row">
+                    <div class="col-md-3">
+                        &nbsp;
+                        <label *ngIf="federatedItem">
+                            <input type="checkbox" (change)="federChangeCheck($event.target.checked)">
+                            {{'sparql.main.federated'
+                            |
+                            translate}} </label>
+
+                    </div>
+                    <div class="col-md-9 text-right" style="padding-bottom:15px">
+                        <button (click)="cleanQuerySparq()" class="btn btn-secondary">{{'form.reset' | translate
+                            }}</button>
+                    </div>
+
                 </div>
+
                 <div id="yasgui"></div>
             </div>
 

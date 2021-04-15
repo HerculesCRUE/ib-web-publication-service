@@ -39,7 +39,8 @@
     "change-tree-normal": "Change to normal tree",
     "no-result": "No results",
     "results-amount": "Total: ",
-    "back": "Go back"
+    "back": "Go back",
+    "reset": "Reset"
   },
   "menu": {
     "home": "Welcome",

@@ -68,5 +68,10 @@ export class SPARQLEditorComponent implements OnInit {
   }
 
 
+  cleanQuerySparq() {
+    this.yasqe.setValue('');
+  }
+
+
 
 }
