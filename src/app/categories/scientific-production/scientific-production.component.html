@@ -72,8 +72,8 @@
                     <div class="tab-pane fade"
                         [ngClass]="{'show': activeTab === 'scientific-publications', 'active': activeTab === 'scientific-publications' }"
                         id="scientific-publications" role="tabpanel" aria-labelledby="scientific-publications-tab">
-                        <app-documents [url]="'../scientificpublication'" [idPrefix]="'publications'"
-                            [isTreeVisible]="false" [filterDocumentType]="['Book', 'Article']"></app-documents>
+                        <app-documents [url]="'../document'" [idPrefix]="'document'" [isTreeVisible]="false"
+                            [routerFieldSecondary]="'type'" [filterDocumentType]="['Book', 'Article']"></app-documents>
                     </div>
                     <div class="tab-pane fade"
                         [ngClass]="{'show': activeTab === 'academic-publications', 'active': activeTab === 'academic-publications' }"
