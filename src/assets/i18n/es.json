@@ -349,6 +349,7 @@
     }
   },
   "areas": {
+    "id":"ID",
     "title": "Áreas",
     "areas": "Áreas",
     "disciplines": "Disciplinas",

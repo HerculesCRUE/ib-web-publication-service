@@ -70,8 +70,7 @@ const keycloakService = new KeycloakService();
     HomeComponent,
     LinksComponent,
     AccesibilityComponent,
-    PatentDetailComponent,
-    AreasListComponent
+    PatentDetailComponent
   ],
   imports: [
     BrowserModule,

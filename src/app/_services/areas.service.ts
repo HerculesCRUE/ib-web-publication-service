@@ -36,7 +36,7 @@ export class AreasService extends AbstractService {
         parameters = Helper.addPaginationParams(parameters, findRequest.pageRequest);
 
         return this.httpClient
-            .get(Helper.getUrl('/areas/search'), {
+            .get(Helper.getUrl('/knowledgearea/search'), {
                 params: parameters
             }).pipe(
                 catchError(this.handleError)

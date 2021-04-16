@@ -337,6 +337,7 @@
     }
   },
   "areas": {
+    "id":"ID",
     "title": "Research categories",
     "areas": "Areas",
     "disciplines": "Disciplines",
