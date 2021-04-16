@@ -82,7 +82,7 @@ export class GraphicService extends AbstractService {
 
     publicationByPerson(id: string): Observable<Array<Graphic>> {
         return this.httpClient
-            .get(Helper.getUrl('/scientificpublication/publicationByPerson' + id)).pipe(
+            .get(Helper.getUrl('/scientificpublication/publicationByPerson/' + id)).pipe(
                 catchError(this.handleError)
             );
     }
