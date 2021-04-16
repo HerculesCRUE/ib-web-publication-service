@@ -34,6 +34,8 @@ export class EventsComponent extends PaginatedSearchComponent<Event> implements 
   }
 
   ngOnInit(): void {
+
+
     if (this.types === 'Conference') {
       this.findRequest.filter.type = 'Conference';
     }
@@ -44,6 +46,12 @@ export class EventsComponent extends PaginatedSearchComponent<Event> implements 
   }
 
   protected findInternal(findRequest: FindRequest): Observable<Page<Event>> {
+    if (this.types === 'Conference') {
+      this.findRequest.filter.type = 'Conference';
+    }
+    if (this.participantId) {
+      this.findRequest.filter.participantId = this.participantId;
+    }
     const page: Page<Event> = new Page();
     const result = this.eventsService.find(findRequest).pipe(
       map((x) => {
@@ -52,7 +60,7 @@ export class EventsComponent extends PaginatedSearchComponent<Event> implements 
       }), // return the received value true/false
       catchError((err) => {
         this.loaded = true;
-        return of(page)
+        return of(page);
       }));
     return result;
   }
