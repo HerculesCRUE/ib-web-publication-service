@@ -9,8 +9,8 @@
 | Módulo         | Servicio de publicación web - Web (frontend)                 |
 | Tipo           | Software                                                     |
 | Objetivo       | Servicio web encargado de la consulta de datos por parte de los usuarios |
-| Estado         | **20%** de la pantallas del front.<br />Se han desarrollado las pantallas:<br /><br />**[Estructuras de investigación](http://herc-iz-front-desa.atica.um.es:81/main/categories/researchmentStructures)**: Datos mockeados<br />**Detalle de estructuras de investigación**: Se accede a través de la pantalla de estructuras de investigación. Se muestran datos reales en las tablas de Producción científica, Proyectos y Patentes.<br />**[Acciones de investigación](http://herc-iz-front-desa.atica.um.es:81/main/categories/investigation-actions)**: Se muestran datos reales en las tablas.<br />**Detalle de proyecto**: Se accede a través de la pantalla de acciones de investigación. Se muestran datos mockeados, aunque algún dato del detalle es real.<br />**[Personal investigador](http://herc-iz-front-desa.atica.um.es:81/main/categories/scientist)**: Se muestran datos mockeados. |
-| Próximos pasos | Se deben completar el resto de pantallas, implementar algunos filtros y conectar con los servicios. |
+| Estado         | **100%** |
+| Próximos pasos |  |
 
 
 
