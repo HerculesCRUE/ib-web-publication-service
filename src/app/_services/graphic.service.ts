@@ -80,6 +80,13 @@ export class GraphicService extends AbstractService {
             );
     }
 
+    /**
+     *
+     *
+     * @param {string} id
+     * @return {*}  {Observable<Array<Graphic>>}
+     * @memberof GraphicService
+     */
     publicationByPerson(id: string): Observable<Array<Graphic>> {
         return this.httpClient
             .get(Helper.getUrl('/scientificpublication/publicationByPerson/' + id)).pipe(

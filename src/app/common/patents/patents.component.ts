@@ -108,20 +108,12 @@ export class PatentsComponent extends PaginatedSearchComponent<Patent> implement
     }
 
 
-    let xAxisData: Array<string> = [];
-    let data1: Array<any> = [];
-    let data2: Array<any> = [];
-
-    for (let i = 0; i < 100; i++) {
-      xAxisData.push(`category${i}`);
-      data1.push((Math.sin(i / 5) * (i / 5 - 10) + i / 6) * 5);
-      data2.push((Math.cos(i / 5) * (i / 5 - 10) + i / 6) * 5);
+    if (!this.isChatHiden) {
+      this.graphicServcice.patentArea().subscribe(data => {
+        this.echartOptions = HelperGraphics.configChartPie(this.transformData(data), 'Patentes por Organizacion');
+      });
     }
 
-
-    this.graphicServcice.patentArea().subscribe(data => {
-      this.echartOptions = HelperGraphics.configChartPie(this.transformData(data), 'Patentes por Organizacion');
-    });
   }
 
 
