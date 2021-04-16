@@ -56,10 +56,16 @@ export class DirectedJobsComponent extends PaginatedSearchComponent<AcademicPubl
   }
 
   ngOnInit(): void {
+    if (this.scientificId) {
+      this.findRequest.filter.authorId = this.scientificId;
+    }
   }
 
 
   protected findInternal(findRequest: FindRequest): Observable<Page<AcademicPublication>> {
+    if (this.scientificId) {
+      this.findRequest.filter.authorId = this.scientificId;
+    }
     const page: Page<AcademicPublication> = new Page();
     const result = this.documentService.findAcademicPublication(findRequest).pipe(
       map((x) => {

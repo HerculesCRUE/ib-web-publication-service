@@ -153,7 +153,7 @@ export class PatentsComponent extends PaginatedSearchComponent<Patent> implement
       }), // return the received value true/false
       catchError((err) => {
         this.loaded = true;
-        return of(page)
+        return of(page);
       }));
     return result;
   }

@@ -132,7 +132,9 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
   protected findInternal(findRequest: FindRequest): Observable<Page<Document | AcademicPublication>> {
     this.findRequest.filter.types = this.filterDocumentType;
     let result;
+    console.log(this.authorId);
     if (this.authorId) {
+      console.log('im in');
       this.findRequest.filter.authorId = this.authorId;
     }
 
