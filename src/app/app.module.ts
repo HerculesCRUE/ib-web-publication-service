@@ -57,6 +57,7 @@ import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { PatentDetailComponent } from './common/patent-detail/patent-detail.component';
 import { PeopleInvolvedComponent } from './common/people-involved/people-involved.component';
 import { CollaboratorsComponent } from './common/collaborators/collaborators.component';
+import { AreasListComponent } from './common/areas-list/areas-list.component';
 
 const keycloakService = new KeycloakService();
 
@@ -69,7 +70,8 @@ const keycloakService = new KeycloakService();
     HomeComponent,
     LinksComponent,
     AccesibilityComponent,
-    PatentDetailComponent
+    PatentDetailComponent,
+    AreasListComponent
   ],
   imports: [
     BrowserModule,
