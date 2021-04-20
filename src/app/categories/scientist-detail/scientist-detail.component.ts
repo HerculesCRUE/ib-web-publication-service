@@ -54,9 +54,9 @@ export class ScientistDetailComponent implements OnInit {
     this.researchStaffService.getPerson(id).subscribe(data => {
       this.scientist = data;
     });
-    this.graphicServcice.publicationByPerson(this.scientificId).subscribe(data => {
+    /*this.graphicServcice.publicationByPerson(this.scientificId).subscribe(data => {
       this.echartOptions = HelperGraphics.configChartPie(this.transformData(data), 'Patentes por Organizacion');
-    });
+    });*/
   }
 
 
