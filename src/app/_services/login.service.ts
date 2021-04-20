@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { map, catchError, tap } from 'rxjs/operators';
 import { Helper } from '../_helpers/utils';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { AbstractService } from '../_helpers/abstract';
 import { User } from '../_models/user';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
@@ -60,7 +60,7 @@ export class LoginService extends AbstractService {
     localStorage.removeItem('username');
     this.loggedIn = false;
 
-    this.httpClient.post(Helper.getKeyCloackUrl().logout + '?redirect_uri=http%3A%2F%2Flocalhost%3A4200%2Fmain%2F', {})
+    this.httpClient.post(Helper.getKeyCloackUrl().logout + '?redirect_uri=' + encodeURIComponent(Helper.getAPPURL()), {})
       .subscribe(data => {
       });
   }
@@ -123,16 +123,11 @@ export class LoginService extends AbstractService {
       realm: Helper.getKeyCloackUrl().realm,
       clientId: Helper.getKeyCloackUrl().clientId
     };
-    console.log('im in');
-    // @ts-ignore
     localStorage.removeItem('access_token');
     localStorage.removeItem('refresh_token');
     localStorage.removeItem('username');
     console.log('im in 2');
-    this.keycloackService.logout(config1).then(() => {
-      console.log('logout');
-      this.windowReload();
-    });
+    this.keycloackService.logout(config1).then(() => { });
 
   }
 
@@ -193,6 +188,44 @@ export class LoginService extends AbstractService {
 
     return this.httpClient.post(Helper.getKeyCloackUrl().tokenUri, params, httpOptions);
   }
+
+
+  refreshToken(): Observable<Response> {
+    const refreshToken: string = localStorage.getItem('refresh_token');
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/x-www-form-urlencoded',
+      })
+    };
+
+    const params = new HttpParams({
+      fromObject: {
+        grant_type: 'refresh_token',
+        client_id: 'login-app',
+        refresh_token: localStorage.getItem('refresh_token')
+      }
+    });
+
+    if (refreshToken != null) {
+      console.log('Refreshing with token: ' + refreshToken);
+      // const data = 'grant_type=refresh_token&refresh_token=' + refreshToken;
+
+      return this.httpClient.post(Helper.getKeyCloackUrl().tokenUri, params, httpOptions).pipe(
+        map((response: any) => {
+          if (response != null) {
+            localStorage.setItem('access_token', response.access_token);
+            localStorage.setItem('refresh_token', response.refresh_token);
+          }
+
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+    }
+
+    return of();
+  }
+
 
   /**
    *
