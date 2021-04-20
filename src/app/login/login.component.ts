@@ -77,7 +77,7 @@ export class LoginComponent implements OnInit {
   }
 
   redirect() {
-    window.location.href = BASE_APP_URL + '/main/home';
+    window.location.href = BASE_APP_URL + 'main/home';
   }
 
   /**
