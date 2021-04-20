@@ -26,6 +26,7 @@ export const environment = {
   appUrl: 'http://localhost:4200/'
 };
 
+
 // default settings for how to query the endpoint
 export const yasgui = {
   // Wikibase:

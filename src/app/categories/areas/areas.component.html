@@ -20,20 +20,7 @@
                 <div class="card flex-fill">
                     <div class="card-header">
                         <h1 class="legend">{{'areas.areas-more-projects' | translate}}</h1>
-                        <div class="row">
-                            <div class="form-group col-lg-6">
-                                <label for="anyo" class="col-sm-4 control-label">{{ "participant.year" | translate
-                                    }}</label>
-                                <div class="col-sm-8">
-                                    <select (ngModelChange)="changeYearChart()"
-                                        [attr.aria-label]="'participant.year' | translate" id="anyo" name="anyo"
-                                        class="form-control" [(ngModel)]="yearSelected" #type="ngModel">
-                                        <option [value]="undefined">{{ "form.select" | translate }}</option>
-                                        <option *ngFor="let year of yearsForSelect" [value]="year">{{year}}</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                     <div id="datatables-dashboard-markets_wrapper"
                         class="dataTables_wrapper dt-bootstrap4 no-footer p-3">
@@ -59,19 +46,7 @@
                 <div class="card flex-fill">
                     <div class="card-header">
                         <h1 class="legend" class="mt-40">{{'areas.appointments-area' | translate}}</h1>
-                        <div class="row">
-                            <div class="form-group col-lg-6">
-                                <label for="anyodos" class="col-sm-4 control-label">{{ "participant.year" | translate
-                                    }}</label>
-                                <div class="col-sm-8">
-                                    <select (ngModelChange)="changeYearSquareChart()" id="anyodos" name="anyodos"
-                                        class="form-control" [(ngModel)]="secondYearSelected" #type="ngModel">
-                                        <option [value]="undefined">{{ "form.select" | translate }}</option>
-                                        <option *ngFor="let year of yearsForSelect" [value]="year">{{year}}</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                     <div id="datatables-dashboard-markets_wrapper"
                         class="dataTables_wrapper dt-bootstrap4 no-footer p-3">
