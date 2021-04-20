@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { HelperGraphics } from 'src/app/_helpers/helperGraphics';
+import { AreasService } from 'src/app/_services/areas.service';
 
 /**
  *
@@ -28,6 +29,7 @@ export class NewTreeComponent implements OnInit {
    * @memberof NewTreeComponent
    */
   @Input() treeType: string;
+  loaded: boolean;
   /**
    *
    *
@@ -45,10 +47,32 @@ export class NewTreeComponent implements OnInit {
    * Creates an instance of NewTreeComponent.
    * @memberof NewTreeComponent
    */
-  constructor() { }
+  constructor(private areaService: AreasService) { }
 
   ngOnInit(): void {
-    this.data = HelperGraphics.returnDataForTree(this.treeType);
+    this.areaService.getAll().subscribe(data => {
+      this.data = this.returnDataForAreaTree(data);
+      this.loaded = true;
+    });
+    // this.data = HelperGraphics.returnDataForTree(this.treeType);
+  }
+
+
+  returnDataForAreaTree(data) {
+    const result = {
+      name: 'Áreas',
+      children: []
+    };
+    data.forEach(element => {
+      result.children.push({
+        name: element.title,
+        value: element.id,
+        selected: false,
+        children: []
+      });
+    });
+
+    return result;
   }
 
   /**

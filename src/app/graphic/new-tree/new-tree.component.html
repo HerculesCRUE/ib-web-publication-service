@@ -1,4 +1,4 @@
-<div class="newTree">
+<div class="newTree" *ngIf="loaded">
     <div class="row cursor">
         <div class="col-12" *ngFor="let area of data.children">
             <span
@@ -7,7 +7,7 @@
                     <input (change)="area.selected = !area.selected; areaClicked(area, null);" id="{{area.value}}"
                         type="checkbox">{{area.name}}
                 </label></span>
-            <ol *ngIf="area.selected && area.children">
+            <ol *ngIf="area.selected && area.children.lenght > 0">
                 <li class="myBorder slide-right" *ngFor="let area2 of area?.children">
                     <span class="oi oi-arrow-right"></span>
                     <span
@@ -17,7 +17,7 @@
 
 
 
-                    <ol *ngIf="area2.selected && area2.children">
+                    <ol *ngIf="area2.selected && area2.children.lenght > 0">
                         <li class="myBorder slide-right" *ngFor="let area3 of area2?.children">
                             <span class="oi oi-arrow-right"></span>
                             <span

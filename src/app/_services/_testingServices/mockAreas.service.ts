@@ -38,4 +38,8 @@ export class MockAreaservice extends AbstractService {
     }
 
 
+    getAll(): Observable<any> {
+        return of({});
+    }
+
 }

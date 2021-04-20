@@ -191,10 +191,7 @@ export class LoginService extends AbstractService {
       }
     });
 
-    return this.httpClient.post(Helper.getKeyCloackUrl().tokenUri, params, httpOptions)
-      .pipe(tap((response: any) => {
-
-      }));
+    return this.httpClient.post(Helper.getKeyCloackUrl().tokenUri, params, httpOptions);
   }
 
   /**

@@ -43,6 +43,19 @@ export class AreasService extends AbstractService {
             );
     }
 
+    /**
+     *
+     *
+     * @return {*}  {Observable<any>}
+     * @memberof AreasService
+     */
+    getAll(): Observable<any> {
+        return this.httpClient
+            .get(Helper.getUrl('/knowledgearea/all')).pipe(
+                catchError(this.handleError)
+            );
+    }
+
 
 
 }

@@ -58,14 +58,14 @@ export class TokenizedInterceptor extends AbstractHttpInterceptor {
   ) {
 
     if (error.status === 401) {
-      this.loginService.checkIsValidToken().subscribe(data => {
-        localStorage.setItem('access_token', data.access_token);
-        localStorage.setItem('refresh_token', data.refresh_token);
-      }, (e) => {
-        localStorage.removeItem('access_token');
-        localStorage.removeItem('refresh_token');
-        this.router.navigate(['./main/login']);
-      });
+      /* this.loginService.checkIsValidToken().subscribe((data: any) => {
+         localStorage.setItem('access_token', data.access_token);
+         localStorage.setItem('refresh_token', data.refresh_token);
+       }, (e) => {
+         localStorage.removeItem('access_token');
+         localStorage.removeItem('refresh_token');
+         this.router.navigate(['./main/login']);
+       });*/
     }
 
     return throwError(error);
