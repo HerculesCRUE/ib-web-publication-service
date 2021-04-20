@@ -45,7 +45,7 @@ export class MainComponent implements OnInit {
    * Realiza el logout del usuario.
    */
   logout() {
-    // this.loginService.logoutKC();
+    this.loginService.logoutKC();
     this.loginService.logoutKeyCloak();
 
   }
