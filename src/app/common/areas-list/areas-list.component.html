@@ -43,9 +43,15 @@
                         [pageInfo]="resultObject" [dtoTypeTranslate]="'areas'" [routerFieldSecondary]="'type'"
                         (sortChanged)="allEventsFilteredSortChanged($event)">
                     </app-table-results-dto>
-                    <app-pagination [resultObject]="resultObject" (pageChanged)="showPage($event)"
-                        (sizeChanged)="changeSize($event)">
-                    </app-pagination>
+                    <div class="container-fluid app-table-results">
+                        <div class="row">
+                            <div class="col">
+                                <app-pagination [resultObject]="resultObject" (pageChanged)="showPage($event)"
+                                    (sizeChanged)="changeSize($event)">
+                                </app-pagination>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

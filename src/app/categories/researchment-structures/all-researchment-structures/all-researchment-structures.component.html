@@ -57,21 +57,24 @@
                     </div>
                     <div id="datatables-dashboard-markets_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
 
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="loader" *ngIf="!loaded"></div>
-                                <app-table-results-dto [displayPagination]="false" [findRequest]="findRequest"
-                                    *ngIf="loaded && resultObject?.content?.length !== 0"
-                                    [dtoTypeTranslate]="'researchmentStructure'" [extra]="'2'"
-                                    [data]="resultObject?.content" [pageInfo]="resultObject"
-                                    [routerFieldSecondary]="'type'" [routerField]="'id'"
-                                    (sortChanged)="allResearchmentStructuresFilteredSortChanged($event)">
-                                </app-table-results-dto>
-                                <app-pagination [resultObject]="resultObject" (pageChanged)="showPage($event)"
-                                    (sizeChanged)="changeSize($event)">
-                                </app-pagination>
+
+                        <div class="loader" *ngIf="!loaded"></div>
+                        <app-table-results-dto [displayPagination]="false" [findRequest]="findRequest"
+                            *ngIf="loaded && resultObject?.content?.length !== 0"
+                            [dtoTypeTranslate]="'researchmentStructure'" [extra]="'2'" [data]="resultObject?.content"
+                            [pageInfo]="resultObject" [routerFieldSecondary]="'type'" [routerField]="'id'"
+                            (sortChanged)="allResearchmentStructuresFilteredSortChanged($event)">
+                        </app-table-results-dto>
+                        <div class="container-fluid app-table-results">
+                            <div class="row">
+                                <div class="col">
+                                    <app-pagination [resultObject]="resultObject" (pageChanged)="showPage($event)"
+                                        (sizeChanged)="changeSize($event)">
+                                    </app-pagination>
+                                </div>
                             </div>
                         </div>
+
 
                     </div>
                 </div>
