@@ -65,7 +65,7 @@
                         [ngClass]="{'show': activeTab === 'academic-publications', 'active': activeTab === 'academic-publications' }"
                         id="academic-publications" role="tabpanel" aria-labelledby="academic-publications-tab">
                         <app-documents [idPrefix]="'academic'" [url]="'../document'"
-                            [selectDocumentType]="[{ name: 'book', value: 'Books' }, { name: 'articles', value: 'Articles' }]"
+                            [selectDocumentType]="[{ name: 'master-thesis', value: 'Master-Thesis' }, { name: 'doctoral-thesis', value: 'Doctoral-Thesis' }]"
                             [isTreeVisible]="false" [organizationId]="id"
                             [filterDocumentType]="['Master-Thesis', 'Doctoral-Thesis']">
                         </app-documents>
