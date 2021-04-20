@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HelperGraphics } from 'src/app/_helpers/helperGraphics';
 import { FindRequest } from 'src/app/_helpers/search';
 import { Helper } from 'src/app/_helpers/utils';
+import { Graphic } from 'src/app/_models/graphic';
 import { GraphicService } from 'src/app/_services/graphic.service';
 
 
@@ -26,13 +27,6 @@ export class AreasComponent implements OnInit {
    * @memberof AreasComponent
    */
   echartOptions: any;
-  /**
-   *
-   *
-   * @type {*}
-   * @memberof AreasComponent
-   */
-  echartOptions2: any;
   /**
    *
    *  get years for select
@@ -72,45 +66,27 @@ export class AreasComponent implements OnInit {
     this.secondYearSelected = new Date().getFullYear();
     this.graphicService.projectAreasPerYear(this.yearSelected).subscribe(data => {
       this.loaded = true;
-      this.echartOptions = HelperGraphics.configChartPie(data, '');
-    });
-    this.graphicService.AreasPerYear(this.secondYearSelected).subscribe(data => {
-      this.loaded2 = true;
-      this.echartOptions2 = HelperGraphics.configChartTree(data);
+      this.echartOptions = HelperGraphics.configChartPie(this.transformData(data), 'Num, de grupos de investigación por area');
     });
 
+
   }
 
+  transformData(data: Array<Graphic>) {
 
-  /**
-   *
-   *
-   * @memberof AreasComponent
-   */
-  changeYearChart() {
-    this.loaded = false;
-    setTimeout(() => {
-      this.graphicService.projectAreasPerYear(this.yearSelected).subscribe(data => {
-        this.loaded = true;
-        this.echartOptions = HelperGraphics.configChartPie(data, '');
+    const result = [];
+    if (data.length > 1) {
+      data.forEach(element => {
+        result.push({ name: element.hasKnowledgeAreatitle, value: element.count });
       });
-    }, 10);
+    }
+    return {
+      seriesData: result
+    };
 
   }
 
-  /**
-   *
-   *
-   * @memberof AreasComponent
-   */
-  changeYearSquareChart() {
-    this.loaded2 = false;
-    setTimeout(() => {
-      this.graphicService.AreasPerYear(this.secondYearSelected).subscribe(data => {
-        this.loaded2 = true;
-        this.echartOptions2 = HelperGraphics.configChartTree(data);
-      });
-    }, 10);
-  }
+
+
 
 }

@@ -17,4 +17,5 @@ export class Graphic {
 
     modality: string;
     type: string;
+    hasKnowledgeAreatitle: string;
 }

@@ -120,7 +120,7 @@ export class GraphicService extends AbstractService {
         let parameters = new HttpParams();
         parameters = Helper.addParam(parameters, 'year', year);
         return this.httpClient
-            .get(Helper.getUrl('/areas/projectArea'), {
+            .get(Helper.getUrl('/areas/researchGroupByArea'), {
                 params: parameters
             }).pipe(
                 catchError(this.handleError)
