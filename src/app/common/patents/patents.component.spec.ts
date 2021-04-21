@@ -2,8 +2,10 @@
 import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { PageRequest } from 'src/app/_helpers/search';
 import { TestingHelper } from 'src/app/_helpers/testing.spec';
+import { AreasService } from 'src/app/_services/areas.service';
 import { GraphicService } from 'src/app/_services/graphic.service';
 import { PatentService } from 'src/app/_services/patent.service';
+import { MockAreaservice } from 'src/app/_services/_testingServices/mockAreas.service';
 import { MockGraphicService } from 'src/app/_services/_testingServices/mockGraphic.service';
 import { MockPatentService } from 'src/app/_services/_testingServices/mockPatent.service';
 
@@ -19,7 +21,9 @@ describe('PatentsComponent', () => {
       .compileComponents();
     TestBed.configureTestingModule({
       providers: [{ provide: PatentService, useClass: MockPatentService },
-      { provide: GraphicService, useClass: MockGraphicService }]
+      { provide: GraphicService, useClass: MockGraphicService },
+      { provide: AreasService, useClass: MockAreaservice }
+      ]
     }).compileComponents();
   }));
 

@@ -8,6 +8,8 @@ import { FindRequest, PageRequest } from 'src/app/_helpers/search';
 import { GraphicService } from 'src/app/_services/graphic.service';
 import { MockGraphicService } from 'src/app/_services/_testingServices/mockGraphic.service';
 import { Observable, of } from 'rxjs';
+import { AreasService } from 'src/app/_services/areas.service';
+import { MockAreaservice } from 'src/app/_services/_testingServices/mockAreas.service';
 
 describe('ProyectsComponent', () => {
   let component: ProyectsComponent;
@@ -19,7 +21,8 @@ describe('ProyectsComponent', () => {
       .compileComponents();
     TestBed.configureTestingModule({
       providers: [{ provide: ProjectService, useClass: MockProjectService },
-      { provide: GraphicService, useClass: MockGraphicService }]
+      { provide: GraphicService, useClass: MockGraphicService },
+      { provide: AreasService, useClass: MockAreaservice }]
     }).compileComponents();
   }));
 

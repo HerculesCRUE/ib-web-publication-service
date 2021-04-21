@@ -2,7 +2,9 @@ import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core
 import { FindRequest, PageRequest } from 'src/app/_helpers/search';
 import { TestingHelper } from 'src/app/_helpers/testing.spec';
 import { AcademicPublication } from 'src/app/_models/academicPublication';
+import { AreasService } from 'src/app/_services/areas.service';
 import { DocumentService } from 'src/app/_services/document.service';
+import { MockAreaservice } from 'src/app/_services/_testingServices/mockAreas.service';
 import { MockDocumentService } from 'src/app/_services/_testingServices/mockDocument.service';
 
 import { DocumentsComponent } from './documents.component';
@@ -15,7 +17,8 @@ describe('DocumentsComponent', () => {
     TestingHelper.configureTest()
       .compileComponents();
     TestBed.configureTestingModule({
-      providers: [{ provide: DocumentService, useClass: MockDocumentService }]
+      providers: [{ provide: DocumentService, useClass: MockDocumentService },
+      { provide: AreasService, useClass: MockAreaservice }]
     }).compileComponents();
   }));
 

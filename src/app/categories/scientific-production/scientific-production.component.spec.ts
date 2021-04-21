@@ -1,7 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { TestingHelper } from 'src/app/_helpers/testing.spec';
+import { AreasService } from 'src/app/_services/areas.service';
 import { DocumentService } from 'src/app/_services/document.service';
 import { EventsService } from 'src/app/_services/events.service';
+import { MockAreaservice } from 'src/app/_services/_testingServices/mockAreas.service';
 import { MockDocumentService } from 'src/app/_services/_testingServices/mockDocument.service';
 import { MockEventsService } from 'src/app/_services/_testingServices/mockEvents.service';
 
@@ -16,7 +18,8 @@ describe('ScientificProductionComponent', () => {
       .compileComponents();
     TestBed.configureTestingModule({
       providers: [{ provide: DocumentService, useClass: MockDocumentService },
-      { provide: EventsService, useClass: MockEventsService }]
+      { provide: EventsService, useClass: MockEventsService },
+      { provide: AreasService, useClass: MockAreaservice }]
     }).compileComponents();
   }));
 

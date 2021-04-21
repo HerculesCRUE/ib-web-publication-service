@@ -2,12 +2,14 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TestingHelper } from 'src/app/_helpers/testing.spec';
+import { AreasService } from 'src/app/_services/areas.service';
 import { DocumentService } from 'src/app/_services/document.service';
 import { GraphicService } from 'src/app/_services/graphic.service';
 import { PatentService } from 'src/app/_services/patent.service';
 import { ProjectService } from 'src/app/_services/project.service';
 import { ResearchStaffService } from 'src/app/_services/research-staff.service';
 import { ResearchmentStructuresService } from 'src/app/_services/researchment.structures.service';
+import { MockAreaservice } from 'src/app/_services/_testingServices/mockAreas.service';
 import { MockDocumentService } from 'src/app/_services/_testingServices/mockDocument.service';
 import { MockGraphicService } from 'src/app/_services/_testingServices/mockGraphic.service';
 import { MockPatentService } from 'src/app/_services/_testingServices/mockPatent.service';
@@ -30,7 +32,8 @@ describe('ResearchmentStructuresDetailComponent', () => {
       { provide: PatentService, useClass: MockPatentService },
       { provide: ResearchStaffService, useClass: MockResearchStaffService },
       { provide: GraphicService, useClass: MockGraphicService },
-      { provide: ResearchmentStructuresService, useClass: MockResearchmentStructuresService }]
+      { provide: ResearchmentStructuresService, useClass: MockResearchmentStructuresService },
+      { provide: AreasService, useClass: MockAreaservice }]
     }).compileComponents();
   }));
 

@@ -6,7 +6,9 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { TranslateModule } from '@ngx-translate/core';
 import { ToastrModule } from 'ngx-toastr';
 import { TestingHelper } from 'src/app/_helpers/testing.spec';
+import { AreasService } from 'src/app/_services/areas.service';
 import { ResearchmentStructuresService } from 'src/app/_services/researchment.structures.service';
+import { MockAreaservice } from 'src/app/_services/_testingServices/mockAreas.service';
 import { MockResearchmentStructuresService } from 'src/app/_services/_testingServices/mockResearchmentStructuresService.service';
 
 import { AllResearchmentStructuresComponent } from './all-researchment-structures.component';
@@ -19,7 +21,8 @@ describe('AllResearchmentStructuresComponent', () => {
     TestingHelper.configureTest()
       .compileComponents();
     TestBed.configureTestingModule({
-      providers: [{ provide: ResearchmentStructuresService, useClass: MockResearchmentStructuresService }]
+      providers: [{ provide: ResearchmentStructuresService, useClass: MockResearchmentStructuresService },
+      { provide: AreasService, useClass: MockAreaservice }]
     }).compileComponents();
   }));
 

@@ -1,7 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { TestingHelper } from 'src/app/_helpers/testing.spec';
+import { AreasService } from 'src/app/_services/areas.service';
 import { GraphicService } from 'src/app/_services/graphic.service';
 import { ResearchStaffService } from 'src/app/_services/research-staff.service';
+import { MockAreaservice } from 'src/app/_services/_testingServices/mockAreas.service';
 import { MockGraphicService } from 'src/app/_services/_testingServices/mockGraphic.service';
 import { MockResearchStaffService } from 'src/app/_services/_testingServices/mockResearchStaff.service';
 
@@ -18,6 +20,7 @@ describe('ScientistSearchComponent', () => {
     TestBed.configureTestingModule({
       providers: [{ provide: ResearchStaffService, useClass: MockResearchStaffService },
       { provide: GraphicService, useClass: MockGraphicService },
+      { provide: AreasService, useClass: MockAreaservice }
       ]
     }).compileComponents();
   }));
