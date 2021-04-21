@@ -25,6 +25,30 @@
                                 {{'scientist.acction-inves' | translate}}</a>
                         </li>
                         <li class="nav-item" role="presentation">
+                            <a class="nav-link" [ngClass]="{'active': activeTab === 'prod-scientist' }"
+                                id="prod-scientist-tab" (click)="changeTab('prod-scientist')" data-bs-toggle="tab"
+                                href="JavaScript:void(0)" role="tab" aria-controls="prod-scientist"
+                                [attr.aria-selected]="activeTab === 'prod-scientist'">{{'researchmentStructure.prod-scientist'
+                                |
+                                translate}}</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" [ngClass]="{'active': activeTab === 'academic-publications' }"
+                                id="academic-publications-tab" (click)="changeTab('academic-publications')"
+                                data-bs-toggle="tab" href="JavaScript:void(0)" role="tab"
+                                aria-controls="academic-publications"
+                                [attr.aria-selected]="activeTab === 'academic-publications'">{{'scientific-production.academic-publications'
+                                | translate}}</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link" [ngClass]="{'active': activeTab === 'projects' }" id="projects-atb"
+                                (click)="changeTab('projects')" data-bs-toggle="tab" href="JavaScript:void(0)"
+                                role="tab" aria-controls="projects"
+                                [attr.aria-selected]="activeTab === 'projects'">{{'researchmentStructure.projects'
+                                |
+                                translate}}</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
                             <a class="nav-link" [ngClass]="{'active': activeTab === 'congress-events' }"
                                 id="congress-events-tab" (click)="changeTab('congress-events')" data-bs-toggle="tab"
                                 href="JavaScript:void(0)" role="tab" aria-controls="congress-events"
@@ -39,13 +63,7 @@
                                 |
                                 translate}}</a>
                         </li>
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link" [ngClass]="{'active': activeTab === 'trajectory' }" id="trajectory-tab"
-                                (click)="changeTab('trajectory')" data-bs-toggle="tab" href="JavaScript:void(0)"
-                                role="tab" aria-controls="trajectory"
-                                [attr.aria-selected]="activeTab === 'trajectory'">{{'scientist.trajectory' |
-                                translate}}</a>
-                        </li>
+
                     </ul>
                 </div>
                 <div id="datatables-dashboard-markets_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
@@ -72,16 +90,6 @@
                                             </div>
                                             <div class="card flex-fill">
                                                 <div class="card-header">
-                                                    <h1 class="legend">{{'scientist.prod-scientist' | translate}}</h1>
-                                                </div>
-                                                <div id="datatables-dashboard-markets_wrapper"
-                                                    class="dataTables_wrapper dt-bootstrap4 no-footer p-3">
-                                                    <app-documents [authorId]="scientificId" [idPrefix]="'dos'">
-                                                    </app-documents>
-                                                </div>
-                                            </div>
-                                            <div class="card flex-fill">
-                                                <div class="card-header">
                                                     <h1 class="legend">{{'scientist.reg-documents' | translate}}</h1>
                                                 </div>
                                                 <div id="datatables-dashboard-markets_wrapper"
@@ -95,6 +103,33 @@
                                         </div>
                                     </div>
 
+                                </div>
+                                <div class="tab-pane fade"
+                                    [ngClass]="{'show': activeTab === 'prod-scientist', 'active': activeTab === 'prod-scientist' }"
+                                    id="prod-scientist" role="tabpanel" aria-labelledby="prod-scientist-tab">
+                                    <app-documents [showOnlyYEar]="true" [idPrefix]="'document'"
+                                        [url]="'../../document'" [routerFieldSecondary]="'type'"
+                                        [selectDocumentType]="[{ name: 'book', value: 'Book' }, { name: 'articles', value: 'Article' }]"
+                                        [isTreeVisible]="false" [organizationId]="scientificId"
+                                        [filterDocumentType]="['Article', 'Book']">
+                                    </app-documents>
+                                </div>
+                                <div class="tab-pane fade"
+                                    [ngClass]="{'show': activeTab === 'academic-publications', 'active': activeTab === 'academic-publications' }"
+                                    id="academic-publications" role="tabpanel"
+                                    aria-labelledby="academic-publications-tab">
+                                    <app-documents [idPrefix]="'academic'" [url]="'../../document'"
+                                        [selectDocumentType]="[{ name: 'master-thesis', value: 'Master-Thesis' }, { name: 'doctoral-thesis', value: 'Doctoral-Thesis' }]"
+                                        [isTreeVisible]="false" [organizationId]="scientificId"
+                                        [routerFieldSecondary]="'type'"
+                                        [filterDocumentType]="['Master-Thesis', 'Doctoral-Thesis']">
+                                    </app-documents>
+                                </div>
+                                <div class="tab-pane fade" id="projects"
+                                    [ngClass]="{'show': activeTab === 'projects', 'active': activeTab === 'projects' }"
+                                    role="tabpanel" aria-labelledby="projects-tab">
+                                    <app-proyects [url]="'../../project'" [idPrefix]="'projects'" [chartType]="'bar'">
+                                    </app-proyects>
                                 </div>
                                 <div class="tab-pane fade"
                                     [ngClass]="{'show': activeTab === 'congress-events', 'active': activeTab === 'congress-events' }"
@@ -125,48 +160,7 @@
                                     </div>
 
                                 </div>
-                                <div class="tab-pane fade" id="trajectory"
-                                    [ngClass]="{'show': activeTab === 'trajectory', 'active': activeTab === 'trajectory' }"
-                                    role="tabpanel" aria-labelledby="trajectory-tab">
-                                    <div class="card flex-fill">
-                                        <div class="card-header">
-                                            <h1 class="legend">{{'scientist.scientific-production-indicators' |
-                                                translate}}
-                                            </h1>
-                                        </div>
-                                        <div id="datatables-dashboard-markets_wrapper"
-                                            class="dataTables_wrapper dt-bootstrap4 no-footer p-3">
-                                            <p><strong>{{'scientist.times-quoted' | translate}}: </strong>71</p>
-                                            <p><strong><em class="oi oi-info" placement="top"
-                                                        ngbTooltip="{{'tooltip.hIndex' | translate}}"></em>
-                                                    {{'scientist.h-index' | translate}}:
-                                                </strong>12</p>
-                                            <p><strong>{{'scientist.apto' | translate}}: </strong>Evalución sobre el
-                                                sexenio de
-                                                tranferencia
-                                                del
-                                                conocimiento e innovación</p>
-                                            <div class="card flex-fill">
-                                                <div class="card-header">
-                                                    <h1 class="legend">{{'scientist.trajectory-by-timeline' |
-                                                        translate}}</h1>
-                                                </div>
-                                                <div id="datatables-dashboard-markets_wrapper"
-                                                    class="dataTables_wrapper dt-bootstrap4 no-footer p-3">
-                                                    <div style="min-width: 600px; width:100%; height:450px" echarts
-                                                        [loading]="loadingData" [options]="echartOptions"
-                                                        class="demo-chart">
-                                                    </div>
-                                                </div>
-                                            </div>
 
-
-
-                                        </div>
-                                    </div>
-
-
-                                </div>
                             </div>
 
                         </div>
