@@ -47,12 +47,40 @@ export class NewTreeComponent implements OnInit {
    * Creates an instance of NewTreeComponent.
    * @memberof NewTreeComponent
    */
-  constructor() { }
+  constructor(private areasService: AreasService) { }
 
   ngOnInit(): void {
-    this.data = HelperGraphics.returnDataForTree(this.treeType);
+    this.areasService.getAll().subscribe(data => {
+      this.data = this.returnCorrectData(data);
+      setTimeout(() => {
+        this.loaded = true;
+      }, 300);
+
+    });
+    // this.data = HelperGraphics.returnDataForTree(this.treeType);
   }
 
+
+  returnCorrectData(data) {
+    const result = {
+      name: 'Áreas',
+      children: [
+
+      ]
+    };
+
+    data.forEach(element => {
+      result.children.push({
+        name: element.title,
+        value: element.id,
+        selected: false,
+        children: []
+      });
+    });
+
+    return result;
+
+  }
   /**
    *
    *

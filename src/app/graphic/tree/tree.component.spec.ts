@@ -1,5 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { TestingHelper } from 'src/app/_helpers/testing.spec';
+import { AreasService } from 'src/app/_services/areas.service';
+import { MockAreaservice } from 'src/app/_services/_testingServices/mockAreas.service';
 
 import { TreeComponent } from './tree.component';
 
@@ -10,6 +12,9 @@ describe('TreeComponent', () => {
   beforeEach(async(() => {
     TestingHelper.configureTest()
       .compileComponents();
+    TestBed.configureTestingModule({
+      providers: [{ provide: AreasService, useClass: MockAreaservice }]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

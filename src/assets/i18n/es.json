@@ -318,7 +318,7 @@
     }
   },
   "patent": {
-    "area": "Área",
+    "area": "Áreas",
     "dateIssued": "Fecha de publicación",
     "doi": "DOI",
     "endDate": "Fecha fin",
@@ -387,7 +387,7 @@
   },
   "event": {
     "id": "Identificador",
-    "area": "Área",
+    "area": "Áreas",
     "location": "Ubicación",
     "date-from": "Fecha de inicio",
     "date-to": "Fecha de fin",

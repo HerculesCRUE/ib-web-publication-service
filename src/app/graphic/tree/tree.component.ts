@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
 import { NgxEchartsDirective } from 'ngx-echarts';
 import { HelperGraphics } from 'src/app/_helpers/helperGraphics';
+import { AreasService } from 'src/app/_services/areas.service';
 
 /**
  *
@@ -91,46 +92,70 @@ export class TreeComponent implements OnInit {
    * @memberof TreeComponent
    */
   level = 0;
-  constructor() {
+  loaded;
+  constructor(private areasService: AreasService) {
   }
 
   ngOnInit(): void {
-
-    this.data = HelperGraphics.returnDataForTree(this.treeType);
-    this.filterDate = this.data;
-    this.options = {
-      tooltip: {
-        trigger: 'item',
-        triggerOn: 'mousemove',
-      },
-      series: [
-        {
-          type: 'tree',
-          data: [this.data],
-          top: '1%',
-          left: '7%',
-          bottom: '1%',
-          right: '20%',
-          symbolSize: 7,
-          label: {
-            position: 'left',
-            verticalAlign: 'middle',
-            align: 'right',
-            fontSize: 9,
-          },
-          leaves: {
-            label: {
-              position: 'right',
-              verticalAlign: 'middle',
-              align: 'left',
-            },
-          },
-          expandAndCollapse: true,
-          animationDuration: 550,
-          animationDurationUpdate: 750,
+    this.areasService.getAll().subscribe(data => {
+      this.data = this.returnCorrectData(data);
+      this.loaded = true;
+      this.filterDate = this.data;
+      this.options = {
+        tooltip: {
+          trigger: 'item',
+          triggerOn: 'mousemove',
         },
-      ],
+        series: [
+          {
+            type: 'tree',
+            data: [this.data],
+            top: '1%',
+            left: '7%',
+            bottom: '1%',
+            right: '20%',
+            symbolSize: 7,
+            label: {
+              position: 'left',
+              verticalAlign: 'middle',
+              align: 'right',
+              fontSize: 9,
+            },
+            leaves: {
+              label: {
+                position: 'right',
+                verticalAlign: 'middle',
+                align: 'left',
+              },
+            },
+            expandAndCollapse: true,
+            animationDuration: 550,
+            animationDurationUpdate: 750,
+          },
+        ],
+      };
+    });
+    // this.data = HelperGraphics.returnDataForTree(this.treeType);
+
+
+  }
+
+  returnCorrectData(data) {
+    const result = {
+      name: 'Áreas',
+      children: []
     };
+
+    data.forEach(element => {
+      result.children.push({
+        name: element.title,
+        value: element.id,
+        selected: false,
+        children: []
+      });
+    });
+
+    return result;
 
   }
   /**
