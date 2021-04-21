@@ -68,7 +68,7 @@ export class NewTreeComponent implements OnInit {
 
       ]
     };
-    if (data && data.lenght > 0) {
+    if (data && data.length > 0) {
       data.forEach(element => {
         result.children.push({
           name: element.title,

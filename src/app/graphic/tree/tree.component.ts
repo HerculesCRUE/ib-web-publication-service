@@ -145,7 +145,7 @@ export class TreeComponent implements OnInit {
       name: 'Áreas',
       children: []
     };
-    if (data && data.lenght > 0) {
+    if (data && data.length > 0) {
       data.forEach(element => {
         result.children.push({
           name: element.title,
