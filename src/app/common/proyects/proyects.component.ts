@@ -33,6 +33,7 @@ export class ProyectsComponent extends PaginatedSearchComponent<Project> impleme
    */
   @Input() idPrefix: string;
   @Input() url = './project/';
+  @Input() authorId: string;
   /**
    *
    *
@@ -163,6 +164,9 @@ export class ProyectsComponent extends PaginatedSearchComponent<Project> impleme
   }
 
   protected findInternal(findRequest: FindRequest): Observable<Page<Project>> {
+    if (this.authorId) {
+      this.findRequest.filter.authorId = this.authorId;
+    }
 
     const page: Page<Project> = new Page();
     const result = this.projectService.find(findRequest).pipe(

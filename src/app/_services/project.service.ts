@@ -42,6 +42,7 @@ export class ProjectService extends AbstractService {
         parameters = Helper.addParam(parameters, 'startDate', findRequest.filter.start);
         parameters = Helper.addParam(parameters, 'title', findRequest.filter.name);
         parameters = Helper.addParam(parameters, 'id', findRequest.filter.id);
+        parameters = Helper.addParam(parameters, 'authorId', findRequest.filter.authorId);
         // Pagination params
         parameters = Helper.addPaginationParams(parameters, findRequest.pageRequest);
 
