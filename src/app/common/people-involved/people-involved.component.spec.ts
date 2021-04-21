@@ -1,7 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { TestingHelper } from 'src/app/_helpers/testing.spec';
-import { ResearchStaffService } from 'src/app/_services/research-staff.service';
-import { MockResearchStaffService } from 'src/app/_services/_testingServices/mockResearchStaff.service';
+import { ParticipantService } from 'src/app/_services/participant.service';
+import { MockParticipantService } from 'src/app/_services/_testingServices/mockParticipant.service';
+
 
 import { PeopleInvolvedComponent } from './people-involved.component';
 
@@ -14,7 +15,7 @@ describe('PeopleInvolvedComponent', () => {
       .compileComponents();
     TestBed.configureTestingModule({
       providers: [
-        { provide: ResearchStaffService, useClass: MockResearchStaffService }]
+        { provide: ParticipantService, useClass: MockParticipantService }]
     }).compileComponents();
   }));
 

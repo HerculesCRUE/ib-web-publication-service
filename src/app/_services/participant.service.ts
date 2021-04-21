@@ -149,4 +149,20 @@ export class ParticipantService extends AbstractService {
             );
     }
 
+    findPeopleInvolvedInProject(findRequest: FindRequest, projectId: string): Observable<Page<Person>> {
+        // Filter params
+        let parameters = new HttpParams();
+        parameters = Helper.addParam(parameters, 'title', findRequest.filter.title);
+        // Pagination params
+        parameters = Helper.addPaginationParams(parameters, findRequest.pageRequest);
+        parameters = Helper.addParam(parameters, 'projectId', projectId);
+
+        return this.httpClient
+            .get(Helper.getUrl('/person/byproject'), {
+                params: parameters
+            }).pipe(
+                catchError(this.handleError)
+            );
+    }
+
 }

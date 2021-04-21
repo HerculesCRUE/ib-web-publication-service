@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
@@ -6,7 +6,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Direction, FindRequest, Order, Page, PageRequest, PaginatedSearchComponent } from 'src/app/_helpers/search';
 import { Person } from 'src/app/_models/person';
-import { ResearchStaffService } from 'src/app/_services/research-staff.service';
+import { ParticipantService } from 'src/app/_services/participant.service';
 
 @Component({
   selector: 'app-people-involved',
@@ -14,13 +14,15 @@ import { ResearchStaffService } from 'src/app/_services/research-staff.service';
   styleUrls: ['./people-involved.component.css']
 })
 export class PeopleInvolvedComponent extends PaginatedSearchComponent<Person> implements OnInit {
+  @Input() projectId: string;
   loaded: boolean;
   findRequest: FindRequest = new FindRequest();
+
   constructor(
     router: Router,
     translate: TranslateService,
     toastr: ToastrService,
-    private researchStaffService: ResearchStaffService
+    private participantService: ParticipantService
   ) {
     super(router, translate, toastr);
   }
@@ -30,7 +32,7 @@ export class PeopleInvolvedComponent extends PaginatedSearchComponent<Person> im
 
   protected findInternal(findRequest: FindRequest): Observable<Page<Person>> {
     const page: Page<Person> = new Page();
-    const result = this.researchStaffService.find(findRequest).pipe(
+    const result = this.participantService.findPeopleInvolvedInProject(findRequest, this.projectId).pipe(
       map((x) => {
         this.loaded = true;
         return x;
@@ -56,7 +58,7 @@ export class PeopleInvolvedComponent extends PaginatedSearchComponent<Person> im
   allParticipantsFilteredSortChanged(pageRequest: PageRequest) {
     this.findRequest.pageRequest.property = pageRequest.property;
     this.findRequest.pageRequest.direction = pageRequest.direction;
-    this.researchStaffService.find(this.findRequest).subscribe((data) => {
+    this.participantService.findPeopleInvolvedInProject(this.findRequest, this.projectId).subscribe((data) => {
       this.resultObject = data;
       this.loaded = true;
     });

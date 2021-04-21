@@ -99,6 +99,7 @@ describe('ProjectsDetailComponent', () => {
           find: () => of(page),
           findPerson: () => of(page),
           findParticipantsByProject: () => of(page),
+          findPeopleInvolvedInProject: () => of(page),
         }
       }, { provide: ResearchStaffService, useClass: MockResearchStaffService },
       ]
