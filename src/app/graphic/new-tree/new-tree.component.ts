@@ -68,15 +68,17 @@ export class NewTreeComponent implements OnInit {
 
       ]
     };
-
-    data.forEach(element => {
-      result.children.push({
-        name: element.title,
-        value: element.id,
-        selected: false,
-        children: []
+    if (data && data.lenght > 0) {
+      data.forEach(element => {
+        result.children.push({
+          name: element.title,
+          value: element.id,
+          selected: false,
+          children: []
+        });
       });
-    });
+    }
+
 
     return result;
 
