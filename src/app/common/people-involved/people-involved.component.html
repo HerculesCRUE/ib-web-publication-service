@@ -1,58 +1,63 @@
-<div class="row">
+<form class="form-horizontal " (ngSubmit)="f.form.valid" #f="ngForm" (keydown.enter)="$event.preventDefault()">
 
-    <div class="col-12">
-        <div class="card flex-fill">
-            <div class="card-header">
-                <div class="row">
-                    <div class="col-12">
-                        <h1 class="legend">{{'participant.people-involved' | translate}}</h1>
-                    </div>
-                </div>
-                <div class="container-fluid">
-                    <div class="row justify-content-end">
+    <div class="row">
 
-                        <div class="input-group col-md-4" role="search">
-                            <input class="form-control py-2 border-right-0 border" type="search" name="search"
-                                #search="ngModel" placeholder="{{'form.search-by-title' | translate }}"
-                                [(ngModel)]="findRequest.filter.name">
-                            <span class="input-group-append">
-                                <button [attr.aria-label]="'form.search-by-name' | translate" role="button"
-                                    aria-pressed="false" class="btn btn-outline-secondary border-left-0 border"
-                                    type="button">
-                                    <em class="oi oi-magnifying-glass "></em>
-                                </button>
-                            </span>
-                        </div>
-                        <div class="input-group col-md-2 text-right">
-                            <button id="clean" [attr.aria-label]="'form.clean' | translate " role="button"
-                                aria-pressed="false" class="btn btn-secondary">{{'form.clean' |
-                                translate }}</button>
-                        </div>
-                    </div>
-                </div>
-                <h5 class="card-title mb-0" *ngIf="loaded && resultObject?.content?.length === 0">
-                    {{'form.no-result' | translate}}</h5>
-                <h5 class="card-title mb-0" *ngIf="loaded && resultObject?.content?.length !== 0">
-                    {{'form.results-amount' | translate}} {{resultObject?.totalElements}}</h5>
-            </div>
-            <div id="datatables-dashboard-markets_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-                <div class="loader" *ngIf="!loaded"></div>
-                <app-table-results-dto [findRequest]="findRequest" [displayPagination]="false"
-                    *ngIf="loaded && resultObject?.content?.length !== 0" [dtoTypeTranslate]="'scientist'" [extra]="'2'"
-                    [data]="resultObject?.content" [pageInfo]="resultObject"
-                    (sortChanged)="allParticipantsFilteredSortChanged($event)">
-                </app-table-results-dto>
-                <div class="container-fluid app-table-results">
+        <div class="col-12">
+            <div class="card flex-fill">
+                <div class="card-header">
                     <div class="row">
-                        <div class="col">
-                            <app-pagination [resultObject]="resultObject" (pageChanged)="showPage($event)"
-                                (sizeChanged)="changeSize($event)">
-                            </app-pagination>
+                        <div class="col-12">
+                            <h1 class="legend">{{'participant.people-involved' | translate}}</h1>
+                        </div>
+                    </div>
+                    <div class="container-fluid">
+                        <div class="row justify-content-end">
+
+                            <div class="input-group col-md-4" role="search">
+                                <input class="form-control py-2 border-right-0 border" type="search" name="search"
+                                    #search="ngModel" placeholder="{{'form.search-by-title' | translate }}"
+                                    [(ngModel)]="findRequest.filter.name" (keyup.enter)="changePeopleInvolvedProyect()">
+                                <span class="input-group-append">
+                                    <button (click)="changePeopleInvolvedProyect()"
+                                        [attr.aria-label]="'form.search-by-name' | translate" role="button"
+                                        aria-pressed="false" class="btn btn-outline-secondary border-left-0 border"
+                                        type="button">
+                                        <em class="oi oi-magnifying-glass "></em>
+                                    </button>
+                                </span>
+                            </div>
+                            <div class="input-group col-md-2 text-right">
+                                <button id="clean" [attr.aria-label]="'form.clean' | translate " role="button"
+                                    aria-pressed="false" class="btn btn-secondary"
+                                    (click)="f.resetForm();">{{'form.clean' |
+                                    translate }}</button>
+                            </div>
+                        </div>
+                    </div>
+                    <h5 class="card-title mb-0" *ngIf="loaded && resultObject?.content?.length === 0">
+                        {{'form.no-result' | translate}}</h5>
+                    <h5 class="card-title mb-0" *ngIf="loaded && resultObject?.content?.length !== 0">
+                        {{'form.results-amount' | translate}} {{resultObject?.totalElements}}</h5>
+                </div>
+                <div id="datatables-dashboard-markets_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                    <div class="loader" *ngIf="!loaded"></div>
+                    <app-table-results-dto [findRequest]="findRequest" [displayPagination]="false"
+                        *ngIf="loaded && resultObject?.content?.length !== 0" [dtoTypeTranslate]="'scientist'"
+                        [extra]="'2'" [data]="resultObject?.content" [pageInfo]="resultObject"
+                        (sortChanged)="allParticipantsFilteredSortChanged($event)">
+                    </app-table-results-dto>
+                    <div class="container-fluid app-table-results">
+                        <div class="row">
+                            <div class="col">
+                                <app-pagination [resultObject]="resultObject" (pageChanged)="showPage($event)"
+                                    (sizeChanged)="changeSize($event)">
+                                </app-pagination>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
     </div>
-</div>
+</form>

@@ -64,5 +64,14 @@ export class PeopleInvolvedComponent extends PaginatedSearchComponent<Person> im
     });
   }
 
+  changePeopleInvolvedProyect() {
+    this.participantService.findPeopleInvolvedInProject(this.findRequest, this.projectId).subscribe((data) => {
+      this.resultObject = data;
+      this.loaded = true;
+    }, () => {
+      this.loaded = true;
+    });
+  }
+
 
 }
