@@ -7,6 +7,7 @@ import { catchError, map, timeout } from 'rxjs/operators';
 import { HelperGraphics } from 'src/app/_helpers/helperGraphics';
 import { Direction, FindRequest, Order, Page, PageRequest, PaginatedSearchComponent } from 'src/app/_helpers/search';
 import { Helper } from 'src/app/_helpers/utils';
+import { Graphic } from 'src/app/_models/graphic';
 import { Person } from 'src/app/_models/person';
 import { PersonGraphic } from 'src/app/_models/personGraphic';
 import { SparqlResults } from 'src/app/_models/sparql';
@@ -117,6 +118,9 @@ export class ScientistSearchComponent extends PaginatedSearchComponent<Person> i
     });
   }
 
+
+
+
   protected findInternal(findRequest: FindRequest): Observable<Page<Person>> {
     const page: Page<Person> = new Page();
     const result = this.researchStaffServices.find(findRequest).pipe(
@@ -148,7 +152,7 @@ export class ScientistSearchComponent extends PaginatedSearchComponent<Person> i
 
     if (data.length > 1) {
       data.forEach(element => {
-        result.push({ name: element.subjectArea, value: element.count });
+        result.push({ name: element.inheresInsubjectArea, value: element.count });
       });
     }
 

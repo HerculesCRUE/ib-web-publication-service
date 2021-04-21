@@ -5,6 +5,6 @@
  * @class PersonGraphic
  */
 export class PersonGraphic {
-    subjectArea: string;
+    inheresInsubjectArea: string;
     count: string;
 }
