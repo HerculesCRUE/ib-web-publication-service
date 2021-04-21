@@ -79,7 +79,8 @@
                     <div class="tab-pane fade" id="patents"
                         [ngClass]="{'show': activeTab === 'patents', 'active': activeTab === 'patents' }"
                         role="tabpanel" aria-labelledby="patents-tab">
-                        <app-patents [organizationId]="id" [url]="'../../../patent'" [idPrefix]="'patents'">
+                        <app-patents [isChatHiden]="true" [organizationId]="id" [url]="'../../../patent'"
+                            [idPrefix]="'patents'">
                         </app-patents>
                     </div>
                 </div>
