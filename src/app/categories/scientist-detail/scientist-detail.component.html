@@ -110,7 +110,7 @@
                                     <app-documents [showOnlyYEar]="true" [idPrefix]="'document'"
                                         [url]="'../../document'" [routerFieldSecondary]="'type'"
                                         [selectDocumentType]="[{ name: 'book', value: 'Book' }, { name: 'articles', value: 'Article' }]"
-                                        [isTreeVisible]="false" [organizationId]="scientificId"
+                                        [isTreeVisible]="false" [authorId]="scientificId"
                                         [filterDocumentType]="['Article', 'Book']">
                                     </app-documents>
                                 </div>
@@ -120,7 +120,7 @@
                                     aria-labelledby="academic-publications-tab">
                                     <app-documents [idPrefix]="'academic'" [url]="'../../document'"
                                         [selectDocumentType]="[{ name: 'master-thesis', value: 'Master-Thesis' }, { name: 'doctoral-thesis', value: 'Doctoral-Thesis' }]"
-                                        [isTreeVisible]="false" [organizationId]="scientificId"
+                                        [isTreeVisible]="false" [authorId]="scientificId"
                                         [routerFieldSecondary]="'type'"
                                         [filterDocumentType]="['Master-Thesis', 'Doctoral-Thesis']">
                                     </app-documents>
