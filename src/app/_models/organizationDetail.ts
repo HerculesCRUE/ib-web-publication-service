@@ -25,6 +25,18 @@ export class OrganizationDetail {
      */
     dateStart: string;
 
+    /**
+     * The locatedIn
+     */
+    locatedIn: string;
+
+    /*
+     *
+     * @type {string}
+     * @memberof OrganizationDetail
+     */
+    hasContactInfo: string;
+
     /** 
      * The description. 
      */

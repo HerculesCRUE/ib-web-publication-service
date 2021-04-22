@@ -154,7 +154,9 @@
     "publicCompany": "CPublic company",
     "dateStart": "Start date",
     "dateEnd": "Date end",
-    "keyword": "Keyword"
+    "keyword": "Keyword",
+    "locatedIn": "Located in",
+    "hasContactInfo": "Has contact info"
   },
   "scientist": {
     "title": "Research staff",
@@ -337,7 +339,7 @@
     }
   },
   "areas": {
-    "id":"ID",
+    "id": "ID",
     "title": "Research categories",
     "areas": "Areas",
     "disciplines": "Disciplines",

@@ -164,7 +164,9 @@
     "publicCompany": "Compania publica",
     "dateStart": "Fecha inicio",
     "dateEnd": "Fecha fin",
-    "keyword": "Palabra clave"
+    "keyword": "Palabra clave",
+    "locatedIn": "Localizado en",
+    "hasContactInfo": "Tiene información de contacto"
   },
   "scientist": {
     "title": "Titulo",
@@ -349,7 +351,7 @@
     }
   },
   "areas": {
-    "id":"ID",
+    "id": "ID",
     "title": "Áreas",
     "areas": "Áreas",
     "disciplines": "Disciplinas",

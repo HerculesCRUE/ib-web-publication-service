@@ -1,4 +1,59 @@
 <h1 class="legend margin-top">{{researchment?.title !== '' ? researchment?.title : lastItem}}</h1>
+<div class="mt-20">
+    <div class="row">
+        <div class="col-12">
+            <p><strong>{{ "researchmentStructure.type" | translate }}:</strong> {{researchment?.type}} </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p><strong>{{ "researchmentStructure.title" | translate }}:</strong> {{researchment?.title}} </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p><strong>{{ "researchmentStructure.abbreviaton" | translate }}:</strong> {{researchment?.abbreviation}}
+            </p>
+        </div>
+    </div>
+    <div class="row" *ngIf="!!researchment?.locatedIn">
+        <div class="col-12">
+            <p><strong>{{ "researchmentStructure.locatedIn" | translate }}:</strong> {{researchment?.locatedIn}}
+            </p>
+        </div>
+    </div>
+    <div class="row" *ngIf="!!researchment?.hasContactInfo">
+        <div class="col-12">
+            <p><strong>{{ "researchmentStructure.hasContactInfo" | translate }}:</strong>
+                {{researchment?.hasContactInfo}}
+            </p>
+        </div>
+    </div>
+    <div class="row" *ngIf="!!researchment?.description">
+        <div class="col-12">
+            <p><strong>{{ "researchmentStructure.description" | translate }}:</strong> {{researchment?.description}}
+            </p>
+        </div>
+    </div>
+    <div class="row" *ngIf="!!researchment?.dateStart">
+        <div class="col-12">
+            <p><strong>{{ "researchmentStructure.dateStart" | translate }}:</strong> {{researchment?.dateStart}}
+            </p>
+        </div>
+    </div>
+    <div class="row" *ngIf="!!researchment?.dateEnd">
+        <div class="col-12">
+            <p><strong>{{ "researchmentStructure.dateEnd" | translate }}:</strong> {{researchment?.dateEnd}}
+            </p>
+        </div>
+    </div>
+    <div class="row" *ngIf="!!researchment?.dateEnd">
+        <div class="col-12">
+            <p><strong>{{ "researchmentStructure.dateEnd" | translate }}:</strong> {{researchment?.dateEnd}}
+            </p>
+        </div>
+    </div>
+</div>
 <div class="row">
     <div class="col-12">
         <div class="card flex-fill">
