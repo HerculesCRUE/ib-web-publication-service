@@ -66,7 +66,7 @@ export class AreasComponent implements OnInit {
     this.secondYearSelected = new Date().getFullYear();
     this.graphicService.projectAreasPerYear(this.yearSelected).subscribe(data => {
       this.loaded = true;
-      this.echartOptions = HelperGraphics.configChartPie(this.transformData(data), 'Num, de grupos de investigación por area');
+      this.echartOptions = HelperGraphics.configChartPie(this.transformData(data), 'Números de grupos de investigación por area');
     });
 
 
