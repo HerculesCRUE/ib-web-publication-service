@@ -114,7 +114,7 @@ export class ScientistSearchComponent extends PaginatedSearchComponent<Person> i
 
 
     this.graphicService.personArea().subscribe(data => {
-      this.echartOptions = HelperGraphics.configChartPie(this.newData(data), 'Num personas por area');
+      this.echartOptions = HelperGraphics.configChartPie(this.newData(data), 'Número personas por area');
     });
   }
 
