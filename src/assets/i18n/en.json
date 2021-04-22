@@ -366,6 +366,7 @@
     "title": "Title",
     "date": "Date",
     "locality": "Locality",
+    "activity": "Activity",
     "conference": "Conference",
     "exhibit": "Exhibit",
     "abbreviation": "Abbreviation",

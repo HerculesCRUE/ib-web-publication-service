@@ -13,6 +13,7 @@
                 <select name="type" class="form-control" (change)="filterEvents()" [(ngModel)]="findRequest.filter.type"
                     #type="ngModel">
                     <option [value]="undefined">{{ "form.select" | translate }}</option>
+                    <option [value]="'Activity'">{{'events.activity' | translate }}</option>
                     <option [value]="'Conference'">{{'events.conference' | translate }}</option>
                     <option [value]="'Exhibit'">{{'events.exhibit' | translate }}</option>
                 </select>
