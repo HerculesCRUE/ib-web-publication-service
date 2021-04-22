@@ -4,6 +4,11 @@
     <h1 class="legend" *ngIf="!scientist?.firstName && !scientist?.name">{{ "researchmentStructure.scientist" |
         translate }}: {{scientist?.id}}</h1>
     <div class="mt-20">
+        <div class="row">
+            <div class="col-12">
+                <p><strong>{{ "scientist.id" | translate }}:</strong> {{scientist?.id}} </p>
+            </div>
+        </div>
         <div class="row" *ngIf="!!scientist?.title">
             <div class="col-12">
                 <p><strong>{{ "scientist.title" | translate }}:</strong> {{scientist?.title}} </p>
