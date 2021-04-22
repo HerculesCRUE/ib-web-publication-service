@@ -166,7 +166,17 @@
     "dateEnd": "Fecha fin",
     "keyword": "Palabra clave",
     "locatedIn": "Localizado en",
-    "hasContactInfo": "Tiene información de contacto"
+    "hasContactInfo": "Tiene información de contacto",
+    "freetextKeyword": "palabras clave",
+    "hasAcreditation": "Tiene acreditación",
+    "hasKnowledgeArea": "Tiene área de conocimiento",
+    "hasPredecessorOrganization": "Tiene organización predecesora",
+    "hasSuccessorOrganization": "Tiene organización sucesora",
+    "hasReservable": "Tiene reservable",
+    "contains": "Contiene",
+    "participates": "Participa en",
+    "provides": "Provee",
+    "relatedBy": "Relacionado con"
   },
   "scientist": {
     "title": "Titulo",

@@ -156,7 +156,17 @@
     "dateEnd": "Date end",
     "keyword": "Keyword",
     "locatedIn": "Located in",
-    "hasContactInfo": "Has contact info"
+    "hasContactInfo": "Has contact info",
+    "freetextKeyword": "Freetext keyword",
+    "hasAcreditation": "Has acreditation",
+    "hasKnowledgeArea": "Has knowledge area",
+    "hasPredecessorOrganization": "Has predecessor organization",
+    "hasSuccessorOrganization": "Has successor organization",
+    "hasReservable": "Tiene reservable",
+    "contains": "Contains",
+    "participates": "Participates",
+    "provides": "Provides",
+    "relatedBy": "Related by"
   },
   "scientist": {
     "title": "Research staff",
