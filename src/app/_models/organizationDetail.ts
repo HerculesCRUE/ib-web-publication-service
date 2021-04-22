@@ -88,9 +88,28 @@ export class OrganizationDetail {
      */
     publicCompany: string;
 
+    /**
+     *
+     *
+     * @type {string}
+     * @memberof OrganizationDetail
+     */
     freetextKeyword: string;
 
+    /**
+     *
+     *
+     * @type {string}
+     * @memberof OrganizationDetail
+     */
     hasAcreditation: string;
+    /**
+     *
+     *
+     * @type {string}
+     * @memberof OrganizationDetail
+     */
+    hasKnowledgeArea: string;
     /**
      *
      *
