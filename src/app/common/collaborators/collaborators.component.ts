@@ -5,15 +5,20 @@ import { ToastrService } from 'ngx-toastr';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Direction, FindRequest, Order, Page, PageRequest, PaginatedSearchComponent } from 'src/app/_helpers/search';
-import { Helper } from 'src/app/_helpers/utils';
 import { Person } from 'src/app/_models/person';
-import { SparqlResults } from 'src/app/_models/sparql';
 import { ParticipantService } from 'src/app/_services/participant.service';
 
+/**
+ *
+ *
+ * @export
+ * @class CollaboratorsComponent
+ * @extends {PaginatedSearchComponent<Person>}
+ * @implements {OnInit}
+ */
 @Component({
   selector: 'app-collaborators',
-  templateUrl: './collaborators.component.html',
-  styleUrls: ['./collaborators.component.css']
+  templateUrl: './collaborators.component.html'
 })
 export class CollaboratorsComponent extends PaginatedSearchComponent<Person> implements OnInit {
 
@@ -21,13 +26,13 @@ export class CollaboratorsComponent extends PaginatedSearchComponent<Person> imp
    *
    *
    * @type {FindRequest}
-   * @memberof ParticipantsComponent
+   * @memberof CollaboratorsComponent
    */
   findRequest: FindRequest = new FindRequest();
   /**
    *
    *
-   * @memberof ParticipantsComponent
+   * @memberof CollaboratorsComponent
    */
   loaded = false;
 
@@ -45,13 +50,21 @@ export class CollaboratorsComponent extends PaginatedSearchComponent<Person> imp
   }
 
 
+  /**
+   *
+   *
+   * @protected
+   * @param {FindRequest} findRequest
+   * @return {*}  {Observable<Page<Person>>}
+   * @memberof CollaboratorsComponent
+   */
   protected findInternal(findRequest: FindRequest): Observable<Page<Person>> {
     const page: Page<Person> = new Page();
     const result = this.participantService.findPerson(findRequest).pipe(
       map((x) => {
         this.loaded = true;
         return x;
-      }), // return the received value true/false
+      }),
       catchError((err) => {
         this.loaded = true;
         return of(page)
@@ -59,10 +72,25 @@ export class CollaboratorsComponent extends PaginatedSearchComponent<Person> imp
     return result;
   }
 
+  /**
+   *
+   *
+   * @protected
+   * @param {*} entity
+   * @return {*}  {Observable<any>}
+   * @memberof CollaboratorsComponent
+   */
   protected removeInternal(entity: any): Observable<any> {
     return of({});
   }
 
+  /**
+   *
+   *
+   * @protected
+   * @return {*}  {Order}
+   * @memberof CollaboratorsComponent
+   */
   protected getDefaultOrder(): Order {
     return {
       property: 'id',
@@ -70,7 +98,7 @@ export class CollaboratorsComponent extends PaginatedSearchComponent<Person> imp
     };
   }
 
-  allParticipantsFilteredSortChanged(pageRequest: PageRequest) {
+  allCollabortorsFilteredSortChanged(pageRequest: PageRequest) {
     this.findRequest.pageRequest.property = pageRequest.property;
     this.findRequest.pageRequest.direction = pageRequest.direction;
     this.participantService.findPerson(this.findRequest).subscribe((data) => {
@@ -81,7 +109,7 @@ export class CollaboratorsComponent extends PaginatedSearchComponent<Person> imp
     });
   }
 
-  changePersonProyect() {
+  changeCollaborator() {
     this.participantService.findPerson(this.findRequest).subscribe((data) => {
       this.resultObject = data;
       this.loaded = true;

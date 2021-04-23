@@ -62,8 +62,6 @@ import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { AreasComponent } from '../categories/areas/areas.component';
 import { LinksComponent } from '../links/links.component';
 import { EventsComponent } from '../common/events/events.component';
-import { BusinessComponent } from '../common/business/business.component';
-import { AreasDetailComponent } from '../categories/areas/areas-detail/areas-detail.component';
 import { ScientificProductionComponent } from '../categories/scientific-production/scientific-production.component';
 import { DocumentDetailComponent } from '../categories/document-detail/document-detail.component';
 import { EventDetailComponent } from '../categories/event-detail/event-detail.component';
@@ -74,8 +72,6 @@ import { ResearchmentStructuresByQSComponent } from '../categories/researchment-
 import { ResearchmentStructuresByFinancingComponent } from '../categories/researchment-structures/researchment-structures-chart-by-financing/researchment-structures-chart-by-financing.component';
 import { ResearchmentStructuresDetailComponent } from '../categories/researchment-structures-detail/researchment-structures-detail.component';
 import { KeycloakService } from 'keycloak-angular';
-import { LoginService } from '../_services/login.service';
-import { MockLoginService } from '../_services/_testingServices/mockLogin.service';
 import { PeopleInvolvedComponent } from '../common/people-involved/people-involved.component';
 import { CollaboratorsComponent } from '../common/collaborators/collaborators.component';
 import { AreasListComponent } from '../common/areas-list/areas-list.component';
@@ -136,8 +132,6 @@ export class TestingHelper {
         AreasComponent,
         LinksComponent,
         EventsComponent,
-        BusinessComponent,
-        AreasDetailComponent,
         ScientificProductionComponent,
         DocumentDetailComponent,
         EventDetailComponent,

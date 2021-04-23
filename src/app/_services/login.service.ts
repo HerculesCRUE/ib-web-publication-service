@@ -204,7 +204,7 @@ export class LoginService extends AbstractService {
     });
 
     if (refreshToken != null) {
-      console.log('Refreshing with token: ' + refreshToken);
+      // console.log('Refreshing with token: ' + refreshToken);
       // const data = 'grant_type=refresh_token&refresh_token=' + refreshToken;
 
       return this.httpClient.post(Helper.getKeyCloackUrl().tokenUri, params, httpOptions).pipe(

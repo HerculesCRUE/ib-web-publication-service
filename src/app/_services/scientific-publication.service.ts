@@ -6,11 +6,12 @@ import { AbstractService } from '../_helpers/abstract';
 import { Helper } from '../_helpers/utils';
 import { ScientificPublication } from '../_models/scientificPublication';
 
+
 /**
  *
  *
  * @export
- * @class ResearchStaffService
+ * @class ScientificPublicationService
  * @extends {AbstractService}
  */
 @Injectable({
@@ -22,6 +23,13 @@ export class ScientificPublicationService extends AbstractService {
         super();
     }
 
+    /**
+     *
+     *
+     * @param {string} id
+     * @return {*}  {Observable<ScientificPublication>}
+     * @memberof ScientificPublicationService
+     */
     get(id: string): Observable<ScientificPublication> {
         return this.httpClient
             .get(Helper.getUrl('/scientificpublication/' + id)).pipe(

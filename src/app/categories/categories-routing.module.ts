@@ -7,7 +7,6 @@ import { ResearchmentStructuresDetailComponent } from './researchment-structures
 import { ResearchmentStructuresComponent } from './researchment-structures/researchment-structures.component';
 import { ScientistDetailComponent } from './scientist-detail/scientist-detail.component';
 import { ScientistComponent } from './scientist/scientist.component';
-import { AreasDetailComponent } from './areas/areas-detail/areas-detail.component';
 import { ScientificProductionComponent } from './scientific-production/scientific-production.component';
 import { DocumentDetailComponent } from './document-detail/document-detail.component';
 import { EventDetailComponent } from './event-detail/event-detail.component';
@@ -50,10 +49,6 @@ const routes: Routes = [
     component: AreasComponent
   }
   ,
-  {
-    path: 'areas/:area',
-    component: AreasDetailComponent
-  },
   {
     path: 'scientific-production',
     component: ScientificProductionComponent

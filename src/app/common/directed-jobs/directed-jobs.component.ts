@@ -9,11 +9,13 @@ import { Helper } from 'src/app/_helpers/utils';
 import { AcademicPublication } from 'src/app/_models/academicPublication';
 import { DocumentService } from 'src/app/_services/document.service';
 
+
 /**
  *
  *
  * @export
  * @class DirectedJobsComponent
+ * @extends {PaginatedSearchComponent<AcademicPublication>}
  * @implements {OnInit}
  */
 @Component({
@@ -22,6 +24,21 @@ import { DocumentService } from 'src/app/_services/document.service';
 })
 export class DirectedJobsComponent extends PaginatedSearchComponent<AcademicPublication> implements OnInit {
 
+
+  /**
+   *
+   *
+   * @type {string}
+   * @memberof DirectedJobsComponent
+   */
+  @Input() idPrefix: string;
+  /**
+   *
+   *
+   * @type {string}
+   * @memberof DirectedJobsComponent
+   */
+  @Input() scientificId: string;
   /**
    *
    *
@@ -29,22 +46,30 @@ export class DirectedJobsComponent extends PaginatedSearchComponent<AcademicPubl
    * @memberof DirectedJobsComponent
    */
   findRequest: FindRequest = new FindRequest();
-  @Input() idPrefix: string;
-  @Input() scientificId: string;
   /**
    *
    *
    * @memberof DirectedJobsComponent
    */
   loaded = false;
+  /**
+   *
+   *
+   * @memberof DirectedJobsComponent
+   */
   dateIni;
-
   /**
    *
    *
    * @memberof DirectedJobsComponent
    */
   yearsForSelect = Helper.getYears();
+  /**
+   *
+   *
+   * @type {Map<string, string>}
+   * @memberof DirectedJobsComponent
+   */
   filters: Map<string, string> = new Map();
 
   constructor(private documentService: DocumentService,
@@ -62,6 +87,14 @@ export class DirectedJobsComponent extends PaginatedSearchComponent<AcademicPubl
   }
 
 
+  /**
+   *
+   *
+   * @protected
+   * @param {FindRequest} findRequest
+   * @return {*}  {Observable<Page<AcademicPublication>>}
+   * @memberof DirectedJobsComponent
+   */
   protected findInternal(findRequest: FindRequest): Observable<Page<AcademicPublication>> {
     if (this.scientificId) {
       this.findRequest.filter.authorId = this.scientificId;
@@ -79,10 +112,25 @@ export class DirectedJobsComponent extends PaginatedSearchComponent<AcademicPubl
     return result;
   }
 
+  /**
+   *
+   *
+   * @protected
+   * @param {*} entity
+   * @return {*}  {Observable<any>}
+   * @memberof DirectedJobsComponent
+   */
   protected removeInternal(entity: any): Observable<any> {
     return of({});
   }
 
+  /**
+   *
+   *
+   * @protected
+   * @return {*}  {Order}
+   * @memberof DirectedJobsComponent
+   */
   protected getDefaultOrder(): Order {
     return {
       property: 'id',
@@ -116,12 +164,7 @@ export class DirectedJobsComponent extends PaginatedSearchComponent<AcademicPubl
     this.loaded = true;
   }
 
-  /**
-   *
-   *
-   * @param {PageRequest} pageRequest
-   * @memberof DirectedJobsComponent
-   */
+
   allDirectedFilteredSortChanged(pageRequest: PageRequest) {
     this.findRequest.pageRequest.property = pageRequest.property;
     this.findRequest.pageRequest.direction = pageRequest.direction;

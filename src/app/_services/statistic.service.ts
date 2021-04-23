@@ -31,12 +31,10 @@ export class StatisticService extends AbstractService {
         super();
     }
 
-
-
     /**
      *
-     *
-     * @return {*}  {Observable<any>}
+     * gets statistics for project by classification
+     * @return {*}  {Observable<Graphic>}
      * @memberof StatisticService
      */
     projectByClassification(): Observable<Array<Graphic>> {
@@ -47,6 +45,12 @@ export class StatisticService extends AbstractService {
             );
     }
 
+    /**
+     *  
+     *  gets statistics for articles by published in
+     * @return {*}  {Observable<Array<Graphic>>}
+     * @memberof StatisticService
+     */
     articlesByPublishedIn(): Observable<Array<Graphic>> {
 
         return this.httpClient
@@ -55,18 +59,5 @@ export class StatisticService extends AbstractService {
             );
     }
 
-    /**
-     *
-     *
-     * @return {*}  {Observable<any>}
-     * @memberof StatisticService
-     */
-    topPublications(): Observable<any> {
-
-        return this.httpClient
-            .get(Helper.getUrl('/statistics/topPublications')).pipe(
-                catchError(this.handleError)
-            );
-    }
 
 }

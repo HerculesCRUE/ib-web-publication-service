@@ -49,6 +49,13 @@ export class ResearchStaffService extends AbstractService {
       );
   }
 
+  /**
+   *
+   *
+   * @param {string} id
+   * @return {*}  {Observable<PersonDetail>}
+   * @memberof ResearchStaffService
+   */
   getPerson(id: string): Observable<PersonDetail> {
     // Filter params
     return this.httpClient

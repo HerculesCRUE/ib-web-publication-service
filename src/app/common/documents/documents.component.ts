@@ -4,13 +4,14 @@ import { NgbDateAdapter, NgbDateParserFormatter, NgbDatepicker } from '@ng-boots
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, of } from 'rxjs';
+import { CustomDateAdapter, CustomDateParserFormatter, MaskController } from 'src/app/_helpers/datepicker-auxiliar';
 import { Direction, FindRequest, Order, Page, PageRequest, PaginatedSearchComponent } from 'src/app/_helpers/search';
 import { Helper } from 'src/app/_helpers/utils';
 import { AcademicPublication } from 'src/app/_models/academicPublication';
 import { Document } from 'src/app/_models/document';
 import { OtherPublication } from 'src/app/_models/otherPublication';
 import { DocumentService } from 'src/app/_services/document.service';
-import { CustomDateAdapter, CustomDateParserFormatter, MaskController } from './datepicker-auxiliar';
+
 
 /**
  *
@@ -37,14 +38,30 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
   ];
 
 
+  /**
+   *
+   *  if only display year on datepicker 
+   * @type {boolean}
+   * @memberof DocumentsComponent
+   */
   @Input() showOnlyYEar: boolean;
 
+  /**
+   *
+   *  the seond parameters if needed for the router
+   * @memberof DocumentsComponent
+   */
   @Input() routerFieldSecondary;
 
+  /**
+   *
+   *  url link for detail
+   * @memberof DocumentsComponent
+   */
   @Input() url = './';
   /**
    *
-   *
+   *  id prefix to avoid duplicated
    * @type {string}
    * @memberof DocumentsComponent
    */
@@ -58,13 +75,43 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
   @Input() filterDocumentType: Array<string> = [];
   /**
    *
-   *
+   *  if tree is visible
    * @type {Boolean}
    * @memberof DocumentsComponent
    */
   @Input() isTreeVisible = true;
+  /**
+   *
+   *  if needed de id for the organization to be filtered
+   * @type {string}
+   * @memberof DocumentsComponent
+   */
   @Input() organizationId: string;
+  /**
+   *
+   * if needed de id for the author/ person to be filtered
+   * @type {string}
+   * @memberof DocumentsComponent
+   */
+  @Input() authorId: string;
+  /**
+   *
+   *  if types on select are hidden
+   * @type {boolean}
+   * @memberof DocumentsComponent
+   */
+  @Input() hideTypes: boolean;
+  /**
+   *
+   * if tree starts with normal one or the graphic one
+   * @memberof DocumentsComponent
+   */
   isNormalTree = true;
+  /**
+   *
+   *  if datepicker returns full date
+   * @memberof DocumentsComponent
+   */
   returnFullDate = true;
   /**
    *
@@ -99,15 +146,8 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
    * @memberof DocumentsComponent
    */
   normalTree = true;
-  @Input() authorId: string;
 
 
-  @Input() hideTypes: boolean;
-  /**
-   * Creates an instance of DocumentsComponent.
-   * @param {ProjectService} projectService
-   * @memberof DocumentsComponent
-   */
   constructor(private documentService: DocumentService,
     private maskController: MaskController,
     router: Router,
@@ -118,8 +158,6 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
   }
 
   ngOnInit(): void {
-
-
     this.findRequest.filter.types = this.filterDocumentType;
     if (this.authorId) {
       this.findRequest.filter.authorId = this.authorId;
@@ -129,12 +167,18 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
     }
   }
 
+  /**
+   *
+   *
+   * @protected
+   * @param {FindRequest} findRequest
+   * @return {*}  {(Observable<Page<Document | AcademicPublication>>)}
+   * @memberof DocumentsComponent
+   */
   protected findInternal(findRequest: FindRequest): Observable<Page<Document | AcademicPublication>> {
     this.findRequest.filter.types = this.filterDocumentType;
     let result;
-    console.log(this.authorId);
     if (this.authorId) {
-      console.log('im in');
       this.findRequest.filter.authorId = this.authorId;
     }
 
@@ -162,10 +206,25 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
 
   }
 
+  /**
+   *
+   *
+   * @protected
+   * @param {*} entity
+   * @return {*}  {Observable<any>}
+   * @memberof DocumentsComponent
+   */
   protected removeInternal(entity: any): Observable<any> {
     return of({});
   }
 
+  /**
+   *
+   *
+   * @protected
+   * @return {*}  {Order}
+   * @memberof DocumentsComponent
+   */
   protected getDefaultOrder(): Order {
     return {
       property: 'id',
@@ -174,12 +233,11 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
   }
 
 
+
   /**
    *
    *
-   * @param {*} event
-   * @param {string} filterName
-   * @memberof ScientificProductionComponent
+   * @memberof DocumentsComponent
    */
   filterProjects() {
     setTimeout(() => {
@@ -205,41 +263,50 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
         this.findRequest.filter.types = this.findRequest.filter.type;
       }
 
-      if (this.idPrefix === 'document') {
-        this.documentService.find(this.findRequest).subscribe((data) => {
-          this.resultObject = data;
-          this.loaded = true;
-        }, () => {
-          this.loaded = true;
-        });
-      }
-      else if (this.idPrefix === 'academic') {
-        this.documentService.findAcademicPublication(this.findRequest).subscribe((data) => {
-          this.resultObject = data;
-          this.loaded = true;
-        }, () => {
-          this.loaded = true;
-        });
-      }
-      else if (this.idPrefix === 'other') {
-        this.documentService.findOtherPublications(this.findRequest).subscribe((data) => {
-          this.resultObject = data;
-          this.loaded = true;
-        }, () => {
-          this.loaded = true;
-        });
-      } else {
-        this.documentService.findscientificpublication(this.findRequest).subscribe((data) => {
-          this.resultObject = data;
-          this.loaded = true;
-        }, () => {
-          this.loaded = true;
-        });
+      switch (this.idPrefix) {
+        case 'document':
+          this.documentService.find(this.findRequest).subscribe((data) => {
+            this.resultObject = data;
+            this.loaded = true;
+          }, () => {
+            this.loaded = true;
+          });
+          break;
+        case 'academic':
+          this.documentService.findAcademicPublication(this.findRequest).subscribe((data) => {
+            this.resultObject = data;
+            this.loaded = true;
+          }, () => {
+            this.loaded = true;
+          });
+          break;
+        case 'other':
+          this.documentService.findOtherPublications(this.findRequest).subscribe((data) => {
+            this.resultObject = data;
+            this.loaded = true;
+          }, () => {
+            this.loaded = true;
+          });
+          break;
+        default:
+          this.documentService.findscientificpublication(this.findRequest).subscribe((data) => {
+            this.resultObject = data;
+            this.loaded = true;
+          }, () => {
+            this.loaded = true;
+          });
+          break;
       }
 
     }, 0);
   }
 
+  /**
+   *
+   *
+   * @param {*} $event
+   * @memberof DocumentsComponent
+   */
   onDateSelect($event) {
     if (this.showOnlyYEar) {
       this.maskController.setMask('YYYY');
@@ -255,38 +322,41 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
    */
   filterDocuments() {
     this.findRequest.pageRequest.page = 0;
-    if (this.idPrefix === 'document') {
-      this.documentService.find(this.findRequest).subscribe((data) => {
-        this.resultObject = data;
-        this.loaded = true;
-      }, () => {
-        this.loaded = true;
-      });
-    }
-    else if (this.idPrefix === 'academic') {
-      this.documentService.findAcademicPublication(this.findRequest).subscribe((data) => {
-        this.resultObject = data;
-        this.loaded = true;
-      }, () => {
-        this.loaded = true;
-      });
-    }
-    else if (this.idPrefix === 'other') {
-      this.documentService.findOtherPublications(this.findRequest).subscribe((data) => {
-        this.resultObject = data;
-        this.loaded = true;
-      }, () => {
-        this.loaded = true;
-      });
-    } else {
-      this.documentService.findscientificpublication(this.findRequest).subscribe((data) => {
-        this.resultObject = data;
-        this.loaded = true;
-      }, () => {
-        this.loaded = true;
-      });
-    }
 
+    switch (this.idPrefix) {
+      case 'document':
+        this.documentService.find(this.findRequest).subscribe((data) => {
+          this.resultObject = data;
+          this.loaded = true;
+        }, () => {
+          this.loaded = true;
+        });
+        break;
+      case 'academic':
+        this.documentService.findAcademicPublication(this.findRequest).subscribe((data) => {
+          this.resultObject = data;
+          this.loaded = true;
+        }, () => {
+          this.loaded = true;
+        });
+        break;
+      case 'other':
+        this.documentService.findOtherPublications(this.findRequest).subscribe((data) => {
+          this.resultObject = data;
+          this.loaded = true;
+        }, () => {
+          this.loaded = true;
+        });
+        break;
+      default:
+        this.documentService.findscientificpublication(this.findRequest).subscribe((data) => {
+          this.resultObject = data;
+          this.loaded = true;
+        }, () => {
+          this.loaded = true;
+        });
+        break;
+    }
 
   }
 
@@ -302,35 +372,39 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
     this.findRequest.pageRequest.property = pageRequest.property;
     this.findRequest.pageRequest.direction = pageRequest.direction;
 
-    if (this.idPrefix === 'document') {
-      this.documentService.find(this.findRequest).subscribe((data) => {
-        this.resultObject = data;
-        this.loaded = true;
-      }, () => {
-        this.loaded = true;
-      });
-    } else if (this.idPrefix === 'academic') {
-      this.documentService.findAcademicPublication(this.findRequest).subscribe((data) => {
-        this.resultObject = data;
-        this.loaded = true;
-      }, () => {
-        this.loaded = true;
-      });
-    }
-    else if (this.idPrefix === 'other') {
-      this.documentService.findOtherPublications(this.findRequest).subscribe((data) => {
-        this.resultObject = data;
-        this.loaded = true;
-      }, () => {
-        this.loaded = true;
-      });
-    } else {
-      this.documentService.findscientificpublication(this.findRequest).subscribe((data) => {
-        this.resultObject = data;
-        this.loaded = true;
-      }, () => {
-        this.loaded = true;
-      });
+    switch (this.idPrefix) {
+      case 'document':
+        this.documentService.find(this.findRequest).subscribe((data) => {
+          this.resultObject = data;
+          this.loaded = true;
+        }, () => {
+          this.loaded = true;
+        });
+        break;
+      case 'academic':
+        this.documentService.findAcademicPublication(this.findRequest).subscribe((data) => {
+          this.resultObject = data;
+          this.loaded = true;
+        }, () => {
+          this.loaded = true;
+        });
+        break;
+      case 'other':
+        this.documentService.findOtherPublications(this.findRequest).subscribe((data) => {
+          this.resultObject = data;
+          this.loaded = true;
+        }, () => {
+          this.loaded = true;
+        });
+        break;
+      default:
+        this.documentService.findscientificpublication(this.findRequest).subscribe((data) => {
+          this.resultObject = data;
+          this.loaded = true;
+        }, () => {
+          this.loaded = true;
+        });
+        break;
     }
 
   }

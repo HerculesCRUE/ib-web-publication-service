@@ -8,10 +8,12 @@ import { Helper } from '../_helpers/utils';
 import { Patent } from '../_models/patent';
 import { PatentDetail } from '../_models/patentDetail';
 
+
 /**
- *  Service for patent production
+ *
  *
  * @export
+ * @class PatentService
  * @extends {AbstractService}
  */
 @Injectable({
@@ -59,10 +61,14 @@ export class PatentService extends AbstractService {
     }
 
 
+    /**
+     *
+     *
+     * @param {string} id
+     * @return {*}  {Observable<PatentDetail>}
+     * @memberof PatentService
+     */
     getPatent(id: string): Observable<PatentDetail> {
-        // Filter params
-
-
         return this.httpClient
             .get(Helper.getUrl('/patent/' + id),).pipe(
                 catchError(this.handleError)

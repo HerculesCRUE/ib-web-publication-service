@@ -98,7 +98,6 @@ export class DocumentService extends AbstractService {
      */
     findAcademicPublication(findRequest: FindRequest): Observable<Page<AcademicPublication>> {
         // Filter params
-        console.log(findRequest)
         let parameters = new HttpParams();
         parameters = Helper.addParam(parameters, 'types', findRequest.filter.types);
         parameters = Helper.addParam(parameters, 'title', findRequest.filter.name);

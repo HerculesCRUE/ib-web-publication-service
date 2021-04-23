@@ -41,7 +41,7 @@
                     <app-table-results-dto [displayPagination]="false" [findRequest]="findRequest"
                         *ngIf="loaded && resultObject?.content?.length !== 0" [data]="resultObject?.content"
                         [pageInfo]="resultObject" [dtoTypeTranslate]="'areas'" [routerFieldSecondary]="'type'"
-                        (sortChanged)="allEventsFilteredSortChanged($event)">
+                        (sortChanged)="allAreasFilteredSortChanged($event)">
                     </app-table-results-dto>
                     <div class="container-fluid app-table-results">
                         <div class="row">

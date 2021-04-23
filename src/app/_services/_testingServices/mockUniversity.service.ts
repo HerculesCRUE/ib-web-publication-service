@@ -12,7 +12,7 @@ import { ProjectService } from '../project.service';
 @Injectable({
     providedIn: 'root',
 })
-export class MockProjectService extends ProjectService {
+export class MockUniversityService extends ProjectService {
     DATARESULT: any = [{
         id: '2826',
         title: 'EFECTOS DE LA BRIMONIDINA Y LA MEMANTINA EN LA ISQUEMIA RETINIANA',

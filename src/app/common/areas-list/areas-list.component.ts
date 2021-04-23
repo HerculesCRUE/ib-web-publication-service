@@ -10,14 +10,35 @@ import { AreasService } from 'src/app/_services/areas.service';
 
 @Component({
   selector: 'app-areas-list',
-  templateUrl: './areas-list.component.html',
-  styleUrls: ['./areas-list.component.css']
+  templateUrl: './areas-list.component.html'
 })
 export class AreasListComponent extends PaginatedSearchComponent<KnowledgeArea> implements OnInit {
 
+  /**
+   *
+   *
+   * @type {FindRequest}
+   * @memberof AreasListComponent
+   */
   findRequest: FindRequest = new FindRequest();
+  /**
+   *
+   *
+   * @memberof AreasListComponent
+   */
   dateIni;
+  /**
+   *
+   *
+   * @memberof AreasListComponent
+   */
   dateFin;
+  /**
+   *
+   *
+   * @type {boolean}
+   * @memberof AreasListComponent
+   */
   loaded: boolean;
 
 
@@ -33,6 +54,14 @@ export class AreasListComponent extends PaginatedSearchComponent<KnowledgeArea> 
 
   }
 
+  /**
+   *
+   *
+   * @protected
+   * @param {FindRequest} findRequest
+   * @return {*}  {Observable<Page<KnowledgeArea>>}
+   * @memberof AreasListComponent
+   */
   protected findInternal(findRequest: FindRequest): Observable<Page<KnowledgeArea>> {
 
     const page: Page<KnowledgeArea> = new Page();
@@ -40,7 +69,7 @@ export class AreasListComponent extends PaginatedSearchComponent<KnowledgeArea> 
       map((x) => {
         this.loaded = true;
         return x;
-      }), // return the received value true/false
+      }),
       catchError((err) => {
         this.loaded = true;
         return of(page);
@@ -48,10 +77,25 @@ export class AreasListComponent extends PaginatedSearchComponent<KnowledgeArea> 
     return result;
   }
 
+  /**
+   *
+   *
+   * @protected
+   * @param {*} entity
+   * @return {*}  {Observable<any>}
+   * @memberof AreasListComponent
+   */
   protected removeInternal(entity: any): Observable<any> {
     return of({});
   }
 
+  /**
+   *
+   *
+   * @protected
+   * @return {*}  {Order}
+   * @memberof AreasListComponent
+   */
   protected getDefaultOrder(): Order {
     return {
       property: 'id',
@@ -59,28 +103,29 @@ export class AreasListComponent extends PaginatedSearchComponent<KnowledgeArea> 
     };
   }
 
-  filter() {
+  /**
+   *
+   *
+   * @memberof AreasListComponent
+   */
+  filter(): void {
     this.findRequest.pageRequest.page = 0;
-
     this.areasService.find(this.findRequest).subscribe((data) => {
       this.resultObject = data;
       this.loaded = true;
     }, () => {
       this.loaded = true;
     });
-
   }
-
-
 
 
   /**
    *
    *
    * @param {PageRequest} pageRequest
-   * @memberof EventsComponent
+   * @memberof AreasListComponent
    */
-  allEventsFilteredSortChanged(pageRequest: PageRequest) {
+  allAreasFilteredSortChanged(pageRequest: PageRequest): void {
     this.findRequest.pageRequest.property = pageRequest.property;
     this.findRequest.pageRequest.direction = pageRequest.direction;
     this.areasService.find(this.findRequest).subscribe((data) => {

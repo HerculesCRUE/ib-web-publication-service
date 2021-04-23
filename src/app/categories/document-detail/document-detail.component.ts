@@ -57,7 +57,6 @@ export class DocumentDetailComponent extends PaginatedSearchComponent<BookSectio
       this.isBook = true;
       this.findRequest.filter.id = id;
       this.documentService.getBookSection(this.findRequest).subscribe(data => {
-        console.log(data);
       });
     }
 
@@ -87,6 +86,11 @@ export class DocumentDetailComponent extends PaginatedSearchComponent<BookSectio
 
   }
 
+  /**
+   *
+   *
+   * @memberof DocumentDetailComponent
+   */
   backClicked() {
     this._location.back();
   }
@@ -118,6 +122,12 @@ export class DocumentDetailComponent extends PaginatedSearchComponent<BookSectio
   }
 
 
+  /**
+   *
+   *
+   * @param {PageRequest} pageRequest
+   * @memberof DocumentDetailComponent
+   */
   allDocumentSortChanged(pageRequest: PageRequest): void {
     this.findRequest.pageRequest.property = pageRequest.property;
     this.findRequest.pageRequest.direction = pageRequest.direction;

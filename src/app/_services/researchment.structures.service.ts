@@ -21,6 +21,13 @@ export class ResearchmentStructuresService extends AbstractService {
   }
 
 
+  /**
+   *
+   *
+   * @param {FindRequest} findRequest
+   * @return {*}  {Observable<Page<University>>}
+   * @memberof ResearchmentStructuresService
+   */
   find(findRequest: FindRequest): Observable<Page<University>> {
     // Filter params
     let parameters = new HttpParams();
@@ -38,6 +45,14 @@ export class ResearchmentStructuresService extends AbstractService {
       );
   }
 
+  /**
+   *
+   *
+   * @param {string} id
+   * @param {string} type
+   * @return {*}  {Observable<OrganizationDetail>}
+   * @memberof ResearchmentStructuresService
+   */
   getById(id: string, type: string): Observable<OrganizationDetail> {
     // Filter params
     return this.httpClient

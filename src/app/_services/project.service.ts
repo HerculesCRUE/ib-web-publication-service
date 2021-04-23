@@ -7,21 +7,19 @@ import { FindRequest, Page } from '../_helpers/search';
 import { Helper } from '../_helpers/utils';
 import { Project } from '../_models/project';
 
+
 /**
- *  Service for scientific production
+ *
  *
  * @export
+ * @class ProjectService
  * @extends {AbstractService}
  */
 @Injectable({
     providedIn: 'root',
 })
 export class ProjectService extends AbstractService {
-    /**
-     * Creates an instance of ProjectService.
-     * param {HttpClient} httpClient
-     * memberof ProjectService
-     */
+
     constructor(private httpClient: HttpClient) {
         super();
     }
@@ -30,9 +28,8 @@ export class ProjectService extends AbstractService {
     /**
      *
      *
-     * @param {Map<string, string>} filters
-     * @param {PageRequest} pageRequest
-     * @return {*}  {Page<SparqlResults>}
+     * @param {FindRequest} findRequest
+     * @return {*}  {Observable<Page<Project>>}
      * @memberof ProjectService
      */
     find(findRequest: FindRequest): Observable<Page<Project>> {
@@ -55,10 +52,14 @@ export class ProjectService extends AbstractService {
     }
 
 
+    /**
+     *
+     *
+     * @param {string} id
+     * @return {*}  {Observable<Project>}
+     * @memberof ProjectService
+     */
     findbyId(id: string): Observable<Project> {
-        // Filter params
-
-
         return this.httpClient
             .get(Helper.getUrl('/project/' + id)).pipe(
                 catchError(this.handleError)

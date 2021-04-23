@@ -5,12 +5,14 @@ import { DocumentService } from 'src/app/_services/document.service';
 import { EventsService } from 'src/app/_services/events.service';
 import { GraphicService } from 'src/app/_services/graphic.service';
 import { PatentService } from 'src/app/_services/patent.service';
+import { ProjectService } from 'src/app/_services/project.service';
 import { ResearchStaffService } from 'src/app/_services/research-staff.service';
 import { MockAreaservice } from 'src/app/_services/_testingServices/mockAreas.service';
 import { MockDocumentService } from 'src/app/_services/_testingServices/mockDocument.service';
 import { MockEventsService } from 'src/app/_services/_testingServices/mockEvents.service';
 import { MockGraphicService } from 'src/app/_services/_testingServices/mockGraphic.service';
 import { MockPatentService } from 'src/app/_services/_testingServices/mockPatent.service';
+import { MockProjectService } from 'src/app/_services/_testingServices/mockProject.service';
 import { MockResearchStaffService } from 'src/app/_services/_testingServices/mockResearchStaff.service';
 
 import { ScientistDetailComponent } from './scientist-detail.component';
@@ -28,7 +30,8 @@ describe('ScientisDetailComponent', () => {
       { provide: EventsService, useClass: MockEventsService },
       { provide: PatentService, useClass: MockPatentService },
       { provide: GraphicService, useClass: MockGraphicService },
-      { provide: AreasService, useClass: MockAreaservice }]
+      { provide: AreasService, useClass: MockAreaservice },
+      { provide: ProjectService, useClass: MockProjectService }]
     }).compileComponents();
   }));
 

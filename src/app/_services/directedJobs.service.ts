@@ -72,10 +72,7 @@ export class DirectedJobsService extends AbstractService {
     };
 
 
-    /**
-     * Creates an instance of ParticipantService.
-     * @memberof ParticipantService
-     */
+
     constructor(private httpClient: HttpClient) {
         super();
     }

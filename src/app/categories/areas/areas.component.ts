@@ -75,7 +75,7 @@ export class AreasComponent implements OnInit {
   transformData(data: Array<Graphic>) {
 
     const result = [];
-    if (data.length > 1) {
+    if (data.length > 0) {
       data.forEach(element => {
         result.push({ name: element.hasKnowledgeAreatitle, value: element.count });
       });

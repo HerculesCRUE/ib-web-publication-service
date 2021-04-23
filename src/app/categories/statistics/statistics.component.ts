@@ -29,10 +29,7 @@ export class StatisticsComponent implements OnInit {
   constructor(private statisticService: StatisticService, private graphicServcice: GraphicService) { }
 
   ngOnInit(): void {
-
-
     this.statisticService.projectByClassification().subscribe(data => {
-      console.log(data);
       this.echartOptions = HelperGraphics.configChartPie(this.transformData(data), '');
     });
     this.statisticService.articlesByPublishedIn().subscribe(treeData => {
@@ -43,7 +40,7 @@ export class StatisticsComponent implements OnInit {
 
   transformData(data: Array<Graphic>) {
     const result = [];
-    if (data.length > 1) {
+    if (data.length > 0) {
       data.forEach(element => {
         result.push({ name: element.projectClassification, value: element.count });
       });
@@ -76,7 +73,7 @@ export class StatisticsComponent implements OnInit {
 
   makeDataTree(data: Array<GraphicModelTree>) {
     const result = [];
-    if (data.length > 1) {
+    if (data.length > 0) {
       data.forEach(element => {
         result.push({ name: element.modality, value: element.count });
       });

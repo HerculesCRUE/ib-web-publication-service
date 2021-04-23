@@ -31,7 +31,6 @@ export class ResearchmentStructuresByFinancingComponent implements OnInit {
     }
 
     this.graphicServcice.universityFinancing().subscribe((data: any) => {
-      console.log('hello');
       this.echartOptions = HelperGraphics.configChartPie(this.transformData(data), 'Num. estructuras por tipo');
     });
 
@@ -59,7 +58,7 @@ export class ResearchmentStructuresByFinancingComponent implements OnInit {
   transformData(data: Array<Graphic>) {
 
     const result = [];
-    if (data.length > 1) {
+    if (data.length > 0) {
       data.forEach(element => {
         result.push({ name: this.returnLastValue(element.type), value: element.count });
       });
