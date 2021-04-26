@@ -119,7 +119,7 @@ export const HOME_ITEMS: HomeGroupItem[] = [{
       title: 'home.users',
       iconName: 'oi-person',
       iconCircle: false,
-      url: null,
+      url: '',
       disabled: false,
       urlExterna: Helper.getKeyCloackUrl().authUrl
     },

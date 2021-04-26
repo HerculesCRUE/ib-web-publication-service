@@ -16,14 +16,35 @@ export class Helper {
     return BASE_URL + fragment;
   }
 
+  /**
+   *
+   * obtiene las URL de congiguración de keycloak
+   * @static
+   * @return {*} 
+   * @memberof Helper
+   */
   static getKeyCloackUrl() {
     return KEYCLOACK;
   }
 
+  /**
+   *
+   * get lpd url
+   * @static
+   * @return {*} 
+   * @memberof Helper
+   */
   static getLPDUrl() {
     return LPDURL;
   }
 
+  /**
+   *
+   *  get app url from the correct enviroment
+   * @static
+   * @return {*} 
+   * @memberof Helper
+   */
   static getAPPURL() {
     return BASE_APP_URL;
   }
@@ -130,6 +151,14 @@ export class Helper {
 
 
 
+  /**
+   *
+   *
+   * @static
+   * @param {number} value
+   * @return {*}  {*}
+   * @memberof Helper
+   */
   static parse(value: number): any {
     const momentDate = moment.utc(value);
     if (momentDate.isValid()) {
@@ -139,6 +168,14 @@ export class Helper {
     }
   }
 
+  /**
+   *
+   *
+   * @static
+   * @param {number} value
+   * @return {*}  {*}
+   * @memberof Helper
+   */
   static parseBack(value: number): any {
     const momentDate = moment.utc(value);
     if (momentDate.isValid()) {
@@ -148,6 +185,14 @@ export class Helper {
     }
   }
 
+  /**
+   *
+   *
+   * @static
+   * @param {number} value
+   * @return {*}  {*}
+   * @memberof Helper
+   */
   static parseYear(value: number): any {
     const momentDate = moment.utc(value);
     if (momentDate.isValid()) {
@@ -194,6 +239,16 @@ export class Helper {
     };
   }
 
+  /**
+   *
+   *
+   * @static
+   * @param {SparqlResults} data
+   * @param {Map<string, string>} filters
+   * @param {PageRequest} pageRequest
+   * @return {*}  {Page<SparqlResults>}
+   * @memberof Helper
+   */
   static findInServiceData(data: SparqlResults, filters: Map<string, string>, pageRequest: PageRequest): Page<SparqlResults> {
     const page: Page<SparqlResults> = new Page<SparqlResults>();
     let dataFiltered: Binding[] = data.results.bindings;

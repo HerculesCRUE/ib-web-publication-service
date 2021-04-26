@@ -1,7 +1,5 @@
-import { Component, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { NgbDatepickerI18n, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
-import { TranslateService } from '@ngx-translate/core';
-import * as moment from 'moment';
 import { TranslateHelperService } from '../_services/translate-helper.service';
 const I18N_VALUES = {
     es: {
@@ -23,25 +21,16 @@ export class CustomNgbDatepickerI18n extends NgbDatepickerI18n {
     constructor(private i18n: I18n, private translateHelperService: TranslateHelperService) {
         super();
     }
-    /*getDayAriaLabel(date: NgbDateStruct): string {
-        return `${date.day}-${date.month}-${date.year}`;
-    }
 
+    /**
+     *
+     *
+     * @param {number} weekday
+     * @return {*}  {string}
+     * @memberof CustomNgbDatepickerI18n
+     */
     getWeekdayShortName(weekday: number): string {
-        const day = (weekday === 7) ? 0 : weekday;
-        return moment.weekdaysShort()[day];
-    }
-
-    getMonthShortName(month: number): string {
-        return moment.monthsShort()[month - 1];
-    }
-
-    getMonthFullName(month: number): string {
-        return moment.months()[month - 1];
-    }*/
-
-    getWeekdayShortName(weekday: number): string {
-        let lang = 'es';
+        let lang: string;
         if (!this.translateHelperService.getLocalLang()) {
             lang = 'es';
         } else {
@@ -49,8 +38,16 @@ export class CustomNgbDatepickerI18n extends NgbDatepickerI18n {
         }
         return I18N_VALUES[lang].weekdays[weekday - 1];
     }
+
+    /**
+     *
+     *
+     * @param {number} month
+     * @return {*}  {string}
+     * @memberof CustomNgbDatepickerI18n
+     */
     getMonthShortName(month: number): string {
-        let lang = 'es';
+        let lang: string;
         if (!this.translateHelperService.getLocalLang()) {
             lang = 'es';
         } else {
@@ -58,10 +55,25 @@ export class CustomNgbDatepickerI18n extends NgbDatepickerI18n {
         }
         return I18N_VALUES[lang].months[month - 1];
     }
+
+    /**
+     *
+     *
+     * @param {number} month
+     * @return {*}  {string}
+     * @memberof CustomNgbDatepickerI18n
+     */
     getMonthFullName(month: number): string {
         return this.getMonthShortName(month);
     }
 
+    /**
+     *
+     *
+     * @param {NgbDateStruct} date
+     * @return {*}  {string}
+     * @memberof CustomNgbDatepickerI18n
+     */
     getDayAriaLabel(date: NgbDateStruct): string {
         return `${date.day}-${date.month}-${date.year}`;
     }

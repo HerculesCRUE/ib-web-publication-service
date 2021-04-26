@@ -46,6 +46,12 @@ export class CustomNgbDateFormatter extends NgbDateParserFormatter {
     return result;
   }
 
+  /**
+   *
+   *
+   * @param {*} format
+   * @memberof CustomNgbDateFormatter
+   */
   setOtherFormat(format) {
     this.formatDate = format;
   }

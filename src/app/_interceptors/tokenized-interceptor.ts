@@ -64,7 +64,7 @@ export class TokenizedInterceptor extends AbstractHttpInterceptor {
       }, (e) => {
         localStorage.removeItem('access_token');
         localStorage.removeItem('refresh_token');
-        // this.router.navigate(['./main/login']);
+        this.router.navigate(['./main/login']);
       });
     }
 

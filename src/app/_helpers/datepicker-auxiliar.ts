@@ -17,6 +17,13 @@ export class CustomDateAdapter {
     get mask() {
         return this.maskController.mask;
     }
+    /**
+     *
+     *
+     * @param {string} date
+     * @return {*}  {NgbDateStruct}
+     * @memberof CustomDateAdapter
+     */
     fromModel(date: string): NgbDateStruct {
         let result = null;
 
@@ -28,6 +35,13 @@ export class CustomDateAdapter {
         return result;
     }
 
+    /**
+     *
+     *
+     * @param {NgbDateStruct} date
+     * @return {*}  {string}
+     * @memberof CustomDateAdapter
+     */
     toModel(date: NgbDateStruct): string // from internal model -> your mode
     {
         let result = null;
@@ -51,6 +65,13 @@ export class CustomDateParserFormatter {
     get mask() {
         return this.maskController.mask;
     }
+    /**
+     *
+     *
+     * @param {string} value
+     * @return {*}  {NgbDateStruct}
+     * @memberof CustomDateParserFormatter
+     */
     parse(value: string): NgbDateStruct {
         let result = null;
 
@@ -65,6 +86,13 @@ export class CustomDateParserFormatter {
         return result;
 
     }
+    /**
+     *
+     *
+     * @param {NgbDateStruct} date
+     * @return {*}  {string}
+     * @memberof CustomDateParserFormatter
+     */
     format(date: NgbDateStruct): string {
 
         let result = null;

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpEvent, HttpRequest, HttpHandler } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TranslateHelperService } from '../_services/translate-helper.service';
-import { environment } from 'src/environments/environment';
 import { SKIPORT } from '../configuration';
 
 @Injectable()
