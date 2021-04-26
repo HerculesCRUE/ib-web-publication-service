@@ -7,7 +7,6 @@ import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Direction, FindRequest, Order, Page, PageRequest, PaginatedSearchComponent } from 'src/app/_helpers/search';
 import { BookSection } from 'src/app/_models/bookSection';
-import { DocumentDetail } from 'src/app/_models/documentDetail';
 import { DocumentService } from 'src/app/_services/document.service';
 
 /**

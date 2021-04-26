@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { I18n } from '../_helpers/customNgbDatepickerI18n.provider';
 
 @Injectable({
   providedIn: 'root'

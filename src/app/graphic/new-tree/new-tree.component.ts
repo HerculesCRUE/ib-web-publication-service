@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { HelperGraphics } from 'src/app/_helpers/helperGraphics';
 import { AreasService } from 'src/app/_services/areas.service';
 
 /**

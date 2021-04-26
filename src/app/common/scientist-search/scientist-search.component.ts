@@ -3,15 +3,11 @@ import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, of } from 'rxjs';
-import { catchError, map, timeout } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { HelperGraphics } from 'src/app/_helpers/helperGraphics';
 import { Direction, FindRequest, Order, Page, PageRequest, PaginatedSearchComponent } from 'src/app/_helpers/search';
-import { Helper } from 'src/app/_helpers/utils';
-import { Graphic } from 'src/app/_models/graphic';
 import { Person } from 'src/app/_models/person';
 import { PersonGraphic } from 'src/app/_models/personGraphic';
-import { SparqlResults } from 'src/app/_models/sparql';
-import { TableResultsHeaderItem } from 'src/app/_models/table-results';
 import { GraphicService } from 'src/app/_services/graphic.service';
 import { ResearchStaffService } from 'src/app/_services/research-staff.service';
 /**
@@ -147,6 +143,13 @@ export class ScientistSearchComponent extends PaginatedSearchComponent<Person> i
   }
 
 
+  /**
+   *
+   *
+   * @param {Array<PersonGraphic>} data
+   * @return {*} 
+   * @memberof ScientistSearchComponent
+   */
   newData(data: Array<PersonGraphic>) {
     const result = [];
 

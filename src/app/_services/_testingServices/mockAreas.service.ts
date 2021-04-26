@@ -1,13 +1,8 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
 import { AbstractService } from 'src/app/_helpers/abstract';
 import { Page } from 'src/app/_helpers/search';
 import { KnowledgeArea } from 'src/app/_models/KnowledgeArea';
-import { AreasService } from '../areas.service';
-
-
 
 /**
  *

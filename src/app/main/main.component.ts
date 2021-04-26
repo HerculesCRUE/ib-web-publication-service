@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Helper } from '../_helpers/utils';
 import { LoginService } from '../_services/login.service';
 import { TranslateHelperService } from '../_services/translate-helper.service';
 

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { latLng, tileLayer } from 'leaflet';
 import { HelperGraphics } from 'src/app/_helpers/helperGraphics';
 import { Graphic } from 'src/app/_models/graphic';
 import { GraphicModelTree } from 'src/app/_models/graphicModelTree';

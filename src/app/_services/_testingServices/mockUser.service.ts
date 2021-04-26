@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { AbstractService } from 'src/app/_helpers/abstract';
 import { FindRequest, Page } from 'src/app/_helpers/search';
 import { User } from 'src/app/_models/user';

@@ -10,8 +10,7 @@ import { ParticipantService } from 'src/app/_services/participant.service';
 
 @Component({
   selector: 'app-people-involved',
-  templateUrl: './people-involved.component.html',
-  styleUrls: ['./people-involved.component.css']
+  templateUrl: './people-involved.component.html'
 })
 export class PeopleInvolvedComponent extends PaginatedSearchComponent<Person> implements OnInit {
   @Input() projectId: string;

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { FindRequest, Page } from 'src/app/_helpers/search';
-import { Patent } from 'src/app/_models/patent';
 import { Person } from 'src/app/_models/person';
 import { PersonDetail } from 'src/app/_models/personDetail';
 

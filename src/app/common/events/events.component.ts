@@ -7,7 +7,6 @@ import { catchError, map } from 'rxjs/operators';
 import { Direction, FindRequest, Order, Page, PageRequest, PaginatedSearchComponent } from 'src/app/_helpers/search';
 import { Helper } from 'src/app/_helpers/utils';
 import { Event } from 'src/app/_models/event';
-import { SparqlResults } from 'src/app/_models/sparql';
 import { EventsService } from 'src/app/_services/events.service';
 
 @Component({

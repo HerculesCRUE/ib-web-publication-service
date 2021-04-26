@@ -1,5 +1,5 @@
-import { Injectable, NgModule } from '@angular/core';
-import { Routes, RouterModule, CanActivate, Router, ActivatedRouteSnapshot } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './_guards/auth.guard';
@@ -9,9 +9,6 @@ import { NoAuthGuard } from './_guards/no-auth.guard';
 import { GraphicComponent } from './graphic/graphic.component';
 import { LinksComponent } from './links/links.component';
 import { AccesibilityComponent } from './accesibility/accesibility.component';
-import { LoginService } from './_services/login.service';
-import { Observable } from 'rxjs';
-
 /**
  * **********************************************
  * ************** Rutas securizadas *************
@@ -39,12 +36,6 @@ const noSecureRoutes: Routes = [
     path: 'home',
     component: HomeComponent,
   },
-  {
-    path: 'users',
-    loadChildren: () =>
-      import('./users/users.module').then((m) => m.UsersModule),
-  },
-
   {
     path: 'sparql',
     canActivate: [AuthGuard],

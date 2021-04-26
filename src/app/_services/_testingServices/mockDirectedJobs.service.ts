@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AbstractService } from 'src/app/_helpers/abstract';
 import { Page, PageRequest } from 'src/app/_helpers/search';
@@ -57,7 +56,7 @@ export class MockDirectedJobsService extends AbstractService {
     };
 
 
-    constructor(private httpClient: HttpClient) {
+    constructor() {
         super();
     }
 

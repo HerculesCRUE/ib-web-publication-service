@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
 import { AbstractService } from 'src/app/_helpers/abstract';
-import { Page, PageRequest } from 'src/app/_helpers/search';
-import { Helper } from 'src/app/_helpers/utils';
+import { Page } from 'src/app/_helpers/search';
 import { Event } from 'src/app/_models/event';
-import { SparqlResults } from 'src/app/_models/sparql';
 
 
 

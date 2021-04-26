@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
-import { HttpHeaders, HttpParams } from '@angular/common/http';
 import { KeycloakService } from 'keycloak-angular';
 import { KeycloakInstance } from 'keycloak-js';
-import { AbstractService } from 'src/app/_helpers/abstract';
 import { User } from 'src/app/_models/user';
 
 /**

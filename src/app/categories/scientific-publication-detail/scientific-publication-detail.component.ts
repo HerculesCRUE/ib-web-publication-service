@@ -1,15 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
-import { ToastrService } from 'ngx-toastr';
-import { Observable, of } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
-import { Direction, FindRequest, Order, Page, PageRequest, PaginatedSearchComponent } from 'src/app/_helpers/search';
-import { BookSection } from 'src/app/_models/bookSection';
-import { DocumentDetail } from 'src/app/_models/documentDetail';
-import { DocumentService } from 'src/app/_services/document.service';
-import { ScientificPublication } from '../../_models/scientificPublication';
 import { ScientificPublicationService } from '../../_services/scientific-publication.service';
 
 /**

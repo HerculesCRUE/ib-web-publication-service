@@ -8,7 +8,6 @@ import { Direction, FindRequest, Order, Page, PageRequest, PaginatedSearchCompon
 import { Helper } from 'src/app/_helpers/utils';
 import { Person } from 'src/app/_models/person';
 import { SparqlResults } from 'src/app/_models/sparql';
-import { TableResultsHeaderItem } from 'src/app/_models/table-results';
 import { ParticipantService } from 'src/app/_services/participant.service';
 import { ResearchStaffService } from 'src/app/_services/research-staff.service';
 
