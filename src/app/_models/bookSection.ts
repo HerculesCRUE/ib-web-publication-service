@@ -1,3 +1,9 @@
+/**
+ *
+ *
+ * @export
+ * @class BookSection
+ */
 export class BookSection {
 
     /**

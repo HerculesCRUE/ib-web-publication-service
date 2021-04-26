@@ -73,7 +73,7 @@ export class GraphicService extends AbstractService {
      * @return {*}  {Observable<any>}
      * @memberof GraphicService
      */
-    patentArea(): Observable<any> {
+    patentArea(): Observable<Array<Graphic>> {
         return this.httpClient
             .get(Helper.getUrl('/patent/area')).pipe(
                 catchError(this.handleError)

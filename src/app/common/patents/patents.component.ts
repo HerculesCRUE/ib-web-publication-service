@@ -7,7 +7,7 @@ import { catchError, map } from 'rxjs/operators';
 import { HelperGraphics } from 'src/app/_helpers/helperGraphics';
 import { Direction, FindRequest, Order, Page, PageRequest, PaginatedSearchComponent } from 'src/app/_helpers/search';
 import { Helper } from 'src/app/_helpers/utils';
-import { GraphicPatent } from 'src/app/_models/graphicPatent';
+import { Graphic } from 'src/app/_models/graphic';
 import { Patent } from 'src/app/_models/patent';
 import { GraphicService } from 'src/app/_services/graphic.service';
 import { PatentService } from 'src/app/_services/patent.service';
@@ -122,7 +122,7 @@ export class PatentsComponent extends PaginatedSearchComponent<Patent> implement
     return typeFromURL.pop();
   }
 
-  transformData(data: Array<GraphicPatent>) {
+  transformData(data: Array<Graphic>) {
 
     const result = [];
     if (data.length > 0) {

@@ -5,7 +5,19 @@
  * @class Patent
  */
 export class Patent {
+    /**
+     *
+     *
+     * @type {string}
+     * @memberof Patent
+     */
     id: string;
+    /**
+     *
+     *
+     * @type {string}
+     * @memberof Patent
+     */
     title: string;
     /**
      * The dateIssued

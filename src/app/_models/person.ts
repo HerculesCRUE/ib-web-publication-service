@@ -12,11 +12,6 @@ export class Person {
     id: string;
 
     /**
-     * The title
-     */
-    //title: string;
-
-    /**
      * The birthDate
      */
     birthDate: string;

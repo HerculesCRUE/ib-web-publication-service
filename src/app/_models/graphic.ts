@@ -68,4 +68,5 @@ export class Graphic {
      * @memberof Graphic
      */
     hasKnowledgeAreatitle: string;
+
 }

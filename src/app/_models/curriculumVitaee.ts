@@ -1,3 +1,9 @@
+/**
+ *
+ *
+ * @export
+ * @class CurriculumVitae
+ */
 export class CurriculumVitae {
 
     /**
