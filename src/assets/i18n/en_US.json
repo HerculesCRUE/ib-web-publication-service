@@ -131,7 +131,7 @@
   },
   "researchmentStructure": {
     "title": "Researchment Structures",
-    "type": "Type",
+    "type": "Ontological type",
     "financing": "Financing",
     "name": "Name",
     "publications": "Publications",
@@ -171,7 +171,7 @@
   "scientist": {
     "title": "Research staff",
     "area": "Area",
-    "type": "Type",
+    "type": "Ontological type",
     "acction-inves": "Investigation actions",
     "congress": "Congress",
     "business-activity": "Business activity",
@@ -208,7 +208,7 @@
     "date-from": "Date from",
     "date-to": "Date to",
     "degree": "Degree",
-    "type": "Type",
+    "type": "Ontological type",
     "doi": "DOI",
     "publication-year": "Publication year",
     "scientific-publications": "Scientific publications",
@@ -260,14 +260,14 @@
       "id": "ID",
       "name": "name",
       "anyo": "year",
-      "type": "Type"
+      "type": "Ontological type"
     }
   },
   "documents": {
     "document": "Documents",
     "date-fin": "End Date",
     "date-ini": "Start Date",
-    "types": "Type",
+    "types": "Ontological type",
     "title": "Title",
     "name": "Name",
     "id": "ID",
@@ -277,7 +277,7 @@
     "publishedIn": "Published in",
     "date": "Date",
     "summary": "Summary",
-    "type": "Type",
+    "type": "Ontological type",
     "abbreviation": "Abbreviation",
     "placeOfPublication": "Place of publication",
     "edition": "Edition",
@@ -312,7 +312,7 @@
     "scientific-production-related": "Scientifict production related",
     "table-header": {
       "title": "Title",
-      "type": "Type",
+      "type": "Ontological type",
       "doi": "DOI",
       "release-year": "Release year"
     }
@@ -336,7 +336,7 @@
   "directed-jobs": {
     "table-header": {
       "title": "Title",
-      "type": "Type",
+      "type": "Ontological type",
       "keywords": "Keywords",
       "release-year": "Release year"
     }
@@ -361,7 +361,7 @@
   },
   "events": {
     "rol": "Rol",
-    "type": "Type",
+    "type": "Ontological type",
     "id": "ID",
     "title": "Title",
     "date": "Date",
@@ -383,7 +383,7 @@
     "resume": "Resume",
     "other-authors": "Other authors",
     "name": "Name",
-    "type": "Type",
+    "type": "Ontological type",
     "document-sections": "Secctions"
   },
   "event": {
