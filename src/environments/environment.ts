@@ -21,6 +21,7 @@ export const environment = {
     tokenUri: 'http://localhost:8080/auth/realms/umasio/protocol/openid-connect/token',
     logout: 'http://localhost:8080/auth/realms/umasio/protocol/openid-connect/logout',
     redirectUrl: 'http%3A%2F%2Flocalhost%3A8080%2Fauth%2Frealms%2Fumasio%2Faccount%2Flogin-redirect',
+    clientSecret: ''
   },
   lpdUrl: 'http://localhost:8080/',
   appUrl: 'http://localhost:4200'
