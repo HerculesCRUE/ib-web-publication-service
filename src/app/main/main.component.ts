@@ -47,6 +47,11 @@ export class MainComponent implements OnInit {
     this.loginService.logoutKC();
   }
 
+  /**
+   *
+   *
+   * @memberof MainComponent
+   */
   windowReload() {
     window.location.reload();
   }

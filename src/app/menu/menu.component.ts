@@ -18,7 +18,18 @@ export class MenuComponent implements OnInit {
    * Items del menú de la aplicación.
    */
   menuItems: MenuItem[];
+  /**
+   *
+   *
+   * @memberof MenuComponent
+   */
   initKeycloack;
+  /**
+   *
+   *
+   * @type {boolean}
+   * @memberof MenuComponent
+   */
   isLogged: boolean;
 
   constructor(
@@ -36,9 +47,5 @@ export class MenuComponent implements OnInit {
     });
 
   }
-
-
-
-
 
 }
