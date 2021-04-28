@@ -10,7 +10,7 @@
 | Módulo         | Servicio de publicación web - Web (frontend)                 |
 | Tipo           | Software                                                     |
 | Objetivo       | Servicio web encargado de la consulta de datos por parte de los usuarios |
-| Estado         | **100%** de la pantallas del front.<br />                    |
+| Estado         | **100%** de la pantallas del front.                          |
 | Próximos pasos |                                                              |
 
 
