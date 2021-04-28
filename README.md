@@ -4,13 +4,14 @@
 
 | Entregable     | Servicio de publicación web                                  |
 | -------------- | ------------------------------------------------------------ |
-| Fecha          | 17/12/2020                                                   |
+| Fecha          | 28/04/2021                                                   |
+| Revisado por   | Paloma Terán Pérez                                           |
 | Proyecto       | [ASIO](https://www.um.es/web/hercules/proyectos/asio) (Arquitectura Semántica e Infraestructura Ontológica) en el marco de la iniciativa [Hércules](https://www.um.es/web/hercules/) para la Semántica de Datos de Investigación de Universidades que forma parte de [CRUE-TIC](http://www.crue.org/SitePages/ProyectoHercules.aspx) |
 | Módulo         | Servicio de publicación web - Web (frontend)                 |
 | Tipo           | Software                                                     |
 | Objetivo       | Servicio web encargado de la consulta de datos por parte de los usuarios |
-| Estado         | **20%** de la pantallas del front.<br />Se han desarrollado las pantallas:<br /><br />**Estructuras de investigación**: Datos mockeados<br />**Detalle de estructuras de investigación**: Se muestran datos reales en las tablas de Producción científica, Proyectos y Patentes.<br />**Acciones de investigación**: Se muestran datos reales en las tablas.<br />**Detalle de proyecto**: Se muestran datos mockeados, aunque algún dato del detalle es real.<br />**Personal investigador**: Se muestran datos mockeados. |
-| Próximos pasos | Se deben completar el resto de pantallas, implementar algunos filtros y conectar con los servicios. |
+| Estado         | **100%** de la pantallas del front.<br />                    |
+| Próximos pasos |                                                              |
 
 
 
