@@ -312,19 +312,20 @@ export class Helper {
     return result.reverse();
   }
 
-  static makeDataForGraphic(data: Array<Graphic | GraphicModelTree>, textValue: string, returnAsSeriesDate = false) {
+  static makeDataForGraphic(data: Array<Graphic | GraphicModelTree>, textValue) {
     const result = [];
 
     if (data.length > 0) {
       data.forEach(element => {
-        result.push({ name: element[textValue], value: element.count });
+        result.push({ name: this.returnLastValue(element[textValue]), value: element.count });
       });
     }
-    if (returnAsSeriesDate) {
-      return { seriesData: result }
-    } else {
-      return result;
-    }
+    return { seriesData: result };
+  }
 
+
+  static returnLastValue(url): string {
+    const typeFromURL = url.split('/');
+    return typeFromURL.pop();
   }
 }

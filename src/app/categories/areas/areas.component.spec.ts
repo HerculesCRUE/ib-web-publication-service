@@ -46,21 +46,6 @@ describe('AreasComponent', () => {
 
   });
 
-  it('should transform data for graphic', () => {
-    const data: Array<Graphic> = [
-      {
-        count: '1',
-        hasKnowledgeAreatitle: '3213',
-        publishedIn: null,
-        projectClassification: null,
-        ownerOrganization: null,
-        subjectArea: null,
-        modality: null,
-        type: null
-      }]
-    const result = component.transformData(data);
-    expect(result.seriesData[0].name).toBe('3213');
-  });
 
 
 });

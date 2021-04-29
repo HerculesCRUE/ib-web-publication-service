@@ -110,31 +110,12 @@ export class PatentsComponent extends PaginatedSearchComponent<Patent> implement
 
     if (!this.isChatHiden) {
       this.graphicServcice.patentArea().subscribe(data => {
-        this.echartOptions = HelperGraphics.configChartPie(this.transformData(data), 'Patentes por Organizacion');
+        this.echartOptions = HelperGraphics.configChartPie(Helper.makeDataForGraphic(data, 'ownerOrganization'), 'Patentes por Organizacion');
       });
     }
 
   }
 
-
-  returnLastValue(url) {
-    const typeFromURL = url.split('/');
-    return typeFromURL.pop();
-  }
-
-  transformData(data: Array<Graphic>) {
-
-    const result = [];
-    if (data.length > 0) {
-      data.forEach(element => {
-        result.push({ name: this.returnLastValue(element.ownerOrganization), value: element.count });
-      });
-    }
-    return {
-      seriesData: result
-    };
-
-  }
 
 
   protected findInternal(findRequest: FindRequest): Observable<Page<Patent>> {
