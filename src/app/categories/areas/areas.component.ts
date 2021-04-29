@@ -65,8 +65,10 @@ export class AreasComponent implements OnInit {
     this.yearSelected = new Date().getFullYear();
     this.secondYearSelected = new Date().getFullYear();
     this.graphicService.projectAreasPerYear(this.yearSelected).subscribe(data => {
-      this.loaded = true;
-      this.echartOptions = HelperGraphics.configChartPie(Helper.makeDataForGraphic(data, 'hasKnowledgeAreatitle'), 'Números de grupos de investigación por area');
+      if (data.length > 0) {
+        this.loaded = true;
+        this.echartOptions = HelperGraphics.configChartPie(Helper.makeDataForGraphic(data, 'hasKnowledgeAreatitle'), 'Números de grupos de investigación por area');
+      }
     });
 
 
