@@ -4,6 +4,8 @@ import { Direction, Page, PageRequest } from './search';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import * as moment from 'moment';
 import { Binding, SparqlResults } from '../_models/sparql';
+import { Graphic } from '../_models/graphic';
+import { GraphicModelTree } from '../_models/graphicModelTree';
 /**
  * Clase de ayuda para la realización de llamadas HTTP.
  */
@@ -308,5 +310,21 @@ export class Helper {
       result.push(index);
     }
     return result.reverse();
+  }
+
+  static makeDataForGraphic(data: Array<Graphic | GraphicModelTree>, textValue: string, returnAsSeriesDate = false) {
+    const result = [];
+
+    if (data.length > 0) {
+      data.forEach(element => {
+        result.push({ name: element[textValue], value: element.count });
+      });
+    }
+    if (returnAsSeriesDate) {
+      return { seriesData: result }
+    } else {
+      return result;
+    }
+
   }
 }
