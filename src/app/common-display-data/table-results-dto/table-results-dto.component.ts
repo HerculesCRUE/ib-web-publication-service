@@ -33,7 +33,7 @@ import { Direction, FindRequest, Order, Page, PaginatedSearchComponent } from 's
 export class TableResultsDtoComponent
   extends PaginatedSearchComponent<any>
   implements OnChanges {
-
+  @Input() hasActions = false;
   /**
    * Mandatory to show the data in the table
    *

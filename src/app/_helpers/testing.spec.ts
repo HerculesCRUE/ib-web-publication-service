@@ -75,6 +75,7 @@ import { KeycloakService } from 'keycloak-angular';
 import { PeopleInvolvedComponent } from '../common/people-involved/people-involved.component';
 import { CollaboratorsComponent } from '../common/collaborators/collaborators.component';
 import { AreasListComponent } from '../common/areas-list/areas-list.component';
+import { QueriesManagementComponent } from '../sparqleditor/queries-management/queries-management.component';
 
 
 /**
@@ -104,6 +105,7 @@ export class TestingHelper {
     return TestBed.configureTestingModule({
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       declarations: [
+        QueriesManagementComponent,
         AreasListComponent,
         CollaboratorsComponent,
         TranslatePipeStub,
