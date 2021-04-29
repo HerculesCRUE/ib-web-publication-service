@@ -25,6 +25,7 @@
     "pagination-last": "»",
     "search-form": "Criterios de búsqueda",
     "results": "Resultados",
+    "saved-queries": "Consultas guardadas",
     "validation": {
       "required": "Valor requerido",
       "email": "No es un email válido",

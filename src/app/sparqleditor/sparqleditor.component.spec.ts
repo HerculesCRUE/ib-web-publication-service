@@ -7,6 +7,8 @@ import { MockLoginService } from '../_services/_testingServices/mockLogin.servic
 import { LoginService } from '../_services/login.service';
 import { GraphicService } from '../_services/graphic.service';
 import { MockGraphicService } from '../_services/_testingServices/mockGraphic.service';
+import { SparqlService } from '../_services/sparql.service';
+import { MockSparql } from '../_services/_testingServices/mockSparql.service';
 
 describe('SPARQLEditorComponent', () => {
   let component: SPARQLEditorComponent;
@@ -16,7 +18,8 @@ describe('SPARQLEditorComponent', () => {
     TestingHelper.configureTest().compileComponents();
     TestBed.configureTestingModule({
       providers: [{ provide: LoginService, useClass: MockLoginService },
-      { provide: GraphicService, useClass: MockGraphicService }]
+      { provide: GraphicService, useClass: MockGraphicService },
+      { provide: SparqlService, useClass: MockSparql }]
     }).compileComponents();
   }));
 

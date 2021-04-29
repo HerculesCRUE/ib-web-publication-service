@@ -16,6 +16,7 @@ import { RouterModule } from '@angular/router';
 import { ChartResultsComponent } from './chart-results/chart-results.component';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { FormsModule } from '@angular/forms';
+import { QueriesManagementComponent } from './queries-management/queries-management.component';
 
 // -------------- Aux functions --------------
 
@@ -26,6 +27,7 @@ import { FormsModule } from '@angular/forms';
     JsonResultsComponent,
     ErrorResultsComponent,
     ChartResultsComponent,
+    QueriesManagementComponent,
   ],
   imports: [
     RouterModule,
