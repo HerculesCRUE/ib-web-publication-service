@@ -33,4 +33,10 @@ export class SparqlService extends AbstractService {
       );
   }
 
+  save(query: string): Observable<any> {
+    return this.httpClient
+      .post(Helper.getUrl('/sparql'), query)
+      .pipe(catchError(this.handleError));
+  }
+
 }

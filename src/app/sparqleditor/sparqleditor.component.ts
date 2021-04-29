@@ -4,6 +4,7 @@ import Yasqe from '@triply/yasqe';
 import { yasgui } from '../../environments/environment';
 import { NgForm } from '@angular/forms';
 import { LoginService } from '../_services/login.service';
+import { SparqlService } from '../_services/sparql.service';
 @Component({
   selector: 'app-sparqleditor',
   templateUrl: './sparqleditor.component.html'
@@ -14,7 +15,7 @@ export class SPARQLEditorComponent implements OnInit {
   jsonData: any = null;
   errorMessage: any;
   federatedItem = false;
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService, private sparqlService: SparqlService) { }
 
   ngOnInit(): void {
     this.loginService.keycloakIsAdmin().subscribe(data => {
@@ -72,6 +73,13 @@ export class SPARQLEditorComponent implements OnInit {
     this.yasqe.setValue('');
   }
 
+
+  saveQueryBack() {
+    console.log('data', this.yasqe.config.value);
+    this.sparqlService.save(this.yasqe.config.value).subscribe(data => {
+      console.log(data);
+    });
+  }
 
 
 }
