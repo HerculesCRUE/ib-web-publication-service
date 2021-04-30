@@ -26,7 +26,7 @@ export class SparqlService extends AbstractService {
     parameters = Helper.addPaginationParams(parameters, findRequest.pageRequest);
 
     return this.httpClient
-      .get(Helper.getUrl('/sparql/search'), {
+      .get(Helper.getUrl('/trellis/search'), {
         params: parameters
       }).pipe(
         catchError(this.handleError)
@@ -35,7 +35,7 @@ export class SparqlService extends AbstractService {
 
   save(query: string): Observable<any> {
     return this.httpClient
-      .post(Helper.getUrl('/sparql'), query)
+      .post(Helper.getUrl('/trellis/save'), query)
       .pipe(catchError(this.handleError));
   }
 
