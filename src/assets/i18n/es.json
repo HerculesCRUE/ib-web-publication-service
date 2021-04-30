@@ -431,6 +431,11 @@
   "lang": {
     "es": "Español",
     "en": "Inglés"
+  },
+  "enum": {
+    "predefinidas": "Predefinido",
+    "ambas": "Ambos",
+    "usuario": "Mis consultas"
   }
 
 }

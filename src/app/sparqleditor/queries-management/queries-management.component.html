@@ -5,6 +5,21 @@
         </div>
     </div>
     <div class="row">
+        <!-- type -->
+        <div class="form-group col-lg-6">
+            <label for="type" class="col-sm-4 control-label">{{ "deliverable.level" | translate }}</label>
+            <div class="col-sm-8">
+                <select (change)="filterSparqlQueries()" name="type" class="form-control"
+                    [(ngModel)]="findRequest.filter.type" #type="ngModel">
+                    <option [value]="undefined">{{ "form.select" | translate }}</option>
+                    <option *ngFor="let item of queryTypes" [ngValue]="item">
+                        {{'enum.' + item | translate}}</option>
+                </select>
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-12">
             <div class="card flex-fill">
                 <div class="card-header">

@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('access_token', token);
           localStorage.setItem('refresh_token', refresh);
           this.loginService.getName().subscribe(name => {
-            localStorage.setItem('user_name', name);
+            localStorage.setItem('user_name', name.username);
             this.redirect();
           }, () => {
             this.redirect();
@@ -73,7 +73,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('access_token', token);
         localStorage.setItem('refresh_token', refresh);
         this.loginService.getName().subscribe(name => {
-          localStorage.setItem('user_name', name);
+          localStorage.setItem('user_name', name.username);
           this.redirect();
         }, () => {
           this.redirect();

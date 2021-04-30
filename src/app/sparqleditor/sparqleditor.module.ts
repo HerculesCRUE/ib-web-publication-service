@@ -17,6 +17,7 @@ import { ChartResultsComponent } from './chart-results/chart-results.component';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { FormsModule } from '@angular/forms';
 import { QueriesManagementComponent } from './queries-management/queries-management.component';
+import { EnumSelectPipe } from '../_pipes/enumSelect.pipe'
 
 // -------------- Aux functions --------------
 
@@ -28,6 +29,7 @@ import { QueriesManagementComponent } from './queries-management/queries-managem
     ErrorResultsComponent,
     ChartResultsComponent,
     QueriesManagementComponent,
+    EnumSelectPipe
   ],
   imports: [
     RouterModule,

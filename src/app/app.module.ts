@@ -55,6 +55,7 @@ import { LangInterceptor } from './_helpers/lang-intercetor';
 // keycloak
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { PatentDetailComponent } from './common/patent-detail/patent-detail.component';
+import { EnumSelectPipe } from './_pipes/enumSelect.pipe';
 
 const keycloakService = new KeycloakService();
 
@@ -67,7 +68,8 @@ const keycloakService = new KeycloakService();
     HomeComponent,
     LinksComponent,
     AccesibilityComponent,
-    PatentDetailComponent
+    PatentDetailComponent,
+
   ],
   imports: [
     BrowserModule,

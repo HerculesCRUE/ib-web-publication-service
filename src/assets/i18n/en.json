@@ -419,5 +419,10 @@
   "lang": {
     "es": "Spanish",
     "en": "English"
+  },
+  "enum": {
+    "predefinidas": "Predefined",
+    "ambas": "Both",
+    "usuario": "My queries"
   }
 }

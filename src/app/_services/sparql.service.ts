@@ -19,7 +19,7 @@ export class SparqlService extends AbstractService {
   find(findRequest: FindRequest): Observable<Page<SparqlQuery>> {
     // Filter params
     let parameters = new HttpParams();
-    parameters = Helper.addParam(parameters, 'tipo', findRequest.filter.tipo);
+    parameters = Helper.addParam(parameters, 'tipo', findRequest.filter.type);
     parameters = Helper.addParam(parameters, 'username', findRequest.filter.username);
     parameters = Helper.addParam(parameters, 'sparqlName', findRequest.filter.name);
     // Pagination params

@@ -8,6 +8,7 @@ import { Direction, FindRequest, Order, Page, PageRequest, PaginatedSearchCompon
 import { SparqlQuery } from 'src/app/_models/sparqlQuery';
 import { SparqlService } from 'src/app/_services/sparql.service';
 import Swal, { SweetAlertResult } from 'sweetalert2';
+import { SparqlQueryFromType } from 'src/app/_enums/sparqlQueryFromType';
 @Component({
   selector: 'app-queries-management',
   templateUrl: './queries-management.component.html'
@@ -18,6 +19,7 @@ export class QueriesManagementComponent extends PaginatedSearchComponent<SparqlQ
   @Input() yasqui: any;
   @Input() resetFind: number;
   loaded = false;
+  queryTypes;
 
 
   constructor(
@@ -36,8 +38,15 @@ export class QueriesManagementComponent extends PaginatedSearchComponent<SparqlQ
    * @memberof PatentsComponent
    */
   ngOnInit(): void {
-  }
 
+    this.queryTypes = this.ToArray(SparqlQueryFromType);
+  }
+  ToArray(enumme) {
+    const StringIsNumber = value => isNaN(Number(value)) === false;
+    return Object.keys(enumme)
+      .filter(StringIsNumber)
+      .map(key => enumme[key]);
+  }
   ngOnChanges(changes) {
     this.find();
   }
