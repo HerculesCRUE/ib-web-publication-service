@@ -44,7 +44,8 @@
     "reset": "Reset",
     "delete": "Borrar",
     "actions": "Actions",
-    "use": "Utilizar Query"
+    "use": "Utilizar Query",
+    "delete-message": "Are you sure you want to delete the entry? "
   },
   "menu": {
     "home": "Welcome",

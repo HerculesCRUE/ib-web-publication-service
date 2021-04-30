@@ -44,7 +44,8 @@
     "reset": "Reset",
     "delete": "Delete",
     "actions": "Actions",
-    "use": "Use"
+    "use": "Use",
+    "delete-message": "Are you sure you want to delete the entry? "
   },
   "menu": {
     "home": "Welcome",

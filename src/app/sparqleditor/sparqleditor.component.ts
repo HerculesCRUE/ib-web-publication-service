@@ -2,20 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import Yasgui from '@triply/yasgui';
 import Yasqe from '@triply/yasqe';
 import { yasgui } from '../../environments/environment';
-import { NgForm } from '@angular/forms';
+import Swal, { SweetAlertResult } from 'sweetalert2';
 import { LoginService } from '../_services/login.service';
 import { SparqlService } from '../_services/sparql.service';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-sparqleditor',
   templateUrl: './sparqleditor.component.html'
 })
 export class SPARQLEditorComponent implements OnInit {
-
+  name: string;
+  value = 0;
   yasqe: any;
   jsonData: any = null;
   errorMessage: any;
   federatedItem = false;
-  constructor(private loginService: LoginService, private sparqlService: SparqlService) { }
+  constructor(private loginService: LoginService, private translateS: TranslateService,
+    private sparqlService: SparqlService) { }
 
   ngOnInit(): void {
     this.loginService.keycloakIsAdmin().subscribe(data => {
@@ -75,16 +78,33 @@ export class SPARQLEditorComponent implements OnInit {
 
 
   saveQueryBack() {
-    // username sparqlQuery y sparqlName
-    const dataToPost = {
-      username: localStorage.getItem('user_name'),
-      sparqlName: 'test',
-      sparqlQuery: this.yasqe.config.value
+
+    Swal.fire({
+      html:
+        '<label> Nombre </label> ' +
+        '<input id="name" class="form-control" type="text" name="name"/> ',
+      showCloseButton: true,
+      showCancelButton: true,
+      confirmButtonText: this.translateS.instant('form.save'),
+      cancelButtonText: this.translateS.instant('form.cancel')
+    }).then(result => {
+      if (result.value) {
+
+        const inputValue = (<HTMLInputElement>document.getElementById('name')).value;
+        const dataToPost = {
+          username: localStorage.getItem('user_name'),
+          sparqlName: inputValue,
+          sparqlQuery: this.yasqe.persistentConfig.query
+        }
+
+        this.sparqlService.save(dataToPost).subscribe(data => {
+          this.value++;
+        });
+      }
     }
-    console.log('data', dataToPost);
-    this.sparqlService.save(dataToPost).subscribe(data => {
-      console.log(data);
-    });
+
+    )
+
   }
 
 

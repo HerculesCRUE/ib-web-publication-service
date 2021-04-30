@@ -44,7 +44,8 @@
     "reset": "Limpiar",
     "delete": "Borrar",
     "actions": "Acciones",
-    "use": "Use"
+    "use": "Use",
+    "delete-message": "¿Está seguro de que desea borrar la query guardada? "
   },
   "menu": {
     "home": "Inicio",

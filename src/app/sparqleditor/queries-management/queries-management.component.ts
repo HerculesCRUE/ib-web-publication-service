@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
@@ -7,20 +7,22 @@ import { catchError, map } from 'rxjs/operators';
 import { Direction, FindRequest, Order, Page, PageRequest, PaginatedSearchComponent } from 'src/app/_helpers/search';
 import { SparqlQuery } from 'src/app/_models/sparqlQuery';
 import { SparqlService } from 'src/app/_services/sparql.service';
-
+import Swal, { SweetAlertResult } from 'sweetalert2';
 @Component({
   selector: 'app-queries-management',
   templateUrl: './queries-management.component.html'
 })
-export class QueriesManagementComponent extends PaginatedSearchComponent<SparqlQuery> implements OnInit {
+export class QueriesManagementComponent extends PaginatedSearchComponent<SparqlQuery> implements OnInit, OnChanges {
 
   findRequest: FindRequest = new FindRequest();
   @Input() yasqui: any;
+  @Input() resetFind: number;
   loaded = false;
 
 
   constructor(
     private sparqlService: SparqlService,
+    private translateS: TranslateService,
     router: Router,
     translate: TranslateService,
     toastr: ToastrService
@@ -36,7 +38,9 @@ export class QueriesManagementComponent extends PaginatedSearchComponent<SparqlQ
   ngOnInit(): void {
   }
 
-
+  ngOnChanges(changes) {
+    this.find();
+  }
 
   protected findInternal(findRequest: FindRequest): Observable<Page<SparqlQuery>> {
 
@@ -94,9 +98,20 @@ export class QueriesManagementComponent extends PaginatedSearchComponent<SparqlQ
   }
 
   deleteQUery(id: string) {
-    this.sparqlService.delete(id).subscribe(data => {
-      this.resultObject.content = this.resultObject.content.filter(obj => obj['entityId'] !== id);
+    Swal.fire({
+      html: this.translateS.instant('form.delete-message'),
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: this.translateS.instant('form.yes'),
+      cancelButtonText: this.translateS.instant('form.cancel')
+    }).then(result => {
+      if (result.value) {
+        this.sparqlService.delete(id).subscribe(data => {
+          this.resultObject.content = this.resultObject.content.filter(obj => obj['entityId'] !== id);
+        });
+      }
     });
+
   }
 
   useQuery(query: string) {
