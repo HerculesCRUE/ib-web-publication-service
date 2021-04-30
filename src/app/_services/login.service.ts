@@ -66,6 +66,14 @@ export class LoginService extends AbstractService {
   }
 
 
+  getName() {
+    return this.httpClient
+      .get(Helper.getUrl('/keycloak/getName')).pipe(
+        catchError(this.handleError)
+      );
+  }
+
+
 
 
   /**

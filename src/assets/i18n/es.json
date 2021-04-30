@@ -41,7 +41,10 @@
     "no-result": "Lo sentimos, no hay resultados para esta búsqueda",
     "results-amount": "Resultados totales: ",
     "back": "Volver",
-    "reset": "Limpiar"
+    "reset": "Limpiar",
+    "delete": "Borrar",
+    "actions": "Acciones",
+    "use": "Use"
   },
   "menu": {
     "home": "Inicio",
@@ -91,6 +94,10 @@
   },
 
   "sparql": {
+    "username": "Nombre de usuario",
+    "sparqlQuery": "Query",
+    "sparqlName": "Nombre",
+    "entityId": "ID",
     "main": {
       "federated": "Consultas federadas"
     },
@@ -424,4 +431,5 @@
     "es": "Español",
     "en": "Inglés"
   }
+
 }

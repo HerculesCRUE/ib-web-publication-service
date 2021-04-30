@@ -49,7 +49,13 @@ export class LoginComponent implements OnInit {
           const refresh = this.keycloakAuth.refreshToken;
           localStorage.setItem('access_token', token);
           localStorage.setItem('refresh_token', refresh);
-          this.redirect();
+          this.loginService.getName().subscribe(name => {
+            localStorage.setItem('user_name', name);
+            this.redirect();
+          }, () => {
+            this.redirect();
+          });
+
 
         });
       }
@@ -66,7 +72,12 @@ export class LoginComponent implements OnInit {
         const refresh = this.keycloakAuth.refreshToken;
         localStorage.setItem('access_token', token);
         localStorage.setItem('refresh_token', refresh);
-        this.redirect();
+        this.loginService.getName().subscribe(name => {
+          localStorage.setItem('user_name', name);
+          this.redirect();
+        }, () => {
+          this.redirect();
+        });
 
       });
     });

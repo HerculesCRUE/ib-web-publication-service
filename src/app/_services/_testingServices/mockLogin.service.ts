@@ -64,6 +64,10 @@ export class MockLoginService {
     return of({});
   }
 
+  getName() {
+    return of({});
+  }
+
   /**
    *
    * Login que se utiliza para theme local y conexion a 

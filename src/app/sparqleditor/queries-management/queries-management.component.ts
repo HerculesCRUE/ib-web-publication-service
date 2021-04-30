@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
@@ -15,7 +15,7 @@ import { SparqlService } from 'src/app/_services/sparql.service';
 export class QueriesManagementComponent extends PaginatedSearchComponent<SparqlQuery> implements OnInit {
 
   findRequest: FindRequest = new FindRequest();
-
+  @Input() yasqui: any;
   loaded = false;
 
 
@@ -59,7 +59,7 @@ export class QueriesManagementComponent extends PaginatedSearchComponent<SparqlQ
 
   protected getDefaultOrder(): Order {
     return {
-      property: 'id',
+      property: 'entityId',
       direction: Direction.ASC
     };
   }
@@ -85,6 +85,22 @@ export class QueriesManagementComponent extends PaginatedSearchComponent<SparqlQ
   }
 
   filterSparqlQueries() {
+    this.sparqlService.find(this.findRequest).subscribe((data) => {
+      this.resultObject = data;
+      this.loaded = true;
+    }, () => {
+      this.loaded = true;
+    });
+  }
+
+  deleteQUery(id: string) {
+    this.sparqlService.delete(id).subscribe(data => {
+      this.resultObject.content = this.resultObject.content.filter(obj => obj['entityId'] !== id);
+    });
+  }
+
+  useQuery(query: string) {
+    this.yasqui.setValue(query);
 
   }
 

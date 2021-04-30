@@ -41,7 +41,10 @@
     "no-result": "No results",
     "results-amount": "Total: ",
     "back": "Go back",
-    "reset": "Reset"
+    "reset": "Reset",
+    "delete": "Borrar",
+    "actions": "Actions",
+    "use": "Utilizar Query"
   },
   "menu": {
     "home": "Welcome",
@@ -90,6 +93,10 @@
     "create-user-title": "Create new user"
   },
   "sparql": {
+    "username": "Username",
+    "sparqlQuery": "Query",
+    "sparqlName": "Name",
+    "entityId": "ID",
     "main": {
       "federated": "Federated queries"
     },

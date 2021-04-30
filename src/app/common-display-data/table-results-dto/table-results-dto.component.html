@@ -13,8 +13,9 @@
                 [ngClass]="getSortIcon(header)"></em>
             </th>
             <th *ngIf="hasActions">
-              Acciones
+              {{'form.actions' | translate }}
             </th>
+
           </tr>
         </thead>
         <tbody>
@@ -27,9 +28,7 @@
                   <ng-container>{{ item[header] }}</ng-container>
                 </td>
               </ng-container>
-              <th *ngIf="hasActions">
-                Acciones
-              </th>
+
             </tr>
             <tr [routerLink]="[routerNameLink, item[routerField], item[routerFieldSecondary]]" class="cursor"
               *ngIf="!!routerField && !!item[routerField] && routerFieldSecondary !== ''"
@@ -39,9 +38,7 @@
                   <ng-container>{{ item[header] }}</ng-container>
                 </td>
               </ng-container>
-              <th *ngIf="hasActions">
-                Acciones
-              </th>
+
             </tr>
 
             <tr *ngIf="!routerField || !item[routerField]" [ngClass]="{ 'table-secondary': i % 2 == 1 }">
@@ -49,10 +46,16 @@
                 <td *ngFor="let header of hedearDTO">
                   <!--<a href="{{ item[header]}}" >{{ item[header]}}</a>-->
                   <ng-container>{{ item[header] }}</ng-container>
+
                 </td>
                 <th *ngIf="hasActions">
-                  Acciones
+                  <button style="margin-left: 15px" *ngIf="item['username']" (click)="deleteQuery(item['entityId'])"
+                    class="btn btn-secondary">{{'form.delete' |
+                    translate}}</button>
+                  <button (click)="useQuery(item['sparqlQuery'])" class="btn btn-secondary">{{'form.use' |
+                    translate}}</button>
                 </th>
+
               </ng-container>
             </tr>
           </ng-container>

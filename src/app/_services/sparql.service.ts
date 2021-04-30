@@ -21,7 +21,7 @@ export class SparqlService extends AbstractService {
     let parameters = new HttpParams();
     parameters = Helper.addParam(parameters, 'tipo', findRequest.filter.tipo);
     parameters = Helper.addParam(parameters, 'username', findRequest.filter.username);
-    parameters = Helper.addParam(parameters, 'sparqlName', findRequest.filter.sparqlName);
+    parameters = Helper.addParam(parameters, 'sparqlName', findRequest.filter.name);
     // Pagination params
     parameters = Helper.addPaginationParams(parameters, findRequest.pageRequest);
 
@@ -33,9 +33,15 @@ export class SparqlService extends AbstractService {
       );
   }
 
-  save(query: string): Observable<any> {
+  save(query: any): Observable<any> {
     return this.httpClient
       .post(Helper.getUrl('/trellis/save'), query)
+      .pipe(catchError(this.handleError));
+  }
+
+  delete(id: string): Observable<any> {
+    return this.httpClient
+      .get(Helper.getUrl('/trellis/delete/' + id))
       .pipe(catchError(this.handleError));
   }
 

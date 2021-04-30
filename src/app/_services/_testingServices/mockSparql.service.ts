@@ -38,6 +38,10 @@ export class MockSparql extends AbstractService {
         return of({});
     }
 
+    delete() {
+        return of({});
+    }
+
 
 
 }

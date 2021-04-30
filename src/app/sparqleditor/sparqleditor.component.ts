@@ -75,11 +75,19 @@ export class SPARQLEditorComponent implements OnInit {
 
 
   saveQueryBack() {
-    console.log('data', this.yasqe.config.value);
-    this.sparqlService.save(this.yasqe.config.value).subscribe(data => {
+    // username sparqlQuery y sparqlName
+    const dataToPost = {
+      username: localStorage.getItem('user_name'),
+      sparqlName: 'test',
+      sparqlQuery: this.yasqe.config.value
+    }
+    console.log('data', dataToPost);
+    this.sparqlService.save(dataToPost).subscribe(data => {
       console.log(data);
     });
   }
+
+
 
 
 }

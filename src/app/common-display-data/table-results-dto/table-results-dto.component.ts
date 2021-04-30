@@ -33,6 +33,8 @@ import { Direction, FindRequest, Order, Page, PaginatedSearchComponent } from 's
 export class TableResultsDtoComponent
   extends PaginatedSearchComponent<any>
   implements OnChanges {
+  @Output() idToDelete: EventEmitter<string> = new EventEmitter<string>();
+  @Output() queryToUse: EventEmitter<string> = new EventEmitter<string>();
   @Input() hasActions = false;
   /**
    * Mandatory to show the data in the table
@@ -258,6 +260,13 @@ export class TableResultsDtoComponent
     return needTooltip;
   }
 
+  deleteQuery(id: string) {
+    this.idToDelete.emit(id);
+  }
+
+  useQuery(query: string) {
+    this.queryToUse.emit(query);
+  }
 
 
 }
