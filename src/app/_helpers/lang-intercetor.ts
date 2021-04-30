@@ -12,7 +12,7 @@ export class LangInterceptor implements HttpInterceptor {
         let localeLang = '';
         this.translateHelper.getLocalLang() ? localeLang = this.translateHelper.getLocalLang() : localeLang = 'es';
         if (!httpRequest.urlWithParams.includes('json') && !httpRequest.urlWithParams.includes(SKIPORT)
-            && !httpRequest.urlWithParams.includes('logout') && !httpRequest.urlWithParams.includes('keycloak') &&
+            && !httpRequest.urlWithParams.includes('logout') && !httpRequest.urlWithParams.includes('sparql') && !httpRequest.urlWithParams.includes('keycloak') &&
             !httpRequest.urlWithParams.includes('realms')) {
             if (httpRequest.urlWithParams.includes('?')) {
                 cloneReq = httpRequest.clone({ url: httpRequest.url + '?language=@' + localeLang });
