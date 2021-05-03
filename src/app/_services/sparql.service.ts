@@ -21,7 +21,7 @@ export class SparqlService extends AbstractService {
     let parameters = new HttpParams();
     parameters = Helper.addParam(parameters, 'type', findRequest.filter.type);
     parameters = Helper.addParam(parameters, 'username', findRequest.filter.username);
-    parameters = Helper.addParam(parameters, 'sparqlName', findRequest.filter.name);
+    parameters = Helper.addParam(parameters, 'sparqlName', findRequest.filter.sparqlName);
     // Pagination params
     parameters = Helper.addPaginationParams(parameters, findRequest.pageRequest);
 

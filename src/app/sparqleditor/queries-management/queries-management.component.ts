@@ -9,6 +9,7 @@ import { SparqlQuery } from 'src/app/_models/sparqlQuery';
 import { SparqlService } from 'src/app/_services/sparql.service';
 import Swal, { SweetAlertResult } from 'sweetalert2';
 import { SparqlQueryFromType } from 'src/app/_enums/sparqlQueryFromType';
+import { LoginService } from 'src/app/_services/login.service';
 @Component({
   selector: 'app-queries-management',
   templateUrl: './queries-management.component.html'
@@ -23,6 +24,7 @@ export class QueriesManagementComponent extends PaginatedSearchComponent<SparqlQ
 
 
   constructor(
+    private loginService: LoginService,
     private sparqlService: SparqlService,
     private translateS: TranslateService,
     router: Router,
@@ -38,7 +40,6 @@ export class QueriesManagementComponent extends PaginatedSearchComponent<SparqlQ
    * @memberof PatentsComponent
    */
   ngOnInit(): void {
-
     this.queryTypes = this.ToArray(SparqlQueryFromType);
   }
   ToArray(enumme) {
@@ -52,7 +53,13 @@ export class QueriesManagementComponent extends PaginatedSearchComponent<SparqlQ
   }
 
   protected findInternal(findRequest: FindRequest): Observable<Page<SparqlQuery>> {
-
+    if (!localStorage.getItem('user_name')) {
+      this.loginService.getName().subscribe((name) => {
+        this.findRequest.filter.sparqlName = name.username;
+      });
+    } else {
+      this.findRequest.filter.sparqlName = localStorage.getItem('user_name');
+    }
     const page: Page<SparqlQuery> = new Page();
     return this.sparqlService.find(findRequest).pipe(
       map((x) => {
