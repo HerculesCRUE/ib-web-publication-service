@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { TestingHelper } from 'src/app/_helpers/testing.spec';
+import { LoginService } from 'src/app/_services/login.service';
 import { SparqlService } from 'src/app/_services/sparql.service';
+import { MockLoginService } from 'src/app/_services/_testingServices/mockLogin.service';
 import { MockSparql } from 'src/app/_services/_testingServices/mockSparql.service';
 
 import { QueriesManagementComponent } from './queries-management.component';
@@ -12,7 +14,7 @@ describe('QueriesManagementComponent', () => {
   beforeEach(async(() => {
     TestingHelper.configureTest().compileComponents();
     TestBed.configureTestingModule({
-      providers: [{ provide: SparqlService, useClass: MockSparql }]
+      providers: [{ provide: SparqlService, useClass: MockSparql }, { provide: LoginService, useClass: MockLoginService }]
     }).compileComponents();
   }));
 
