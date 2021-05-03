@@ -320,7 +320,6 @@ p {
 
 abbr[data-original-title],
 abbr[title] {
-	text-decoration: underline;
 	-webkit-text-decoration: underline dotted;
 	text-decoration: underline dotted;
 	cursor: help;
@@ -3677,11 +3676,11 @@ input[type=submit].btn-block {
 }
 
 .dropleft .dropdown-toggle:after {
-	display: inline-block;
+	/*display: inline-block;*/
 	margin-left: .255em;
 	vertical-align: .255em;
 	content: "";
-	display: none
+	display: none;
 }
 
 .dropleft .dropdown-toggle:before {
@@ -11816,7 +11815,6 @@ a.text-dark:hover {
 }
 
 .badge-soft-primary {
-	color: #fff;
 	background-color: rgba(63, 128, 234, .175);
 	color: #3f80ea
 }
@@ -11834,7 +11832,6 @@ a.badge-soft-primary:focus {
 }
 
 .badge-soft-secondary {
-	color: #fff;
 	background-color: rgba(73, 80, 87, .175);
 	color: #495057
 }
@@ -11852,7 +11849,6 @@ a.badge-soft-secondary:focus {
 }
 
 .badge-soft-success {
-	color: #fff;
 	background-color: rgba(75, 191, 115, .175);
 	color: #4bbf73
 }
@@ -11870,7 +11866,6 @@ a.badge-soft-success:focus {
 }
 
 .badge-soft-info {
-	color: #fff;
 	background-color: rgba(31, 155, 207, .175);
 	color: #1f9bcf
 }
@@ -11888,7 +11883,6 @@ a.badge-soft-info:focus {
 }
 
 .badge-soft-warning {
-	color: #212529;
 	background-color: rgba(229, 165, 75, .175);
 	color: #e5a54b
 }
@@ -11906,7 +11900,6 @@ a.badge-soft-warning:focus {
 }
 
 .badge-soft-danger {
-	color: #fff;
 	background-color: rgba(217, 83, 79, .175);
 	color: #d9534f
 }
@@ -11924,7 +11917,6 @@ a.badge-soft-danger:focus {
 }
 
 .badge-soft-light {
-	color: #212529;
 	background-color: rgba(239, 242, 246, .175);
 	color: #eff2f6
 }
@@ -11942,7 +11934,6 @@ a.badge-soft-light:focus {
 }
 
 .badge-soft-dark {
-	color: #fff;
 	background-color: rgba(41, 48, 66, .175);
 	color: #293042
 }
@@ -13716,7 +13707,6 @@ body[data-theme=dark] .settings-toggle-option:first-child {
 .settings-button-label+.settings-button {
 	background: #e2e8ee;
 	color: #293042;
-	border-radius: 5px;
 	padding: .35rem 1rem;
 	font-size: .825rem;
 	border-radius: .3rem;
@@ -22315,7 +22305,7 @@ button.bg-primary-light:hover {
 	left: 20px;
 	z-index: 3001;
 	display: none;
-	font-family: arial;
+	font-family: arial, sans-serif;
 	font-size: 15px;
 	line-height: 1em
 }

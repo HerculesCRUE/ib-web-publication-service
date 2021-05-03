@@ -12,7 +12,7 @@
               {{ dtoTypeTranslate + '.' + header | translate }}<em class="float-right"
                 [ngClass]="getSortIcon(header)"></em>
             </th>
-            <th *ngIf="hasActions">
+            <th id="hasActions1" *ngIf="hasActions">
               {{'form.actions' | translate }}
             </th>
 
@@ -48,7 +48,7 @@
                   <ng-container>{{ item[header] }}</ng-container>
 
                 </td>
-                <th *ngIf="hasActions">
+                <th id="hasActions2" *ngIf="hasActions">
                   <button style="margin-left: 15px" *ngIf="item['username']" (click)="deleteQuery(item['entityId'])"
                     class="btn btn-secondary">{{'form.delete' |
                     translate}}</button>
