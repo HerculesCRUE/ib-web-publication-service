@@ -12,7 +12,7 @@
                 <select (change)="filterSparqlQueries()" name="type" class="form-control"
                     [(ngModel)]="findRequest.filter.type" #type="ngModel">
                     <option [value]="undefined">{{ "form.select" | translate }}</option>
-                    <option *ngFor="let item of queryTypes" [ngValue]="item">
+                    <option *ngFor="let item of queryTypes;index as i" [ngValue]="i.toString()">
                         {{'enum.' + item | translate}}</option>
                 </select>
 
