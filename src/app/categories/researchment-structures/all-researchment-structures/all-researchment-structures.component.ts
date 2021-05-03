@@ -39,7 +39,7 @@ export class AllResearchmentStructuresComponent extends PaginatedSearchComponent
 
   protected findInternal(findRequest: FindRequest): Observable<Page<University>> {
     const page: Page<University> = new Page();
-    const result = this.researchmentStructureService.find(findRequest).pipe(
+    return this.researchmentStructureService.find(findRequest).pipe(
       map((x) => {
         this.loaded = true;
         return x;
@@ -48,7 +48,6 @@ export class AllResearchmentStructuresComponent extends PaginatedSearchComponent
         this.loaded = true;
         return of(page)
       }));
-    return result;
   }
 
   protected removeInternal(entity: any): Observable<any> {

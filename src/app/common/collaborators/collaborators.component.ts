@@ -60,7 +60,7 @@ export class CollaboratorsComponent extends PaginatedSearchComponent<Person> imp
    */
   protected findInternal(findRequest: FindRequest): Observable<Page<Person>> {
     const page: Page<Person> = new Page();
-    const result = this.participantService.findPerson(findRequest).pipe(
+    return this.participantService.findPerson(findRequest).pipe(
       map((x) => {
         this.loaded = true;
         return x;
@@ -69,7 +69,6 @@ export class CollaboratorsComponent extends PaginatedSearchComponent<Person> imp
         this.loaded = true;
         return of(page)
       }));
-    return result;
   }
 
   /**

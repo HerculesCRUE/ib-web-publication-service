@@ -54,7 +54,7 @@ export class QueriesManagementComponent extends PaginatedSearchComponent<SparqlQ
   protected findInternal(findRequest: FindRequest): Observable<Page<SparqlQuery>> {
 
     const page: Page<SparqlQuery> = new Page();
-    const result = this.sparqlService.find(findRequest).pipe(
+    return this.sparqlService.find(findRequest).pipe(
       map((x) => {
         this.loaded = true;
         return x;
@@ -63,7 +63,6 @@ export class QueriesManagementComponent extends PaginatedSearchComponent<SparqlQ
         this.loaded = true;
         return of(page);
       }));
-    return result;
   }
 
   protected removeInternal(entity: any): Observable<any> {

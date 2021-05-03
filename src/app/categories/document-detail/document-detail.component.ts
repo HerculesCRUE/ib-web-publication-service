@@ -97,7 +97,7 @@ export class DocumentDetailComponent extends PaginatedSearchComponent<BookSectio
 
   protected findInternal(findRequest: FindRequest): Observable<Page<BookSection>> {
     const page: Page<BookSection> = new Page();
-    const result = this.documentService.getBookSection(findRequest).pipe(
+    return this.documentService.getBookSection(findRequest).pipe(
       map((x) => {
         this.loaded = true;
         return x;
@@ -106,7 +106,6 @@ export class DocumentDetailComponent extends PaginatedSearchComponent<BookSectio
         this.loaded = true;
         return of(page)
       }));
-    return result;
   }
 
   protected removeInternal(entity: any): Observable<any> {

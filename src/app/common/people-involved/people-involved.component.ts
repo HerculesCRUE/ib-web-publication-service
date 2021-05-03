@@ -31,7 +31,7 @@ export class PeopleInvolvedComponent extends PaginatedSearchComponent<Person> im
 
   protected findInternal(findRequest: FindRequest): Observable<Page<Person>> {
     const page: Page<Person> = new Page();
-    const result = this.participantService.findPeopleInvolvedInProject(findRequest, this.projectId).pipe(
+    return this.participantService.findPeopleInvolvedInProject(findRequest, this.projectId).pipe(
       map((x) => {
         this.loaded = true;
         return x;
@@ -40,7 +40,6 @@ export class PeopleInvolvedComponent extends PaginatedSearchComponent<Person> im
         this.loaded = true;
         return of(page)
       }));
-    return result;
   }
 
   protected removeInternal(entity: any): Observable<any> {

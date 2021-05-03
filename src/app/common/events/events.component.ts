@@ -52,7 +52,7 @@ export class EventsComponent extends PaginatedSearchComponent<Event> implements 
       this.findRequest.filter.participantId = this.participantId;
     }
     const page: Page<Event> = new Page();
-    const result = this.eventsService.find(findRequest).pipe(
+    return this.eventsService.find(findRequest).pipe(
       map((x) => {
         this.loaded = true;
         return x;
@@ -61,7 +61,6 @@ export class EventsComponent extends PaginatedSearchComponent<Event> implements 
         this.loaded = true;
         return of(page);
       }));
-    return result;
   }
 
   protected removeInternal(entity: any): Observable<any> {

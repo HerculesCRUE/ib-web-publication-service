@@ -119,7 +119,7 @@ export class ScientistSearchComponent extends PaginatedSearchComponent<Person> i
 
   protected findInternal(findRequest: FindRequest): Observable<Page<Person>> {
     const page: Page<Person> = new Page();
-    const result = this.researchStaffServices.find(findRequest).pipe(
+    return this.researchStaffServices.find(findRequest).pipe(
       map((x) => {
         this.loaded = true;
         return x;
@@ -128,7 +128,6 @@ export class ScientistSearchComponent extends PaginatedSearchComponent<Person> i
         this.loaded = true;
         return of(page)
       }));
-    return result;
   }
 
   protected removeInternal(entity: any): Observable<any> {

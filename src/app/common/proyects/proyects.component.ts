@@ -169,7 +169,7 @@ export class ProyectsComponent extends PaginatedSearchComponent<Project> impleme
     }
 
     const page: Page<Project> = new Page();
-    const result = this.projectService.find(findRequest).pipe(
+    return this.projectService.find(findRequest).pipe(
       map((x) => {
         this.loaded = true;
         return x;
@@ -178,7 +178,6 @@ export class ProyectsComponent extends PaginatedSearchComponent<Project> impleme
         this.loaded = true;
         return of(page)
       }));
-    return result;
   }
 
   protected removeInternal(entity: any): Observable<any> {

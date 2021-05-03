@@ -65,7 +65,7 @@ export class AreasListComponent extends PaginatedSearchComponent<KnowledgeArea> 
   protected findInternal(findRequest: FindRequest): Observable<Page<KnowledgeArea>> {
 
     const page: Page<KnowledgeArea> = new Page();
-    const result = this.areasService.find(findRequest).pipe(
+    return this.areasService.find(findRequest).pipe(
       map((x) => {
         this.loaded = true;
         return x;
@@ -74,7 +74,6 @@ export class AreasListComponent extends PaginatedSearchComponent<KnowledgeArea> 
         this.loaded = true;
         return of(page);
       }));
-    return result;
   }
 
   /**

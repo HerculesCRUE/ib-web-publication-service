@@ -100,7 +100,7 @@ export class DirectedJobsComponent extends PaginatedSearchComponent<AcademicPubl
       this.findRequest.filter.authorId = this.scientificId;
     }
     const page: Page<AcademicPublication> = new Page();
-    const result = this.documentService.findAcademicPublication(findRequest).pipe(
+    return this.documentService.findAcademicPublication(findRequest).pipe(
       map((x) => {
         this.loaded = true;
         return x;
@@ -109,7 +109,6 @@ export class DirectedJobsComponent extends PaginatedSearchComponent<AcademicPubl
         this.loaded = true;
         return of(page)
       }));
-    return result;
   }
 
   /**
