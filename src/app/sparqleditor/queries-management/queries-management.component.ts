@@ -55,10 +55,10 @@ export class QueriesManagementComponent extends PaginatedSearchComponent<SparqlQ
   protected findInternal(findRequest: FindRequest): Observable<Page<SparqlQuery>> {
     if (!localStorage.getItem('user_name')) {
       this.loginService.getName().subscribe((name) => {
-        this.findRequest.filter.sparqlName = name.username;
+        this.findRequest.filter.username = name.username;
       });
     } else {
-      this.findRequest.filter.sparqlName = localStorage.getItem('user_name');
+      this.findRequest.filter.username = localStorage.getItem('user_name');
     }
     const page: Page<SparqlQuery> = new Page();
     return this.sparqlService.find(findRequest).pipe(
