@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
@@ -12,7 +12,7 @@ import { ParticipantService } from 'src/app/_services/participant.service';
   selector: 'app-people-involved',
   templateUrl: './people-involved.component.html'
 })
-export class PeopleInvolvedComponent extends PaginatedSearchComponent<Person> implements OnInit {
+export class PeopleInvolvedComponent extends PaginatedSearchComponent<Person> {
   @Input() projectId: string;
   loaded: boolean;
   findRequest: FindRequest = new FindRequest();
@@ -26,8 +26,6 @@ export class PeopleInvolvedComponent extends PaginatedSearchComponent<Person> im
     super(router, translate, toastr);
   }
 
-  ngOnInit(): void {
-  }
 
   protected findInternal(findRequest: FindRequest): Observable<Page<Person>> {
     const page: Page<Person> = new Page();

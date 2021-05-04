@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
@@ -22,7 +22,7 @@ import { ResearchStaffService } from 'src/app/_services/research-staff.service';
   selector: 'app-participants',
   templateUrl: './participants.component.html'
 })
-export class ParticipantsComponent extends PaginatedSearchComponent<Person> implements OnInit {
+export class ParticipantsComponent extends PaginatedSearchComponent<Person> {
   /**
    * university Id for search filter in case of necessary
    */
@@ -79,10 +79,6 @@ export class ParticipantsComponent extends PaginatedSearchComponent<Person> impl
     toastr: ToastrService
   ) {
     super(router, translate, toastr);
-  }
-
-
-  ngOnInit(): void {
   }
 
 
