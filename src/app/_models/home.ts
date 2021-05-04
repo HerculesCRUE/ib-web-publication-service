@@ -1,4 +1,3 @@
-import { utils } from "protractor";
 import { Helper } from "../_helpers/utils";
 
 /**

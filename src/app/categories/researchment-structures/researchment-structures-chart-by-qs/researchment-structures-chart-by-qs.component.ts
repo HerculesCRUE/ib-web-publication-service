@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Helper } from 'src/app/_helpers/utils';
 import { GraphicService } from 'src/app/_services/graphic.service';
 
 /**

@@ -2,7 +2,7 @@
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import {
   HttpClientModule,
   HttpClient,
@@ -55,7 +55,7 @@ import { LangInterceptor } from './_helpers/lang-intercetor';
 // keycloak
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { PatentDetailComponent } from './common/patent-detail/patent-detail.component';
-import { EnumSelectPipe } from './_pipes/enumSelect.pipe';
+
 
 const keycloakService = new KeycloakService();
 

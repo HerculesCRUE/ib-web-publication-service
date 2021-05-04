@@ -9,8 +9,8 @@ export class LangInterceptor implements HttpInterceptor {
     constructor(private translateHelper: TranslateHelperService) { }
     intercept(httpRequest: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         let cloneReq;
-        let localeLang = '';
-        this.translateHelper.getLocalLang() ? localeLang = this.translateHelper.getLocalLang() : localeLang = 'es';
+        const localeLang = this.translateHelper.getLocalLang() ? this.translateHelper.getLocalLang() : 'es';
+
         if (!httpRequest.urlWithParams.includes('json') && !httpRequest.urlWithParams.includes(SKIPORT)
             && !httpRequest.urlWithParams.includes('logout') && !httpRequest.urlWithParams.includes('trellis') && !httpRequest.urlWithParams.includes('keycloak') &&
             !httpRequest.urlWithParams.includes('realms')) {

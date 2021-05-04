@@ -334,7 +334,7 @@ export abstract class PaginatedSearchComponent<T> implements AfterContentInit {
 
   /**
    * Realiza la llamada al servicio para obtener los resultados.
-   * Este método será definido por la clase final.
+   * Este method será definido por la clase final.
    * @param findRequest Datos de búsqueda.
    * @returns Observable con el resultado de la obtención de los datos.
    */
@@ -344,7 +344,7 @@ export abstract class PaginatedSearchComponent<T> implements AfterContentInit {
 
   /**
    * Realiza la llamada al servicio para realizar el borrado de una entidad.
-   * Este método será definido por la clase final.
+   * Este method será definido por la clase final.
    * @param entity Entidad a eliminar.
    * @returns Observable con el resultado de la eliminación.
    */

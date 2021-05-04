@@ -7,10 +7,10 @@ import {
   HttpRequest,
   HttpUserEvent,
 } from '@angular/common/http';
-import { Observable, of, throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { Injectable } from '@angular/core';
 
-import { mergeMap, catchError, retryWhen } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 
 import { LoginService } from '../_services/login.service';
 import { Router } from '@angular/router';
