@@ -234,7 +234,6 @@ export abstract class PaginatedSearchComponent<T> implements AfterContentInit {
       if (page.numberOfElements === 0 && page.number !== 0) {
         // Si no se encuentran resultados, se posiciona en la primera página del listado
         this.findRequest.pageRequest.page = 0;
-        //this.findRequest.pageRequest.uibPage = 1;
         this.findInternal(this.findRequest).subscribe(
           ((p: Page<T>) => {
             this.searchResult = p.content;
@@ -246,9 +245,6 @@ export abstract class PaginatedSearchComponent<T> implements AfterContentInit {
         page.uibPage = page.number + 1;
         this.resultObject = page;
       }
-      /*this.searchResult = page.content;
-      page.uibPage = page.number + 1;
-      this.resultObject = page;*/
     });
 
   }

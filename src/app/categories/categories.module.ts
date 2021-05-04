@@ -10,7 +10,8 @@ import { SharedModule } from '../shared/shared.module';
 import { ResearchmentStructuresDetailComponent } from './researchment-structures-detail/researchment-structures-detail.component';
 import { AllResearchmentStructuresComponent } from './researchment-structures/all-researchment-structures/all-researchment-structures.component';
 import { TopResearchmentStructuresComponent } from './researchment-structures/top-researchment-structures/top-researchment-structures.component';
-import { ResearchmentStructuresByFinancingComponent } from './researchment-structures/researchment-structures-chart-by-financing/researchment-structures-chart-by-financing.component';
+import { ResearchmentStructuresByFinancingComponent }
+  from './researchment-structures/researchment-structures-chart-by-financing/researchment-structures-chart-by-financing.component';
 import { InvestigationActionsComponent } from './investigation-actions/investigation-actions.component';
 import { ResearchmentStructuresByQSComponent } from './researchment-structures/researchment-structures-chart-by-qs/researchment-structures-chart-by-qs.component';
 import { TreeComponent } from '../graphic/tree/tree.component';

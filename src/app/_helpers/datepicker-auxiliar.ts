@@ -51,7 +51,7 @@ export class CustomDateAdapter {
             newDate.set('month', date.month - 1);
             newDate.set('date', date.day);
             newDate.startOf('day');
-            result = newDate.format(this.mask);
+            // result = newDate.format(this.mask);
             result = newDate.valueOf();
         }
 

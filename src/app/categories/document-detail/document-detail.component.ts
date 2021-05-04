@@ -61,23 +61,23 @@ export class DocumentDetailComponent extends PaginatedSearchComponent<BookSectio
 
 
     if (this.lastItem === 'Dossier') {
-      this.documentService.getotherByIdAndType(id, btoa(this.lastItem)).subscribe(data => {
-        if (data) {
-          this.document = data;
+      this.documentService.getotherByIdAndType(id, btoa(this.lastItem)).subscribe(other => {
+        if (other) {
+          this.document = other;
           this.loaded = true;
         }
       });
     } else if (this.lastItem === 'Book' || this.lastItem === 'Article') {
-      this.documentService.getDocumentByIdAndType(id, btoa(this.lastItem)).subscribe(data => {
-        if (data) {
-          this.document = data;
+      this.documentService.getDocumentByIdAndType(id, btoa(this.lastItem)).subscribe(book => {
+        if (book) {
+          this.document = book;
           this.loaded = true;
         }
       });
     } else {
-      this.documentService.getacademicByIdAndType(id, btoa(this.lastItem)).subscribe(data => {
-        if (data) {
-          this.document = data;
+      this.documentService.getacademicByIdAndType(id, btoa(this.lastItem)).subscribe(academic => {
+        if (academic) {
+          this.document = academic;
           this.loaded = true;
         }
       });
