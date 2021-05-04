@@ -73,18 +73,11 @@ export class TopResearchmentStructuresComponent implements OnInit {
    * @memberof TopResearchmentStructuresComponent
    */
   filterTopResearchmentStructures(filterName: string) {
-    switch (filterName) {
-      case 'qa':
-        // si el valor viene undefined debería "resetar el valor "
-        this.findRequest.filter.qa !== 'undefined'
-          ? this.filters.set(filterName, this.findRequest.filter.qa)
-          : this.filters.set(filterName, '');
-        break;
-
-      default:
-        break;
+    if (filterName === 'qa') {
+      this.findRequest.filter.qa !== 'undefined'
+        ? this.filters.set(filterName, this.findRequest.filter.qa)
+        : this.filters.set(filterName, '');
     }
-
 
     const pageRequest: PageRequest = new PageRequest();
     pageRequest.page = 1;

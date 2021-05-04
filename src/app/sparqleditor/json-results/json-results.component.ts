@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, AfterViewChecked, ChangeDetectorRef } from '@angular/core';
+import { Component, Input, AfterViewChecked, ChangeDetectorRef } from '@angular/core';
 
 /**
  * JsonResultsComponent

@@ -6,8 +6,7 @@ import { PatentService } from 'src/app/_services/patent.service';
 
 @Component({
   selector: 'app-patent-detail',
-  templateUrl: './patent-detail.component.html',
-  styleUrls: ['./patent-detail.component.css']
+  templateUrl: './patent-detail.component.html'
 })
 export class PatentDetailComponent implements OnInit {
   patentDetail: PatentDetail = new PatentDetail();

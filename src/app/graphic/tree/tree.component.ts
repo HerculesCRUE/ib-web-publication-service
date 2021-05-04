@@ -1,6 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
 import { NgxEchartsDirective } from 'ngx-echarts';
-import { HelperGraphics } from 'src/app/_helpers/helperGraphics';
 import { AreasService } from 'src/app/_services/areas.service';
 
 /**

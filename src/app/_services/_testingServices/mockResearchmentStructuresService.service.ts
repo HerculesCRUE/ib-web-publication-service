@@ -40,7 +40,7 @@ export class MockResearchmentStructuresService {
         page.numberOfElements = 10;
         page.size = 10;
         page.totalElements = 10;
-        // TODO sort
+
 
         page.content = results;
         return of(page);

@@ -1,10 +1,8 @@
 import {
   AfterViewChecked,
-  AfterViewInit,
   ChangeDetectorRef,
   Component,
   OnChanges,
-  OnInit,
   SimpleChanges
 } from '@angular/core';
 import { BindingValue, SparqlResults } from 'src/app/_models/sparql';

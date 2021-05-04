@@ -51,7 +51,7 @@ export class MockEventsService extends AbstractService {
         page.numberOfElements = 10;
         page.size = 10;
         page.totalElements = 10;
-        // TODO sort
+
         page.content = results;
         return of(page);
     }
@@ -69,7 +69,7 @@ export class MockEventsService extends AbstractService {
         page.numberOfElements = 10;
         page.size = 10;
         page.totalElements = 10;
-        // TODO sort
+
         page.content = results;
         return of(page);
     }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import Yasgui from '@triply/yasgui';
 import Yasqe from '@triply/yasqe';
 import { yasgui } from '../../environments/environment';
-import Swal, { SweetAlertResult } from 'sweetalert2';
+import Swal from 'sweetalert2';
 import { LoginService } from '../_services/login.service';
 import { SparqlService } from '../_services/sparql.service';
 import { TranslateService } from '@ngx-translate/core';

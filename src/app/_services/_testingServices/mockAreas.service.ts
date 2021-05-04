@@ -28,7 +28,7 @@ export class MockAreaservice extends AbstractService {
         page.numberOfElements = 10;
         page.size = 10;
         page.totalElements = 10;
-        // TODO sort
+
         return of(page);
     }
 

@@ -7,7 +7,7 @@ import { catchError, map } from 'rxjs/operators';
 import { Direction, FindRequest, Order, Page, PageRequest, PaginatedSearchComponent } from 'src/app/_helpers/search';
 import { SparqlQuery } from 'src/app/_models/sparqlQuery';
 import { SparqlService } from 'src/app/_services/sparql.service';
-import Swal, { SweetAlertResult } from 'sweetalert2';
+import Swal from 'sweetalert2';
 import { SparqlQueryFromType } from 'src/app/_enums/sparqlQueryFromType';
 import { LoginService } from 'src/app/_services/login.service';
 @Component({
