@@ -30,9 +30,5 @@ describe('ParticipantsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it('should init component', fakeAsync(() => {
-    component.ngOnInit();
-    tick(450);
-    expect(component.loaded).toBeTruthy();
-  }));
+
 });
