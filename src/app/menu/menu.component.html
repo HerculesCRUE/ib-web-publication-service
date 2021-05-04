@@ -1,24 +1,26 @@
 <!-- menu entries -->
-<ng-container *ngFor="let item of menuItems">
+<ul class="sidebar-nav">
+  <ng-container *ngFor="let item of menuItems">
 
-  <li class="sidebar-item" *ngIf="item.title === 'menu.sparql' && isLogged" routerLinkActive="active">
-    <ng-container>
-      <a class="sidebar-link" [routerLink]="[item.url]">
+    <li class="sidebar-item" *ngIf="item.title === 'menu.sparql' && isLogged" routerLinkActive="active">
+      <ng-container>
+        <a class="sidebar-link" [routerLink]="[item.url]">
+          <em class="oi icons-menu" [ngClass]="[item.icon]"></em>
+          {{ item.title | translate }}
+        </a>
+      </ng-container>
+    </li>
+    <li class="sidebar-item" *ngIf="item.title !== 'menu.sparql'" routerLinkActive="active">
+      <ng-container *ngIf="!item.disabled && item.title !== 'menu.sparql'">
+        <a class="sidebar-link" [routerLink]="[item.url]">
+          <em class="oi icons-menu" [ngClass]="[item.icon]"></em>
+          {{ item.title | translate }}
+        </a>
+      </ng-container>
+      <ng-container *ngIf="item.disabled">
         <em class="oi icons-menu" [ngClass]="[item.icon]"></em>
         {{ item.title | translate }}
-      </a>
-    </ng-container>
-  </li>
-  <li class="sidebar-item" *ngIf="item.title !== 'menu.sparql'" routerLinkActive="active">
-    <ng-container *ngIf="!item.disabled && item.title !== 'menu.sparql'">
-      <a class="sidebar-link" [routerLink]="[item.url]">
-        <em class="oi icons-menu" [ngClass]="[item.icon]"></em>
-        {{ item.title | translate }}
-      </a>
-    </ng-container>
-    <ng-container *ngIf="item.disabled">
-      <em class="oi icons-menu" [ngClass]="[item.icon]"></em>
-      {{ item.title | translate }}
-    </ng-container>
-  </li>
-</ng-container>
+      </ng-container>
+    </li>
+  </ng-container>
+</ul>

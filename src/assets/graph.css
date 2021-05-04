@@ -1785,7 +1785,7 @@ table.dataTable.dtr-inline.collapsed.table-sm>tbody>tr>th:first-child:before {
 	-webkit-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-	font-family: fcicons!important;
+	font-family: fcicons, sans-serif!important;
 	speak: none;
 	font-style: normal;
 	font-weight: 400;

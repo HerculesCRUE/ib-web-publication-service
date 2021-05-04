@@ -11322,7 +11322,8 @@ a.text-dark:hover {
 }
 
 .text-hide {
-	font: 0/0 a;
+    font-size: 0;
+    line-height: 0;
 	color: transparent;
 	text-shadow: none;
 	background-color: transparent;
@@ -13410,7 +13411,7 @@ body[data-theme=dark] .settings-toggle-option:first-child {
 	right: 8px;
 	width: 16px;
 	height: 16px;
-	font-family: Font Awesome\ 5 Free;
+	font-family: Font Awesome\ 5 Free, sans-serif;
 	font-weight: 900;
 	font-size: 10px;
 	line-height: 17px;
