@@ -41,7 +41,7 @@ export class StatisticsComponent implements OnInit {
     const result = [];
     if (data.length > 0) {
       data.forEach(element => {
-        result.push({ name: element.projectClassification, value: element.count });
+        result.push({ name: element.projectClassification ? element.projectClassification : 'Sin definir', value: element.count });
       });
     }
     return {
@@ -54,7 +54,7 @@ export class StatisticsComponent implements OnInit {
     const result = [];
     if (data && data.length > 1) {
       data.forEach(element => {
-        result.push({ name: element.publishedIn, value: element.count });
+        result.push({ name: element.publishedIn ? element.publishedIn : 'Sin definir', value: element.count });
       });
     }
     return {
@@ -68,7 +68,7 @@ export class StatisticsComponent implements OnInit {
     const result = [];
     if (data.length > 0) {
       data.forEach(element => {
-        result.push({ name: element.modality, value: element.count });
+        result.push({ name: element.modality ? element.modality : 'Sin definir', value: element.count });
       });
     }
     return result;

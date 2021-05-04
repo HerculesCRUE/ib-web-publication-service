@@ -317,7 +317,10 @@ export class Helper {
 
     if (data.length > 0) {
       data.forEach(element => {
-        result.push({ name: this.returnLastValue(element[textValue]), value: element.count });
+        result.push({
+          name: this.returnLastValue(element[textValue]) ? this.returnLastValue(element[textValue]) : 'sin-definir'
+          , value: element.count
+        });
       });
     }
     return { seriesData: result };
