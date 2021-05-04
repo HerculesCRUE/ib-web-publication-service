@@ -5401,7 +5401,6 @@ a.badge-dark:focus {
 
 .alert {
 	position: relative;
-	padding: .95rem;
 	margin-bottom: 1rem;
 	border: 0 solid transparent;
 	border-radius: .2rem;
