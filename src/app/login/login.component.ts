@@ -37,49 +37,35 @@ export class LoginComponent implements OnInit {
       if (data) {
         this.router.navigate(['/main']);
       } else {
-        const config = {
-          url: Helper.getKeyCloackUrl().authUrl,
-          realm: Helper.getKeyCloackUrl().realm,
-          clientId: Helper.getKeyCloackUrl().clientId
-        };
-        // @ts-ignore
-        this.keycloakAuth = new Keycloak(config);
-        this.keycloakAuth.init({ onLoad: 'login-required' }).then(() => {
-          const token = this.keycloakAuth.token;
-          const refresh = this.keycloakAuth.refreshToken;
-          localStorage.setItem('access_token', token);
-          localStorage.setItem('refresh_token', refresh);
-          this.loginService.getName().subscribe(name => {
-            localStorage.setItem('user_name', name.username);
-            this.redirect();
-          }, () => {
-            this.redirect();
-          });
+        this.loginForKeycloack();
 
-
-        });
       }
     }, error => {
-      const config = {
-        url: Helper.getKeyCloackUrl().authUrl,
-        realm: Helper.getKeyCloackUrl().realm,
-        clientId: Helper.getKeyCloackUrl().clientId
-      };
-      // @ts-ignore
-      this.keycloakAuth = new Keycloak(config);
-      this.keycloakAuth.init({ onLoad: 'login-required' }).then(() => {
-        const token = this.keycloakAuth.token;
-        const refresh = this.keycloakAuth.refreshToken;
-        localStorage.setItem('access_token', token);
-        localStorage.setItem('refresh_token', refresh);
-        this.loginService.getName().subscribe(name => {
-          localStorage.setItem('user_name', name.username);
-          this.redirect();
-        }, () => {
-          this.redirect();
-        });
+      this.loginForKeycloack();
+    });
+  }
 
+
+  loginForKeycloack() {
+    const config = {
+      url: Helper.getKeyCloackUrl().authUrl,
+      realm: Helper.getKeyCloackUrl().realm,
+      clientId: Helper.getKeyCloackUrl().clientId
+    };
+    // @ts-ignore
+    this.keycloakAuth = new Keycloak(config);
+    this.keycloakAuth.init({ onLoad: 'login-required' }).then(() => {
+      const token = this.keycloakAuth.token;
+      const refresh = this.keycloakAuth.refreshToken;
+      localStorage.setItem('access_token', token);
+      localStorage.setItem('refresh_token', refresh);
+      this.loginService.getName().subscribe(name => {
+        localStorage.setItem('user_name', name.username);
+        this.redirect();
+      }, () => {
+        this.redirect();
       });
+
     });
   }
 

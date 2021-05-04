@@ -78,11 +78,7 @@ body {
 	outline: 0!important
 }
 
-hr {
-	box-sizing: content-box;
-	height: 0;
-	overflow: visible
-}
+
 
 h1,
 h2,
@@ -201,7 +197,10 @@ pre {
 	margin-top: 0;
 	margin-bottom: 1rem;
 	overflow: auto;
-	-ms-overflow-style: scrollbar
+	-ms-overflow-style: scrollbar;
+	display: block;
+	font-size: 87.5%;
+	color: #212529
 }
 
 figure {
@@ -452,6 +451,9 @@ h6 {
 }
 
 hr {
+	box-sizing: content-box;
+	height: 0;
+	overflow: visible;
 	margin-top: 1rem;
 	margin-bottom: 1rem;
 	border: 0;
@@ -555,11 +557,6 @@ kbd kbd {
 	font-weight: 500
 }
 
-pre {
-	display: block;
-	font-size: 87.5%;
-	color: #212529
-}
 
 pre code {
 	font-size: inherit;
@@ -3432,7 +3429,7 @@ input[type=submit].btn-block {
 .dropright .dropdown-toggle:after {
 	display: inline-block;
 	margin-left: .255em;
-	vertical-align: .255em;
+	vertical-align: 0;
 	content: "";
 	border-top: .3em solid transparent;
 	border-right: 0;
@@ -3444,9 +3441,7 @@ input[type=submit].btn-block {
 	margin-left: 0
 }
 
-.dropright .dropdown-toggle:after {
-	vertical-align: 0
-}
+
 
 .dropleft .dropdown-menu {
 	top: 0;
@@ -3467,7 +3462,7 @@ input[type=submit].btn-block {
 .dropleft .dropdown-toggle:before {
 	display: inline-block;
 	margin-right: .255em;
-	vertical-align: .255em;
+	vertical-align: 0;
 	content: "";
 	border-top: .3em solid transparent;
 	border-right: .3em solid;
@@ -3478,9 +3473,7 @@ input[type=submit].btn-block {
 	margin-left: 0
 }
 
-.dropleft .dropdown-toggle:before {
-	vertical-align: 0
-}
+
 
 .dropdown-menu[x-placement^=bottom],
 .dropdown-menu[x-placement^=left],
@@ -5221,7 +5214,8 @@ input[type=submit].btn-block {
 	white-space: nowrap;
 	vertical-align: baseline;
 	border-radius: .2rem;
-	transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out
+	transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+	color: #fff;
 }
 
 @media (prefers-reduced-motion:reduce) {
@@ -5410,7 +5404,10 @@ a.badge-dark:focus {
 	padding: .95rem;
 	margin-bottom: 1rem;
 	border: 0 solid transparent;
-	border-radius: .2rem
+	border-radius: .2rem;
+	padding: 0;
+	display: flex;
+	color: #212529;
 }
 
 .alert-heading {
@@ -11444,11 +11441,6 @@ a.text-dark:hover {
 	color: #6c757d
 }
 
-.alert {
-	padding: 0;
-	display: flex;
-	color: #212529
-}
 
 .alert b,
 .alert strong {
@@ -11592,9 +11584,7 @@ a.text-dark:hover {
 	height: 40px
 }
 
-.badge {
-	color: #fff
-}
+
 
 .badge-soft-primary {
 	background-color: rgba(63, 128, 234, .175);
