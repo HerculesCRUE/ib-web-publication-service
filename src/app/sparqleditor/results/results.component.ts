@@ -40,7 +40,7 @@ import { BindingValue, SparqlResults } from 'src/app/_models/sparql';
   inputs: ['data', 'errorMessage'],
   styleUrls: ['./results.component.css']
 })
-export class ResultsComponent implements AfterViewInit, OnChanges, OnInit, AfterViewChecked {
+export class ResultsComponent implements AfterViewInit, OnChanges, AfterViewChecked {
 
   activeTab = 'table';
 
@@ -58,9 +58,6 @@ export class ResultsComponent implements AfterViewInit, OnChanges, OnInit, After
   }
   ngAfterViewChecked(): void {
     this.cd.detectChanges();
-  }
-  ngOnInit(): void {
-
   }
 
 

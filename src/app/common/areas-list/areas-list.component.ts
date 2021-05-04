@@ -12,7 +12,7 @@ import { AreasService } from 'src/app/_services/areas.service';
   selector: 'app-areas-list',
   templateUrl: './areas-list.component.html'
 })
-export class AreasListComponent extends PaginatedSearchComponent<KnowledgeArea> implements OnInit {
+export class AreasListComponent extends PaginatedSearchComponent<KnowledgeArea> {
 
   /**
    *
@@ -50,9 +50,6 @@ export class AreasListComponent extends PaginatedSearchComponent<KnowledgeArea> 
     super(router, translate, toastr);
   }
 
-  ngOnInit(): void {
-
-  }
 
   /**
    *
@@ -109,11 +106,14 @@ export class AreasListComponent extends PaginatedSearchComponent<KnowledgeArea> 
    */
   filter(): void {
     this.findRequest.pageRequest.page = 0;
-    this.areasService.find(this.findRequest).subscribe((data) => {
-      this.resultObject = data;
-      this.loaded = true;
-    }, () => {
-      this.loaded = true;
+    this.areasService.find(this.findRequest).subscribe({
+      next: (data) => {
+        this.resultObject = data;
+        this.loaded = true;
+      },
+      error: () => {
+        this.loaded = true;
+      }
     });
   }
 
@@ -127,11 +127,14 @@ export class AreasListComponent extends PaginatedSearchComponent<KnowledgeArea> 
   allAreasFilteredSortChanged(pageRequest: PageRequest): void {
     this.findRequest.pageRequest.property = pageRequest.property;
     this.findRequest.pageRequest.direction = pageRequest.direction;
-    this.areasService.find(this.findRequest).subscribe((data) => {
-      this.resultObject = data;
-      this.loaded = true;
-    }, () => {
-      this.loaded = true;
+    this.areasService.find(this.findRequest).subscribe({
+      next: (data) => {
+        this.resultObject = data;
+        this.loaded = true;
+      },
+      error: () => {
+        this.loaded = true;
+      }
     });
   }
 

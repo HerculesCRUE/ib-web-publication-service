@@ -125,14 +125,14 @@ export class LoginService extends AbstractService {
     };
     // @ts-ignore
     this.keycloackService = new Keycloak(config);
-    this.keycloackService.init({}).then(() => { });
+    this.keycloackService.init({}).then((val) => console.log(val));
     const config1 = {
       redirectUri: Helper.getAPPURL(),
     };
     localStorage.removeItem('access_token');
     localStorage.removeItem('refresh_token');
     localStorage.removeItem('username');
-    this.keycloackService.logout(config1).then(() => { });
+    this.keycloackService.logout(config1).then((val) => console.log(val));
 
   }
 

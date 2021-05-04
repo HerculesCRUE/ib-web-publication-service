@@ -265,35 +265,47 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
 
       switch (this.idPrefix) {
         case 'document':
-          this.documentService.find(this.findRequest).subscribe((data) => {
-            this.resultObject = data;
-            this.loaded = true;
-          }, () => {
-            this.loaded = true;
+          this.documentService.find(this.findRequest).subscribe({
+            next: (data) => {
+              this.resultObject = data;
+              this.loaded = true;
+            },
+            error: () => {
+              this.loaded = true;
+            }
           });
           break;
         case 'academic':
-          this.documentService.findAcademicPublication(this.findRequest).subscribe((data) => {
-            this.resultObject = data;
-            this.loaded = true;
-          }, () => {
-            this.loaded = true;
+          this.documentService.findAcademicPublication(this.findRequest).subscribe({
+            next: (data) => {
+              this.resultObject = data;
+              this.loaded = true;
+            },
+            error: () => {
+              this.loaded = true;
+            }
           });
           break;
         case 'other':
-          this.documentService.findOtherPublications(this.findRequest).subscribe((data) => {
-            this.resultObject = data;
-            this.loaded = true;
-          }, () => {
-            this.loaded = true;
+          this.documentService.findOtherPublications(this.findRequest).subscribe({
+            next: (data) => {
+              this.resultObject = data;
+              this.loaded = true;
+            },
+            error: () => {
+              this.loaded = true;
+            }
           });
           break;
         default:
-          this.documentService.findscientificpublication(this.findRequest).subscribe((data) => {
-            this.resultObject = data;
-            this.loaded = true;
-          }, () => {
-            this.loaded = true;
+          this.documentService.findscientificpublication(this.findRequest).subscribe({
+            next: (data) => {
+              this.resultObject = data;
+              this.loaded = true;
+            },
+            error: () => {
+              this.loaded = true;
+            }
           });
           break;
       }
@@ -325,35 +337,47 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
 
     switch (this.idPrefix) {
       case 'document':
-        this.documentService.find(this.findRequest).subscribe((data) => {
-          this.resultObject = data;
-          this.loaded = true;
-        }, () => {
-          this.loaded = true;
+        this.documentService.find(this.findRequest).subscribe({
+          next: (data) => {
+            this.resultObject = data;
+            this.loaded = true;
+          },
+          error: () => {
+            this.loaded = true;
+          }
         });
         break;
       case 'academic':
-        this.documentService.findAcademicPublication(this.findRequest).subscribe((data) => {
-          this.resultObject = data;
-          this.loaded = true;
-        }, () => {
-          this.loaded = true;
+        this.documentService.findAcademicPublication(this.findRequest).subscribe({
+          next: (data) => {
+            this.resultObject = data;
+            this.loaded = true;
+          },
+          error: () => {
+            this.loaded = true;
+          }
         });
         break;
       case 'other':
-        this.documentService.findOtherPublications(this.findRequest).subscribe((data) => {
-          this.resultObject = data;
-          this.loaded = true;
-        }, () => {
-          this.loaded = true;
+        this.documentService.findOtherPublications(this.findRequest).subscribe({
+          next: (data) => {
+            this.resultObject = data;
+            this.loaded = true;
+          },
+          error: () => {
+            this.loaded = true;
+          }
         });
         break;
       default:
-        this.documentService.findscientificpublication(this.findRequest).subscribe((data) => {
-          this.resultObject = data;
-          this.loaded = true;
-        }, () => {
-          this.loaded = true;
+        this.documentService.findscientificpublication(this.findRequest).subscribe({
+          next: (data) => {
+            this.resultObject = data;
+            this.loaded = true;
+          },
+          error: () => {
+            this.loaded = true;
+          }
         });
         break;
     }
@@ -374,35 +398,47 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
 
     switch (this.idPrefix) {
       case 'document':
-        this.documentService.find(this.findRequest).subscribe((data) => {
-          this.resultObject = data;
-          this.loaded = true;
-        }, () => {
-          this.loaded = true;
+        this.documentService.find(this.findRequest).subscribe({
+          next: (data) => {
+            this.resultObject = data;
+            this.loaded = true;
+          },
+          error: () => {
+            this.loaded = true;
+          }
         });
         break;
       case 'academic':
-        this.documentService.findAcademicPublication(this.findRequest).subscribe((data) => {
-          this.resultObject = data;
-          this.loaded = true;
-        }, () => {
-          this.loaded = true;
+        this.documentService.findAcademicPublication(this.findRequest).subscribe({
+          next: (data) => {
+            this.resultObject = data;
+            this.loaded = true;
+          },
+          error: () => {
+            this.loaded = true;
+          }
         });
         break;
       case 'other':
-        this.documentService.findOtherPublications(this.findRequest).subscribe((data) => {
-          this.resultObject = data;
-          this.loaded = true;
-        }, () => {
-          this.loaded = true;
+        this.documentService.findOtherPublications(this.findRequest).subscribe({
+          next: (data) => {
+            this.resultObject = data;
+            this.loaded = true;
+          },
+          error: () => {
+            this.loaded = true;
+          }
         });
         break;
       default:
-        this.documentService.findscientificpublication(this.findRequest).subscribe((data) => {
-          this.resultObject = data;
-          this.loaded = true;
-        }, () => {
-          this.loaded = true;
+        this.documentService.findscientificpublication(this.findRequest).subscribe({
+          next: (data) => {
+            this.resultObject = data;
+            this.loaded = true;
+          },
+          error: () => {
+            this.loaded = true;
+          }
         });
         break;
     }

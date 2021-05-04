@@ -19,7 +19,7 @@ import { ResearchmentStructuresService } from 'src/app/_services/researchment.st
   selector: 'app-all-researchment-structures',
   templateUrl: './all-researchment-structures.component.html'
 })
-export class AllResearchmentStructuresComponent extends PaginatedSearchComponent<University> implements OnInit {
+export class AllResearchmentStructuresComponent extends PaginatedSearchComponent<University> {
   loaded = false;
 
   findRequest: FindRequest = new FindRequest();
@@ -31,10 +31,6 @@ export class AllResearchmentStructuresComponent extends PaginatedSearchComponent
     toastr: ToastrService
   ) {
     super(router, translate, toastr);
-  }
-
-  ngOnInit(): void {
-
   }
 
   protected findInternal(findRequest: FindRequest): Observable<Page<University>> {

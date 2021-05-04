@@ -20,7 +20,7 @@ import { ParticipantService } from 'src/app/_services/participant.service';
   selector: 'app-collaborators',
   templateUrl: './collaborators.component.html'
 })
-export class CollaboratorsComponent extends PaginatedSearchComponent<Person> implements OnInit {
+export class CollaboratorsComponent extends PaginatedSearchComponent<Person> {
 
   /**
    *
@@ -45,9 +45,6 @@ export class CollaboratorsComponent extends PaginatedSearchComponent<Person> imp
     super(router, translate, toastr);
   }
 
-
-  ngOnInit(): void {
-  }
 
 
   /**
@@ -100,20 +97,26 @@ export class CollaboratorsComponent extends PaginatedSearchComponent<Person> imp
   allCollabortorsFilteredSortChanged(pageRequest: PageRequest) {
     this.findRequest.pageRequest.property = pageRequest.property;
     this.findRequest.pageRequest.direction = pageRequest.direction;
-    this.participantService.findPerson(this.findRequest).subscribe((data) => {
-      this.resultObject = data;
-      this.loaded = true;
-    }, () => {
-      this.loaded = true;
+    this.participantService.findPerson(this.findRequest).subscribe({
+      next: (data) => {
+        this.resultObject = data;
+        this.loaded = true;
+      },
+      error: () => {
+        this.loaded = true;
+      }
     });
   }
 
   changeCollaborator() {
-    this.participantService.findPerson(this.findRequest).subscribe((data) => {
-      this.resultObject = data;
-      this.loaded = true;
-    }, () => {
-      this.loaded = true;
+    this.participantService.findPerson(this.findRequest).subscribe({
+      next: (data) => {
+        this.resultObject = data;
+        this.loaded = true;
+      },
+      error: () => {
+        this.loaded = true;
+      }
     });
 
 

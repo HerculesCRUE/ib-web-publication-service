@@ -8,8 +8,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './researchment-structures.component.html',
   styleUrls: ['./researchment-structures.component.css'],
 })
-export class ResearchmentStructuresComponent
-  implements OnInit {
+export class ResearchmentStructuresComponent {
   /**
    *
    *
@@ -17,17 +16,5 @@ export class ResearchmentStructuresComponent
    * @memberof ResearchmentStructuresComponent
    */
   echartOptions: any;
-
-
-  constructor(
-
-  ) {
-
-  }
-
-  ngOnInit(): void {
-
-  }
-
 
 }
