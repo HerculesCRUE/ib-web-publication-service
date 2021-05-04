@@ -1,143 +1,142 @@
-<fieldset>
-    <h1 class="legend" *ngIf="!!scientist?.firstName">{{scientist?.firstName}} {{scientist?.surname}}</h1>
-    <h1 class="legend" *ngIf="!!scientist?.name">{{scientist?.name}}</h1>
-    <h1 class="legend" *ngIf="!scientist?.firstName && !scientist?.name">{{ "researchmentStructure.scientist" |
-        translate }}: {{scientist?.id}}</h1>
-    <div class="mt-20">
-        <div class="row">
-            <div class="col-12">
-                <p><strong>{{ "scientist.id" | translate }}:</strong> {{scientist?.id}} </p>
-            </div>
+<h1 class="legend" *ngIf="!!scientist?.firstName">{{scientist?.firstName}} {{scientist?.surname}}</h1>
+<h1 class="legend" *ngIf="!!scientist?.name">{{scientist?.name}}</h1>
+<h1 class="legend" *ngIf="!scientist?.firstName && !scientist?.name">{{ "researchmentStructure.scientist" |
+    translate }}: {{scientist?.id}}</h1>
+<div class="mt-20">
+    <div class="row">
+        <div class="col-12">
+            <p><strong>{{ "scientist.id" | translate }}:</strong> {{scientist?.id}} </p>
         </div>
-        <div class="row" *ngIf="!!scientist?.title">
-            <div class="col-12">
-                <p><strong>{{ "scientist.title" | translate }}:</strong> {{scientist?.title}} </p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <p><strong>{{ "scientist.name" | translate }}:</strong> {{scientist?.name}} </p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <p><strong>{{ "scientist.firstName" | translate }}:</strong> {{scientist?.firstName}} </p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <p><strong>{{ "scientist.surname" | translate }}:</strong> {{scientist?.surname}} </p>
-            </div>
-        </div>
-        <div class="row" *ngIf="!!scientist?.gender">
-            <div class="col-12">
-                <p><strong>{{ "scientist.gender" | translate }}:</strong> {{scientist?.gender}} </p>
-            </div>
-        </div>
-        <div class="row" *ngIf="!!scientist?.description">
-            <div class="col-12">
-                <p><strong>{{ "scientist.description" | translate }}:</strong> {{scientist?.description}} </p>
-            </div>
-        </div>
-
-        <div class="row" *ngIf="!!scientist?.birthDate">
-            <div class="col-12">
-                <p><strong>{{ "scientist.birthDate" | translate }}:</strong> {{scientist?.birthDate}} </p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <p><strong>{{ "scientist.personalMaibox" | translate }}:</strong> {{scientist?.personalMaibox}} </p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12" *ngIf="!!scientist?.homepage">
-                <p><strong>{{ "scientist.homepage" | translate }}:</strong> {{scientist?.homepage}} </p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12" *ngIf="!!scientist?.hasContactInfo">
-                <p><strong>{{ "scientist.hasContactInfo" | translate }}:</strong> {{scientist?.hasContactInfo}} </p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <p><strong>{{ "scientist.researchLine" | translate }}:</strong> {{scientist?.researchLine}} </p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <p><strong>{{ "scientist.subjectArea" | translate }}:</strong> {{scientist?.subjectArea}} </p>
-            </div>
+    </div>
+    <div class="row" *ngIf="!!scientist?.title">
+        <div class="col-12">
+            <p><strong>{{ "scientist.title" | translate }}:</strong> {{scientist?.title}} </p>
         </div>
     </div>
     <div class="row">
         <div class="col-12">
-            <div class="card flex-fill">
-                <div class="card-header">
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link" [ngClass]="{'active': activeTab === 'acction-inves' }"
-                                id="acction-inves-tab" (click)="changeTab('acction-inves')" data-bs-toggle="tab"
-                                href="JavaScript:void(0)" role="tab" aria-controls="acction-inves"
-                                [attr.aria-selected]="activeTab === 'acction-inves'">
-                                {{'scientist.acction-inves' | translate}}</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link" [ngClass]="{'active': activeTab === 'prod-scientist' }"
-                                id="prod-scientist-tab" (click)="changeTab('prod-scientist')" data-bs-toggle="tab"
-                                href="JavaScript:void(0)" role="tab" aria-controls="prod-scientist"
-                                [attr.aria-selected]="activeTab === 'prod-scientist'">{{'researchmentStructure.prod-scientist'
-                                |
-                                translate}}</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link" [ngClass]="{'active': activeTab === 'academic-publications' }"
-                                id="academic-publications-tab" (click)="changeTab('academic-publications')"
-                                data-bs-toggle="tab" href="JavaScript:void(0)" role="tab"
-                                aria-controls="academic-publications"
-                                [attr.aria-selected]="activeTab === 'academic-publications'">{{'scientific-production.academic-publications'
-                                | translate}}</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link" [ngClass]="{'active': activeTab === 'projects' }" id="projects-atb"
-                                (click)="changeTab('projects')" data-bs-toggle="tab" href="JavaScript:void(0)"
-                                role="tab" aria-controls="projects"
-                                [attr.aria-selected]="activeTab === 'projects'">{{'researchmentStructure.projects'
-                                |
-                                translate}}</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link" [ngClass]="{'active': activeTab === 'congress-events' }"
-                                id="congress-events-tab" (click)="changeTab('congress-events')" data-bs-toggle="tab"
-                                href="JavaScript:void(0)" role="tab" aria-controls="congress-events"
-                                [attr.aria-selected]="activeTab === 'congress-events'">{{'scientist.events' |
-                                translate}}</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link" [ngClass]="{'active': activeTab === 'business-activity' }"
-                                id="business-activity-atb" (click)="changeTab('business-activity')" data-bs-toggle="tab"
-                                href="JavaScript:void(0)" role="tab" aria-controls="business-activity"
-                                [attr.aria-selected]="activeTab === 'business-activity'">{{'scientist.business-activity'
-                                |
-                                translate}}</a>
-                        </li>
+            <p><strong>{{ "scientist.name" | translate }}:</strong> {{scientist?.name}} </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p><strong>{{ "scientist.firstName" | translate }}:</strong> {{scientist?.firstName}} </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p><strong>{{ "scientist.surname" | translate }}:</strong> {{scientist?.surname}} </p>
+        </div>
+    </div>
+    <div class="row" *ngIf="!!scientist?.gender">
+        <div class="col-12">
+            <p><strong>{{ "scientist.gender" | translate }}:</strong> {{scientist?.gender}} </p>
+        </div>
+    </div>
+    <div class="row" *ngIf="!!scientist?.description">
+        <div class="col-12">
+            <p><strong>{{ "scientist.description" | translate }}:</strong> {{scientist?.description}} </p>
+        </div>
+    </div>
 
-                    </ul>
-                </div>
-                <div id="datatables-dashboard-markets_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-                    <div class="row">
-                        <div class="col-12">
+    <div class="row" *ngIf="!!scientist?.birthDate">
+        <div class="col-12">
+            <p><strong>{{ "scientist.birthDate" | translate }}:</strong> {{scientist?.birthDate}} </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p><strong>{{ "scientist.personalMaibox" | translate }}:</strong> {{scientist?.personalMaibox}} </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12" *ngIf="!!scientist?.homepage">
+            <p><strong>{{ "scientist.homepage" | translate }}:</strong> {{scientist?.homepage}} </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12" *ngIf="!!scientist?.hasContactInfo">
+            <p><strong>{{ "scientist.hasContactInfo" | translate }}:</strong> {{scientist?.hasContactInfo}} </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p><strong>{{ "scientist.researchLine" | translate }}:</strong> {{scientist?.researchLine}} </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p><strong>{{ "scientist.subjectArea" | translate }}:</strong> {{scientist?.subjectArea}} </p>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card flex-fill">
+            <div class="card-header">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" [ngClass]="{'active': activeTab === 'acction-inves' }"
+                            id="acction-inves-tab" (click)="changeTab('acction-inves')" data-bs-toggle="tab"
+                            href="JavaScript:void(0)" role="tab" aria-controls="acction-inves"
+                            [attr.aria-selected]="activeTab === 'acction-inves'">
+                            {{'scientist.acction-inves' | translate}}</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" [ngClass]="{'active': activeTab === 'prod-scientist' }"
+                            id="prod-scientist-tab" (click)="changeTab('prod-scientist')" data-bs-toggle="tab"
+                            href="JavaScript:void(0)" role="tab" aria-controls="prod-scientist"
+                            [attr.aria-selected]="activeTab === 'prod-scientist'">{{'researchmentStructure.prod-scientist'
+                            |
+                            translate}}</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" [ngClass]="{'active': activeTab === 'academic-publications' }"
+                            id="academic-publications-tab" (click)="changeTab('academic-publications')"
+                            data-bs-toggle="tab" href="JavaScript:void(0)" role="tab"
+                            aria-controls="academic-publications"
+                            [attr.aria-selected]="activeTab === 'academic-publications'">{{'scientific-production.academic-publications'
+                            | translate}}</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" [ngClass]="{'active': activeTab === 'projects' }" id="projects-atb"
+                            (click)="changeTab('projects')" data-bs-toggle="tab" href="JavaScript:void(0)" role="tab"
+                            aria-controls="projects"
+                            [attr.aria-selected]="activeTab === 'projects'">{{'researchmentStructure.projects'
+                            |
+                            translate}}</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" [ngClass]="{'active': activeTab === 'congress-events' }"
+                            id="congress-events-tab" (click)="changeTab('congress-events')" data-bs-toggle="tab"
+                            href="JavaScript:void(0)" role="tab" aria-controls="congress-events"
+                            [attr.aria-selected]="activeTab === 'congress-events'">{{'scientist.events' |
+                            translate}}</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" [ngClass]="{'active': activeTab === 'business-activity' }"
+                            id="business-activity-atb" (click)="changeTab('business-activity')" data-bs-toggle="tab"
+                            href="JavaScript:void(0)" role="tab" aria-controls="business-activity"
+                            [attr.aria-selected]="activeTab === 'business-activity'">{{'scientist.business-activity'
+                            |
+                            translate}}</a>
+                    </li>
 
-                            <div class="tab-content" id="myTabContent">
-                                <div class="tab-pane fade"
-                                    [ngClass]="{'show': activeTab === 'acction-inves', 'active': activeTab === 'acction-inves' }"
-                                    id="acction-inves" role="tabpanel" aria-labelledby="acction-inves-tab">
+                </ul>
+            </div>
+            <div id="datatables-dashboard-markets_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                <div class="row">
+                    <div class="col-12">
+
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade"
+                                [ngClass]="{'show': activeTab === 'acction-inves', 'active': activeTab === 'acction-inves' }"
+                                id="acction-inves" role="tabpanel" aria-labelledby="acction-inves-tab">
 
 
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <!-- <div class="card flex-fill">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <!-- <div class="card flex-fill">
                                                 <div class="card-header">
                                                     <h1 class="legend">{{'scientist.directed-jobs' | translate}}</h1>
                                                 </div>
@@ -147,87 +146,83 @@
                                                     </app-directed-jobs>
                                                 </div>
                                             </div> -->
-                                            <div class="card flex-fill">
-                                                <div class="card-header">
-                                                    <h1 class="legend">{{'scientist.reg-documents' | translate}}</h1>
-                                                </div>
-                                                <div id="datatables-dashboard-markets_wrapper"
-                                                    class="dataTables_wrapper dt-bootstrap4 no-footer p-3">
-                                                    <app-patents [isChatHiden]="true" [authorId]="scientificId"
-                                                        [url]="'../../patent'" [idPrefix]="'prodScientistdos'">
-                                                    </app-patents>
+                                        <div class="card flex-fill">
+                                            <div class="card-header">
+                                                <h1 class="legend">{{'scientist.reg-documents' | translate}}</h1>
+                                            </div>
+                                            <div id="datatables-dashboard-markets_wrapper"
+                                                class="dataTables_wrapper dt-bootstrap4 no-footer p-3">
+                                                <app-patents [isChatHiden]="true" [authorId]="scientificId"
+                                                    [url]="'../../patent'" [idPrefix]="'prodScientistdos'">
+                                                </app-patents>
 
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
 
-                                </div>
-                                <div class="tab-pane fade"
-                                    [ngClass]="{'show': activeTab === 'prod-scientist', 'active': activeTab === 'prod-scientist' }"
-                                    id="prod-scientist" role="tabpanel" aria-labelledby="prod-scientist-tab">
-                                    <app-documents [showOnlyYEar]="true" [idPrefix]="'document'"
-                                        [url]="'../../document'" [routerFieldSecondary]="'type'"
-                                        [selectDocumentType]="[{ name: 'book', value: 'Book' }, { name: 'articles', value: 'Article' }]"
-                                        [isTreeVisible]="false" [authorId]="scientificId"
-                                        [filterDocumentType]="['Article', 'Book']">
-                                    </app-documents>
-                                </div>
-                                <div class="tab-pane fade"
-                                    [ngClass]="{'show': activeTab === 'academic-publications', 'active': activeTab === 'academic-publications' }"
-                                    id="academic-publications" role="tabpanel"
-                                    aria-labelledby="academic-publications-tab">
-                                    <app-documents [idPrefix]="'academic'" [url]="'../../document'"
-                                        [selectDocumentType]="[{ name: 'master-thesis', value: 'Master-Thesis' }, { name: 'doctoral-thesis', value: 'Doctoral-Thesis' }]"
-                                        [isTreeVisible]="false" [authorId]="scientificId"
-                                        [routerFieldSecondary]="'type'"
-                                        [filterDocumentType]="['Master-Thesis', 'Doctoral-Thesis']">
-                                    </app-documents>
-                                </div>
-                                <div class="tab-pane fade" id="projects"
-                                    [ngClass]="{'show': activeTab === 'projects', 'active': activeTab === 'projects' }"
-                                    role="tabpanel" aria-labelledby="projects-tab">
-                                    <app-proyects [authorId]="scientificId" [url]="'../../project'"
-                                        [idPrefix]="'projects'" [chartType]="'bar'">
-                                    </app-proyects>
-                                </div>
-                                <div class="tab-pane fade"
-                                    [ngClass]="{'show': activeTab === 'congress-events', 'active': activeTab === 'congress-events' }"
-                                    id="congress-events" role="tabpanel" aria-labelledby="congress-events-tab">
-                                    <div class="card flex-fill">
-                                        <div class="card-header">
-                                            <h1 class="legend">{{'scientist.congress-events' | translate}}</h1>
-                                        </div>
-                                        <div id="datatables-dashboard-markets_wrapper"
-                                            class="dataTables_wrapper dt-bootstrap4 no-footer p-3">
-                                            <app-events [participantId]="scientificId" [url]="'../../event/'"
-                                                [idPrefix]="'events'"></app-events>
-                                        </div>
+                            </div>
+                            <div class="tab-pane fade"
+                                [ngClass]="{'show': activeTab === 'prod-scientist', 'active': activeTab === 'prod-scientist' }"
+                                id="prod-scientist" role="tabpanel" aria-labelledby="prod-scientist-tab">
+                                <app-documents [showOnlyYEar]="true" [idPrefix]="'document'" [url]="'../../document'"
+                                    [routerFieldSecondary]="'type'"
+                                    [selectDocumentType]="[{ name: 'book', value: 'Book' }, { name: 'articles', value: 'Article' }]"
+                                    [isTreeVisible]="false" [authorId]="scientificId"
+                                    [filterDocumentType]="['Article', 'Book']">
+                                </app-documents>
+                            </div>
+                            <div class="tab-pane fade"
+                                [ngClass]="{'show': activeTab === 'academic-publications', 'active': activeTab === 'academic-publications' }"
+                                id="academic-publications" role="tabpanel" aria-labelledby="academic-publications-tab">
+                                <app-documents [idPrefix]="'academic'" [url]="'../../document'"
+                                    [selectDocumentType]="[{ name: 'master-thesis', value: 'Master-Thesis' }, { name: 'doctoral-thesis', value: 'Doctoral-Thesis' }]"
+                                    [isTreeVisible]="false" [authorId]="scientificId" [routerFieldSecondary]="'type'"
+                                    [filterDocumentType]="['Master-Thesis', 'Doctoral-Thesis']">
+                                </app-documents>
+                            </div>
+                            <div class="tab-pane fade" id="projects"
+                                [ngClass]="{'show': activeTab === 'projects', 'active': activeTab === 'projects' }"
+                                role="tabpanel" aria-labelledby="projects-tab">
+                                <app-proyects [authorId]="scientificId" [url]="'../../project'" [idPrefix]="'projects'"
+                                    [chartType]="'bar'">
+                                </app-proyects>
+                            </div>
+                            <div class="tab-pane fade"
+                                [ngClass]="{'show': activeTab === 'congress-events', 'active': activeTab === 'congress-events' }"
+                                id="congress-events" role="tabpanel" aria-labelledby="congress-events-tab">
+                                <div class="card flex-fill">
+                                    <div class="card-header">
+                                        <h1 class="legend">{{'scientist.congress-events' | translate}}</h1>
                                     </div>
-
-                                </div>
-                                <div class="tab-pane fade" id="business-activity"
-                                    [ngClass]="{'show': activeTab === 'business-activity', 'active': activeTab === 'business-activity' }"
-                                    role="tabpanel" aria-labelledby="business-activity-tab">
-                                    <div class="card flex-fill">
-                                        <div class="card-header">
-                                            <h1 class="legend">{{'scientist.startups' | translate}}</h1>
-                                        </div>
-                                        <div id="datatables-dashboard-markets_wrapper"
-                                            class="dataTables_wrapper dt-bootstrap4 no-footer p-3">
-                                            <app-startup></app-startup>
-                                        </div>
+                                    <div id="datatables-dashboard-markets_wrapper"
+                                        class="dataTables_wrapper dt-bootstrap4 no-footer p-3">
+                                        <app-events [participantId]="scientificId" [url]="'../../event/'"
+                                            [idPrefix]="'events'"></app-events>
                                     </div>
+                                </div>
 
+                            </div>
+                            <div class="tab-pane fade" id="business-activity"
+                                [ngClass]="{'show': activeTab === 'business-activity', 'active': activeTab === 'business-activity' }"
+                                role="tabpanel" aria-labelledby="business-activity-tab">
+                                <div class="card flex-fill">
+                                    <div class="card-header">
+                                        <h1 class="legend">{{'scientist.startups' | translate}}</h1>
+                                    </div>
+                                    <div id="datatables-dashboard-markets_wrapper"
+                                        class="dataTables_wrapper dt-bootstrap4 no-footer p-3">
+                                        <app-startup></app-startup>
+                                    </div>
                                 </div>
 
                             </div>
 
                         </div>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-</fieldset>
+</div>

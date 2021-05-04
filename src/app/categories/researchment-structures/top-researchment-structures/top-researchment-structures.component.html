@@ -1,41 +1,36 @@
-<fieldset>
-    <legend class="legend margin-top">Top de Estructuras</legend>
-    <div class="row">
-        <!-- top -->
-        <div class="form-group col-lg-6">
-            <label for="top" class="col-sm-3 control-label">{{ "researchmentStructure.top" | translate }}</label>
-            <div class="col-sm-9">
-                <select name="top" class="form-control" [(ngModel)]="findRequest.filter.top" #top="ngModel">
-                    <option [value]="undefined">{{ "form.select" | translate }}</option>
-                    <option [value]="10">10</option>
-                    <option [value]="20">20</option>
-                    <option [value]="50">50</option>
-                </select>
-            </div>
-        </div>
-
-        <!-- q&a -->
-        <div class="form-group col-lg-6">
-            <label for="activo" class="col-sm-4 control-label">{{ "researchmentStructure.qa" | translate }}</label>
-            <div class="col-sm-8">
-                <select name="qa" class="form-control" [(ngModel)]="findRequest.filter.qa" #qa="ngModel"
-                    (change)="filterTopResearchmentStructures('qa')">
-                    <option [value]="undefined">{{ "form.select" | translate }}</option>
-                    <option [value]="'Severo Ochoa'">Severo Ochoa</option>
-                </select>
-            </div>
+<legend class="legend margin-top">Top de Estructuras</legend>
+<div class="row">
+    <!-- top -->
+    <div class="form-group col-lg-6">
+        <label for="top" class="col-sm-3 control-label">{{ "researchmentStructure.top" | translate }}</label>
+        <div class="col-sm-9">
+            <select name="top" class="form-control" [(ngModel)]="findRequest.filter.top" #top="ngModel">
+                <option [value]="undefined">{{ "form.select" | translate }}</option>
+                <option [value]="10">10</option>
+                <option [value]="20">20</option>
+                <option [value]="50">50</option>
+            </select>
         </div>
     </div>
-</fieldset>
 
-<fieldset>
-    <legend></legend>
+    <!-- q&a -->
+    <div class="form-group col-lg-6">
+        <label for="activo" class="col-sm-4 control-label">{{ "researchmentStructure.qa" | translate }}</label>
+        <div class="col-sm-8">
+            <select name="qa" class="form-control" [(ngModel)]="findRequest.filter.qa" #qa="ngModel"
+                (change)="filterTopResearchmentStructures('qa')">
+                <option [value]="undefined">{{ "form.select" | translate }}</option>
+                <option [value]="'Severo Ochoa'">Severo Ochoa</option>
+            </select>
+        </div>
+    </div>
+</div>
 
-    <app-table-results [data]="topResearchmentStructuresFiltered.content[0]" [dtoTypeTranslate]="'researchment'"
-        [extra]="'1'" [pageInfo]="topResearchmentStructuresFiltered" [routerField]="'name'"
-        (pageChanged)="topResearchmentStructuresFilteredPageChanged($event)"
-        (sizeChanged)="topResearchmentStructuresFilteredSizeChanged($event)"
-        (sortChanged)="topResearchmentStructuresFilteredSortChanged($event)">
-    </app-table-results>
 
-</fieldset>
+
+<app-table-results [data]="topResearchmentStructuresFiltered.content[0]" [dtoTypeTranslate]="'researchment'"
+    [extra]="'1'" [pageInfo]="topResearchmentStructuresFiltered" [routerField]="'name'"
+    (pageChanged)="topResearchmentStructuresFilteredPageChanged($event)"
+    (sizeChanged)="topResearchmentStructuresFilteredSizeChanged($event)"
+    (sortChanged)="topResearchmentStructuresFilteredSortChanged($event)">
+</app-table-results>
