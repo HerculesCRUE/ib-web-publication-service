@@ -6,3 +6,7 @@
 @import "~@triply/yasgui/build/yasgui.min.css";
 @import "leaflet/dist/leaflet.css";
 @import "assets/app.css";
+@import "assets/font-awesome.css";
+@import "assets/boostrap.css";
+@import "assets/graph.css";
+@import "assets/new-custom-page.css";
