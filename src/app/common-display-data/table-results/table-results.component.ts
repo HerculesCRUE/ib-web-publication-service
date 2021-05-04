@@ -61,15 +61,7 @@ export class TableResultsComponent
    */
   @Input()
   set data(val: SparqlResults) {
-    // this.dataComplete = Object.assign({}, val);
     this.dataComplete = JSON.parse(JSON.stringify(val));
-    // if (val != null) {
-    // this.dataComplete.results.bindings = this.dataComplete.results.bindings
-    //   .concat(this.dataComplete.results.bindings)
-    //   .concat(this.dataComplete.results.bindings);
-    // this.showPage(1);
-    // this.find();
-    // }
   }
 
   get data(): SparqlResults {
@@ -182,8 +174,6 @@ export class TableResultsComponent
 
         page.number = 0;
 
-        // this.searchResult = page.content;
-        // this.resultObject = page;
       } else {
         if (findRequest.pageRequest.page === 1) {
           page.first = true;
@@ -209,15 +199,10 @@ export class TableResultsComponent
     return of(page);
   }
   protected removeInternal(entity: any): Observable<{} | Response> {
-    // throw new Error('Method not implemented.');
     return;
   }
 
   protected getDefaultOrder(): Order {
-    // return {
-    //   property: 'id',
-    //   direction: Direction.ASC,
-    // };
     return new Order();
   }
 

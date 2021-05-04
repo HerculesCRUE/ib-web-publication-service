@@ -56,7 +56,6 @@ export class NewTreeComponent implements OnInit {
       }, 300);
 
     });
-    // this.data = HelperGraphics.returnDataForTree(this.treeType);
   }
 
 

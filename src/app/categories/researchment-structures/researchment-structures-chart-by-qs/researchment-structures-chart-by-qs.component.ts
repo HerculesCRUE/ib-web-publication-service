@@ -24,16 +24,6 @@ export class ResearchmentStructuresByQSComponent implements OnInit {
   constructor(private graphicService: GraphicService) { }
 
   ngOnInit(): void {
-    // Gráficas
-    let xAxisData: Array<string> = [];
-    let data1: Array<any> = [];
-    let data2: Array<any> = [];
-
-    for (let i = 0; i < 100; i++) {
-      xAxisData.push(`category${i}`);
-      data1.push((Math.sin(i / 5) * (i / 5 - 10) + i / 6) * 5);
-      data2.push((Math.cos(i / 5) * (i / 5 - 10) + i / 6) * 5);
-    }
 
 
     this.graphicService.universityQuality().subscribe((data: any) => {

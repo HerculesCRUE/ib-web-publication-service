@@ -92,22 +92,6 @@ export class ScientistSearchComponent extends PaginatedSearchComponent<Person> i
    * @memberof ScientistSearchComponent
    */
   ngOnInit(): void {
-    /*
-        this.researchStaffServices.find(this.findRequest).subscribe(res => {
-          this.allScientificsFiltered = res;
-          this.loaded = true;
-        });*/
-
-    const xAxisData: Array<string> = [];
-    const data1: Array<any> = [];
-    const data2: Array<any> = [];
-
-    for (let i = 0; i < 100; i++) {
-      xAxisData.push(`category${i}`);
-      data1.push((Math.sin(i / 5) * (i / 5 - 10) + i / 6) * 5);
-      data2.push((Math.cos(i / 5) * (i / 5 - 10) + i / 6) * 5);
-    }
-
 
     this.graphicService.personArea().subscribe(data => {
       this.echartOptions = HelperGraphics.configChartPie(this.newData(data), 'Número personas por area');

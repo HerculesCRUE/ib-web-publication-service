@@ -31,13 +31,7 @@
                             [attr.aria-selected]="activeTab === 'participants'">{{'projects.participants' |
                             translate}}</a>
                     </li>
-                    <!-- <li class="nav-item" role="presentation">
-                        <a class="nav-link" [ngClass]="{'active': activeTab === 'deliverables' }" id="deliverables-tab"
-                            (click)="changeTab('deliverables')" data-bs-toggle="tab" href="JavaScript:void(0)"
-                            role="tab" aria-controls="deliverables"
-                            [attr.aria-selected]="activeTab === 'other-publications'">{{'projects.deliverables' |
-                            translate}}</a>
-                    </li>-->
+
 
                 </ul>
             </div>
@@ -70,11 +64,7 @@
                         id="participants" role="tabpanel" aria-labelledby="participants-tab">
                         <app-participants [projectId]="proyect.id"></app-participants>
                     </div>
-                    <!--   <div class="tab-pane fade" id="deliverables"
-                        [ngClass]="{'show': activeTab === 'deliverables', 'active': activeTab === 'deliverables' }"
-                        role="tabpanel" aria-labelledby="deliverables-tab">
-                        <app-deliverable></app-deliverable>
-                    </div>-->
+
 
                 </div>
             </div>

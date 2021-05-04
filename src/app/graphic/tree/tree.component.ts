@@ -135,7 +135,6 @@ export class TreeComponent implements OnInit {
         ],
       };
     });
-    // this.data = HelperGraphics.returnDataForTree(this.treeType);
 
 
   }

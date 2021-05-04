@@ -44,7 +44,6 @@
             <tr *ngIf="!routerField || !item[routerField]" [ngClass]="{ 'table-secondary': i % 2 == 1 }">
               <ng-container>
                 <td *ngFor="let header of hedearDTO">
-                  <!--<a href="{{ item[header]}}" >{{ item[header]}}</a>-->
                   <ng-container>{{ item[header] }}</ng-container>
 
                 </td>

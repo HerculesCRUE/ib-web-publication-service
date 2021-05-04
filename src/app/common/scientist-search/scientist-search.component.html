@@ -35,7 +35,8 @@
                     <div class="container-fluid">
                         <div class="row justify-content-end">
 
-                            <div class="input-group col-md-4" role="search">
+                            <div id="mainSearch" aria-labelledby="mainSearch" class="input-group col-md-4"
+                                role="search">
                                 <input class="form-control py-2 border-right-0 border" type="search" name="search"
                                     #search="ngModel" placeholder="{{'form.search-by-name' | translate }}"
                                     [(ngModel)]="findRequest.filter.name" (keyup.enter)="filterTop($event, 'name')">
@@ -85,13 +86,3 @@
         </div>
     </div>
 </form>
-<!--<div class="row">
-    <div class="col-12">
-        <div class="card flex-fill">
-            <div class="card-header">
-
-            </div>
-            <div echarts [options]="echartOptions" class="sector-chart"></div>
-        </div>
-    </div>
-</div>-->

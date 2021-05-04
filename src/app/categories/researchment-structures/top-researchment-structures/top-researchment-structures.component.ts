@@ -111,8 +111,6 @@ export class TopResearchmentStructuresComponent implements OnInit {
     pageRequest.size = this.topResearchmentStructuresFiltered.size;
     pageRequest.property = this.topResearchmentStructuresFiltered.sort;
     pageRequest.direction = this.topResearchmentStructuresFiltered.direction;
-
-    //  const map: Map<string, string> = new Map(Object.entries(this.findRequest.filter));
     this.findRequest.pageRequest = pageRequest;
 
     this.researchmentStructureService.find(this.findRequest).subscribe((data) => {
