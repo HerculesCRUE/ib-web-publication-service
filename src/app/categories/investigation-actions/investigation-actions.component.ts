@@ -12,7 +12,6 @@ export class InvestigationActionsComponent implements OnInit {
    * @memberof InvestigationActionsComponent
    */
   activeTab: string;
-  constructor() { }
 
   ngOnInit(): void {
     this.activeTab = 'patents';

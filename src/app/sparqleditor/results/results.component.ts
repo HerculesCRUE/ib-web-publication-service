@@ -40,7 +40,7 @@ import { BindingValue, SparqlResults } from 'src/app/_models/sparql';
   inputs: ['data', 'errorMessage'],
   styleUrls: ['./results.component.css']
 })
-export class ResultsComponent implements AfterViewInit, OnChanges, AfterViewChecked {
+export class ResultsComponent implements OnChanges, AfterViewChecked {
 
   activeTab = 'table';
 
@@ -60,12 +60,6 @@ export class ResultsComponent implements AfterViewInit, OnChanges, AfterViewChec
     this.cd.detectChanges();
   }
 
-
-
-  // Set default values after load the view
-  ngAfterViewInit(): void {
-
-  }
 
   // Set values when load the view
   ngOnChanges(changes: SimpleChanges) {

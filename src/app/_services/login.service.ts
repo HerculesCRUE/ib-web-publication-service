@@ -62,6 +62,7 @@ export class LoginService extends AbstractService {
 
     this.httpClient.post(Helper.getKeyCloackUrl().logout + '?redirect_uri=' + encodeURIComponent(Helper.getAPPURL()), {})
       .subscribe(data => {
+        console.log(data);
       });
   }
 
@@ -104,7 +105,7 @@ export class LoginService extends AbstractService {
 
     return this.httpClient.post(Helper.getKeyCloackUrl().tokenUri, params, httpOptions)
       .pipe(tap((response: any) => {
-
+        console.log(response);
       }));
   }
 
@@ -165,7 +166,7 @@ export class LoginService extends AbstractService {
 
     return this.httpClient.get(Helper.getKeyCloackUrl().userInfoUri, httpOptions)
       .pipe(tap((response: any) => {
-
+        console.log(response);
       }));
   }
 

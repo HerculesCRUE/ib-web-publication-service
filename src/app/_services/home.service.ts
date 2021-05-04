@@ -8,7 +8,6 @@ import { HomeGroupItem, HOME_ITEMS } from '../_models/home';
   providedIn: 'root',
 })
 export class HomeService {
-  constructor() { }
 
   /**
    * Obtiene los datos del home.

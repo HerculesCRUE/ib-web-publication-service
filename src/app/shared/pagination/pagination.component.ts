@@ -69,7 +69,6 @@ export class PaginationComponent implements OnChanges {
    */
   maxSize = 6;
 
-  constructor() { }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.resultObject != null) {

@@ -56,6 +56,7 @@ export class DocumentDetailComponent extends PaginatedSearchComponent<BookSectio
       this.isBook = true;
       this.findRequest.filter.id = id;
       this.documentService.getBookSection(this.findRequest).subscribe(data => {
+        console.log(data);
       });
     }
 

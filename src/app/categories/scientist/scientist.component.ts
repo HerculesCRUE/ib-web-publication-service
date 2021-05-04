@@ -4,11 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-scientist',
   templateUrl: './scientist.component.html'
 })
-export class ScientistComponent implements OnInit {
+export class ScientistComponent {
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

@@ -8,7 +8,6 @@ import { MenuItem, MENU_ITEMS } from '../_models/menu';
   providedIn: 'root',
 })
 export class MenuService {
-  constructor() {}
 
   /**
    * Obtiene los datos del menú de la aplicación.

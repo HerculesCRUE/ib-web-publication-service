@@ -64,12 +64,6 @@ export class StatisticsComponent implements OnInit {
   }
 
 
-
-
-  doSomethingOnScroll($event) {
-
-  }
-
   makeDataTree(data: Array<GraphicModelTree>) {
     const result = [];
     if (data.length > 0) {

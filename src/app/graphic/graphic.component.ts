@@ -12,7 +12,6 @@ export class GraphicComponent implements OnInit {
 
   data: any;
 
-  constructor() { }
 
   ngOnInit(): void {
     // bar chart

@@ -113,6 +113,7 @@ export class LoginComponent implements OnInit {
         this.windowReload();
       }
     }, error => {
+      console.log(error);
     });
 
 
