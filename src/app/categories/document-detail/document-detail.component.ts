@@ -34,6 +34,7 @@ export class DocumentDetailComponent extends PaginatedSearchComponent<BookSectio
   lastItem = '';
   findRequest: FindRequest = new FindRequest();
   isBook: boolean;
+  id: string;
   constructor(private documentService: DocumentService, private rutaActiva: ActivatedRoute,
     private _location: Location,
     router: Router,
@@ -44,7 +45,7 @@ export class DocumentDetailComponent extends PaginatedSearchComponent<BookSectio
   }
 
   ngOnInit(): void {
-    const id = this.rutaActiva.snapshot.params.id;
+    this.id = this.rutaActiva.snapshot.params.id;
     const type = this.rutaActiva.snapshot.params.type;
 
     if (type) {
@@ -52,31 +53,22 @@ export class DocumentDetailComponent extends PaginatedSearchComponent<BookSectio
       this.lastItem = typeFromURL.pop();
     }
 
-    if (this.lastItem === 'Book') {
-      this.isBook = true;
-      this.findRequest.filter.id = id;
-      this.documentService.getBookSection(this.findRequest).subscribe(data => {
-        console.log(data);
-      });
-    }
-
-
     if (this.lastItem === 'Dossier') {
-      this.documentService.getotherByIdAndType(id, btoa(this.lastItem)).subscribe(other => {
+      this.documentService.getotherByIdAndType(this.id, btoa(this.lastItem)).subscribe(other => {
         if (other) {
           this.document = other;
           this.loaded = true;
         }
       });
     } else if (this.lastItem === 'Book' || this.lastItem === 'Article') {
-      this.documentService.getDocumentByIdAndType(id, btoa(this.lastItem)).subscribe(book => {
+      this.documentService.getDocumentByIdAndType(this.id, btoa(this.lastItem)).subscribe(book => {
         if (book) {
           this.document = book;
           this.loaded = true;
         }
       });
     } else {
-      this.documentService.getacademicByIdAndType(id, btoa(this.lastItem)).subscribe(academic => {
+      this.documentService.getacademicByIdAndType(this.id, btoa(this.lastItem)).subscribe(academic => {
         if (academic) {
           this.document = academic;
           this.loaded = true;
@@ -98,6 +90,8 @@ export class DocumentDetailComponent extends PaginatedSearchComponent<BookSectio
 
   protected findInternal(findRequest: FindRequest): Observable<Page<BookSection>> {
     const page: Page<BookSection> = new Page();
+    this.isBook = true;
+    this.findRequest.filter.id = this.id;
     return this.documentService.getBookSection(findRequest).pipe(
       map((x) => {
         this.loaded = true;
