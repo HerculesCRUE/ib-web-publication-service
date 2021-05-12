@@ -252,7 +252,7 @@
     "general-info": "Información general",
     "participants": "Participantes",
     "deliverables": "Entregables",
-    "financing-type": "Tipo de financiamiento",
+    "financing-type": "Tipo de financiación",
     "call-type": "Tipo de convocatoria",
     "people-involved": "Personas involucradas en el proyecto",
     "main-researcher": "Nombre(s) del investigador (s) principal",
@@ -437,5 +437,4 @@
     "ambas": "Ambos",
     "usuario": "Mis consultas"
   }
-
 }
