@@ -120,7 +120,7 @@ export const HOME_ITEMS: HomeGroupItem[] = [{
       iconCircle: false,
       url: '',
       disabled: false,
-      urlExterna: Helper.getKeyCloackUrl().authUrl
+      urlExterna: Helper.getKeyCloackUrl().authUrl + '/admin/'
     },
   ]
 },
