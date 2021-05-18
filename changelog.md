@@ -1,4 +1,16 @@
-# Registro de cambios
+# Registro de cambios 
+
+## 1.2.0 (18.05.21)
+
+- Mejora de componente SPARQL, donde se pueden ahora guardar consultas y reutilizarlas
+- Mejora de Paginado en componente de tablas reutilizable
+- Cambios de diseño general en estilos css para nuevo look
+- Modificación DTO de acuerdo a nuevo modelo de datos enviados desde el backend
+- Mejoras de accesibilidad
+- keycloak-js 12.0.3
+- keycloak-angular 8.1.0
+- Agregado de nuevas medidas de seguridad (keycloack + canActivate)
+- ngx-toastr 13.0.0
 
 ## 1.1.0
 
