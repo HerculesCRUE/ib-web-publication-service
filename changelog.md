@@ -1,6 +1,6 @@
 # Registro de cambios 
 
-## 1.2.0 (18.05.21)
+## 2.0.0
 
 - Mejora de componente SPARQL, donde se pueden ahora guardar consultas y reutilizarlas
 - Mejora de Paginado en componente de tablas reutilizable
@@ -11,6 +11,11 @@
 - keycloak-angular 8.1.0
 - Agregado de nuevas medidas de seguridad (keycloack + canActivate)
 - ngx-toastr 13.0.0
+
+## 1.2.0
+- Actualización librería Utils 
+- Configuración de testing
+- Quita componente usuarios
 
 ## 1.1.0
 
