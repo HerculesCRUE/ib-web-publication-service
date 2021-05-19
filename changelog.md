@@ -1,6 +1,6 @@
 # Registro de cambios
 
-## 2.0-SNAPSHOT
+## 2.0-SNAPSHOT (19/05/2021)
 
 - Mejora de componente SPARQL, donde se pueden ahora guardar consultas y reutilizarlas
 - Mejora de Paginado en componente de tablas reutilizable
@@ -12,13 +12,13 @@
 - Agregado de nuevas medidas de seguridad (keycloack + canActivate)
 - ngx-toastr 13.0.0
 
-## 1.2-SNAPSHOT
+## 1.2-SNAPSHOT (16/12/2020)
 
 - Actualización librería Utils
 - Configuración de testing
 - Quita componente usuarios
 
-## 1.0-SNAPSHOT
+## 1.0-SNAPSHOT (21/09/2020)
 
 - Actualización Angular 9.1
 - Typescript 3.8.4
@@ -29,4 +29,5 @@
 - Request paginada mediante GET
 - Modificación de nombre de parámetros de usuario
 - Extenalización de front como arquetipo independiente
-- Angular 5.2.11
+
+  
