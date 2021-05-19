@@ -1,6 +1,6 @@
-# Registro de cambios 
+# Registro de cambios
 
-## 2.0.0
+## 2.0-SNAPSHOT
 
 - Mejora de componente SPARQL, donde se pueden ahora guardar consultas y reutilizarlas
 - Mejora de Paginado en componente de tablas reutilizable
@@ -12,12 +12,13 @@
 - Agregado de nuevas medidas de seguridad (keycloack + canActivate)
 - ngx-toastr 13.0.0
 
-## 1.2.0
-- Actualización librería Utils 
+## 1.2-SNAPSHOT
+
+- Actualización librería Utils
 - Configuración de testing
 - Quita componente usuarios
 
-## 1.1.0
+## 1.0-SNAPSHOT
 
 - Actualización Angular 9.1
 - Typescript 3.8.4
@@ -25,13 +26,7 @@
 - Bootstrap 4.4
 - Uso del componente estándar para el local storage
 - Uso de Open Icon como fuente de iconos
-
-## 1.0.1
-
 - Request paginada mediante GET
 - Modificación de nombre de parámetros de usuario
-
-## 1.0.0
-
 - Extenalización de front como arquetipo independiente
 - Angular 5.2.11
