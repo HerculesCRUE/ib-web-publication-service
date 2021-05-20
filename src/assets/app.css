@@ -38,8 +38,6 @@ table tbody {
   color: white;
 }
 
-
-
 .btn-outline-primary {
   color: white;
   background-color: black;
@@ -62,10 +60,10 @@ table tbody {
   display: block;
   width: 100%;
   font-size: 1.2375rem;
-  margin-bottom: .5rem;
-    font-weight: 500;
-    line-height: 1.2;
-    color: #495057;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: #495057;
   border-bottom: 1px solid #e5e5e5;
 }
 .sector-chart {
@@ -109,20 +107,29 @@ table tbody {
   justify-content: space-between;
   align-items: center;
 }
+
+.logoSideBar {
+  height: 70px;
+  padding: 0.625rem 1.625rem;
+  position: absolute;
+  top: 90vh;
+}
 .logo {
   margin-top: 5px;
   max-height: 40px;
 }
 
 .logo2 {
-  max-height: 41px;
-  margin-top: 4px;
+  max-height: 50px;
+  margin-left: 8px;
+  margin-top: 12px;
 }
 
 .logoText {
   width: 100%;
   text-align: center;
   font-size: smaller;
+  margin-left: 10px;
 }
 
 .logoText p {
@@ -137,7 +144,6 @@ table tbody {
   /* font-size: smaller; */
 }
 
-
 @media screen and (max-width: 800px) {
   .logos {
     width: 76%;
@@ -145,7 +151,7 @@ table tbody {
 }
 
 .red {
-  color:brown;
+  color: brown;
 }
 
 .cursor {
@@ -156,9 +162,11 @@ table tbody {
   margin-bottom: 20px;
 }
 
-
-.ngbdatepicker:disabled, .ngbdatepicker[readonly], .ngbDatepicker:disabled, .ngbDatepicker[readonly]{
-  background-color: white!important;
+.ngbdatepicker:disabled,
+.ngbdatepicker[readonly],
+.ngbDatepicker:disabled,
+.ngbDatepicker[readonly] {
+  background-color: white !important;
 }
 .loader,
 .loader:before,
@@ -185,7 +193,7 @@ table tbody {
 }
 .loader:before,
 .loader:after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
 }
@@ -218,15 +226,14 @@ table tbody {
   }
 }
 
-
-
-.link-lang, .link-lang img {
+.link-lang,
+.link-lang img {
   max-width: 20px;
   flex: 1 1 auto;
 }
 
 .lang-container {
-  width:60px;
+  width: 60px;
   display: flex;
   align-items: baseline;
   justify-content: space-around;
@@ -236,7 +243,8 @@ table tbody {
   margin-left: 15px;
 }
 
-.home-enabled em, .home-disabled em {
-  margin:auto;
-  cursor:pointer;
+.home-enabled em,
+.home-disabled em {
+  margin: auto;
+  cursor: pointer;
 }
