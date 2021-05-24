@@ -10,7 +10,7 @@ export const environment = {
     clientId: 'login-app',
     scope: 'openid, profile',
     authorizationGrantType: 'password',
-    authUrl: 'https://herculesasioizertis.desa.um.es/auth/',
+    authUrl: 'https://herculesasioizertis.desa.um.es/auth',
     authorizationUri: 'https://herculesasioizertis.desa.um.es/auth/realms/umasio/protocol/openid-connect/auth',
     userInfoUri: 'https://herculesasioizertis.desa.um.es/auth/realms/umasio/protocol/openid-connect/userinfo',
     tokenUri: 'https://herculesasioizertis.desa.um.es/auth/realms/umasio/protocol/openid-connect/token',
