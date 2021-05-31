@@ -4,7 +4,7 @@
       <ng-container *ngFor="let groupItem of groupItems">
         <h1 class="h3 mb-3" [ngClass]="{'hidden': (groupItem.title === 'home.service' && !isLogged) }">{{
           groupItem.title | translate }}</h1>
-        <div class="row">
+        <div class="row" *ngIf="groupItem.title !== 'home.info'">
           <div class="col-lg-4 col-xl-2 d-flex cursor home-cards" *ngFor="let item of groupItem.homeItems"
             [ngClass]="{'hidden': (item.title === 'home.sparql' && !isLogged) || (item.title === 'home.users' && !isLogged)}">
             <div class="card flex-fill  home-enabled" [routerLink]="[item.url]"
@@ -56,6 +56,14 @@
             </div>
 
           </div>
+        </div>
+        <div class="row" *ngIf="groupItem.title === 'home.info'">
+          <div class="col-12" *ngFor="let item of groupItem.homeItems">
+            <a class="link" *ngIf="item.url !== ''" [href]="item.urlExterna" [routerLink]="[item.url]">{{
+              item.title| translate }}</a>
+            <a class="link" *ngIf="item.url === ''" [href]="item.urlExterna">{{ item.title| translate }}</a>
+          </div>
+
         </div>
       </ng-container>
     </div>

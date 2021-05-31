@@ -248,3 +248,7 @@ table tbody {
   margin: auto;
   cursor: pointer;
 }
+
+.link {
+  color: inherit !important;
+}
