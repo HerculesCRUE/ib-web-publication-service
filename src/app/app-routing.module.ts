@@ -9,6 +9,8 @@ import { NoAuthGuard } from './_guards/no-auth.guard';
 import { GraphicComponent } from './graphic/graphic.component';
 import { LinksComponent } from './links/links.component';
 import { AccesibilityComponent } from './accesibility/accesibility.component';
+import { ContactComponent } from './contact/contact.component';
+import { GraphPageComponent } from './graph-page/graph-page.component';
 /**
  * **********************************************
  * ************** Rutas securizadas *************
@@ -50,8 +52,16 @@ const noSecureRoutes: Routes = [
     component: GraphicComponent,
   },
   {
+    path: 'graph',
+    component: GraphPageComponent,
+  },
+  {
     path: 'accessibility',
     component: AccesibilityComponent,
+  },
+  {
+    path: 'contact',
+    component: ContactComponent,
   },
   /***************** Categories *******************/
   {

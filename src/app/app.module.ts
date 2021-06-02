@@ -55,6 +55,8 @@ import { LangInterceptor } from './_helpers/lang-intercetor';
 // keycloak
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { PatentDetailComponent } from './common/patent-detail/patent-detail.component';
+import { ContactComponent } from './contact/contact.component';
+import { GraphPageComponent } from './graph-page/graph-page.component';
 
 
 const keycloakService = new KeycloakService();
@@ -69,6 +71,8 @@ const keycloakService = new KeycloakService();
     LinksComponent,
     AccesibilityComponent,
     PatentDetailComponent,
+    ContactComponent,
+    GraphPageComponent,
 
   ],
   imports: [

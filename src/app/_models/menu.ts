@@ -84,11 +84,17 @@ export const MENU_ITEMS: MenuItem[] = [
     icon: 'oi-eye',
     url: '/main/accessibility',
     disabled: false
+  },
+  {
+    title: 'menu.contact',
+    icon: 'oi-envelope-closed',
+    url: '/main/contact',
+    disabled: false
+  },
+  {
+    title: 'menu.graph',
+    icon: 'oi-graph',
+    url: '/main/graph',
+    disabled: false
   }
-  /*{
-    title: 'menu.graphics',
-    icon: 'oi-pie-chart',
-    url: '/main/graphics',
-    disabled: true
-  },*/
 ];

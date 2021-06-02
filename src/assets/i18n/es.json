@@ -60,7 +60,9 @@
     "acction-inves": "Acciones investigación",
     "stats": "Estadisticas",
     "accessibility": "Accesibilidad",
-    "login": "Acceder"
+    "login": "Acceder",
+    "contact": "Contacto",
+    "graph": "Renderización named graph"
   },
   "login": {
     "form": {

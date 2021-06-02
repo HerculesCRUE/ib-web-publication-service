@@ -1,4 +1,4 @@
-import { BASE_APP_URL, BASE_URL, KEYCLOACK, LPDURL } from '../configuration';
+import { BASE_APP_URL, BASE_URL, KEYCLOACK, LPDURL, SGI } from '../configuration';
 import { HttpParams } from '@angular/common/http';
 import { Direction, Page, PageRequest } from './search';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
@@ -38,6 +38,10 @@ export class Helper {
    */
   static getLPDUrl() {
     return LPDURL;
+  }
+
+  static getLSgi() {
+    return SGI;
   }
 
   /**

@@ -18,8 +18,9 @@ export const environment = {
     redirectUrl: 'https%3A%2F%2Fherculesasioizertis.desa.um.es%2Fauth%2Frealms%2Fumasio%2Faccount%2F%23%2Fpersonal-info',
     clientSecret: ''
   },
-  lpdUrl: 'https://lpd.herculesasioizertis.desa.um.es',
-  appUrl: 'https://app.herculesasioizertis.desa.um.es'
+  lpdUrl: 'https://ldp.herculesasioizertis.desa.um.es',
+  appUrl: 'https://app.herculesasioizertis.desa.um.es',
+  sgi: 'https://github.com/HerculesCRUE/ib-asio-docs-/tree/master/13-Backend_SGI_Software'
 };
 
 // default settings for how to query the endpoint

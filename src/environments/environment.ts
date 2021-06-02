@@ -24,7 +24,8 @@ export const environment = {
     clientSecret: ''
   },
   lpdUrl: 'http://localhost:8080/',
-  appUrl: 'http://localhost:4200'
+  appUrl: 'http://localhost:4200',
+  sgi: 'https://github.com/HerculesCRUE/ib-asio-docs-/tree/master/13-Backend_SGI_Software'
 };
 
 

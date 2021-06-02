@@ -144,6 +144,22 @@ export const HOME_ITEMS: HomeGroupItem[] = [{
       urlExterna: ''
     },
     {
+      title: 'menu.contact',
+      iconName: 'oi-enveloped-closed',
+      iconCircle: false,
+      url: '/main/contact',
+      disabled: false,
+      urlExterna: ''
+    },
+    {
+      title: 'menu.graph',
+      iconName: 'oi-enveloped-graph',
+      iconCircle: false,
+      url: '/main/graph',
+      disabled: false,
+      urlExterna: ''
+    },
+    {
       title: 'home.info-LPD',
       iconName: 'oi-link-intact',
       iconCircle: false,
@@ -165,7 +181,7 @@ export const HOME_ITEMS: HomeGroupItem[] = [{
       iconCircle: false,
       url: null,
       disabled: true,
-      urlExterna: ''
+      urlExterna: 'https://github.com/HerculesCRUE/ib-asio-docs-/tree/master/23-Librer%C3%ADa_de_validación_de_RDF'
     },
     {
       title: 'home.sgi',
@@ -173,7 +189,7 @@ export const HOME_ITEMS: HomeGroupItem[] = [{
       iconCircle: false,
       url: '',
       disabled: false,
-      urlExterna: 'https://www.um.es/web/hercules/proyectos/sgi'
+      urlExterna: Helper.getLSgi()
     },
     {
       title: 'home.graphs',
