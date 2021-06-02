@@ -155,7 +155,7 @@ export const HOME_ITEMS: HomeGroupItem[] = [{
       title: 'menu.graph',
       iconName: 'oi-enveloped-graph',
       iconCircle: false,
-      url: '/main/graph',
+      url: '/main/contact',
       disabled: false,
       urlExterna: ''
     },
@@ -179,7 +179,7 @@ export const HOME_ITEMS: HomeGroupItem[] = [{
       title: 'home.validators',
       iconName: 'oi-circle-check',
       iconCircle: false,
-      url: null,
+      url: '',
       disabled: true,
       urlExterna: 'https://github.com/HerculesCRUE/ib-asio-docs-/tree/master/23-Librer%C3%ADa_de_validación_de_RDF'
     },
@@ -192,29 +192,13 @@ export const HOME_ITEMS: HomeGroupItem[] = [{
       urlExterna: Helper.getLSgi()
     },
     {
-      title: 'home.graphs',
-      iconName: 'oi-pie-chart',
-      iconCircle: false,
-      url: null,
-      disabled: true,
-      urlExterna: ''
-    },
-    {
       title: 'home.info-hercules',
       iconName: 'oi-info',
       iconCircle: true,
       url: '',
       disabled: false,
       urlExterna: 'https://www.um.es/web/hercules/sobre-hercules'
-    },
-    {
-      title: 'home.contact',
-      iconName: 'oi-map',
-      iconCircle: false,
-      url: null,
-      disabled: true,
-      urlExterna: ''
-    },
+    }
   ]
 }];
 
