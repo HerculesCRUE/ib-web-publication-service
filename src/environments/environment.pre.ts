@@ -18,7 +18,7 @@ export const environment = {
         redirectUrl: 'https%3A%2F%2Fauthld1test.um.es%2Fauth%2Frealms%2Fumasio%2Faccount%2F%23%2Fpersonal-info',
         clientSecret: ''
     },
-    lpdUrl: 'https://ldp.authld1test.um.es/',
+    lpdUrl: 'https://ldpld1test.um.es/',
     appUrl: 'https://app.linkeddata1test.um.es',
     sgi: 'https://github.com/HerculesCRUE/ib-asio-docs-/tree/master/13-Backend_SGI_Software'
 };
