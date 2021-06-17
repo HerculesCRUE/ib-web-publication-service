@@ -85,5 +85,42 @@
         <router-outlet></router-outlet>
       </div>
     </div>
+
+  </div>
+  <div class="footer">
+    <div class="row">
+      <div class="col-4">
+        <img alt="Logo Universidad de Murcia" class="logoFooter" src="assets/images/logo2.png">
+      </div>
+      <div class="col-4 topf">
+        <ng-container *ngFor="let groupItem of groupItems">
+          <div *ngIf="groupItem.title === 'home.info'">
+            <div *ngFor="let item of groupItem.homeItems; let i = index">
+              <div *ngIf="i % 2 === 0">
+                <a class="link" *ngIf="item.url !== ''" [href]="item.urlExterna" [routerLink]="[item.url]">{{
+                  item.title| translate }}</a>
+                <a class="link" *ngIf="item.url === ''" [href]="item.urlExterna">{{ item.title| translate }}</a>
+              </div>
+
+            </div>
+          </div>
+        </ng-container>
+      </div>
+      <div class="col-4 topf">
+        <ng-container *ngFor="let groupItem of groupItems">
+          <div *ngIf="groupItem.title === 'home.info'">
+            <div *ngFor="let item of groupItem.homeItems; let i = index">
+              <div *ngIf="i % 2 !== 0">
+                <a class="link" *ngIf="item.url !== ''" [href]="item.urlExterna" [routerLink]="[item.url]">{{
+                  item.title| translate }}</a>
+                <a class="link" *ngIf="item.url === ''" [href]="item.urlExterna">{{ item.title| translate }}</a>
+              </div>
+
+            </div>
+          </div>
+        </ng-container>
+      </div>
+
+    </div>
   </div>
 </div>
