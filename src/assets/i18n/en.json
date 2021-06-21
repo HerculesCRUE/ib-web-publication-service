@@ -133,7 +133,8 @@
     "sgi": "Backends SGI",
     "graphs": "Named Graphs metadata rendering",
     "info-hercules": "Information about Hercules",
-    "contact": "Contact information"
+    "contact": "Contact information",
+    "import-data": "Data Importer"
   },
   "links": {
     "title": "Links GitHub",

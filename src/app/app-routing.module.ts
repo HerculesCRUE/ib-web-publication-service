@@ -11,6 +11,7 @@ import { LinksComponent } from './links/links.component';
 import { AccesibilityComponent } from './accesibility/accesibility.component';
 import { ContactComponent } from './contact/contact.component';
 import { GraphPageComponent } from './graph-page/graph-page.component';
+import { DataImporterComponent } from './data-importer/data-importer.component';
 /**
  * **********************************************
  * ************** Rutas securizadas *************
@@ -45,6 +46,11 @@ const noSecureRoutes: Routes = [
       import('./sparqleditor/sparqleditor.module').then(
         (m) => m.SparqleditorModule
       ),
+  },
+  /* Data-Importer path */
+  {
+    path: 'data-importer',
+    component: DataImporterComponent,
   },
   /* Graphics path */
   {

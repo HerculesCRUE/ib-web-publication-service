@@ -126,7 +126,7 @@ export const HOME_ITEMS: HomeGroupItem[] = [{
       title: 'home.import-data',
       iconName: 'oi-loop-circular',
       iconCircle: false,
-      url: '/main/sparql',
+      url: '/main/data-importer',
       disabled: false,
       urlExterna: ''
     },
