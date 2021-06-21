@@ -434,5 +434,9 @@
     "user": "User",
     "type": "Type",
     "cron": "Cron"
+  },
+  "importation": {
+    "header": "Data importation",
+    "button": "+ New Importation"
   }
 }

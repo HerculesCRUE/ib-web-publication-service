@@ -8,26 +8,10 @@
 
                     <div class="container-fluid">
                         <div class="row justify-content-end">
-
-                            <div id="mainSearch" aria-labelledby="mainSearch" class="input-group col-md-4"
-                                role="search">
-                                <input class="form-control py-2 border-right-0 border" type="search" name="search"
-                                    #search="ngModel" placeholder="{{'form.search-by-title' | translate }}"
-                                    [(ngModel)]="findRequest.filter.name"
-                                    (keyup.enter)="filterResearchmentStructures()">
-                                <span class="input-group-append">
-                                    <button (click)="filterResearchmentStructures()"
-                                        [attr.aria-label]="'form.search-by-name' | translate" role="button"
-                                        aria-pressed="false" class="btn btn-outline-secondary border-left-0 border"
-                                        type="button">
-                                        <em class="oi oi-magnifying-glass "></em>
-                                    </button>
-                                </span>
-                            </div>
                             <div class="input-group col-md-2 text-right">
                                 <button id="clean" [attr.aria-label]="'form.clean' | translate " role="button"
                                     aria-pressed="false" class="btn btn-secondary"
-                                    (click)="f.resetForm(); filterResearchmentStructures()">{{'form.clean' |
+                                    (click)="f.resetForm(); filterResearchmentStructures()">{{'importation.button' |
                                     translate }}</button>
                             </div>
                         </div>
@@ -44,7 +28,7 @@
                     <div class="loader" *ngIf="!loaded"></div>
                     <app-table-results-dto [displayPagination]="false" [findRequest]="findRequest"
                         *ngIf="loaded && resultObject?.content?.length !== 0"
-                        [dtoTypeTranslate]="'researchmentStructure'" [extra]="'2'" [data]="resultObject?.content"
+                        [dtoTypeTranslate]="'dataImporterStructure'" [extra]="'2'" [data]="resultObject?.content"
                         [pageInfo]="resultObject" [routerFieldSecondary]="'type'" [routerField]="'id'"
                         (sortChanged)="allResearchmentStructuresFilteredSortChanged($event)">
                     </app-table-results-dto>

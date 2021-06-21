@@ -442,9 +442,13 @@
   },
   "dataImporterStructure": {
     "id": "Id",
-    "date": "Date",
-    "user": "User",
-    "type": "Type",
+    "date": "Fecha",
+    "user": "Usuario",
+    "type": "Tipo",
     "cron": "Cron"
+  },
+  "importation": {
+    "header": "Importación de datos",
+    "button": "+ Nueva Importación"
   }
 }

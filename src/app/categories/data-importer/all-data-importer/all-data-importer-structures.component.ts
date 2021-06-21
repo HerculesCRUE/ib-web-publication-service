@@ -5,27 +5,27 @@ import { ToastrService } from 'ngx-toastr';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Direction, FindRequest, Order, Page, PageRequest, PaginatedSearchComponent } from 'src/app/_helpers/search';
-import { University } from 'src/app/_models/university';
-import { ResearchmentStructuresService } from 'src/app/_services/researchment.structures.service';
+import { DataImporter } from 'src/app/_models/dataImporter';
+import { DataImporterService } from 'src/app/_services/data-importer.service';
 
 /**
  *
  *
  * @export
- * @class AllResearchmentStructuresComponent
+ * @class AllDataImporterStructuresComponent
  * @implements {OnInit}
  */
 @Component({
   selector: 'app-all-data-importer-structures',
   templateUrl: './all-data-importer-structures.component.html'
 })
-export class AllDataImporterStructuresComponent extends PaginatedSearchComponent<University> {
+export class AllDataImporterStructuresComponent extends PaginatedSearchComponent<DataImporter> {
   loaded = false;
 
   findRequest: FindRequest = new FindRequest();
 
   constructor(
-    private researchmentStructureService: ResearchmentStructuresService,
+    private researchmentStructureService: DataImporterService,
     router: Router,
     translate: TranslateService,
     toastr: ToastrService
@@ -33,8 +33,8 @@ export class AllDataImporterStructuresComponent extends PaginatedSearchComponent
     super(router, translate, toastr);
   }
 
-  protected findInternal(findRequest: FindRequest): Observable<Page<University>> {
-    const page: Page<University> = new Page();
+  protected findInternal(findRequest: FindRequest): Observable<Page<DataImporter>> {
+    const page: Page<DataImporter> = new Page();
     return this.researchmentStructureService.find(findRequest).pipe(
       map((x) => {
         this.loaded = true;
