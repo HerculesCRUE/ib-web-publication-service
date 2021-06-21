@@ -7,7 +7,7 @@
           groupItem.title | translate }}</h1>
         <div class="row" *ngIf="groupItem.title !== 'home.info'">
           <div class="col-lg-4 col-xl-2 d-flex cursor home-cards" *ngFor="let item of groupItem.homeItems"
-            [ngClass]="{'hidden': (item.title === 'home.sparql' && !isLogged) || (item.title === 'home.users' && !isLogged)}">
+            [ngClass]="{'hidden': (item.title === 'home.sparql' && !isLogged) || (item.title === 'home.users' && !isLogged) || (item.title === 'home.import-data' && !isLogged)}">
             <div class="card flex-fill  home-enabled" [routerLink]="[item.url]"
               *ngIf="!item.disabled && item.url !== ''">
               <div class="card-header">
