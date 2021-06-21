@@ -1,0 +1,67 @@
+<fieldset class="panel-default">
+    <legend></legend>
+    <div class="row">
+        <div class="col-12">
+            <div class="card flex-fill">
+                <div class="card-header">
+
+
+                    <div class="container-fluid">
+                        <div class="row justify-content-end">
+
+                            <div id="mainSearch" aria-labelledby="mainSearch" class="input-group col-md-4"
+                                role="search">
+                                <input class="form-control py-2 border-right-0 border" type="search" name="search"
+                                    #search="ngModel" placeholder="{{'form.search-by-title' | translate }}"
+                                    [(ngModel)]="findRequest.filter.name"
+                                    (keyup.enter)="filterResearchmentStructures()">
+                                <span class="input-group-append">
+                                    <button (click)="filterResearchmentStructures()"
+                                        [attr.aria-label]="'form.search-by-name' | translate" role="button"
+                                        aria-pressed="false" class="btn btn-outline-secondary border-left-0 border"
+                                        type="button">
+                                        <em class="oi oi-magnifying-glass "></em>
+                                    </button>
+                                </span>
+                            </div>
+                            <div class="input-group col-md-2 text-right">
+                                <button id="clean" [attr.aria-label]="'form.clean' | translate " role="button"
+                                    aria-pressed="false" class="btn btn-secondary"
+                                    (click)="f.resetForm(); filterResearchmentStructures()">{{'form.clean' |
+                                    translate }}</button>
+                            </div>
+                        </div>
+                    </div>
+                    <h5 class="card-title mb-0" *ngIf="loaded && resultObject?.content?.length === 0">
+                        {{'form.no-result' | translate}}</h5>
+                    <h5 class="card-title mb-0" *ngIf="loaded && resultObject?.content?.length !== 0">
+                        {{'form.results-amount' | translate}} {{resultObject?.totalElements}}
+                    </h5>
+                </div>
+                <div id="datatables-dashboard-markets_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+
+
+                    <div class="loader" *ngIf="!loaded"></div>
+                    <app-table-results-dto [displayPagination]="false" [findRequest]="findRequest"
+                        *ngIf="loaded && resultObject?.content?.length !== 0"
+                        [dtoTypeTranslate]="'researchmentStructure'" [extra]="'2'" [data]="resultObject?.content"
+                        [pageInfo]="resultObject" [routerFieldSecondary]="'type'" [routerField]="'id'"
+                        (sortChanged)="allResearchmentStructuresFilteredSortChanged($event)">
+                    </app-table-results-dto>
+                    <div class="container-fluid app-table-results">
+                        <div class="row">
+                            <div class="col">
+                                <app-pagination [resultObject]="resultObject" (pageChanged)="showPage($event)"
+                                    (sizeChanged)="changeSize($event)">
+                                </app-pagination>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</fieldset>

@@ -30,7 +30,6 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
-import { DataImporterComponent } from './data-importer/data-importer.component';
 
 // -------------- Guards --------------
 import { AuthGuard } from './_guards/auth.guard';
@@ -74,8 +73,6 @@ const keycloakService = new KeycloakService();
     PatentDetailComponent,
     ContactComponent,
     GraphPageComponent,
-    DataImporterComponent,
-
   ],
   imports: [
     BrowserModule,
