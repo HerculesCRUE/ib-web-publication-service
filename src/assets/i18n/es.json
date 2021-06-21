@@ -141,7 +141,8 @@
     "sgi": "Backends SGI",
     "graphs": "Renderización de metadatos de Named Graphs",
     "info-hercules": "Información sobre Hercules",
-    "contact": "Datos de contacto"
+    "contact": "Datos de contacto",
+    "import-data": "Importador de datos"
   },
   "links": {
     "title": "Links GitHub",
