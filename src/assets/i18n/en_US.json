@@ -427,5 +427,12 @@
     "predefinidas": "Predefined",
     "ambas": "Both",
     "usuario": "My queries"
+  },
+  "dataImporterStructure": {
+    "id": "Id",
+    "date": "Date",
+    "user": "User",
+    "type": "Type",
+    "cron": "Cron"
   }
 }

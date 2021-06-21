@@ -439,5 +439,12 @@
     "predefinidas": "Predefinido",
     "ambas": "Ambos",
     "usuario": "Mis consultas"
+  },
+  "dataImporterStructure": {
+    "id": "Id",
+    "date": "Date",
+    "user": "User",
+    "type": "Type",
+    "cron": "Cron"
   }
 }
