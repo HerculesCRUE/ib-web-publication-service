@@ -1,0 +1,48 @@
+<div class="container-fluid app-table-results">
+  <div class="row">
+    <div class="col">
+      <table class="table table-bordered" aria-label="Data displayed from Sparql" *ngIf="!!dataComplete">
+        <caption>{{'form.results' | translate }}</caption>
+        <thead>
+          <tr>
+
+            <ng-container *ngFor="let header of hedearDTO">
+              <th class="sortable" (click)="sort(header)" id="{{header + dtoTypeTranslate + extra}}"
+                *ngIf="header !== 'importerErrors'">
+                <em class="oi oi-info" *ngIf="needTooltip(header).required" placement="top"
+                  ngbTooltip="{{needTooltip(header).textValue}}"></em>
+                {{ dtoTypeTranslate + '.' + header | translate }}<em class="float-right"
+                  [ngClass]="getSortIcon(header)"></em>
+              </th>
+            </ng-container>
+            <th id="hasActions1">
+              {{'form.actions' | translate }}
+            </th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let item of dataCompleteToShow; index as i">
+
+            <tr [routerLink]="[routerNameLink, item[routerField], item[routerFieldSecondary]]"
+              *ngIf="!!routerField && !!item[routerField] && routerFieldSecondary !== ''"
+              [ngClass]="{ 'table-secondary': i % 2 == 1 }">
+              <ng-container *ngFor="let header of hedearDTO">
+                <td *ngIf="header !== 'importerErrors'">
+                  <ng-container>{{ item[header] }}</ng-container>
+                </td>
+              </ng-container>
+              <td>
+                <a href="">Ver errores</a>
+              </td>
+            </tr>
+
+          </ng-container>
+        </tbody>
+      </table>
+      <app-pagination *ngIf="displayPagination" [resultObject]="resultObject"
+        (pageChanged)="callShowPageWhenPageChanges($event)" (sizeChanged)="callShowPageWhenSizeChanges($event)">
+      </app-pagination>
+    </div>
+  </div>
+</div>

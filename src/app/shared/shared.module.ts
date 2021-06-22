@@ -10,10 +10,14 @@ import { RouterModule } from '@angular/router';
 import { PatentService } from '../_services/patent.service';
 import { DocumentService } from '../_services/document.service';
 import { TableResultsDtoComponent } from '../common-display-data/table-results-dto/table-results-dto.component';
+import { TableResultsImporterComponent } from '../common-display-data/table-results-importer/table-results-importer.component';
 
 @NgModule({
-  declarations: [PaginationComponent,
-    TableResultsComponent, TableResultsDtoComponent],
+  declarations: [
+    PaginationComponent,
+    TableResultsComponent,
+    TableResultsDtoComponent,
+    TableResultsImporterComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -27,7 +31,9 @@ import { TableResultsDtoComponent } from '../common-display-data/table-results-d
     TranslateModule,
     CommonModule,
     NgbModule,
-    TableResultsComponent, TableResultsDtoComponent],
+    TableResultsComponent,
+    TableResultsDtoComponent,
+    TableResultsImporterComponent],
   providers: [
     PatentService,
     DocumentService
