@@ -4,6 +4,40 @@
     </legend>
 
     <form name="form" (ngSubmit)="f.form.valid && import()" #f="ngForm" autocomplete="false" novalidate>
+        <div class="form-row">
+
+            <fieldset class="scheduler-border">
+                <legend class="import-data-legend">
+                    {{'importation.import-fieldset' | translate}}
+                </legend>
+                <!--  -->
+                <span class="col-md-3">
+                    <input name="options" ng-control="options" type="radio" [value]="1" [(ngModel)]="importation.type">
+                    Dataset
+                </span>
+                <span class="col-md-3">
+                    <input name="options" ng-control="options" type="radio" [value]="2" [(ngModel)]="importation.type">
+                    CVN
+                </span>
+                <span class="col-md-3">
+                    <input name="options" ng-control="options" type="radio" [value]="3" [(ngModel)]="importation.type">
+                    SGI
+                </span>
+                <span class="col-md-3">
+                    <input name="options" ng-control="options" type="radio" [value]="4" [(ngModel)]="importation.type">
+                    Cerif
+                </span>
+            </fieldset>
+        </div>
+
+        <div class="form-row" style="padding-bottom: 2em;">
+            <!-- params -->
+            <div class="col-md-10">
+                <label for="params">{{'importation.import-parameters' | translate}}</label>
+                <textarea type="text" id="params" class="md-textarea form-control" mdbInput
+                    [(ngModel)]="importation.params"></textarea>
+            </div>
+        </div>
 
         <div class="form-row">
             <!-- cron expression -->

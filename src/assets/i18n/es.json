@@ -455,7 +455,7 @@
     "import-parameters": "Parámetros de la importación",
     "import-fieldset": "Seleccione un tipo de importación",
     "import-title": "Nueva Importación de datos",
-    "cron-example": "* * * 15",
+    "cron-example": "(Ejemplo: * * * 15)",
     "cron-help": "¿Qué es una expresión cron?",
     "succeeded-import": "La importación se ha lanzado con éxito",
     "failed-import": "Ha ocurrido un error al lanzar la importación"

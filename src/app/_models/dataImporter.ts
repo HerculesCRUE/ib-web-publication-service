@@ -29,4 +29,9 @@ export class DataImporter {
      * The cron
      */
     cron: string;
+
+    /**
+     * The params
+     */
+    params: string;
 }
