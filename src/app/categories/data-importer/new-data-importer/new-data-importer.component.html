@@ -1,1 +1,33 @@
-<p>new-data-importer works!</p>
+<fieldset>
+    <legend *ngIf="createMode">
+        {{'importation.import-title' | translate:user}}
+    </legend>
+
+    <form name="form" (ngSubmit)="f.form.valid && save()" #f="ngForm" autocomplete="false" novalidate>
+
+        <div class="form-row">
+            <!-- cron expression -->
+            <div class="col-md-2">
+                <label for="city">{{'importation.cron-expression' | translate}}</label>
+                <input type="text" class="form-control" id="cron" name="cron"
+                    placeholder="{{'importation.cron-example' | translate}}" [(ngModel)]="user.city" />
+            </div>
+            <div class="col-md-2">
+                <button mat-button>
+                    <mat-icon><a href="http://www.google.com" target="blank" mat-menu-item>{{'importation.cron-help' |
+                            translate}}</a></mat-icon>
+                </button>
+            </div>
+        </div>
+
+        <!-- buttons -->
+        <div class="float-right mt-2">
+            <button id="clean" [attr.aria-label]="'form.clean' | translate " role="button" aria-pressed="false"
+                class="btn btn-secondary" [routerLink]="'/main/data-importer'">{{'form.cancel' | translate}}</button>
+
+            <button type="submit" class="btn btn-secondary ml-2">
+                {{'importation.import' | translate}}
+            </button>
+        </div>
+    </form>
+</fieldset>

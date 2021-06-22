@@ -41,6 +41,7 @@ import { ScientificPublicationDetailComponent } from './scientific-publication-d
 import { AreasListComponent } from '../common/areas-list/areas-list.component';
 import { DataImporterComponent } from './data-importer/data-importer.component';
 import { AllDataImporterStructuresComponent } from './data-importer/all-data-importer/all-data-importer-structures.component';
+import { NewDataImporterComponent } from './data-importer/new-data-importer/new-data-importer.component';
 
 
 @NgModule({
@@ -51,7 +52,7 @@ import { AllDataImporterStructuresComponent } from './data-importer/all-data-imp
     ProjectsDetailComponent, ParticipantsComponent, DeliverableComponent, ScientistComponent, ScientistDetailComponent,
     DirectedJobsComponent, StartupComponent, AreasComponent, EventsComponent,
     ScientificProductionComponent, DocumentDetailComponent, EventDetailComponent, StatisticsComponent,
-    PeopleInvolvedComponent, CollaboratorsComponent, ScientificPublicationDetailComponent, AreasListComponent, DataImporterComponent, AllDataImporterStructuresComponent
+    PeopleInvolvedComponent, CollaboratorsComponent, ScientificPublicationDetailComponent, AreasListComponent, DataImporterComponent, AllDataImporterStructuresComponent, NewDataImporterComponent
   ],
   imports: [
     NgxEchartsModule,

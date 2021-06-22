@@ -449,6 +449,13 @@
   },
   "importation": {
     "header": "Importación de datos",
-    "button": "+ Nueva Importación"
+    "button": "+ Nueva Importación",
+    "import": "Importar",
+    "cron-expression": "Expresión cron",
+    "import-parameters": "Parámetros de la importación",
+    "import-fieldset": "Seleccione un tipo de importación",
+    "import-title": "Nueva Importación de datos",
+    "cron-example": "* * * 15",
+    "cron-help": "¿Qué es una expresión cron?"
   }
 }
