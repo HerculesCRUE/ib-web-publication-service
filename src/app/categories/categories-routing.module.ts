@@ -13,6 +13,7 @@ import { EventDetailComponent } from './event-detail/event-detail.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { PatentDetailComponent } from '../common/patent-detail/patent-detail.component';
 import { ScientificPublicationDetailComponent } from './scientific-publication-detail/scientific-publication-detail.component';
+import { NewDataImporterComponent } from './data-importer/new-data-importer/new-data-importer.component';
 
 const routes: Routes = [
   {
@@ -71,6 +72,10 @@ const routes: Routes = [
   {
     path: 'scientificpublication/:id',
     component: ScientificPublicationDetailComponent
+  },
+  {
+    path: 'new-data-importer',
+    component: NewDataImporterComponent
   }
 ];
 

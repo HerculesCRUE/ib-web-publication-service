@@ -11,7 +11,7 @@
                             <div class="input-group col-md-2 text-right">
                                 <button id="clean" [attr.aria-label]="'form.clean' | translate " role="button"
                                     aria-pressed="false" class="btn btn-secondary"
-                                    (click)="filterResearchmentStructures()">{{'importation.button' |
+                                    [routerLink]="'/main/categories/new-data-importer'">{{'importation.button' |
                                     translate }}</button>
                             </div>
                         </div>
