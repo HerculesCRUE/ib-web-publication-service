@@ -3,18 +3,25 @@
         {{'importation.import-title' | translate:user}}
     </legend>
 
-    <form name="form" (ngSubmit)="f.form.valid && save()" #f="ngForm" autocomplete="false" novalidate>
+    <form name="form" (ngSubmit)="f.form.valid && import()" #f="ngForm" autocomplete="false" novalidate>
 
         <div class="form-row">
             <!-- cron expression -->
             <div class="col-md-2">
                 <label for="city">{{'importation.cron-expression' | translate}}</label>
-                <input type="text" class="form-control" id="cron" name="cron"
-                    placeholder="{{'importation.cron-example' | translate}}" [(ngModel)]="user.city" />
+                <input type="text" class="form-control" id="cron" name="cron" #cron="ngModel"
+                    [ngClass]="{'is-invalid': f.submitted && !cron.valid}"
+                    placeholder="{{'importation.cron-example' | translate}}" [(ngModel)]="importation.cron" required />
+                <div *ngIf="f.submitted && !cron.valid" class="invalid-feedback">
+                    {{'form.validation.required' |
+                    translate}}</div>
             </div>
+
+            <!-- help link -->
             <div class="col-md-2">
                 <button mat-button>
-                    <mat-icon><a href="http://www.google.com" target="blank" mat-menu-item>{{'importation.cron-help' |
+                    <mat-icon><a href="https://es.wikipedia.org/wiki/Cron_(Unix)" target="blank"
+                            mat-menu-item>{{'importation.cron-help' |
                             translate}}</a></mat-icon>
                 </button>
             </div>

@@ -57,5 +57,16 @@ export class DataImporterService extends AbstractService {
       );
   }
 
+  /**
+   * Method in order to launch the importation
+   * @param data input param
+   */
+  import(data: DataImporter): Observable<DataImporter> {
+    console.log("Import in service " + data);
+    return this.httpClient
+      .post(Helper.getUrl('/dataimporter/import'), data)
+      .pipe(catchError(this.handleError));
+  }
+
 }
 
