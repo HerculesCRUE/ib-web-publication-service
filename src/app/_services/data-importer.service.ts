@@ -27,14 +27,12 @@ export class DataImporterService extends AbstractService {
   find(findRequest: FindRequest): Observable<Page<DataImporter>> {
     // Filter params
     let parameters = new HttpParams();
-    parameters = Helper.addParam(parameters, 'types', findRequest.filter.type);
-    parameters = Helper.addParam(parameters, 'financing', findRequest.filter.financing);
-    parameters = Helper.addParam(parameters, 'qa', findRequest.filter.qa);
-    parameters = Helper.addParam(parameters, 'title', findRequest.filter.name);
+    parameters = Helper.addParam(parameters, 'type', findRequest.filter.type);
+
     // Pagination params
     parameters = Helper.addPaginationParams(parameters, findRequest.pageRequest);
     return this.httpClient
-      .get(Helper.getUrl('/dataimporter/search'), {
+      .get(Helper.getUrl('/importer/search'), {
         params: parameters
       }).pipe(
         catchError(this.handleError)
@@ -52,7 +50,7 @@ export class DataImporterService extends AbstractService {
   getById(id: string, type: string): Observable<OrganizationDetail> {
     // Filter params
     return this.httpClient
-      .get(Helper.getUrl('/dataimporter/' + id)).pipe(
+      .get(Helper.getUrl('/importer/' + id)).pipe(
         catchError(this.handleError)
       );
   }
@@ -64,7 +62,7 @@ export class DataImporterService extends AbstractService {
   import(data: DataImporter): Observable<DataImporter> {
     console.log("Import in service " + data);
     return this.httpClient
-      .post(Helper.getUrl('/dataimporter/import'), data)
+      .post(Helper.getUrl('/importer/schedule'), data)
       .pipe(catchError(this.handleError));
   }
 

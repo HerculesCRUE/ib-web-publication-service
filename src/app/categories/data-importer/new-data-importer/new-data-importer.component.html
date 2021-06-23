@@ -1,6 +1,6 @@
 <fieldset>
     <legend *ngIf="createMode">
-        {{'importation.import-title' | translate:user}}
+        {{'importation.import-title' | translate}}
     </legend>
 
     <form name="form" (ngSubmit)="f.form.valid && import()" #f="ngForm" autocomplete="false" novalidate>
@@ -10,21 +10,25 @@
                 <legend class="import-data-legend">
                     {{'importation.import-fieldset' | translate}}
                 </legend>
-                <!--  -->
+                <!-- choices -->
                 <span class="col-md-3">
-                    <input name="options" ng-control="options" type="radio" [value]="1" [(ngModel)]="importation.type">
+                    <input name="options" ng-control="options" type="radio" [value]="constants.DATASET"
+                        [(ngModel)]="importation.type" (click)="onTypeChange(constants.DATASET_PARAM)">
                     Dataset
                 </span>
                 <span class="col-md-3">
-                    <input name="options" ng-control="options" type="radio" [value]="2" [(ngModel)]="importation.type">
+                    <input name="options" ng-control="options" type="radio" [value]="constants.CVN"
+                        [(ngModel)]="importation.type" (click)="onTypeChange(constants.CVN_PARAM)">
                     CVN
                 </span>
                 <span class="col-md-3">
-                    <input name="options" ng-control="options" type="radio" [value]="3" [(ngModel)]="importation.type">
+                    <input name="options" ng-control="options" type="radio" [value]="constants.SGI"
+                        [(ngModel)]="importation.type" (click)="onTypeChange(constants.SGI_PARAM)">
                     SGI
                 </span>
                 <span class="col-md-3">
-                    <input name="options" ng-control="options" type="radio" [value]="4" [(ngModel)]="importation.type">
+                    <input name="options" ng-control="options" type="radio" [value]="constants.CERIF"
+                        [(ngModel)]="importation.type" (click)="onTypeChange(constants.CERIF_PARAM)">
                     Cerif
                 </span>
             </fieldset>
@@ -34,8 +38,12 @@
             <!-- params -->
             <div class="col-md-10">
                 <label for="params">{{'importation.import-parameters' | translate}}</label>
-                <textarea type="text" id="params" class="md-textarea form-control" mdbInput
+                <textarea type="text" class="md-textarea form-control" id="params" name="params" #params="ngModel"
+                    [ngClass]="{'is-invalid': f.submitted && !params.valid}" required
                     [(ngModel)]="importation.params"></textarea>
+                <div *ngIf="f.submitted && !params.valid" class="invalid-feedback">
+                    {{'form.validation.required' |
+                    translate}}</div>
             </div>
         </div>
 
@@ -54,9 +62,9 @@
             <!-- help link -->
             <div class="col-md-2">
                 <button mat-button>
-                    <mat-icon><a href="https://es.wikipedia.org/wiki/Cron_(Unix)" target="blank"
-                            mat-menu-item>{{'importation.cron-help' |
-                            translate}}</a></mat-icon>
+                    <a href="https://es.wikipedia.org/wiki/Cron_(Unix)" target="blank"
+                        mat-menu-item>{{'importation.cron-help' |
+                        translate}}</a>
                 </button>
             </div>
         </div>

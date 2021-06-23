@@ -8,7 +8,7 @@
 
             <ng-container *ngFor="let header of hedearDTO">
               <th class="sortable" (click)="sort(header)" id="{{header + dtoTypeTranslate + extra}}"
-                *ngIf="header !== 'importerErrors'">
+                *ngIf="header !== 'importerErrors' && header !== 'params'">
                 <em class="oi oi-info" *ngIf="needTooltip(header).required" placement="top"
                   ngbTooltip="{{needTooltip(header).textValue}}"></em>
                 {{ dtoTypeTranslate + '.' + header | translate }}<em class="float-right"
@@ -28,7 +28,7 @@
               *ngIf="!!routerField && !!item[routerField] && routerFieldSecondary !== ''"
               [ngClass]="{ 'table-secondary': i % 2 == 1 }">
               <ng-container *ngFor="let header of hedearDTO">
-                <td *ngIf="header !== 'importerErrors'">
+                <td *ngIf="header !== 'importerErrors' && header !== 'params'">
                   <ng-container>{{ item[header] }}</ng-container>
                 </td>
               </ng-container>
