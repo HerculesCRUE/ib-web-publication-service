@@ -10,7 +10,10 @@ import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, of } from 'rxjs';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Direction, FindRequest, Order, Page, PaginatedSearchComponent } from 'src/app/_helpers/search';
+import { DataImporter } from 'src/app/_models/dataImporter';
+
 
 
 /**
@@ -33,6 +36,9 @@ import { Direction, FindRequest, Order, Page, PaginatedSearchComponent } from 's
 export class TableResultsImporterComponent
   extends PaginatedSearchComponent<any>
   implements OnChanges {
+
+  selectedItem: DataImporter;
+
   @Output() idToDelete: EventEmitter<string> = new EventEmitter<string>();
   @Output() queryToUse: EventEmitter<string> = new EventEmitter<string>();
   @Input() hasActions = false;
@@ -65,25 +71,6 @@ export class TableResultsImporterComponent
   @Input()
   pageInfo: Page<any>;
 
-  /**
-   * reouterField sets a link on the row
-   *
-   * @type {string}
-   * @memberof TableResultsImporterComponent
-   */
-  @Input()
-  routerField: string;
-  /**
-   *
-   *
-   * @type {string}
-   * @memberof TableResultsImporterComponent
-   */
-  @Input()
-  routerNameLink = './';
-
-  @Input()
-  routerFieldSecondary = '';
 
   @Input() findRequest: FindRequest = new FindRequest();
 
@@ -135,9 +122,11 @@ export class TableResultsImporterComponent
     private translateService: TranslateService,
     router: Router,
     translate: TranslateService,
-    toastr: ToastrService
+    toastr: ToastrService,
+    private modalService: NgbModal,
   ) {
     super(router, translate, toastr);
+    this.selectedItem = new DataImporter();
   }
 
 
@@ -268,5 +257,16 @@ export class TableResultsImporterComponent
     this.queryToUse.emit(query);
   }
 
+
+  openPopupErrors(popup, item) {
+    console.log(item);
+    this.selectedItem = item;
+
+    this.modalService.open(popup, { ariaLabelledBy: 'modal-basic-title', scrollable: true }).result.then((result) => {
+      this.selectedItem = item;
+    }, (reason) => {
+      // TBD
+    });
+  }
 
 }

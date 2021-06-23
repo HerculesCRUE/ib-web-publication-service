@@ -29,8 +29,7 @@
                     <app-table-results-importer [displayPagination]="false" [findRequest]="findRequest"
                         *ngIf="loaded && resultObject?.content?.length !== 0"
                         [dtoTypeTranslate]="'dataImporterStructure'" [extra]="'2'" [data]="resultObject?.content"
-                        [pageInfo]="resultObject" [routerFieldSecondary]="'type'" [routerField]="'id'"
-                        (sortChanged)="allResearchmentStructuresFilteredSortChanged($event)">
+                        [pageInfo]="resultObject" (sortChanged)="allResearchmentStructuresFilteredSortChanged($event)">
                     </app-table-results-importer>
                     <div class="container-fluid app-table-results">
                         <div class="row">
