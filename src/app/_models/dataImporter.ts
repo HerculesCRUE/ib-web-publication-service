@@ -1,3 +1,5 @@
+import { DataImporterError } from "./dataImporterError";
+
 /**
  *
  * @export
@@ -34,4 +36,9 @@ export class DataImporter {
      * The params
      */
     params: string;
+
+    /**
+     * The errors
+     */
+    importerErrors: DataImporterError;
 }

@@ -458,6 +458,12 @@
     "cron-example": "(Ejemplo: * * * 15)",
     "cron-help": "¿Qué es una expresión cron?",
     "succeeded-import": "La importación se ha lanzado con éxito",
-    "failed-import": "Ha ocurrido un error al lanzar la importación"
+    "failed-import": "Ha ocurrido un error al lanzar la importación",
+    "popup": {
+      "user": "Usuario",
+      "type": "Tipo",
+      "cron": "Cron",
+      "close": "Cerrar"
+    }
   }
 }
