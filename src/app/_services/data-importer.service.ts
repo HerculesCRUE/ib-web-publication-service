@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { DataImporter } from '../_models/dataImporter';
 import { catchError } from 'rxjs/operators';
 import { OrganizationDetail } from '../_models/organizationDetail';
+import { Order, Direction } from '../_helpers/search';
 
 @Injectable({
   providedIn: 'root',
@@ -29,10 +30,21 @@ export class DataImporterService extends AbstractService {
     let parameters = new HttpParams();
     parameters = Helper.addParam(parameters, 'type', findRequest.filter.type);
 
+
+    if (findRequest && findRequest.pageRequest && !findRequest.pageRequest.property) {
+
+      // we set default order (workaround!!!!). The view is a mess!!!
+      const order = new Order();
+      order.property = 'startTime';
+      order.direction = Direction.DESC;
+
+      findRequest.setOrder(order.direction, order.property);
+    }
+
     // Pagination params
     parameters = Helper.addPaginationParams(parameters, findRequest.pageRequest);
     return this.httpClient
-      .get(Helper.getUrl('/importer/search'), {
+      .get(Helper.getImporterUrl('/importer/search'), {
         params: parameters
       }).pipe(
         catchError(this.handleError)
@@ -62,7 +74,7 @@ export class DataImporterService extends AbstractService {
   import(data: DataImporter): Observable<DataImporter> {
     console.log("Import in service " + data);
     return this.httpClient
-      .post(Helper.getUrl('/importer/schedule'), data)
+      .post(Helper.getImporterUrl('/importer/schedule'), data)
       .pipe(catchError(this.handleError));
   }
 

@@ -442,7 +442,7 @@
   },
   "dataImporterStructure": {
     "id": "Id",
-    "date": "Fecha",
+    "startTime": "Fecha",
     "user": "Usuario",
     "type": "Tipo",
     "cron": "Cron"

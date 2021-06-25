@@ -7,13 +7,28 @@
           <tr>
 
             <ng-container *ngFor="let header of hedearDTO">
-              <th class="sortable" (click)="sort(header)" id="{{header + dtoTypeTranslate + extra}}"
-                *ngIf="header !== 'importerErrors' && header !== 'params'">
-                <em class="oi oi-info" *ngIf="needTooltip(header).required" placement="top"
-                  ngbTooltip="{{needTooltip(header).textValue}}"></em>
-                {{ dtoTypeTranslate + '.' + header | translate }}<em class="float-right"
-                  [ngClass]="getSortIcon(header)"></em>
-              </th>
+              <ng-container *ngIf="header !== 'user' && header !== 'type' && header !== 'cron'">
+                <th class="sortable" (click)="sort(header)" id="{{header + dtoTypeTranslate + extra}}"
+                  *ngIf="header !== 'importerErrors' && header !== 'params'">
+                  <em class="oi oi-info" *ngIf="needTooltip(header).required" placement="top"
+                    ngbTooltip="{{needTooltip(header).textValue}}"></em>
+                  {{ dtoTypeTranslate + '.' + header | translate }}
+                  <em class="float-right" [ngClass]="getSortIcon(header)"></em>
+                </th>
+              </ng-container>
+
+
+              <ng-container *ngIf="header === 'user' || header === 'type' || header === 'cron'">
+                <th class="sortable" id="{{header + dtoTypeTranslate + extra}}"
+                  *ngIf="header !== 'importerErrors' && header !== 'params'" style="cursor: default;">
+                  <em class="oi oi-info" *ngIf="needTooltip(header).required" placement="top"
+                    ngbTooltip="{{needTooltip(header).textValue}}"></em>
+                  {{ dtoTypeTranslate + '.' + header | translate }}
+                  <em class="float-right"></em>
+                </th>
+              </ng-container>
+
+
             </ng-container>
             <th id="hasActions1">
               <!-- empty header cell -->
