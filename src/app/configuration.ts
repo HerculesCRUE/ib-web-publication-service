@@ -16,6 +16,12 @@ export const BASE_URL = environment.urlBase;
 
 export const KEYCLOACK = environment.keycloak;
 
+export const DISCOVERY = environment.discovery;
+
+export const SERVICE_DISCOVERY = environment.serviceDiscovery;
+
+export const FEDERATION = environment.federation;
+
 export const SKIPORT = environment.skipPort;
 
 export const LPDURL = environment.lpdUrl;

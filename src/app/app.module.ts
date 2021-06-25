@@ -72,7 +72,7 @@ const keycloakService = new KeycloakService();
     AccesibilityComponent,
     PatentDetailComponent,
     ContactComponent,
-    GraphPageComponent,
+    GraphPageComponent
 
   ],
   imports: [
@@ -97,7 +97,7 @@ const keycloakService = new KeycloakService();
     NgSelectModule,
     // Application
     SparqleditorModule,
-    NgbModule,
+    NgbModule
   ],
   providers: [
     I18n,

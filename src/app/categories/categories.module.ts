@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { CategoriesRoutingModule } from './categories-routing.module';
@@ -30,6 +30,7 @@ import { ScientistDetailComponent } from './scientist-detail/scientist-detail.co
 import { DirectedJobsComponent } from '../common/directed-jobs/directed-jobs.component';
 import { StartupComponent } from '../common/startup/startup.component';
 import { AreasComponent } from './areas/areas.component';
+import { DiscoveryComponent } from '../discovery/discovery.component'
 import { EventsComponent } from '../common/events/events.component';
 import { ScientificProductionComponent } from './scientific-production/scientific-production.component';
 import { DocumentDetailComponent } from './document-detail/document-detail.component';
@@ -39,7 +40,11 @@ import { PeopleInvolvedComponent } from '../common/people-involved/people-involv
 import { CollaboratorsComponent } from '../common/collaborators/collaborators.component';
 import { ScientificPublicationDetailComponent } from './scientific-publication-detail/scientific-publication-detail.component';
 import { AreasListComponent } from '../common/areas-list/areas-list.component';
+import { DiscoveryControlComponent } from '../discovery/control/discovery-control/discovery-control.component'
+import { DiscoverySearchComponent } from '../discovery/search/discovery-search/discovery-search.component'
+import { DiscoveryActionComponent } from '../discovery/actions/discovery-action/discovery-action.component'
 
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
   declarations: [ResearchmentStructuresComponent, ResearchmentStructuresDetailComponent, AllResearchmentStructuresComponent,
@@ -48,7 +53,8 @@ import { AreasListComponent } from '../common/areas-list/areas-list.component';
     ProyectsComponent, ScientistSearchComponent, DocumentsComponent,
     ProjectsDetailComponent, ParticipantsComponent, DeliverableComponent, ScientistComponent, ScientistDetailComponent,
     DirectedJobsComponent, StartupComponent, AreasComponent, EventsComponent,
-    ScientificProductionComponent, DocumentDetailComponent, EventDetailComponent, StatisticsComponent,
+    ScientificProductionComponent, DocumentDetailComponent, EventDetailComponent, StatisticsComponent, DiscoveryComponent,
+    DiscoveryControlComponent, DiscoverySearchComponent, DiscoveryActionComponent,
     PeopleInvolvedComponent, CollaboratorsComponent, ScientificPublicationDetailComponent, AreasListComponent
   ],
   imports: [
@@ -63,7 +69,8 @@ import { AreasListComponent } from '../common/areas-list/areas-list.component';
     LeafletModule,
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts'),
-    })
+    }),
+    NgxSpinnerModule
   ]
 })
 export class CategoriesModule { }

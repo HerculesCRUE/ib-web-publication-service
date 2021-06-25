@@ -1,0 +1,173 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card flex-fill">
+            <div class="card-header">
+                <!--{{ discovery.state-tittle | translate }}-->
+                <legend class="legend">{{'discovery.state-tittle' | translate}}</legend>
+            </div>
+            <div *ngIf="isLoadedState; else notLoadedState">
+                <div class="card-body">
+
+                    <h5 class="card-title">{{'discovery.global-state' | translate}}:
+                        <span [ngClass]="getClassByState(discoveryState.appState)">{{'discovery.' +
+                            discoveryState.appState
+                            | translate }}</span>
+
+                    </h5>
+
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">{{'discovery.table-type-header' | translate}}</th>
+                                <th scope="col">{{'discovery.table-state-header' | translate}}</th>
+                                <th scope="col">{{'discovery.table-last-update-header' | translate}}</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Redis</td>
+                                <td><span [ngClass]="getClassByState(discoveryState.states.REDIS.state)">{{'discovery.'
+                                        +
+                                        discoveryState.states.REDIS.state | translate }}</span></td>
+                                <td>{{discoveryState.states.REDIS.lastDate}}</td>
+                            </tr>
+                            <tr>
+                                <td>Elasticsearch</td>
+                                <td><span
+                                        [ngClass]="getClassByState(discoveryState.states.ELASTICSEARCH.state)">{{'discovery.'
+                                        +
+                                        discoveryState.states.ELASTICSEARCH.state | translate }}</span></td>
+                                <td>{{discoveryState.states.ELASTICSEARCH.lastDate}}</td>
+                            </tr>
+                            <tr>
+                                <td>Real Data</td>
+                                <td><span [ngClass]="getClassByState(discoveryState.states.CACHE.state)">{{'discovery.'
+                                        +
+                                        discoveryState.states.CACHE.state | translate }}</span></td>
+                                <td>{{discoveryState.states.CACHE.lastDate}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button role="button" aria-pressed="false" class="btn btn-secondary tree" style="margin: 20px;"
+                        (click)="loadDiscoveryState()">{{'discovery.update-state' |
+                        translate}}</button>
+                    <button role="button" aria-pressed="false" class="btn btn-secondary tree"
+                        (click)="forceReloadData()" style="margin: 20px;">{{'discovery.force-reload' |
+                        translate}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ng-template #notLoadedState>
+        {{'discovery.noData' | translate}}
+    </ng-template>
+</div>
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="card flex-fill">
+            <div class="card-header">
+                <!--{{ discovery.state-tittle | translate }}-->
+                <legend class="legend">{{'discovery.stats-tittle' | translate}}</legend>
+            </div>
+            <div *ngIf="isLoadedNodeOption; else notLoadedState">
+                <div class="card-body">
+
+                    <form class="form-horizontal " (ngSubmit)="f.form.valid" #f="ngForm"
+                        (keydown.enter)="$event.preventDefault()">
+                        <div class="row">
+                            <div class="col-12">
+                                <h5 class="card-title"> {{'form.search-form' | translate}}</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!-- type -->
+                            <div class="form-group col-lg-4">
+                                <label for="type" class="col-sm-4 control-label">{{ "discovery.node" | translate
+                                    }}</label>
+                                <div class="col-sm-8">
+                                    <select name="type" class="form-control" [(ngModel)]="findRequestStats.filter.node"
+                                        #type="ngModel" (change)="onNodeSelected()">
+                                        <option [value]="undefined">{{ "form.select" | translate }}</option>
+                                        <option *ngFor="let n of nodes  | keyvalue" [value]="n.key">{{n.key}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- year -->
+                            <div class="form-group col-lg-4">
+                                <label for="anyo" class="col-sm-4 control-label">{{ "discovery.storage" | translate
+                                    }}</label>
+                                <div class="col-sm-8">
+                                    <select name="tripleStore" [attr.aria-label]="'discovery.storage' | translate"
+                                        class="form-control" [(ngModel)]="findRequestStats.filter.tripleStore"
+                                        #type="ngModel" (change)="onTripleStoreSelected()">
+                                        <option [value]=" undefined">{{ "form.select" | translate }}</option>
+                                        <option *ngFor="let ts of nodes[findRequestStats.filter.node]" [value]="ts">
+                                            {{ts}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group col-lg-4">
+                                <label for="anyo" class="col-sm-4 control-label">{{ "discovery.class" | translate
+                                    }}</label>
+                                <div class="col-sm-8">
+                                    <select name="tripleStore" [attr.aria-label]="'discovery.class' | translate"
+                                        class="form-control" [(ngModel)]="findRequestStats.filter.className"
+                                        #type="ngModel" (change)="onObjectSelected()">
+                                        <option [value]=" undefined">{{ "form.select" | translate }}</option>
+                                        <option *ngFor="let o of this.objetsList" [value]="o">
+                                            {{o}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div *ngIf="objectStats; else notLoadedState">
+                        <div class="card-body">
+
+                            <h5 class="card-title">{{'discovery.stats-instances' | translate}}:
+                                <span class="badge badge-success">{{ objectStats.stats.instances }}</span>
+                            </h5>
+
+                            <h5 class="card-title">{{'discovery.stats-number-attibures' | translate}}:
+                                <span class="badge badge-success">{{ objectStats.stats.attributesSize }}</span>
+                            </h5>
+
+                            <h5 class="card-title">{{'discovery.stats-max-relative-ratio' | translate}}:
+                                <span class="badge badge-success">{{ objectStats.stats.maxRelativeRatio }}</span>
+                            </h5>
+
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">{{'discovery.stats-attribute-name' | translate}}</th>
+                                        <th scope="col">{{'discovery.stats-attribute-relative-ratio' | translate}}</th>
+                                        <th scope="col">{{'discovery.stats-attribute-relative-absolute' | translate}}
+                                        </th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let att of objectStats.stats.attributesStats">
+                                        <td>{{att.name}}</td>
+                                        <td>{{att.raltiveRatio}}</td>
+                                        <td>{{att.absoluteRatio}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ng-template #notLoadedState>
+        {{'discovery.noData' | translate}}
+    </ng-template>
+
+</div>

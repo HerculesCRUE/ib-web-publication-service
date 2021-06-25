@@ -1,0 +1,77 @@
+import { Component, OnInit } from '@angular/core';
+import { HelperGraphics } from 'src/app/_helpers/helperGraphics';
+import { Graphic } from 'src/app/_models/graphic';
+import { GraphicModelTree } from 'src/app/_models/graphicModelTree';
+import { GraphicService } from 'src/app/_services/graphic.service';
+import { StatisticService } from 'src/app/_services/statistic.service';
+
+@Component({
+  selector: 'app-uris',
+  templateUrl: './uris.component.html'
+})
+export class UrisComponent implements OnInit {
+  /**
+   *
+   *
+   * @type {*}
+   * @memberof UrisComponent
+   */
+  echartOptions2: any;
+  echartOptions: any;
+  /**
+   *
+   *
+   * @type {*}
+   * @memberof UrisComponent
+   */
+  options: any;
+  constructor(private statisticService: StatisticService, private graphicServcice: GraphicService) { }
+
+  ngOnInit(): void {
+    // this.statisticService.projectByClassification().subscribe(data => {
+    //   this.echartOptions = HelperGraphics.configChartPie(this.transformData(data), '');
+    // });
+    // this.statisticService.articlesByPublishedIn().subscribe(treeData => {
+    //   this.echartOptions2 = HelperGraphics.configChartPie(this.transformDataArticle(treeData), '');
+    // });
+
+  }
+
+  // transformData(data: Array<Graphic>) {
+  //   const result = [];
+  //   if (data.length > 0) {
+  //     data.forEach(element => {
+  //       result.push({ name: element.projectClassification ? element.projectClassification : 'Sin definir', value: element.count });
+  //     });
+  //   }
+  //   return {
+  //     seriesData: result
+  //   };
+
+  // }
+
+  // transformDataArticle(data: Array<Graphic>) {
+  //   const result = [];
+  //   if (data && data.length > 1) {
+  //     data.forEach(element => {
+  //       result.push({ name: element.publishedIn ? element.publishedIn : 'Sin definir', value: element.count });
+  //     });
+  //   }
+  //   return {
+  //     seriesData: result
+  //   };
+
+  // }
+
+
+  // makeDataTree(data: Array<GraphicModelTree>) {
+  //   const result = [];
+  //   if (data.length > 0) {
+  //     data.forEach(element => {
+  //       result.push({ name: element.modality ? element.modality : 'Sin definir', value: element.count });
+  //     });
+  //   }
+  //   return result;
+
+  // }
+}
