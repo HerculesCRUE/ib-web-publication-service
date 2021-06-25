@@ -59,6 +59,7 @@ import { ContactComponent } from './contact/contact.component';
 import { GraphPageComponent } from './graph-page/graph-page.component';
 
 
+
 const keycloakService = new KeycloakService();
 
 @NgModule({

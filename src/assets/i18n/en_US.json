@@ -266,7 +266,15 @@
     "action-check-sync-label": "Do synchronous",
     "action-check-deltas-label": "Apply deltas",
     "action-check-other-search-label": "Search in other Backends",
-    "action-btn-launch-search": "Launch search"
+    "action-btn-launch-search": "Launch search",
+    "search-message": "Searching similarities....",
+    "pending-message": "The request has been processed, you can retrieve the response using the requestId and userId attributes",
+    "status": "State",
+    "startDate": "Date of request",
+    "endDate": "Date of response",
+    "response-title": "Response",
+    "not-result-found": "Not similarities found",
+    "results-title": "Results of similarities"
   },
   "projects": {
     "year": "Year",

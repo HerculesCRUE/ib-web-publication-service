@@ -40,9 +40,10 @@ import { PeopleInvolvedComponent } from '../common/people-involved/people-involv
 import { CollaboratorsComponent } from '../common/collaborators/collaborators.component';
 import { ScientificPublicationDetailComponent } from './scientific-publication-detail/scientific-publication-detail.component';
 import { AreasListComponent } from '../common/areas-list/areas-list.component';
-import { DiscoveryControlComponent } from '../discovery/control/discovery-control/discovery-control.component'
-import { DiscoverySearchComponent } from '../discovery/search/discovery-search/discovery-search.component'
-import { DiscoveryActionComponent } from '../discovery/actions/discovery-action/discovery-action.component'
+import { DiscoveryControlComponent } from '../discovery/control/discovery-control/discovery-control.component';
+import { DiscoverySearchComponent } from '../discovery/search/discovery-search/discovery-search.component';
+import { DiscoveryActionComponent } from '../discovery/actions/discovery-action/discovery-action.component';
+import { ResultItemComponent } from '../discovery/result/result-item/result-item.component';
 
 import { NgxSpinnerModule } from "ngx-spinner";
 
@@ -54,7 +55,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
     ProjectsDetailComponent, ParticipantsComponent, DeliverableComponent, ScientistComponent, ScientistDetailComponent,
     DirectedJobsComponent, StartupComponent, AreasComponent, EventsComponent,
     ScientificProductionComponent, DocumentDetailComponent, EventDetailComponent, StatisticsComponent, DiscoveryComponent,
-    DiscoveryControlComponent, DiscoverySearchComponent, DiscoveryActionComponent,
+    DiscoveryControlComponent, DiscoverySearchComponent, DiscoveryActionComponent, ResultItemComponent,
     PeopleInvolvedComponent, CollaboratorsComponent, ScientificPublicationDetailComponent, AreasListComponent
   ],
   imports: [
@@ -71,6 +72,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
       echarts: () => import('echarts'),
     }),
     NgxSpinnerModule
-  ]
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class CategoriesModule { }

@@ -278,7 +278,15 @@
     "action-check-sync-label": "Hacer petición sincrona",
     "action-check-deltas-label": "Aplicar búsqueda solo en deltas",
     "action-check-other-search-label": "Buscar en otros Backends",
-    "action-btn-launch-search": "Ejecutar búsqueda"
+    "action-btn-launch-search": "Ejecutar búsqueda",
+    "search-message": "Buscando similitudes....",
+    "pending-message": "La solicitud ha sido procesada, puede recuperar la respuesta usando los atributos requestId y userId",
+    "status": "Estado",
+    "startDate": "Fecha de petición",
+    "endDate": "Fecha de respuesta",
+    "response-title": "Respuesta",
+    "not-result-found": "No encontradas similaridades",
+    "results-title": "Resultados de similitudes"
   },
   "projects": {
     "year": "Año",

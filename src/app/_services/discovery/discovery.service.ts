@@ -108,6 +108,7 @@ export class DiscoveryService extends AbstractService {
           }
         }
       }
+      console.log('do request', "http://localhost:9327/discovery/entity-link?" + queryParams.join('&'));
       xhr.open("POST", "http://localhost:9327/discovery/entity-link?" + queryParams.join('&'));
 
       xhr.responseType = 'json';

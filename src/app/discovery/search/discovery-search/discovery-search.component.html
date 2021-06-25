@@ -59,21 +59,24 @@
                             <div class="form-group">
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="checkbox" value="true" id="doSynchronous"
-                                        [checked]="searchRequest.filter.doSynchronous">
+                                        [checked]="searchRequest.filter.doSynchronous"
+                                        (change)="searchRequest.filter.doSynchronous = !searchRequest.filter.doSynchronous">
                                     <label class="form-check-label" for="doSynchronous">
                                         {{'discovery.action-check-sync-label' | translate}}
                                     </label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="checkbox" value="true" id="applyDelta"
-                                        [checked]="searchRequest.filter.applyDelta">
+                                        [checked]="searchRequest.filter.applyDelta"
+                                        (change)="searchRequest.filter.applyDelta = !searchRequest.filter.applyDelta">
                                     <label class="form-check-label" for="applyDelta">
                                         {{'discovery.action-check-deltas-label' | translate}}
                                     </label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="checkbox" value="true" id="linkEntities"
-                                        [checked]="searchRequest.filter.linkEntities">
+                                        [checked]="searchRequest.filter.linkEntities"
+                                        (change)="searchRequest.filter.linkEntities = !searchRequest.filter.linkEntities">
                                     <label class="form-check-label" for="linkEntities">
                                         {{'discovery.action-check-other-search-label' | translate}}
                                     </label>
@@ -96,7 +99,74 @@
     </div>
 </div>
 
+
+
 <ng-template #notLoadedState>
     {{'discovery.noData' | translate}}
 </ng-template>
-<ngx-spinner></ngx-spinner>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="true">
+    <p style="color: white"> {{'discovery.search-message'
+        | translate}} </p>
+</ngx-spinner>
+
+<div *ngIf="responseIsReady && responseData">
+    <div class="row">
+        <div class="col-12">
+            <div class="card flex-fill">
+                <div class="card-header">
+                    <!--{{ discovery.state-tittle | translate }}-->
+                    <legend class="legend">{{'discovery.response-title' | translate}}</legend>
+                </div>
+
+
+                <div class="card-body">
+
+                    <h5 class="card-title">{{'discovery.node' | translate}}: {{ responseData.response.node }}</h5>
+                    <h5 class="card-title">{{'discovery.storage' | translate}}: {{ responseData.response.tripleStore }}
+                    </h5>
+                    <h5 class="card-title">{{'discovery.class' | translate}}: {{ responseData.response.className }}</h5>
+                    <h5 class="card-title">{{'discovery.status' | translate}}: {{ responseData.response.status }}</h5>
+
+                    <div *ngIf="responseData.response.status === 'COMPLETED'; else statusPending">
+
+                        <h5 class="card-title">{{'discovery.startDate' | translate}}: {{ responseData.response.startDate
+                            }}
+                        </h5>
+                        <h5 class="card-title">{{'discovery.endDate' | translate}}: {{ responseData.response.endDate }}
+                        </h5>
+
+                        <div *ngIf="responseData.response.results.length > 0; else noSimilatirityResultsFound">
+                            <legend class="legend">{{'discovery.results-title' | translate}}</legend>
+                            <div *ngFor="let item of responseData.response.results">
+                                <app-result-item></app-result-item>
+                            </div>
+                        </div>
+
+                        <ng-template #noSimilatirityResultsFound>
+                            {{'discovery.not-result-found' | translate}}
+                        </ng-template>
+
+                    </div>
+
+                    <ng-template #statusPending>
+
+
+                        <h5 class="card-title"> userId:
+                            <span class="badge badge-success">{{ responseData.response.userId }}</span>
+                        </h5>
+
+                        <h5 class="card-title"> requestCode:
+                            <span class="badge badge-success">{{ responseData.response.requestCode }}</span>
+                        </h5>
+
+                        <h5 class="card-title"> requestType:
+                            <span class="badge badge-success">{{ responseData.response.requestType }}</span>
+                        </h5>
+
+                        {{'discovery.pending-message' | translate}}
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
