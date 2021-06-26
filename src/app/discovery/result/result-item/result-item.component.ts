@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { NgbAccordionConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-result-item',
@@ -7,13 +8,15 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ResultItemComponent implements OnInit {
 
-  @Input() item: object;
+  @Input() item: any;
 
-  @Input() requestId: string;
+  @Input() requestCode: string;
 
   @Input() userId: string;
 
-  constructor() { }
+  @Input() requestType: string;
+
+  constructor(private _config: NgbAccordionConfig) { }
 
   ngOnInit(): void {
   }

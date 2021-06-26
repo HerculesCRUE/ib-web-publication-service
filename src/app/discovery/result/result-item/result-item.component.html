@@ -1,1 +1,185 @@
-<p>result-item works!</p>
+<div class="card" style="margin-top: 20px;">
+    <div class="card-body">
+        <h5 class="card-title"> Entidad principal: <strong>{{ item.entityId }}</strong></h5>
+        <br />
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <td>{{'discovery.node' | translate}}</td>
+                    <td><strong>{{ item.node }}</strong></td>
+                </tr>
+                <tr>
+                    <td>{{'discovery.storage' | translate}}</td>
+                    <td><strong>{{ item.tripleStore }}</strong></td>
+                </tr>
+                <tr>
+                    <td>{{'discovery.class' | translate}}</td>
+                    <td><strong>{{ item.className }}</strong></td>
+                </tr>
+                <tr>
+                    <td>local URI</td>
+                    <td><a href="{{item.localUri}}">{{item.localUri}}</a></td>
+                </tr>
+                <tr>
+                    <td>Origin</td>
+                    <td><strong>{{ item.origin }}</strong></td>
+                </tr>
+                <tr>
+                    <td>{{'discovery.status' | translate}}</td>
+                    <td><strong>{{ item.state }}</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Atributos</strong></td>
+                    <td>
+
+                        <table class="table">
+                            <tbody>
+                                <tr *ngFor="let att of item.attributes | keyvalue">
+                                    <td>{{att.key}}</td>
+                                    <td><strong>{{att.value}}</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="row">
+            <div class="col-md-3">
+                <h5 class="card-title"> <strong>Similitudes Automáticas:<span style="margin-left: 20px;"
+                            class="badge badge-success">{{
+                            item.automatics.length }}</span></strong></h5>
+            </div>
+            <div class="col-md-9">
+                <ngb-accordion [closeOthers]="false">
+                    <ngb-panel *ngFor="let auto of item.automatics" id="acc-{{auto.entityId}}"
+                        title="Entidad: {{auto.entityId}}">
+                        <ng-template ngbPanelContent>
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <td>{{'discovery.node' | translate}}</td>
+                                        <td><strong>{{ auto.node }}</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{'discovery.storage' | translate}}</td>
+                                        <td><strong>{{ auto.tripleStore }}</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{'discovery.class' | translate}}</td>
+                                        <td><strong>{{ auto.className }}</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>entityId</td>
+                                        <td><strong>{{ auto.entityId }}</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>local URI</td>
+                                        <td><a href="{{auto.localUri}}">{{auto.localUri}}</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Origin</td>
+                                        <td><strong>{{ auto.origin }}</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{'discovery.status' | translate}}</td>
+                                        <td><strong>{{ auto.state }}</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Similitud</td>
+                                        <td><strong>{{ auto.similarity }}</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Similitud sin id</td>
+                                        <td><strong>{{ auto.similarityWithoutId }}</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Atributos</strong></td>
+                                        <td>
+
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr *ngFor="let attAuto of auto.attributes | keyvalue">
+                                                        <td>{{attAuto.key}}</td>
+                                                        <td><strong>{{attAuto.value}}</strong></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </ng-template>
+                    </ngb-panel>
+                </ngb-accordion>
+
+
+
+                <!-- 
+                <ul class="list-group">
+                    <li class="list-group-item" *ngFor="let auto of item.automatics" style="padding: 20px;">
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td>{{'discovery.node' | translate}}</td>
+                                    <td><strong>{{ auto.node }}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>{{'discovery.storage' | translate}}</td>
+                                    <td><strong>{{ auto.tripleStore }}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>{{'discovery.class' | translate}}</td>
+                                    <td><strong>{{ auto.className }}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>entityId</td>
+                                    <td><strong>{{ auto.entityId }}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>local URI</td>
+                                    <td><a href="{{item.localUri}}">{{auto.localUri}}</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Origin</td>
+                                    <td><strong>{{ auto.origin }}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>{{'discovery.status' | translate}}</td>
+                                    <td><strong>{{ auto.state }}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Similitud</td>
+                                    <td><strong>{{ auto.similarity }}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Similitud sin id</td>
+                                    <td><strong>{{ auto.similarityWithoutId }}</strong></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Atributos</strong></td>
+                                    <td>
+
+                                        <table class="table">
+                                            <tbody>
+                                                <tr *ngFor="let attAuto of auto.attributes | keyvalue">
+                                                    <td>{{attAuto.key}}</td>
+                                                    <td><strong>{{attAuto.value}}</strong></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </li>
+                </ul> -->
+
+            </div>
+        </div>
+    </div>
+</div>
