@@ -62,6 +62,24 @@ export class DiscoveryService extends AbstractService {
     );
   }
 
+  getObjectLodList(findRequest: FindRequest) {
+    let parameters = new HttpParams();
+    return this.httpClient.get(Helper.getFederationUrl() + '/lod/clases', {
+      params: parameters
+    }).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  getDatasetLodList(findRequest: FindRequest) {
+    let parameters = new HttpParams();
+    return this.httpClient.get(Helper.getFederationUrl() + '/lod/datasets', {
+      params: parameters
+    }).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   getObjectStats(findRequest: FindRequest) {
     let parameters = new HttpParams();
     parameters = Helper.addParam(parameters, 'className', findRequest.filter.className);
@@ -108,45 +126,90 @@ export class DiscoveryService extends AbstractService {
           }
         }
       }
-      console.log('do request', "http://localhost:9327/discovery/entity-link?" + queryParams.join('&'));
-      xhr.open("POST", "http://localhost:9327/discovery/entity-link?" + queryParams.join('&'));
+      console.log('do request', Helper.getDiscoveryUrl() + "/discovery/entity-link?" + queryParams.join('&'));
+      xhr.open("POST", Helper.getDiscoveryUrl() + "/discovery/entity-link?" + queryParams.join('&'));
 
       xhr.responseType = 'json';
       xhr.send();
     });
-    /*
-    return Observable.create(function (observer) {
-      let xhr = new XMLHttpRequest();
+  }
+
+  doRequestFindSimilaritiesByInstance(findRequest: FindRequest, body: string) {
+    let queryParams = [];
+    for (let key in findRequest.filter) {
+      queryParams.push(key + '=' + findRequest.filter[key])
+    }
+    return new Promise((resolve, reject) => {
+      let formData: any = new FormData()
+      let xhr = new XMLHttpRequest()
       xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4) {
-          if (xhr.status == 200) {
-            observer.next(xhr);
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            console.log('OK xhr.response', xhr.response);
+            resolve(xhr.response)
           } else {
-            observer.error(xhr);
+            console.log('BAD xhr.response', xhr.response);
+            reject(xhr.response)
           }
         }
-      };
+      }
+      console.log('do request', Helper.getDiscoveryUrl() + "/discovery/entity-link/instance?" + queryParams.join('&'));
+      xhr.open("POST", Helper.getDiscoveryUrl() + "/discovery/entity-link/instance?" + queryParams.join('&'));
+      xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.responseType = 'json';
+      xhr.send(body);
+    });
+  }
 
-      xhr.open("POST", "http://localhost:9327/discovery/entity-link?applyDelta=false&className=Funding&doSynchronous=true&linkEntities=false&node=um&propague_in_kafka=true&tripleStore=fuseki&userId=1");
+  doRequestFindSimilaritiesInLod(findRequest: FindRequest) {
+    let queryParams = [];
+    for (let key in findRequest.filter) {
+      queryParams.push(key + '=' + findRequest.filter[key])
+    }
+    return new Promise((resolve, reject) => {
+      let formData: any = new FormData()
+      let xhr = new XMLHttpRequest()
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            console.log('OK xhr.response', xhr.response);
+            resolve(xhr.response)
+          } else {
+            console.log('BAD xhr.response', xhr.response);
+            reject(xhr.response)
+          }
+        }
+      }
+      console.log('do request', Helper.getDiscoveryUrl() + "/discovery/lod/search?" + queryParams.join('&'));
+      xhr.open("POST", Helper.getDiscoveryUrl() + "/discovery/lod/search?" + queryParams.join('&'));
 
       xhr.responseType = 'json';
-
-      xhr.onload = function () {
-        if (xhr.readyState === xhr.DONE) {
-          if (xhr.status === 200) {
-            console.log('xhr.response', xhr.response);
-            observer.next(xhr.response);
-          } else {
-            console.log('xhr.response', xhr.response);
-            observer.error(xhr.response);
-          }
-        } else {
-          console.log('xhr.response', xhr.response);
-          observer.error(xhr.response);
-        }
-      };
       xhr.send();
     });
-    */
+  }
+
+  doApplyAcction(findRequest: FindRequest) {
+    let queryParams = [];
+    for (let key in findRequest.filter) {
+      queryParams.push(key + '=' + findRequest.filter[key])
+    }
+    return new Promise((resolve, reject) => {
+      let formData: any = new FormData()
+      let xhr = new XMLHttpRequest()
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            resolve(xhr.response)
+          } else {
+            reject(xhr.response)
+          }
+        }
+      }
+      console.log('doing request: ' + Helper.getDiscoveryUrl() + "/discovery/object-result/action?" + queryParams.join('&'))
+      xhr.open("POST", Helper.getDiscoveryUrl() + "/discovery/object-result/action?" + queryParams.join('&'));
+
+      xhr.responseType = 'json';
+      xhr.send();
+    });
   }
 }

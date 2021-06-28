@@ -14,9 +14,11 @@ export class DiscoverySearchComponent implements OnInit {
 
   nodes = {};
   searchRequest: FindRequest = new FindRequest();
+  bodyRequest: any;
   currentUser: User;
   actionSearch: string;
   objetsList: Array<string>;
+  objetsLodList: any;
   dataIsLoaded = false;
   responseIsReady = false;
   responseData: any;
@@ -24,6 +26,7 @@ export class DiscoverySearchComponent implements OnInit {
   constructor(private discoveryService: DiscoveryService, private loginService: LoginService, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
+    this.bodyRequest = JSON.stringify({ "id": 40372, "title": "Fisiología del comportamiento", "date": "2006", "endPage": 41, "publishedIn": "BIOTECNOLOGIA DE LA REPRODUCCION PORCINAPORCI", "startPage": 24 }, null, 2)
     this.currentUser = this.loginService.getCurrentUser();
     this.searchRequest.filter.userId = 'front-request:' + ((this.currentUser) ? 'this.currentUser.id' : 'anonimus');
     this.searchRequest.filter.applyDelta = true;
@@ -31,6 +34,7 @@ export class DiscoverySearchComponent implements OnInit {
     this.searchRequest.filter.linkEntities = false;
     this.searchRequest.filter.propague_in_kafka = true;
     this.loadNodesList();
+    this.loadLodObjects();
   }
 
   loadNodesList() {
@@ -66,6 +70,18 @@ export class DiscoverySearchComponent implements OnInit {
     });
   }
 
+  loadLodObjects() {
+    this.objetsLodList = {};
+    this.objetsLodList['SCOPUS'] = ['Article', 'Book', 'Book-Chapter', 'Book-Section', 'Doctoral-Thesis', 'Doctoral-Thesis', 'Master-Thesis']
+    this.objetsLodList['CROSSREF'] = ['Article', 'Book', 'Book-Chapter', 'Book-Section', 'Doctoral-Thesis', 'Doctoral-Thesis', 'Master-Thesis']
+    this.objetsLodList['WIKIDATA'] = ['Person']
+    this.objetsLodList['ORCID'] = ['Person']
+    this.objetsLodList['DOAJ'] = ['Article']
+    this.objetsLodList['PUBMED'] = ['Article']
+    this.objetsLodList['DBLP'] = ['Person']
+    this.objetsLodList['*'] = ['Article', 'Book', 'Book-Chapter', 'Book-Section', 'Doctoral-Thesis', 'Doctoral-Thesis', 'Master-Thesis', 'Person']
+  }
+
   onActionSelected() {
     console.log('onActionSelected', this.actionSearch);
   }
@@ -78,7 +94,12 @@ export class DiscoverySearchComponent implements OnInit {
     this.objetsList = [];
     this.searchRequest.filter.className = undefined;
     if (this.searchRequest.filter.tripleStore) {
-      this.loadObjects();
+      if (this.actionSearch === 'lod') {
+        this.loadLodObjects();
+        this.searchRequest.filter.dataSource = undefined;
+      } else {
+        this.loadObjects();
+      }
     }
   }
 
@@ -88,7 +109,6 @@ export class DiscoverySearchComponent implements OnInit {
     if (this.actionSearch === 'class') {
       this.spinner.show();
       this.discoveryService.doRequestFindSimilaritiesByClass(this.searchRequest).then((data) => {
-        console.log("Promise resolved with: " + JSON.stringify(data));
         this.responseIsReady = true;
         this.responseData = data;
         this.searchRequest.filter.node = undefined;
@@ -96,15 +116,58 @@ export class DiscoverySearchComponent implements OnInit {
         this.searchRequest.filter.className = undefined;
         this.spinner.hide();
       }, (error) => {
-        console.log("Promise rejected with " + JSON.stringify(error));
         this.responseIsReady = true;
         this.spinner.hide();
       });
     } else if (this.actionSearch === 'instance') {
-
+      this.spinner.show();
+      this.discoveryService.doRequestFindSimilaritiesByInstance(this.searchRequest, this.bodyRequest).then((data) => {
+        this.responseIsReady = true;
+        this.responseData = data;
+        this.searchRequest.filter.node = undefined;
+        this.searchRequest.filter.tripleStore = undefined;
+        this.searchRequest.filter.className = undefined;
+        console.log('Respuesta', data);
+        this.spinner.hide();
+      }, (error) => {
+        this.responseIsReady = true;
+        this.spinner.hide();
+      });
     } else if (this.actionSearch === 'lod') {
-
+      this.spinner.show();
+      this.discoveryService.doRequestFindSimilaritiesInLod(this.searchRequest).then((data) => {
+        this.responseIsReady = true;
+        this.responseData = data;
+        this.searchRequest.filter.node = undefined;
+        this.searchRequest.filter.tripleStore = undefined;
+        this.searchRequest.filter.className = undefined;
+        this.searchRequest.filter.dataSource = undefined;
+        console.log('Respuesta', data);
+        this.spinner.hide();
+      }, (error) => {
+        this.responseIsReady = true;
+        this.spinner.hide();
+      });
     }
   }
 
+  evaluateJsonBody(event) {
+    if (!this.isJsonString(this.bodyRequest)) {
+      alert("Invalid JSON Format");
+      this.bodyRequest = null;
+    }
+    alert()
+  }
+
+  isJsonString(str) {
+    try {
+      JSON.parse(str);
+    } catch (e) {
+      return false;
+    }
+    return true;
+  }
+
 }
+
+
