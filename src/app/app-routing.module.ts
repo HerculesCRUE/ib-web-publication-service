@@ -41,7 +41,6 @@ const noSecureRoutes: Routes = [
   },
   {
     path: 'sparql',
-    canActivate: [AuthGuard],
     loadChildren: () =>
       import('./sparqleditor/sparqleditor.module').then(
         (m) => m.SparqleditorModule
