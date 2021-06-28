@@ -15,7 +15,7 @@ export class DataImporter {
     /**
      * The date
      */
-    date: Date;
+    startTime: string;
 
     /**
      * The user
@@ -35,7 +35,7 @@ export class DataImporter {
     /**
      * The params
      */
-    params: string;
+    param: string;
 
     /**
      * The errors

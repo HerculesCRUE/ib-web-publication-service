@@ -1,4 +1,4 @@
-import { BASE_APP_URL, BASE_URL, KEYCLOACK, LPDURL, SGI } from '../configuration';
+import { BASE_APP_URL, BASE_URL, BASE_IMPORTER_URL, KEYCLOACK, LPDURL, SGI } from '../configuration';
 import { HttpParams } from '@angular/common/http';
 import { Direction, Page, PageRequest } from './search';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
@@ -16,6 +16,14 @@ export class Helper {
    */
   static getUrl(fragment: string) {
     return BASE_URL + fragment;
+  }
+
+  /**
+ * Completa la URL a llamar con la URL base del servicio de importacion.
+ * @param fragment Fragmento de URL.
+ */
+  static getImporterUrl(fragment: string) {
+    return BASE_IMPORTER_URL + fragment;
   }
 
   /**

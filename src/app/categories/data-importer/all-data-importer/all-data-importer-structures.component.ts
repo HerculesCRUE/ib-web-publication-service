@@ -52,8 +52,8 @@ export class AllDataImporterStructuresComponent extends PaginatedSearchComponent
 
   protected getDefaultOrder(): Order {
     return {
-      property: 'id',
-      direction: Direction.ASC
+      property: 'startTime',
+      direction: Direction.DESC
     };
   }
 

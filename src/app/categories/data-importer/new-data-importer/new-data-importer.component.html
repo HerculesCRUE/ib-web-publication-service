@@ -37,11 +37,11 @@
         <div class="form-row" style="padding-bottom: 2em;">
             <!-- params -->
             <div class="col-md-10">
-                <label for="params">{{'importation.import-parameters' | translate}}</label>
-                <textarea type="text" class="md-textarea form-control" id="params" name="params" #params="ngModel"
-                    [ngClass]="{'is-invalid': f.submitted && !params.valid}" required
-                    [(ngModel)]="importation.params"></textarea>
-                <div *ngIf="f.submitted && !params.valid" class="invalid-feedback">
+                <label for="param">{{'importation.import-parameters' | translate}}</label>
+                <textarea type="text" class="md-textarea form-control" id="param" name="param" #param="ngModel"
+                    [ngClass]="{'is-invalid': f.submitted && !param.valid}" required
+                    [(ngModel)]="importation.param"></textarea>
+                <div *ngIf="f.submitted && !param.valid" class="invalid-feedback">
                     {{'form.validation.required' |
                     translate}}</div>
             </div>

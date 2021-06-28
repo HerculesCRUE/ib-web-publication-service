@@ -35,7 +35,7 @@ export class NewDataImporterComponent implements OnInit {
 
     // we set defaul values
     this.importation.type = this.constants.DATASET;
-    this.importation.params = this.constants.DATASET_PARAM;
+    this.importation.param = this.constants.DATASET_PARAM;
   }
 
   /**
@@ -60,7 +60,7 @@ export class NewDataImporterComponent implements OnInit {
    * @param param 
    */
   onTypeChange(param: string) {
-    this.importation.params = param;
+    this.importation.param = param;
   }
 
 

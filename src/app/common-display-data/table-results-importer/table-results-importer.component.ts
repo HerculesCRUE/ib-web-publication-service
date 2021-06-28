@@ -178,12 +178,8 @@ export class TableResultsImporterComponent
         }
 
         this.showPage(findRequest.pageRequest.page);
-
         page.number = findRequest.pageRequest.page - 1;
-
       }
-
-
 
       page.content = this.dataCompleteToShow;
       page.numberOfElements = Math.min(page.content.length, this.findRequest.pageRequest.size);
@@ -198,7 +194,10 @@ export class TableResultsImporterComponent
   }
 
   protected getDefaultOrder(): Order {
-    return new Order();
+    const order = new Order();
+    order.property = 'startTime';
+    order.direction = Direction.DESC;
+    return order;
   }
 
   showPage(i: number): void {

@@ -14,6 +14,8 @@ export const BASE_APP_URL = environment.appUrl;
 
 export const BASE_URL = environment.urlBase;
 
+export const BASE_IMPORTER_URL = environment.urlImporterBase;
+
 export const KEYCLOACK = environment.keycloak;
 
 export const SKIPORT = environment.skipPort;

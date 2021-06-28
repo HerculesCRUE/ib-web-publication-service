@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   urlBase: 'http://localhost:8787',
+  urlImporterBase: 'http://localhost:9320',
   oauthUrl: '',
   urlWebsocket: '/gs-guide-websocket',
   oauthClientId: 'acme',
