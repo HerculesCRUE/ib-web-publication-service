@@ -143,7 +143,8 @@
     "sgi": "Backends SGI",
     "graphs": "Renderización de metadatos de Named Graphs",
     "info-hercules": "Información sobre Hercules",
-    "contact": "Datos de contacto"
+    "contact": "Datos de contacto",
+    "import-data": "Importador de datos"
   },
   "links": {
     "title": "Links GitHub",
@@ -527,5 +528,31 @@
     "predefinidas": "Predefinido",
     "ambas": "Ambos",
     "usuario": "Mis consultas"
+  },
+  "dataImporterStructure": {
+    "id": "Id",
+    "startTime": "Fecha",
+    "user": "Usuario",
+    "type": "Tipo",
+    "cron": "Cron"
+  },
+  "importation": {
+    "header": "Importación de datos",
+    "button": "+ Nueva Importación",
+    "import": "Importar",
+    "cron-expression": "Expresión cron",
+    "import-parameters": "Parámetros de la importación",
+    "import-fieldset": "Seleccione un tipo de importación",
+    "import-title": "Nueva Importación de datos",
+    "cron-example": "(Ejemplo: * * * 15)",
+    "cron-help": "¿Qué es una expresión cron?",
+    "succeeded-import": "La importación se ha lanzado con éxito",
+    "failed-import": "Ha ocurrido un error al lanzar la importación",
+    "popup": {
+      "user": "Usuario",
+      "type": "Tipo",
+      "cron": "Cron",
+      "close": "Cerrar"
+    }
   }
 }

@@ -135,7 +135,8 @@
     "sgi": "Backends SGI",
     "graphs": "Named Graphs metadata rendering",
     "info-hercules": "Information about Hercules",
-    "contact": "Contact information"
+    "contact": "Contact information",
+    "import-data": "Data Importer"
   },
   "links": {
     "title": "Links GitHub",
@@ -515,5 +516,16 @@
     "predefinidas": "Predefined",
     "ambas": "Both",
     "usuario": "My queries"
+  },
+  "dataImporterStructure": {
+    "id": "Id",
+    "date": "Date",
+    "user": "User",
+    "type": "Type",
+    "cron": "Cron"
+  },
+  "importation": {
+    "header": "Data importation",
+    "button": "+ New Importation"
   }
 }

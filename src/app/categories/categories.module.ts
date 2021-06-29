@@ -40,11 +40,15 @@ import { PeopleInvolvedComponent } from '../common/people-involved/people-involv
 import { CollaboratorsComponent } from '../common/collaborators/collaborators.component';
 import { ScientificPublicationDetailComponent } from './scientific-publication-detail/scientific-publication-detail.component';
 import { AreasListComponent } from '../common/areas-list/areas-list.component';
+
 import { DiscoveryControlComponent } from '../discovery/control/discovery-control/discovery-control.component';
 import { DiscoverySearchComponent } from '../discovery/search/discovery-search/discovery-search.component';
 import { DiscoveryActionComponent } from '../discovery/actions/discovery-action/discovery-action.component';
 import { UrisComponent } from '../uris-factory/uris.component';
 import { ResultItemComponent } from '../discovery/result/result-item/result-item.component';
+import { DataImporterComponent } from './data-importer/data-importer.component';
+import { AllDataImporterStructuresComponent } from './data-importer/all-data-importer/all-data-importer-structures.component';
+import { NewDataImporterComponent } from './data-importer/new-data-importer/new-data-importer.component';
 
 import { NgxSpinnerModule } from "ngx-spinner";
 
@@ -57,7 +61,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
     DirectedJobsComponent, StartupComponent, AreasComponent, EventsComponent,
     ScientificProductionComponent, DocumentDetailComponent, EventDetailComponent, StatisticsComponent, DiscoveryComponent,
     DiscoveryControlComponent, DiscoverySearchComponent, DiscoveryActionComponent, ResultItemComponent, UrisComponent,
-    PeopleInvolvedComponent, CollaboratorsComponent, ScientificPublicationDetailComponent, AreasListComponent
+    PeopleInvolvedComponent, CollaboratorsComponent, ScientificPublicationDetailComponent, AreasListComponent, DataImporterComponent, AllDataImporterStructuresComponent, NewDataImporterComponent
   ],
   imports: [
     NgxEchartsModule,

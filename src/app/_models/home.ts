@@ -122,6 +122,14 @@ export const HOME_ITEMS: HomeGroupItem[] = [{
       disabled: false,
       urlExterna: Helper.getKeyCloackUrl().authUrl + '/admin/'
     },
+    {
+      title: 'home.import-data',
+      iconName: 'oi-loop-circular',
+      iconCircle: false,
+      url: '/main/data-importer',
+      disabled: false,
+      urlExterna: ''
+    },
   ]
 },
 {

@@ -1,6 +1,7 @@
 export const environment = {
     production: true,
     urlBase: 'https://app.linkeddata1test.um.es/api',
+    urlImporterBase: 'http://localhost:9320',
     urlWebsocket: '/gs-guide-websocket',
     oauthClientId: 'acme',
     oauthSecret: 'acmesecret',

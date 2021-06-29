@@ -2,7 +2,7 @@
 <ul class="sidebar-nav">
   <ng-container *ngFor="let item of menuItems">
 
-    <li class="sidebar-item" *ngIf="item.title === 'menu.sparql' && isLogged" routerLinkActive="active">
+    <li class="sidebar-item" *ngIf="item.title === 'menu.sparql'" routerLinkActive="active">
       <ng-container>
         <a class="sidebar-link" [routerLink]="[item.url]">
           <em class="oi icons-menu" [ngClass]="[item.icon]"></em>

@@ -1,0 +1,82 @@
+<fieldset>
+    <legend *ngIf="createMode">
+        {{'importation.import-title' | translate}}
+    </legend>
+
+    <form name="form" (ngSubmit)="f.form.valid && import()" #f="ngForm" autocomplete="false" novalidate>
+        <div class="form-row">
+
+            <fieldset class="scheduler-border">
+                <legend class="import-data-legend">
+                    {{'importation.import-fieldset' | translate}}
+                </legend>
+                <!-- choices -->
+                <span class="col-md-3">
+                    <input name="options" ng-control="options" type="radio" [value]="constants.DATASET"
+                        [(ngModel)]="importation.type" (click)="onTypeChange(constants.DATASET_PARAM)">
+                    Dataset
+                </span>
+                <span class="col-md-3">
+                    <input name="options" ng-control="options" type="radio" [value]="constants.CVN"
+                        [(ngModel)]="importation.type" (click)="onTypeChange(constants.CVN_PARAM)">
+                    CVN
+                </span>
+                <span class="col-md-3">
+                    <input name="options" ng-control="options" type="radio" [value]="constants.SGI"
+                        [(ngModel)]="importation.type" (click)="onTypeChange(constants.SGI_PARAM)">
+                    SGI
+                </span>
+                <span class="col-md-3">
+                    <input name="options" ng-control="options" type="radio" [value]="constants.CERIF"
+                        [(ngModel)]="importation.type" (click)="onTypeChange(constants.CERIF_PARAM)">
+                    Cerif
+                </span>
+            </fieldset>
+        </div>
+
+        <div class="form-row" style="padding-bottom: 2em;">
+            <!-- params -->
+            <div class="col-md-10">
+                <label for="param">{{'importation.import-parameters' | translate}}</label>
+                <textarea type="text" class="md-textarea form-control" id="param" name="param" #param="ngModel"
+                    [ngClass]="{'is-invalid': f.submitted && !param.valid}" required
+                    [(ngModel)]="importation.param"></textarea>
+                <div *ngIf="f.submitted && !param.valid" class="invalid-feedback">
+                    {{'form.validation.required' |
+                    translate}}</div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <!-- cron expression -->
+            <div class="col-md-2">
+                <label for="city">{{'importation.cron-expression' | translate}}</label>
+                <input type="text" class="form-control" id="cron" name="cron" #cron="ngModel"
+                    [ngClass]="{'is-invalid': f.submitted && !cron.valid}"
+                    placeholder="{{'importation.cron-example' | translate}}" [(ngModel)]="importation.cron" required />
+                <div *ngIf="f.submitted && !cron.valid" class="invalid-feedback">
+                    {{'form.validation.required' |
+                    translate}}</div>
+            </div>
+
+            <!-- help link -->
+            <div class="col-md-2">
+                <button mat-button>
+                    <a href="https://es.wikipedia.org/wiki/Cron_(Unix)" target="blank"
+                        mat-menu-item>{{'importation.cron-help' |
+                        translate}}</a>
+                </button>
+            </div>
+        </div>
+
+        <!-- buttons -->
+        <div class="float-right mt-2">
+            <button id="clean" [attr.aria-label]="'form.clean' | translate " role="button" aria-pressed="false"
+                class="btn btn-secondary" [routerLink]="'/main/data-importer'">{{'form.cancel' | translate}}</button>
+
+            <button type="submit" class="btn btn-secondary ml-2">
+                {{'importation.import' | translate}}
+            </button>
+        </div>
+    </form>
+</fieldset>

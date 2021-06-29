@@ -13,6 +13,7 @@ import { DiscoveryComponent } from './discovery/discovery.component';
 import { UrisComponent } from './uris-factory/uris.component';
 import { ContactComponent } from './contact/contact.component';
 import { GraphPageComponent } from './graph-page/graph-page.component';
+import { DataImporterComponent } from './categories/data-importer/data-importer.component';
 /**
  * **********************************************
  * ************** Rutas securizadas *************
@@ -42,11 +43,15 @@ const noSecureRoutes: Routes = [
   },
   {
     path: 'sparql',
-    canActivate: [AuthGuard],
     loadChildren: () =>
       import('./sparqleditor/sparqleditor.module').then(
         (m) => m.SparqleditorModule
       ),
+  },
+  /* Data-Importer path */
+  {
+    path: 'data-importer',
+    component: DataImporterComponent,
   },
   /* Graphics path */
   {

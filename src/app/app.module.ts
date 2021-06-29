@@ -74,7 +74,6 @@ const keycloakService = new KeycloakService();
     PatentDetailComponent,
     ContactComponent,
     GraphPageComponent
-
   ],
   imports: [
     BrowserModule,
