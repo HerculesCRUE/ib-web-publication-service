@@ -43,6 +43,7 @@ import { AreasListComponent } from '../common/areas-list/areas-list.component';
 import { DiscoveryControlComponent } from '../discovery/control/discovery-control/discovery-control.component';
 import { DiscoverySearchComponent } from '../discovery/search/discovery-search/discovery-search.component';
 import { DiscoveryActionComponent } from '../discovery/actions/discovery-action/discovery-action.component';
+import { UrisComponent } from '../uris-factory/uris.component';
 import { ResultItemComponent } from '../discovery/result/result-item/result-item.component';
 
 import { NgxSpinnerModule } from "ngx-spinner";
@@ -55,7 +56,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
     ProjectsDetailComponent, ParticipantsComponent, DeliverableComponent, ScientistComponent, ScientistDetailComponent,
     DirectedJobsComponent, StartupComponent, AreasComponent, EventsComponent,
     ScientificProductionComponent, DocumentDetailComponent, EventDetailComponent, StatisticsComponent, DiscoveryComponent,
-    DiscoveryControlComponent, DiscoverySearchComponent, DiscoveryActionComponent, ResultItemComponent,
+    DiscoveryControlComponent, DiscoverySearchComponent, DiscoveryActionComponent, ResultItemComponent, UrisComponent,
     PeopleInvolvedComponent, CollaboratorsComponent, ScientificPublicationDetailComponent, AreasListComponent
   ],
   imports: [

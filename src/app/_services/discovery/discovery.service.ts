@@ -212,4 +212,78 @@ export class DiscoveryService extends AbstractService {
       xhr.send();
     });
   }
+
+
+  getResultListByUserId(userId: string) {
+    let queryParams = [];
+    return new Promise((resolve, reject) => {
+      let formData: any = new FormData()
+      let xhr = new XMLHttpRequest()
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            resolve(xhr.response)
+          } else {
+            reject(xhr.response)
+          }
+        }
+      }
+      console.log('doing request: ' + Helper.getDiscoveryUrl() + "/discovery/result/" + userId)
+      xhr.open("GET", Helper.getDiscoveryUrl() + "/discovery/result/" + userId);
+
+      xhr.responseType = 'json';
+      xhr.send();
+    });
+  }
+
+  getResult(findRequest: FindRequest) {
+    let queryParams = [];
+    for (let key in findRequest.filter) {
+      queryParams.push(key + '=' + findRequest.filter[key])
+    }
+    return new Promise((resolve, reject) => {
+      let formData: any = new FormData()
+      let xhr = new XMLHttpRequest()
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            resolve(xhr.response)
+          } else {
+            reject(xhr.response)
+          }
+        }
+      }
+      console.log('doing request: ' + Helper.getDiscoveryUrl() + "/discovery/result?" + queryParams.join('&'))
+      xhr.open("GET", Helper.getDiscoveryUrl() + "/discovery/result?" + queryParams.join('&'));
+
+      xhr.responseType = 'json';
+      xhr.send();
+    });
+  }
+
+  getOpenResult(findRequest: FindRequest) {
+    let queryParams = [];
+    for (let key in findRequest.filter) {
+      queryParams.push(key + '=' + findRequest.filter[key])
+    }
+    return new Promise((resolve, reject) => {
+      let formData: any = new FormData()
+      let xhr = new XMLHttpRequest()
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            resolve(xhr.response)
+          } else {
+            reject(xhr.response)
+          }
+        }
+      }
+      console.log('doing request: ' + Helper.getDiscoveryUrl() + "/discovery/object-result/open?" + queryParams.join('&'))
+      xhr.open("GET", Helper.getDiscoveryUrl() + "/discovery/object-result/open?" + queryParams.join('&'));
+
+      xhr.responseType = 'json';
+      xhr.send();
+    });
+  }
+
 }

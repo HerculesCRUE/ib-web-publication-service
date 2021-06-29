@@ -1,4 +1,4 @@
-import { BASE_APP_URL, BASE_URL, DISCOVERY, SERVICE_DISCOVERY, FEDERATION, KEYCLOACK, LPDURL, SGI } from '../configuration';
+import { BASE_APP_URL, BASE_URL, DISCOVERY, SERVICE_DISCOVERY, FEDERATION, KEYCLOACK, LPDURL, SGI, URIS_FACTORY } from '../configuration';
 import { HttpParams } from '@angular/common/http';
 import { Direction, Page, PageRequest } from './search';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
@@ -63,6 +63,19 @@ export class Helper {
     console.log('getFederationUrl', FEDERATION.baseUrl + ":" + FEDERATION.port)
     return FEDERATION.baseUrl + ":" + FEDERATION.port;
   }
+
+  /**
+*
+* obtiene las URL de congiguración de URIs Factory Lib
+* @static
+* @return {*} 
+* @memberof Helper
+*/
+  static getUrisFactoryUrl() {
+    console.log('getFederationUrl', URIS_FACTORY.baseUrl + ":" + URIS_FACTORY.port)
+    return URIS_FACTORY.baseUrl + ":" + URIS_FACTORY.port;
+  }
+
 
   /**
    *

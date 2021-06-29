@@ -18,22 +18,31 @@ export class DiscoveryActionComponent implements OnInit {
   currentUser: User;
   actionSearch: string;
   objetsList: Array<string>;
-  objetsLodList: any;
   dataIsLoaded = false;
   responseIsReady = false;
   responseData: any;
+  resultsList: any;
+  requestCodes: Array<object>
 
   constructor(private discoveryService: DiscoveryService, private loginService: LoginService, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
     this.bodyRequest = JSON.stringify({ "id": 40372, "title": "Fisiología del comportamiento", "date": "2006", "endPage": 41, "publishedIn": "BIOTECNOLOGIA DE LA REPRODUCCION PORCINAPORCI", "startPage": 24 }, null, 2)
     this.currentUser = this.loginService.getCurrentUser();
-    this.searchRequest.filter.userId = 'front-request:' + ((this.currentUser) ? 'this.currentUser.id' : 'anonimus');
     this.searchRequest.filter.applyDelta = true;
     this.searchRequest.filter.doSynchronous = true;
     this.searchRequest.filter.linkEntities = false;
     this.searchRequest.filter.propague_in_kafka = true;
+    this.loadResultsList();
     this.loadNodesList();
+  }
+
+  loadResultsList() {
+    this.resultsList = {};
+    this.searchRequest.filter.userId = 'front-request:' + ((this.currentUser) ? 'this.currentUser.id' : 'anonimus');
+    this.discoveryService.getResultListByUserId(this.searchRequest.filter.userId).then(data => {
+      this.resultsList = data;
+    });
   }
 
   loadNodesList() {
@@ -71,24 +80,67 @@ export class DiscoveryActionComponent implements OnInit {
   }
 
   onActionSelected() {
-    console.log('onActionSelected', this.actionSearch);
+    this.searchRequest.filter = {};
+    this.searchRequest.filter.userId = 'front-request:' + ((this.currentUser) ? 'this.currentUser.id' : 'anonimus');
   }
 
   onNodeSelected() {
-    this.objetsList = [];
+    this.searchRequest.filter.requestType = undefined;
+    this.searchRequest.filter.className = undefined;
+    this.searchRequest.filter.requestCode = undefined;
+    this.requestCodes = [];
   }
 
-  onTripleStoreSelected() {
-    this.objetsList = [];
+  onRequestTypeSelected() {
     this.searchRequest.filter.className = undefined;
-    if (this.searchRequest.filter.tripleStore) {
-      this.loadObjects();
+    this.searchRequest.filter.requestCode = undefined;
+    this.requestCodes = [];
+  }
 
-    }
+  onClassNameSelected() {
+    this.requestCodes = this.resultsList[this.searchRequest.filter.requestType][this.searchRequest.filter.className];
   }
 
   launchSearch() {
+    if (this.actionSearch === 'results') {
+      this.spinner.show();
+      this.discoveryService.getResult(this.searchRequest).then((data) => {
+        this.responseIsReady = true;
+        this.responseData = data;
+        this.searchRequest.filter = {};
+        this.searchRequest.filter.userId = 'front-request:' + ((this.currentUser) ? 'this.currentUser.id' : 'anonimus');
+        this.requestCodes = [];
+        this.spinner.hide();
+      }, (error) => {
+        this.responseIsReady = true;
+        this.spinner.hide();
+      });
+    } else if (this.actionSearch === 'open') {
+      this.spinner.show();
+      this.discoveryService.getOpenResult(this.searchRequest).then((data) => {
 
+
+
+        this.responseIsReady = true;
+        this.responseData = {
+          "response": {
+            "node": this.searchRequest.filter.node,
+            "tripleStore": this.searchRequest.filter.tripleStore,
+            "status": "COMPLETED",
+            "results": data
+          }
+        };
+        console.log('response', this.responseData);
+        this.searchRequest.filter = {};
+        this.searchRequest.filter.userId = 'front-request:' + ((this.currentUser) ? 'this.currentUser.id' : 'anonimus');
+        this.requestCodes = [];
+        this.spinner.hide();
+      }, (error) => {
+        this.responseIsReady = true;
+        this.spinner.hide();
+      });
+    }
   }
+
 
 }

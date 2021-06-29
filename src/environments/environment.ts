@@ -36,6 +36,10 @@ export const environment = {
     baseUrl: 'http://localhost',
     port: '9328'
   },
+  urisFactory: {
+    baseUrl: 'http://localhost',
+    port: '9326'
+  },
   lpdUrl: 'http://localhost:8080/',
   appUrl: 'http://localhost:4200',
   sgi: 'https://github.com/HerculesCRUE/ib-asio-docs-/tree/master/13-Backend_SGI_Software'
