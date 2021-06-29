@@ -10,6 +10,7 @@ export const environment = {
   oauthClientId: 'acme',
   oauthSecret: 'acmesecret',
   skipPort: '8080',
+  domain: 'ldp.herculesasioizertis.desa.um.es',
   keycloak: {
     realm: 'umasio',
     clientId: 'login-app',
@@ -22,6 +23,22 @@ export const environment = {
     logout: 'http://localhost:8080/auth/realms/umasio/protocol/openid-connect/logout',
     redirectUrl: 'http%3A%2F%2Flocalhost%3A8080%2Fauth%2Frealms%2Fumasio%2Faccount%2Flogin-redirect',
     clientSecret: ''
+  },
+  discovery: {
+    baseUrl: 'http://localhost',
+    port: '9327'
+  },
+  serviceDiscovery: {
+    baseUrl: 'http://localhost',
+    port: '9329'
+  },
+  federation: {
+    baseUrl: 'http://localhost',
+    port: '9328'
+  },
+  urisFactory: {
+    baseUrl: 'http://localhost',
+    port: '9326'
   },
   lpdUrl: 'http://localhost:8080/',
   appUrl: 'http://localhost:4200',

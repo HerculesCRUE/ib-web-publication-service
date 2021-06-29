@@ -74,6 +74,18 @@ export const MENU_ITEMS: MenuItem[] = [
     disabled: false
   },
   {
+    title: 'menu.discovery',
+    icon: 'oi-zoom-in',
+    url: '/main/discovery',
+    disabled: false
+  },
+  {
+    title: 'menu.uris-factory',
+    icon: 'oi-globe',
+    url: '/main/uris-factory',
+    disabled: false
+  },
+  {
     title: 'menu.sparql',
     icon: 'oi-terminal',
     url: '/main/sparql',

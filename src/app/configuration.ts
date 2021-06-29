@@ -10,11 +10,21 @@ export class LocaleConfiguration {
   availableLanguages: string[];
 }
 
+export const DOMAIN = environment.domain;
+
 export const BASE_APP_URL = environment.appUrl;
 
 export const BASE_URL = environment.urlBase;
 
 export const KEYCLOACK = environment.keycloak;
+
+export const DISCOVERY = environment.discovery;
+
+export const SERVICE_DISCOVERY = environment.serviceDiscovery;
+
+export const FEDERATION = environment.federation;
+
+export const URIS_FACTORY = environment.urisFactory;
 
 export const SKIPORT = environment.skipPort;
 

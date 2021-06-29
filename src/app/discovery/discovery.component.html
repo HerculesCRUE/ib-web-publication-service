@@ -1,0 +1,63 @@
+<h1 class="legend margin-top">{{'discovery.title' | translate}}</h1>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card flex-fill">
+            <div class="card-header">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" [ngClass]="{'active': activeTab === 'control-tab' }" id="control-tab"
+                            (click)="changeTab('control-tab')" data-bs-toggle="tab" href="JavaScript:void(0)" role="tab"
+                            aria-controls="control-tab"
+                            [attr.aria-selected]="activeTab === 'control-tab'">{{'discovery.control-tab'
+                            | translate}}</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" [ngClass]="{'active': activeTab === 'search-tab' }" id="search-tab"
+                            (click)="changeTab('search-tab')" data-bs-toggle="tab" href="JavaScript:void(0)" role="tab"
+                            aria-controls="search-tab"
+                            [attr.aria-selected]="activeTab === 'search-tab'">{{'discovery.search-tab'
+                            | translate}}</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" [ngClass]="{'active': activeTab === 'action-tab' }" id="action-tab"
+                            (click)="changeTab('action-tab')" data-bs-toggle="tab" href="JavaScript:void(0)" role="tab"
+                            aria-controls="action-tab"
+                            [attr.aria-selected]="activeTab === 'action-tab'">{{'discovery.action-tab'
+                            | translate}}</a>
+                    </li>
+                </ul>
+            </div>
+            <div id="datatables-dashboard-markets_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade"
+                        [ngClass]="{'show': activeTab === 'control-tab', 'active': activeTab === 'control-tab' }"
+                        id="control-tab" role="tabpanel" aria-labelledby="control-tab">
+                        <app-discovery-control></app-discovery-control>
+                        <!-- <app-documents [url]="'../document'" [idPrefix]="'document'" [isTreeVisible]="false"
+                            [routerFieldSecondary]="'type'" [filterDocumentType]="['Book', 'Article']"></app-documents> -->
+                    </div>
+                    <div class="tab-pane fade"
+                        [ngClass]="{'show': activeTab === 'search-tab', 'active': activeTab === 'search-tab' }"
+                        id="search-tab" role="tabpanel" aria-labelledby="search-tab">
+                        <app-discovery-search></app-discovery-search>
+                        <!-- <app-documents [idPrefix]="'academic'" [url]="'../document'" [routerFieldSecondary]="'type'"
+                            [selectDocumentType]="[{ name: 'doctoral-thesis', value: 'Doctoral-Thesis' }, { name: 'master-thesis', value: 'Master-Thesis' }]"
+                            [isTreeVisible]="false" [filterDocumentType]="['Master-Thesis', 'Doctoral-Thesis']">
+                        </app-documents> -->
+                    </div>
+                    <div class="tab-pane fade"
+                        [ngClass]="{'show': activeTab === 'action-tab', 'active': activeTab === 'action-tab' }"
+                        id="action-tab" role="tabpanel" aria-labelledby="action-tab">
+                        <app-discovery-action></app-discovery-action>
+                        <!-- <app-documents [idPrefix]="'academic'" [url]="'../document'" [routerFieldSecondary]="'type'"
+                            [selectDocumentType]="[{ name: 'doctoral-thesis', value: 'Doctoral-Thesis' }, { name: 'master-thesis', value: 'Master-Thesis' }]"
+                            [isTreeVisible]="false" [filterDocumentType]="['Master-Thesis', 'Doctoral-Thesis']">
+                        </app-documents> -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
