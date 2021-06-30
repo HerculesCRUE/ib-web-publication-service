@@ -13,6 +13,8 @@ import { Observable, of } from 'rxjs';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Direction, FindRequest, Order, Page, PaginatedSearchComponent } from 'src/app/_helpers/search';
 import { DataImporter } from 'src/app/_models/dataImporter';
+import { DataImporterService } from 'src/app/_services/data-importer.service';
+import { DataImporterError } from 'src/app/_models/dataImporterError';
 
 
 
@@ -38,6 +40,8 @@ export class TableResultsImporterComponent
   implements OnChanges {
 
   selectedItem: DataImporter;
+
+  errors: DataImporterError;
 
   @Output() idToDelete: EventEmitter<string> = new EventEmitter<string>();
   @Output() queryToUse: EventEmitter<string> = new EventEmitter<string>();
@@ -119,6 +123,7 @@ export class TableResultsImporterComponent
   @Input() dtoTypeTranslate = '';
   @Input() extra = '';
   constructor(
+    private dataImporter: DataImporterService,
     private translateService: TranslateService,
     router: Router,
     translate: TranslateService,
@@ -257,9 +262,14 @@ export class TableResultsImporterComponent
   }
 
 
-  openPopupErrors(popup, item) {
+  openPopupErrors(popup, item: DataImporter) {
     console.log(item);
     this.selectedItem = item;
+
+    this.dataImporter.findErrors(this.selectedItem.id).subscribe((data) => {
+      this.errors = data;
+    }, () => {
+    });
 
     this.modalService.open(popup, { ariaLabelledBy: 'modal-basic-title', scrollable: true }).result.then((result) => {
       this.selectedItem = item;

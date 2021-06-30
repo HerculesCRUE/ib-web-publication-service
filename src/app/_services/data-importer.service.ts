@@ -8,6 +8,7 @@ import { DataImporter } from '../_models/dataImporter';
 import { catchError } from 'rxjs/operators';
 import { OrganizationDetail } from '../_models/organizationDetail';
 import { Order, Direction } from '../_helpers/search';
+import { DataImporterError } from '../_models/dataImporterError';
 
 @Injectable({
   providedIn: 'root',
@@ -75,6 +76,20 @@ export class DataImporterService extends AbstractService {
     console.log("Import in service " + data);
     return this.httpClient
       .post(Helper.getImporterUrl('/importer/schedule'), data)
+      .pipe(catchError(this.handleError));
+  }
+
+
+  /**
+   * Returns the errors associated to an import execution
+   *
+   * @param {string} id execution id
+   * @return {*}  {Observable<DataImporterError>}
+   * @memberof DataImporterService
+   */
+  findErrors(id: string): Observable<DataImporterError> {
+    return this.httpClient
+      .get(Helper.getUrl('/importer/' + id + '/errors'))
       .pipe(catchError(this.handleError));
   }
 
