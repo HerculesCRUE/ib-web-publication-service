@@ -1,0 +1,433 @@
+<div class="card" style="margin-top: 20px;margin-left: 50px;">
+    <div class="card-body">
+        <h5 class="card-title"> Entidad principal: <strong>{{ item.entityId }}</strong></h5>
+        <br />
+        <table class="table table-bordered">
+            <tbody>
+                <tr>
+                    <td>{{'discovery.node' | translate}}</td>
+                    <td><strong>{{ item.node }}</strong></td>
+                </tr>
+                <tr>
+                    <td>{{'discovery.storage' | translate}}</td>
+                    <td><strong>{{ item.tripleStore }}</strong></td>
+                </tr>
+                <tr>
+                    <td>{{'discovery.class' | translate}}</td>
+                    <td><strong>{{ item.className }}</strong></td>
+                </tr>
+                <tr>
+                    <td>local URI</td>
+                    <td><a href="{{item.localUri}}">{{item.localUri}}</a></td>
+                </tr>
+                <tr>
+                    <td>Origin</td>
+                    <td><strong>{{ item.origin }}</strong></td>
+                </tr>
+                <tr>
+                    <td>{{'discovery.status' | translate}}</td>
+                    <td><strong>{{ item.state }}</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Atributos</strong></td>
+                    <td>
+
+                        <table class="table">
+                            <tbody>
+                                <tr *ngFor="let att of item.attributes | keyvalue">
+                                    <td>{{att.key}}</td>
+                                    <td><strong>{{att.value}}</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- Similitudes Automaticas-->
+        <div class="row">
+            <div class="col-md-3">
+                <h5 class="card-title"> <strong>Similitudes Automáticas:<span style="margin-left: 20px;"
+                            class="badge badge-success">{{
+                            item.automatics.length }}</span></strong></h5>
+            </div>
+            <div class="col-md-9">
+                <ngb-accordion [closeOthers]="false">
+                    <ngb-panel *ngFor="let auto of item.automatics" id="acc-auto-{{auto.entityId}}"
+                        title="Entidad: {{auto.entityId}}">
+                        <ng-template ngbPanelContent>
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <td>{{'discovery.node' | translate}}</td>
+                                        <td><strong>{{ auto.node }}</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{'discovery.storage' | translate}}</td>
+                                        <td><strong>{{ auto.tripleStore }}</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{'discovery.class' | translate}}</td>
+                                        <td><strong>{{ auto.className }}</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>entityId</td>
+                                        <td><strong>{{ auto.entityId }}</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>local URI</td>
+                                        <td><a href="{{auto.localUri}}">{{auto.localUri}}</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Origin</td>
+                                        <td><strong>{{ auto.origin }}</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{'discovery.status' | translate}}</td>
+                                        <td><strong>{{ auto.state }}</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Similitud</td>
+                                        <td><strong>{{ auto.similarity }}</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Similitud sin id</td>
+                                        <td><strong>{{ auto.similarityWithoutId }}</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Atributos</strong></td>
+                                        <td>
+
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr *ngFor="let attAuto of auto.attributes | keyvalue">
+                                                        <td>{{attAuto.key}}</td>
+                                                        <td><strong>{{attAuto.value}}</strong></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </ng-template>
+                    </ngb-panel>
+                </ngb-accordion>
+
+            </div>
+        </div>
+
+        <!-- Similitudes Manuales-->
+        <div class="row">
+            <div class="col-md-3">
+                <h5 class="card-title"> <strong>Similitudes Manuales:<span style="margin-left: 20px;"
+                            class="badge badge-success">{{
+                            item.manuals.length }}</span></strong></h5>
+            </div>
+            <div class="col-md-9">
+                <ngb-accordion [closeOthers]="false">
+                    <ngb-panel *ngFor="let man of item.manuals" id="acc-man-{{man.entityId}}"
+                        title="Entidad: {{man.entityId}}">
+                        <ng-template ngbPanelContent>
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <td>{{'discovery.node' | translate}}</td>
+                                        <td><strong>{{ man.node }}</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{'discovery.storage' | translate}}</td>
+                                        <td><strong>{{ man.tripleStore }}</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{'discovery.class' | translate}}</td>
+                                        <td><strong>{{ man.className }}</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>entityId</td>
+                                        <td><strong>{{ man.entityId }}</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>local URI</td>
+                                        <td><a href="{{man.localUri}}">{{man.localUri}}</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Origin</td>
+                                        <td><strong>{{ man.origin }}</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{'discovery.status' | translate}}</td>
+                                        <td><strong>{{ man.state }}</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Similitud</td>
+                                        <td><strong>{{ man.similarity }}</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Similitud sin id</td>
+                                        <td><strong>{{ man.similarityWithoutId }}</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Atributos</strong></td>
+                                        <td>
+
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr *ngFor="let attMan of man.attributes | keyvalue">
+                                                        <td>{{attMan.key}}</td>
+                                                        <td><strong>{{attMan.value}}</strong></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div *ngIf="manualDecisions[man.entityId] == undefined; else decisionTemplate">
+                                <button role="button" aria-pressed="false" class="btn btn-secondary tree"
+                                    style="margin: 20px;"
+                                    (click)="onActionOverManualSimilitude(true,man)">{{'discovery.update-state' |
+                                    translate}}</button>
+                                <button role="button" aria-pressed="false" class="btn btn-secondary tree"
+                                    (click)="onActionOverManualSimilitude(false,man)"
+                                    style="margin: 20px;">{{'discovery.force-reload' |
+                                    translate}}</button>
+                            </div>
+                            <ng-template #decisionTemplate>
+                                <h5>Decision response:</h5>
+                                <div *ngIf="manualDecisions[man.entityId].response != undefined">
+                                    <div *ngIf="manualDecisions[man.entityId].response.UPDATE != undefined">
+                                        Updated Entities:
+                                        <ngb-accordion [closeOthers]="false">
+                                            <ngb-panel
+                                                *ngFor="let updatedItem of manualDecisions[man.entityId].response.UPDATE | keyvalue"
+                                                id="acc-upd-item-{{man.entityId}}"
+                                                title="Updated Entity: {{updatedItem.key}}">
+                                                <ng-template ngbPanelContent>
+                                                    <table class="table table-bordered">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>{{'discovery.node' | translate}}</td>
+                                                                <td><strong>{{ updatedItem.value.node }}</strong></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>{{'discovery.storage' | translate}}</td>
+                                                                <td><strong>{{ updatedItem.value.tripleStore }}</strong>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>{{'discovery.class' | translate}}</td>
+                                                                <td><strong>{{ updatedItem.value.className }}</strong>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>entityId</td>
+                                                                <td><strong>{{ updatedItem.value.entityId }}</strong>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>local URI</td>
+                                                                <td><a
+                                                                        href="{{updatedItem.value.localUri}}">{{updatedItem.value.localUri}}</a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Origin</td>
+                                                                <td><strong>{{ updatedItem.value.origin }}</strong></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>{{'discovery.state' | translate}}</td>
+                                                                <td><strong>{{ updatedItem.value.state }}</strong></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><strong>Atributos</strong></td>
+                                                                <td>
+
+                                                                    <table class="table">
+                                                                        <tbody>
+                                                                            <tr
+                                                                                *ngFor="let attUI of updatedItem.value.attributes | keyvalue">
+                                                                                <td>{{attUI.key}}</td>
+                                                                                <td><strong>{{attUI.value}}</strong>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </ng-template>
+                                            </ngb-panel>
+                                        </ngb-accordion>
+                                    </div>
+
+                                    <div *ngIf="manualDecisions[man.entityId].response.UPDATE != undefined">
+                                        Deleted Entities:
+                                        <ngb-accordion [closeOthers]="false">
+                                            <ngb-panel
+                                                *ngFor="let deletedItem of manualDecisions[man.entityId].response.DELETE | keyvalue"
+                                                id="acc-del-item-{{man.entityId}}"
+                                                title="Deleted Entity: {{deletedItem.key}}">
+                                                <ng-template ngbPanelContent>
+                                                    <table class="table table-bordered">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>{{'discovery.node' | translate}}</td>
+                                                                <td><strong>{{ deletedItem.value.node }}</strong></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>{{'discovery.storage' | translate}}</td>
+                                                                <td><strong>{{ deletedItem.value.tripleStore }}</strong>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>{{'discovery.class' | translate}}</td>
+                                                                <td><strong>{{ deletedItem.value.className }}</strong>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>entityId</td>
+                                                                <td><strong>{{ deletedItem.value.entityId }}</strong>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>local URI</td>
+                                                                <td><a
+                                                                        href="{{deletedItem.value.localUri}}">{{deletedItem.value.localUri}}</a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Origin</td>
+                                                                <td><strong>{{ deletedItem.value.origin }}</strong></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>{{'discovery.state' | translate}}</td>
+                                                                <td><strong>{{ deletedItem.value.state }}</strong></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><strong>Atributos</strong></td>
+                                                                <td>
+
+                                                                    <table class="table">
+                                                                        <tbody>
+                                                                            <tr
+                                                                                *ngFor="let attDI of deletedItem.value.attributes | keyvalue">
+                                                                                <td>{{attDI.key}}</td>
+                                                                                <td><strong>{{attDI.value}}</strong>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </ng-template>
+                                            </ngb-panel>
+                                        </ngb-accordion>
+                                    </div>
+
+                                </div>
+                            </ng-template>
+                        </ng-template>
+                    </ngb-panel>
+                </ngb-accordion>
+
+            </div>
+        </div>
+
+
+        <!-- Acciones-->
+        <div class="row">
+            <div class="col-md-3">
+                <h5 class="card-title"> <strong>Acciones Automáticas</strong></h5>
+            </div>
+            <div class="col-md-9">
+                <ngb-accordion [closeOthers]="false">
+                    <ngb-panel *ngFor="let actionMain of item.actions" id="act-auto-{{actionMain.action}}"
+                        title="Acción: {{actionMain.action}}">
+                        <ng-template ngbPanelContent>
+
+                            <ngb-accordion [closeOthers]="false">
+                                <ngb-panel *ngFor="let action of actionMain.items" id="act-auto-{{action.entityId}}"
+                                    title="Entidad {{actionMain.action}}: {{action.entityId}}">
+                                    <ng-template ngbPanelContent>
+
+                                        <table class="table table-bordered">
+                                            <tbody>
+                                                <tr>
+                                                    <td>{{'discovery.node' | translate}}</td>
+                                                    <td><strong>{{ action.node }}</strong></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>{{'discovery.storage' | translate}}</td>
+                                                    <td><strong>{{ action.tripleStore }}</strong></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>{{'discovery.class' | translate}}</td>
+                                                    <td><strong>{{ action.className }}</strong></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>entityId</td>
+                                                    <td><strong>{{ action.entityId }}</strong></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>local URI</td>
+                                                    <td><a href="{{action.localUri}}">{{action.localUri}}</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Origin</td>
+                                                    <td><strong>{{ action.origin }}</strong></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>{{'discovery.status' | translate}}</td>
+                                                    <td><strong>{{ action.state }}</strong></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Similitud</td>
+                                                    <td><strong>{{ action.similarity }}</strong></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Similitud sin id</td>
+                                                    <td><strong>{{ action.similarityWithoutId }}</strong></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><strong>Atributos</strong></td>
+                                                    <td>
+
+                                                        <table class="table">
+                                                            <tbody>
+                                                                <tr *ngFor="let attAct of action.attributes | keyvalue">
+                                                                    <td>{{attAct.key}}</td>
+                                                                    <td><strong>{{attAct.value}}</strong></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                    </ng-template>
+                                </ngb-panel>
+                            </ngb-accordion>
+
+                        </ng-template>
+                    </ngb-panel>
+                </ngb-accordion>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="true">
+    <p style="color: white"> Ejecutando acciones </p>
+</ngx-spinner>

@@ -1,0 +1,248 @@
+<div *ngIf="dataIsLoaded; else notLoadedState">
+    <div class="row">
+        <div class="col-12">
+            <div class="card flex-fill">
+                <div class="card-header">
+                    <!--{{ discovery.state-tittle | translate }}-->
+                    <legend class="legend">{{'discovery.search-tittle' | translate}}</legend>
+                    <div class="form-row">
+                        <label for="actionSearch" class="col-sm-4 control-label">{{ "discovery.action-search-label" |
+                            translate
+                            }}</label>
+                        <div class="form-group col-md-4">
+                            <select class="col-4" name="actionSearch"
+                                [attr.aria-label]="'discovery.storage' | translate" class="form-control"
+                                [(ngModel)]="actionSearch" #type="ngModel" (change)="onActionSelected()">
+                                <option value="results">{{ "action-results" | translate }}</option>
+                                <option value="open">{{ "action-open" | translate }}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div *ngIf="actionSearch === 'results'">
+                    <div class="card-body">
+
+                        <h5 class="card-title">{{'discovery.action-search-class' | translate}}</h5>
+
+                        <form>
+                            <div class="form-row">
+                                <div class="form-group col-md-3">
+                                    <label for="node">{{'discovery.node' | translate}}</label>
+                                    <select id="node" name="node" class="form-control"
+                                        [(ngModel)]="searchRequest.filter.userId" #type="ngModel" [disabled]="true"
+                                        required>
+                                        <option [value]="this.searchRequest.filter.userId">
+                                            {{this.searchRequest.filter.userId}}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="requestType">{{'discovery.type-result' | translate}}</label>
+                                    <select id="requestType" name="requestType" class="form-control"
+                                        [(ngModel)]="searchRequest.filter.requestType" #type="ngModel"
+                                        (change)="onRequestTypeSelected()" [disabled]="!searchRequest.filter.userId"
+                                        [disabled]="resultsList.length>0" required>
+                                        <option *ngFor="let rs of resultsList | keyvalue" [value]="rs.key">
+                                            {{rs.key==='LOD_SEARCH'?'LOD SEARCH':rs.key==='ENTITY_LINK_CLASS'?'CLASS
+                                            SEARCH':'INSTANCE SEARCH'}}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="className">{{'discovery.class' | translate}}</label>
+                                    <select id="className" name="className" class="form-control"
+                                        [(ngModel)]="searchRequest.filter.className" #type="ngModel"
+                                        (change)="onClassNameSelected()" [disabled]="!searchRequest.filter.requestType"
+                                        required>
+                                        <option
+                                            *ngFor="let c of resultsList[searchRequest.filter.requestType] | keyvalue"
+                                            [value]="c.key">
+                                            {{c.key}}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="requestCode">{{'discovery.code-result' | translate}}</label>
+                                    <select id="requestCode" name="requestCode" class="form-control"
+                                        [(ngModel)]="searchRequest.filter.requestCode" #type="ngModel"
+                                        [disabled]="!searchRequest.filter.className" required>
+                                        <option *ngFor="let r of requestCodes" [value]="r.requestCode">
+                                            {{r.requestCode}} ({{r.requestDate}})</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" (click)="launchSearch()"
+                                [disabled]="!searchRequest.filter.userId || !searchRequest.filter.requestType || !searchRequest.filter.className || !searchRequest.filter.requestCode">{{'discovery.action-btn-launch-search'
+                                | translate}}</button>
+                        </form>
+
+                    </div>
+                </div>
+
+                <div *ngIf="actionSearch === 'open'">
+                    <div class="card-body">
+
+                        <h5 class="card-title">{{'discovery.action-search-class' | translate}}</h5>
+
+                        <form>
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label for="node">{{'discovery.node' | translate}}</label>
+                                    <select id="node" name="node" class="form-control"
+                                        [(ngModel)]="searchRequest.filter.node" #type="ngModel"
+                                        (change)="onNodeSelected()" required>
+                                        <option *ngFor="let n of nodes  | keyvalue" [value]="n.key">{{n.key}}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="tripleStore">{{'discovery.storage' | translate}}</label>
+                                    <select id="tripleStore" name="tripleStore" class="form-control"
+                                        [(ngModel)]="searchRequest.filter.tripleStore" #type="ngModel"
+                                        [disabled]="!searchRequest.filter.node" required>
+                                        <option *ngFor="let ts of nodes[searchRequest.filter.node]" [value]="ts">
+                                            {{ts}}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" (click)="launchSearch()"
+                                [disabled]="!searchRequest.filter.tripleStore || !searchRequest.filter.node">{{'discovery.action-btn-launch-search'
+                                | translate}}</button>
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <ng-template #notLoadedState>
+            {{'discovery.noData' | translate}}
+        </ng-template>
+    </div>
+</div>
+
+
+
+<ng-template #notLoadedState>
+    {{'discovery.noData' | translate}}
+</ng-template>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="true">
+    <p style="color: white"> {{'discovery.search-message'
+        | translate}} </p>
+</ngx-spinner>
+
+<div *ngIf="responseIsReady && responseData">
+    <div class="row">
+        <div class="col-12">
+            <div class="card flex-fill">
+                <div class="card-header">
+                    <!--{{ discovery.state-tittle | translate }}-->
+                    <legend class="legend">{{'discovery.response-title' | translate}}</legend>
+                </div>
+
+
+                <div class="card-body">
+
+                    <div *ngIf="responseData.response.node" class="form-group row">
+                        <label for="response-node" class="col-sm-2 col-form-label">{{'discovery.node' |
+                            translate}}:</label>
+                        <div class="col-sm-10">
+                            <input style="font-weight: bold;" type="text" readonly class="form-control-plaintext"
+                                id="response-node" value="{{ responseData.response.node }}" disabled>
+                        </div>
+                    </div>
+
+                    <div *ngIf="responseData.response.tripleStore" class="form-group row">
+                        <label for="response-triple" class="col-sm-2 col-form-label">{{'discovery.storage' |
+                            translate}}</label>
+                        <div class="col-sm-10">
+                            <input style="font-weight: bold;" type="text" readonly class="form-control-plaintext"
+                                id="response-triple" value="{{ responseData.response.tripleStore }}" disabled>
+                        </div>
+                    </div>
+
+                    <div *ngIf="responseData.response.className" class="form-group row">
+                        <label for="response-className" class="col-sm-2 col-form-label">{{'discovery.class' |
+                            translate}}</label>
+                        <div class="col-sm-10">
+                            <input style="font-weight: bold;" type="text" readonly class="form-control-plaintext"
+                                id="response-className" value="{{ responseData.response.className }}" disabled>
+                        </div>
+                    </div>
+
+                    <div *ngIf="responseData.response.status" class="form-group row">
+                        <label for="response-status" class="col-sm-2 col-form-label">{{'discovery.status' |
+                            translate}}</label>
+                        <div class="col-sm-10">
+                            <input style="font-weight: bold;" type="text" readonly class="form-control-plaintext"
+                                id="response-status" value="{{ responseData.response.status }}" disabled>
+                        </div>
+                    </div>
+
+
+                    <div *ngIf="responseData.response.status === 'COMPLETED'; else statusPending">
+
+
+                        <div *ngIf="responseData.response.startDate" class="form-group row">
+                            <label for="response-startDate" class="col-sm-2 col-form-label">{{'discovery.startDate' |
+                                translate}}</label>
+                            <div class="col-sm-10">
+                                <input style="font-weight: bold;" type="text" readonly class="form-control-plaintext"
+                                    id="response-startDate" value="{{ responseData.response.startDate }}" disabled>
+                            </div>
+                        </div>
+
+                        <div *ngIf="responseData.response.endDate" class="form-group row">
+                            <label for="response-endDate" class="col-sm-2 col-form-label">{{'discovery.endDate' |
+                                translate}}</label>
+                            <div class="col-sm-10">
+                                <input style="font-weight: bold;" type="text" readonly class="form-control-plaintext"
+                                    id="response-endDate" value="{{ responseData.response.endDate }}" disabled>
+                            </div>
+                        </div>
+
+                        <div *ngIf="responseData.response.results.length > 0; else noSimilatirityResultsFound">
+                            <legend class="legend">{{'discovery.results-title' | translate}}</legend>
+                            <ngb-accordion [closeOthers]="false">
+                                <ngb-panel *ngFor="let it of responseData.response.results"
+                                    id="it-{{it.id}}-{{it.entityId}}"
+                                    title="Entidad principal: {{it.id}} {{it.entityId}}">
+                                    <ng-template ngbPanelContent>
+                                        <app-result-item [item]="it" [requestId]="responseData.response.requestCode"
+                                            [userId]="responseData.response.userId"
+                                            [requestType]="responseData.response.requestType"></app-result-item>
+                                        <hr>
+                                    </ng-template>
+                                </ngb-panel>
+                            </ngb-accordion>
+                        </div>
+
+                        <ng-template #noSimilatirityResultsFound>
+                            {{'discovery.not-result-found' | translate}}
+                        </ng-template>
+
+                    </div>
+
+                    <ng-template #statusPending>
+
+
+                        <h5 class="card-title"> userId:
+                            <span class="badge badge-success">{{ responseData.response.userId }}</span>
+                        </h5>
+
+                        <h5 class="card-title"> requestCode:
+                            <span class="badge badge-success">{{ responseData.response.requestCode }}</span>
+                        </h5>
+
+                        <h5 class="card-title"> requestType:
+                            <span class="badge badge-success">{{ responseData.response.requestType }}</span>
+                        </h5>
+
+                        {{'discovery.pending-message' | translate}}
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

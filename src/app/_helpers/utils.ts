@@ -1,4 +1,5 @@
-import { BASE_APP_URL, BASE_URL, BASE_IMPORTER_URL, KEYCLOACK, LPDURL, SGI } from '../configuration';
+
+import { BASE_APP_URL, BASE_URL, DISCOVERY, SERVICE_DISCOVERY, BASE_IMPORTER_URL, FEDERATION, KEYCLOACK, LPDURL, SGI, URIS_FACTORY } from '../configuration';
 import { HttpParams } from '@angular/common/http';
 import { Direction, Page, PageRequest } from './search';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
@@ -36,6 +37,54 @@ export class Helper {
   static getKeyCloackUrl() {
     return KEYCLOACK;
   }
+
+  /**
+   *
+   * obtiene las URL de congiguración de Discovery Lib
+   * @static
+   * @return {*} 
+   * @memberof Helper
+   */
+  static getDiscoveryUrl() {
+    return DISCOVERY.baseUrl + ":" + DISCOVERY.port;
+  }
+
+  /**
+ *
+ * obtiene las URL de congiguración de Service Discovery Lib
+ * @static
+ * @return {*} 
+ * @memberof Helper
+ */
+  static getServiceDiscoveryUrl() {
+    console.log('getServiceDiscoveryUrl', SERVICE_DISCOVERY.baseUrl + ":" + SERVICE_DISCOVERY.port)
+    return SERVICE_DISCOVERY.baseUrl + ":" + SERVICE_DISCOVERY.port;
+  }
+
+  /**
+*
+* obtiene las URL de congiguración de Service Discovery Lib
+* @static
+* @return {*} 
+* @memberof Helper
+*/
+  static getFederationUrl() {
+    console.log('getFederationUrl', FEDERATION.baseUrl + ":" + FEDERATION.port)
+    return FEDERATION.baseUrl + ":" + FEDERATION.port;
+  }
+
+  /**
+*
+* obtiene las URL de congiguración de URIs Factory Lib
+* @static
+* @return {*} 
+* @memberof Helper
+*/
+  static getUrisFactoryUrl() {
+    console.log('getFederationUrl', URIS_FACTORY.baseUrl + ":" + URIS_FACTORY.port)
+    return URIS_FACTORY.baseUrl + ":" + URIS_FACTORY.port;
+  }
+
 
   /**
    *

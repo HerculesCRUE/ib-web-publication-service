@@ -9,6 +9,8 @@ import { NoAuthGuard } from './_guards/no-auth.guard';
 import { GraphicComponent } from './graphic/graphic.component';
 import { LinksComponent } from './links/links.component';
 import { AccesibilityComponent } from './accesibility/accesibility.component';
+import { DiscoveryComponent } from './discovery/discovery.component';
+import { UrisComponent } from './uris-factory/uris.component';
 import { ContactComponent } from './contact/contact.component';
 import { GraphPageComponent } from './graph-page/graph-page.component';
 import { DataImporterComponent } from './categories/data-importer/data-importer.component';
@@ -67,6 +69,14 @@ const noSecureRoutes: Routes = [
   {
     path: 'contact',
     component: ContactComponent,
+  },
+  {
+    path: 'discovery',
+    component: DiscoveryComponent,
+  },
+  {
+    path: 'uris-factory',
+    component: UrisComponent,
   },
   /***************** Categories *******************/
   {

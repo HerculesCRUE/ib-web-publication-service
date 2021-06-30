@@ -59,6 +59,7 @@ import { ContactComponent } from './contact/contact.component';
 import { GraphPageComponent } from './graph-page/graph-page.component';
 
 
+
 const keycloakService = new KeycloakService();
 
 @NgModule({
@@ -72,7 +73,7 @@ const keycloakService = new KeycloakService();
     AccesibilityComponent,
     PatentDetailComponent,
     ContactComponent,
-    GraphPageComponent,
+    GraphPageComponent
   ],
   imports: [
     BrowserModule,
@@ -96,7 +97,7 @@ const keycloakService = new KeycloakService();
     NgSelectModule,
     // Application
     SparqleditorModule,
-    NgbModule,
+    NgbModule
   ],
   providers: [
     I18n,

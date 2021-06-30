@@ -1,0 +1,245 @@
+<div *ngIf="dataIsReady; else notLoadedState">
+    <div class="row">
+        <div class="col-12">
+            <div class="card flex-fill">
+                <div class="card-header">
+                    <!--{{ discovery.state-tittle | translate }}-->
+                    <legend class="legend">{{'uris.title' | translate}}</legend>
+                    <div class="form-row">
+                        <label for="actionSearch" class="col-sm-4 control-label">{{ "discovery.action-search-label" |
+                            translate }}</label>
+                        <div class="form-group col-md-4">
+                            <select class="col-4" name="actionSearch"
+                                [attr.aria-label]="'discovery.storage' | translate" class="form-control"
+                                [(ngModel)]="actionSearch" #type="ngModel">
+                                <option value="canonical">{{ 'uris.canonical-search' | translate }}</option>
+                                <option value="local">{{ 'uris.local-search' | translate }}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div *ngIf="actionSearch === 'canonical'">
+                    <div class="card-body">
+
+                        <h5 class="card-title">{{'uris.canonical-search' | translate}}</h5>
+                        <div class="form-row">
+                            <label for="typeSearch" class="col-sm-4 control-label">{{ "uris.type-search" |
+                                translate
+                                }}</label>
+                            <div class="form-group col-md-4">
+                                <select class="col-4" name="typeSearch"
+                                    [attr.aria-label]="'uris.type-search' | translate" class="form-control"
+                                    [(ngModel)]="typeSearch" #type="ngModel">
+                                    <option value="resource">{{ 'uris.instace-search' | translate }}</option>
+                                    <option value="entity">{{ 'uris.entity-search' | translate }}</option>
+                                    <option value="property">{{ 'uris.property-search' | translate }}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <form *ngIf="typeSearch">
+                            <div class="form-row">
+                                <div class="form-group col-md-3">
+                                    <label for="domain">{{'uris.domain-field' | translate}}</label>
+                                    <input id="domain" name="domain" class="form-control"
+                                        [(ngModel)]="searchRequest.filter.domain" #type="ngModel"
+                                        placeholder="{{'uris.domain-placeholder' | translate}}" list="domainList">
+                                    <datalist id="domainList">
+                                        <option>{{domain}}</option>
+                                    </datalist>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="subdomain">{{'uris.subdomain-field' | translate}}</label>
+                                    <input id="subdomain" name="subdomain" class="form-control"
+                                        [(ngModel)]="searchRequest.filter.subDomain" #type="ngModel"
+                                        placeholder="{{'uris.subdomain-placeholder' | translate}}" list="subdomainList">
+                                    <datalist id="subdomainList">
+                                        <option>um</option>
+                                    </datalist>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="language">{{'uris.language-field' | translate}}</label>
+                                    <input id="language" name="language" class="form-control"
+                                        [(ngModel)]="searchRequest.filter.lang" #type="ngModel"
+                                        placeholder="{{'uris.language-placeholder' | translate}}" list="languages">
+                                    <datalist id="languages">
+                                        <option>es-ES</option>
+                                        <option>en-EN</option>
+                                    </datalist>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="type">{{ "uris.type-search" | translate }}</label>
+                                    <select class="col-4" name="type" [attr.aria-label]="'type-field' | translate"
+                                        class="form-control" [(ngModel)]="searchRequest.filter.type" #type="ngModel">
+                                        <option value="cat">cat</option>
+                                        <option value="def">def</option>
+                                        <option value="kos">kos</option>
+                                        <option value="res" selected>res</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div *ngIf="typeSearch!=='property'" class="form-group col-md-3">
+                                    <label for="className">{{'uris.className-field' | translate}}</label>
+                                    <input id="className" name="className" class="form-control"
+                                        [(ngModel)]="searchRequest.filter.className" #type="ngModel"
+                                        placeholder="{{'uris.className-placeholder' | translate}}" list="classes">
+                                    <datalist id="classes">
+                                        <option *ngFor="let o of objetsList">{{o}}</option>
+                                    </datalist>
+                                </div>
+                                <div *ngIf="typeSearch==='resource'" class="form-group col-md-3">
+                                    <label for="entityId">{{'uris.entityId-field' | translate}}</label>
+                                    <input id="entityId" name="entityId" class="form-control"
+                                        [(ngModel)]="searchRequest.filter.entityId" #type="ngModel"
+                                        placeholder="{{'uris.entityId-placeholder' | translate}}" required>
+                                </div>
+                                <div *ngIf="typeSearch==='property'" class="form-group col-md-3">
+                                    <label for="property">{{'uris.property-field' | translate}}</label>
+                                    <input id="property" name="property" class="form-control"
+                                        [(ngModel)]="searchRequest.filter.propertyName" #type="ngModel"
+                                        placeholder="{{'uris.property-placeholder' | translate}}">
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" (click)="launchSearch()" [disabled]="
+                                    (typeSearch === 'property' && !searchRequest.filter.propertyName) ||
+                                    (typeSearch === 'resource' && (!searchRequest.filter.entityId || !searchRequest.filter.className)) ||
+                                    (typeSearch === 'entity' && !searchRequest.filter.className)
+                                ">{{'uris.action-btn-launch-search'
+                                | translate}}</button>
+                        </form>
+
+                    </div>
+                </div>
+
+                <div *ngIf="actionSearch === 'local'">
+                    <div class="card-body">
+
+                        <h5 class="card-title">{{'uris.local-search' | translate}}aaa</h5>
+                        <form>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="domain">{{'uris.canonical-field' | translate}}</label>
+                                    <input id="domain" name="domain" class="form-control"
+                                        [(ngModel)]="searchRequest.filter.canonicalUri" #type="ngModel"
+                                        placeholder="{{'uris.canonical-placeholder' | translate}}" list="domainList">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="language">{{'uris.language-field' | translate}}</label>
+                                    <input id="language" name="language" class="form-control"
+                                        [(ngModel)]="searchRequest.filter.languageCode" #type="ngModel"
+                                        placeholder="{{'uris.language-placeholder' | translate}}" list="languages">
+                                    <datalist id="languages">
+                                        <option>es-ES</option>
+                                        <option>en-EN</option>
+                                    </datalist>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="type">{{ "uris.storage-field" | translate }}</label>
+                                    <select class="col-4" name="type" [attr.aria-label]="'type-field' | translate"
+                                        class="form-control" [(ngModel)]="searchRequest.filter.storageName"
+                                        #type="ngModel">
+                                        <option *ngFor="let ls of localStorages" value="{{ls}}">{{ls}}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" (click)="launchSearch()" [disabled]="
+                                    !searchRequest.filter.canonicalUri || !searchRequest.filter.languageCode || !searchRequest.filter.storageName
+                                ">{{'uris.action-btn-launch-search'
+                                | translate}}</button>
+                        </form>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #notLoadedState>
+    {{'discovery.noData' | translate}}
+</ng-template>
+
+<div *ngIf="responseIsReady && responseData">
+    <div class="row">
+        <div class="col-12">
+            <div class="card flex-fill">
+                <div class="card-header">
+                    <!--{{ discovery.state-tittle | translate }}-->
+                    <legend class="legend">{{'uris.response-title' | translate}}</legend>
+                </div>
+
+
+                <div class="card-body">
+                    <div *ngIf="actionSearch ==='canonical'">
+                        <div *ngIf="responseData.length>0; else noDataInResponse">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">{{'uris.canonical-table-canonical-uri' | translate}}</th>
+                                        <th scope="col">{{'uris.canonical-table-language' | translate}}</th>
+                                        <th scope="col">{{'uris.canonical-table-canonical-language-uri' | translate}}
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of responseData">
+                                        <td><a href="{{item.canonicalURI}}">{{item.canonicalURI}}</a></td>
+                                        <td>{{ item.language }}</td>
+                                        <td><a href="{{item.canonicalLanguageURI}}">{{item.canonicalLanguageURI}}</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <ng-template #noDataInResponse>
+                            {{'uris.noData' | translate}}
+                        </ng-template>
+                    </div>
+
+                    <div *ngIf="actionSearch ==='local'">
+                        <div *ngIf="responseData.length>0; else noDataInResponse">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">{{'uris.canonical-table-canonical-language-uri' | translate}}
+                                        <th scope="col">{{'uris.storage-field' | translate}}</th>
+                                        <th scope="col">{{'uris.canonical-table-canonical-language-uri' | translate}}
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let item of responseData">
+                                        <td><a
+                                                href="{{item.canonicalURILanguageStr}}">{{item.canonicalURILanguageStr}}</a>
+                                        </td>
+                                        <td>{{ item.storageTypeStr }}</td>
+                                        <td><a href="{{item.localUri}}">{{item.localUri}}</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <ng-template #noDataInResponse>
+                            {{'uris.noData' | translate}}
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<ng-template #responseNoData>
+    {{'uris.noData' | translate}}
+</ng-template>
+
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="true">
+    <p style="color: white"> {{'uris.spinnet-text'
+        | translate}} </p>
+</ngx-spinner>

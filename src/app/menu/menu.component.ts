@@ -43,6 +43,7 @@ export class MenuComponent implements OnInit {
       this.isLogged = data;
     });
     this.menuService.getMenu().then((menuItems: MenuItem[]) => {
+      console.log('MenuItems', menuItems)
       this.menuItems = menuItems;
     });
 
