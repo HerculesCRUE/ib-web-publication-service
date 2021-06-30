@@ -51,6 +51,7 @@ import { AllDataImporterStructuresComponent } from './data-importer/all-data-imp
 import { NewDataImporterComponent } from './data-importer/new-data-importer/new-data-importer.component';
 
 import { NgxSpinnerModule } from "ngx-spinner";
+import { ServiceDiscoveryComponent } from '../service-discovery/service-discovery/service-discovery.component';
 
 @NgModule({
   declarations: [ResearchmentStructuresComponent, ResearchmentStructuresDetailComponent, AllResearchmentStructuresComponent,
@@ -60,7 +61,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
     ProjectsDetailComponent, ParticipantsComponent, DeliverableComponent, ScientistComponent, ScientistDetailComponent,
     DirectedJobsComponent, StartupComponent, AreasComponent, EventsComponent,
     ScientificProductionComponent, DocumentDetailComponent, EventDetailComponent, StatisticsComponent, DiscoveryComponent,
-    DiscoveryControlComponent, DiscoverySearchComponent, DiscoveryActionComponent, ResultItemComponent, UrisComponent,
+    DiscoveryControlComponent, DiscoverySearchComponent, DiscoveryActionComponent, ResultItemComponent, UrisComponent, ServiceDiscoveryComponent,
     PeopleInvolvedComponent, CollaboratorsComponent, ScientificPublicationDetailComponent, AreasListComponent, DataImporterComponent, AllDataImporterStructuresComponent, NewDataImporterComponent
   ],
   imports: [

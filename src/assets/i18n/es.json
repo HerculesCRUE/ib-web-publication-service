@@ -60,6 +60,7 @@
     "acction-inves": "Acciones investigación",
     "stats": "Estadisticas",
     "discovery": "Librería de descubrimiento",
+    "service-discovery": "Monitor Backends",
     "uris-factory": "Factoría de URIs",
     "accessibility": "Accesibilidad",
     "login": "Acceder",
@@ -328,6 +329,20 @@
     "canonical-placeholder":"Inserte la URI Pública (canonica) para buscar por este criterio",
     "storage-field":"Tipo de almacenamiento",
     "storage-placeholder":"Inserte el nombre del almacenamiento para buscar por este criterio"
+  },
+  "service-discovery": {
+    "title":"Monitorización de servicios",
+    "node":"Nodo",
+    "service":"Servicio",
+    "id":"id",
+    "name":"Nombre",
+    "base-url":"URL base",
+    "suffix-url":"Sufijo URL",
+    "port":"Puerto",
+    "healthEndpoint":"Endpoint de comprobación de estado",
+    "status":"Estado",
+    "endPoint":"Endpoint"
+
   },
   "projects": {
     "year": "Año",

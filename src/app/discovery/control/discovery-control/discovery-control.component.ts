@@ -5,7 +5,7 @@ import { DiscoveryService } from 'src/app/_services/discovery/discovery.service'
 @Component({
   selector: 'app-discovery-control',
   templateUrl: './discovery-control.component.html',
-  styleUrls: ['./discovery-control.component.css']
+  styleUrls: ['./discovery-control.component.css', './discovery-control.component.scss']
 })
 export class DiscoveryControlComponent implements OnInit {
 

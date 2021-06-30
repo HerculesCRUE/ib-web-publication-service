@@ -81,7 +81,7 @@ export class Helper {
 * @memberof Helper
 */
   static getUrisFactoryUrl() {
-    console.log('getFederationUrl', URIS_FACTORY.baseUrl + ":" + URIS_FACTORY.port)
+    console.log('getUrisFactoryUrl', URIS_FACTORY.baseUrl + ":" + URIS_FACTORY.port)
     return URIS_FACTORY.baseUrl + ":" + URIS_FACTORY.port;
   }
 

@@ -14,6 +14,7 @@ import { UrisComponent } from './uris-factory/uris.component';
 import { ContactComponent } from './contact/contact.component';
 import { GraphPageComponent } from './graph-page/graph-page.component';
 import { DataImporterComponent } from './categories/data-importer/data-importer.component';
+import { ServiceDiscoveryComponent } from './service-discovery/service-discovery/service-discovery.component';
 /**
  * **********************************************
  * ************** Rutas securizadas *************
@@ -77,6 +78,10 @@ const noSecureRoutes: Routes = [
   {
     path: 'uris-factory',
     component: UrisComponent,
+  },
+  {
+    path: 'service-discovery',
+    component: ServiceDiscoveryComponent,
   },
   /***************** Categories *******************/
   {

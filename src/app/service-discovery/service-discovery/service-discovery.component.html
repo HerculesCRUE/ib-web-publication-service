@@ -1,0 +1,136 @@
+<div *ngIf="dataIsReady; else notLoadedState">
+    <div class="row">
+        <div class="col-12">
+            <div class="card flex-fill">
+                <div class="card-header">
+                    <!--{{ discovery.state-tittle | translate }}-->
+                    <legend class="legend">{{'service-discovery.title' | translate}}</legend>
+
+                </div>
+
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-1">Nodos:</div>
+                        <div class="col-11">
+                            <ngb-accordion [closeOthers]="false">
+                                <ngb-panel *ngFor="let node of responseData" id="node-{{node.id}}"
+                                    title="{{node.name}}">
+                                    <ng-template ngbPanelContent>
+                                        <div class="row">
+                                            <div class="col-1">Servicios:</div>
+                                            <div class="col-11">
+                                                <ngb-accordion [closeOthers]="false">
+                                                    <ngb-panel *ngFor="let service of node.services"
+                                                        id="service-{{service.id}}" title="{{service.name}}"
+                                                        style="margin-left: 50px;">
+                                                        <span class="badge badge-success">Success</span>
+                                                        <ng-template ngbPanelContent>
+
+                                                            <table class="table table-bordered">
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>{{'service-discovery.id' | translate}}</td>
+                                                                        <td><strong>{{ service.id }}</strong></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>{{'service-discovery.name' | translate}}
+                                                                        </td>
+                                                                        <td><strong>{{ service.name }}</strong></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>{{'service-discovery.base-url' | translate}}
+                                                                        </td>
+                                                                        <td><strong>{{ service.baseURL }}</strong></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>{{'service-discovery.port' | translate}}
+                                                                        </td>
+                                                                        <td><strong>{{ service.port }}</strong></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>{{'service-discovery.healthEndpoint' |
+                                                                            translate}}
+                                                                        </td>
+                                                                        <td><strong>{{ service.healthEndpoint
+                                                                                }}</strong></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>{{'service-discovery.status' | translate}}
+                                                                        </td>
+                                                                        <td>
+                                                                            <span *ngIf="service.status === 'UP'"
+                                                                                class="badge badge-success">{{service.status}}</span>
+                                                                            <span *ngIf="service.status === 'UNKNOWN'"
+                                                                                class="badge badge-warning">{{service.status}}</span>
+                                                                            <span
+                                                                                *ngIf="service.status !== 'UNKNOWN' && service.status !== 'UP'"
+                                                                                class="badge badge-danger">{{service.status}}</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+
+                                                            <div class="row">
+                                                                <div class="col-1">Endpoints:</div>
+                                                                <div class="col-11">
+                                                                    <ngb-accordion [closeOthers]="false">
+                                                                        <ngb-panel *ngFor="let type of service.types"
+                                                                            id="type-{{type.id}}" title="{{type.name}}"
+                                                                            style="margin-left: 50px;">
+                                                                            <ng-template ngbPanelContent>
+                                                                                <table class="table table-bordered">
+                                                                                    <tbody>
+                                                                                        <tr>
+                                                                                            <td>{{'service-discovery.id'
+                                                                                                |
+                                                                                                translate}}
+                                                                                            </td>
+                                                                                            <td><strong>{{ type.id
+                                                                                                    }}</strong>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td>{{'service-discovery.name'
+                                                                                                |
+                                                                                                translate}}
+                                                                                            </td>
+                                                                                            <td><strong>{{ type.name
+                                                                                                    }}</strong>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td>{{'service-discovery.suffix-url'
+                                                                                                |
+                                                                                                translate}}</td>
+                                                                                            <td><strong>{{
+                                                                                                    type.suffixURL
+                                                                                                    }}</strong>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </ng-template>
+                                                                        </ngb-panel>
+                                                                    </ngb-accordion>
+                                                                </div>
+                                                            </div>
+
+                                                        </ng-template>
+                                                    </ngb-panel>
+                                                </ngb-accordion>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                </ngb-panel>
+                            </ngb-accordion>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #notLoadedState>
+    {{'discovery.noData' | translate}}
+</ng-template>

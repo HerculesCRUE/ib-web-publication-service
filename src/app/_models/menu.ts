@@ -86,6 +86,12 @@ export const MENU_ITEMS: MenuItem[] = [
     disabled: false
   },
   {
+    title: 'menu.service-discovery',
+    icon: 'oi-cloud',
+    url: '/main/service-discovery',
+    disabled: false
+  },
+  {
     title: 'menu.sparql',
     icon: 'oi-terminal',
     url: '/main/sparql',

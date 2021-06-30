@@ -7,7 +7,7 @@ import { DiscoveryService } from 'src/app/_services/discovery/discovery.service'
 @Component({
   selector: 'app-result-item',
   templateUrl: './result-item.component.html',
-  styleUrls: ['./result-item.component.css']
+  styleUrls: ['./result-item.component.css', './result-item.component.scss']
 })
 export class ResultItemComponent implements OnInit {
 

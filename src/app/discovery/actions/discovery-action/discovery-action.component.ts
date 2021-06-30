@@ -8,7 +8,7 @@ import { LoginService } from 'src/app/_services/login.service';
 @Component({
   selector: 'app-discovery-action',
   templateUrl: './discovery-action.component.html',
-  styleUrls: ['./discovery-action.component.css']
+  styleUrls: ['./discovery-action.component.css', './discovery-action.component.scss']
 })
 export class DiscoveryActionComponent implements OnInit {
 

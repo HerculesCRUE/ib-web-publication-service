@@ -60,6 +60,7 @@
     "acction-inves": "Investigation actions",
     "stats": "Stats and indicators",
     "discovery": "Discovery library",
+    "service-discovery": "Backends Monitor",
     "uris-factory": "URIs Factory",
     "accessibility": "Accessibility",
     "login": "Login",
@@ -316,6 +317,19 @@
     "canonical-placeholder":"Insert the Public URI (canonical) to search by this criteria",
     "storage-field":"Storage type",
     "storage-placeholder":"Insert the Storage type to search by this criteria"
+  },
+  "service-discovery": {
+    "title":"Services monitor",
+    "node":"Node",
+    "service":"Service",
+    "id":"id",
+    "name":"Name",
+    "base-url":"Base URL",
+    "suffix-url":"URL Suffix",
+    "port":"Port",
+    "healthEndpoint":"Health Endpoint",
+    "status":"Status",
+    "endPoint":"Endpoint"
   },
   "projects": {
     "year": "Year",

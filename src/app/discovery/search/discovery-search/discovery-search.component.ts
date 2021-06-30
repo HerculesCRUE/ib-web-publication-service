@@ -8,7 +8,7 @@ import { NgxSpinnerService } from "ngx-spinner";
 @Component({
   selector: 'app-discovery-search',
   templateUrl: './discovery-search.component.html',
-  styleUrls: ['./discovery-search.component.css']
+  styleUrls: ['./discovery-search.component.css', './discovery-search.component.scss']
 })
 export class DiscoverySearchComponent implements OnInit {
 
