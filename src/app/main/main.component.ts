@@ -19,6 +19,7 @@ export class MainComponent implements OnInit {
    * Indica si el menú está colapsado.
    */
   isMenuCollapsed = false;
+  isMenuTransitioning = false;
   /**
    *
    *
@@ -46,6 +47,10 @@ export class MainComponent implements OnInit {
    */
   toggleMenu() {
     this.isMenuCollapsed = !this.isMenuCollapsed;
+    this.isMenuTransitioning = true;
+    setTimeout(() => {
+      this.isMenuTransitioning = false;
+    }, 250); // collapsing transition time (layoutUMU.css -> .sidebar { transition: all .25s linear; })
   }
 
   /**

@@ -18,7 +18,7 @@
     "search-by-name": "Search by name",
     "search-by-title": "Search by title",
     "search-by-description": "Search by description",
-    "pagination": "Displaying results {{min}} accross {{max}} of {{total}}",
+    "pagination": "{{min}}-{{max}} of {{total}}",
     "pagination-next": "⟩",
     "pagination-previous": "⟨",
     "pagination-first": "«",

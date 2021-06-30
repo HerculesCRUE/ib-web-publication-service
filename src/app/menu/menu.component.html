@@ -1,25 +1,25 @@
 <!-- menu entries -->
-<ul class="sidebar-nav">
+<ul class="nav-list">
   <ng-container *ngFor="let item of menuItems">
 
-    <li class="sidebar-item" *ngIf="item.title === 'menu.sparql'" routerLinkActive="active">
+    <li *ngIf="item.title === 'menu.sparql'" routerLinkActive="active">
       <ng-container>
         <a class="sidebar-link" [routerLink]="[item.url]">
           <em class="oi icons-menu" [ngClass]="[item.icon]"></em>
-          {{ item.title | translate }}
+          <span>{{ item.title | translate }}</span>
         </a>
       </ng-container>
     </li>
-    <li class="sidebar-item" *ngIf="item.title !== 'menu.sparql'" routerLinkActive="active">
+    <li *ngIf="item.title !== 'menu.sparql'" routerLinkActive="active">
       <ng-container *ngIf="!item.disabled && item.title !== 'menu.sparql'">
         <a class="sidebar-link" [routerLink]="[item.url]">
           <em class="oi icons-menu" [ngClass]="[item.icon]"></em>
-          {{ item.title | translate }}
+          <span>{{ item.title | translate }}</span>
         </a>
       </ng-container>
       <ng-container *ngIf="item.disabled">
         <em class="oi icons-menu" [ngClass]="[item.icon]"></em>
-        {{ item.title | translate }}
+        <span>{{ item.title | translate }}</span>
       </ng-container>
     </li>
   </ng-container>

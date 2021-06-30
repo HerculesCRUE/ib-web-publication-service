@@ -18,7 +18,7 @@
     "search-by-name": "Buscar por nombre",
     "search-by-title": "Buscar por título",
     "search-by-description": "Buscar por descripción",
-    "pagination": "Viendo filas {{min}} a {{max}} de {{total}}",
+    "pagination": "{{min}}-{{max}} de {{total}}",
     "pagination-next": "⟩",
     "pagination-previous": "⟨",
     "pagination-first": "«",
