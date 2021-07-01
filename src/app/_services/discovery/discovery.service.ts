@@ -38,9 +38,9 @@ export class DiscoveryService extends AbstractService {
     // Pagination params
     parameters = Helper.addPaginationParams(parameters, findRequest.pageRequest);
 
-    return this.httpClient.post(Helper.getDiscoveryUrl() + '/cache/force-reload', {
+    return this.httpClient.post(Helper.getDiscoveryUrl() + '/discovery/cache/force-reload', {
       params: parameters
-    }).pipe(
+    }, { responseType: 'text' }).pipe(
       catchError(this.handleError)
     );
   }
@@ -207,7 +207,6 @@ export class DiscoveryService extends AbstractService {
       }
       console.log('doing request: ' + Helper.getDiscoveryUrl() + "/discovery/object-result/action?" + queryParams.join('&'))
       xhr.open("POST", Helper.getDiscoveryUrl() + "/discovery/object-result/action?" + queryParams.join('&'));
-
       xhr.responseType = 'json';
       xhr.send();
     });

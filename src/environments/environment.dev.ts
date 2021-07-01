@@ -6,6 +6,7 @@ export const environment = {
   oauthClientId: 'acme',
   oauthSecret: 'acmesecret',
   skipPort: '8080',
+  domain: 'ldp.herculesasioizertis.desa.um.es',
   keycloak: {
     realm: 'umasio',
     clientId: 'login-app',
@@ -18,6 +19,22 @@ export const environment = {
     logout: 'https://herculesasioizertis.desa.um.es/auth/realms/umasio/protocol/openid-connect/logout',
     redirectUrl: 'https%3A%2F%2Fherculesasioizertis.desa.um.es%2Fauth%2Frealms%2Fumasio%2Faccount%2F%23%2Fpersonal-info',
     clientSecret: ''
+  },
+  discovery: {
+    baseUrl: 'http://herc-iz-back-desa.atica.um.es',
+    port: '9327'
+  },
+  serviceDiscovery: {
+    baseUrl: 'http://host.docker.internal',
+    port: '8089'
+  },
+  federation: {
+    baseUrl: 'http://herc-iz-back-desa.atica.um.es',
+    port: '9328'
+  },
+  urisFactory: {
+    baseUrl: 'http://herc-iz-back-desa.atica.um.es',
+    port: '8080'
   },
   lpdUrl: 'https://ldp.herculesasioizertis.desa.um.es/',
   appUrl: 'https://app.herculesasioizertis.desa.um.es',

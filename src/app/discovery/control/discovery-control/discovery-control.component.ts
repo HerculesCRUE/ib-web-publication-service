@@ -88,8 +88,8 @@ export class DiscoveryControlComponent implements OnInit {
 
   forceReloadData() {
     this.discoveryService.forceDataReload(this.findRequest).subscribe(state => {
-      this.discoveryState = state;
-      this.isLoadedState = true;
+      this.isLoadedState = false;
+      this.loadDiscoveryState();
     });
   }
 

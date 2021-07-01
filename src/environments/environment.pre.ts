@@ -1,26 +1,43 @@
 export const environment = {
     production: true,
-    urlBase: 'https://app.linkeddata1test.um.es/api',
+    urlBase: 'https://linkeddata1.um.es/api',
     urlImporterBase: 'http://localhost:9320',
     urlWebsocket: '/gs-guide-websocket',
     oauthClientId: 'acme',
     oauthSecret: 'acmesecret',
     skipPort: '8080',
+    domain: 'ldpld1.um.es',
     keycloak: {
         realm: 'umasio',
         clientId: 'login-app',
         scope: 'openid, profile',
         authorizationGrantType: 'password',
-        authUrl: 'https://authld1test.um.es/auth',
-        authorizationUri: 'https://authld1test.um.es/auth/realms/umasio/protocol/openid-connect/auth',
-        userInfoUri: 'https://authld1test.um.es/auth/realms/umasio/protocol/openid-connect/userinfo',
-        tokenUri: 'https://authld1test.um.es/auth/realms/umasio/protocol/openid-connect/token',
-        logout: 'https://authld1test.um.es/auth/realms/umasio/protocol/openid-connect/logout',
-        redirectUrl: 'https%3A%2F%2Fauthld1test.um.es%2Fauth%2Frealms%2Fumasio%2Faccount%2F%23%2Fpersonal-info',
+        authUrl: 'https://authld1.um.es/auth',
+        authorizationUri: 'https://authld1.um.es/auth/realms/umasio/protocol/openid-connect/auth',
+        userInfoUri: 'https://authld1.um.es/auth/realms/umasio/protocol/openid-connect/userinfo',
+        tokenUri: 'https://authld1.um.es/auth/realms/umasio/protocol/openid-connect/token',
+        logout: 'https://authld1.um.es/auth/realms/umasio/protocol/openid-connect/logout',
+        redirectUrl: 'https%3A%2F%2Fauthld1.um.es%2Fauth%2Frealms%2Fumasio%2Faccount%2F%23%2Fpersonal-info',
         clientSecret: ''
     },
-    lpdUrl: 'https://ldpld1test.um.es/',
-    appUrl: 'https://app.linkeddata1test.um.es',
+    discovery: {
+        baseUrl: 'http://herc-iz-back-prod.atica.um.es',
+        port: '9327'
+    },
+    serviceDiscovery: {
+        baseUrl: 'http://host.docker.internal',
+        port: '8089'
+    },
+    federation: {
+        baseUrl: 'http://herc-iz-back-prod.atica.um.es',
+        port: '9328'
+    },
+    urisFactory: {
+        baseUrl: 'http://herc-iz-back-prod.atica.um.es',
+        port: '8321'
+    },
+    lpdUrl: 'https://ldpld1.um.es/',
+    appUrl: 'https://linkeddata1.um.es',
     sgi: 'https://github.com/HerculesCRUE/ib-asio-docs-/tree/master/13-Backend_SGI_Software'
 };
 
@@ -31,8 +48,8 @@ export const yasgui = {
     // method: 'GET'
 
     // Fuseki
-    endpoint: 'https://app.linkeddata1test.um.es/api/trellis/sparql',
+    endpoint: 'https://linkeddata1.um.es/api/trellis/sparql',
     method: 'POST',
-    endpointFeder: 'https://app.linkeddata1test.um.es/api/trellis/sparql',
+    endpointFeder: 'https://linkeddata1.um.es/api/trellis/sparql',
     methodFeder: 'POST',
 };
