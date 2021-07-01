@@ -5,53 +5,34 @@
         <h1 class="h3 mb-3" *ngIf="groupItem.title !== 'home.info'">{{
           groupItem.title | translate }}</h1>
         <div class="row" *ngIf="groupItem.title !== 'home.info'">
-          <div class="col-lg-4 col-xl-2 d-flex cursor home-cards" *ngFor="let item of groupItem.homeItems"
+          <div class="col-lg-4 col-xl-2 d-flex home-cards" *ngFor="let item of groupItem.homeItems"
             [ngClass]="{'hidden': (item.title === 'home.users' && !isLogged) || (item.title === 'home.import-data' && !isLogged)}">
-            <div class="card flex-fill  home-enabled" [routerLink]="[item.url]"
-              *ngIf="!item.disabled && item.url !== ''">
+            <div *ngIf="!item.disabled" class="card flex-fill  home-enabled">
               <div class="card-header">
-                <h3 class="d-flex align-items-center mb-0 font-weight-light">
+                <a *ngIf="item.url !== ''" class="icon-link d-flex align-items-center mb-0 font-weight-light"
+                  [routerLink]="[item.url]">
                   <em class="oi" [ngClass]="item.iconName"></em>
-                </h3>
+                </a>
+
+                <a *ngIf="item.url == ''" class="icon-link d-flex align-items-center mb-0 font-weight-light"
+                  target="_blank" [href]="item.urlExterna">
+                  <em class="oi" [ngClass]="item.iconName"></em>
+                </a>
 
               </div>
-              <div class="card-body my-0 pt-0">
-                <div class="row d-flex align-items-center mb-3">
-                  <div class="col-12">
-                    <h5 class="card-title mb-0 mt-2">{{ item.title| translate }}</h5>
-                  </div>
-                </div>
+              <div class="card-body my-0">
+                <div class="card-title">{{ item.title| translate }}</div>
               </div>
             </div>
-            <a target="_blank" class="card flex-fill  home-enabled" *ngIf="!item.disabled && item.url == ''"
-              [href]="item.urlExterna">
-              <div class="card-header">
-                <h3 class="d-flex align-items-center mb-0 font-weight-light">
-                  <em class="oi" [ngClass]="item.iconName"></em>
-                </h3>
-
-              </div>
-              <div class="card-body my-0 pt-0">
-                <div class="row d-flex align-items-center mb-3">
-                  <div class="col-12">
-                    <h5 class="card-title mb-0 mt-2">{{ item.title| translate }}</h5>
-                  </div>
-                </div>
-              </div>
-            </a>
             <div class="card flex-fill  home-disabled" [routerLink]="[item.url]" *ngIf="item.disabled">
               <div class="card-header">
-                <h3 class="d-flex align-items-center mb-0 font-weight-light">
+                <h3 class="icon-link d-flex align-items-center mb-0 font-weight-light">
                   <em class="oi" [ngClass]="item.iconName"></em>
                 </h3>
 
               </div>
-              <div class="card-body my-0 pt-0">
-                <div class="row d-flex align-items-center mb-3">
-                  <div class="col-12">
-                    <h5 class="card-title mb-0 mt-2" *ngIf="item.title !== 'home.info'">{{ item.title| translate }}</h5>
-                  </div>
-                </div>
+              <div class="card-body my-0">
+                <div class="card-title mb-0 mt-2" *ngIf="item.title !== 'home.info'">{{ item.title| translate }}</div>
               </div>
             </div>
 

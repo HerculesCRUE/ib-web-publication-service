@@ -253,18 +253,8 @@ table tbody {
   color: inherit !important;
 }
 
-.footer {
-  position: relative;
-  width: 100%;
-  min-height: 170px;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
 .logoFooter {
   width: 180px;
-  margin-top: 50px;
-  margin-left: 20px;
 }
 
 .topf {
