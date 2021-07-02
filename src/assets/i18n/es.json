@@ -145,7 +145,8 @@
     "graphs": "Renderización de metadatos de Named Graphs",
     "info-hercules": "Información sobre Hercules",
     "contact": "Datos de contacto",
-    "import-data": "Importador de datos"
+    "import-data": "Importador de datos",
+    "validation": "Validadores"
   },
   "links": {
     "title": "Links GitHub",
