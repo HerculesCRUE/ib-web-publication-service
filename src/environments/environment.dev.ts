@@ -1,7 +1,6 @@
 export const environment = {
   production: true,
   urlBase: 'https://app.herculesasioizertis.desa.um.es/api',
-  urlImporterBase: 'http://data.importer.um.es',
   urlWebsocket: '/gs-guide-websocket',
   oauthClientId: 'acme',
   oauthSecret: 'acmesecret',
@@ -19,6 +18,10 @@ export const environment = {
     logout: 'https://herculesasioizertis.desa.um.es/auth/realms/umasio/protocol/openid-connect/logout',
     redirectUrl: 'https%3A%2F%2Fherculesasioizertis.desa.um.es%2Fauth%2Frealms%2Fumasio%2Faccount%2F%23%2Fpersonal-info',
     clientSecret: ''
+  },
+  importer: {
+    baseUrl: 'http://herc-iz-back-desa.atica.um.es',
+    port: '9320'
   },
   discovery: {
     baseUrl: 'http://herc-iz-back-desa.atica.um.es',

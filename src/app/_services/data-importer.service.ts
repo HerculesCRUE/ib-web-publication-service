@@ -74,6 +74,7 @@ export class DataImporterService extends AbstractService {
    */
   import(data: DataImporter): Observable<DataImporter> {
     console.log("Import in service " + data);
+    data.user = 'test';
     return this.httpClient
       .post(Helper.getImporterUrl('/importer/schedule'), data)
       .pipe(catchError(this.handleError));
