@@ -137,7 +137,8 @@
     "graphs": "Named Graphs metadata rendering",
     "info-hercules": "Information about Hercules",
     "contact": "Contact information",
-    "import-data": "Data Importer"
+    "import-data": "Data Importer",
+    "validation": "Validators"
   },
   "links": {
     "title": "Links GitHub",

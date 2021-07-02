@@ -15,6 +15,7 @@ import { ContactComponent } from './contact/contact.component';
 import { GraphPageComponent } from './graph-page/graph-page.component';
 import { DataImporterComponent } from './categories/data-importer/data-importer.component';
 import { ServiceDiscoveryComponent } from './service-discovery/service-discovery/service-discovery.component';
+import { ValidationComponent } from './categories/validation/validation.component';
 /**
  * **********************************************
  * ************** Rutas securizadas *************
@@ -50,6 +51,10 @@ const noSecureRoutes: Routes = [
       ),
   },
   /* Data-Importer path */
+  {
+    path: 'validation',
+    component: ValidationComponent,
+  },
   {
     path: 'data-importer',
     component: DataImporterComponent,

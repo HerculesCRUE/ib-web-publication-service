@@ -65,7 +65,8 @@
     "accessibility": "Accessibility",
     "login": "Login",
     "contact": "Contact",
-    "graph": "Renderización named graph"
+    "graph": "Renderización named graph",
+    "validation": "Validators"
   },
   "login": {
     "form": {
@@ -137,7 +138,8 @@
     "graphs": "Named Graphs metadata rendering",
     "info-hercules": "Information about Hercules",
     "contact": "Contact information",
-    "import-data": "Data Importer"
+    "import-data": "Data Importer",
+    "validation": "Validators"
   },
   "links": {
     "title": "Links GitHub",
