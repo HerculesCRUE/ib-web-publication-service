@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   urlBase: 'https://app.herculesasioizertis.desa.um.es/api',
-  urlImporterBase: 'http://localhost:9320',
+  urlImporterBase: 'http://data.importer.um.es',
   urlWebsocket: '/gs-guide-websocket',
   oauthClientId: 'acme',
   oauthSecret: 'acmesecret',
