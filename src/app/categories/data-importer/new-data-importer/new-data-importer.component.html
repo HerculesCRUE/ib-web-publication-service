@@ -3,7 +3,7 @@
         {{'importation.import-title' | translate}}
     </legend>
 
-    <form name="form" (ngSubmit)="f.form.valid && import()" #f="ngForm" autocomplete="false" novalidate>
+    <form name="form" (ngSubmit)="f.form.valid && importXhr()" #f="ngForm" autocomplete="false" novalidate>
         <div class="form-row">
 
             <fieldset class="scheduler-border">
