@@ -329,7 +329,8 @@
     "port":"Port",
     "healthEndpoint":"Health Endpoint",
     "status":"Status",
-    "endPoint":"Endpoint"
+    "endPoint":"Endpoint",
+    "noData":"Could not load Service Discovery data"
   },
   "projects": {
     "year": "Year",

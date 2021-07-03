@@ -341,7 +341,8 @@
     "port":"Puerto",
     "healthEndpoint":"Endpoint de comprobación de estado",
     "status":"Estado",
-    "endPoint":"Endpoint"
+    "endPoint":"Endpoint",
+    "noData":"No se han recuperado datos de el Service Discovery"
 
   },
   "projects": {

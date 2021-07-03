@@ -46,7 +46,7 @@ export class Helper {
    * @memberof Helper
    */
   static getDiscoveryUrl() {
-    return DISCOVERY.baseUrl + ":" + DISCOVERY.port;
+    return DISCOVERY.baseUrl + ((DISCOVERY.port != null) ? (':' + DISCOVERY.port) : "");
   }
 
   /**
@@ -57,8 +57,8 @@ export class Helper {
  * @memberof Helper
  */
   static getServiceDiscoveryUrl() {
-    console.log('getServiceDiscoveryUrl', SERVICE_DISCOVERY.baseUrl + ":" + SERVICE_DISCOVERY.port)
-    return SERVICE_DISCOVERY.baseUrl + ":" + SERVICE_DISCOVERY.port;
+    console.log(SERVICE_DISCOVERY.baseUrl + ((SERVICE_DISCOVERY.port != null) ? (':' + SERVICE_DISCOVERY.port) : ""))
+    return SERVICE_DISCOVERY.baseUrl + ((SERVICE_DISCOVERY.port != null) ? (':' + SERVICE_DISCOVERY.port) : "");
   }
 
   /**
@@ -69,8 +69,8 @@ export class Helper {
 * @memberof Helper
 */
   static getFederationUrl() {
-    console.log('getFederationUrl', FEDERATION.baseUrl + ":" + FEDERATION.port)
-    return FEDERATION.baseUrl + ":" + FEDERATION.port;
+    console.log('getFederationUrl', FEDERATION.baseUrl + ((FEDERATION.port != null) ? (':' + FEDERATION.port) : ""))
+    return FEDERATION.baseUrl + ((FEDERATION.port != null) ? (':' + FEDERATION.port) : "");
   }
 
   /**
@@ -81,8 +81,8 @@ export class Helper {
 * @memberof Helper
 */
   static getUrisFactoryUrl() {
-    console.log('getUrisFactoryUrl', URIS_FACTORY.baseUrl + ":" + URIS_FACTORY.port)
-    return URIS_FACTORY.baseUrl + ":" + URIS_FACTORY.port;
+    console.log('getUrisFactoryUrl', URIS_FACTORY.baseUrl + ((URIS_FACTORY.port != null) ? (':' + URIS_FACTORY.port) : ""))
+    return URIS_FACTORY.baseUrl + ((URIS_FACTORY.port != null) ? (':' + URIS_FACTORY.port) : "");
   }
 
 

@@ -21,20 +21,20 @@ export const environment = {
     clientSecret: ''
   },
   discovery: {
-    baseUrl: 'http://herc-iz-back-prod.atica.um.es',
-    port: '9327'
+    baseUrl: 'https://linkeddata1.um.es/discovery',
+    port: null
   },
   serviceDiscovery: {
-    baseUrl: 'http://host.docker.internal',
-    port: '8089'
+    baseUrl: 'https://linkeddata1.um.es/service-discovery',
+    port: null
   },
   federation: {
-    baseUrl: 'http://herc-iz-back-prod.atica.um.es',
-    port: '9328'
+    baseUrl: 'https://linkeddata1.um.es/federation',
+    port: null
   },
   urisFactory: {
-    baseUrl: 'http://herc-iz-back-prod.atica.um.es',
-    port: '8321'
+    baseUrl: 'https://linkeddata1.um.es/uri-factory',
+    port: null
   },
   lpdUrl: 'https://ldpld1.um.es/',
   appUrl: 'https://linkeddata1.um.es',

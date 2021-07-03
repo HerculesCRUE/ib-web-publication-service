@@ -19,6 +19,7 @@ export class ServiceDiscoveryService extends AbstractService {
     return new Promise((resolve, reject) => {
       let formData: any = new FormData()
       let xhr = new XMLHttpRequest()
+      xhr.withCredentials = false;
       xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
           if (xhr.status === 200) {
@@ -33,6 +34,7 @@ export class ServiceDiscoveryService extends AbstractService {
       console.log('do request', Helper.getServiceDiscoveryUrl() + "/service-discovery");
       xhr.open("GET", Helper.getServiceDiscoveryUrl() + "/service-discovery");
       xhr.setRequestHeader("Content-Type", "application/json");
+      //xhr.setRequestHeader('Content-Security-Policy', 'upgrade-insecure-requests');
       xhr.responseType = 'json';
       xhr.send();
     });
