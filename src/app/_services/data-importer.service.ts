@@ -74,11 +74,43 @@ export class DataImporterService extends AbstractService {
    */
   import(data: DataImporter): Observable<DataImporter> {
     console.log("Import in service " + data);
+    data.user = 'test';
     return this.httpClient
       .post(Helper.getImporterUrl('/importer/schedule'), data)
       .pipe(catchError(this.handleError));
   }
 
+  /**
+  * Method in order to launch the importation
+  * @param data input param
+  */
+  importXhr(data: DataImporter) {
+    console.log("Import in service " + data);
+    data.user = 'test';
+
+    return new Promise((resolve, reject) => {
+
+      let xhr = new XMLHttpRequest();
+
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            console.log('OK xhr.response', xhr.response);
+            resolve(xhr.response)
+          } else {
+            console.log('BAD xhr.response', xhr.response);
+            reject(xhr.response)
+          }
+        }
+      }
+
+      console.log('do request', Helper.getImporterUrl('/importer/schedule'));
+      xhr.open("POST", Helper.getImporterUrl('/importer/schedule'));
+      xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+      xhr.responseType = 'json';
+      xhr.send(JSON.stringify(data));
+    });
+  }
 
   /**
    * Returns the errors associated to an import execution

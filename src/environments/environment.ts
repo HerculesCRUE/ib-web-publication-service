@@ -5,7 +5,6 @@
 export const environment = {
   production: false,
   urlBase: 'http://localhost:8787',
-  urlImporterBase: 'http://localhost:9320',
   oauthUrl: '',
   urlWebsocket: '/gs-guide-websocket',
   oauthClientId: 'acme',
@@ -24,6 +23,10 @@ export const environment = {
     logout: 'http://localhost:8080/auth/realms/umasio/protocol/openid-connect/logout',
     redirectUrl: 'http%3A%2F%2Flocalhost%3A8080%2Fauth%2Frealms%2Fumasio%2Faccount%2Flogin-redirect',
     clientSecret: ''
+  },
+  importer: {
+    baseUrl: 'http://localhost',
+    port: '9320'
   },
   discovery: {
     baseUrl: 'http://localhost',
