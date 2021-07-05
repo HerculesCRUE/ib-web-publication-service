@@ -92,20 +92,4 @@ export class NewDataImporterComponent implements OnInit {
       })
     );
   }
-
-  /**
-   * Launchs an import operation
-   */
-  importXhr() {
-    this.dataImporterService.importXhr(this.importation).then((data) => {
-      if (this.createMode) {
-        this.router.navigate(['/main/data-importer']);
-      }
-      console.info(data);
-      this.toastr.success(this.translate.instant('importation.succeeded-import', this.translate.instant('toast.success')));
-    }, (error) => {
-      console.error(error);
-      this.toastr.error(this.translate.instant('importation.failed-import', this.translate.instant('toast.error')));
-    });
-  }
 }
