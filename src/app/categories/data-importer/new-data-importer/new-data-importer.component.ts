@@ -43,7 +43,7 @@ export class NewDataImporterComponent implements OnInit {
    */
   init() {
     this.constants.DATASET = "dataset";
-    this.constants.DATASET_PARAM = "/home/herculesizertis/resourcesFull/dataset";
+    this.constants.DATASET_PARAM = "/dataset";
 
     this.constants.CVN = "cvn";
     this.constants.CVN_PARAM = "http://curriculumpruebas.um.es/curriculum/rest/v1/auth";
