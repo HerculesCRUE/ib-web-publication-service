@@ -24,7 +24,7 @@ export class Helper {
  * @param fragment Fragmento de URL.
  */
   static getImporterUrl(fragment: string) {
-    return IMPORTER_SERVICE.baseUrl + ":" + IMPORTER_SERVICE.port + fragment;
+    return IMPORTER_SERVICE.baseUrl + ((IMPORTER_SERVICE.port != null) ? (':' + IMPORTER_SERVICE.port) : "") + fragment;
   }
 
   /**
