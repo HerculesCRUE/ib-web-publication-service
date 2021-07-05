@@ -14,6 +14,7 @@ import { StatisticsComponent } from './statistics/statistics.component';
 import { PatentDetailComponent } from '../common/patent-detail/patent-detail.component';
 import { ScientificPublicationDetailComponent } from './scientific-publication-detail/scientific-publication-detail.component';
 import { NewDataImporterComponent } from './data-importer/new-data-importer/new-data-importer.component';
+import { NewValidatorComponent } from './validator/new-validator/new-validator.component';
 
 const routes: Routes = [
   {
@@ -76,6 +77,10 @@ const routes: Routes = [
   {
     path: 'new-data-importer',
     component: NewDataImporterComponent
+  },
+  {
+    path: 'new-validator',
+    component: NewValidatorComponent
   }
 ];
 

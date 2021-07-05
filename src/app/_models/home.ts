@@ -131,10 +131,10 @@ export const HOME_ITEMS: HomeGroupItem[] = [{
       urlExterna: ''
     },
     {
-      title: 'home.validation',
+      title: 'home.validator',
       iconName: 'oi-loop-circular',
       iconCircle: false,
-      url: '/main/validation',
+      url: '/main/validator',
       disabled: false,
       urlExterna: ''
     }

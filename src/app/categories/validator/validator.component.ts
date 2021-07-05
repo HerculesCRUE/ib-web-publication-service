@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'validation',
-    templateUrl: './validation.component.html',
+    selector: 'validator',
+    templateUrl: './validator.component.html',
 })
-export class ValidationComponent {
+export class ValidatorComponent {
 
     constructor() { }
 

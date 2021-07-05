@@ -26,11 +26,12 @@
 
 
                     <div class="loader" *ngIf="!loaded"></div>
-                    <app-table-results-importer [displayPagination]="false" [findRequest]="findRequest"
-                        *ngIf="loaded && resultObject?.content?.length !== 0"
-                        [dtoTypeTranslate]="'dataImporterStructure'" [extra]="'2'" [data]="resultObject?.content"
-                        [pageInfo]="resultObject" (sortChanged)="allResearchmentStructuresFilteredSortChanged($event)">
-                    </app-table-results-importer>
+                    <app-table-results-validator (idToDelete)="deleteQUery($event)" [hasActions]="true"
+                        [displayPagination]="false" [findRequest]="findRequest" [dtoTypeTranslate]="'validator'"
+                        [extra]="'1'" *ngIf="loaded && resultObject?.content?.length !== 0"
+                        [data]="resultObject?.content" [pageInfo]="resultObject"
+                        (sortChanged)="allResearchmentStructuresFilteredSortChanged($event)">
+                    </app-table-results-validator>
                     <div class="container-fluid app-table-results">
                         <div class="row">
                             <div class="col">

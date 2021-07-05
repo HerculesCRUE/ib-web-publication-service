@@ -146,7 +146,7 @@
     "info-hercules": "Información sobre Hercules",
     "contact": "Datos de contacto",
     "import-data": "Importador de datos",
-    "validation": "Validadores"
+    "validator": "Validadores"
   },
   "links": {
     "title": "Links GitHub",
@@ -570,5 +570,14 @@
       "cron": "Cron",
       "close": "Cerrar"
     }
+  },
+  "validator": {
+    "header": "Validadores",
+    "button": "+ Crear validador",
+    "id": "ID",
+    "entity": "Entidad",
+    "validator": "Validador",
+    "delete": "¿Está seguro que desea borrar el registro?",
+    "new-form": "Nuevo validador"
   }
 }

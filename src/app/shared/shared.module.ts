@@ -11,13 +11,16 @@ import { PatentService } from '../_services/patent.service';
 import { DocumentService } from '../_services/document.service';
 import { TableResultsDtoComponent } from '../common-display-data/table-results-dto/table-results-dto.component';
 import { TableResultsImporterComponent } from '../common-display-data/table-results-importer/table-results-importer.component';
+import { TableResultsValidatorComponent } from '../common-display-data/table-results-validator/table-results-validator.component';
+
 
 @NgModule({
   declarations: [
     PaginationComponent,
     TableResultsComponent,
     TableResultsDtoComponent,
-    TableResultsImporterComponent],
+    TableResultsImporterComponent,
+    TableResultsValidatorComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -33,7 +36,8 @@ import { TableResultsImporterComponent } from '../common-display-data/table-resu
     NgbModule,
     TableResultsComponent,
     TableResultsDtoComponent,
-    TableResultsImporterComponent],
+    TableResultsImporterComponent,
+    TableResultsValidatorComponent],
   providers: [
     PatentService,
     DocumentService
