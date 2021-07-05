@@ -77,6 +77,9 @@ export class PatentsComponent extends PaginatedSearchComponent<Patent> implement
   dateIni;
   dateFin;
 
+  @Input() mainColumn: string = 'title';
+  @Input() visibleColumns: Array<string> = ['title', 'dateIssued'];
+
   /**
    * Creates an instance of PatentsComponent.
    * @param {PatentService} patentService

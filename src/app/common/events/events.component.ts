@@ -23,6 +23,8 @@ export class EventsComponent extends PaginatedSearchComponent<Event> implements 
   dateFin;
   loaded: boolean;
 
+  @Input() mainColumn: string = 'title';
+  @Input() visibleColumns: Array<string> = ['title', 'date', 'locality'];
 
   constructor(private eventsService: EventsService,
     router: Router,

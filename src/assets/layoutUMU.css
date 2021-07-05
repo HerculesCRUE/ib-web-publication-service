@@ -1188,9 +1188,11 @@ footer.footerRow span+.footer-links {
 footer.footerRow .footer-links>span {
     padding: 0 5px;
 }
-footer.footerRow .footer-links>span:first-child,
+footer.footerRow .footer-links>span:first-child {
+	padding-left: 0;
+}
 footer.footerRow .footer-links>span:last-child {
-	padding: 0;
+	padding-right: 0;
 }
 
 /* table */
@@ -1237,7 +1239,8 @@ table.table tbody tr {
     border-bottom: solid 2px #dee2e6;
     cursor: default;
     margin: 0px;
-    padding: 0px;
+	padding: 0px;
+	height: 47px;
 }
 table.table tbody tr td {
     background: transparent;
@@ -1274,6 +1277,25 @@ table.table thead th.sortable .fa-caret-up-down:after {
 table.table caption {
 	display: none;
 }
+
+@media screen and (min-width: 768px) {
+	table.table th.main-col-of-2 {
+		width: 75%;
+	}
+	table.table th.main-col-of-3 {
+		width: 50%;
+	}
+	table.table th.main-col-of-4 {
+		width: 45%;
+	}
+	table.table th.main-col-of-5 {
+		width: 40%;
+	}
+}
+
+
+/* table pagination */
+
 app-pagination {
 	margin: 20px 0 15px;
 	align-items: center;
@@ -1396,4 +1418,81 @@ app-pagination .pagination-sm .page-item a.page-link:focus {
     box-shadow: inset 0 0 0 5px var(--umu-focus-shadow);
     outline: solid 1px var(--umu-focus);
     outline-offset: -5px;
+}
+
+/* panel */
+
+.panel {
+	background: #ffffff;
+	color: var(--gris-oscuro-500-base);
+	padding: 0px;
+	border: none;
+	border-radius: 6px;
+	box-shadow: 0 2px 8px 0 rgba(7, 18, 37, 0.2);
+	margin-bottom: 36px;
+}
+.panel .panel-titlebar {
+	color: #333333;
+	font-weight: bold;
+	padding: 17px 24px 17px var(--panel-padding);
+	background-color: var(--umu-gris-claro-200);
+	border: none;
+	border-radius: 6px 6px 0px 0px;
+	display: flex;
+	padding: 10px 24px 10px var(--panel-padding); /* custom override */
+}
+.panel .panel-titlebar .panel-title {
+    font-size: var(--h-panel-size);
+    font-weight: bold;
+    line-height: 1.5;
+    color: var(--umu-gris-oscuro-500);
+    width: 100%;
+    margin: 0 8px 0 0;
+}
+.panel .panel-titlebar .panel-title h1,
+.panel .panel-titlebar .panel-title h2,
+.panel .panel-titlebar .panel-title h3,
+.panel .panel-titlebar .panel-title h4,
+.panel .panel-titlebar .panel-title h5 {
+	font-size: var(--h-panel-size);
+	font-weight: bold;
+	margin: 0 8px 0 0;
+	font-size: 18px; /* custom override */
+	line-height: 1.5; /* custom override */
+}
+.panel .panel-titlebar-icon {
+    float: right;
+	cursor: pointer;
+	text-shadow: none;
+	border: none;
+    background: none;
+    box-shadow: unset;
+    margin-top: 4px;
+    margin-left: 8px;
+	height: max-content;
+}
+.panel .panel-titlebar .panel-titlebar-icon .ui-icon {
+    font: normal normal normal 20px/1 FontAwesome;
+    text-transform: none;
+    display: inline-block;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-indent: 0 !important;
+    text-align: center;
+    background: 0;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    font-size: 20px;
+}
+.panel .panel-content {
+	color: var(--gris-oscuro-500-base);
+	border: 0;
+	background: 0;
+}
+.panel .panel-content .panel-body {
+	padding: var(--panel-padding);
+}
+.panel .panel-content .newTree {
+	margin-bottom: 0 !important;
 }

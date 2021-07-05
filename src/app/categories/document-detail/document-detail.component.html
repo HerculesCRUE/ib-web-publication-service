@@ -16,19 +16,53 @@
             <div id="datatables-dashboard-markets_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                 <div class="detail-container">
                     <div class="row">
-                        <div class="col-12">
-                            <p><strong>{{'documents.type' | translate}}: {{lastItem}}</strong></p>
-                            <p><strong>{{'documents.doi' | translate}}:</strong> {{document.doi}}</p>
-                            <p><strong>{{'documents.date' | translate}}:</strong> {{document.date}}</p>
-                            <p><strong>{{'documents.edition' | translate}}:</strong> {{document.edition}}</p>
-                            <p><strong>{{'documents.startPage' | translate}}:</strong> {{document.startPage}}</p>
-                            <p><strong>{{'documents.endPage' | translate}}:</strong> {{document.endPage}}</p>
-                            <p><strong>{{'documents.summary' | translate}}:</strong> {{document.summary}}
-                                {{document.description}}</p>
-                            <p><strong>{{'documents.placeOfPublication' | translate}}:</strong>
-                                {{document.placeOfPublication}}</p>
-                            <p><strong>{{'documents.publishedIn' | translate}}:</strong> {{document.publishedIn}}</p>
-                        </div>
+
+                        <ng-template #detailField let-titleKey="titleKey" let-value="value" let-value2="value2"
+                            let-optional="optional" let-hidden="hidden">
+                            <div class="col-lg-6" *ngIf="!hidden && (!optional || !!value || !!value2)">
+                                <p>
+                                    <strong>{{titleKey | translate}}:</strong>
+                                    <ng-container *ngIf="value || value === 0">
+                                        {{value}}
+                                    </ng-container>
+                                    <ng-container *ngIf="value2 || value2 === 0">
+                                        {{value2}}
+                                    </ng-container>
+                                    <ng-container *ngIf="!(value || value === 0 || value2 || value2 === 0)">
+                                        --
+                                    </ng-container>
+                                </p>
+                            </div>
+                        </ng-template>
+
+                        <ng-container
+                            *ngTemplateOutlet="detailField;context:{'titleKey': 'documents.type', 'value': lastItem}">
+                        </ng-container>
+                        <ng-container
+                            *ngTemplateOutlet="detailField;context:{'titleKey': 'documents.doi', 'value': document?.doi}">
+                        </ng-container>
+                        <ng-container
+                            *ngTemplateOutlet="detailField;context:{'titleKey': 'documents.date', 'value': document?.date}">
+                        </ng-container>
+                        <ng-container
+                            *ngTemplateOutlet="detailField;context:{'titleKey': 'documents.edition', 'value': document?.edition}">
+                        </ng-container>
+                        <ng-container
+                            *ngTemplateOutlet="detailField;context:{'titleKey': 'documents.startPage', 'value': document?.startPage}">
+                        </ng-container>
+                        <ng-container
+                            *ngTemplateOutlet="detailField;context:{'titleKey': 'documents.endPage', 'value': document?.endPage}">
+                        </ng-container>
+                        <ng-container
+                            *ngTemplateOutlet="detailField;context:{'titleKey': 'documents.summary', 'value': document?.summary, 'value2': document.description}">
+                        </ng-container>
+                        <ng-container
+                            *ngTemplateOutlet="detailField;context:{'titleKey': 'documents.placeOfPublication', 'value': document?.placeOfPublication}">
+                        </ng-container>
+                        <ng-container
+                            *ngTemplateOutlet="detailField;context:{'titleKey': 'documents.publishedIn', 'value': document?.publishedIn}">
+                        </ng-container>
+
                     </div>
                 </div>
             </div>

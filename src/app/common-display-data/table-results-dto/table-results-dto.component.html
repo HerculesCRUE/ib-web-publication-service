@@ -5,8 +5,8 @@
         <caption>{{'form.results' | translate }}</caption>
         <thead>
           <tr>
-            <th class="sortable" (click)="sort(header)" *ngFor="let header of hedearDTO"
-              id="{{header + dtoTypeTranslate + extra}}">
+            <th class="sortable {{header === mainColumn ? mainColumnClass : ''}}" (click)="sort(header)"
+              *ngFor="let header of hedearDTO" id="{{header + dtoTypeTranslate + extra}}">
               <em class="oi oi-info" *ngIf="needTooltip(header).required" placement="top"
                 ngbTooltip="{{needTooltip(header).textValue}}"></em>
               {{ dtoTypeTranslate + '.' + header | translate }}<em class="float-right"

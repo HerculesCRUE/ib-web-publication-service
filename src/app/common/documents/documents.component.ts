@@ -147,6 +147,9 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
    */
   normalTree = true;
 
+  @Input() mainColumn: string = 'title';
+  @Input() visibleColumns: Array<string> = ['title', 'date'];
+
 
   constructor(private documentService: DocumentService,
     private maskController: MaskController,
