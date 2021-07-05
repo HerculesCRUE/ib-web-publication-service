@@ -1,0 +1,20 @@
+<div class="panel {{panelClass}}"
+  [ngClass]="{'collapsable': collapsable, 'collapsed': panelCollapsed, 'panel-collapsing': collapsing}">
+
+  <div class="panel-titlebar" ngClass="{{titlebarClass}}">
+    <span class="panel-title">
+      <h2>{{ title }}</h2>
+    </span>
+    <a (click)="togglePanel()" class="panel-titlebar-icon" aria-label="Toggle Panel">
+      <em *ngIf="collapsable" class="{{panelCollapsed ? collapsedIcon : notCollapsedIcon}}"></em>
+    </a>
+  </div>
+  <div class="panel-content" ngClass="{{panelCollapseClass}}" [@toggle]="panelCollapsed"
+    (@toggle.start)="collapsing = !collapsing" (@toggle.done)="collapsing = !collapsing">
+
+    <div class="panel-body">
+      <ng-content></ng-content>
+    </div>
+
+  </div>
+</div>

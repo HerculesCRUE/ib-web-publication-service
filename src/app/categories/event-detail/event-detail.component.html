@@ -16,19 +16,49 @@
             <div id="datatables-dashboard-markets_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                 <div class="detail-container">
                     <div class="row">
+
+                        <ng-template #detailField let-titleKey="titleKey" let-value="value" let-optional="optional"
+                            let-hidden="hidden">
+                            <div class="col-lg-6" *ngIf="!hidden && (!optional || !!value)">
+                                <p>
+                                    <strong>{{titleKey | translate}}:</strong>
+                                    {{value || value === 0 ? value : '--'}}
+                                </p>
+                            </div>
+                        </ng-template>
+
                         <div class="col-12">
                             <p><strong>{{event.type}}</strong></p>
-                            <p><strong>{{'events.id' | translate}}:</strong> {{event.id}}</p>
-                            <p><strong>{{'events.type' | translate}}:</strong> {{event.type}}</p>
-                            <p><strong>{{'events.abbreviation' | translate}}:</strong> {{event.abbreviation}}</p>
-                            <p><strong>{{'events.contactInformation' | translate}}:</strong>
-                                {{event.contactInformation}}</p>
-                            <p><strong>{{'events.date' | translate}}:</strong> {{event.date}}</p>
-                            <p><strong>{{'events.description' | translate}}:</strong> {{event.description}}</p>
-                            <p><strong>{{'events.locality' | translate}}:</strong> {{event.locality}}</p>
-                            <p><strong>{{'events.locatedIn' | translate}}:</strong> {{event.locatedIn}}</p>
-                            <p><strong>{{'events.presents' | translate}}:</strong> {{event.presents}}</p>
                         </div>
+
+                        <ng-container
+                            *ngTemplateOutlet="detailField;context:{'titleKey': 'events.id', 'value': event?.id}">
+                        </ng-container>
+                        <ng-container
+                            *ngTemplateOutlet="detailField;context:{'titleKey': 'events.type', 'value': event?.type}">
+                        </ng-container>
+                        <ng-container
+                            *ngTemplateOutlet="detailField;context:{'titleKey': 'events.abbreviation', 'value': event?.abbreviation}">
+                        </ng-container>
+                        <ng-container
+                            *ngTemplateOutlet="detailField;context:{'titleKey': 'events.contactInformation', 'value': event?.contactInformation}">
+                        </ng-container>
+                        <ng-container
+                            *ngTemplateOutlet="detailField;context:{'titleKey': 'events.date', 'value': event?.date}">
+                        </ng-container>
+                        <ng-container
+                            *ngTemplateOutlet="detailField;context:{'titleKey': 'events.description', 'value': event?.description}">
+                        </ng-container>
+                        <ng-container
+                            *ngTemplateOutlet="detailField;context:{'titleKey': 'events.locality', 'value': event?.locality}">
+                        </ng-container>
+                        <ng-container
+                            *ngTemplateOutlet="detailField;context:{'titleKey': 'events.locatedIn', 'value': event?.locatedIn}">
+                        </ng-container>
+                        <ng-container
+                            *ngTemplateOutlet="detailField;context:{'titleKey': 'events.presents', 'value': event?.presents}">
+                        </ng-container>
+
                     </div>
                 </div>
             </div>

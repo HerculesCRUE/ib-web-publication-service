@@ -98,18 +98,6 @@ export const MENU_ITEMS: MenuItem[] = [
     disabled: false
   },
   {
-    title: 'menu.accessibility',
-    icon: 'oi-eye',
-    url: '/main/accessibility',
-    disabled: false
-  },
-  {
-    title: 'menu.contact',
-    icon: 'oi-envelope-closed',
-    url: '/main/contact',
-    disabled: false
-  },
-  {
     title: 'menu.graph',
     icon: 'oi-graph',
     url: '/main/graph',

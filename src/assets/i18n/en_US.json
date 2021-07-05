@@ -128,7 +128,7 @@
     "areas": "Areas",
     "prod-scientist": "Scientific production",
     "acction-inves": "Investigation actions",
-    "stats": "Statistics and indicators",
+    "stats": "Statistics",
     "info": "Information",
     "info-URI": "URIs contract information",
     "info-LPD": "LPD",
@@ -137,7 +137,9 @@
     "graphs": "Named Graphs metadata rendering",
     "info-hercules": "Information about Hercules",
     "contact": "Contact information",
-    "import-data": "Data Importer"
+    "import-data": "Data Importer",
+    "information": "Info",
+    "links": "Links"
   },
   "links": {
     "title": "Links GitHub",

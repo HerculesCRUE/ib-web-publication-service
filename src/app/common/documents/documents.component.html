@@ -86,8 +86,7 @@
                             </div>
                             <div class="input-group col-md-2 text-right">
                                 <button id="clean" [attr.aria-label]="'form.clean' | translate " role="button"
-                                    aria-pressed="false" class="btn btn-secondary"
-                                    (click)="f.resetForm();">{{'form.clean' |
+                                    aria-pressed="false" class="btn btn-secondary" (click)="f.resetForm();">{{'form.clean' |
                                     translate }}</button>
                             </div>
                         </div>
@@ -104,13 +103,15 @@
                         *ngIf="loaded && resultObject?.content?.length !== 0 && routerFieldSecondary"
                         [data]="resultObject?.content" [routerNameLink]="url" [routerField]="'id'"
                         [routerFieldSecondary]="routerFieldSecondary" [pageInfo]="resultObject"
+                        [visibleColumns]="visibleColumns" [mainColumn]="mainColumn"
                         (sortChanged)="allprojectsFilteredSortChanged($event)">
                     </app-table-results-dto>
                     <app-table-results-dto [displayPagination]="false" [findRequest]="findRequest"
                         [dtoTypeTranslate]="'documents'" [extra]="idPrefix"
                         *ngIf="loaded && resultObject?.content?.length !== 0 && !routerFieldSecondary"
                         [data]="resultObject?.content" [routerNameLink]="url" [routerField]="'id'"
-                        [pageInfo]="resultObject" (sortChanged)="allprojectsFilteredSortChanged($event)">
+                        [pageInfo]="resultObject" [visibleColumns]="visibleColumns" [mainColumn]="mainColumn"
+                        (sortChanged)="allprojectsFilteredSortChanged($event)">
                     </app-table-results-dto>
                     <div class="container-fluid app-table-results">
                         <div class="row">

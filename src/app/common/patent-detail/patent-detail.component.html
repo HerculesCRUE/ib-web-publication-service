@@ -17,16 +17,42 @@
             <div id="datatables-dashboard-markets_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                 <div class="detail-container">
                     <div class="row">
-                        <div class="col-12">
-                            <p><strong>{{'patent.doi' | translate}}:</strong> {{patentDetail.doi}}</p>
-                            <p><strong>{{'patent.startPage' | translate}}:</strong> {{patentDetail.startPage}}</p>
-                            <p><strong>{{'patent.endPage' | translate}}:</strong> {{patentDetail.endPage}}</p>
-                            <p><strong>{{'patent.keyword' | translate}}:</strong> {{patentDetail.keyword}}</p>
-                            <p><strong>{{'patent.mode' | translate}}:</strong> {{patentDetail.mode}}</p>
-                            <p><strong>{{'patent.startDate' | translate}}:</strong> {{patentDetail.startDate}}</p>
-                            <p><strong>{{'patent.endDate' | translate}}:</strong> {{patentDetail.endDate}}</p>
-                            <p><strong>{{'patent.summary' | translate}}:</strong> {{patentDetail.summary}}</p>
-                        </div>
+
+                        <ng-template #detailField let-titleKey="titleKey" let-value="value" let-optional="optional"
+                            let-hidden="hidden">
+                            <div class="col-lg-6" *ngIf="!hidden && (!optional || !!value)">
+                                <p>
+                                    <strong>{{titleKey | translate}}:</strong>
+                                    {{value || value === 0 ? value : '--'}}
+                                </p>
+                            </div>
+                        </ng-template>
+
+                        <ng-container
+                            *ngTemplateOutlet="detailField;context:{'titleKey': 'patent.doi', 'value': patentDetail?.doi}">
+                        </ng-container>
+                        <ng-container
+                            *ngTemplateOutlet="detailField;context:{'titleKey': 'patent.startPage', 'value': patentDetail?.startPage}">
+                        </ng-container>
+                        <ng-container
+                            *ngTemplateOutlet="detailField;context:{'titleKey': 'patent.endPage', 'value': patentDetail?.endPage}">
+                        </ng-container>
+                        <ng-container
+                            *ngTemplateOutlet="detailField;context:{'titleKey': 'patent.keyword', 'value': patentDetail?.keyword}">
+                        </ng-container>
+                        <ng-container
+                            *ngTemplateOutlet="detailField;context:{'titleKey': 'patent.mode', 'value': patentDetail?.mode}">
+                        </ng-container>
+                        <ng-container
+                            *ngTemplateOutlet="detailField;context:{'titleKey': 'patent.startDate', 'value': patentDetail?.startDate}">
+                        </ng-container>
+                        <ng-container
+                            *ngTemplateOutlet="detailField;context:{'titleKey': 'patent.endDate', 'value': patentDetail?.endDate}">
+                        </ng-container>
+                        <ng-container
+                            *ngTemplateOutlet="detailField;context:{'titleKey': 'patent.summary', 'value': patentDetail?.summary}">
+                        </ng-container>
+
                     </div>
                 </div>
             </div>

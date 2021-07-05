@@ -130,6 +130,22 @@ export const HOME_ITEMS: HomeGroupItem[] = [{
       disabled: false,
       urlExterna: ''
     },
+    {
+      title: 'home.information',
+      iconName: 'oi-info',
+      iconCircle: false,
+      url: '/main/info',
+      disabled: false,
+      urlExterna: ''
+    },
+    {
+      title: 'home.links',
+      iconName: 'oi-external-link',
+      iconCircle: false,
+      url: '/main/links',
+      disabled: false,
+      urlExterna: ''
+    }
   ]
 },
 {
