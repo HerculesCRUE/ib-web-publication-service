@@ -140,12 +140,9 @@
     "info-hercules": "Information about Hercules",
     "contact": "Contact information",
     "import-data": "Data Importer",
-<<<<<<< HEAD
     "information": "Info",
-    "links": "Links"
-=======
+    "links": "Links",
     "validation": "Validators"
->>>>>>> SEMANTMURC-676
   },
   "links": {
     "title": "Links GitHub",
