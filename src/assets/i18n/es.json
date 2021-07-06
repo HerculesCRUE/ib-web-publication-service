@@ -65,7 +65,9 @@
     "accessibility": "Accesibilidad",
     "login": "Acceder",
     "contact": "Contacto",
-    "graph": "Renderización named graph"
+    "graph": "Renderización named graph",
+    "import-data": "Importador de datos",
+    "validator": "Validadores"
   },
   "login": {
     "form": {

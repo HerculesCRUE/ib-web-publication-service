@@ -132,7 +132,7 @@ export const HOME_ITEMS: HomeGroupItem[] = [{
     },
     {
       title: 'home.validator',
-      iconName: 'oi-loop-circular',
+      iconName: 'oi-circle-check',
       iconCircle: false,
       url: '/main/validator',
       disabled: false,
