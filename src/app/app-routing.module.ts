@@ -16,6 +16,7 @@ import { GraphPageComponent } from './graph-page/graph-page.component';
 import { DataImporterComponent } from './categories/data-importer/data-importer.component';
 import { ServiceDiscoveryComponent } from './service-discovery/service-discovery/service-discovery.component';
 import { InfoComponent } from './info/info.component';
+import { ValidatorComponent } from './categories/validator/validator.component';
 /**
  * **********************************************
  * ************** Rutas securizadas *************
@@ -51,6 +52,10 @@ const noSecureRoutes: Routes = [
       ),
   },
   /* Data-Importer path */
+  {
+    path: 'validator',
+    component: ValidatorComponent,
+  },
   {
     path: 'data-importer',
     component: DataImporterComponent,

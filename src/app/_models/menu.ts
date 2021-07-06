@@ -102,5 +102,18 @@ export const MENU_ITEMS: MenuItem[] = [
     icon: 'oi-graph',
     url: '/main/graph',
     disabled: false
+  },
+  {
+    title: 'menu.import-data',
+    icon: 'oi-loop-circular',
+    url: '/main/data-importer',
+    disabled: false
+  }
+  ,
+  {
+    title: 'menu.validator',
+    icon: 'oi-circle-check',
+    url: '/main/validator',
+    disabled: false
   }
 ];

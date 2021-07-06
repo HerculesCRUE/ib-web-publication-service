@@ -1,0 +1,37 @@
+<fieldset>
+    <legend *ngIf="createMode">
+        {{'validator.new-form' | translate}}
+    </legend>
+
+    <form name="form" (ngSubmit)="f.form.valid && create()" #f="ngForm" autocomplete="false" novalidate>
+
+        <div class="form-row">
+            <div class="col-md-2">
+                <label for="entity">{{'validator.entity' | translate}}</label>
+                <input type="text" class="form-control" id="entity" name="entity" [(ngModel)]="validator.entity"
+                    required />
+            </div>
+
+        </div>
+
+        <div class="form-row" style="padding-bottom: 2em;">
+            <!-- params -->
+            <div class="col-md-10">
+                <label for="validator">{{'validator.validator' | translate}}</label>
+                <textarea type="text" class="md-textarea form-control" id="validator" name="validator" required
+                    [(ngModel)]="validator.validator"></textarea>
+            </div>
+        </div>
+
+        <div class="float-right mt-2">
+            <button id="clean" [attr.aria-label]="'form.clean' | translate " role="button" aria-pressed="false"
+                class="btn btn-secondary" [routerLink]="'/main/validator'">{{'form.cancel' | translate}}</button>
+
+            <button type="submit" class="btn btn-secondary ml-2" [disabled]="!f.form.valid">
+                {{'form.submit' | translate}}
+            </button>
+        </div>
+
+    </form>
+
+</fieldset>

@@ -12,6 +12,8 @@ import { DocumentService } from '../_services/document.service';
 import { TableResultsDtoComponent } from '../common-display-data/table-results-dto/table-results-dto.component';
 import { TableResultsImporterComponent } from '../common-display-data/table-results-importer/table-results-importer.component';
 import { PanelComponent } from './panel/panel.component';
+import { TableResultsValidatorComponent } from '../common-display-data/table-results-validator/table-results-validator.component';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { PanelComponent } from './panel/panel.component';
     PanelComponent,
     TableResultsComponent,
     TableResultsDtoComponent,
-    TableResultsImporterComponent],
+    TableResultsImporterComponent,
+    TableResultsValidatorComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -36,7 +39,8 @@ import { PanelComponent } from './panel/panel.component';
     NgbModule,
     TableResultsComponent,
     TableResultsDtoComponent,
-    TableResultsImporterComponent],
+    TableResultsImporterComponent,
+    TableResultsValidatorComponent],
   providers: [
     PatentService,
     DocumentService

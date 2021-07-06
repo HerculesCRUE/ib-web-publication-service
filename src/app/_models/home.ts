@@ -145,6 +145,14 @@ export const HOME_ITEMS: HomeGroupItem[] = [{
       url: '/main/links',
       disabled: false,
       urlExterna: ''
+    },
+    {
+      title: 'home.validator',
+      iconName: 'oi-circle-check',
+      iconCircle: false,
+      url: '/main/validator',
+      disabled: false,
+      urlExterna: ''
     }
   ]
 },
