@@ -5,17 +5,17 @@
         <h1 class="h3 mb-3" *ngIf="groupItem.title !== 'home.info'">{{
           groupItem.title | translate }}</h1>
         <div class="row" *ngIf="groupItem.title !== 'home.info'">
-          <div class="col-lg-4 col-xl-2 d-flex home-cards" *ngFor="let item of groupItem.homeItems"
+          <div class="home-cards" *ngFor="let item of groupItem.homeItems"
             [ngClass]="{'hidden': (item.title === 'home.users' && !isLogged) || (item.title === 'home.import-data' && !isLogged) || (item.title === 'home.validator' && !isLogged)} ">
-            <div *ngIf="!item.disabled" class="card flex-fill  home-enabled">
+            <div *ngIf="!item.disabled" class="card home-enabled">
               <div class="card-header">
-                <a *ngIf="item.url !== ''" class="icon-link d-flex align-items-center mb-0 font-weight-light"
+                <a *ngIf="item.url !== ''" class="icon-link align-items-center mb-0 font-weight-light"
                   [routerLink]="[item.url]">
                   <em class="oi" [ngClass]="item.iconName"></em>
                 </a>
 
-                <a *ngIf="item.url == ''" class="icon-link d-flex align-items-center mb-0 font-weight-light"
-                  target="_blank" [href]="item.urlExterna">
+                <a *ngIf="item.url == ''" class="icon-link align-items-center mb-0 font-weight-light" target="_blank"
+                  [href]="item.urlExterna">
                   <em class="oi" [ngClass]="item.iconName"></em>
                 </a>
 
@@ -24,9 +24,9 @@
                 <div class="card-title">{{ item.title| translate }}</div>
               </div>
             </div>
-            <div class="card flex-fill  home-disabled" [routerLink]="[item.url]" *ngIf="item.disabled">
+            <div class="card home-disabled" [routerLink]="[item.url]" *ngIf="item.disabled">
               <div class="card-header">
-                <h3 class="icon-link d-flex align-items-center mb-0 font-weight-light">
+                <h3 class="icon-link align-items-center mb-0 font-weight-light">
                   <em class="oi" [ngClass]="item.iconName"></em>
                 </h3>
 
