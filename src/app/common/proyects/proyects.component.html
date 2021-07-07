@@ -5,29 +5,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-12">
-            <button role="button" aria-pressed="false" class="btn btn-secondary tree" *ngIf="normalTree"
-                (click)="normalTree = !normalTree">{{'form.change-tree' |
-                translate}}</button>
-
-            <button role="button" aria-pressed="false" class="btn btn-secondary tree" *ngIf="!normalTree"
-                (click)="normalTree = !normalTree">{{'form.change-tree-normal' |
-                translate}}</button>
-        </div>
-
-        <!-- categorias tree -->
-        <div class="col-6" *ngIf="normalTree">
-            <label for="type" class="col-sm-4 control-label">{{ "scientist.area" | translate }}</label>
-            <app-new-tree [treeType]="'area'"></app-new-tree>
-        </div>
-        <!-- categorias tree -->
-        <div class="col-12" *ngIf="!normalTree">
-            <label for="type" class="col-sm-4 control-label">{{ "scientist.area" | translate }}</label>
-            <app-tree [treeType]="'area'"></app-tree>
-        </div>
         <!-- dates -->
-
-
         <div class="row col-6">
             <div class="form-group col-lg-6">
                 <label for="dateFromProyect{{idPrefix}}" class="control-label">{{'projects.date-ini-from' |
