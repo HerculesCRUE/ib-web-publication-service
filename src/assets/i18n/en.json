@@ -45,6 +45,7 @@
     "delete": "Borrar",
     "actions": "Actions",
     "use": "Utilizar Query",
+    "edit": "Edit",
     "delete-message": "Are you sure you want to delete the entry? "
   },
   "menu": {
@@ -555,6 +556,7 @@
     "entity": "Entity",
     "validator": "Validator",
     "delete": "Are you sure you want to delete the entry?",
-    "new-form": "New validator"
+    "new-form": "New validator",
+    "edit-form": "Edit validator"
   }
 }

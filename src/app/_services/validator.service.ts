@@ -61,5 +61,11 @@ export class ValidatorService extends AbstractService {
             .delete(Helper.getUrl('/validator/' + id))
             .pipe(catchError(this.handleError));
     }
+
+    update(query: any): Observable<any> {
+        return this.httpClient
+            .put(Helper.getUrl('/validator'), query)
+            .pipe(catchError(this.handleError));
+    }
 }
 

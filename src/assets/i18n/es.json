@@ -45,6 +45,7 @@
     "delete": "Borrar",
     "actions": "Acciones",
     "use": "Use",
+    "edit": "Editar",
     "delete-message": "¿Está seguro de que desea borrar la query guardada? "
   },
   "menu": {
@@ -583,6 +584,7 @@
     "entity": "Entidad",
     "validator": "Validador",
     "delete": "¿Está seguro que desea borrar el registro?",
-    "new-form": "Nuevo validador"
+    "new-form": "Nuevo validador",
+    "edit-form": "Modificar validador"
   }
 }

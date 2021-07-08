@@ -48,8 +48,12 @@
 
                                 </td>
                                 <td id="hasActions2" *ngIf="hasActions">
-                                    <button style="margin-left: 15px" (click)="deleteQuery(item['id'])"
+                                    <button style="margin-left: 15px" (click)="deleteValidator(item['id'])"
                                         class="btn btn-secondary">{{'form.delete' |
+                                        translate}}</button>
+
+                                    <button style="margin-left: 15px" (click)="editValidator(item)"
+                                        class="btn btn-secondary">{{'form.edit' |
                                         translate}}</button>
                                 </td>
 

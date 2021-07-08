@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Validator } from 'src/app/_models/validator';
 import { ValidatorService } from 'src/app/_services/validator.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { TranslateService } from '@ngx-translate/core';
@@ -22,11 +22,18 @@ export class NewValidatorComponent implements OnInit {
     constructor(private router: Router,
         private translate: TranslateService,
         private toastr: ToastrService,
-        private validatorService: ValidatorService) { }
+        private validatorService: ValidatorService,
+        private activatedRoute: ActivatedRoute) { }
 
     ngOnInit() {
         this.createMode = true;
         this.validator = new Validator();
+        this.activatedRoute.params.subscribe(params => {
+            if (params.data) {
+                this.validator = JSON.parse(params.data);
+                this.createMode = false;
+            }
+        });
     }
 
     /**
@@ -42,18 +49,17 @@ export class NewValidatorComponent implements OnInit {
         console.info(this.validator);
         if (this.createMode) {
             observable = this.validatorService.save(this.validator);
-
+        } else {
+            observable = this.validatorService.update(this.validator);
         }
         observable.subscribe(
             ((validator: Validator) => {
-                if (this.createMode) {
-                    this.router.navigate(['/main/validator']);
-                }
+                this.router.navigate(['/main/validator']);
                 console.info(validator);
-                this.toastr.success(this.translate.instant('importation.succeeded-import', this.translate.instant('toast.success')));
+                this.toastr.success(this.translate.instant('toast.success-saving', this.translate.instant('toast.success')));
             }), (error => {
                 console.error(error);
-                this.toastr.error(this.translate.instant('importation.failed-import', this.translate.instant('toast.error')));
+                this.toastr.error(this.translate.instant('toast.error-saving', this.translate.instant('toast.error')));
             })
         );
     }

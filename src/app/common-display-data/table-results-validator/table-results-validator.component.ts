@@ -34,7 +34,6 @@ export class TableResultsValidatorComponent
     extends PaginatedSearchComponent<any>
     implements OnChanges {
     @Output() idToDelete: EventEmitter<string> = new EventEmitter<string>();
-    @Output() queryToUse: EventEmitter<string> = new EventEmitter<string>();
     @Input() hasActions = false;
     /**
      * Mandatory to show the data in the table
@@ -123,6 +122,10 @@ export class TableResultsValidatorComponent
      * @memberof TableResultsValidatorComponent
      */
     hedearDTO: Array<string> = [];
+
+
+    routerChild: Router;
+
     /**
      *
      *
@@ -138,6 +141,7 @@ export class TableResultsValidatorComponent
         toastr: ToastrService
     ) {
         super(router, translate, toastr);
+        this.routerChild = router;
     }
 
 
@@ -260,13 +264,11 @@ export class TableResultsValidatorComponent
         return needTooltip;
     }
 
-    deleteQuery(id: string) {
+    deleteValidator(id: string) {
         this.idToDelete.emit(id);
     }
 
-    useQuery(query: string) {
-        this.queryToUse.emit(query);
+    editValidator(validator) {
+        this.routerChild.navigate(['/main/categories/new-validator', { data: JSON.stringify(validator) }]);
     }
-
-
 }

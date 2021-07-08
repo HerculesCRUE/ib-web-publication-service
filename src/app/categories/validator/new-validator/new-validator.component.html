@@ -3,13 +3,17 @@
         {{'validator.new-form' | translate}}
     </legend>
 
+    <legend *ngIf="!createMode">
+        {{'validator.edit-form' | translate}}
+    </legend>
+
     <form name="form" (ngSubmit)="f.form.valid && create()" #f="ngForm" autocomplete="false" novalidate>
 
         <div class="form-row">
-            <div class="col-md-2">
+            <div class="col-md-10">
                 <label for="entity">{{'validator.entity' | translate}}</label>
-                <input type="text" class="form-control" id="entity" name="entity" [(ngModel)]="validator.entity"
-                    required />
+                <input type="text" class="form-control col-md-12" id="entity" name="entity"
+                    [(ngModel)]="validator.entity" required [disabled]="!createMode" />
             </div>
 
         </div>
@@ -18,8 +22,8 @@
             <!-- params -->
             <div class="col-md-10">
                 <label for="validator">{{'validator.validator' | translate}}</label>
-                <textarea type="text" class="md-textarea form-control" id="validator" name="validator" required
-                    [(ngModel)]="validator.validator"></textarea>
+                <textarea type="text" class="md-textarea form-control" id="validator" name="validator" rows="15"
+                    required [(ngModel)]="validator.validator"></textarea>
             </div>
         </div>
 
