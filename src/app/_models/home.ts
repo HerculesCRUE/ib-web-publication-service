@@ -160,14 +160,6 @@ export const HOME_ITEMS: HomeGroupItem[] = [{
   title: 'home.info',
   homeItems: [
     {
-      title: 'links.repository',
-      iconName: 'oi-cloud-upload',
-      iconCircle: false,
-      url: '/main/links',
-      disabled: false,
-      urlExterna: ''
-    },
-    {
       title: 'menu.accessibility',
       iconName: 'oi-eye',
       iconCircle: false,
