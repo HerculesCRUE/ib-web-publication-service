@@ -1,0 +1,11 @@
+.check-active{
+    color:green;
+    width: 50px; 
+    height: 50px;
+}
+
+.check-desactive{
+    color:red;
+    width: 50px; 
+    height: 50px;
+}

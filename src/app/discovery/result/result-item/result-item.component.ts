@@ -3,6 +3,7 @@ import { NgbAccordionConfig } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { FindRequest } from 'src/app/_helpers/search';
 import { DiscoveryService } from 'src/app/_services/discovery/discovery.service';
+import { LoginService } from 'src/app/_services/login.service';
 
 @Component({
   selector: 'app-result-item',
@@ -21,11 +22,14 @@ export class ResultItemComponent implements OnInit {
 
   manualDecisions = {}
 
+  isAdmin = false;
 
 
-  constructor(private discoveryService: DiscoveryService, private _config: NgbAccordionConfig, private spinner: NgxSpinnerService) { }
+
+  constructor(private discoveryService: DiscoveryService, private _config: NgbAccordionConfig, private spinner: NgxSpinnerService, private loginService: LoginService) { }
 
   ngOnInit(): void {
+    this.loginService.keycloakIsAdmin().subscribe(res => { this.isAdmin = res });
   }
 
   onActionOverManualSimilitude(isAcepted: boolean, itemManual: any) {

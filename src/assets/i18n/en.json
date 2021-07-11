@@ -137,7 +137,10 @@
     "graphs": "Named Graphs metadata rendering",
     "info-hercules": "Information about Hercules",
     "contact": "Contact information",
-    "import-data": "Data Importer"
+    "import-data": "Data Importer",
+    "uris-factory":"URIs Factory",
+    "discovery":"Discovery library",
+    "service-discovery":"Backends Monitor"
   },
   "links": {
     "title": "Links GitHub",
@@ -241,6 +244,7 @@
     "state-tittle": "Discovery Library State",
     "stats-tittle": "Objects stats",
     "search-tittle": "Similarity search",
+    "result-tittle": "Result search",
     "global-state": "General state",
     "noData": "Could not load discovery library data",
     "NOT_INITIALIZED":"Not Initialized",
@@ -281,7 +285,23 @@
     "not-result-found": "Not similarities found",
     "results-title": "Results of similarities",
     "type-result": "Type result",
-    "code-result": "Result code"
+    "code-result": "Result code",
+    "accept": "Accept similarity",
+    "reject": "Reject similarity",
+    "entity": "Entity",
+    "entity-main": "Main entity",
+    "attributes":"Attributes",
+    "similiarity":"Similarity",
+    "similiarity-no-id":"Similarity without Id",
+    "origin":"Origin",
+    "manual":"Manual actions",
+    "automatic":"Atomatic actions",
+    "decision-response":"Decision response",
+    "deleted":"Deleted entities",
+    "updated":"Updated entities",
+    "att-name":"Attribute Name",
+    "att-main-value":"Main entity atribute value",
+    "att-related-value":"Atribute value"
   },
   "uris":{
     "title":"URIs Factory",
@@ -330,7 +350,12 @@
     "healthEndpoint":"Health Endpoint",
     "status":"Status",
     "endPoint":"Endpoint",
-    "noData":"Could not load Service Discovery data"
+    "noData":"Could not load Service Discovery data",
+    "nodes": "Nodes",
+    "services": "Services",
+    "endpoints": "Endpoints",
+    "activate": "Activate",
+    "disabled": "Disabled"
   },
   "projects": {
     "year": "Year",

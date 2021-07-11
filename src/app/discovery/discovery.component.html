@@ -12,14 +12,14 @@
                             [attr.aria-selected]="activeTab === 'control-tab'">{{'discovery.control-tab'
                             | translate}}</a>
                     </li>
-                    <li class="nav-item" role="presentation">
+                    <li *ngIf="isAdmin" class="nav-item" role="presentation">
                         <a class="nav-link" [ngClass]="{'active': activeTab === 'search-tab' }" id="search-tab"
                             (click)="changeTab('search-tab')" data-bs-toggle="tab" href="JavaScript:void(0)" role="tab"
                             aria-controls="search-tab"
                             [attr.aria-selected]="activeTab === 'search-tab'">{{'discovery.search-tab'
                             | translate}}</a>
                     </li>
-                    <li class="nav-item" role="presentation">
+                    <li *ngIf="isAdmin" class="nav-item" role="presentation">
                         <a class="nav-link" [ngClass]="{'active': activeTab === 'action-tab' }" id="action-tab"
                             (click)="changeTab('action-tab')" data-bs-toggle="tab" href="JavaScript:void(0)" role="tab"
                             aria-controls="action-tab"

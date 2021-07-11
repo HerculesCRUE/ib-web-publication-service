@@ -5,6 +5,7 @@ export const environment = {
   oauthClientId: 'acme',
   oauthSecret: 'acmesecret',
   skipPort: '8080',
+  node: 'um',
   domain: 'ldp.herculesasioizertis.desa.um.es',
   keycloak: {
     realm: 'umasio',

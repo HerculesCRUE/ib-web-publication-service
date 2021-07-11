@@ -145,7 +145,10 @@
     "graphs": "Renderización de metadatos de Named Graphs",
     "info-hercules": "Información sobre Hercules",
     "contact": "Datos de contacto",
-    "import-data": "Importador de datos"
+    "import-data": "Importador de datos",
+    "uris-factory":"Factoría de URIs",
+    "discovery":"Librería de descubrimiento",
+    "service-discovery":"Monitor de Backends"
   },
   "links": {
     "title": "Links GitHub",
@@ -253,6 +256,7 @@
     "state-tittle": "Estado de la librería de descubrimiento",
     "stats-tittle": "Estadisticas de Objetos",
     "search-tittle": "Búsqueda de similitudes",
+    "result-tittle": "Búsqueda de resultados",
     "global-state": "Estado general",
     "noData": "No ha sido posible cargar los datos de la librería de descubrimiento",
     "NOT_INITIALIZED":"No inicializada",
@@ -293,7 +297,23 @@
     "not-result-found": "No encontradas similaridades",
     "results-title": "Resultados de similitudes",
     "type-result": "Tipo de resultado",
-    "code-result": "Código de resultado"
+    "code-result": "Código de resultado",
+    "accept": "Aceptar similitud",
+    "reject": "Rechazar similitud",
+    "entity": "Entidad",
+    "entity-main": "Entidad principal",
+    "attributes":"Atributos",
+    "similiarity":"Similaridad",
+    "similiarity-no-id":"Similaridad sin Id",
+    "origin":"Origen",
+    "manual":"Acciones manuales",
+    "automatic":"Acciones automáticas",
+    "decision-response":"Respuesta de la decisión",
+    "deleted":"Entidades borradas",
+    "updated":"Entidades actualizadas",
+    "att-name":"Nombre atributo",
+    "att-main-value":"Valor atributo entidad principal",
+    "att-related-value":"Valor atributo"
   },
   "uris":{
     "title":"Factoría de URIs",
@@ -342,8 +362,12 @@
     "healthEndpoint":"Endpoint de comprobación de estado",
     "status":"Estado",
     "endPoint":"Endpoint",
-    "noData":"No se han recuperado datos de el Service Discovery"
-
+    "noData":"No se han recuperado datos de el Service Discovery",
+    "nodes": "Nodos",
+    "services": "Servicios",
+    "endpoints": "Endpoints",
+    "activate": "Activado",
+    "disabled": "Desactivado"
   },
   "projects": {
     "year": "Año",
