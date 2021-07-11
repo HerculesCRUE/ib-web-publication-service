@@ -88,6 +88,9 @@ export class ProyectsComponent extends PaginatedSearchComponent<Project> impleme
    */
   normalTree = true;
 
+  @Input() mainColumn: string = 'title';
+  @Input() visibleColumns: Array<string> = ['title', 'startDate', 'endDate', 'projectClassification', 'status'];
+
   /**
    * Creates an instance of ProyectsComponent.
    * @param {ProjectService} projectService

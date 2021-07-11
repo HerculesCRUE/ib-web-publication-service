@@ -45,6 +45,7 @@
     "delete": "Delete",
     "actions": "Actions",
     "use": "Use",
+    "edit": "Edit",
     "delete-message": "Are you sure you want to delete the entry? "
   },
   "menu": {
@@ -65,7 +66,9 @@
     "accessibility": "Accessibility",
     "login": "Login",
     "contact": "Contact",
-    "graph": "Renderización named graph"
+    "graph": "Renderización named graph",
+    "import-data": "Data Importer",
+    "validator": "Validators"
   },
   "login": {
     "form": {
@@ -128,7 +131,7 @@
     "areas": "Areas",
     "prod-scientist": "Scientific production",
     "acction-inves": "Investigation actions",
-    "stats": "Statistics and indicators",
+    "stats": "Statistics",
     "info": "Information",
     "info-URI": "URIs contract information",
     "info-LPD": "LPD",
@@ -137,7 +140,10 @@
     "graphs": "Named Graphs metadata rendering",
     "info-hercules": "Information about Hercules",
     "contact": "Contact information",
-    "import-data": "Data Importer"
+    "import-data": "Data Importer",
+    "information": "Info",
+    "links": "Links",
+    "validation": "Validators"
   },
   "links": {
     "title": "Links GitHub",
@@ -567,5 +573,15 @@
   "importation": {
     "header": "Data importation",
     "button": "+ New Importation"
+  },
+  "validator": {
+    "header": "Validators",
+    "button": "+ New Validator",
+    "id": "ID",
+    "entity": "Entity",
+    "validator": "Validator",
+    "delete": "Are you sure you want to delete the entry?",
+    "new-form": "New validator",
+    "edit-form": "Edit validator"
   }
 }

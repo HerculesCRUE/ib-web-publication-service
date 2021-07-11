@@ -1,144 +1,82 @@
 <h1 class="legend margin-top">{{researchment?.title !== '' ? researchment?.title : lastItem}}</h1>
 <div class="mt-20">
     <div class="row">
-        <div class="col-12">
-            <p><strong>{{ "researchmentStructure.id" | translate }}:</strong> {{researchment?.id}} </p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <p><strong>{{ "researchmentStructure.type" | translate }}:</strong> {{researchment?.type}} </p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <p><strong>{{ "researchmentStructure.title" | translate }}:</strong> {{researchment?.title}} </p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <p><strong>{{ "researchmentStructure.abbreviation" | translate }}:</strong> {{researchment?.abbreviation}}
-            </p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <p><strong>{{ "researchmentStructure.homepage" | translate }}:</strong> {{researchment?.homepage}}
-            </p>
-        </div>
-    </div>
-    <div class="row" *ngIf="!!researchment?.locatedIn">
-        <div class="col-12">
-            <p><strong>{{ "researchmentStructure.locatedIn" | translate }}:</strong> {{researchment?.locatedIn}}
-            </p>
-        </div>
-    </div>
-    <div class="row" *ngIf="!!researchment?.hasContactInfo">
-        <div class="col-12">
-            <p><strong>{{ "researchmentStructure.hasContactInfo" | translate }}:</strong>
-                {{researchment?.hasContactInfo}}
-            </p>
-        </div>
-    </div>
-    <div class="row" *ngIf="!!researchment?.description">
-        <div class="col-12">
-            <p><strong>{{ "researchmentStructure.description" | translate }}:</strong> {{researchment?.description}}
-            </p>
-        </div>
-    </div>
-    <div class="row" *ngIf="!!researchment?.freetextKeyword">
-        <div class="col-12">
-            <p><strong>{{ "researchmentStructure.freetextKeyword" | translate }}:</strong>
-                {{researchment?.freetextKeyword}}
-            </p>
-        </div>
-    </div>
-    <div class="row" *ngIf="!!researchment?.dateStart">
-        <div class="col-12">
-            <p><strong>{{ "researchmentStructure.dateStart" | translate }}:</strong> {{researchment?.dateStart}}
-            </p>
-        </div>
-    </div>
-    <div class="row" *ngIf="!!researchment?.dateEnd">
-        <div class="col-12">
-            <p><strong>{{ "researchmentStructure.dateEnd" | translate }}:</strong> {{researchment?.dateEnd}}
-            </p>
-        </div>
-    </div>
-    <div class="row" *ngIf="!!researchment?.isStartup">
-        <div class="col-12">
-            <p><strong>{{ "researchmentStructure.isStartup" | translate }}:</strong> {{researchment?.isStartup}}
-            </p>
-        </div>
-    </div>
-    <div class="row" *ngIf="!!researchment?.publicCompany">
-        <div class="col-12">
-            <p><strong>{{ "researchmentStructure.publicCompany" | translate }}:</strong> {{researchment?.publicCompany}}
-            </p>
-        </div>
-    </div>
-    <div class="row" *ngIf="!!researchment?.hasAcreditation">
-        <div class="col-12">
-            <p><strong>{{ "researchmentStructure.hasAcreditation" | translate }}:</strong>
-                {{researchment?.hasAcreditation}}
-            </p>
-        </div>
-    </div>
-    <div class="row" *ngIf="!!researchment?.hasKnowledgeArea">
-        <div class="col-12">
-            <p><strong>{{ "researchmentStructure.hasKnowledgeArea" | translate }}:</strong>
-                {{researchment?.hasKnowledgeArea}}
-            </p>
-        </div>
-    </div>
-    <div class="row" *ngIf="!!researchment?.hasPredecessorOrganization">
-        <div class="col-12">
-            <p><strong>{{ "researchmentStructure.hasPredecessorOrganization" | translate }}:</strong>
-                {{researchment?.hasPredecessorOrganization}}
-            </p>
-        </div>
-    </div>
-    <div class="row" *ngIf="!!researchment?.hasSuccessorOrganization">
-        <div class="col-12">
-            <p><strong>{{ "researchmentStructure.hasSuccessorOrganization" | translate }}:</strong>
-                {{researchment?.hasSuccessorOrganization}}
-            </p>
-        </div>
-    </div>
-    <div class="row" *ngIf="!!researchment?.hasReservable">
-        <div class="col-12">
-            <p><strong>{{ "researchmentStructure.hasReservable" | translate }}:</strong>
-                {{researchment?.hasReservable}}
-            </p>
-        </div>
-    </div>
-    <div class="row" *ngIf="!!researchment?.contains">
-        <div class="col-12">
-            <p><strong>{{ "researchmentStructure.contains" | translate }}:</strong>
-                {{researchment?.contains}}
-            </p>
-        </div>
-    </div>
-    <div class="row" *ngIf="!!researchment?.participates">
-        <div class="col-12">
-            <p><strong>{{ "researchmentStructure.participates" | translate }}:</strong>
-                {{researchment?.participates}}
-            </p>
-        </div>
-    </div>
-    <div class="row" *ngIf="!!researchment?.provides">
-        <div class="col-12">
-            <p><strong>{{ "researchmentStructure.provides" | translate }}:</strong>
-                {{researchment?.provides}}
-            </p>
-        </div>
-    </div>
-    <div class="row" *ngIf="!!researchment?.relatedBy">
-        <div class="col-12">
-            <p><strong>{{ "researchmentStructure.relatedBy" | translate }}:</strong>
-                {{researchment?.relatedBy}}
-            </p>
-        </div>
+
+        <ng-template #detailField let-titleKey="titleKey" let-value="value" let-optional="optional" let-hidden="hidden">
+            <div class="col-lg-6" *ngIf="!hidden && (!optional || !!value)">
+                <p>
+                    <strong>{{titleKey | translate}}:</strong>
+                    {{value || value === 0 ? value : '--'}}
+                </p>
+            </div>
+        </ng-template>
+
+        <ng-container
+            *ngTemplateOutlet="detailField;context:{'titleKey': 'researchmentStructure.id', 'value': researchment?.id}">
+        </ng-container>
+        <ng-container
+            *ngTemplateOutlet="detailField;context:{'titleKey': 'researchmentStructure.type', 'value': researchment?.type}">
+        </ng-container>
+        <ng-container
+            *ngTemplateOutlet="detailField;context:{'titleKey': 'researchmentStructure.title', 'value': researchment?.title}">
+        </ng-container>
+        <ng-container
+            *ngTemplateOutlet="detailField;context:{'titleKey': 'researchmentStructure.abbreviation', 'value': researchment?.abbreviation}">
+        </ng-container>
+        <ng-container
+            *ngTemplateOutlet="detailField;context:{'titleKey': 'researchmentStructure.homepage', 'value': researchment?.homepage}">
+        </ng-container>
+        <ng-container
+            *ngTemplateOutlet="detailField;context:{'titleKey': 'researchmentStructure.locatedIn', 'value': researchment?.locatedIn, 'optional': true}">
+        </ng-container>
+        <ng-container
+            *ngTemplateOutlet="detailField;context:{'titleKey': 'researchmentStructure.hasContactInfo', 'value': researchment?.hasContactInfo, 'optional': true}">
+        </ng-container>
+        <ng-container
+            *ngTemplateOutlet="detailField;context:{'titleKey': 'researchmentStructure.description', 'value': researchment?.description, 'optional': true}">
+        </ng-container>
+        <ng-container
+            *ngTemplateOutlet="detailField;context:{'titleKey': 'researchmentStructure.freetextKeyword', 'value': researchment?.freetextKeyword, 'optional': true}">
+        </ng-container>
+        <ng-container
+            *ngTemplateOutlet="detailField;context:{'titleKey': 'researchmentStructure.dateStart', 'value': researchment?.dateStart, 'optional': true}">
+        </ng-container>
+        <ng-container
+            *ngTemplateOutlet="detailField;context:{'titleKey': 'researchmentStructure.dateEnd', 'value': researchment?.dateEnd, 'optional': true}">
+        </ng-container>
+        <ng-container
+            *ngTemplateOutlet="detailField;context:{'titleKey': 'researchmentStructure.isStartup', 'value': researchment?.isStartup, 'optional': true}">
+        </ng-container>
+        <ng-container
+            *ngTemplateOutlet="detailField;context:{'titleKey': 'researchmentStructure.publicCompany', 'value': researchment?.publicCompany, 'optional': true}">
+        </ng-container>
+        <ng-container
+            *ngTemplateOutlet="detailField;context:{'titleKey': 'researchmentStructure.hasAcreditation', 'value': researchment?.hasAcreditation, 'optional': true}">
+        </ng-container>
+        <ng-container
+            *ngTemplateOutlet="detailField;context:{'titleKey': 'researchmentStructure.hasKnowledgeArea', 'value': researchment?.hasKnowledgeArea, 'optional': true}">
+        </ng-container>
+        <ng-container
+            *ngTemplateOutlet="detailField;context:{'titleKey': 'researchmentStructure.hasPredecessorOrganization', 'value': researchment?.hasPredecessorOrganization, 'optional': true}">
+        </ng-container>
+        <ng-container
+            *ngTemplateOutlet="detailField;context:{'titleKey': 'researchmentStructure.hasSuccessorOrganization', 'value': researchment?.hasSuccessorOrganization, 'optional': true}">
+        </ng-container>
+        <ng-container
+            *ngTemplateOutlet="detailField;context:{'titleKey': 'researchmentStructure.hasReservable', 'value': researchment?.hasReservable, 'optional': true}">
+        </ng-container>
+        <ng-container
+            *ngTemplateOutlet="detailField;context:{'titleKey': 'researchmentStructure.contains', 'value': researchment?.contains, 'optional': true}">
+        </ng-container>
+        <ng-container
+            *ngTemplateOutlet="detailField;context:{'titleKey': 'researchmentStructure.participates', 'value': researchment?.participates, 'optional': true}">
+        </ng-container>
+        <ng-container
+            *ngTemplateOutlet="detailField;context:{'titleKey': 'researchmentStructure.provides', 'value': researchment?.provides, 'optional': true}">
+        </ng-container>
+        <ng-container
+            *ngTemplateOutlet="detailField;context:{'titleKey': 'researchmentStructure.relatedBy', 'value': researchment?.relatedBy, 'optional': true}">
+        </ng-container>
     </div>
 </div>
 <div class="row">
@@ -149,16 +87,14 @@
                     <li class="nav-item" role="presentation">
                         <a class="nav-link" [ngClass]="{'active': activeTab === 'scientist' }" id="scientist-tab"
                             (click)="changeTab('scientist')" data-bs-toggle="tab" href="JavaScript:void(0)" role="tab"
-                            aria-controls="scientist"
-                            [attr.aria-selected]="activeTab === 'scientist'">{{'researchmentStructure.scientist' |
+                            aria-controls="scientist" [attr.aria-selected]="activeTab === 'scientist'">{{'researchmentStructure.scientist' |
                             translate}}</a>
                     </li>
 
                     <li class="nav-item" role="presentation">
                         <a class="nav-link" [ngClass]="{'active': activeTab === 'patents' }" id="patents-tab"
                             (click)="changeTab('patents')" data-bs-toggle="tab" href="JavaScript:void(0)" role="tab"
-                            aria-controls="patents"
-                            [attr.aria-selected]="activeTab === 'patents'">{{'researchmentStructure.patents' |
+                            aria-controls="patents" [attr.aria-selected]="activeTab === 'patents'">{{'researchmentStructure.patents' |
                             translate}}</a>
                     </li>
                 </ul>

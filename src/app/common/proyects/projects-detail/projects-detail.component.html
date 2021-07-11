@@ -20,15 +20,13 @@
                     <li class="nav-item" role="presentation">
                         <a class="nav-link" [ngClass]="{'active': activeTab === 'general-info' }" id="general-info-tab"
                             (click)="changeTab('general-info')" data-bs-toggle="tab" href="JavaScript:void(0)"
-                            role="tab" aria-controls="general-info"
-                            [attr.aria-selected]="activeTab === 'general-info'">{{'projects.general-info' |
+                            role="tab" aria-controls="general-info" [attr.aria-selected]="activeTab === 'general-info'">{{'projects.general-info' |
                             translate}}</a>
                     </li>
                     <li class="nav-item" role="presentation">
                         <a class="nav-link" [ngClass]="{'active': activeTab === 'participants' }" id="participants-tab"
                             (click)="changeTab('participants')" data-bs-toggle="tab" href="JavaScript:void(0)"
-                            role="tab" aria-controls="participants"
-                            [attr.aria-selected]="activeTab === 'participants'">{{'projects.participants' |
+                            role="tab" aria-controls="participants" [attr.aria-selected]="activeTab === 'participants'">{{'projects.participants' |
                             translate}}</a>
                     </li>
 
@@ -40,23 +38,37 @@
                     <div class="tab-pane fade"
                         [ngClass]="{'show': activeTab === 'general-info', 'active': activeTab === 'general-info' }"
                         id="general-info" role="tabpanel" aria-labelledby="general-info-tab">
-                        <div class="row">
-                            <div class="col-12 mt-40">
-                                <p><strong>{{ 'projects.project-name' | translate}}:</strong><span *ngIf="loaded">
-                                        {{proyect?.title}} </span> </p>
-                                <p><strong>{{ 'projects.project-type' | translate}}:</strong><span *ngIf="loaded">
-                                        {{proyect?.tipo}} </span> </p>
-                                <p><strong>{{ 'projects.financing-type' | translate}}:</strong> <span *ngIf="loaded">
-                                        {{proyect?.fund}} </span></p>
-                                <p><strong>{{ 'projects.call-type' | translate}}:</strong> <span *ngIf="loaded">
-                                        {{proyect?.projectClassification}} </span> </p>
-                                <p><strong>{{ 'projects.startDate' | translate}}:</strong><span *ngIf="loaded">
-                                        {{proyect?.endDate}} </span> </p>
-                                <p><strong>{{ 'projects.endDate' | translate}}:</strong><span *ngIf="loaded">
-                                        {{proyect?.startDate}} </span>
+                        <div class="row mt-40">
 
-                                </p>
-                            </div>
+                            <ng-template #detailField let-titleKey="titleKey" let-value="value" let-optional="optional"
+                                let-hidden="hidden">
+                                <div class="col-lg-6" *ngIf="!hidden && (!optional || !!value)">
+                                    <p>
+                                        <strong>{{titleKey | translate}}:</strong>
+                                        {{value || value === 0 ? value : '--'}}
+                                    </p>
+                                </div>
+                            </ng-template>
+
+                            <ng-container
+                                *ngTemplateOutlet="detailField;context:{'titleKey': 'projects.project-name', 'value': proyect?.title, 'hidden': !loaded}">
+                            </ng-container>
+                            <ng-container
+                                *ngTemplateOutlet="detailField;context:{'titleKey': 'projects.project-type', 'value': proyect?.tipo, 'hidden': !loaded}">
+                            </ng-container>
+                            <ng-container
+                                *ngTemplateOutlet="detailField;context:{'titleKey': 'projects.financing-type', 'value': proyect?.fund, 'hidden': !loaded}">
+                            </ng-container>
+                            <ng-container
+                                *ngTemplateOutlet="detailField;context:{'titleKey': 'projects.call-type', 'value': proyect?.projectClassification, 'hidden': !loaded}">
+                            </ng-container>
+                            <ng-container
+                                *ngTemplateOutlet="detailField;context:{'titleKey': 'projects.startDate', 'value': proyect?.startDate, 'hidden': !loaded}">
+                            </ng-container>
+                            <ng-container
+                                *ngTemplateOutlet="detailField;context:{'titleKey': 'projects.endDate', 'value': proyect?.endDate, 'hidden': !loaded}">
+                            </ng-container>
+
                         </div>
                     </div>
                     <div class="tab-pane fade"

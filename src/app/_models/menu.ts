@@ -98,21 +98,22 @@ export const MENU_ITEMS: MenuItem[] = [
     disabled: false
   },
   {
-    title: 'menu.accessibility',
-    icon: 'oi-eye',
-    url: '/main/accessibility',
-    disabled: false
-  },
-  {
-    title: 'menu.contact',
-    icon: 'oi-envelope-closed',
-    url: '/main/contact',
-    disabled: false
-  },
-  {
     title: 'menu.graph',
     icon: 'oi-graph',
     url: '/main/graph',
+    disabled: false
+  },
+  {
+    title: 'menu.import-data',
+    icon: 'oi-loop-circular',
+    url: '/main/data-importer',
+    disabled: false
+  }
+  ,
+  {
+    title: 'menu.validator',
+    icon: 'oi-circle-check',
+    url: '/main/validator',
     disabled: false
   }
 ];

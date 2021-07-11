@@ -58,8 +58,7 @@
                             </div>
                             <div class="input-group col-md-2 text-right">
                                 <button id="clean" [attr.aria-label]="'form.clean' | translate " role="button"
-                                    aria-pressed="false" class="btn btn-secondary"
-                                    (click)="f.resetForm();">{{'form.clean' |
+                                    aria-pressed="false" class="btn btn-secondary" (click)="f.resetForm();">{{'form.clean' |
                                     translate }}</button>
                             </div>
                         </div>
@@ -75,6 +74,7 @@
                         *ngIf="loaded && resultObject?.content?.length !== 0" [data]="resultObject?.content"
                         [pageInfo]="resultObject" [dtoTypeTranslate]="'events'" [extra]="'2'" [routerField]="'id'"
                         [routerNameLink]="url" [routerField]="'id'" [routerFieldSecondary]="'type'"
+                        [visibleColumns]="visibleColumns" [mainColumn]="mainColumn"
                         (sortChanged)="allEventsFilteredSortChanged($event)">
                     </app-table-results-dto>
                     <div class="container-fluid app-table-results">

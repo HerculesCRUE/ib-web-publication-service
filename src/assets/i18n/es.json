@@ -45,6 +45,7 @@
     "delete": "Borrar",
     "actions": "Acciones",
     "use": "Use",
+    "edit": "Editar",
     "delete-message": "¿Está seguro de que desea borrar la query guardada? "
   },
   "menu": {
@@ -65,7 +66,9 @@
     "accessibility": "Accesibilidad",
     "login": "Acceder",
     "contact": "Contacto",
-    "graph": "Renderización named graph"
+    "graph": "Renderización named graph",
+    "import-data": "Importador de datos",
+    "validator": "Validadores"
   },
   "login": {
     "form": {
@@ -136,7 +139,7 @@
     "areas": "Áreas",
     "prod-scientist": "Producción científica",
     "acction-inves": "Acciones de investigación",
-    "stats": "Estadisticas e indicadores",
+    "stats": "Estadísticas",
     "info": "Información",
     "info-URI": "Información del contrato URIs",
     "info-LPD": "LPD",
@@ -148,7 +151,10 @@
     "import-data": "Importador de datos",
     "uris-factory":"Factoría de URIs",
     "discovery":"Librería de descubrimiento",
-    "service-discovery":"Monitor de Backends"
+    "service-discovery":"Monitor de Backends",
+    "information": "Info",
+    "links": "Enlaces",
+    "validator": "Validadores"
   },
   "links": {
     "title": "Links GitHub",
@@ -594,5 +600,15 @@
       "cron": "Cron",
       "close": "Cerrar"
     }
+  },
+  "validator": {
+    "header": "Validadores",
+    "button": "+ Crear validador",
+    "id": "ID",
+    "entity": "Entidad",
+    "validator": "Validador",
+    "delete": "¿Está seguro que desea borrar el registro?",
+    "new-form": "Nuevo validador",
+    "edit-form": "Modificar validador"
   }
 }

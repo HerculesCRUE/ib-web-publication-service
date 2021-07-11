@@ -43,7 +43,7 @@ export class NewDataImporterComponent implements OnInit {
    */
   init() {
     this.constants.DATASET = "dataset";
-    this.constants.DATASET_PARAM = "/home/herculesizertis/resourcesFull/dataset";
+    this.constants.DATASET_PARAM = "/dataset";
 
     this.constants.CVN = "cvn";
     this.constants.CVN_PARAM = "http://curriculumpruebas.um.es/curriculum/rest/v1/auth";
@@ -91,21 +91,5 @@ export class NewDataImporterComponent implements OnInit {
         this.toastr.error(this.translate.instant('importation.failed-import', this.translate.instant('toast.error')));
       })
     );
-  }
-
-  /**
-   * Launchs an import operation
-   */
-  importXhr() {
-    this.dataImporterService.importXhr(this.importation).then((data) => {
-      if (this.createMode) {
-        this.router.navigate(['/main/data-importer']);
-      }
-      console.info(data);
-      this.toastr.success(this.translate.instant('importation.succeeded-import', this.translate.instant('toast.success')));
-    }, (error) => {
-      console.error(error);
-      this.toastr.error(this.translate.instant('importation.failed-import', this.translate.instant('toast.error')));
-    });
   }
 }

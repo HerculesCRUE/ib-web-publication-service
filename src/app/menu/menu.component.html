@@ -2,7 +2,8 @@
 <ul class="nav-list">
   <ng-container *ngFor="let item of menuItems">
 
-    <li *ngIf="item.title === 'menu.sparql'" routerLinkActive="active">
+    <li *ngIf="(item.title === 'menu.validator' || item.title === 'menu.import-data') && isLogged"
+      routerLinkActive="active">
       <ng-container>
         <a class="sidebar-link" [routerLink]="[item.url]">
           <em class="oi icons-menu" [ngClass]="[item.icon]"></em>
@@ -10,8 +11,8 @@
         </a>
       </ng-container>
     </li>
-    <li *ngIf="item.title !== 'menu.sparql'" routerLinkActive="active">
-      <ng-container *ngIf="!item.disabled && item.title !== 'menu.sparql'">
+    <li *ngIf="item.title !== 'menu.validator' && item.title !== 'menu.import-data'" routerLinkActive="active">
+      <ng-container *ngIf="!item.disabled && item.title !== 'menu.validator' && item.title !== 'menu.import-data'">
         <a class="sidebar-link" [routerLink]="[item.url]">
           <em class="oi icons-menu" [ngClass]="[item.icon]"></em>
           <span>{{ item.title | translate }}</span>

@@ -46,6 +46,9 @@ export class NewTreeComponent implements OnInit {
    * Creates an instance of NewTreeComponent.
    * @memberof NewTreeComponent
    */
+
+  @Input() itemClass: string = 'col-6';
+
   constructor(private areasService: AreasService) { }
 
   ngOnInit(): void {

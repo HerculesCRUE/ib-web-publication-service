@@ -21,8 +21,8 @@ export const environment = {
         clientSecret: ''
     },
     importer: {
-        baseUrl: 'http://herc-iz-back-prod.atica.um.es',
-        port: '9320'
+        baseUrl: 'https://linkeddata1.um.es/dataset',
+        port: null
     },
     discovery: {
         baseUrl: 'https://linkeddata1.um.es/discovery',
