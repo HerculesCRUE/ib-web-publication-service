@@ -54,7 +54,7 @@ export class DiscoveryService extends AbstractService {
     parameters = Helper.addParam(parameters, 'tripleStore', findRequest.filter.tripleStore);
     // Pagination params
     parameters = Helper.addPaginationParams(parameters, findRequest.pageRequest);
-
+    console.log(Helper.getFederationUrl() + '/data-fetcher/objects');
     return this.httpClient.get(Helper.getFederationUrl() + '/data-fetcher/objects', {
       params: parameters
     }).pipe(

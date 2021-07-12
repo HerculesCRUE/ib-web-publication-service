@@ -29,6 +29,27 @@ export const environment = {
     baseUrl: 'http://localhost',
     port: '9320'
   },
+  /*
+  discovery: {
+    baseUrl: 'https://linkeddata1.um.es/discovery',
+    port: null
+  },
+  serviceDiscovery: {
+      baseUrl: 'https://linkeddata1.um.es/service-discovery',
+      port: null
+  },
+  federation: {
+      baseUrl: 'https://linkeddata1.um.es/federation',
+      port: null
+  },
+  urisFactory: {
+      baseUrl: 'https://linkeddata1.um.es/uri-factory',
+      port: null
+  },
+  lpdUrl: 'https://ldpld1.um.es/',
+  appUrl: 'https://linkeddata1.um.es',
+  sgi: 'https://github.com/HerculesCRUE/ib-asio-docs-/tree/master/13-Backend_SGI_Software'
+  */
   discovery: {
     baseUrl: 'http://localhost',
     port: '9327'

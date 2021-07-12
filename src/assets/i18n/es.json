@@ -350,6 +350,7 @@
     "canonical-table-canonical-uri":"URI Pública (canónica)",
     "canonical-table-canonical-language-uri":"URI Pública en idioma (canónica)",
     "canonical-table-language":"Idioma",
+    "canonical-table-localstorage":"URI privada (local)",
     "local-table-storage":"Tipo de almacenamiento",
     "canonical-field":"URI Pública (canonica)",
     "canonical-placeholder":"Inserte la URI Pública (canonica) para buscar por este criterio",

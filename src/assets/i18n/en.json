@@ -337,6 +337,7 @@
     "response-title": "Response",
     "canonical-table-canonical-uri":"Public URI (canonical)",
     "canonical-table-canonical-language-uri":"Public URI in language (canonical)",
+    "canonical-table-localstorage":"Private URI (local)",
     "canonical-table-language":"Language",
     "local-table-storage":"Storage type",
     "canonical-field":"Public URI (canonical)",
