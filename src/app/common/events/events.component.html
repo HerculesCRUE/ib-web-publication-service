@@ -1,10 +1,16 @@
 <form class="form-horizontal " (ngSubmit)="f.form.valid" #f="ngForm" (keydown.enter)="$event.preventDefault()">
     <div class="row">
-        <div class="col-12">
-            <h5 class="card-title"> {{'form.search-form' | translate}}</h5>
+
+        <!-- dates -->
+        <div class="form-group col-lg-6">
+            <label for="dateFrom{{idPrefix}}" class="control-label">{{'events.date' | translate }}</label>
+            <input class="form-control ngbDatepicker" name="dateFrom{{idPrefix}}" id="dateFrom{{idPrefix}}" required
+                (ngModelChange)="filterEvents()" placeholder="{{'form.datepicker-placeholder' | translate}}"
+                ngbDatepicker [readonly]="true" #decisionDate="ngbDatepicker" (click)="decisionDate.toggle();"
+                (keyup)="decisionDate.close()" [minDate]="{year: 1950, month: 1, day: 1}"
+                (keydown)="($event.key === 'Escape' || $event.key === 'Tab') ? decisionDate.close() : decisionDate.toggle();"
+                #dateFrom{{idPrefix}}="ngModel" [(ngModel)]="dateIni" />
         </div>
-    </div>
-    <div class="row">
 
         <!-- rol -->
         <div class="form-group col-lg-6" *ngIf="types !== 'Conference'">
@@ -19,17 +25,6 @@
                 </select>
             </div>
         </div>
-        <!-- dates -->
-        <div class="form-group col-lg-6">
-            <label for="dateFrom{{idPrefix}}" class="control-label">{{'events.date' | translate }}</label>
-            <input class="form-control ngbDatepicker" name="dateFrom{{idPrefix}}" id="dateFrom{{idPrefix}}" required
-                (ngModelChange)="filterEvents()" placeholder="{{'form.datepicker-placeholder' | translate}}"
-                ngbDatepicker [readonly]="true" #decisionDate="ngbDatepicker" (click)="decisionDate.toggle();"
-                (keyup)="decisionDate.close()" [minDate]="{year: 1950, month: 1, day: 1}"
-                (keydown)="($event.key === 'Escape' || $event.key === 'Tab') ? decisionDate.close() : decisionDate.toggle();"
-                #dateFrom{{idPrefix}}="ngModel" [(ngModel)]="dateIni" />
-        </div>
-
 
     </div>
 

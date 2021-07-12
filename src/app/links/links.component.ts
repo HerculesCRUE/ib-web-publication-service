@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Helper } from '../_helpers/utils';
 
 @Component({
   selector: 'app-links',
@@ -7,5 +8,6 @@ import { Component } from '@angular/core';
 })
 export class LinksComponent {
 
+  sgi = Helper.getLSgi();
 
 }

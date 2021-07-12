@@ -154,11 +154,6 @@ export const HOME_ITEMS: HomeGroupItem[] = [{
       disabled: false,
       urlExterna: ''
     },
-  ]
-},
-{
-  title: 'home.info',
-  homeItems: [
     {
       title: 'home.information',
       iconName: 'oi-info',
@@ -208,8 +203,8 @@ export const HOME_ITEMS: HomeGroupItem[] = [{
       title: 'menu.graph',
       iconName: 'oi-enveloped-graph',
       iconCircle: false,
-      url: '/main/contact',
-      disabled: false,
+      url: '/main/graph',
+      disabled: true,
       urlExterna: ''
     },
     {
@@ -225,7 +220,7 @@ export const HOME_ITEMS: HomeGroupItem[] = [{
       iconName: 'oi-link-intact',
       iconCircle: false,
       url: '',
-      disabled: false,
+      disabled: true,
       urlExterna: 'https://github.com/HerculesCRUE/ib-asio-docs-/blob/a3e838e9944faac26957cc1944b468f65596a2c9/09-Buenas_pr%C3%A1cticas_para_URIs_H%C3%A9rcules/ASIO_Izertis_Contrato_BuenasPracticasParaURIsHercules.md'
     },
     {
@@ -241,7 +236,7 @@ export const HOME_ITEMS: HomeGroupItem[] = [{
       iconName: 'oi-hard-drive',
       iconCircle: false,
       url: '',
-      disabled: false,
+      disabled: true,
       urlExterna: Helper.getLSgi()
     },
     {

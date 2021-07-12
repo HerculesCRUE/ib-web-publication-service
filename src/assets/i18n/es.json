@@ -157,15 +157,19 @@
     "validator": "Validadores"
   },
   "links": {
-    "title": "Links GitHub",
+    "title": "Enlaces",
     "principal": "Principal",
-    "repository": "Repositorios"
+    "repository": "Repositorios",
+    "ontology": "Ontología",
+    "renderization": "Renderización",
+    "backendsSGI": "Backends SGI",
+    "other": "Otros"
   },
 
   "researchmentStructure": {
     "header": "Estructuras de investigación",
     "title": "Título",
-    "type": "Tipo ontológico",
+    "type": "Tipo",
     "financing": "Financiación",
     "name": "Nombre",
     "publications": "Publicaciones",
@@ -205,7 +209,7 @@
   "scientist": {
     "title": "Titulo",
     "area": "Áreas",
-    "type": "Tipo ontológico",
+    "type": "Tipo",
     "acction-inves": "Acciones de investigación",
     "congress": "Congresos",
     "business-activity": "Actividad empresarial",
@@ -244,7 +248,7 @@
     "date-from": "Fecha desde",
     "date-to": "Fecha hasta",
     "degree": "Título",
-    "type": "Tipo ontológico",
+    "type": "Tipo",
     "doi": "DOI",
     "publication-year": "Año de publicación",
     "scientific-publications": "Publicaciones científicas",
@@ -419,14 +423,14 @@
       "id": "ID",
       "name": "Nombre",
       "anyo": "Año",
-      "type": "Tipo ontológico"
+      "type": "Tipo"
     }
   },
   "documents": {
     "document": "Documentos",
     "date-fin": "Fecha hasta",
     "date-ini": "Fecha desde",
-    "types": "Tipo ontológico",
+    "types": "Tipo",
     "title": "Titulo",
     "name": "Nombre",
     "id": "ID",
@@ -436,7 +440,7 @@
     "publishedIn": "Publicado en",
     "date": "Fecha",
     "summary": "Sumario",
-    "type": "Tipo ontológico",
+    "type": "Tipo",
     "abbreviation": "Abreviación",
     "placeOfPublication": "Lugar de publicación",
     "edition": "Edición",
@@ -471,7 +475,7 @@
     "scientific-production-related": "Producción cientifíca relacionada con el proyecto",
     "table-header": {
       "title": "Título",
-      "type": "Tipo ontológico",
+      "type": "Tipo",
       "doi": "DOI",
       "release-year": "Año de lanzamiento"
     }
@@ -495,7 +499,7 @@
   "directed-jobs": {
     "table-header": {
       "title": "Título",
-      "type": "Tipo ontológico",
+      "type": "Tipo",
       "keywords": "Palabras claves",
       "release-year": "Año de lanzamiento"
     }
@@ -520,7 +524,7 @@
   },
   "events": {
     "rol": "Rol",
-    "type": "Tipo ontológico",
+    "type": "Tipo",
     "id": "ID",
     "title": "Título",
     "date": "Fecha",
@@ -542,7 +546,7 @@
     "resume": "Resumen",
     "other-authors": "Otros authores",
     "name": "Nombre",
-    "type": "Tipo ontológico",
+    "type": "Tipo",
     "document-sections": "Secciones"
   },
   "event": {

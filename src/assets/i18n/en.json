@@ -149,13 +149,17 @@
     "validation": "Validators"
   },
   "links": {
-    "title": "Links GitHub",
+    "title": "Links",
     "principal": "Principal",
-    "repository": "Repositories"
+    "repository": "Repositorios",
+    "ontology": "Ontology",
+    "renderization": "Renderization",
+    "backendsSGI": "Backends SGI",
+    "other": "Other"
   },
   "researchmentStructure": {
     "title": "Researchment Structures",
-    "type": "Ontological type",
+    "type": "Type",
     "financing": "Financing",
     "name": "Name",
     "publications": "Publications",
@@ -195,7 +199,7 @@
   "scientist": {
     "title": "Research staff",
     "area": "Area",
-    "type": "Ontological type",
+    "type": "Type",
     "acction-inves": "Investigation actions",
     "congress": "Congress",
     "business-activity": "Business activity",
@@ -232,7 +236,7 @@
     "date-from": "Date from",
     "date-to": "Date to",
     "degree": "Degree",
-    "type": "Ontological type",
+    "type": "Type",
     "doi": "DOI",
     "publication-year": "Publication year",
     "scientific-publications": "Scientific publications",
@@ -407,14 +411,14 @@
       "id": "id",
       "name": "name",
       "anyo": "year",
-      "type": "Ontological type"
+      "type": "type"
     }
   },
   "documents": {
     "document": "Documents",
     "date-fin": "End Date",
     "date-ini": "Start Date",
-    "types": "Ontological type",
+    "types": "Type",
     "title": "Title",
     "name": "Name",
     "id": "ID",
@@ -424,7 +428,7 @@
     "publishedIn": "Published in",
     "date": "Date",
     "summary": "Summary",
-    "type": "Ontological type",
+    "type": "Type",
     "abbreviation": "Abbreviation",
     "placeOfPublication": "Place of publication",
     "edition": "Edition",
@@ -459,7 +463,7 @@
     "scientific-production-related": "Scientifict production related",
     "table-header": {
       "title": "Title",
-      "type": "Ontological type",
+      "type": "Type",
       "doi": "DOI",
       "release-year": "Release year"
     }
@@ -483,7 +487,7 @@
   "directed-jobs": {
     "table-header": {
       "title": "Title",
-      "type": "Ontological type",
+      "type": "Type",
       "keywords": "Keywords",
       "release-year": "Release year"
     }
@@ -508,7 +512,7 @@
   },
   "events": {
     "rol": "Rol",
-    "type": "Ontological type",
+    "type": "Type",
     "id": "ID",
     "title": "Title",
     "date": "Date",
@@ -530,7 +534,7 @@
     "resume": "Resume",
     "other-authors": "Other authors",
     "name": "Name",
-    "type": "Ontological type",
+    "type": "Type",
     "document-sections": "Secctions"
   },
   "event": {
