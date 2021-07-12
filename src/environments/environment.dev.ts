@@ -6,7 +6,7 @@ export const environment = {
   oauthSecret: 'acmesecret',
   skipPort: '8080',
   node: 'um',
-  domain: 'ldp.herculesasioizertis.desa.um.es',
+  domain: 'ldpld1.um.es',
   keycloak: {
     realm: 'umasio',
     clientId: 'login-app',
