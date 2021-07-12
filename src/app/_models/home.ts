@@ -130,7 +130,6 @@ export const HOME_ITEMS: HomeGroupItem[] = [{
       disabled: false,
       urlExterna: ''
     },
-<<<<<<< HEAD
     {
       title: 'home.uris-factory',
       iconName: 'oi-globe',
@@ -160,8 +159,6 @@ export const HOME_ITEMS: HomeGroupItem[] = [{
 {
   title: 'home.info',
   homeItems: [
-=======
->>>>>>> 393b83355799373c2665ad321e9ba828e4f384a3
     {
       title: 'home.information',
       iconName: 'oi-info',
