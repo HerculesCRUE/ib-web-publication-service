@@ -68,6 +68,7 @@
     "contact": "Contacto",
     "graph": "Renderización named graph",
     "import-data": "Importador de datos",
+    "delete-data": "Borrado de datos",
     "validator": "Validadores",
     "ldp": "LDP"
   },
@@ -102,7 +103,6 @@
     "edit-user-title": "Editar usuario: {{name}}",
     "create-user-title": "Crear nuevo usuario"
   },
-
   "sparql": {
     "username": "Nombre de usuario",
     "sparqlQuery": "Query",
@@ -167,7 +167,6 @@
     "backendsSGI": "Backends SGI",
     "other": "Otros"
   },
-
   "researchmentStructure": {
     "header": "Estructuras de investigación",
     "title": "Título",
@@ -622,5 +621,11 @@
     "header": "LDP",
     "entity": "Entidad",
     "count": "Total"
+  },
+  "dataDeletion": {
+    "header": "Borrado de datos",
+    "date": "Fecha",
+    "delete": "Borrar",
+    "delete-message": "¿Está seguro que desea borrar los datos desde la fecha seleccionada?"
   }
 }

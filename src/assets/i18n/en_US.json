@@ -68,6 +68,7 @@
     "contact": "Contact",
     "graph": "Renderización named graph",
     "import-data": "Data Importer",
+    "delete-data": "Data Deletion",
     "validator": "Validators",
     "ldp": "LDP"
   },
@@ -121,6 +122,13 @@
       "sector-chart": "sector chart"
     }
   },
+  "proyect": {
+    "title": "Projects",
+    "detail": {
+      "name": "Name",
+      "date": "Date"
+    }
+  },
   "home": {
     "search": "Global search",
     "service": "Services",
@@ -142,13 +150,16 @@
     "info-hercules": "Information about Hercules",
     "contact": "Contact information",
     "import-data": "Data Importer",
+    "uris-factory":"URIs Factory",
+    "discovery":"Discovery library",
+    "service-discovery":"Backends Monitor",
     "information": "Info",
     "links": "Links",
-    "validation": "Validators",
+    "validator": "Validators",
     "ldp": "LDP"
   },
   "links": {
-    "title": "Links GitHub",
+    "title": "Links",
     "principal": "Principal",
     "repository": "Repositories",
     "ontology": "Ontology",
@@ -157,7 +168,8 @@
     "other": "Other"
   },
   "researchmentStructure": {
-    "title": "Researchment Structures",
+    "header": "Researchment Structures",
+    "title": "Title",
     "type": "Type",
     "financing": "Financing",
     "name": "Name",
@@ -189,7 +201,7 @@
     "hasKnowledgeArea": "Has knowledge area",
     "hasPredecessorOrganization": "Has predecessor organization",
     "hasSuccessorOrganization": "Has successor organization",
-    "hasReservable": "Tiene reservable",
+    "hasReservable": "Has reservable",
     "contains": "Contains",
     "participates": "Participates",
     "provides": "Provides",
@@ -210,11 +222,13 @@
     "scientific-production-indicators": "Scientific production indicators",
     "times-quoted": "Times quoted",
     "h-index": "h-index",
-    "name": "Full name",
     "apto": "Apto",
     "trajectory-by-timeline": "Trayectory by timeline",
     "events": "Events",
     "congress-events": "Congress and events",
+    "name": "Full Name",
+    "appointments": "Appointments",
+    "publications": "Publications",
     "id": "ID",
     "birthDate": "BithDate",
     "description": "Description",
@@ -295,6 +309,8 @@
     "results-title": "Results of similarities",
     "type-result": "Type result",
     "code-result": "Result code",
+    "accept": "Accept similarity",
+    "reject": "Reject similarity",
     "entity": "Entity",
     "entity-main": "Main entity",
     "attributes":"Attributes",
@@ -359,11 +375,6 @@
     "status":"Status",
     "endPoint":"Endpoint",
     "noData":"Could not load Service Discovery data",
-    "uris-factory":"URIs Factory",
-    "discovery":"Discovery library",
-    "service-discovery":"Backends Monitor",
-    "accept": "Accept similarity",
-    "reject": "Reject similarity",
     "nodes": "Nodes",
     "services": "Services",
     "endpoints": "Endpoints",
@@ -411,7 +422,7 @@
     "projects": "Projects",
     "patents": "Patentes",
     "documents-table": {
-      "id": "ID",
+      "id": "id",
       "name": "name",
       "anyo": "year",
       "type": "type"
@@ -572,14 +583,29 @@
   },
   "dataImporterStructure": {
     "id": "Id",
-    "date": "Date",
+    "startTime": "Date",
     "user": "User",
     "type": "Type",
     "cron": "Cron"
   },
   "importation": {
     "header": "Data importation",
-    "button": "+ New Importation"
+    "button": "+ New Importation",
+    "import": "Import",
+    "cron-expression": "Cron Expression",
+    "import-parameters": "Import Parameters",
+    "import-fieldset": "Select Import Type",
+    "import-title": "New Data Importation",
+    "cron-example": "(Example: * * * 15)",
+    "cron-help": "What is a cron expression?",
+    "succeeded-import": "Importation succeded",
+    "failed-import": "Importation failed",
+    "popup": {
+      "user": "User",
+      "type": "Type",
+      "cron": "Cron",
+      "close": "Close"
+    }
   },
   "validator": {
     "header": "Validators",
@@ -595,5 +621,11 @@
     "header": "LDP",
     "entity": "Entity",
     "count": "Total"
+  },
+  "dataDeletion": {
+    "header": "Data Deletion",
+    "date": "Date",
+    "delete": "Delete",
+    "delete-message": "Are you sure you want to delete data from the selected date?"
   }
 }

@@ -36,15 +36,15 @@
     "no": "No",
     "datepicker-placeholder": "YYYY-MM-DD",
     "change-tree": "Change tree",
-    "clear": "Clean",
+    "clean": "Clean",
     "change-tree-normal": "Change to normal tree",
     "no-result": "No results",
     "results-amount": "Total: ",
     "back": "Go back",
     "reset": "Reset",
-    "delete": "Borrar",
+    "delete": "Delete",
     "actions": "Actions",
-    "use": "Utilizar Query",
+    "use": "Use",
     "edit": "Edit",
     "delete-message": "Are you sure you want to delete the entry? "
   },
@@ -68,6 +68,7 @@
     "contact": "Contact",
     "graph": "Renderización named graph",
     "import-data": "Data Importer",
+    "delete-data": "Data Deletion",
     "validator": "Validators",
     "ldp": "LDP"
   },
@@ -121,6 +122,13 @@
       "sector-chart": "sector chart"
     }
   },
+  "proyect": {
+    "title": "Projects",
+    "detail": {
+      "name": "Name",
+      "date": "Date"
+    }
+  },
   "home": {
     "search": "Global search",
     "service": "Services",
@@ -147,20 +155,21 @@
     "service-discovery":"Backends Monitor",
     "information": "Info",
     "links": "Links",
-    "validation": "Validators",
+    "validator": "Validators",
     "ldp": "LDP"
   },
   "links": {
     "title": "Links",
     "principal": "Principal",
-    "repository": "Repositorios",
+    "repository": "Repositories",
     "ontology": "Ontology",
     "renderization": "Renderization",
     "backendsSGI": "Backends SGI",
     "other": "Other"
   },
   "researchmentStructure": {
-    "title": "Researchment Structures",
+    "header": "Researchment Structures",
+    "title": "Title",
     "type": "Type",
     "financing": "Financing",
     "name": "Name",
@@ -217,8 +226,10 @@
     "trajectory-by-timeline": "Trayectory by timeline",
     "events": "Events",
     "congress-events": "Congress and events",
+    "name": "Full Name",
+    "appointments": "Appointments",
+    "publications": "Publications",
     "id": "ID",
-    "name": "Full name",
     "birthDate": "BithDate",
     "description": "Description",
     "firstName": "Name",
@@ -254,7 +265,7 @@
     "action-results":"Search result",
     "action-open":"Open results",
     "state-tittle": "Discovery Library State",
-    "stats-tittle": "Objects stats",
+    "stats-tittle": "Object Stats",
     "search-tittle": "Similarity search",
     "result-tittle": "Result search",
     "global-state": "General state",
@@ -572,14 +583,29 @@
   },
   "dataImporterStructure": {
     "id": "Id",
-    "date": "Date",
+    "startTime": "Date",
     "user": "User",
     "type": "Type",
     "cron": "Cron"
   },
   "importation": {
     "header": "Data importation",
-    "button": "+ New Importation"
+    "button": "+ New Importation",
+    "import": "Import",
+    "cron-expression": "Cron Expression",
+    "import-parameters": "Import Parameters",
+    "import-fieldset": "Select Import Type",
+    "import-title": "New Data Importation",
+    "cron-example": "(Example: * * * 15)",
+    "cron-help": "What is a cron expression?",
+    "succeeded-import": "Importation succeded",
+    "failed-import": "Importation failed",
+    "popup": {
+      "user": "User",
+      "type": "Type",
+      "cron": "Cron",
+      "close": "Close"
+    }
   },
   "validator": {
     "header": "Validators",
@@ -595,5 +621,11 @@
     "header": "LDP",
     "entity": "Entity",
     "count": "Total"
+  },
+  "dataDeletion": {
+    "header": "Data Deletion",
+    "date": "Date",
+    "delete": "Delete",
+    "delete-message": "Are you sure you want to delete data from the selected date?"
   }
 }
