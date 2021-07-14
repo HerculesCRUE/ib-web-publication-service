@@ -153,6 +153,14 @@ export const HOME_ITEMS: HomeGroupItem[] = [{
       url: '/main/validator',
       disabled: false,
       urlExterna: ''
+    },
+    {
+      title: 'home.ldp',
+      iconName: 'oi-book',
+      iconCircle: false,
+      url: '/main/ldp',
+      disabled: false,
+      urlExterna: ''
     }
   ]
 },

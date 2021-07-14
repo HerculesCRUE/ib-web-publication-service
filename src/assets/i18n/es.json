@@ -68,7 +68,8 @@
     "contact": "Contacto",
     "graph": "Renderización named graph",
     "import-data": "Importador de datos",
-    "validator": "Validadores"
+    "validator": "Validadores",
+    "ldp": "LDP"
   },
   "login": {
     "form": {
@@ -151,7 +152,8 @@
     "import-data": "Importador de datos",
     "information": "Info",
     "links": "Enlaces",
-    "validator": "Validadores"
+    "validator": "Validadores",
+    "ldp": "LDP"
   },
   "links": {
     "title": "Links GitHub",
@@ -586,5 +588,10 @@
     "delete": "¿Está seguro que desea borrar el registro?",
     "new-form": "Nuevo validador",
     "edit-form": "Modificar validador"
+  },
+  "ldp": {
+    "header": "LDP",
+    "entity": "Entidad",
+    "count": "Total"
   }
 }

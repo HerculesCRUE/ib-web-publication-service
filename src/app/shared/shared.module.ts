@@ -13,6 +13,7 @@ import { TableResultsDtoComponent } from '../common-display-data/table-results-d
 import { TableResultsImporterComponent } from '../common-display-data/table-results-importer/table-results-importer.component';
 import { PanelComponent } from './panel/panel.component';
 import { TableResultsValidatorComponent } from '../common-display-data/table-results-validator/table-results-validator.component';
+import { TableResultsLdpCountComponent } from '../common-display-data/table-results-ldp-count/table-results-ldp-count.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { TableResultsValidatorComponent } from '../common-display-data/table-res
     TableResultsComponent,
     TableResultsDtoComponent,
     TableResultsImporterComponent,
-    TableResultsValidatorComponent],
+    TableResultsValidatorComponent,
+    TableResultsLdpCountComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -40,7 +42,8 @@ import { TableResultsValidatorComponent } from '../common-display-data/table-res
     TableResultsComponent,
     TableResultsDtoComponent,
     TableResultsImporterComponent,
-    TableResultsValidatorComponent],
+    TableResultsValidatorComponent,
+    TableResultsLdpCountComponent],
   providers: [
     PatentService,
     DocumentService

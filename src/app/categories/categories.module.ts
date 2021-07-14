@@ -47,7 +47,10 @@ import { DiscoveryActionComponent } from '../discovery/actions/discovery-action/
 import { UrisComponent } from '../uris-factory/uris.component';
 import { ResultItemComponent } from '../discovery/result/result-item/result-item.component';
 import { DataImporterComponent } from './data-importer/data-importer.component';
+import { LdpComponent } from './ldp/ldp.component';
 import { AllDataImporterStructuresComponent } from './data-importer/all-data-importer/all-data-importer-structures.component';
+import { AllLdpComponent } from './ldp/all-ldp/all-ldp.component';
+import { SearchLdpComponent } from './ldp/search/search-ldp.component';
 import { NewDataImporterComponent } from './data-importer/new-data-importer/new-data-importer.component';
 import { ValidatorComponent } from './validator/validator.component';
 import { AllValidatorStructuresComponent } from './validator/all-validator/all-validator-structures.component';
@@ -65,7 +68,7 @@ import { ServiceDiscoveryComponent } from '../service-discovery/service-discover
     ScientificProductionComponent, DocumentDetailComponent, EventDetailComponent, StatisticsComponent, DiscoveryComponent,
     DiscoveryControlComponent, DiscoverySearchComponent, DiscoveryActionComponent, ResultItemComponent, UrisComponent, ServiceDiscoveryComponent,
     PeopleInvolvedComponent, CollaboratorsComponent, ScientificPublicationDetailComponent, AreasListComponent, DataImporterComponent, AllDataImporterStructuresComponent, NewDataImporterComponent,
-    ValidatorComponent, AllValidatorStructuresComponent, NewValidatorComponent
+    ValidatorComponent, AllValidatorStructuresComponent, NewValidatorComponent, LdpComponent, AllLdpComponent, SearchLdpComponent
   ],
   imports: [
     NgxEchartsModule,

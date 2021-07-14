@@ -17,6 +17,7 @@ import { DataImporterComponent } from './categories/data-importer/data-importer.
 import { ServiceDiscoveryComponent } from './service-discovery/service-discovery/service-discovery.component';
 import { InfoComponent } from './info/info.component';
 import { ValidatorComponent } from './categories/validator/validator.component';
+import { LdpComponent } from './categories/ldp/ldp.component';
 /**
  * **********************************************
  * ************** Rutas securizadas *************
@@ -59,6 +60,10 @@ const noSecureRoutes: Routes = [
   {
     path: 'data-importer',
     component: DataImporterComponent,
+  },
+  {
+    path: 'ldp',
+    component: LdpComponent,
   },
   /* Graphics path */
   {
