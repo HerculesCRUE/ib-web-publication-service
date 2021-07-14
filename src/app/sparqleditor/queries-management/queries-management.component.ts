@@ -22,6 +22,7 @@ export class QueriesManagementComponent extends PaginatedSearchComponent<SparqlQ
   loaded = false;
   queryTypes;
 
+  currentUsername: string;
 
   constructor(
     private loginService: LoginService,
@@ -40,6 +41,11 @@ export class QueriesManagementComponent extends PaginatedSearchComponent<SparqlQ
    * @memberof PatentsComponent
    */
   ngOnInit(): void {
+
+    this.loginService.getLoggedUsername().subscribe((username: string) => {
+      this.currentUsername = username;
+    });
+
     this.queryTypes = this.ToArray(SparqlQueryFromType);
   }
   ToArray(enumme) {

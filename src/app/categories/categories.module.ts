@@ -58,6 +58,7 @@ import { AllValidatorStructuresComponent } from './validator/all-validator/all-v
 import { NewValidatorComponent } from './validator/new-validator/new-validator.component';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { ServiceDiscoveryComponent } from '../service-discovery/service-discovery/service-discovery.component';
+import { DataDeletionComponent } from './data-deletion/data-deletion.component';
 
 @NgModule({
   declarations: [ResearchmentStructuresComponent, ResearchmentStructuresDetailComponent, AllResearchmentStructuresComponent,
@@ -69,7 +70,8 @@ import { ServiceDiscoveryComponent } from '../service-discovery/service-discover
     ScientificProductionComponent, DocumentDetailComponent, EventDetailComponent, StatisticsComponent, DiscoveryComponent,
     DiscoveryControlComponent, DiscoverySearchComponent, DiscoveryActionComponent, ResultItemComponent, UrisComponent, ServiceDiscoveryComponent,
     PeopleInvolvedComponent, CollaboratorsComponent, ScientificPublicationDetailComponent, AreasListComponent, DataImporterComponent, AllDataImporterStructuresComponent, NewDataImporterComponent,
-    ValidatorComponent, AllValidatorStructuresComponent, NewValidatorComponent, LdpComponent, AllLdpComponent, SearchLdpComponent, SearchLdpResultComponent
+    ValidatorComponent, AllValidatorStructuresComponent, NewValidatorComponent, LdpComponent, AllLdpComponent, SearchLdpComponent, SearchLdpResultComponent,
+    DataDeletionComponent
   ],
   imports: [
     NgxEchartsModule,
