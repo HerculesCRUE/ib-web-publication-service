@@ -40,13 +40,6 @@ export const MENU_ITEMS: MenuItem[] = [
     url: '/main/home',
     disabled: false
   },
-  /*
-  {
-    title: 'menu.users',
-    icon: '',
-    url: '/main/users'
-  },
-  */
   {
     title: 'menu.university',
     icon: 'oi-project',
@@ -147,6 +140,17 @@ export const MENU_ITEMS: MenuItem[] = [
     icon: 'oi-data-transfer-download',
     url: '/main/installer',
     disabled: false
+  },
+  {
+    title: 'menu.links',
+    icon: 'oi-external-link',
+    url: '/main/links',
+    disabled: false
+  },
+  {
+    title: 'menu.information',
+    icon: 'oi-info',
+    url: '/main/info',
+    disabled: false
   }
-
 ];

@@ -71,7 +71,9 @@
     "delete-data": "Borrado de datos",
     "validator": "Validadores",
     "ldp": "LDP",
-    "installer": "Instalador"
+    "installer": "Instalador",
+    "information": "Info",
+    "links": "Enlaces"
   },
   "login": {
     "form": {
