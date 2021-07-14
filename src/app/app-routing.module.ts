@@ -10,6 +10,7 @@ import { GraphicComponent } from './graphic/graphic.component';
 import { LinksComponent } from './links/links.component';
 import { AccesibilityComponent } from './accesibility/accesibility.component';
 import { DiscoveryComponent } from './discovery/discovery.component';
+import { EtlComponent } from './etl/etl.component';
 import { UrisComponent } from './uris-factory/uris.component';
 import { ContactComponent } from './contact/contact.component';
 import { GraphPageComponent } from './graph-page/graph-page.component';
@@ -109,6 +110,10 @@ const noSecureRoutes: Routes = [
   {
     path: 'installer',
     component: InstallerComponent,
+  },
+  {
+    path: 'etl',
+    component: EtlComponent,
   },
   {
     path: 'info',

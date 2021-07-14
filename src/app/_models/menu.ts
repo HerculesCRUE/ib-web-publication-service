@@ -142,6 +142,13 @@ export const MENU_ITEMS: MenuItem[] = [
     disabled: false
   },
   {
+    title: 'menu.etl',
+    icon: 'oi-cog',
+    url: '/main/etl',
+    disabled: false,
+    loginRequired: true
+  },
+  {
     title: 'menu.links',
     icon: 'oi-external-link',
     url: '/main/links',

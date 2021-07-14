@@ -72,6 +72,7 @@
     "validator": "Validators",
     "ldp": "Linked Data Graph",
     "installer": "Installer",
+    "etl": "ETL",
     "information": "Info",
     "links": "Links"
   },
@@ -160,6 +161,7 @@
     "discovery":"Discovery library",
     "service-discovery":"Backends Monitor",
     "installer": "Installer",
+    "etl": "ETL",
     "information": "Info",
     "links": "Links",
     "validation": "Validators",
