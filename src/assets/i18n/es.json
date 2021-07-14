@@ -150,21 +150,28 @@
     "info-hercules": "Información sobre Hercules",
     "contact": "Datos de contacto",
     "import-data": "Importador de datos",
+    "uris-factory":"Factoría de URIs",
+    "discovery":"Librería de descubrimiento",
+    "service-discovery":"Monitor de Backends",
     "information": "Info",
     "links": "Enlaces",
     "validator": "Validadores",
     "ldp": "LDP"
   },
   "links": {
-    "title": "Links GitHub",
+    "title": "Enlaces",
     "principal": "Principal",
-    "repository": "Repositorios"
+    "repository": "Repositorios",
+    "ontology": "Ontología",
+    "renderization": "Renderización",
+    "backendsSGI": "Backends SGI",
+    "other": "Otros"
   },
 
   "researchmentStructure": {
     "header": "Estructuras de investigación",
     "title": "Título",
-    "type": "Tipo ontológico",
+    "type": "Tipo",
     "financing": "Financiación",
     "name": "Nombre",
     "publications": "Publicaciones",
@@ -204,7 +211,7 @@
   "scientist": {
     "title": "Titulo",
     "area": "Áreas",
-    "type": "Tipo ontológico",
+    "type": "Tipo",
     "acction-inves": "Acciones de investigación",
     "congress": "Congresos",
     "business-activity": "Actividad empresarial",
@@ -243,7 +250,7 @@
     "date-from": "Fecha desde",
     "date-to": "Fecha hasta",
     "degree": "Título",
-    "type": "Tipo ontológico",
+    "type": "Tipo",
     "doi": "DOI",
     "publication-year": "Año de publicación",
     "scientific-publications": "Publicaciones científicas",
@@ -261,6 +268,7 @@
     "state-tittle": "Estado de la librería de descubrimiento",
     "stats-tittle": "Estadisticas de Objetos",
     "search-tittle": "Búsqueda de similitudes",
+    "result-tittle": "Búsqueda de resultados",
     "global-state": "Estado general",
     "noData": "No ha sido posible cargar los datos de la librería de descubrimiento",
     "NOT_INITIALIZED":"No inicializada",
@@ -301,7 +309,23 @@
     "not-result-found": "No encontradas similaridades",
     "results-title": "Resultados de similitudes",
     "type-result": "Tipo de resultado",
-    "code-result": "Código de resultado"
+    "code-result": "Código de resultado",
+    "accept": "Aceptar similitud",
+    "reject": "Rechazar similitud",
+    "entity": "Entidad",
+    "entity-main": "Entidad principal",
+    "attributes":"Atributos",
+    "similiarity":"Similaridad",
+    "similiarity-no-id":"Similaridad sin Id",
+    "origin":"Origen",
+    "manual":"Acciones manuales",
+    "automatic":"Acciones automáticas",
+    "decision-response":"Respuesta de la decisión",
+    "deleted":"Entidades borradas",
+    "updated":"Entidades actualizadas",
+    "att-name":"Nombre atributo",
+    "att-main-value":"Valor atributo entidad principal",
+    "att-related-value":"Valor atributo"
   },
   "uris":{
     "title":"Factoría de URIs",
@@ -332,6 +356,7 @@
     "canonical-table-canonical-uri":"URI Pública (canónica)",
     "canonical-table-canonical-language-uri":"URI Pública en idioma (canónica)",
     "canonical-table-language":"Idioma",
+    "canonical-table-localstorage":"URI privada (local)",
     "local-table-storage":"Tipo de almacenamiento",
     "canonical-field":"URI Pública (canonica)",
     "canonical-placeholder":"Inserte la URI Pública (canonica) para buscar por este criterio",
@@ -350,8 +375,12 @@
     "healthEndpoint":"Endpoint de comprobación de estado",
     "status":"Estado",
     "endPoint":"Endpoint",
-    "noData":"No se han recuperado datos de el Service Discovery"
-
+    "noData":"No se han recuperado datos de el Service Discovery",
+    "nodes": "Nodos",
+    "services": "Servicios",
+    "endpoints": "Endpoints",
+    "activate": "Activado",
+    "disabled": "Desactivado"
   },
   "projects": {
     "year": "Año",
@@ -397,14 +426,14 @@
       "id": "ID",
       "name": "Nombre",
       "anyo": "Año",
-      "type": "Tipo ontológico"
+      "type": "Tipo"
     }
   },
   "documents": {
     "document": "Documentos",
     "date-fin": "Fecha hasta",
     "date-ini": "Fecha desde",
-    "types": "Tipo ontológico",
+    "types": "Tipo",
     "title": "Titulo",
     "name": "Nombre",
     "id": "ID",
@@ -414,7 +443,7 @@
     "publishedIn": "Publicado en",
     "date": "Fecha",
     "summary": "Sumario",
-    "type": "Tipo ontológico",
+    "type": "Tipo",
     "abbreviation": "Abreviación",
     "placeOfPublication": "Lugar de publicación",
     "edition": "Edición",
@@ -449,7 +478,7 @@
     "scientific-production-related": "Producción cientifíca relacionada con el proyecto",
     "table-header": {
       "title": "Título",
-      "type": "Tipo ontológico",
+      "type": "Tipo",
       "doi": "DOI",
       "release-year": "Año de lanzamiento"
     }
@@ -473,7 +502,7 @@
   "directed-jobs": {
     "table-header": {
       "title": "Título",
-      "type": "Tipo ontológico",
+      "type": "Tipo",
       "keywords": "Palabras claves",
       "release-year": "Año de lanzamiento"
     }
@@ -498,7 +527,7 @@
   },
   "events": {
     "rol": "Rol",
-    "type": "Tipo ontológico",
+    "type": "Tipo",
     "id": "ID",
     "title": "Título",
     "date": "Fecha",
@@ -520,7 +549,7 @@
     "resume": "Resumen",
     "other-authors": "Otros authores",
     "name": "Nombre",
-    "type": "Tipo ontológico",
+    "type": "Tipo",
     "document-sections": "Secciones"
   },
   "event": {

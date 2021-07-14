@@ -1,42 +1,41 @@
 <div class="card" style="margin-top: 20px;margin-left: 50px;">
     <div class="card-body">
-        <h5 class="card-title"> Entidad principal: <strong>{{ item.entityId }}</strong></h5>
+        <h5 class="card-title"> {{'discovery.entity-main' | translate}}: <strong>{{ item.entityId }}</strong></h5>
         <br />
         <table class="table table-bordered">
             <tbody>
-                <tr>
-                    <td>{{'discovery.node' | translate}}</td>
-                    <td><strong>{{ item.node }}</strong></td>
+                <tr class="d-flex">
+                    <td class="col-sm-1">{{'discovery.node' | translate}}</td>
+                    <td class="col-sm-11"><strong>{{ item.node }}</strong></td>
+                </tr>
+                <tr class="d-flex">
+                    <td class="col-sm-1">{{'discovery.storage' | translate}}</td>
+                    <td class="col-sm-11"><strong>{{ item.tripleStore }}</strong></td>
+                </tr>
+                <tr class="d-flex">
+                    <td class="col-sm-1">{{'discovery.class' | translate}}</td>
+                    <td class="col-sm-11"><strong>{{ item.className }}</strong></td>
+                </tr>
+                <tr class="d-flex">
+                    <td class="col-sm-1">local URI</td>
+                    <td class="col-sm-11"><a href="{{item.localUri}}">{{item.localUri}}</a></td>
+                </tr>
+                <tr class="d-flex">
+                    <td class="col-sm-1">Origin</td>
+                    <td class="col-sm-11"><strong>{{ item.origin }}</strong></td>
+                </tr>
+                <tr class="d-flex">
+                    <td class="col-sm-1">{{'discovery.status' | translate}}</td>
+                    <td class="col-sm-11"><strong>{{ item.state }}</strong></td>
                 </tr>
                 <tr>
-                    <td>{{'discovery.storage' | translate}}</td>
-                    <td><strong>{{ item.tripleStore }}</strong></td>
-                </tr>
-                <tr>
-                    <td>{{'discovery.class' | translate}}</td>
-                    <td><strong>{{ item.className }}</strong></td>
-                </tr>
-                <tr>
-                    <td>local URI</td>
-                    <td><a href="{{item.localUri}}">{{item.localUri}}</a></td>
-                </tr>
-                <tr>
-                    <td>Origin</td>
-                    <td><strong>{{ item.origin }}</strong></td>
-                </tr>
-                <tr>
-                    <td>{{'discovery.status' | translate}}</td>
-                    <td><strong>{{ item.state }}</strong></td>
-                </tr>
-                <tr>
-                    <td><strong>Atributos</strong></td>
-                    <td>
-
+                    <td class="col-sm-1"><strong>{{'discovery.attributes' | translate}}</strong></td>
+                    <td class="col-sm-11">
                         <table class="table">
                             <tbody>
                                 <tr *ngFor="let att of item.attributes | keyvalue">
-                                    <td>{{att.key}}</td>
-                                    <td><strong>{{att.value}}</strong></td>
+                                    <td class="col-sm-1">{{att.key}}</td>
+                                    <td class="col-sm-11"><strong>{{att.value}}</strong></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -55,55 +54,71 @@
             <div class="col-md-9">
                 <ngb-accordion [closeOthers]="false">
                     <ngb-panel *ngFor="let auto of item.automatics" id="acc-auto-{{auto.entityId}}"
-                        title="Entidad: {{auto.entityId}}">
+                        title="{{'discovery.entity' | translate}}: {{auto.entityId}}">
                         <ng-template ngbPanelContent>
                             <table class="table table-bordered">
                                 <tbody>
-                                    <tr>
-                                        <td>{{'discovery.node' | translate}}</td>
-                                        <td><strong>{{ auto.node }}</strong></td>
+                                    <tr class="d-flex">
+                                        <td class="col-sm-1">{{'discovery.node' | translate}}</td>
+                                        <td class="col-sm-11"><strong>{{ auto.node }}</strong></td>
+                                    </tr>
+                                    <tr class="d-flex">
+                                        <td class="col-sm-1">{{'discovery.storage' | translate}}</td>
+                                        <td class="col-sm-11"><strong>{{ auto.tripleStore }}</strong></td>
+                                    </tr>
+                                    <tr class="d-flex">
+                                        <td class="col-sm-1">{{'discovery.class' | translate}}</td>
+                                        <td class="col-sm-11"><strong>{{ auto.className }}</strong></td>
+                                    </tr>
+                                    <tr class="d-flex">
+                                        <td class="col-sm-1">entityId</td>
+                                        <td class="col-sm-11"><strong>{{ auto.entityId }}</strong></td>
+                                    </tr>
+                                    <tr class="d-flex">
+                                        <td class="col-sm-1">local URI</td>
+                                        <td class="col-sm-11"><a href="{{auto.localUri}}">{{auto.localUri}}</a></td>
+                                    </tr>
+                                    <tr class="d-flex">
+                                        <td class="col-sm-1">{{'discovery.origin' | translate}}</td>
+                                        <td class="col-sm-11"><strong>{{ auto.origin }}</strong></td>
+                                    </tr>
+                                    <tr class="d-flex">
+                                        <td class="col-sm-1">{{'discovery.status' | translate}}</td>
+                                        <td class="col-sm-11"><strong>{{ auto.state }}</strong></td>
+                                    </tr>
+                                    <tr class="d-flex">
+                                        <td class="col-sm-1">{{'discovery.similiarity' | translate}}</td>
+                                        <td class="col-sm-11"><strong>{{ auto.similarity }}</strong></td>
+                                    </tr>
+                                    <tr class="d-flex">
+                                        <td class="col-sm-1">{{'discovery.similiarity-no-id' | translate}}</td>
+                                        <td class="col-sm-11"><strong>{{ auto.similarityWithoutId }}</strong></td>
                                     </tr>
                                     <tr>
-                                        <td>{{'discovery.storage' | translate}}</td>
-                                        <td><strong>{{ auto.tripleStore }}</strong></td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{'discovery.class' | translate}}</td>
-                                        <td><strong>{{ auto.className }}</strong></td>
-                                    </tr>
-                                    <tr>
-                                        <td>entityId</td>
-                                        <td><strong>{{ auto.entityId }}</strong></td>
-                                    </tr>
-                                    <tr>
-                                        <td>local URI</td>
-                                        <td><a href="{{auto.localUri}}">{{auto.localUri}}</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Origin</td>
-                                        <td><strong>{{ auto.origin }}</strong></td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{'discovery.status' | translate}}</td>
-                                        <td><strong>{{ auto.state }}</strong></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Similitud</td>
-                                        <td><strong>{{ auto.similarity }}</strong></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Similitud sin id</td>
-                                        <td><strong>{{ auto.similarityWithoutId }}</strong></td>
-                                    </tr>
-                                    <tr>
-                                        <td><strong>Atributos</strong></td>
-                                        <td>
+                                        <td class="col-sm-1"><strong>{{'discovery.attributes' | translate}}</strong>
+                                        </td>
+                                        <td class="col-sm-11">
 
                                             <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">{{'discovery.att-name' | translate}}</th>
+                                                        <th scope="col">{{'discovery.att-related-value' | translate}}
+                                                        </th>
+                                                        <th scope="col">{{'discovery.att-main-value' | translate}}</th>
+                                                    </tr>
+                                                </thead>
                                                 <tbody>
                                                     <tr *ngFor="let attAuto of auto.attributes | keyvalue">
                                                         <td>{{attAuto.key}}</td>
-                                                        <td><strong>{{attAuto.value}}</strong></td>
+                                                        <td class="text"><strong placement="bottom"
+                                                                ngbTooltip="{{attAuto.value | json}}">{{attAuto.value |
+                                                                json}}</strong></td>
+                                                        <td class="text">
+                                                            <strong placement="bottom"
+                                                                ngbTooltip="{{item.attributes[attAuto.key] | json}}">{{item.attributes[attAuto.key]
+                                                                | json}}</strong>
+                                                        </td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -122,62 +137,78 @@
         <!-- Similitudes Manuales-->
         <div class="row">
             <div class="col-md-3">
-                <h5 class="card-title"> <strong>Similitudes Manuales:<span style="margin-left: 20px;"
+                <h5 class="card-title"> <strong>{{'discovery.manual' | translate}}:<span style="margin-left: 20px;"
                             class="badge badge-success">{{
                             item.manuals.length }}</span></strong></h5>
             </div>
             <div class="col-md-9">
                 <ngb-accordion [closeOthers]="false">
                     <ngb-panel *ngFor="let man of item.manuals" id="acc-man-{{man.entityId}}"
-                        title="Entidad: {{man.entityId}}">
+                        title="{{'discovery.entity' | translate}}: {{man.entityId}}">
                         <ng-template ngbPanelContent>
                             <table class="table table-bordered">
                                 <tbody>
-                                    <tr>
-                                        <td>{{'discovery.node' | translate}}</td>
-                                        <td><strong>{{ man.node }}</strong></td>
+                                    <tr class="d-flex">
+                                        <td class="col-sm-1">{{'discovery.node' | translate}}</td>
+                                        <td class="col-sm-11"><strong>{{ man.node }}</strong></td>
                                     </tr>
-                                    <tr>
-                                        <td>{{'discovery.storage' | translate}}</td>
-                                        <td><strong>{{ man.tripleStore }}</strong></td>
+                                    <tr class="d-flex">
+                                        <td class="col-sm-1">{{'discovery.storage' | translate}}</td>
+                                        <td class="col-sm-11"><strong>{{ man.tripleStore }}</strong></td>
                                     </tr>
-                                    <tr>
-                                        <td>{{'discovery.class' | translate}}</td>
-                                        <td><strong>{{ man.className }}</strong></td>
+                                    <tr class="d-flex">
+                                        <td class="col-sm-1">{{'discovery.class' | translate}}</td>
+                                        <td class="col-sm-11"><strong>{{ man.className }}</strong></td>
                                     </tr>
-                                    <tr>
-                                        <td>entityId</td>
-                                        <td><strong>{{ man.entityId }}</strong></td>
+                                    <tr class="d-flex">
+                                        <td class="col-sm-1">entityId</td>
+                                        <td class="col-sm-11"><strong>{{ man.entityId }}</strong></td>
                                     </tr>
-                                    <tr>
-                                        <td>local URI</td>
+                                    <tr class="d-flex">
+                                        <td class="col-sm-1">local URI</td>
                                         <td><a href="{{man.localUri}}">{{man.localUri}}</a></td>
                                     </tr>
-                                    <tr>
-                                        <td>Origin</td>
-                                        <td><strong>{{ man.origin }}</strong></td>
+                                    <tr class="d-flex">
+                                        <td class="col-sm-1">{{'discovery.origin' | translate}}</td>
+                                        <td class="col-sm-11"><strong>{{ man.origin }}</strong></td>
                                     </tr>
-                                    <tr>
-                                        <td>{{'discovery.status' | translate}}</td>
-                                        <td><strong>{{ man.state }}</strong></td>
+                                    <tr class="d-flex">
+                                        <td class="col-sm-1">{{'discovery.status' | translate}}</td>
+                                        <td class="col-sm-11"><strong>{{ man.state }}</strong></td>
                                     </tr>
-                                    <tr>
-                                        <td>Similitud</td>
-                                        <td><strong>{{ man.similarity }}</strong></td>
+                                    <tr class="d-flex">
+                                        <td class="col-sm-1">{{'discovery.similiarity' | translate}}</td>
+                                        <td class="col-sm-11"><strong>{{ man.similarity }}</strong></td>
                                     </tr>
-                                    <tr>
-                                        <td>Similitud sin id</td>
-                                        <td><strong>{{ man.similarityWithoutId }}</strong></td>
+                                    <tr class="d-flex">
+                                        <td class="col-sm-1">{{'discovery.similiarity-no-id' | translate}}</td>
+                                        <td class="col-sm-11"><strong>{{ man.similarityWithoutId }}</strong></td>
                                     </tr>
-                                    <tr>
-                                        <td><strong>Atributos</strong></td>
-                                        <td>
+                                    <tr class="d-flex">
+                                        <td class="col-sm-1"><strong>{{'discovery.attributes' | translate}}</strong>
+                                        </td>
+                                        <td class="col-sm-11">
 
                                             <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">{{'discovery.att-name' | translate}}</th>
+                                                        <th scope="col">{{'discovery.att-related-value' | translate}}
+                                                        </th>
+                                                        <th scope="col">{{'discovery.att-main-value' | translate}}</th>
+                                                    </tr>
+                                                </thead>
                                                 <tbody>
                                                     <tr *ngFor="let attMan of man.attributes | keyvalue">
                                                         <td>{{attMan.key}}</td>
-                                                        <td><strong>{{attMan.value}}</strong></td>
+                                                        <td class="text"><strong placement="bottom"
+                                                                ngbTooltip="{{attMan.value | json}}">{{attMan.value}}</strong>
+                                                        </td>
+                                                        <td class="text">
+                                                            <strong placement="bottom"
+                                                                ngbTooltip="{{item.attributes[attMan.key] | json}}">{{item.attributes[attMan.key]
+                                                                | json}}</strong>
+                                                        </td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -187,20 +218,20 @@
                                 </tbody>
                             </table>
                             <div *ngIf="manualDecisions[man.entityId] == undefined; else decisionTemplate">
-                                <button role="button" aria-pressed="false" class="btn btn-secondary tree"
-                                    style="margin: 20px;"
-                                    (click)="onActionOverManualSimilitude(true,man)">{{'discovery.update-state' |
+                                <button *ngIf="isAdmin" role="button" aria-pressed="false"
+                                    class="btn btn-secondary tree" style="margin: 20px;"
+                                    (click)="onActionOverManualSimilitude(true,man)">{{'discovery.accept' |
                                     translate}}</button>
-                                <button role="button" aria-pressed="false" class="btn btn-secondary tree"
-                                    (click)="onActionOverManualSimilitude(false,man)"
-                                    style="margin: 20px;">{{'discovery.force-reload' |
+                                <button *ngIf="isAdmin" role="button" aria-pressed="false"
+                                    class="btn btn-secondary tree" (click)="onActionOverManualSimilitude(false,man)"
+                                    style="margin: 20px;">{{'discovery.reject' |
                                     translate}}</button>
                             </div>
                             <ng-template #decisionTemplate>
-                                <h5>Decision response:</h5>
+                                <h5>{{'discovery.decision-response' | translate}}:</h5>
                                 <div *ngIf="manualDecisions[man.entityId].response != undefined">
                                     <div *ngIf="manualDecisions[man.entityId].response.UPDATE != undefined">
-                                        Updated Entities:
+                                        {{'discovery.updated' | translate}}:
                                         <ngb-accordion [closeOthers]="false">
                                             <ngb-panel
                                                 *ngFor="let updatedItem of manualDecisions[man.entityId].response.UPDATE | keyvalue"
@@ -209,49 +240,62 @@
                                                 <ng-template ngbPanelContent>
                                                     <table class="table table-bordered">
                                                         <tbody>
-                                                            <tr>
-                                                                <td>{{'discovery.node' | translate}}</td>
-                                                                <td><strong>{{ updatedItem.value.node }}</strong></td>
+                                                            <tr class="d-flex">
+                                                                <td class="col-sm-1">{{'discovery.node' | translate}}
+                                                                </td>
+                                                                <td class="col-sm-11"><strong>{{ updatedItem.value.node
+                                                                        }}</strong></td>
                                                             </tr>
-                                                            <tr>
-                                                                <td>{{'discovery.storage' | translate}}</td>
-                                                                <td><strong>{{ updatedItem.value.tripleStore }}</strong>
+                                                            <tr class="d-flex">
+                                                                <td class="col-sm-1">{{'discovery.storage' | translate}}
+                                                                </td>
+                                                                <td class="col-sm-11"><strong>{{
+                                                                        updatedItem.value.tripleStore }}</strong>
                                                                 </td>
                                                             </tr>
-                                                            <tr>
-                                                                <td>{{'discovery.class' | translate}}</td>
-                                                                <td><strong>{{ updatedItem.value.className }}</strong>
+                                                            <tr class="d-flex">
+                                                                <td class="col-sm-1">{{'discovery.class' | translate}}
+                                                                </td>
+                                                                <td class="col-sm-11"><strong>{{
+                                                                        updatedItem.value.className }}</strong>
                                                                 </td>
                                                             </tr>
-                                                            <tr>
-                                                                <td>entityId</td>
-                                                                <td><strong>{{ updatedItem.value.entityId }}</strong>
+                                                            <tr class="d-flex">
+                                                                <td class="col-sm-1">entityId</td>
+                                                                <td class="col-sm-11"><strong>{{
+                                                                        updatedItem.value.entityId }}</strong>
                                                                 </td>
                                                             </tr>
-                                                            <tr>
-                                                                <td>local URI</td>
-                                                                <td><a
+                                                            <tr class="d-flex">
+                                                                <td class="col-sm-1">local URI</td>
+                                                                <td class="col-sm-11"><a
                                                                         href="{{updatedItem.value.localUri}}">{{updatedItem.value.localUri}}</a>
                                                                 </td>
                                                             </tr>
-                                                            <tr>
-                                                                <td>Origin</td>
-                                                                <td><strong>{{ updatedItem.value.origin }}</strong></td>
+                                                            <tr class="d-flex">
+                                                                <td class="col-sm-1">Origin</td>
+                                                                <td class="col-sm-11"><strong>{{
+                                                                        updatedItem.value.origin }}</strong></td>
+                                                            </tr>
+                                                            <tr class="d-flex">
+                                                                <td class="col-sm-1">{{'discovery.state' | translate}}
+                                                                </td>
+                                                                <td class="col-sm-11"><strong>{{ updatedItem.value.state
+                                                                        }}</strong></td>
                                                             </tr>
                                                             <tr>
-                                                                <td>{{'discovery.state' | translate}}</td>
-                                                                <td><strong>{{ updatedItem.value.state }}</strong></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td><strong>Atributos</strong></td>
-                                                                <td>
+                                                                <td class="col-sm-1"><strong>{{'discovery.attributes' |
+                                                                        translate}}</strong></td>
+                                                                <td class="col-sm-11">
 
                                                                     <table class="table">
                                                                         <tbody>
                                                                             <tr
                                                                                 *ngFor="let attUI of updatedItem.value.attributes | keyvalue">
-                                                                                <td>{{attUI.key}}</td>
-                                                                                <td><strong>{{attUI.value}}</strong>
+                                                                                <td class="col-sm-1">{{attUI.key}}</td>
+                                                                                <td class="col-sm-11 text">
+                                                                                    <strong placement="bottom"
+                                                                                        ngbTooltip="{{attUI.value}}">{{attUI.value}}</strong>
                                                                                 </td>
                                                                             </tr>
                                                                         </tbody>
@@ -267,7 +311,7 @@
                                     </div>
 
                                     <div *ngIf="manualDecisions[man.entityId].response.UPDATE != undefined">
-                                        Deleted Entities:
+                                        {{'discovery.deleted' | translate}}:
                                         <ngb-accordion [closeOthers]="false">
                                             <ngb-panel
                                                 *ngFor="let deletedItem of manualDecisions[man.entityId].response.DELETE | keyvalue"
@@ -276,49 +320,62 @@
                                                 <ng-template ngbPanelContent>
                                                     <table class="table table-bordered">
                                                         <tbody>
-                                                            <tr>
-                                                                <td>{{'discovery.node' | translate}}</td>
-                                                                <td><strong>{{ deletedItem.value.node }}</strong></td>
+                                                            <tr class="d-flex">
+                                                                <td class="col-sm-1">{{'discovery.node' | translate}}
+                                                                </td>
+                                                                <td class="col-sm-11"><strong>{{ deletedItem.value.node
+                                                                        }}</strong></td>
                                                             </tr>
-                                                            <tr>
-                                                                <td>{{'discovery.storage' | translate}}</td>
-                                                                <td><strong>{{ deletedItem.value.tripleStore }}</strong>
+                                                            <tr class="d-flex">
+                                                                <td class="col-sm-1">{{'discovery.storage' | translate}}
+                                                                </td>
+                                                                <td class="col-sm-11"><strong>{{
+                                                                        deletedItem.value.tripleStore }}</strong>
                                                                 </td>
                                                             </tr>
-                                                            <tr>
-                                                                <td>{{'discovery.class' | translate}}</td>
-                                                                <td><strong>{{ deletedItem.value.className }}</strong>
+                                                            <tr class="d-flex">
+                                                                <td class="col-sm-1">{{'discovery.class' | translate}}
+                                                                </td>
+                                                                <td class="col-sm-11"><strong>{{
+                                                                        deletedItem.value.className }}</strong>
                                                                 </td>
                                                             </tr>
-                                                            <tr>
-                                                                <td>entityId</td>
-                                                                <td><strong>{{ deletedItem.value.entityId }}</strong>
+                                                            <tr class="d-flex">
+                                                                <td class="col-sm-1">entityId</td>
+                                                                <td class="col-sm-11"><strong>{{
+                                                                        deletedItem.value.entityId }}</strong>
                                                                 </td>
                                                             </tr>
-                                                            <tr>
-                                                                <td>local URI</td>
-                                                                <td><a
+                                                            <tr class="d-flex">
+                                                                <td class="col-sm-1">local URI</td>
+                                                                <td class="col-sm-11"><a
                                                                         href="{{deletedItem.value.localUri}}">{{deletedItem.value.localUri}}</a>
                                                                 </td>
                                                             </tr>
-                                                            <tr>
-                                                                <td>Origin</td>
-                                                                <td><strong>{{ deletedItem.value.origin }}</strong></td>
+                                                            <tr class="d-flex">
+                                                                <td class="col-sm-1">Origin</td>
+                                                                <td class="col-sm-11"><strong>{{
+                                                                        deletedItem.value.origin }}</strong></td>
+                                                            </tr>
+                                                            <tr class="d-flex">
+                                                                <td class="col-sm-1">{{'discovery.state' | translate}}
+                                                                </td>
+                                                                <td class="col-sm-11"><strong>{{ deletedItem.value.state
+                                                                        }}</strong></td>
                                                             </tr>
                                                             <tr>
-                                                                <td>{{'discovery.state' | translate}}</td>
-                                                                <td><strong>{{ deletedItem.value.state }}</strong></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td><strong>Atributos</strong></td>
-                                                                <td>
+                                                                <td class="col-sm-1"><strong>{{'discovery.attributes' |
+                                                                        translate}}</strong></td>
+                                                                <td class="col-sm-11">
 
                                                                     <table class="table">
                                                                         <tbody>
                                                                             <tr
                                                                                 *ngFor="let attDI of deletedItem.value.attributes | keyvalue">
-                                                                                <td>{{attDI.key}}</td>
-                                                                                <td><strong>{{attDI.value}}</strong>
+                                                                                <td class="col-sm-1">{{attDI.key}}</td>
+                                                                                <td class="col-sm-11 text">
+                                                                                    <strong placement="bottom"
+                                                                                        ngbTooltip="{{attDI.value}}">{{attDI.value}}</strong>
                                                                                 </td>
                                                                             </tr>
                                                                         </tbody>
@@ -346,7 +403,7 @@
         <!-- Acciones-->
         <div class="row">
             <div class="col-md-3">
-                <h5 class="card-title"> <strong>Acciones Automáticas</strong></h5>
+                <h5 class="card-title"> <strong>{{'discovery.node' | translate}}</strong></h5>
             </div>
             <div class="col-md-9">
                 <ngb-accordion [closeOthers]="false">
@@ -361,51 +418,57 @@
 
                                         <table class="table table-bordered">
                                             <tbody>
-                                                <tr>
-                                                    <td>{{'discovery.node' | translate}}</td>
-                                                    <td><strong>{{ action.node }}</strong></td>
+                                                <tr class="d-flex">
+                                                    <td class="col-sm-1">{{'discovery.node' | translate}}</td>
+                                                    <td class="col-sm-11"><strong>{{ action.node }}</strong></td>
+                                                </tr>
+                                                <tr class="d-flex">
+                                                    <td class="col-sm-1">{{'discovery.storage' | translate}}</td>
+                                                    <td class="col-sm-11"><strong>{{ action.tripleStore }}</strong></td>
+                                                </tr>
+                                                <tr class="d-flex">
+                                                    <td class="col-sm-1">{{'discovery.class' | translate}}</td>
+                                                    <td class="col-sm-11"><strong>{{ action.className }}</strong></td>
+                                                </tr>
+                                                <tr class="d-flex">
+                                                    <td class="col-sm-1">entityId</td>
+                                                    <td class="col-sm-11"><strong>{{ action.entityId }}</strong></td>
+                                                </tr>
+                                                <tr class="d-flex">
+                                                    <td class="col-sm-1">local URI</td>
+                                                    <td class="col-sm-11"><a
+                                                            href="{{action.localUri}}">{{action.localUri}}</a></td>
+                                                </tr>
+                                                <tr class="d-flex">
+                                                    <td class="col-sm-1">{{'discovery.origin' | translate}}</td>
+                                                    <td class="col-sm-11"><strong>{{ action.origin }}</strong></td>
+                                                </tr>
+                                                <tr class="d-flex">
+                                                    <td class="col-sm-1">{{'discovery.status' | translate}}</td>
+                                                    <td class="col-sm-11"><strong>{{ action.state }}</strong></td>
+                                                </tr>
+                                                <tr class="d-flex">
+                                                    <td class="col-sm-1">{{'discovery.similiarity' | translate}}</td>
+                                                    <td class="col-sm-11"><strong>{{ action.similarity }}</strong></td>
+                                                </tr>
+                                                <tr class="d-flex">
+                                                    <td class="col-sm-1">{{'discovery.similiarity-no-id' | translate}}
+                                                    </td>
+                                                    <td class="col-sm-11"><strong>{{ action.similarityWithoutId
+                                                            }}</strong></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>{{'discovery.storage' | translate}}</td>
-                                                    <td><strong>{{ action.tripleStore }}</strong></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>{{'discovery.class' | translate}}</td>
-                                                    <td><strong>{{ action.className }}</strong></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>entityId</td>
-                                                    <td><strong>{{ action.entityId }}</strong></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>local URI</td>
-                                                    <td><a href="{{action.localUri}}">{{action.localUri}}</a></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Origin</td>
-                                                    <td><strong>{{ action.origin }}</strong></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>{{'discovery.status' | translate}}</td>
-                                                    <td><strong>{{ action.state }}</strong></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Similitud</td>
-                                                    <td><strong>{{ action.similarity }}</strong></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Similitud sin id</td>
-                                                    <td><strong>{{ action.similarityWithoutId }}</strong></td>
-                                                </tr>
-                                                <tr>
-                                                    <td><strong>Atributos</strong></td>
-                                                    <td>
+                                                    <td class="col-sm-1"><strong>{{'discovery.attributes' |
+                                                            translate}}</strong></td>
+                                                    <td class="col-sm-11">
 
                                                         <table class="table">
                                                             <tbody>
                                                                 <tr *ngFor="let attAct of action.attributes | keyvalue">
                                                                     <td>{{attAct.key}}</td>
-                                                                    <td><strong>{{attAct.value}}</strong></td>
+                                                                    <td class="text"><strong placement="bottom"
+                                                                            ngbTooltip="{{attAct.value}}">{{attAct.value}}</strong>
+                                                                    </td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>

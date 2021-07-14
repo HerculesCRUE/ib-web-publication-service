@@ -84,7 +84,7 @@
           <ng-container *ngFor="let groupItem of groupItems">
             <ng-container *ngIf="groupItem.title === 'home.info'">
               <ng-container *ngFor="let item of groupItem.homeItems; let i = index">
-                <span *ngIf="i % 2 === 0">
+                <span *ngIf="!item.disabled && i % 2 === 0">
                   <a class="link" *ngIf="item.url !== ''" [href]="item.urlExterna" [routerLink]="[item.url]">{{
                               item.title| translate }}</a>
                   <a class="link" *ngIf="item.url === ''" [href]="item.urlExterna">{{ item.title| translate }}</a>
@@ -97,7 +97,7 @@
           <ng-container *ngFor="let groupItem of groupItems">
             <ng-container *ngIf="groupItem.title === 'home.info'">
               <ng-container *ngFor="let item of groupItem.homeItems; let i = index">
-                <span *ngIf="i % 2 !== 0">
+                <span *ngIf="!item.disabled && i % 2 !== 0">
                   <a class="link" *ngIf="item.url !== ''" [href]="item.urlExterna" [routerLink]="[item.url]">{{
                                 item.title| translate }}</a>
                   <a class="link" *ngIf="item.url === ''" [href]="item.urlExterna">{{ item.title| translate }}</a>

@@ -27,6 +27,7 @@ export class HomeComponent implements OnInit {
       this.isLogged = data;
     });
     this.homeService.getHome().then((groupItems: HomeGroupItem[]) => {
+      console.log('groupItems', groupItems);
       this.groupItems = groupItems;
     });
   }

@@ -8,6 +8,7 @@ import { DiscoveryState } from 'src/app/_models/discoveryState';
 import { FindRequest, Page } from 'src/app/_helpers/search';
 import { resolve } from 'dns';
 import { from } from 'rxjs';
+import { DOMAIN } from 'src/app/configuration';
 
 @Injectable({
   providedIn: 'root'
@@ -48,13 +49,19 @@ export class DiscoveryService extends AbstractService {
 
   getObjectList(findRequest: FindRequest) {
     let parameters = new HttpParams();
-    parameters = Helper.addParam(parameters, 'domain', findRequest.filter.domain);
+    if (findRequest.filter.domain) {
+      parameters = Helper.addParam(parameters, 'domain', findRequest.filter.domain);
+    } else {
+      parameters = Helper.addParam(parameters, 'domain', DOMAIN);
+      console.log('set Domain from configuration', JSON.stringify(parameters));
+    }
     parameters = Helper.addParam(parameters, 'node', findRequest.filter.node);
     parameters = Helper.addParam(parameters, 'service', findRequest.filter.service);
     parameters = Helper.addParam(parameters, 'tripleStore', findRequest.filter.tripleStore);
+    console.log('parameters', JSON.stringify(parameters));
     // Pagination params
     parameters = Helper.addPaginationParams(parameters, findRequest.pageRequest);
-
+    console.log(Helper.getFederationUrl() + '/data-fetcher/objects');
     return this.httpClient.get(Helper.getFederationUrl() + '/data-fetcher/objects', {
       params: parameters
     }).pipe(

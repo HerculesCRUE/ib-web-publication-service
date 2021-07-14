@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../_models/user';
+import { LoginService } from '../_services/login.service';
 
 @Component({
   selector: 'app-discovery',
@@ -13,11 +15,13 @@ export class DiscoveryComponent implements OnInit {
   * @memberof DiscoveryComponent
   */
   activeTab: string;
+  isAdmin = false;
 
-  constructor() { }
+  constructor(private loginService: LoginService) { }
 
   ngOnInit(): void {
     this.activeTab = 'control-tab';
+    this.loginService.keycloakIsAdmin().subscribe(res => { this.isAdmin = res });
     // this.statisticService.projectByClassification().subscribe(data => {
     //   this.echartOptions = HelperGraphics.configChartPie(this.transformData(data), '');
     // });

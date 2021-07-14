@@ -9,21 +9,68 @@
                 </div>
 
                 <div class="card-body">
-                    <div class="row">
-                        <div class="col-1">Nodos:</div>
+                    <div *ngIf="responseData.length>0" class="row">
+                        <div class="col-1" style="font-size: small;">{{'service-discovery.nodes' | translate}}:</div>
                         <div class="col-11">
                             <ngb-accordion [closeOthers]="false">
-                                <ngb-panel *ngFor="let node of responseData" id="node-{{node.id}}"
-                                    title="{{node.name}}">
+                                <ngb-panel *ngFor="let node of responseData" id="node-{{node.id}}">
+                                    <ng-template ngbPanelTitle>
+                                        <div class="d-flex justify-content-between">
+                                            <div style="font-weight: bold; color: #1c2128;">
+                                                <em _ngcontent-lch-c110="" [ngClass]="getClassNodeIcon(node)"
+                                                    style="width: 50px; height: 50px;"
+                                                    [ngStyle]="{'color':node.isDesactivated === true ? 'red' : 'green' }">
+                                                </em>
+                                                {{node.name}}: ({{node.services.length}}
+                                                {{'service-discovery.services' | translate}})
+                                            </div>
+                                        </div>
+                                    </ng-template>
                                     <ng-template ngbPanelContent>
                                         <div class="row">
-                                            <div class="col-1">Servicios:</div>
+                                            <div class="col-3"> {{'service-discovery.status' |
+                                                translate}}):{{node.name===currentNode}}</div>
+                                            <div class="col-9">
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio"
+                                                        name="{{node.name}}-activate" id="{{node.name}}-activate"
+                                                        value="activate" [checked]="!node.isDesactivated"
+                                                        (change)="onNodeStateChange(node,true)"
+                                                        [disabled]="node.name===currentNode">
+                                                    <label class="form-check-label"
+                                                        for="{{node.name}}-activate">{{'service-discovery.activate' |
+                                                        translate}}</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio"
+                                                        name="{{node.name}}-desactivate" id="{{node.name}}-desactivate"
+                                                        value="desactivate" [checked]="node.isDesactivated"
+                                                        (change)="onNodeStateChange(node,false)"
+                                                        [disabled]="node.name===currentNode">
+                                                    <label class="form-check-label"
+                                                        for="{{node.name}}-desactivate">{{'service-discovery.disabled' |
+                                                        translate}}</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br />
+                                        <div *ngIf="node.services.length>0" class="row">
+                                            <div class="col-1" style="font-size: small;">{{'service-discovery.services'
+                                                | translate}}:</div>
                                             <div class="col-11">
                                                 <ngb-accordion [closeOthers]="false">
                                                     <ngb-panel *ngFor="let service of node.services"
-                                                        id="service-{{service.id}}" title="{{service.name}}"
-                                                        style="margin-left: 50px;">
-                                                        <span class="badge badge-success">Success</span>
+                                                        id="service-{{service.id}}" style="margin-left: 50px;">
+                                                        <ng-template ngbPanelTitle>
+                                                            <div class="d-flex justify-content-between">
+                                                                <div class="d-flex"
+                                                                    style="font-weight: bold; color: #1c2128;">
+                                                                    {{service.name}}: ({{service.types.length}}
+                                                                    {{'service-discovery.endpoints' |
+                                                                    translate}})
+                                                                </div>
+                                                            </div>
+                                                        </ng-template>
                                                         <ng-template ngbPanelContent>
 
                                                             <table class="table table-bordered">
@@ -70,8 +117,10 @@
                                                                 </tbody>
                                                             </table>
 
-                                                            <div class="row">
-                                                                <div class="col-1">Endpoints:</div>
+                                                            <div *ngIf="service.types.length>0" class="row">
+                                                                <div class="col-1" style="font-size:small;">
+                                                                    {{'service-discovery.endpoints' |
+                                                                    translate}}:</div>
                                                                 <div class="col-11">
                                                                     <ngb-accordion [closeOthers]="false">
                                                                         <ngb-panel *ngFor="let type of service.types"

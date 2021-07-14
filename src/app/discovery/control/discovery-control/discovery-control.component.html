@@ -52,7 +52,7 @@
                     <button role="button" aria-pressed="false" class="btn btn-secondary tree" style="margin: 20px;"
                         (click)="loadDiscoveryState()">{{'discovery.update-state' |
                         translate}}</button>
-                    <button role="button" aria-pressed="false" class="btn btn-secondary tree"
+                    <button *ngIf="isAdmin" role="button" aria-pressed="false" class="btn btn-secondary tree"
                         (click)="forceReloadData()" style="margin: 20px;">{{'discovery.force-reload' |
                         translate}}</button>
                 </div>

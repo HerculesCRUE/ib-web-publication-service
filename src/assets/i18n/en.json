@@ -142,19 +142,26 @@
     "info-hercules": "Information about Hercules",
     "contact": "Contact information",
     "import-data": "Data Importer",
+    "uris-factory":"URIs Factory",
+    "discovery":"Discovery library",
+    "service-discovery":"Backends Monitor",
     "information": "Info",
     "links": "Links",
     "validation": "Validators",
     "ldp": "LDP"
   },
   "links": {
-    "title": "Links GitHub",
+    "title": "Links",
     "principal": "Principal",
-    "repository": "Repositories"
+    "repository": "Repositorios",
+    "ontology": "Ontology",
+    "renderization": "Renderization",
+    "backendsSGI": "Backends SGI",
+    "other": "Other"
   },
   "researchmentStructure": {
     "title": "Researchment Structures",
-    "type": "Ontological type",
+    "type": "Type",
     "financing": "Financing",
     "name": "Name",
     "publications": "Publications",
@@ -194,7 +201,7 @@
   "scientist": {
     "title": "Research staff",
     "area": "Area",
-    "type": "Ontological type",
+    "type": "Type",
     "acction-inves": "Investigation actions",
     "congress": "Congress",
     "business-activity": "Business activity",
@@ -231,7 +238,7 @@
     "date-from": "Date from",
     "date-to": "Date to",
     "degree": "Degree",
-    "type": "Ontological type",
+    "type": "Type",
     "doi": "DOI",
     "publication-year": "Publication year",
     "scientific-publications": "Scientific publications",
@@ -249,6 +256,7 @@
     "state-tittle": "Discovery Library State",
     "stats-tittle": "Objects stats",
     "search-tittle": "Similarity search",
+    "result-tittle": "Result search",
     "global-state": "General state",
     "noData": "Could not load discovery library data",
     "NOT_INITIALIZED":"Not Initialized",
@@ -289,7 +297,23 @@
     "not-result-found": "Not similarities found",
     "results-title": "Results of similarities",
     "type-result": "Type result",
-    "code-result": "Result code"
+    "code-result": "Result code",
+    "accept": "Accept similarity",
+    "reject": "Reject similarity",
+    "entity": "Entity",
+    "entity-main": "Main entity",
+    "attributes":"Attributes",
+    "similiarity":"Similarity",
+    "similiarity-no-id":"Similarity without Id",
+    "origin":"Origin",
+    "manual":"Manual actions",
+    "automatic":"Atomatic actions",
+    "decision-response":"Decision response",
+    "deleted":"Deleted entities",
+    "updated":"Updated entities",
+    "att-name":"Attribute Name",
+    "att-main-value":"Main entity atribute value",
+    "att-related-value":"Atribute value"
   },
   "uris":{
     "title":"URIs Factory",
@@ -319,6 +343,7 @@
     "response-title": "Response",
     "canonical-table-canonical-uri":"Public URI (canonical)",
     "canonical-table-canonical-language-uri":"Public URI in language (canonical)",
+    "canonical-table-localstorage":"Private URI (local)",
     "canonical-table-language":"Language",
     "local-table-storage":"Storage type",
     "canonical-field":"Public URI (canonical)",
@@ -338,7 +363,12 @@
     "healthEndpoint":"Health Endpoint",
     "status":"Status",
     "endPoint":"Endpoint",
-    "noData":"Could not load Service Discovery data"
+    "noData":"Could not load Service Discovery data",
+    "nodes": "Nodes",
+    "services": "Services",
+    "endpoints": "Endpoints",
+    "activate": "Activate",
+    "disabled": "Disabled"
   },
   "projects": {
     "year": "Year",
@@ -384,14 +414,14 @@
       "id": "id",
       "name": "name",
       "anyo": "year",
-      "type": "Ontological type"
+      "type": "type"
     }
   },
   "documents": {
     "document": "Documents",
     "date-fin": "End Date",
     "date-ini": "Start Date",
-    "types": "Ontological type",
+    "types": "Type",
     "title": "Title",
     "name": "Name",
     "id": "ID",
@@ -401,7 +431,7 @@
     "publishedIn": "Published in",
     "date": "Date",
     "summary": "Summary",
-    "type": "Ontological type",
+    "type": "Type",
     "abbreviation": "Abbreviation",
     "placeOfPublication": "Place of publication",
     "edition": "Edition",
@@ -436,7 +466,7 @@
     "scientific-production-related": "Scientifict production related",
     "table-header": {
       "title": "Title",
-      "type": "Ontological type",
+      "type": "Type",
       "doi": "DOI",
       "release-year": "Release year"
     }
@@ -460,7 +490,7 @@
   "directed-jobs": {
     "table-header": {
       "title": "Title",
-      "type": "Ontological type",
+      "type": "Type",
       "keywords": "Keywords",
       "release-year": "Release year"
     }
@@ -485,7 +515,7 @@
   },
   "events": {
     "rol": "Rol",
-    "type": "Ontological type",
+    "type": "Type",
     "id": "ID",
     "title": "Title",
     "date": "Date",
@@ -507,7 +537,7 @@
     "resume": "Resume",
     "other-authors": "Other authors",
     "name": "Name",
-    "type": "Ontological type",
+    "type": "Type",
     "document-sections": "Secctions"
   },
   "event": {

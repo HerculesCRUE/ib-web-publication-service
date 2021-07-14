@@ -10,6 +10,8 @@ export class LocaleConfiguration {
   availableLanguages: string[];
 }
 
+export const NODE = environment.node;
+
 export const DOMAIN = environment.domain;
 
 export const BASE_APP_URL = environment.appUrl;

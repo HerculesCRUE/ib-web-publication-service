@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FindRequest } from 'src/app/_helpers/search';
 import { DiscoveryService } from 'src/app/_services/discovery/discovery.service';
+import { LoginService } from 'src/app/_services/login.service';
 
 @Component({
   selector: 'app-discovery-control',
@@ -19,10 +20,12 @@ export class DiscoveryControlComponent implements OnInit {
   isLoadedNodeOption: boolean;
   objetsList = [];
   objectStats: any;
+  isAdmin = false;
 
-  constructor(private discoveryService: DiscoveryService) { }
+  constructor(private discoveryService: DiscoveryService, private loginService: LoginService) { }
 
   ngOnInit(): void {
+    this.loginService.keycloakIsAdmin().subscribe(res => { this.isAdmin = res });
     this.loadDiscoveryState();
     this.loadNodesList();
   }

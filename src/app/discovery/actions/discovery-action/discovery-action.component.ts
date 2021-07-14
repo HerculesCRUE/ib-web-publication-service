@@ -23,12 +23,13 @@ export class DiscoveryActionComponent implements OnInit {
   responseData: any;
   resultsList: any;
   requestCodes: Array<object>
+  isAdmin = false;
 
   constructor(private discoveryService: DiscoveryService, private loginService: LoginService, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
     this.bodyRequest = JSON.stringify({ "id": 40372, "title": "Fisiología del comportamiento", "date": "2006", "endPage": 41, "publishedIn": "BIOTECNOLOGIA DE LA REPRODUCCION PORCINAPORCI", "startPage": 24 }, null, 2)
-    this.currentUser = this.loginService.getCurrentUser();
+    this.loginService.keycloakIsAdmin().subscribe(res => { this.isAdmin = res });
     this.searchRequest.filter.applyDelta = true;
     this.searchRequest.filter.doSynchronous = true;
     this.searchRequest.filter.linkEntities = false;

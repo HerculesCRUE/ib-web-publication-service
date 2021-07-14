@@ -4,12 +4,13 @@
 
 export const environment = {
   production: false,
-  urlBase: 'http://localhost:8787',
+  urlBase: 'http://localhost:18787',
   oauthUrl: '',
   urlWebsocket: '/gs-guide-websocket',
   oauthClientId: 'acme',
   oauthSecret: 'acmesecret',
   skipPort: '8080',
+  node: 'um',
   domain: 'ldp.herculesasioizertis.desa.um.es',
   keycloak: {
     realm: 'umasio',
@@ -21,13 +22,34 @@ export const environment = {
     userInfoUri: 'http://localhost:8080/auth/realms/umasio/protocol/openid-connect/userinfo',
     tokenUri: 'http://localhost:8080/auth/realms/umasio/protocol/openid-connect/token',
     logout: 'http://localhost:8080/auth/realms/umasio/protocol/openid-connect/logout',
-    redirectUrl: 'http%3A%2F%2Flocalhost%3A8080%2Fauth%2Frealms%2Fumasio%2Faccount%2Flogin-redirect',
+    redirectUrl: 'https%3A%2F%2Flocalhost%3A8080%2Fauth%2Frealms%2Fumasio%2Faccount%2Flogin-redirect',
     clientSecret: ''
   },
   importer: {
     baseUrl: 'http://localhost',
     port: '9320'
   },
+  /*
+  discovery: {
+    baseUrl: 'https://linkeddata1.um.es/discovery',
+    port: null
+  },
+  serviceDiscovery: {
+      baseUrl: 'https://linkeddata1.um.es/service-discovery',
+      port: null
+  },
+  federation: {
+      baseUrl: 'https://linkeddata1.um.es/federation',
+      port: null
+  },
+  urisFactory: {
+      baseUrl: 'https://linkeddata1.um.es/uri-factory',
+      port: null
+  },
+  lpdUrl: 'https://ldpld1.um.es/',
+  appUrl: 'https://linkeddata1.um.es',
+  sgi: 'https://github.com/HerculesCRUE/ib-asio-docs-/tree/master/13-Backend_SGI_Software'
+  */
   discovery: {
     baseUrl: 'http://localhost',
     port: '9327'
@@ -57,9 +79,9 @@ export const yasgui = {
   // method: 'GET'
 
   // Fuseki
-  endpoint: 'http://localhost:8787/trellis/sparql',
+  endpoint: 'http://localhost:18787/trellis/sparql',
   method: 'POST',
-  endpointFeder: 'http://localhost:8787/trellis/sparqlfeder',
+  endpointFeder: 'http://localhost:18787/trellis/sparqlfeder',
   methodFeder: 'POST',
 };
 
