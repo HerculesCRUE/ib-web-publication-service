@@ -8,11 +8,9 @@
                 <div class="row">
                     <div class="col-md-3">
                         &nbsp;
-                        <label *ngIf="federatedItem">
+                        <label *ngIf="federatedItem" ngbTooltip="{{'sparql.main.federatedTooltip' | translate}}">
                             <input type="checkbox" (change)="federChangeCheck($event.target.checked)">
-                            {{'sparql.main.federated'
-                            |
-                            translate}} </label>
+                            {{'sparql.main.federated' | translate}} </label>
 
                     </div>
                     <div class="col-md-9 text-right" style="padding-bottom:15px">

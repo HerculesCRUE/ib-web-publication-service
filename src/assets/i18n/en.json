@@ -36,15 +36,15 @@
     "no": "No",
     "datepicker-placeholder": "YYYY-MM-DD",
     "change-tree": "Change tree",
-    "clear": "Clean",
+    "clean": "Clean",
     "change-tree-normal": "Change to normal tree",
     "no-result": "No results",
     "results-amount": "Total: ",
     "back": "Go back",
     "reset": "Reset",
-    "delete": "Borrar",
+    "delete": "Delete",
     "actions": "Actions",
-    "use": "Utilizar Query",
+    "use": "Use",
     "edit": "Edit",
     "delete-message": "Are you sure you want to delete the entry? "
   },
@@ -68,7 +68,12 @@
     "contact": "Contact",
     "graph": "Renderización named graph",
     "import-data": "Data Importer",
-    "validator": "Validators"
+    "delete-data": "Data Deletion",
+    "validator": "Validators",
+    "ldp": "Linked Data Graph",    
+    "installer": "Installer",
+    "information": "Info",
+    "links": "Links"
   },
   "login": {
     "form": {
@@ -107,7 +112,9 @@
     "sparqlName": "Name",
     "entityId": "ID",
     "main": {
-      "federated": "Federated queries"
+      "federated": "Federated queries",
+      "federatedTooltip": "Activating this option will send the query to all federated nodes ",
+      "competency-questions": "Competency Questions"
     },
     "results": {
       "table": "table",
@@ -118,6 +125,13 @@
       "line-chart": "line chart",
       "bubble-chart": "buble chart",
       "sector-chart": "sector chart"
+    }
+  },
+  "proyect": {
+    "title": "Projects",
+    "detail": {
+      "name": "Name",
+      "date": "Date"
     }
   },
   "home": {
@@ -141,24 +155,29 @@
     "info-hercules": "Information about Hercules",
     "contact": "Contact information",
     "import-data": "Data Importer",
+    "delete-data": "Data Deletion",
     "uris-factory":"URIs Factory",
     "discovery":"Discovery library",
     "service-discovery":"Backends Monitor",
+    "installer": "Installer",
     "information": "Info",
     "links": "Links",
-    "validation": "Validators"
+    "validation": "Validators",
+    "ldp": "Linked Data Graph"
   },
   "links": {
     "title": "Links",
     "principal": "Principal",
-    "repository": "Repositorios",
+    "repository": "Repositories",
+    "userManual": "User Manual",
     "ontology": "Ontology",
     "renderization": "Renderization",
     "backendsSGI": "Backends SGI",
     "other": "Other"
   },
   "researchmentStructure": {
-    "title": "Researchment Structures",
+    "header": "Researchment Structures",
+    "title": "Title",
     "type": "Type",
     "financing": "Financing",
     "name": "Name",
@@ -215,8 +234,10 @@
     "trajectory-by-timeline": "Trayectory by timeline",
     "events": "Events",
     "congress-events": "Congress and events",
+    "name": "Full Name",
+    "appointments": "Appointments",
+    "publications": "Publications",
     "id": "ID",
-    "name": "Full name",
     "birthDate": "BithDate",
     "description": "Description",
     "firstName": "Name",
@@ -252,7 +273,7 @@
     "action-results":"Search result",
     "action-open":"Open results",
     "state-tittle": "Discovery Library State",
-    "stats-tittle": "Objects stats",
+    "stats-tittle": "Object Stats",
     "search-tittle": "Similarity search",
     "result-tittle": "Result search",
     "global-state": "General state",
@@ -524,7 +545,8 @@
     "abbreviation": "Abbreviation",
     "description": "Descriptio",
     "locatedIn": "Located in",
-    "presents": "Presents"
+    "presents": "Presents",
+    "contactInformation": "Contact Information"
   },
   "document": {
     "author": "Author",
@@ -570,14 +592,29 @@
   },
   "dataImporterStructure": {
     "id": "Id",
-    "date": "Date",
+    "startTime": "Date",
     "user": "User",
     "type": "Type",
     "cron": "Cron"
   },
   "importation": {
     "header": "Data importation",
-    "button": "+ New Importation"
+    "button": "+ New Importation",
+    "import": "Import",
+    "cron-expression": "Cron Expression",
+    "import-parameters": "Import Parameters",
+    "import-fieldset": "Select Import Type",
+    "import-title": "New Data Importation",
+    "cron-example": "(Example: * * * 15)",
+    "cron-help": "What is a cron expression?",
+    "succeeded-import": "Importation succeded",
+    "failed-import": "Importation failed",
+    "popup": {
+      "user": "User",
+      "type": "Type",
+      "cron": "Cron",
+      "close": "Close"
+    }
   },
   "validator": {
     "header": "Validators",
@@ -588,5 +625,23 @@
     "delete": "Are you sure you want to delete the entry?",
     "new-form": "New validator",
     "edit-form": "Edit validator"
+  },
+  "ldp": {
+    "header": "Linked Data Graph",
+    "entity": "Entity",
+    "count": "Total",
+    "uri": "URI",
+    "title": "Title/Name"
+  },
+  "dataDeletion": {
+    "header": "Data Deletion",
+    "date": "Select the date to which you want to restore the data ",
+    "delete": "Restore",
+    "delete-message": "Are you sure you want to go back to the data version on the selected date?"
+  },
+  "installer": {
+    "header": "Installer",
+    "script": "Installation via script",
+    "manual": "Manual installation"
   }
 }

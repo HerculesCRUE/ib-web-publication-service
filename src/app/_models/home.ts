@@ -45,6 +45,10 @@ export class HomeItem {
    * Disabled option
    */
   disabled: boolean;
+  /*
+   * Login required.
+   */
+  loginRequired?: boolean;
 }
 
 /**
@@ -120,7 +124,8 @@ export const HOME_ITEMS: HomeGroupItem[] = [{
       iconCircle: false,
       url: '',
       disabled: false,
-      urlExterna: Helper.getKeyCloackUrl().authUrl + '/admin/'
+      urlExterna: Helper.getKeyCloackUrl().authUrl + '/admin/',
+      loginRequired: true
     },
     {
       title: 'home.import-data',
@@ -128,7 +133,17 @@ export const HOME_ITEMS: HomeGroupItem[] = [{
       iconCircle: false,
       url: '/main/data-importer',
       disabled: false,
-      urlExterna: ''
+      urlExterna: '',
+      loginRequired: true
+    },
+    {
+      title: 'home.delete-data',
+      iconName: 'oi-trash',
+      iconCircle: false,
+      url: '/main/data-deletion',
+      disabled: false,
+      urlExterna: '',
+      loginRequired: true
     },
     {
       title: 'home.uris-factory',
@@ -155,10 +170,27 @@ export const HOME_ITEMS: HomeGroupItem[] = [{
       urlExterna: ''
     },
     {
-      title: 'home.information',
-      iconName: 'oi-info',
+      title: 'home.validator',
+      iconName: 'oi-circle-check',
       iconCircle: false,
-      url: '/main/info',
+      url: '/main/validator',
+      disabled: false,
+      urlExterna: '',
+      loginRequired: true
+    },
+    {
+      title: 'home.ldp',
+      iconName: 'oi-book',
+      iconCircle: false,
+      url: '/main/ldp',
+      disabled: false,
+      urlExterna: ''
+    },
+    {
+      title: 'home.installer',
+      iconName: 'oi-data-transfer-download',
+      iconCircle: false,
+      url: '/main/installer',
       disabled: false,
       urlExterna: ''
     },
@@ -171,10 +203,10 @@ export const HOME_ITEMS: HomeGroupItem[] = [{
       urlExterna: ''
     },
     {
-      title: 'home.validator',
-      iconName: 'oi-circle-check',
+      title: 'home.information',
+      iconName: 'oi-info',
       iconCircle: false,
-      url: '/main/validator',
+      url: '/main/info',
       disabled: false,
       urlExterna: ''
     }

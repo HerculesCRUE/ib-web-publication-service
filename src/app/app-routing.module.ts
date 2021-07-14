@@ -16,7 +16,10 @@ import { GraphPageComponent } from './graph-page/graph-page.component';
 import { DataImporterComponent } from './categories/data-importer/data-importer.component';
 import { ServiceDiscoveryComponent } from './service-discovery/service-discovery/service-discovery.component';
 import { InfoComponent } from './info/info.component';
+import { InstallerComponent } from './installer/installer.component';
 import { ValidatorComponent } from './categories/validator/validator.component';
+import { LdpComponent } from './categories/ldp/ldp.component';
+import { DataDeletionComponent } from './categories/data-deletion/data-deletion.component';
 /**
  * **********************************************
  * ************** Rutas securizadas *************
@@ -60,6 +63,14 @@ const noSecureRoutes: Routes = [
     path: 'data-importer',
     component: DataImporterComponent,
   },
+  {
+    path: 'data-deletion',
+    component: DataDeletionComponent,
+  },
+  {
+    path: 'ldp',
+    component: LdpComponent,
+  },
   /* Graphics path */
   {
     path: 'graphics',
@@ -94,6 +105,10 @@ const noSecureRoutes: Routes = [
     path: 'categories',
     loadChildren: () =>
       import('./categories/categories.module').then((m) => m.CategoriesModule),
+  },
+  {
+    path: 'installer',
+    component: InstallerComponent,
   },
   {
     path: 'info',

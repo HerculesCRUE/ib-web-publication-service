@@ -1119,24 +1119,56 @@ select.form-control:focus {
 	outline-offset: -2px;
 }
 
-.btn.btn-secondary {
+.btn.btn-secondary,
+button.swal2-styled.swal2-confirm {
     background-color: var(--umu-primario-500);
     border: solid 1px var(--umu-primario-500);
     box-shadow: none;
     color: #ffffff;
 }
 .btn.btn-secondary:focus,
-.btn.btn-secondary:active {
+.btn.btn-secondary:active,
+.btn.btn-default:focus,
+.btn.btn-default:active,
+button.swal2-styled.swal2-confirm:focus,
+button.swal2-styled.swal2-confirm:active,
+button.swal2-styled.swal2-cancel:focus,
+button.swal2-styled.swal2-cancel:active {
 	outline: none;
 	border-color: var(--umu-focus) !important;
 	box-shadow: 0 0 0 5px var(--umu-focus-shadow) !important;
 }
-.btn.btn-secondary:active {
+.btn.btn-secondary:active,
+button.swal2-styled.swal2-confirm:active {
     background-color: var(--umu-primario-500) !important;
 }
-.btn.btn-secondary:hover {
+.btn.btn-secondary:hover,
+button.swal2-styled.swal2-confirm:hover {
     background-color: var(--umu-primario-400);
     border-color: var(--umu-primario-400);
+}
+.btn.btn-secondary[disabled] {
+	background-color: var(--umu-gris-claro-200) !important;
+	opacity: 1 !important;
+	border: none !important;
+	color: rgba(0, 0, 0, 0.38) !important;
+	cursor: default !important;
+	pointer-events: none;
+}
+.btn.btn-default,
+button.swal2-styled.swal2-cancel {
+	background-color: #ffffff;
+	border: solid 1px var(--umu-primario-400);
+	font-weight: 500;
+	color: var(--umu-primario-500);
+}
+.btn.btn-default:active,
+button.swal2-styled.swal2-cancel:active {
+	background-color: var(--umu-primario-100);
+}
+.btn.btn-default:hover,
+button.swal2-styled.swal2-cancel:hover {
+	background-color: var(--umu-primario-80);
 }
 
 /* layout */

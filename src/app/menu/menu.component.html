@@ -1,19 +1,13 @@
 <!-- menu entries -->
 <ul class="nav-list">
   <ng-container *ngFor="let item of menuItems">
-
-    <li *ngIf="(item.title === 'menu.validator' || item.title === 'menu.import-data') && isLogged"
-      routerLinkActive="active">
-      <ng-container>
-        <a class="sidebar-link" [routerLink]="[item.url]">
+    <li *ngIf="!item.loginRequired || isLogged" routerLinkActive="active">
+      <ng-container *ngIf="!item.disabled">
+        <a *ngIf="item.url" class="sidebar-link" [routerLink]="[item.url]">
           <em class="oi icons-menu" [ngClass]="[item.icon]"></em>
           <span>{{ item.title | translate }}</span>
         </a>
-      </ng-container>
-    </li>
-    <li *ngIf="item.title !== 'menu.validator' && item.title !== 'menu.import-data'" routerLinkActive="active">
-      <ng-container *ngIf="!item.disabled && item.title !== 'menu.validator' && item.title !== 'menu.import-data'">
-        <a class="sidebar-link" [routerLink]="[item.url]">
+        <a *ngIf="item.urlExterna" class="sidebar-link" [href]="item.urlExterna" target="_blank">
           <em class="oi icons-menu" [ngClass]="[item.icon]"></em>
           <span>{{ item.title | translate }}</span>
         </a>

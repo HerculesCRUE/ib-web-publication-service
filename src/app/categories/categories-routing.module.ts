@@ -15,6 +15,7 @@ import { PatentDetailComponent } from '../common/patent-detail/patent-detail.com
 import { ScientificPublicationDetailComponent } from './scientific-publication-detail/scientific-publication-detail.component';
 import { NewDataImporterComponent } from './data-importer/new-data-importer/new-data-importer.component';
 import { NewValidatorComponent } from './validator/new-validator/new-validator.component';
+import { SearchLdpResultComponent } from './ldp/search-result/search-ldp-result.component';
 
 const routes: Routes = [
   {
@@ -81,6 +82,10 @@ const routes: Routes = [
   {
     path: 'new-validator',
     component: NewValidatorComponent
+  },
+  {
+    path: 'ldp-search-result',
+    component: SearchLdpResultComponent
   }
 ];
 

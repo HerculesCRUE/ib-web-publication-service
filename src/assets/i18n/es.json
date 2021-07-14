@@ -68,7 +68,12 @@
     "contact": "Contacto",
     "graph": "Renderización named graph",
     "import-data": "Importador de datos",
-    "validator": "Validadores"
+    "delete-data": "Borrado de datos",
+    "validator": "Validadores",
+    "ldp": "Linked Data Graph",
+    "installer": "Instalador",
+    "information": "Info",
+    "links": "Enlaces"
   },
   "login": {
     "form": {
@@ -101,14 +106,15 @@
     "edit-user-title": "Editar usuario: {{name}}",
     "create-user-title": "Crear nuevo usuario"
   },
-
   "sparql": {
     "username": "Nombre de usuario",
     "sparqlQuery": "Query",
     "sparqlName": "Nombre",
     "entityId": "ID",
     "main": {
-      "federated": "Consultas federadas"
+      "federated": "Consultas federadas",
+      "federatedTooltip": "Al activar esta opción se enviará la consulta a todos los nodos federados",
+      "competency-questions": "Preguntas de competencia"
     },
     "results": {
       "table": "tabla",
@@ -149,23 +155,26 @@
     "info-hercules": "Información sobre Hercules",
     "contact": "Datos de contacto",
     "import-data": "Importador de datos",
+    "delete-data": "Borrado de datos",
     "uris-factory":"Factoría de URIs",
     "discovery":"Librería de descubrimiento",
     "service-discovery":"Monitor de Backends",
+    "installer": "Instalador",
     "information": "Info",
     "links": "Enlaces",
-    "validator": "Validadores"
+    "validator": "Validadores",
+    "ldp": "Linked Data Graph"
   },
   "links": {
     "title": "Enlaces",
     "principal": "Principal",
     "repository": "Repositorios",
+    "userManual": "Manual de usuario",
     "ontology": "Ontología",
     "renderization": "Renderización",
     "backendsSGI": "Backends SGI",
     "other": "Otros"
   },
-
   "researchmentStructure": {
     "header": "Estructuras de investigación",
     "title": "Título",
@@ -536,7 +545,8 @@
     "abbreviation": "Abreviación",
     "description": "Descripción",
     "locatedIn": "Localizado en",
-    "presents": "Presenta"
+    "presents": "Presenta",
+    "contactInformation": "Información contacto"
   },
   "document": {
     "author": "Autor principal",
@@ -615,5 +625,23 @@
     "delete": "¿Está seguro que desea borrar el registro?",
     "new-form": "Nuevo validador",
     "edit-form": "Modificar validador"
+  },
+  "ldp": {
+    "header": "Linked Data Graph",
+    "entity": "Entidad",
+    "count": "Total",
+    "uri": "URI",
+    "title": "Título/Nombre"
+  },
+  "dataDeletion": {
+    "header": "Borrado de datos",
+    "date": "Seleccione la fecha a la que quiere restaurar los datos",
+    "delete": "Restaurar",
+    "delete-message": "¿Está seguro que quiere volver a la versión de los datos en la fecha seleccionada?"
+  },
+  "installer": {
+    "header": "Instalador",
+    "script": "Instalación a través de script",
+    "manual": "Instalación manual"
   }
 }

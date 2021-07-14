@@ -68,7 +68,12 @@
     "contact": "Contact",
     "graph": "Renderización named graph",
     "import-data": "Data Importer",
-    "validator": "Validators"
+    "delete-data": "Data Deletion",
+    "validator": "Validators",
+    "ldp": "Linked Data Graph",
+    "installer": "Installer",
+    "information": "Info",
+    "links": "Links"
   },
   "login": {
     "form": {
@@ -107,7 +112,9 @@
     "sparqlName": "Name",
     "entityId": "ID",
     "main": {
-      "federated": "Federated queries"
+      "federated": "Federated queries",
+      "federatedTooltip": "Activating this option will send the query to all federated nodes ",
+      "competency-questions": "Competency Questions"
     },
     "results": {
       "table": "table",
@@ -118,6 +125,13 @@
       "line-chart": "line chart",
       "bubble-chart": "buble chart",
       "sector-chart": "sector chart"
+    }
+  },
+  "proyect": {
+    "title": "Projects",
+    "detail": {
+      "name": "Name",
+      "date": "Date"
     }
   },
   "home": {
@@ -141,21 +155,30 @@
     "info-hercules": "Information about Hercules",
     "contact": "Contact information",
     "import-data": "Data Importer",
+    "delete-data": "Data Deletion",
+    "uris-factory":"URIs Factory",
+    "discovery":"Discovery library",
+    "service-discovery":"Backends Monitor",
+    "installer": "Installer",
     "information": "Info",
     "links": "Links",
-    "validation": "Validators"
+    "validation": "Validators",
+    "ldp": "Linked Data Graph",
+    "validator": "Validators"
   },
   "links": {
-    "title": "Links GitHub",
+    "title": "Links",
     "principal": "Principal",
     "repository": "Repositories",
+    "userManual": "User Manual",
     "ontology": "Ontology",
     "renderization": "Renderization",
     "backendsSGI": "Backends SGI",
     "other": "Other"
   },
   "researchmentStructure": {
-    "title": "Researchment Structures",
+    "header": "Researchment Structures",
+    "title": "Title",
     "type": "Type",
     "financing": "Financing",
     "name": "Name",
@@ -187,7 +210,7 @@
     "hasKnowledgeArea": "Has knowledge area",
     "hasPredecessorOrganization": "Has predecessor organization",
     "hasSuccessorOrganization": "Has successor organization",
-    "hasReservable": "Tiene reservable",
+    "hasReservable": "Has reservable",
     "contains": "Contains",
     "participates": "Participates",
     "provides": "Provides",
@@ -208,11 +231,13 @@
     "scientific-production-indicators": "Scientific production indicators",
     "times-quoted": "Times quoted",
     "h-index": "h-index",
-    "name": "Full name",
     "apto": "Apto",
     "trajectory-by-timeline": "Trayectory by timeline",
     "events": "Events",
     "congress-events": "Congress and events",
+    "name": "Full Name",
+    "appointments": "Appointments",
+    "publications": "Publications",
     "id": "ID",
     "birthDate": "BithDate",
     "description": "Description",
@@ -293,6 +318,8 @@
     "results-title": "Results of similarities",
     "type-result": "Type result",
     "code-result": "Result code",
+    "accept": "Accept similarity",
+    "reject": "Reject similarity",
     "entity": "Entity",
     "entity-main": "Main entity",
     "attributes":"Attributes",
@@ -357,11 +384,6 @@
     "status":"Status",
     "endPoint":"Endpoint",
     "noData":"Could not load Service Discovery data",
-    "uris-factory":"URIs Factory",
-    "discovery":"Discovery library",
-    "service-discovery":"Backends Monitor",
-    "accept": "Accept similarity",
-    "reject": "Reject similarity",
     "nodes": "Nodes",
     "services": "Services",
     "endpoints": "Endpoints",
@@ -409,7 +431,7 @@
     "projects": "Projects",
     "patents": "Patentes",
     "documents-table": {
-      "id": "ID",
+      "id": "id",
       "name": "name",
       "anyo": "year",
       "type": "type"
@@ -524,7 +546,8 @@
     "abbreviation": "Abbreviation",
     "description": "Descriptio",
     "locatedIn": "Located in",
-    "presents": "Presents"
+    "presents": "Presents",
+    "contactInformation": "Contact Information"
   },
   "document": {
     "author": "Author",
@@ -570,14 +593,29 @@
   },
   "dataImporterStructure": {
     "id": "Id",
-    "date": "Date",
+    "startTime": "Date",
     "user": "User",
     "type": "Type",
     "cron": "Cron"
   },
   "importation": {
     "header": "Data importation",
-    "button": "+ New Importation"
+    "button": "+ New Importation",
+    "import": "Import",
+    "cron-expression": "Cron Expression",
+    "import-parameters": "Import Parameters",
+    "import-fieldset": "Select Import Type",
+    "import-title": "New Data Importation",
+    "cron-example": "(Example: * * * 15)",
+    "cron-help": "What is a cron expression?",
+    "succeeded-import": "Importation succeded",
+    "failed-import": "Importation failed",
+    "popup": {
+      "user": "User",
+      "type": "Type",
+      "cron": "Cron",
+      "close": "Close"
+    }
   },
   "validator": {
     "header": "Validators",
@@ -588,5 +626,23 @@
     "delete": "Are you sure you want to delete the entry?",
     "new-form": "New validator",
     "edit-form": "Edit validator"
+  },
+  "ldp": {
+    "header": "Linked Data Graph",
+    "entity": "Entity",
+    "count": "Total",
+    "uri": "URI",
+    "title": "Title/Name"
+  },
+  "dataDeletion": {
+    "header": "Data Deletion",
+    "date": "Select the date to which you want to restore the data ",
+    "delete": "Restore",
+    "delete-message": "Are you sure you want to go back to the data version on the selected date?"
+  },
+  "installer": {
+    "header": "Installer",
+    "script": "Installation via script",
+    "manual": "Manual installation"
   }
 }
