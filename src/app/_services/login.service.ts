@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { map, catchError, tap } from 'rxjs/operators';
 import { Helper } from '../_helpers/utils';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subscriber } from 'rxjs';
 import { AbstractService } from '../_helpers/abstract';
 import { User } from '../_models/user';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
@@ -74,6 +74,24 @@ export class LoginService extends AbstractService {
       );
   }
 
+  getLoggedUsername(): Observable<string> {
+    return new Observable((observer: Subscriber<string>) => {
+      if (localStorage.getItem('access_token')) {
+        if (!localStorage.getItem('user_name')) {
+          this.getName().subscribe((name) => {
+            observer.next(name.username);
+          }, (error) => {
+            observer.next(null);
+          });
+        } else {
+          observer.next(localStorage.getItem('user_name'));
+        }
+      } else {
+        observer.next(null);
+      }
+      return () => { };
+    });
+  }
 
 
 

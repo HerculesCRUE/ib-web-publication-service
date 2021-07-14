@@ -47,7 +47,7 @@ export class FindRequest {
     if (searchObject == null) {
       this.pageRequest = new PageRequest();
       this.pageRequest.page = 0;
-      this.pageRequest.size = 10;
+      this.pageRequest.size = 50;
       this.filter = {};
     } else {
       this.filter = searchObject.filter;

@@ -70,7 +70,8 @@
     "import-data": "Data Importer",
     "delete-data": "Data Deletion",
     "validator": "Validators",
-    "ldp": "LDP"
+    "ldp": "LDP",
+    "installer": "Installer"
   },
   "login": {
     "form": {
@@ -109,7 +110,9 @@
     "sparqlName": "Name",
     "entityId": "ID",
     "main": {
-      "federated": "Federated queries"
+      "federated": "Federated queries",
+      "federatedTooltip": "Activating this option will send the query to all federated nodes ",
+      "competency-questions": "Competency Questions"
     },
     "results": {
       "table": "table",
@@ -150,9 +153,11 @@
     "info-hercules": "Information about Hercules",
     "contact": "Contact information",
     "import-data": "Data Importer",
+    "delete-data": "Data Deletion",
     "uris-factory":"URIs Factory",
     "discovery":"Discovery library",
     "service-discovery":"Backends Monitor",
+    "installer": "Installer",
     "information": "Info",
     "links": "Links",
     "validator": "Validators",
@@ -162,6 +167,7 @@
     "title": "Links",
     "principal": "Principal",
     "repository": "Repositories",
+    "userManual": "User Manual",
     "ontology": "Ontology",
     "renderization": "Renderization",
     "backendsSGI": "Backends SGI",
@@ -537,7 +543,8 @@
     "abbreviation": "Abbreviation",
     "description": "Descriptio",
     "locatedIn": "Located in",
-    "presents": "Presents"
+    "presents": "Presents",
+    "contactInformation": "Contact Information"
   },
   "document": {
     "author": "Author",
@@ -624,8 +631,13 @@
   },
   "dataDeletion": {
     "header": "Data Deletion",
-    "date": "Date",
-    "delete": "Delete",
-    "delete-message": "Are you sure you want to delete data from the selected date?"
+    "date": "Select the date to which you want to restore the data ",
+    "delete": "Restore",
+    "delete-message": "Are you sure you want to go back to the data version on the selected date?"
+  },
+  "installer": {
+    "header": "Installer",
+    "script": "Installation via script",
+    "manual": "Manual installation"
   }
 }

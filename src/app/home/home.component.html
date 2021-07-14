@@ -4,37 +4,37 @@
       <ng-container *ngFor="let groupItem of groupItems">
 
         <div class="row" *ngIf="groupItem.title !== 'home.info'">
-          <div class="home-cards" *ngFor="let item of groupItem.homeItems"
-            [ngClass]="{'hidden': (item.title === 'home.users' && !isLogged) || (item.title === 'home.import-data' && !isLogged) || (item.title === 'home.validator' && !isLogged)} ">
-            <div *ngIf="!item.disabled" class="card home-enabled">
-              <div class="card-header">
-                <a *ngIf="item.url !== ''" class="icon-link align-items-center mb-0 font-weight-light"
-                  [routerLink]="[item.url]">
-                  <em class="oi" [ngClass]="item.iconName"></em>
-                </a>
+          <div class="home-cards" *ngFor="let item of groupItem.homeItems">
+            <ng-container *ngIf="!item.loginRequired || isLogged">
+              <div *ngIf="!item.disabled" class="card home-enabled">
+                <div class="card-header">
+                  <a *ngIf="item.url !== ''" class="icon-link align-items-center mb-0 font-weight-light"
+                    [routerLink]="[item.url]">
+                    <em class="oi" [ngClass]="item.iconName"></em>
+                  </a>
 
-                <a *ngIf="item.url == ''" class="icon-link align-items-center mb-0 font-weight-light" target="_blank"
-                  [href]="item.urlExterna">
-                  <em class="oi" [ngClass]="item.iconName"></em>
-                </a>
+                  <a *ngIf="item.url == ''" class="icon-link align-items-center mb-0 font-weight-light" target="_blank"
+                    [href]="item.urlExterna">
+                    <em class="oi" [ngClass]="item.iconName"></em>
+                  </a>
 
+                </div>
+                <div class="card-body my-0">
+                  <div class="card-title">{{ item.title| translate }}</div>
+                </div>
               </div>
-              <div class="card-body my-0">
-                <div class="card-title">{{ item.title| translate }}</div>
-              </div>
-            </div>
-            <div class="card home-disabled" [routerLink]="[item.url]" *ngIf="item.disabled">
-              <div class="card-header">
-                <h3 class="icon-link align-items-center mb-0 font-weight-light">
-                  <em class="oi" [ngClass]="item.iconName"></em>
-                </h3>
+              <div class="card home-disabled" [routerLink]="[item.url]" *ngIf="item.disabled">
+                <div class="card-header">
+                  <h3 class="icon-link align-items-center mb-0 font-weight-light">
+                    <em class="oi" [ngClass]="item.iconName"></em>
+                  </h3>
 
+                </div>
+                <div class="card-body my-0">
+                  <div class="card-title mb-0 mt-2" *ngIf="item.title !== 'home.info'">{{ item.title| translate }}</div>
+                </div>
               </div>
-              <div class="card-body my-0">
-                <div class="card-title mb-0 mt-2" *ngIf="item.title !== 'home.info'">{{ item.title| translate }}</div>
-              </div>
-            </div>
-
+            </ng-container>
           </div>
         </div>
         <!-- <div class="row" *ngIf="groupItem.title === 'home.info'">

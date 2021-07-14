@@ -1,3 +1,5 @@
+import { Helper } from '../_helpers/utils';
+
 /**
  * Definición de un Item del menú.
  */
@@ -15,9 +17,17 @@ export class MenuItem {
    */
   url: string;
   /**
+   * URL externa.
+   */
+  urlExterna?: string;
+  /**
    * Disabled.
    */
   disabled: boolean;
+  /*
+   * Login required.
+   */
+  loginRequired?: boolean;
 }
 
 /**
@@ -98,21 +108,44 @@ export const MENU_ITEMS: MenuItem[] = [
     disabled: false
   },
   {
+    title: 'menu.users',
+    icon: 'oi-person',
+    url: '',
+    urlExterna: Helper.getKeyCloackUrl().authUrl + '/admin/',
+    disabled: false,
+    loginRequired: true
+  },
+  {
     title: 'menu.import-data',
     icon: 'oi-loop-circular',
     url: '/main/data-importer',
-    disabled: false
+    disabled: false,
+    loginRequired: true
+  },
+  {
+    title: 'menu.delete-data',
+    icon: 'oi-trash',
+    url: '/main/data-deletion',
+    disabled: false,
+    loginRequired: true
   },
   {
     title: 'menu.validator',
     icon: 'oi-circle-check',
     url: '/main/validator',
-    disabled: false
+    disabled: false,
+    loginRequired: true
   },
   {
     title: 'menu.ldp',
     icon: 'oi-book',
     url: '/main/ldp',
+    disabled: false
+  },
+  {
+    title: 'menu.installer',
+    icon: 'oi-data-transfer-download',
+    url: '/main/installer',
     disabled: false
   }
 
