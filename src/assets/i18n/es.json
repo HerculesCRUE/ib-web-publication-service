@@ -69,7 +69,7 @@
     "graph": "Renderización named graph",
     "import-data": "Importador de datos",
     "validator": "Validadores",
-    "ldp": "LDP"
+    "ldp": "Linked Data Graph"
   },
   "login": {
     "form": {
@@ -156,7 +156,7 @@
     "information": "Info",
     "links": "Enlaces",
     "validator": "Validadores",
-    "ldp": "LDP"
+    "ldp": "Linked Data Graph"
   },
   "links": {
     "title": "Enlaces",
@@ -619,7 +619,7 @@
     "edit-form": "Modificar validador"
   },
   "ldp": {
-    "header": "LDP",
+    "header": "Linked Data Graph",
     "entity": "Entidad",
     "count": "Total",
     "uri": "URI",
