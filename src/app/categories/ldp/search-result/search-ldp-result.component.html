@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="legend">{{ "ldp.header" | translate }}</h1>
+    </div>
+</div>
+<app-search-ldp [searchToken]="title"></app-search-ldp>
+<fieldset class="panel-default">
+    <legend></legend>
+    <div class="row">
+        <div class="col-12">
+            <div class="card flex-fill">
+                <div class="card-header">
+                    <h5 class="card-title mb-0" *ngIf="loaded && resultObject?.content?.length === 0">
+                        {{'form.no-result' | translate}}</h5>
+                    <h5 class="card-title mb-0" *ngIf="loaded && resultObject?.content?.length !== 0">
+                        {{'form.results-amount' | translate}} {{resultObject?.totalElements}}
+                    </h5>
+                </div>
+                <div id="datatables-dashboard-markets_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+
+
+                    <div class="loader" *ngIf="!loaded"></div>
+                    <app-table-results-ldp-search [displayPagination]="false" [findRequest]="findRequest"
+                        [dtoTypeTranslate]="'ldp'" *ngIf="loaded && resultObject?.content?.length !== 0"
+                        [data]="resultObject?.content" [pageInfo]="resultObject"
+                        (sortChanged)="allResearchmentStructuresFilteredSortChanged($event)">
+                    </app-table-results-ldp-search>
+                    <div class="container-fluid app-table-results">
+                        <div class="row">
+                            <div class="col">
+                                <app-pagination [resultObject]="resultObject" (pageChanged)="showPage($event)"
+                                    (sizeChanged)="changeSize($event)">
+                                </app-pagination>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</fieldset>

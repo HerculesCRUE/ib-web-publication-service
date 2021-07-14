@@ -594,6 +594,8 @@
   "ldp": {
     "header": "LDP",
     "entity": "Entity",
-    "count": "Total"
+    "count": "Total",
+    "uri": "URI",
+    "title": "Title/Name"
   }
 }

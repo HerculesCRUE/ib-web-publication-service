@@ -1,1 +1,10 @@
-<p>Buscador</p>
+<div id="mainSearch" aria-labelledby="mainSearch" class="input-group col-md-4" role="search">
+    <input class="form-control py-2 border-right-0 border" type="search" name="search" #search="ngModel"
+        placeholder="{{'form.search-by-title' | translate }}" [(ngModel)]="searchToken" (keyup.enter)="filter()">
+    <span class="input-group-append">
+        <button (click)="filter()" [attr.aria-label]="'form.search-by-name' | translate" role="button"
+            aria-pressed="false" class="btn btn-outline-secondary border-left-0 border" type="button">
+            <em class="oi oi-magnifying-glass "></em>
+        </button>
+    </span>
+</div>

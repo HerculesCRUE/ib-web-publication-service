@@ -6,6 +6,7 @@ import { AbstractService } from "../_helpers/abstract";
 import { Direction, FindRequest, Order, Page } from "../_helpers/search";
 import { Helper } from "../_helpers/utils";
 import { LdpEntityCounter } from "../_models/ldpEntity";
+import { LdpSearchResult } from "../_models/ldpSearchResult";
 
 @Injectable({
     providedIn: 'root',
@@ -33,7 +34,7 @@ export class LdpService extends AbstractService {
 
             // we set default order (workaround!!!!). The view is a mess!!!
             const order = new Order();
-            order.property = 'startTime';
+            order.property = 'count';
             order.direction = Direction.DESC;
 
             findRequest.setOrder(order.direction, order.property);
@@ -48,5 +49,39 @@ export class LdpService extends AbstractService {
                 catchError(this.handleError)
             );
     }
+
+    /**
+     *
+     *
+     * @param {FindRequest} findRequest
+     * @return {*}  {Observable<Page<LdpEntityCounter>>}
+     * @memberof DataImporterService
+     */
+    findByTitle(title: string, findRequest: FindRequest): Observable<Page<LdpSearchResult>> {
+        // Filter params
+        let parameters = new HttpParams();
+        parameters = Helper.addParam(parameters, 'title', title);
+
+
+        if (findRequest && findRequest.pageRequest && !findRequest.pageRequest.property) {
+
+            // we set default order (workaround!!!!). The view is a mess!!!
+            const order = new Order();
+            order.property = 'title';
+            order.direction = Direction.DESC;
+
+            findRequest.setOrder(order.direction, order.property);
+        }
+
+        // Pagination params
+        parameters = Helper.addPaginationParams(parameters, findRequest.pageRequest);
+        return this.httpClient
+            .get(Helper.getUrl('/ldp/findTitle'), {
+                params: parameters
+            }).pipe(
+                catchError(this.handleError)
+            );
+    }
+
 
 }

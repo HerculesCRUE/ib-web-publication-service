@@ -51,6 +51,7 @@ import { LdpComponent } from './ldp/ldp.component';
 import { AllDataImporterStructuresComponent } from './data-importer/all-data-importer/all-data-importer-structures.component';
 import { AllLdpComponent } from './ldp/all-ldp/all-ldp.component';
 import { SearchLdpComponent } from './ldp/search/search-ldp.component';
+import { SearchLdpResultComponent } from './ldp/search-result/search-ldp-result.component';
 import { NewDataImporterComponent } from './data-importer/new-data-importer/new-data-importer.component';
 import { ValidatorComponent } from './validator/validator.component';
 import { AllValidatorStructuresComponent } from './validator/all-validator/all-validator-structures.component';
@@ -68,7 +69,7 @@ import { ServiceDiscoveryComponent } from '../service-discovery/service-discover
     ScientificProductionComponent, DocumentDetailComponent, EventDetailComponent, StatisticsComponent, DiscoveryComponent,
     DiscoveryControlComponent, DiscoverySearchComponent, DiscoveryActionComponent, ResultItemComponent, UrisComponent, ServiceDiscoveryComponent,
     PeopleInvolvedComponent, CollaboratorsComponent, ScientificPublicationDetailComponent, AreasListComponent, DataImporterComponent, AllDataImporterStructuresComponent, NewDataImporterComponent,
-    ValidatorComponent, AllValidatorStructuresComponent, NewValidatorComponent, LdpComponent, AllLdpComponent, SearchLdpComponent
+    ValidatorComponent, AllValidatorStructuresComponent, NewValidatorComponent, LdpComponent, AllLdpComponent, SearchLdpComponent, SearchLdpResultComponent
   ],
   imports: [
     NgxEchartsModule,
