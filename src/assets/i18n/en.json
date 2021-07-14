@@ -70,14 +70,10 @@
     "import-data": "Data Importer",
     "delete-data": "Data Deletion",
     "validator": "Validators",
-<<<<<<< HEAD
-    "ldp": "Linked Data Graph"
-=======
-    "ldp": "LDP",
+    "ldp": "Linked Data Graph",    
     "installer": "Installer",
     "information": "Info",
     "links": "Links"
->>>>>>> b504720174dc68e9e6f0ed04dd3f9f43f59a2d11
   },
   "login": {
     "form": {
@@ -166,13 +162,8 @@
     "installer": "Installer",
     "information": "Info",
     "links": "Links",
-<<<<<<< HEAD
     "validation": "Validators",
     "ldp": "Linked Data Graph"
-=======
-    "validator": "Validators",
-    "ldp": "LDP"
->>>>>>> b504720174dc68e9e6f0ed04dd3f9f43f59a2d11
   },
   "links": {
     "title": "Links",

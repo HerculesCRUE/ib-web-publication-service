@@ -70,14 +70,10 @@
     "import-data": "Importador de datos",
     "delete-data": "Borrado de datos",
     "validator": "Validadores",
-<<<<<<< HEAD
-    "ldp": "Linked Data Graph"
-=======
-    "ldp": "LDP",
+    "ldp": "Linked Data Graph",
     "installer": "Instalador",
     "information": "Info",
     "links": "Enlaces"
->>>>>>> b504720174dc68e9e6f0ed04dd3f9f43f59a2d11
   },
   "login": {
     "form": {
