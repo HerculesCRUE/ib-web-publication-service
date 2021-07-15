@@ -69,7 +69,7 @@ jobs:
           tar -xf website.tar.gz -C website
           chmod -R a+r .
 
-       - name: Docker meta
+      - name: Docker meta
         id: meta
         uses: docker/metadata-action@v3
         with:
