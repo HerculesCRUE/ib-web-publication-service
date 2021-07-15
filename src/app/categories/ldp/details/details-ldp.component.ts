@@ -52,7 +52,7 @@ export class DetailsLdpComponent implements OnInit, AfterViewInit {
         this.dataObservable.subscribe((data) => {
             const s = this.document.createElement('script');
             s.type = 'application/ld+json';
-            s.innerText = data.jsonLd;
+            s.innerText = JSON.stringify(JSON.parse(data.jsonLd));
             this.elementRef.nativeElement.appendChild(s);
         }, () => {
         });
