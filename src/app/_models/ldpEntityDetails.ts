@@ -9,6 +9,8 @@ export class LdpEntityDetails {
 
     uri: string;
 
+    jsonLd: string;
+
     properties: LdpEntityDetail[];
 
     relations: LdpEntityDetails[];
