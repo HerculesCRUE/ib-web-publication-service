@@ -161,11 +161,12 @@
     "discovery":"Librería de descubrimiento",
     "service-discovery":"Monitor de Backends",
     "installer": "Instalador",
-    "information": "Info",
     "etl": "ETL",
+    "information": "Info",
     "links": "Enlaces",
-    "validator": "Validadores",
-    "ldp": "Linked Data Graph"
+    "validation": "Validadores",
+    "ldp": "Linked Data Graph",
+    "validator": "Validadores"
   },
   "links": {
     "title": "Enlaces",

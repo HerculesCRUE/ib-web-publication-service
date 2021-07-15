@@ -70,7 +70,7 @@
     "import-data": "Data Importer",
     "delete-data": "Data Deletion",
     "validator": "Validators",
-    "ldp": "Linked Data Graph",    
+    "ldp": "Linked Data Graph",
     "installer": "Installer",
     "etl": "ETL",
     "information": "Info",
@@ -165,7 +165,8 @@
     "information": "Info",
     "links": "Links",
     "validation": "Validators",
-    "ldp": "Linked Data Graph"
+    "ldp": "Linked Data Graph",
+    "validator": "Validators"
   },
   "links": {
     "title": "Links",
