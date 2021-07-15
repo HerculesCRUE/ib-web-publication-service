@@ -7,6 +7,7 @@ export const environment = {
   skipPort: '8080',
   node: 'um',
   domain: 'ldpld1.um.es',
+  spoon: 'https://linkeddata1desa.um.es/web-spoon/spoon/spoon',
   keycloak: {
     realm: 'umasio',
     clientId: 'login-app',
