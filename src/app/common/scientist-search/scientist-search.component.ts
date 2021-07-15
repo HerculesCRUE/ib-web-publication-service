@@ -136,11 +136,11 @@ export class ScientistSearchComponent extends PaginatedSearchComponent<Person> i
   newData(data: Array<PersonGraphic>) {
     const result = [];
 
-    if (data.length > 0) {
+    /**if (data.length > 0) {
       data.forEach(element => {
         result.push({ name: element.inheresInsubjectArea, value: element.count });
       });
-    }
+    }*/
 
     return {
       seriesData: result

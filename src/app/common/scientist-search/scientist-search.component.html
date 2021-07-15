@@ -50,7 +50,8 @@
                             </div>
                             <div class="input-group col-md-2 text-right">
                                 <button id="clean" [attr.aria-label]="'form.clean' | translate " role="button"
-                                    aria-pressed="false" class="btn btn-secondary" (click)="f.resetForm();">{{'form.clean' |
+                                    aria-pressed="false" class="btn btn-secondary"
+                                    (click)="f.resetForm();">{{'form.clean' |
                                     translate }}</button>
                             </div>
                         </div>
@@ -67,7 +68,7 @@
                         [routerNameLink]="url" [routerField]="'id'"
                         *ngIf="loaded && resultObject?.content?.length !== 0" [data]="resultObject?.content"
                         [dtoTypeTranslate]="'scientist'" [extra]="'2'" [pageInfo]="resultObject"
-                        [visibleColumns]="['name', 'subjectArea', 'gender']" mainColumn="name"
+                        [visibleColumns]="['name', 'hasKnowledgeAreaTitle', 'gender']" mainColumn="name"
                         (sortChanged)="allScientistsFilteredSortChanged($event)">
                     </app-table-results-dto>
                     <div class="container-fluid app-table-results">
