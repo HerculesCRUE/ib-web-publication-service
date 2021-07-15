@@ -1,4 +1,5 @@
-import { BASE_APP_URL, BASE_URL, KEYCLOACK, LPDURL, SGI } from '../configuration';
+
+import { BASE_APP_URL, BASE_URL, DISCOVERY, SERVICE_DISCOVERY, IMPORTER_SERVICE, FEDERATION, KEYCLOACK, LPDURL, SGI, URIS_FACTORY } from '../configuration';
 import { HttpParams } from '@angular/common/http';
 import { Direction, Page, PageRequest } from './search';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
@@ -19,6 +20,14 @@ export class Helper {
   }
 
   /**
+ * Completa la URL a llamar con la URL base del servicio de importacion.
+ * @param fragment Fragmento de URL.
+ */
+  static getImporterUrl(fragment: string) {
+    return IMPORTER_SERVICE.baseUrl + ((IMPORTER_SERVICE.port != null) ? (':' + IMPORTER_SERVICE.port) : "") + fragment;
+  }
+
+  /**
    *
    * obtiene las URL de congiguración de keycloak
    * @static
@@ -28,6 +37,54 @@ export class Helper {
   static getKeyCloackUrl() {
     return KEYCLOACK;
   }
+
+  /**
+   *
+   * obtiene las URL de congiguración de Discovery Lib
+   * @static
+   * @return {*} 
+   * @memberof Helper
+   */
+  static getDiscoveryUrl() {
+    return DISCOVERY.baseUrl + ((DISCOVERY.port != null) ? (':' + DISCOVERY.port) : "");
+  }
+
+  /**
+ *
+ * obtiene las URL de congiguración de Service Discovery Lib
+ * @static
+ * @return {*} 
+ * @memberof Helper
+ */
+  static getServiceDiscoveryUrl() {
+    console.log(SERVICE_DISCOVERY.baseUrl + ((SERVICE_DISCOVERY.port != null) ? (':' + SERVICE_DISCOVERY.port) : ""))
+    return SERVICE_DISCOVERY.baseUrl + ((SERVICE_DISCOVERY.port != null) ? (':' + SERVICE_DISCOVERY.port) : "");
+  }
+
+  /**
+*
+* obtiene las URL de congiguración de Service Discovery Lib
+* @static
+* @return {*} 
+* @memberof Helper
+*/
+  static getFederationUrl() {
+    console.log('getFederationUrl', FEDERATION.baseUrl + ((FEDERATION.port != null) ? (':' + FEDERATION.port) : ""))
+    return FEDERATION.baseUrl + ((FEDERATION.port != null) ? (':' + FEDERATION.port) : "");
+  }
+
+  /**
+*
+* obtiene las URL de congiguración de URIs Factory Lib
+* @static
+* @return {*} 
+* @memberof Helper
+*/
+  static getUrisFactoryUrl() {
+    console.log('getUrisFactoryUrl', URIS_FACTORY.baseUrl + ((URIS_FACTORY.port != null) ? (':' + URIS_FACTORY.port) : ""))
+    return URIS_FACTORY.baseUrl + ((URIS_FACTORY.port != null) ? (':' + URIS_FACTORY.port) : "");
+  }
+
 
   /**
    *

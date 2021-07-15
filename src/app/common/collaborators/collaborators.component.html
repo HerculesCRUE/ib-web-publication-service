@@ -1,11 +1,5 @@
 <form class="form-horizontal " (ngSubmit)="f.form.valid" #f="ngForm" (keydown.enter)="$event.preventDefault()">
     <div class="row">
-        <div class="col-12">
-            <h5 class="card-title"> {{'form.search-form' | translate}}</h5>
-        </div>
-    </div>
-
-    <div class="row">
 
         <div class="col-12">
             <div class="card flex-fill">
@@ -21,7 +15,7 @@
                             <div id="mainSearch" aria-labelledby="mainSearch" class="input-group col-md-4"
                                 role="search">
                                 <input class="form-control py-2 border-right-0 border" type="search" name="search"
-                                    #search="ngModel" placeholder="{{'form.search-by-title' | translate }}"
+                                    #search="ngModel" placeholder="{{'form.search-by-name' | translate }}"
                                     [(ngModel)]="findRequest.filter.name" (keyup.enter)="changeCollaborator()">
                                 <span class="input-group-append">
                                     <button (click)="changeCollaborator()"
@@ -34,8 +28,7 @@
                             </div>
                             <div class="input-group col-md-2 text-right">
                                 <button id="clean" [attr.aria-label]="'form.clean' | translate " role="button"
-                                    aria-pressed="false" class="btn btn-secondary"
-                                    (click)="f.resetForm();">{{'form.clean' |
+                                    aria-pressed="false" class="btn btn-secondary" (click)="f.resetForm();">{{'form.clean' |
                                     translate }}</button>
                             </div>
                         </div>
@@ -50,7 +43,8 @@
                     <app-table-results-dto [displayPagination]="false" [findRequest]="findRequest"
                         [dtoTypeTranslate]="'scientist'" [extra]="'4'"
                         *ngIf="loaded && resultObject?.content?.length !== 0" [data]="resultObject?.content"
-                        [pageInfo]="resultObject" (sortChanged)="allCollabortorsFilteredSortChanged($event)">
+                        [pageInfo]="resultObject" [visibleColumns]="['name', 'gender']" mainColumn="name"
+                        (sortChanged)="allCollabortorsFilteredSortChanged($event)">
                     </app-table-results-dto>
                     <div class="container-fluid app-table-results">
                         <div class="row">

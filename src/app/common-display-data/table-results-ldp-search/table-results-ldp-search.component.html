@@ -1,0 +1,48 @@
+<div class="container-fluid app-table-results">
+  <div class="row">
+    <div class="col">
+      <table class="table table-bordered" aria-label="Data displayed from Sparql" *ngIf="!!dataComplete">
+        <caption>{{'form.results' | translate }}</caption>
+        <thead>
+          <tr>
+
+            <ng-container *ngFor="let header of hedearDTO">
+              <ng-container>
+                <th class="sortable" (click)="sort(header)" id="{{header + dtoTypeTranslate + extra}}"
+                  *ngIf="header !== 'importerErrors' && header !== 'params'">
+                  <em class="oi oi-info" *ngIf="needTooltip(header).required" placement="top"
+                    ngbTooltip="{{needTooltip(header).textValue}}"></em>
+                  {{ dtoTypeTranslate + '.' + header | translate }}
+                  <em class="float-right" [ngClass]="getSortIcon(header)"></em>
+                </th>
+              </ng-container>
+
+
+            </ng-container>
+
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let item of dataCompleteToShow; index as i">
+
+            <tr [ngClass]="{ 'table-secondary': i % 2 == 1 }">
+              <ng-container *ngFor="let header of hedearDTO">
+                <td>
+                  <ng-container *ngIf="header==='uri'; else noLink"><a
+                      [routerLink]="['/main/categories/ldp-entity-details']"
+                      [queryParams]="{uri: item[header]}">{{item[header] }}</a>
+                  </ng-container>
+                  <ng-template #noLink>{{item[header] }}</ng-template>
+                </td>
+              </ng-container>
+            </tr>
+
+          </ng-container>
+        </tbody>
+      </table>
+      <app-pagination *ngIf="displayPagination" [resultObject]="resultObject"
+        (pageChanged)="callShowPageWhenPageChanges($event)" (sizeChanged)="callShowPageWhenSizeChanges($event)">
+      </app-pagination>
+    </div>
+  </div>
+</div>

@@ -1,29 +1,5 @@
 <form class="form-horizontal " (ngSubmit)="f.form.valid" #f="ngForm" (keydown.enter)="$event.preventDefault()">
     <div class="row">
-        <div class="col-12">
-            <h5 class="card-title"> {{'form.search-form' | translate}}</h5>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-12">
-            <button role="button" aria-pressed="false" class="btn btn-secondary tree" *ngIf="normalTree"
-                (click)="normalTree = !normalTree">{{'form.change-tree' |
-                translate}}</button>
-
-            <button role="button" aria-pressed="false" class="btn btn-secondary tree" *ngIf="!normalTree"
-                (click)="normalTree = !normalTree">{{'form.change-tree-normal' |
-                translate}}</button>
-        </div>
-        <!-- categorias tree -->
-        <div class="col-lg-6" *ngIf="normalTree">
-            <label for="type" class="col-sm-4 control-label">{{ "patent.area" | translate }}</label>
-            <app-new-tree [treeType]="'area'"></app-new-tree>
-        </div>
-        <!-- categorias tree -->
-        <div class="col-lg-12" *ngIf="!normalTree">
-            <label for="type" class="col-sm-4 control-label">{{ "patent.area" | translate }}</label>
-            <app-tree [treeType]="'area'"></app-tree>
-        </div>
         <!-- type -->
         <div class="form-group col-lg-3">
             <label for="dateFrom{{idPrefix}}" class="control-label">{{'documents.date-ini' | translate }}</label>
@@ -70,8 +46,7 @@
                             </div>
                             <div class="input-group col-md-2 text-right">
                                 <button id="clean" [attr.aria-label]="'form.clean' | translate " role="button"
-                                    aria-pressed="false" class="btn btn-secondary"
-                                    (click)="f.resetForm();">{{'form.clean' |
+                                    aria-pressed="false" class="btn btn-secondary" (click)="f.resetForm();">{{'form.clean' |
                                     translate }}</button>
                             </div>
                         </div>
@@ -87,6 +62,7 @@
                         [dtoTypeTranslate]="'patent'" [extra]="'4'"
                         *ngIf="loaded && resultObject?.content?.length !== 0" [data]="resultObject?.content"
                         [routerNameLink]="url" [routerField]="'id'" [pageInfo]="resultObject"
+                        [visibleColumns]="visibleColumns" [mainColumn]="mainColumn"
                         (sortChanged)="allPatentsFilteredSortChanged($event)">
                     </app-table-results-dto>
                     <div class="container-fluid app-table-results">

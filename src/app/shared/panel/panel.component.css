@@ -1,0 +1,7 @@
+.panel.panel-collapsing .panel-content {
+	overflow: hidden;
+}
+.panel.collapsed .panel-content {
+	padding-top: 0;
+	padding-bottom: 0;
+}

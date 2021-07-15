@@ -18,7 +18,7 @@
     "search-by-name": "Search by name",
     "search-by-title": "Search by title",
     "search-by-description": "Search by description",
-    "pagination": "Displaying results {{min}} accross {{max}} of {{total}}",
+    "pagination": "{{min}}-{{max}} of {{total}}",
     "pagination-next": "⟩",
     "pagination-previous": "⟨",
     "pagination-first": "«",
@@ -36,15 +36,16 @@
     "no": "No",
     "datepicker-placeholder": "YYYY-MM-DD",
     "change-tree": "Change tree",
-    "clear": "Clean",
+    "clean": "Clean",
     "change-tree-normal": "Change to normal tree",
     "no-result": "No results",
     "results-amount": "Total: ",
     "back": "Go back",
     "reset": "Reset",
-    "delete": "Borrar",
+    "delete": "Delete",
     "actions": "Actions",
-    "use": "Utilizar Query",
+    "use": "Use",
+    "edit": "Edit",
     "delete-message": "Are you sure you want to delete the entry? "
   },
   "menu": {
@@ -59,10 +60,21 @@
     "prod-scientist": "Scientific production",
     "acction-inves": "Investigation actions",
     "stats": "Stats and indicators",
+    "discovery": "Discovery library",
+    "service-discovery": "Backends Monitor",
+    "uris-factory": "URIs Factory",
     "accessibility": "Accessibility",
     "login": "Login",
     "contact": "Contact",
-    "graph": "Renderización named graph"
+    "graph": "Renderización named graph",
+    "import-data": "Data Importer",
+    "delete-data": "Data Deletion",
+    "validator": "Validators",
+    "ldp": "Linked Data Graph",
+    "installer": "Installer",
+    "etl": "ETL",
+    "information": "Info",
+    "links": "Links"
   },
   "login": {
     "form": {
@@ -101,7 +113,9 @@
     "sparqlName": "Name",
     "entityId": "ID",
     "main": {
-      "federated": "Federated queries"
+      "federated": "Federated queries",
+      "federatedTooltip": "Activating this option will send the query to all federated nodes ",
+      "competency-questions": "Competency Questions"
     },
     "results": {
       "table": "table",
@@ -112,6 +126,13 @@
       "line-chart": "line chart",
       "bubble-chart": "buble chart",
       "sector-chart": "sector chart"
+    }
+  },
+  "proyect": {
+    "title": "Projects",
+    "detail": {
+      "name": "Name",
+      "date": "Date"
     }
   },
   "home": {
@@ -125,7 +146,7 @@
     "areas": "Areas",
     "prod-scientist": "Scientific production",
     "acction-inves": "Investigation actions",
-    "stats": "Statistics and indicators",
+    "stats": "Statistics",
     "info": "Information",
     "info-URI": "URIs contract information",
     "info-LPD": "LPD",
@@ -133,16 +154,34 @@
     "sgi": "Backends SGI",
     "graphs": "Named Graphs metadata rendering",
     "info-hercules": "Information about Hercules",
-    "contact": "Contact information"
+    "contact": "Contact information",
+    "import-data": "Data Importer",
+    "delete-data": "Data Deletion",
+    "uris-factory":"URIs Factory",
+    "discovery":"Discovery library",
+    "service-discovery":"Backends Monitor",
+    "installer": "Installer",
+    "etl": "ETL",
+    "information": "Info",
+    "links": "Links",
+    "validation": "Validators",
+    "ldp": "Linked Data Graph",
+    "validator": "Validators"
   },
   "links": {
-    "title": "Links GitHub",
+    "title": "Links",
     "principal": "Principal",
-    "repository": "Repositories"
+    "repository": "Repositories",
+    "userManual": "User Manual",
+    "ontology": "Ontology",
+    "renderization": "Renderization",
+    "backendsSGI": "Backends SGI",
+    "other": "Other"
   },
   "researchmentStructure": {
-    "title": "Researchment Structures",
-    "type": "Ontological type",
+    "header": "Researchment Structures",
+    "title": "Title",
+    "type": "Type",
     "financing": "Financing",
     "name": "Name",
     "publications": "Publications",
@@ -182,7 +221,7 @@
   "scientist": {
     "title": "Research staff",
     "area": "Area",
-    "type": "Ontological type",
+    "type": "Type",
     "acction-inves": "Investigation actions",
     "congress": "Congress",
     "business-activity": "Business activity",
@@ -198,8 +237,10 @@
     "trajectory-by-timeline": "Trayectory by timeline",
     "events": "Events",
     "congress-events": "Congress and events",
+    "name": "Full Name",
+    "appointments": "Appointments",
+    "publications": "Publications",
     "id": "ID",
-    "name": "Full name",
     "birthDate": "BithDate",
     "description": "Description",
     "firstName": "Name",
@@ -219,13 +260,137 @@
     "date-from": "Date from",
     "date-to": "Date to",
     "degree": "Degree",
-    "type": "Ontological type",
+    "type": "Type",
     "doi": "DOI",
     "publication-year": "Publication year",
     "scientific-publications": "Scientific publications",
     "academic-publications": "Academic publications",
     "other-publications": "Other publications",
     "events": "Events"
+  },
+  "discovery": {
+    "title": "Discovery Library",
+    "control-tab":"Control",
+    "search-tab":"Search",
+    "action-tab":"Results",
+    "action-results":"Search result",
+    "action-open":"Open results",
+    "state-tittle": "Discovery Library State",
+    "stats-tittle": "Object Stats",
+    "search-tittle": "Similarity search",
+    "result-tittle": "Result search",
+    "global-state": "General state",
+    "noData": "Could not load discovery library data",
+    "NOT_INITIALIZED":"Not Initialized",
+    "CACHED_DATA":"Initialized from cache",
+    "UPLOAD_DATA":"Initialized from real data",
+    "UNINITIALIZED":"Not Initialized",
+    "INITIALIZED_WITH_CACHED_DATA":"Initialized from cache",
+    "INITIALIZED":"Initialized",
+    "table-type-header": "Type",
+    "table-state-header": "State",
+    "table-last-update-header": "Last update",
+    "update-state":"Update state",
+    "force-reload":"Force data reload",
+    "node": "Node",
+    "storage": "Storage",
+    "class": "Class",
+    "json-instance": "Object Attributes in JSON format",
+    "stats-instances": "Number of instances",
+    "stats-number-attibures": "Number of attributes",
+    "stats-max-relative-ratio": "Relative maximum ratio",
+    "stats-attribute-name": "Attribute",
+    "stats-attribute-relative-ratio": "Relative ratio",
+    "stats-attribute-relative-absolute": "Absolute ratio",
+    "action-search-class": "Search for similarities by class",
+    "action-search-instance": "Search for similarities by instance",
+    "action-search-lod": "Search for similarities in LOD cloud",
+    "action-search-label": "Select search action",
+    "action-check-sync-label": "Do synchronous",
+    "action-check-deltas-label": "Apply deltas",
+    "action-check-other-search-label": "Search in other Backends",
+    "action-btn-launch-search": "Launch search",
+    "search-message": "Searching similarities....",
+    "pending-message": "The request has been processed, you can retrieve the response using the requestId and userId attributes",
+    "status": "State",
+    "startDate": "Date of request",
+    "endDate": "Date of response",
+    "response-title": "Response",
+    "not-result-found": "Not similarities found",
+    "results-title": "Results of similarities",
+    "type-result": "Type result",
+    "code-result": "Result code",
+    "accept": "Accept similarity",
+    "reject": "Reject similarity",
+    "entity": "Entity",
+    "entity-main": "Main entity",
+    "attributes":"Attributes",
+    "similiarity":"Similarity",
+    "similiarity-no-id":"Similarity without Id",
+    "origin":"Origin",
+    "manual":"Manual actions",
+    "automatic":"Atomatic actions",
+    "decision-response":"Decision response",
+    "deleted":"Deleted entities",
+    "updated":"Updated entities",
+    "att-name":"Attribute Name",
+    "att-main-value":"Main entity atribute value",
+    "att-related-value":"Atribute value"
+  },
+  "uris":{
+    "title":"URIs Factory",
+    "noData":"Could not load URIS Factory data",
+    "canonical-search": "Search public URIs",
+    "local-search": "Search local URIs",
+    "type-search": "Select the type of the search",
+    "instace-search": "Search by instances",
+    "entity-search": "Search by entities",
+    "property-search": "Search by properties",
+    "action-btn-launch-search": "Search",
+    "domain-field":"Domain",
+    "domain-placeholder":"Insert the domain to search by this criteria",
+    "subdomain-field":"Subdomain",
+    "subdomain-placeholder":"Insert the subdomain to search by this criteria",
+    "language-field":"Language",
+    "language-placeholder":"Insert the language to search by this criteria. Ej: [es-ES, en-EN]",
+    "type-field":"Type",
+    "type-placeholder":"Insert the type to search by this criteria",
+    "className-field":"Class name",
+    "className-placeholder":"Insert the class name to search by this criteria",
+    "entityId-field":"Instance id",
+    "entityId-placeholder":"Insert the instance id to search by this criteria",
+    "property-field":"Property name",
+    "property-placeholder":"Insert the property name to search by this criteria",
+    "spinnet-text": "Waiting resporse from URIs Factory",
+    "response-title": "Response",
+    "canonical-table-canonical-uri":"Public URI (canonical)",
+    "canonical-table-canonical-language-uri":"Public URI in language (canonical)",
+    "canonical-table-localstorage":"Private URI (local)",
+    "canonical-table-language":"Language",
+    "local-table-storage":"Storage type",
+    "canonical-field":"Public URI (canonical)",
+    "canonical-placeholder":"Insert the Public URI (canonical) to search by this criteria",
+    "storage-field":"Storage type",
+    "storage-placeholder":"Insert the Storage type to search by this criteria"
+  },
+  "service-discovery": {
+    "title":"Services monitor",
+    "node":"Node",
+    "service":"Service",
+    "id":"id",
+    "name":"Name",
+    "base-url":"Base URL",
+    "suffix-url":"URL Suffix",
+    "port":"Port",
+    "healthEndpoint":"Health Endpoint",
+    "status":"Status",
+    "endPoint":"Endpoint",
+    "noData":"Could not load Service Discovery data",
+    "nodes": "Nodes",
+    "services": "Services",
+    "endpoints": "Endpoints",
+    "activate": "Activate",
+    "disabled": "Disabled"
   },
   "projects": {
     "year": "Year",
@@ -271,14 +436,14 @@
       "id": "id",
       "name": "name",
       "anyo": "year",
-      "type": "Ontological type"
+      "type": "type"
     }
   },
   "documents": {
     "document": "Documents",
     "date-fin": "End Date",
     "date-ini": "Start Date",
-    "types": "Ontological type",
+    "types": "Type",
     "title": "Title",
     "name": "Name",
     "id": "ID",
@@ -288,7 +453,7 @@
     "publishedIn": "Published in",
     "date": "Date",
     "summary": "Summary",
-    "type": "Ontological type",
+    "type": "Type",
     "abbreviation": "Abbreviation",
     "placeOfPublication": "Place of publication",
     "edition": "Edition",
@@ -323,7 +488,7 @@
     "scientific-production-related": "Scientifict production related",
     "table-header": {
       "title": "Title",
-      "type": "Ontological type",
+      "type": "Type",
       "doi": "DOI",
       "release-year": "Release year"
     }
@@ -347,7 +512,7 @@
   "directed-jobs": {
     "table-header": {
       "title": "Title",
-      "type": "Ontological type",
+      "type": "Type",
       "keywords": "Keywords",
       "release-year": "Release year"
     }
@@ -372,7 +537,7 @@
   },
   "events": {
     "rol": "Rol",
-    "type": "Ontological type",
+    "type": "Type",
     "id": "ID",
     "title": "Title",
     "date": "Date",
@@ -383,7 +548,8 @@
     "abbreviation": "Abbreviation",
     "description": "Descriptio",
     "locatedIn": "Located in",
-    "presents": "Presents"
+    "presents": "Presents",
+    "contactInformation": "Contact Information"
   },
   "document": {
     "author": "Author",
@@ -394,7 +560,7 @@
     "resume": "Resume",
     "other-authors": "Other authors",
     "name": "Name",
-    "type": "Ontological type",
+    "type": "Type",
     "document-sections": "Secctions"
   },
   "event": {
@@ -426,5 +592,62 @@
     "predefinidas": "Predefined",
     "ambas": "Both",
     "usuario": "My queries"
+  },
+  "dataImporterStructure": {
+    "id": "Id",
+    "startTime": "Date",
+    "user": "User",
+    "type": "Type",
+    "cron": "Cron"
+  },
+  "importation": {
+    "header": "Data importation",
+    "button": "+ New Importation",
+    "import": "Import",
+    "cron-expression": "Cron Expression",
+    "import-parameters": "Import Parameters",
+    "import-fieldset": "Select Import Type",
+    "import-title": "New Data Importation",
+    "cron-example": "(Example: * * * 15)",
+    "cron-help": "What is a cron expression?",
+    "succeeded-import": "Importation succeded",
+    "failed-import": "Importation failed",
+    "popup": {
+      "user": "User",
+      "type": "Type",
+      "cron": "Cron",
+      "close": "Close"
+    }
+  },
+  "validator": {
+    "header": "Validators",
+    "button": "+ New Validator",
+    "id": "ID",
+    "entity": "Entity",
+    "validator": "Validator",
+    "delete": "Are you sure you want to delete the entry?",
+    "new-form": "New validator",
+    "edit-form": "Edit validator"
+  },
+  "ldp": {
+    "header": "Linked Data Graph",
+    "entity": "Entity",
+    "count": "Total",
+    "uri": "URI",
+    "title": "Title/Name",
+    "details": {
+      "relations": "Related entities"
+    }
+  },
+  "dataDeletion": {
+    "header": "Data Deletion",
+    "date": "Select the date to which you want to restore the data ",
+    "delete": "Restore",
+    "delete-message": "Are you sure you want to go back to the data version on the selected date?"
+  },
+  "installer": {
+    "header": "Installer",
+    "script": "Installation via script",
+    "manual": "Manual installation"
   }
 }

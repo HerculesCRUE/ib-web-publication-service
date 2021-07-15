@@ -1,0 +1,55 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="legend">{{ "ldp.header" | translate }}</h1>
+    </div>
+</div>
+
+<app-search-ldp></app-search-ldp>
+<br />
+<div class="loader" *ngIf="!details"></div>
+<div class="container-fluid app-table-results" *ngIf="details">
+    <div class="row">
+        <div class="col">
+            <table class="table table-bordered" aria-label="Data displayed from Sparql">
+                <thead>
+                    <th colspan="2">{{ details.uri }}</th>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let detail of details.properties; index as i">
+
+                        <tr [ngClass]="{ 'table-secondary': i % 2 == 1 }">
+                            <td>{{detail.key}}</td>
+                            <td>{{detail.value}}</td>
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<ng-container *ngIf="details && details.relations.length > 0">
+    <h3>{{ "ldp.details.relations" | translate }}</h3>
+    <ng-container *ngFor="let relation of details.relations">
+        <div class="container-fluid app-table-results" *ngIf="details">
+            <div class="row">
+                <div class="col">
+                    <table class="table table-bordered" aria-label="Data displayed from Sparql">
+                        <thead>
+                            <th colspan="2">{{ relation.uri }}</th>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let detail of relation.properties; index as i">
+
+                                <tr [ngClass]="{ 'table-secondary': i % 2 == 1 }">
+                                    <td>{{detail.key}}</td>
+                                    <td>{{detail.value}}</td>
+                                </tr>
+                            </ng-container>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</ng-container>

@@ -47,7 +47,7 @@ export class FindRequest {
     if (searchObject == null) {
       this.pageRequest = new PageRequest();
       this.pageRequest.page = 0;
-      this.pageRequest.size = 10;
+      this.pageRequest.size = 50;
       this.filter = {};
     } else {
       this.filter = searchObject.filter;
@@ -281,10 +281,12 @@ export abstract class PaginatedSearchComponent<T> implements AfterContentInit {
 
     if (this.findRequest.pageRequest.property === property) {
       if (this.findRequest.pageRequest.direction === Direction.DESC) {
-        result = 'oi oi-chevron-bottom';
+        result = 'fa fa-caret-down';
       } else {
-        result = 'oi oi-chevron-top';
+        result = 'fa fa-caret-up';
       }
+    } else {
+      result = 'fa fa-caret-up-down';
     }
 
     return result;

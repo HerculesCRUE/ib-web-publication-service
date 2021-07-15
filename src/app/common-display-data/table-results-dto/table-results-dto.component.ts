@@ -87,6 +87,9 @@ export class TableResultsDtoComponent
 
   @Input() findRequest: FindRequest = new FindRequest();
 
+  mainColumnClass = '';
+  @Input() mainColumn: string;
+  @Input() visibleColumns: Array<string>;
 
   /**
    * Send the event when page is changed
@@ -143,8 +146,14 @@ export class TableResultsDtoComponent
 
   ngOnChanges(changes: SimpleChanges): void {
     // obtengo los headers
-    if (this.data?.length > 0) {
+    if (this.data && this.data.length > 0) {
       this.hedearDTO = Object.keys(this.data[0]);
+      if (this.visibleColumns && this.visibleColumns.length) {
+        this.hedearDTO = this.visibleColumns.filter(c => this.hedearDTO.some(h => c === h));
+      }
+      if (this.mainColumn && this.hedearDTO.some(c => c === this.mainColumn)) {
+        this.mainColumnClass = `main-col-of-${this.hedearDTO.length}`;
+      }
     }
     if (!!this.pageInfo) {
       this.dataCompleteToShow = this.dataComplete;
@@ -166,7 +175,7 @@ export class TableResultsDtoComponent
       }
 
 
-      page.numberOfElements = Math.min(page.content?.length, this.pageInfo?.size);
+      page.numberOfElements = Math.min(page.content ?.length, this.pageInfo ?.size);
       page.size = this.pageInfo.size;
       page.totalElements = this.pageInfo.totalElements;
 

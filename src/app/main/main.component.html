@@ -1,89 +1,115 @@
-<div id="wrapper" [ngClass]="{ toggled: isMenuCollapsed }">
-  <div class="sidebar-toggle" (click)="toggleMenu()">
-    <em class="oi oi-menu"></em>
-  </div>
-  <div id="sidebar-wrapper" role="navigation">
-    <nav id="sidebar" class="sidebar" aria-labelledby="sidebar">
-      <div class="sidebar-content js-simplebar" data-simplebar="init">
-        <div class="simplebar-wrapper" style="margin: 0px;">
-          <div class="simplebar-height-auto-observer-wrapper">
-            <div class="simplebar-height-auto-observer"></div>
-          </div>
-          <div class="simplebar-mask">
-            <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
-              <div class="simplebar-content-wrapper" style="height: 100%; overflow: hidden scroll;">
-                <div class="simplebar-content" style="padding: 0px;">
-                  <a class="sidebar-brand">
-                    <img alt="Logo Hercules" class="logo" src="assets/images/transparent logo Hercules.png">
-                  </a>
-                  <app-menu></app-menu>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="simplebar-placeholder" style="width: auto; height: 1408px;"></div>
-        </div>
-        <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
-          <div class="simplebar-scrollbar" style="width: 0px; display: none;"></div>
-        </div>
-        <div class="simplebar-track simplebar-vertical" style="visibility: visible;">
-          <div class="simplebar-scrollbar"
-            style="height: 338px; transform: translate3d(0px, 0px, 0px); display: block;">
-          </div>
-        </div>
-      </div>
-    </nav>
-  </div>
+<div id="main-wrapper">
+  <header class="topbar">
+    <nav class="navbar" aria-labelledby="navbar-exapand">
 
-  <nav id="navbar-exapand" class="navbar navbar-expand navbar-light navbar-bg" aria-labelledby="navbar-exapand">
-    <ul class="navbar-nav">
-      <div class="logos">
-        <img alt="Logo Gobierno de España" class="logo" src="assets/images/logo1.png">
-        <div class="logoText">
-          <p>FONDO EUROPEO DE DESARROLLO REGIONAL (FEDER)</p>
-          <p><strong><em>Una manera de hacer Europa</em></strong></p>
-        </div>
-        <img alt="Logo Unión europea" class="logo2" src="assets/images/logo3.png">
-      </div>
+      <a id="menu-button" (click)="toggleMenu()" class="ui-link ui-widget lateralMenuSwitcher selected">
+        <em class="fa fa-{{isMenuCollapsed ? 'bars' : 'times'}}"></em>
+      </a>
 
-    </ul>
-    <div class="navbar-collapse collapse">
-      <ul class="navbar-nav navbar-align">
+      <span class="app-name d-sm-none"></span>
+      <span class="app-name app-name-secondary d-sm-none"> </span>
+      <ul class="navbar-actions">
 
-
-        <li class="nav-item ">
-          <div class="lang-container">
-            <a class="link-lang cursor" href="JavaScript:void(0)"
-              (click)="translateHelperService.setTransLanguage('es')">
-              <img alt="{{'lang.es' | translate}}" src="assets/images/spanish-language.png" />
-            </a>
-            <a class="link-lang cursos" href="JavaScript:void(0)"
-              (click)="translateHelperService.setTransLanguage('en')">
-              <img alt="{{'lang.en' | translate}}" src="assets/images/english-language.png" />
-            </a>
-
-          </div>
+        <li *ngIf="!isLogged" class="navbar-item">
+          <a [routerLink]="'./login'">
+            {{ "menu.login" | translate }}
+          </a>
         </li>
-        <li class="nav-item ml-15 cursor" [routerLink]="'./login'" *ngIf="!isLogged">
-          <em class="oi oi-account-login icons-menu"></em>
-          {{ "menu.login" | translate }}
+        <li *ngIf="isLogged" class="navbar-item navbar-item-exit">
+          <a (click)="logout()">
+            <em class="fa fa-power-off navbar-item-icon"></em>
+          </a>
+        </li>
 
+        <li class="navbar-item">
+          <a class="link-lang cursor" href="JavaScript:void(0)" (click)="translateHelperService.setTransLanguage('es')">
+            {{'lang.es' | translate}}
+          </a>
+          &#124;
+          <a class="link-lang cursos" href="JavaScript:void(0)" (click)="translateHelperService.setTransLanguage('en')">
+            {{'lang.en' | translate}}
+          </a>
         </li>
-        <li class="nav-item ml-15 cursor" (click)="logout()" *ngIf="isLogged">
-          <em class="oi oi-account-logout icons-menu"></em>
-          {{ "menu.logout" | translate }}
-        </li>
+
       </ul>
-    </div>
-  </nav>
-  <div id="page-content-wrapper">
+      <span class="app-name d-md-none"></span>
+      <span class="app-name app-name-secondary d-md-none"></span>
 
+    </nav>
+  </header>
 
-    <div class="container-fluid">
+  <div class="page-wrapper">
 
-      <div class="anim">
-        <router-outlet></router-outlet>
+    <div class="sidebar"
+      [ngClass]="{'sidebar-collapse': isMenuCollapsed, 'sidebar-transitioning': isMenuTransitioning}">
+      <div class="sidebar-header">
       </div>
+      <nav id="sidebar-nav" aria-labelledby="sidebar-nav">
+        <app-menu></app-menu>
+      </nav>
     </div>
+    <span class="mainMenu-bg"></span>
+
+    <div class="main-content">
+
+      <div class="page-content">
+
+        <div class="page-header">
+          <div class="logos">
+            <img alt="Logo Gobierno de España" class="logo" src="assets/images/logo1.png">
+            <div class="logoText">
+              <p>FONDO EUROPEO DE DESARROLLO REGIONAL (FEDER)</p>
+              <p><strong><em>Una manera de hacer Europa</em></strong></p>
+            </div>
+            <img alt="Logo Unión europea" class="logo2" src="assets/images/logo3.png">
+          </div>
+        </div>
+
+        <div class="container-fluid">
+
+          <div class="anim">
+            <router-outlet></router-outlet>
+          </div>
+        </div>
+
+      </div>
+
+      <footer class="footerRow clearfix">
+
+        <span class="organism"><img alt="Logo Universidad de Murcia" class="logoFooter"
+            src="assets/images/logo2.png"></span>
+
+        <nav class="footer-links" aria-labelledby="footer-links">
+
+          <ng-container *ngFor="let groupItem of groupItems">
+            <ng-container *ngIf="groupItem.title === 'home.info'">
+              <ng-container *ngFor="let item of groupItem.homeItems; let i = index">
+                <span *ngIf="!item.disabled && i % 2 === 0">
+                  <a class="link" *ngIf="item.url !== ''" [href]="item.urlExterna" [routerLink]="[item.url]">{{
+                              item.title| translate }}</a>
+                  <a class="link" *ngIf="item.url === ''" [href]="item.urlExterna">{{ item.title| translate }}</a>
+                </span>
+
+              </ng-container>
+            </ng-container>
+          </ng-container>
+
+          <ng-container *ngFor="let groupItem of groupItems">
+            <ng-container *ngIf="groupItem.title === 'home.info'">
+              <ng-container *ngFor="let item of groupItem.homeItems; let i = index">
+                <span *ngIf="!item.disabled && i % 2 !== 0">
+                  <a class="link" *ngIf="item.url !== ''" [href]="item.urlExterna" [routerLink]="[item.url]">{{
+                                item.title| translate }}</a>
+                  <a class="link" *ngIf="item.url === ''" [href]="item.urlExterna">{{ item.title| translate }}</a>
+                </span>
+
+              </ng-container>
+            </ng-container>
+          </ng-container>
+        </nav>
+      </footer>
+
+    </div>
+
   </div>
 </div>

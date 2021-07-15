@@ -1,0 +1,51 @@
+<fieldset class="panel-default">
+    <legend></legend>
+    <div class="row">
+        <div class="col-12">
+            <div class="card flex-fill">
+                <div class="card-header">
+
+
+                    <div class="container-fluid">
+                        <div class="row justify-content-end">
+                            <div class="input-group col-md-2 text-right">
+                                <button id="clean" [attr.aria-label]="'form.clean' | translate " role="button"
+                                    aria-pressed="false" class="btn btn-secondary"
+                                    [routerLink]="'/main/categories/new-validator'">{{'validator.button' |
+                                    translate }}</button>
+                            </div>
+                        </div>
+                    </div>
+                    <h5 class="card-title mb-0" *ngIf="loaded && resultObject?.content?.length === 0">
+                        {{'form.no-result' | translate}}</h5>
+                    <h5 class="card-title mb-0" *ngIf="loaded && resultObject?.content?.length !== 0">
+                        {{'form.results-amount' | translate}} {{resultObject?.totalElements}}
+                    </h5>
+                </div>
+                <div id="datatables-dashboard-markets_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+
+
+                    <div class="loader" *ngIf="!loaded"></div>
+                    <app-table-results-validator (idToDelete)="deleteQUery($event)" [hasActions]="true"
+                        [displayPagination]="false" [findRequest]="findRequest" [dtoTypeTranslate]="'validator'"
+                        [extra]="'1'" *ngIf="loaded && resultObject?.content?.length !== 0"
+                        [data]="resultObject?.content" [pageInfo]="resultObject"
+                        (sortChanged)="allResearchmentStructuresFilteredSortChanged($event)">
+                    </app-table-results-validator>
+                    <div class="container-fluid app-table-results">
+                        <div class="row">
+                            <div class="col">
+                                <app-pagination [resultObject]="resultObject" (pageChanged)="showPage($event)"
+                                    (sizeChanged)="changeSize($event)">
+                                </app-pagination>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</fieldset>

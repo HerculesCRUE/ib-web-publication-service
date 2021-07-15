@@ -1,0 +1,90 @@
+<div class="container-fluid app-table-results">
+  <div class="row">
+    <div class="col">
+      <table class="table table-bordered" aria-label="Data displayed from Sparql" *ngIf="!!dataComplete">
+        <caption>{{'form.results' | translate }}</caption>
+        <thead>
+          <tr>
+
+            <ng-container *ngFor="let header of hedearDTO">
+              <ng-container *ngIf="header !== 'user' && header !== 'type' && header !== 'cron'">
+                <th class="sortable" (click)="sort(header)" id="{{header + dtoTypeTranslate + extra}}"
+                  *ngIf="header !== 'importerErrors' && header !== 'params'">
+                  <em class="oi oi-info" *ngIf="needTooltip(header).required" placement="top"
+                    ngbTooltip="{{needTooltip(header).textValue}}"></em>
+                  {{ dtoTypeTranslate + '.' + header | translate }}
+                  <em class="float-right" [ngClass]="getSortIcon(header)"></em>
+                </th>
+              </ng-container>
+
+
+              <ng-container *ngIf="header === 'user' || header === 'type' || header === 'cron'">
+                <th class="sortable" id="{{header + dtoTypeTranslate + extra}}"
+                  *ngIf="header !== 'importerErrors' && header !== 'params'" style="cursor: default;">
+                  <em class="oi oi-info" *ngIf="needTooltip(header).required" placement="top"
+                    ngbTooltip="{{needTooltip(header).textValue}}"></em>
+                  {{ dtoTypeTranslate + '.' + header | translate }}
+                  <em class="float-right"></em>
+                </th>
+              </ng-container>
+
+
+            </ng-container>
+            <th id="hasActions1">
+              <!-- empty header cell -->
+            </th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let item of dataCompleteToShow; index as i">
+
+            <tr [ngClass]="{ 'table-secondary': i % 2 == 1 }">
+              <ng-container *ngFor="let header of hedearDTO">
+                <td *ngIf="header !== 'importerErrors' && header !== 'params'">
+                  <ng-container>{{ item[header] }}</ng-container>
+                </td>
+              </ng-container>
+              <td style="text-align: center;">
+                <a [routerLink]="" (click)="openPopupErrors(popupError, item)">Ver Errores</a>
+              </td>
+            </tr>
+
+          </ng-container>
+        </tbody>
+      </table>
+      <app-pagination *ngIf="displayPagination" [resultObject]="resultObject"
+        (pageChanged)="callShowPageWhenPageChanges($event)" (sizeChanged)="callShowPageWhenSizeChanges($event)">
+      </app-pagination>
+    </div>
+  </div>
+</div>
+
+
+<!-- popup errors -->
+<ng-template #popupError let-modal>
+  <div class="modal-header">
+    <!-- title -->
+    <h4 class="modal-title" id="modal-basic-title"><u>{{'importation.popup.user' | translate}}:</u>
+      {{selectedItem.user}}
+      &nbsp;&nbsp;&nbsp; <u>{{'importation.popup.type' | translate}}:</u>
+      {{selectedItem.type}} &nbsp;&nbsp;&nbsp;
+      <u>{{'importation.popup.cron' | translate}}:</u>
+      {{selectedItem.cron}}
+    </h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.close('close')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <!-- body content -->
+    <ng-container *ngFor="let error of errors">
+      <p>- {{error}}</p>
+    </ng-container>
+  </div>
+  <div class="modal-footer">
+    <!-- close button -->
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('close')">{{'importation.popup.close' |
+      translate}}</button>
+  </div>
+</ng-template>

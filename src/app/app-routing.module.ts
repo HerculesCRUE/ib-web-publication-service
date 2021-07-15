@@ -9,8 +9,18 @@ import { NoAuthGuard } from './_guards/no-auth.guard';
 import { GraphicComponent } from './graphic/graphic.component';
 import { LinksComponent } from './links/links.component';
 import { AccesibilityComponent } from './accesibility/accesibility.component';
+import { DiscoveryComponent } from './discovery/discovery.component';
+import { EtlComponent } from './etl/etl.component';
+import { UrisComponent } from './uris-factory/uris.component';
 import { ContactComponent } from './contact/contact.component';
 import { GraphPageComponent } from './graph-page/graph-page.component';
+import { DataImporterComponent } from './categories/data-importer/data-importer.component';
+import { ServiceDiscoveryComponent } from './service-discovery/service-discovery/service-discovery.component';
+import { InfoComponent } from './info/info.component';
+import { InstallerComponent } from './installer/installer.component';
+import { ValidatorComponent } from './categories/validator/validator.component';
+import { LdpComponent } from './categories/ldp/ldp.component';
+import { DataDeletionComponent } from './categories/data-deletion/data-deletion.component';
 /**
  * **********************************************
  * ************** Rutas securizadas *************
@@ -40,11 +50,27 @@ const noSecureRoutes: Routes = [
   },
   {
     path: 'sparql',
-    canActivate: [AuthGuard],
     loadChildren: () =>
       import('./sparqleditor/sparqleditor.module').then(
         (m) => m.SparqleditorModule
       ),
+  },
+  /* Data-Importer path */
+  {
+    path: 'validator',
+    component: ValidatorComponent,
+  },
+  {
+    path: 'data-importer',
+    component: DataImporterComponent,
+  },
+  {
+    path: 'data-deletion',
+    component: DataDeletionComponent,
+  },
+  {
+    path: 'ldp',
+    component: LdpComponent,
   },
   /* Graphics path */
   {
@@ -63,11 +89,35 @@ const noSecureRoutes: Routes = [
     path: 'contact',
     component: ContactComponent,
   },
+  {
+    path: 'discovery',
+    component: DiscoveryComponent,
+  },
+  {
+    path: 'uris-factory',
+    component: UrisComponent,
+  },
+  {
+    path: 'service-discovery',
+    component: ServiceDiscoveryComponent,
+  },
   /***************** Categories *******************/
   {
     path: 'categories',
     loadChildren: () =>
       import('./categories/categories.module').then((m) => m.CategoriesModule),
+  },
+  {
+    path: 'installer',
+    component: InstallerComponent,
+  },
+  {
+    path: 'etl',
+    component: EtlComponent,
+  },
+  {
+    path: 'info',
+    component: InfoComponent,
   },
   {
     path: 'links',

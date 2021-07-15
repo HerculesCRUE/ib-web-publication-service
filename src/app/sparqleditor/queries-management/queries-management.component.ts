@@ -22,6 +22,7 @@ export class QueriesManagementComponent extends PaginatedSearchComponent<SparqlQ
   loaded = false;
   queryTypes;
 
+  currentUsername: string;
 
   constructor(
     private loginService: LoginService,
@@ -40,6 +41,11 @@ export class QueriesManagementComponent extends PaginatedSearchComponent<SparqlQ
    * @memberof PatentsComponent
    */
   ngOnInit(): void {
+
+    this.loginService.getLoggedUsername().subscribe((username: string) => {
+      this.currentUsername = username;
+    });
+
     this.queryTypes = this.ToArray(SparqlQueryFromType);
   }
   ToArray(enumme) {
@@ -53,12 +59,14 @@ export class QueriesManagementComponent extends PaginatedSearchComponent<SparqlQ
   }
 
   protected findInternal(findRequest: FindRequest): Observable<Page<SparqlQuery>> {
-    if (!localStorage.getItem('user_name')) {
-      this.loginService.getName().subscribe((name) => {
-        this.findRequest.filter.username = name.username;
-      });
-    } else {
-      this.findRequest.filter.username = localStorage.getItem('user_name');
+    if (localStorage.getItem('access_token')) {
+      if (!localStorage.getItem('user_name')) {
+        this.loginService.getName().subscribe((name) => {
+          this.findRequest.filter.username = name.username;
+        });
+      } else {
+        this.findRequest.filter.username = localStorage.getItem('user_name');
+      }
     }
     const page: Page<SparqlQuery> = new Page();
     return this.sparqlService.find(findRequest).pipe(

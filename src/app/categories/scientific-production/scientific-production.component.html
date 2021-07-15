@@ -3,32 +3,6 @@
         <h1 class="legend">{{ "scientific-production.title" | translate }}</h1>
     </div>
 </div>
-<div class="row">
-    <div class="col-12">
-        <h5 class="card-title"> {{'form.search-form' | translate}}</h5>
-    </div>
-</div>
-<div class="row ">
-    <div class="col-lg-12">
-        <button role="button" aria-pressed="false" class="btn btn-secondary tree" *ngIf="!normalTree"
-            (click)="normalTree = !normalTree">{{'form.change-tree' |
-            translate}}</button>
-
-        <button role="button" aria-pressed="false" class="btn btn-secondary tree" *ngIf="normalTree"
-            (click)="normalTree = !normalTree">{{'form.change-tree-normal' |
-            translate}}</button>
-    </div>
-    <!-- categorias tree -->
-    <div class="col-lg-12" *ngIf="!normalTree">
-        <label for="type" class="col-sm-4 control-label">{{ "scientist.area" | translate }}</label>
-        <app-new-tree [treeType]="'area'"></app-new-tree>
-    </div>
-    <!-- categorias tree -->
-    <div class="col-lg-12" *ngIf="normalTree">
-        <label for="type" class="col-sm-4 control-label">{{ "scientist.area" | translate }}</label>
-        <app-tree [treeType]="'area'"></app-tree>
-    </div>
-</div>
 
 <div class="row">
     <div class="col-12">
@@ -61,8 +35,7 @@
                     <li class="nav-item" role="presentation">
                         <a class="nav-link" [ngClass]="{'active': activeTab === 'events' }" id="events-tab"
                             (click)="changeTab('events')" data-bs-toggle="tab" href="JavaScript:void(0)" role="tab"
-                            aria-controls="events"
-                            [attr.aria-selected]="activeTab === 'events'">{{'scientific-production.events' |
+                            aria-controls="events" [attr.aria-selected]="activeTab === 'events'">{{'scientific-production.events' |
                             translate}}</a>
                     </li>
                 </ul>
@@ -88,7 +61,8 @@
                         role="tabpanel" aria-labelledby="other-publications-tab">
                         <app-documents [idPrefix]="'other'" [url]="'../document'" [routerFieldSecondary]="'type'"
                             [selectDocumentType]="[{ name: 'dossiers', value: 'Dossier' }]" [isTreeVisible]="false"
-                            [filterDocumentType]="['Dossier']"></app-documents>
+                            [filterDocumentType]="['Dossier']" [visibleColumns]="['description', 'date']"
+                            mainColumn="description"></app-documents>
                     </div>
                     <div class="tab-pane fade" id="events"
                         [ngClass]="{'show': activeTab === 'events', 'active': activeTab === 'events' }" role="tabpanel"

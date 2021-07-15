@@ -30,6 +30,8 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
+import { InfoComponent } from './info/info.component';
+import { InstallerComponent } from './installer/installer.component';
 
 // -------------- Guards --------------
 import { AuthGuard } from './_guards/auth.guard';
@@ -59,6 +61,7 @@ import { ContactComponent } from './contact/contact.component';
 import { GraphPageComponent } from './graph-page/graph-page.component';
 
 
+
 const keycloakService = new KeycloakService();
 
 @NgModule({
@@ -68,12 +71,13 @@ const keycloakService = new KeycloakService();
     MainComponent,
     MenuComponent,
     HomeComponent,
+    InfoComponent,
     LinksComponent,
+    InstallerComponent,
     AccesibilityComponent,
     PatentDetailComponent,
     ContactComponent,
-    GraphPageComponent,
-
+    GraphPageComponent
   ],
   imports: [
     BrowserModule,
@@ -97,7 +101,7 @@ const keycloakService = new KeycloakService();
     NgSelectModule,
     // Application
     SparqleditorModule,
-    NgbModule,
+    NgbModule
   ],
   providers: [
     I18n,

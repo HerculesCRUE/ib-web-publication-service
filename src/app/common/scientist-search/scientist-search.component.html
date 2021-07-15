@@ -1,31 +1,30 @@
 <form class="form-horizontal " (ngSubmit)="f.form.valid" #f="ngForm" (keydown.enter)="$event.preventDefault()">
-    <div class="row">
-        <div class="col-12">
-            <h5 class="card-title"> {{'form.search-form' | translate}}</h5>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-12">
-            <button role="button" aria-pressed="false" class="btn btn-secondary tree" *ngIf="normalTree"
-                (click)="normalTree = !normalTree">{{'form.change-tree' |
-                translate}}</button>
 
-            <button role="button" aria-pressed="false" class="btn btn-secondary tree" *ngIf="!normalTree"
-                (click)="normalTree = !normalTree">{{'form.change-tree-normal' |
-                translate}}</button>
-        </div>
-        <!-- categorias tree -->
-        <div class="col-12" *ngIf="normalTree">
-            <label for="type" class="col-sm-4 control-label">{{ "scientist.area" | translate }}</label>
-            <app-new-tree [treeType]="'area'"></app-new-tree>
-        </div>
-        <!-- categorias tree -->
-        <div class="col-12" *ngIf="!normalTree">
-            <label for="type" class="col-sm-4 control-label">{{ "scientist.area" | translate }}</label>
-            <app-tree [treeType]="'area'"></app-tree>
-        </div>
-    </div>
+    <app-panel title="{{'scientist.area' | translate}}" collapsable="true" panelClass="mt-20">
 
+        <div class="row">
+            <div class="col-lg-12">
+                <button role="button" aria-pressed="false" class="btn btn-secondary tree" *ngIf="normalTree"
+                    (click)="normalTree = !normalTree">{{'form.change-tree' |
+                    translate}}</button>
+
+                <button role="button" aria-pressed="false" class="btn btn-secondary tree" *ngIf="!normalTree"
+                    (click)="normalTree = !normalTree">{{'form.change-tree-normal' |
+                    translate}}</button>
+            </div>
+            <!-- categorias tree -->
+            <div class="col-12" *ngIf="normalTree">
+                <label for="type" class="col-sm-4 control-label">{{ "scientist.area" | translate }}</label>
+                <app-new-tree [treeType]="'area'" itemClass="col-lg-4 col-md-6"></app-new-tree>
+            </div>
+            <!-- categorias tree -->
+            <div class="col-12" *ngIf="!normalTree">
+                <label for="type" class="col-sm-4 control-label">{{ "scientist.area" | translate }}</label>
+                <app-tree [treeType]="'area'"></app-tree>
+            </div>
+        </div>
+
+    </app-panel>
 
     <div class="row">
         <div class="col-12">
@@ -51,8 +50,7 @@
                             </div>
                             <div class="input-group col-md-2 text-right">
                                 <button id="clean" [attr.aria-label]="'form.clean' | translate " role="button"
-                                    aria-pressed="false" class="btn btn-secondary"
-                                    (click)="f.resetForm();">{{'form.clean' |
+                                    aria-pressed="false" class="btn btn-secondary" (click)="f.resetForm();">{{'form.clean' |
                                     translate }}</button>
                             </div>
                         </div>
@@ -69,6 +67,7 @@
                         [routerNameLink]="url" [routerField]="'id'"
                         *ngIf="loaded && resultObject?.content?.length !== 0" [data]="resultObject?.content"
                         [dtoTypeTranslate]="'scientist'" [extra]="'2'" [pageInfo]="resultObject"
+                        [visibleColumns]="['name', 'subjectArea', 'gender']" mainColumn="name"
                         (sortChanged)="allScientistsFilteredSortChanged($event)">
                     </app-table-results-dto>
                     <div class="container-fluid app-table-results">

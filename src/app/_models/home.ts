@@ -45,6 +45,10 @@ export class HomeItem {
    * Disabled option
    */
   disabled: boolean;
+  /*
+   * Login required.
+   */
+  loginRequired?: boolean;
 }
 
 /**
@@ -120,21 +124,106 @@ export const HOME_ITEMS: HomeGroupItem[] = [{
       iconCircle: false,
       url: '',
       disabled: false,
-      urlExterna: Helper.getKeyCloackUrl().authUrl + '/admin/'
+      urlExterna: Helper.getKeyCloackUrl().authUrl + '/admin/',
+      loginRequired: true
     },
-  ]
-},
-{
-  title: 'home.info',
-  homeItems: [
     {
-      title: 'links.repository',
-      iconName: 'oi-cloud-upload',
+      title: 'home.import-data',
+      iconName: 'oi-loop-circular',
+      iconCircle: false,
+      url: '/main/data-importer',
+      disabled: false,
+      urlExterna: '',
+      loginRequired: true
+    },
+    {
+      title: 'home.delete-data',
+      iconName: 'oi-trash',
+      iconCircle: false,
+      url: '/main/data-deletion',
+      disabled: false,
+      urlExterna: '',
+      loginRequired: true
+    },
+    {
+      title: 'home.uris-factory',
+      iconName: 'oi-globe',
+      iconCircle: false,
+      url: '/main/uris-factory',
+      disabled: false,
+      urlExterna: ''
+    },
+    {
+      title: 'home.discovery',
+      iconName: 'oi-zoom-in',
+      iconCircle: false,
+      url: '/main/discovery',
+      disabled: false,
+      urlExterna: ''
+    },
+    {
+      title: 'home.service-discovery',
+      iconName: 'oi-cloud',
+      iconCircle: false,
+      url: '/main/service-discovery',
+      disabled: false,
+      urlExterna: ''
+    },
+    {
+      title: 'home.validator',
+      iconName: 'oi-circle-check',
+      iconCircle: false,
+      url: '/main/validator',
+      disabled: false,
+      urlExterna: '',
+      loginRequired: true
+    },
+    {
+      title: 'home.ldp',
+      iconName: 'oi-book',
+      iconCircle: false,
+      url: '/main/ldp',
+      disabled: false,
+      urlExterna: ''
+    },
+    {
+      title: 'home.installer',
+      iconName: 'oi-data-transfer-download',
+      iconCircle: false,
+      url: '/main/installer',
+      disabled: false,
+      urlExterna: ''
+    },
+    {
+      title: 'home.etl',
+      iconName: 'oi-cog',
+      iconCircle: false,
+      url: '/main/etl',
+      disabled: false,
+      urlExterna: '',
+      loginRequired: true
+    },
+    {
+      title: 'home.links',
+      iconName: 'oi-external-link',
       iconCircle: false,
       url: '/main/links',
       disabled: false,
       urlExterna: ''
     },
+    {
+      title: 'home.information',
+      iconName: 'oi-info',
+      iconCircle: false,
+      url: '/main/info',
+      disabled: false,
+      urlExterna: ''
+    }
+  ]
+},
+{
+  title: 'home.info',
+  homeItems: [
     {
       title: 'menu.accessibility',
       iconName: 'oi-eye',
@@ -155,8 +244,8 @@ export const HOME_ITEMS: HomeGroupItem[] = [{
       title: 'menu.graph',
       iconName: 'oi-enveloped-graph',
       iconCircle: false,
-      url: '/main/contact',
-      disabled: false,
+      url: '/main/graph',
+      disabled: true,
       urlExterna: ''
     },
     {
@@ -172,7 +261,7 @@ export const HOME_ITEMS: HomeGroupItem[] = [{
       iconName: 'oi-link-intact',
       iconCircle: false,
       url: '',
-      disabled: false,
+      disabled: true,
       urlExterna: 'https://github.com/HerculesCRUE/ib-asio-docs-/blob/a3e838e9944faac26957cc1944b468f65596a2c9/09-Buenas_pr%C3%A1cticas_para_URIs_H%C3%A9rcules/ASIO_Izertis_Contrato_BuenasPracticasParaURIsHercules.md'
     },
     {
@@ -188,7 +277,7 @@ export const HOME_ITEMS: HomeGroupItem[] = [{
       iconName: 'oi-hard-drive',
       iconCircle: false,
       url: '',
-      disabled: false,
+      disabled: true,
       urlExterna: Helper.getLSgi()
     },
     {

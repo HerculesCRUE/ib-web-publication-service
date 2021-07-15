@@ -1,73 +1,58 @@
-<h1 class="legend" *ngIf="!!scientist?.firstName">{{scientist?.firstName}} {{scientist?.surname}}</h1>
+<h1 class="legend" *ngIf="!!scientist?.firstName && !scientist?.name">{{scientist?.firstName}} {{scientist?.surname}}
+</h1>
 <h1 class="legend" *ngIf="!!scientist?.name">{{scientist?.name}}</h1>
 <h1 class="legend" *ngIf="!scientist?.firstName && !scientist?.name">{{ "researchmentStructure.scientist" |
     translate }}: {{scientist?.id}}</h1>
 <div class="mt-20">
     <div class="row">
-        <div class="col-12">
-            <p><strong>{{ "scientist.id" | translate }}:</strong> {{scientist?.id}} </p>
-        </div>
-    </div>
-    <div class="row" *ngIf="!!scientist?.title">
-        <div class="col-12">
-            <p><strong>{{ "scientist.title" | translate }}:</strong> {{scientist?.title}} </p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <p><strong>{{ "scientist.name" | translate }}:</strong> {{scientist?.name}} </p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <p><strong>{{ "scientist.firstName" | translate }}:</strong> {{scientist?.firstName}} </p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <p><strong>{{ "scientist.surname" | translate }}:</strong> {{scientist?.surname}} </p>
-        </div>
-    </div>
-    <div class="row" *ngIf="!!scientist?.gender">
-        <div class="col-12">
-            <p><strong>{{ "scientist.gender" | translate }}:</strong> {{scientist?.gender}} </p>
-        </div>
-    </div>
-    <div class="row" *ngIf="!!scientist?.description">
-        <div class="col-12">
-            <p><strong>{{ "scientist.description" | translate }}:</strong> {{scientist?.description}} </p>
-        </div>
-    </div>
 
-    <div class="row" *ngIf="!!scientist?.birthDate">
-        <div class="col-12">
-            <p><strong>{{ "scientist.birthDate" | translate }}:</strong> {{scientist?.birthDate}} </p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <p><strong>{{ "scientist.personalMaibox" | translate }}:</strong> {{scientist?.personalMaibox}} </p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12" *ngIf="!!scientist?.homepage">
-            <p><strong>{{ "scientist.homepage" | translate }}:</strong> {{scientist?.homepage}} </p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12" *ngIf="!!scientist?.hasContactInfo">
-            <p><strong>{{ "scientist.hasContactInfo" | translate }}:</strong> {{scientist?.hasContactInfo}} </p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <p><strong>{{ "scientist.researchLine" | translate }}:</strong> {{scientist?.researchLine}} </p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <p><strong>{{ "scientist.subjectArea" | translate }}:</strong> {{scientist?.subjectArea}} </p>
-        </div>
+        <ng-template #detailField let-titleKey="titleKey" let-value="value" let-optional="optional" let-hidden="hidden">
+            <div class="col-lg-6" *ngIf="!hidden && (!optional || !!value)">
+                <p>
+                    <strong>{{titleKey | translate}}:</strong>
+                    {{value || value === 0 ? value : '--'}}
+                </p>
+            </div>
+        </ng-template>
+
+        <ng-container *ngTemplateOutlet="detailField;context:{'titleKey': 'scientist.id', 'value': scientist?.id}">
+        </ng-container>
+        <ng-container
+            *ngTemplateOutlet="detailField;context:{'titleKey': 'scientist.title', 'value': scientist?.title, 'optional': true}">
+        </ng-container>
+        <ng-container *ngTemplateOutlet="detailField;context:{'titleKey': 'scientist.name', 'value': scientist?.name}">
+        </ng-container>
+        <ng-container
+            *ngTemplateOutlet="detailField;context:{'titleKey': 'scientist.firstName', 'value': scientist?.firstName}">
+        </ng-container>
+        <ng-container
+            *ngTemplateOutlet="detailField;context:{'titleKey': 'scientist.surname', 'value': scientist?.surname}">
+        </ng-container>
+        <ng-container
+            *ngTemplateOutlet="detailField;context:{'titleKey': 'scientist.gender', 'value': scientist?.gender, 'optional': true}">
+        </ng-container>
+        <ng-container
+            *ngTemplateOutlet="detailField;context:{'titleKey': 'scientist.description', 'value': scientist?.description, 'optional': true}">
+        </ng-container>
+        <ng-container
+            *ngTemplateOutlet="detailField;context:{'titleKey': 'scientist.birthDate', 'value': scientist?.birthDate, 'optional': true}">
+        </ng-container>
+        <ng-container
+            *ngTemplateOutlet="detailField;context:{'titleKey': 'scientist.personalMaibox', 'value': scientist?.personalMaibox}">
+        </ng-container>
+        <ng-container
+            *ngTemplateOutlet="detailField;context:{'titleKey': 'scientist.homepage', 'value': scientist?.homepage, 'optional': true}">
+        </ng-container>
+        <ng-container
+            *ngTemplateOutlet="detailField;context:{'titleKey': 'scientist.hasContactInfo', 'value': scientist?.hasContactInfo, 'optional': true}">
+        </ng-container>
+        <ng-container
+            *ngTemplateOutlet="detailField;context:{'titleKey': 'scientist.researchLine', 'value': scientist?.researchLine}">
+        </ng-container>
+        <ng-container
+            *ngTemplateOutlet="detailField;context:{'titleKey': 'scientist.subjectArea', 'value': scientist?.subjectArea}">
+        </ng-container>
+
     </div>
 </div>
 <div class="row">
@@ -101,8 +86,7 @@
                     <li class="nav-item" role="presentation">
                         <a class="nav-link" [ngClass]="{'active': activeTab === 'projects' }" id="projects-atb"
                             (click)="changeTab('projects')" data-bs-toggle="tab" href="JavaScript:void(0)" role="tab"
-                            aria-controls="projects"
-                            [attr.aria-selected]="activeTab === 'projects'">{{'researchmentStructure.projects'
+                            aria-controls="projects" [attr.aria-selected]="activeTab === 'projects'">{{'researchmentStructure.projects'
                             |
                             translate}}</a>
                     </li>

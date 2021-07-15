@@ -10,10 +10,23 @@ import { RouterModule } from '@angular/router';
 import { PatentService } from '../_services/patent.service';
 import { DocumentService } from '../_services/document.service';
 import { TableResultsDtoComponent } from '../common-display-data/table-results-dto/table-results-dto.component';
+import { TableResultsImporterComponent } from '../common-display-data/table-results-importer/table-results-importer.component';
+import { PanelComponent } from './panel/panel.component';
+import { TableResultsValidatorComponent } from '../common-display-data/table-results-validator/table-results-validator.component';
+import { TableResultsLdpCountComponent } from '../common-display-data/table-results-ldp-count/table-results-ldp-count.component';
+import { TableResultsLdpSearchComponent } from '../common-display-data/table-results-ldp-search/table-results-ldp-search.component';
+
 
 @NgModule({
-  declarations: [PaginationComponent,
-    TableResultsComponent, TableResultsDtoComponent],
+  declarations: [
+    PaginationComponent,
+    PanelComponent,
+    TableResultsComponent,
+    TableResultsDtoComponent,
+    TableResultsImporterComponent,
+    TableResultsValidatorComponent,
+    TableResultsLdpCountComponent,
+    TableResultsLdpSearchComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -23,11 +36,17 @@ import { TableResultsDtoComponent } from '../common-display-data/table-results-d
     NgbModule
   ],
   exports: [PaginationComponent,
+    PanelComponent,
     RouterModule,
     TranslateModule,
     CommonModule,
     NgbModule,
-    TableResultsComponent, TableResultsDtoComponent],
+    TableResultsComponent,
+    TableResultsDtoComponent,
+    TableResultsImporterComponent,
+    TableResultsValidatorComponent,
+    TableResultsLdpCountComponent,
+    TableResultsLdpSearchComponent],
   providers: [
     PatentService,
     DocumentService

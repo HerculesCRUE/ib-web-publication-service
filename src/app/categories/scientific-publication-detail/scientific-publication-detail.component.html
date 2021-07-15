@@ -16,19 +16,45 @@
             <div id="datatables-dashboard-markets_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                 <div class="detail-container">
                     <div class="row">
-                        <div class="col-12">
-                            <p><strong>{{'documents.id' | translate}}:</strong> {{publication.id}}</p>
-                            <p><strong>{{'documents.title' | translate}}:</strong> {{publication.title}}</p>
-                            <p><strong>{{'documents.abbreviation' | translate}}:</strong> {{publication.abbreviation}}
-                            </p>
-                            <p><strong>{{'documents.date' | translate}}:</strong> {{publication.date}}</p>
-                            <p><strong>{{'documents.description' | translate}}:</strong> {{publication.description}}</p>
-                            <p><strong>{{'documents.homepage' | translate}}:</strong> {{publication.homepage}}</p>
-                            <p><strong>{{'documents.isStartup' | translate}}:</strong> {{publication.isStartup}}</p>
-                            <p><strong>{{'documents.keyword' | translate}}:</strong> {{publication.keyword}}</p>
-                            <p><strong>{{'documents.publicCompany' | translate}}:</strong> {{publication.publicCompany}}
-                            </p>
-                        </div>
+
+                        <ng-template #detailField let-titleKey="titleKey" let-value="value" let-optional="optional"
+                            let-hidden="hidden">
+                            <div class="col-lg-6" *ngIf="!hidden && (!optional || !!value)">
+                                <p>
+                                    <strong>{{titleKey | translate}}:</strong>
+                                    {{value || value === 0 ? value : '--'}}
+                                </p>
+                            </div>
+                        </ng-template>
+
+                        <ng-container
+                            *ngTemplateOutlet="detailField;context:{'titleKey': 'documents.id', 'value': publication?.id}">
+                        </ng-container>
+                        <ng-container
+                            *ngTemplateOutlet="detailField;context:{'titleKey': 'documents.title', 'value': publication?.title}">
+                        </ng-container>
+                        <ng-container
+                            *ngTemplateOutlet="detailField;context:{'titleKey': 'documents.abbreviation', 'value': publication?.abbreviation}">
+                        </ng-container>
+                        <ng-container
+                            *ngTemplateOutlet="detailField;context:{'titleKey': 'documents.date', 'value': publication?.date}">
+                        </ng-container>
+                        <ng-container
+                            *ngTemplateOutlet="detailField;context:{'titleKey': 'documents.description', 'value': publication?.description}">
+                        </ng-container>
+                        <ng-container
+                            *ngTemplateOutlet="detailField;context:{'titleKey': 'documents.homepage', 'value': publication?.homepage}">
+                        </ng-container>
+                        <ng-container
+                            *ngTemplateOutlet="detailField;context:{'titleKey': 'documents.isStartup', 'value': publication?.isStartup}">
+                        </ng-container>
+                        <ng-container
+                            *ngTemplateOutlet="detailField;context:{'titleKey': 'documents.keyword', 'value': publication?.keyword}">
+                        </ng-container>
+                        <ng-container
+                            *ngTemplateOutlet="detailField;context:{'titleKey': 'documents.publicCompany', 'value': publication?.publicCompany}">
+                        </ng-container>
+
                     </div>
                 </div>
             </div>

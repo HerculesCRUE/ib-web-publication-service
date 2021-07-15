@@ -18,7 +18,7 @@
     "search-by-name": "Buscar por nombre",
     "search-by-title": "Buscar por título",
     "search-by-description": "Buscar por descripción",
-    "pagination": "Viendo filas {{min}} a {{max}} de {{total}}",
+    "pagination": "{{min}}-{{max}} de {{total}}",
     "pagination-next": "⟩",
     "pagination-previous": "⟨",
     "pagination-first": "«",
@@ -45,6 +45,7 @@
     "delete": "Borrar",
     "actions": "Acciones",
     "use": "Use",
+    "edit": "Editar",
     "delete-message": "¿Está seguro de que desea borrar la query guardada? "
   },
   "menu": {
@@ -59,10 +60,21 @@
     "prod-scientist": "Producción científica",
     "acction-inves": "Acciones investigación",
     "stats": "Estadisticas",
+    "discovery": "Librería de descubrimiento",
+    "service-discovery": "Monitor Backends",
+    "uris-factory": "Factoría de URIs",
     "accessibility": "Accesibilidad",
     "login": "Acceder",
     "contact": "Contacto",
-    "graph": "Renderización named graph"
+    "graph": "Renderización named graph",
+    "import-data": "Importador de datos",
+    "delete-data": "Borrado de datos",
+    "validator": "Validadores",
+    "ldp": "Linked Data Graph",
+    "installer": "Instalador",
+    "etl": "ETL",
+    "information": "Info",
+    "links": "Enlaces"
   },
   "login": {
     "form": {
@@ -95,14 +107,15 @@
     "edit-user-title": "Editar usuario: {{name}}",
     "create-user-title": "Crear nuevo usuario"
   },
-
   "sparql": {
     "username": "Nombre de usuario",
     "sparqlQuery": "Query",
     "sparqlName": "Nombre",
     "entityId": "ID",
     "main": {
-      "federated": "Consultas federadas"
+      "federated": "Consultas federadas",
+      "federatedTooltip": "Al activar esta opción se enviará la consulta a todos los nodos federados",
+      "competency-questions": "Preguntas de competencia"
     },
     "results": {
       "table": "tabla",
@@ -133,7 +146,7 @@
     "areas": "Áreas",
     "prod-scientist": "Producción científica",
     "acction-inves": "Acciones de investigación",
-    "stats": "Estadisticas e indicadores",
+    "stats": "Estadísticas",
     "info": "Información",
     "info-URI": "Información del contrato URIs",
     "info-LPD": "LPD",
@@ -141,18 +154,34 @@
     "sgi": "Backends SGI",
     "graphs": "Renderización de metadatos de Named Graphs",
     "info-hercules": "Información sobre Hercules",
-    "contact": "Datos de contacto"
+    "contact": "Datos de contacto",
+    "import-data": "Importador de datos",
+    "delete-data": "Borrado de datos",
+    "uris-factory":"Factoría de URIs",
+    "discovery":"Librería de descubrimiento",
+    "service-discovery":"Monitor de Backends",
+    "installer": "Instalador",
+    "etl": "ETL",
+    "information": "Info",
+    "links": "Enlaces",
+    "validation": "Validadores",
+    "ldp": "Linked Data Graph",
+    "validator": "Validadores"
   },
   "links": {
-    "title": "Links GitHub",
+    "title": "Enlaces",
     "principal": "Principal",
-    "repository": "Repositorios"
+    "repository": "Repositorios",
+    "userManual": "Manual de usuario",
+    "ontology": "Ontología",
+    "renderization": "Renderización",
+    "backendsSGI": "Backends SGI",
+    "other": "Otros"
   },
-
   "researchmentStructure": {
     "header": "Estructuras de investigación",
     "title": "Título",
-    "type": "Tipo ontológico",
+    "type": "Tipo",
     "financing": "Financiación",
     "name": "Nombre",
     "publications": "Publicaciones",
@@ -192,7 +221,7 @@
   "scientist": {
     "title": "Titulo",
     "area": "Áreas",
-    "type": "Tipo ontológico",
+    "type": "Tipo",
     "acction-inves": "Acciones de investigación",
     "congress": "Congresos",
     "business-activity": "Actividad empresarial",
@@ -231,13 +260,137 @@
     "date-from": "Fecha desde",
     "date-to": "Fecha hasta",
     "degree": "Título",
-    "type": "Tipo ontológico",
+    "type": "Tipo",
     "doi": "DOI",
     "publication-year": "Año de publicación",
     "scientific-publications": "Publicaciones científicas",
     "academic-publications": "Publicaciones academicas",
     "other-publications": "Otras publicaciones",
     "events": "Eventos"
+  },
+  "discovery": {
+    "title": "Librería de descubrimiento",
+    "control-tab":"Control",
+    "search-tab":"Búsqueda",
+    "action-tab":"Resultados",
+    "action-results":"Busar resultados",
+    "action-open":"Resultados abiertos",
+    "state-tittle": "Estado de la librería de descubrimiento",
+    "stats-tittle": "Estadisticas de Objetos",
+    "search-tittle": "Búsqueda de similitudes",
+    "result-tittle": "Búsqueda de resultados",
+    "global-state": "Estado general",
+    "noData": "No ha sido posible cargar los datos de la librería de descubrimiento",
+    "NOT_INITIALIZED":"No inicializada",
+    "CACHED_DATA":"Inicializada desde cache",
+    "UPLOAD_DATA":"Inicializada con datos reales",
+    "UNINITIALIZED":"No inicializada",
+    "INITIALIZED_WITH_CACHED_DATA":"Inicializada desde cache",
+    "INITIALIZED":"Inicializada con datos reales",
+    "table-type-header": "Tipo",
+    "table-state-header": "Estado",
+    "table-last-update-header": "Última actualización",
+    "update-state":"Actualizar estado",
+    "force-reload":"Forzar rearga de los datos",
+    "node": "Nodo",
+    "storage": "Almacenamiento",
+    "class": "Clase",
+    "json-instance": "Atributos del objeto en formato JSON",
+    "stats-instances": "Número de instancias",
+    "stats-number-attibures": "Número de atributos",
+    "stats-max-relative-ratio": "Ratio máximo relativo",
+    "stats-attribute-name": "Ratio máximo relativo",
+    "stats-attribute-relative-ratio": "Ratio relativo",
+    "stats-attribute-relative-absolute": "Ratio absoluto",
+    "action-search-class": "Buscar similitudes por clase",
+    "action-search-instance": "Buscar similitudes por instancia",
+    "action-search-lod": "Buscar similitudes en la nube LOD",
+    "action-search-label": "Seleccione acción de búsqueda",
+    "action-check-sync-label": "Hacer petición sincrona",
+    "action-check-deltas-label": "Aplicar búsqueda solo en deltas",
+    "action-check-other-search-label": "Buscar en otros Backends",
+    "action-btn-launch-search": "Ejecutar búsqueda",
+    "search-message": "Buscando similitudes....",
+    "pending-message": "La solicitud ha sido procesada, puede recuperar la respuesta usando los atributos requestId y userId",
+    "status": "Estado",
+    "startDate": "Fecha de petición",
+    "endDate": "Fecha de respuesta",
+    "response-title": "Respuesta",
+    "not-result-found": "No encontradas similaridades",
+    "results-title": "Resultados de similitudes",
+    "type-result": "Tipo de resultado",
+    "code-result": "Código de resultado",
+    "accept": "Aceptar similitud",
+    "reject": "Rechazar similitud",
+    "entity": "Entidad",
+    "entity-main": "Entidad principal",
+    "attributes":"Atributos",
+    "similiarity":"Similaridad",
+    "similiarity-no-id":"Similaridad sin Id",
+    "origin":"Origen",
+    "manual":"Acciones manuales",
+    "automatic":"Acciones automáticas",
+    "decision-response":"Respuesta de la decisión",
+    "deleted":"Entidades borradas",
+    "updated":"Entidades actualizadas",
+    "att-name":"Nombre atributo",
+    "att-main-value":"Valor atributo entidad principal",
+    "att-related-value":"Valor atributo"
+  },
+  "uris":{
+    "title":"Factoría de URIs",
+    "noData":"No se han recuperado datos de la Factoría de URIS",
+    "canonical-search": "Busqueda de URIs Púlicas",
+    "local-search": "Busqueda de URIs Internas",
+    "type-search": "Seleccione el tipo de búsqueda",
+    "instace-search": "Busqueda por instancias",
+    "entity-search": "Busqueda por entidades",
+    "property-search": "Busqueda por propiedades",
+    "action-btn-launch-search": "Buscar",
+    "domain-field":"Dominio",
+    "domain-placeholder":"Inserte el subdominio para buscar por este criterio",
+    "subdomain-field":"Subdominio",
+    "subdomain-placeholder":"Inserte el subdominio para buscar por este criterio",
+    "language-field":"Idioma",
+    "language-placeholder":"Inserte el lenguaje para buscar por este criterio. Ej: [es-ES, en-EN]",
+    "type-field":"Tipo",
+    "type-placeholder":"Inserte el tipo para buscar por este criterio",
+    "className-field":"Entidad",
+    "className-placeholder":"Inserte el nombre de la entidad para buscar por este criterio",
+    "entityId-field":"Id de la instancia",
+    "entityId-placeholder":"Inserte el id de la instancia para buscar por este criterio",
+    "property-field":"Nombre de la propiedad",
+    "property-placeholder":"Inserte el nombre de la propiedad para buscar por este criterio",
+    "spinnet-text": "Esperando respuesta de la Factoría de URIs",
+    "response-title": "Respuesta",
+    "canonical-table-canonical-uri":"URI Pública (canónica)",
+    "canonical-table-canonical-language-uri":"URI Pública en idioma (canónica)",
+    "canonical-table-language":"Idioma",
+    "canonical-table-localstorage":"URI privada (local)",
+    "local-table-storage":"Tipo de almacenamiento",
+    "canonical-field":"URI Pública (canonica)",
+    "canonical-placeholder":"Inserte la URI Pública (canonica) para buscar por este criterio",
+    "storage-field":"Tipo de almacenamiento",
+    "storage-placeholder":"Inserte el nombre del almacenamiento para buscar por este criterio"
+  },
+  "service-discovery": {
+    "title":"Monitorización de servicios",
+    "node":"Nodo",
+    "service":"Servicio",
+    "id":"id",
+    "name":"Nombre",
+    "base-url":"URL base",
+    "suffix-url":"Sufijo URL",
+    "port":"Puerto",
+    "healthEndpoint":"Endpoint de comprobación de estado",
+    "status":"Estado",
+    "endPoint":"Endpoint",
+    "noData":"No se han recuperado datos de el Service Discovery",
+    "nodes": "Nodos",
+    "services": "Servicios",
+    "endpoints": "Endpoints",
+    "activate": "Activado",
+    "disabled": "Desactivado"
   },
   "projects": {
     "year": "Año",
@@ -283,14 +436,14 @@
       "id": "ID",
       "name": "Nombre",
       "anyo": "Año",
-      "type": "Tipo ontológico"
+      "type": "Tipo"
     }
   },
   "documents": {
     "document": "Documentos",
     "date-fin": "Fecha hasta",
     "date-ini": "Fecha desde",
-    "types": "Tipo ontológico",
+    "types": "Tipo",
     "title": "Titulo",
     "name": "Nombre",
     "id": "ID",
@@ -300,7 +453,7 @@
     "publishedIn": "Publicado en",
     "date": "Fecha",
     "summary": "Sumario",
-    "type": "Tipo ontológico",
+    "type": "Tipo",
     "abbreviation": "Abreviación",
     "placeOfPublication": "Lugar de publicación",
     "edition": "Edición",
@@ -335,7 +488,7 @@
     "scientific-production-related": "Producción cientifíca relacionada con el proyecto",
     "table-header": {
       "title": "Título",
-      "type": "Tipo ontológico",
+      "type": "Tipo",
       "doi": "DOI",
       "release-year": "Año de lanzamiento"
     }
@@ -359,7 +512,7 @@
   "directed-jobs": {
     "table-header": {
       "title": "Título",
-      "type": "Tipo ontológico",
+      "type": "Tipo",
       "keywords": "Palabras claves",
       "release-year": "Año de lanzamiento"
     }
@@ -384,7 +537,7 @@
   },
   "events": {
     "rol": "Rol",
-    "type": "Tipo ontológico",
+    "type": "Tipo",
     "id": "ID",
     "title": "Título",
     "date": "Fecha",
@@ -395,7 +548,8 @@
     "abbreviation": "Abreviación",
     "description": "Descripción",
     "locatedIn": "Localizado en",
-    "presents": "Presenta"
+    "presents": "Presenta",
+    "contactInformation": "Información contacto"
   },
   "document": {
     "author": "Autor principal",
@@ -406,7 +560,7 @@
     "resume": "Resumen",
     "other-authors": "Otros authores",
     "name": "Nombre",
-    "type": "Tipo ontológico",
+    "type": "Tipo",
     "document-sections": "Secciones"
   },
   "event": {
@@ -438,5 +592,62 @@
     "predefinidas": "Predefinido",
     "ambas": "Ambos",
     "usuario": "Mis consultas"
+  },
+  "dataImporterStructure": {
+    "id": "Id",
+    "startTime": "Fecha",
+    "user": "Usuario",
+    "type": "Tipo",
+    "cron": "Cron"
+  },
+  "importation": {
+    "header": "Importación de datos",
+    "button": "+ Nueva Importación",
+    "import": "Importar",
+    "cron-expression": "Expresión cron",
+    "import-parameters": "Parámetros de la importación",
+    "import-fieldset": "Seleccione un tipo de importación",
+    "import-title": "Nueva Importación de datos",
+    "cron-example": "(Ejemplo: * * * 15)",
+    "cron-help": "¿Qué es una expresión cron?",
+    "succeeded-import": "La importación se ha lanzado con éxito",
+    "failed-import": "Ha ocurrido un error al lanzar la importación",
+    "popup": {
+      "user": "Usuario",
+      "type": "Tipo",
+      "cron": "Cron",
+      "close": "Cerrar"
+    }
+  },
+  "validator": {
+    "header": "Validadores",
+    "button": "+ Crear validador",
+    "id": "ID",
+    "entity": "Entidad",
+    "validator": "Validador",
+    "delete": "¿Está seguro que desea borrar el registro?",
+    "new-form": "Nuevo validador",
+    "edit-form": "Modificar validador"
+  },
+  "ldp": {
+    "header": "Linked Data Graph",
+    "entity": "Entidad",
+    "count": "Total",
+    "uri": "URI",
+    "title": "Título/Nombre",
+    "details": {
+      "relations": "Entidades relacionadas"
+    }
+  },
+  "dataDeletion": {
+    "header": "Borrado de datos",
+    "date": "Seleccione la fecha a la que quiere restaurar los datos",
+    "delete": "Restaurar",
+    "delete-message": "¿Está seguro que quiere volver a la versión de los datos en la fecha seleccionada?"
+  },
+  "installer": {
+    "header": "Instalador",
+    "script": "Instalación a través de script",
+    "manual": "Instalación manual"
   }
 }

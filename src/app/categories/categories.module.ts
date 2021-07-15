@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { CategoriesRoutingModule } from './categories-routing.module';
@@ -30,6 +30,7 @@ import { ScientistDetailComponent } from './scientist-detail/scientist-detail.co
 import { DirectedJobsComponent } from '../common/directed-jobs/directed-jobs.component';
 import { StartupComponent } from '../common/startup/startup.component';
 import { AreasComponent } from './areas/areas.component';
+import { DiscoveryComponent } from '../discovery/discovery.component'
 import { EventsComponent } from '../common/events/events.component';
 import { ScientificProductionComponent } from './scientific-production/scientific-production.component';
 import { DocumentDetailComponent } from './document-detail/document-detail.component';
@@ -40,6 +41,26 @@ import { CollaboratorsComponent } from '../common/collaborators/collaborators.co
 import { ScientificPublicationDetailComponent } from './scientific-publication-detail/scientific-publication-detail.component';
 import { AreasListComponent } from '../common/areas-list/areas-list.component';
 
+import { DiscoveryControlComponent } from '../discovery/control/discovery-control/discovery-control.component';
+import { DiscoverySearchComponent } from '../discovery/search/discovery-search/discovery-search.component';
+import { DiscoveryActionComponent } from '../discovery/actions/discovery-action/discovery-action.component';
+import { UrisComponent } from '../uris-factory/uris.component';
+import { ResultItemComponent } from '../discovery/result/result-item/result-item.component';
+import { DataImporterComponent } from './data-importer/data-importer.component';
+import { LdpComponent } from './ldp/ldp.component';
+import { AllDataImporterStructuresComponent } from './data-importer/all-data-importer/all-data-importer-structures.component';
+import { AllLdpComponent } from './ldp/all-ldp/all-ldp.component';
+import { SearchLdpComponent } from './ldp/search/search-ldp.component';
+import { SearchLdpResultComponent } from './ldp/search-result/search-ldp-result.component';
+import { NewDataImporterComponent } from './data-importer/new-data-importer/new-data-importer.component';
+import { ValidatorComponent } from './validator/validator.component';
+import { AllValidatorStructuresComponent } from './validator/all-validator/all-validator-structures.component';
+import { NewValidatorComponent } from './validator/new-validator/new-validator.component';
+import { NgxSpinnerModule } from "ngx-spinner";
+import { ServiceDiscoveryComponent } from '../service-discovery/service-discovery/service-discovery.component';
+import { DataDeletionComponent } from './data-deletion/data-deletion.component';
+import { DetailsLdpComponent } from './ldp/details/details-ldp.component';
+import { EtlComponent } from '../etl/etl.component';
 
 @NgModule({
   declarations: [ResearchmentStructuresComponent, ResearchmentStructuresDetailComponent, AllResearchmentStructuresComponent,
@@ -48,8 +69,11 @@ import { AreasListComponent } from '../common/areas-list/areas-list.component';
     ProyectsComponent, ScientistSearchComponent, DocumentsComponent,
     ProjectsDetailComponent, ParticipantsComponent, DeliverableComponent, ScientistComponent, ScientistDetailComponent,
     DirectedJobsComponent, StartupComponent, AreasComponent, EventsComponent,
-    ScientificProductionComponent, DocumentDetailComponent, EventDetailComponent, StatisticsComponent,
-    PeopleInvolvedComponent, CollaboratorsComponent, ScientificPublicationDetailComponent, AreasListComponent
+    ScientificProductionComponent, DocumentDetailComponent, EventDetailComponent, StatisticsComponent, DiscoveryComponent,
+    DiscoveryControlComponent, DiscoverySearchComponent, DiscoveryActionComponent, ResultItemComponent, UrisComponent, ServiceDiscoveryComponent,
+    PeopleInvolvedComponent, CollaboratorsComponent, ScientificPublicationDetailComponent, AreasListComponent, DataImporterComponent, AllDataImporterStructuresComponent, NewDataImporterComponent,
+    ValidatorComponent, AllValidatorStructuresComponent, NewValidatorComponent, LdpComponent, AllLdpComponent, SearchLdpComponent, SearchLdpResultComponent,
+    DataDeletionComponent, DetailsLdpComponent, EtlComponent
   ],
   imports: [
     NgxEchartsModule,
@@ -63,7 +87,9 @@ import { AreasListComponent } from '../common/areas-list/areas-list.component';
     LeafletModule,
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts'),
-    })
-  ]
+    }),
+    NgxSpinnerModule
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class CategoriesModule { }

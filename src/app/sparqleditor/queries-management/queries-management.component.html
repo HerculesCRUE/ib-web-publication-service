@@ -1,10 +1,5 @@
 <form class="form-horizontal " (ngSubmit)="f.form.valid" #f="ngForm" (keydown.enter)="$event.preventDefault()">
     <div class="row">
-        <div class="col-12">
-            <h5 class="card-title"> {{'form.search-form' | translate}}</h5>
-        </div>
-    </div>
-    <div class="row">
         <!-- type -->
         <div class="form-group col-lg-6">
             <label for="type" class="col-sm-4 control-label">{{ "deliverable.level" | translate }}</label>
@@ -18,6 +13,16 @@
 
             </div>
         </div>
+        <div *ngIf="currentUsername" class="form-group col-lg-6">
+            <label for="type" class="col-sm-4 control-label"></label>
+            <div class="col-sm-8">
+                <a href="https://github.com/HerculesCRUE/ROH/tree/main/validation-questions/sparql-query"
+                    target="_blank" rel="noopener noreferrer">
+                    {{'sparql.main.competency-questions' | translate}}
+                </a>
+            </div>
+        </div>
+
     </div>
     <div class="row">
         <div class="col-12">
@@ -59,7 +64,8 @@
                         [hasActions]="true" [displayPagination]="false" [findRequest]="findRequest"
                         [dtoTypeTranslate]="'sparql'" [extra]="'1'"
                         *ngIf="loaded && resultObject?.content?.length !== 0" [data]="resultObject?.content"
-                        [pageInfo]="resultObject" (sortChanged)="allPatentsFilteredSortChanged($event)">
+                        [visibleColumns]="['username', 'sparqlQuery', 'sparqlName']" [pageInfo]="resultObject"
+                        (sortChanged)="allPatentsFilteredSortChanged($event)">
                     </app-table-results-dto>
                     <div class="container-fluid app-table-results">
                         <div class="row">
