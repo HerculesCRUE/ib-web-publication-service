@@ -195,6 +195,15 @@ export const HOME_ITEMS: HomeGroupItem[] = [{
       urlExterna: ''
     },
     {
+      title: 'home.etl',
+      iconName: 'oi-cog',
+      iconCircle: false,
+      url: '/main/etl',
+      disabled: false,
+      urlExterna: '',
+      loginRequired: true
+    },
+    {
       title: 'home.links',
       iconName: 'oi-external-link',
       iconCircle: false,

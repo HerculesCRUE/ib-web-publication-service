@@ -70,8 +70,9 @@
     "import-data": "Data Importer",
     "delete-data": "Data Deletion",
     "validator": "Validators",
-    "ldp": "Linked Data Graph",    
+    "ldp": "Linked Data Graph",
     "installer": "Installer",
+    "etl": "ETL",
     "information": "Info",
     "links": "Links"
   },
@@ -160,10 +161,12 @@
     "discovery":"Discovery library",
     "service-discovery":"Backends Monitor",
     "installer": "Installer",
+    "etl": "ETL",
     "information": "Info",
     "links": "Links",
     "validation": "Validators",
-    "ldp": "Linked Data Graph"
+    "ldp": "Linked Data Graph",
+    "validator": "Validators"
   },
   "links": {
     "title": "Links",

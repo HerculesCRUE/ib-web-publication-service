@@ -60,6 +60,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { ServiceDiscoveryComponent } from '../service-discovery/service-discovery/service-discovery.component';
 import { DataDeletionComponent } from './data-deletion/data-deletion.component';
 import { DetailsLdpComponent } from './ldp/details/details-ldp.component';
+import { EtlComponent } from '../etl/etl.component';
 
 @NgModule({
   declarations: [ResearchmentStructuresComponent, ResearchmentStructuresDetailComponent, AllResearchmentStructuresComponent,
@@ -72,7 +73,7 @@ import { DetailsLdpComponent } from './ldp/details/details-ldp.component';
     DiscoveryControlComponent, DiscoverySearchComponent, DiscoveryActionComponent, ResultItemComponent, UrisComponent, ServiceDiscoveryComponent,
     PeopleInvolvedComponent, CollaboratorsComponent, ScientificPublicationDetailComponent, AreasListComponent, DataImporterComponent, AllDataImporterStructuresComponent, NewDataImporterComponent,
     ValidatorComponent, AllValidatorStructuresComponent, NewValidatorComponent, LdpComponent, AllLdpComponent, SearchLdpComponent, SearchLdpResultComponent,
-    DataDeletionComponent, DetailsLdpComponent
+    DataDeletionComponent, DetailsLdpComponent, EtlComponent
   ],
   imports: [
     NgxEchartsModule,
