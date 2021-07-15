@@ -1,4 +1,4 @@
-name: Build
+name: Build DEV
 
 on:
   push:
@@ -75,7 +75,7 @@ jobs:
         with:
           images: ${{ env.DOCKER_IMAGE }}
           flavor: |
-            suffix=dev
+            suffix=-dev
           tags: |
             type=ref,event=branch
             type=ref,event=pr
