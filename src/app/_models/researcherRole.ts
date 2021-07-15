@@ -28,5 +28,5 @@ export class ResearcherRole {
     /**
      * The hasKnowledgeArea
      */
-    hasKnowledgeArea: string;
+    hasKnowledgeAreaTitle: string;
 }
