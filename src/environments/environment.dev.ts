@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  urlBase: 'https://app.herculesasioizertis.desa.um.es/api',
+  urlBase: 'https://linkeddata1desa.um.es/api',
   urlWebsocket: '/gs-guide-websocket',
   oauthClientId: 'acme',
   oauthSecret: 'acmesecret',
@@ -12,36 +12,36 @@ export const environment = {
     clientId: 'login-app',
     scope: 'openid, profile',
     authorizationGrantType: 'password',
-    authUrl: 'https://herculesasioizertis.desa.um.es/auth',
-    authorizationUri: 'https://herculesasioizertis.desa.um.es/auth/realms/umasio/protocol/openid-connect/auth',
-    userInfoUri: 'https://herculesasioizertis.desa.um.es/auth/realms/umasio/protocol/openid-connect/userinfo',
-    tokenUri: 'https://herculesasioizertis.desa.um.es/auth/realms/umasio/protocol/openid-connect/token',
-    logout: 'https://herculesasioizertis.desa.um.es/auth/realms/umasio/protocol/openid-connect/logout',
-    redirectUrl: 'https%3A%2F%2Fherculesasioizertis.desa.um.es%2Fauth%2Frealms%2Fumasio%2Faccount%2F%23%2Fpersonal-info',
+    authUrl: 'https://authld1desa.um.es/auth',
+    authorizationUri: 'https://authld1desa.desa.um.es/auth/realms/umasio/protocol/openid-connect/auth',
+    userInfoUri: 'https://authld1desa.desa.um.es/auth/realms/umasio/protocol/openid-connect/userinfo',
+    tokenUri: 'https://authld1desa.desa.um.es/auth/realms/umasio/protocol/openid-connect/token',
+    logout: 'https://authld1desa.desa.um.es/auth/realms/umasio/protocol/openid-connect/logout',
+    redirectUrl: 'https%3A%2F%2Fauthld1desa.um.es%2Fauth%2Frealms%2Fumasio%2Faccount%2F%23%2Fpersonal-info',
     clientSecret: ''
   },
   importer: {
-    baseUrl: 'http://herc-iz-back-desa.atica.um.es',
-    port: '9320'
+    baseUrl: 'https://linkeddata1desa.um.es/dataset',
+    port: null
   },
   discovery: {
-    baseUrl: 'http://herc-iz-back-desa.atica.um.es',
-    port: '9327'
+    baseUrl: 'https://linkeddata1desa.um.es/discovery',
+    port: null
   },
   serviceDiscovery: {
-    baseUrl: 'http://host.docker.internal',
-    port: '8089'
+    baseUrl: 'https://linkeddata1desa.um.es/service-discovery',
+    port: null
   },
   federation: {
-    baseUrl: 'http://herc-iz-back-desa.atica.um.es',
-    port: '9328'
+    baseUrl: 'https://linkeddata1desa.um.es/federation',
+    port: null
   },
   urisFactory: {
-    baseUrl: 'http://herc-iz-back-desa.atica.um.es',
-    port: '8080'
+    baseUrl: 'https://linkeddata1desa.um.es/uri-factory',
+    port: null
   },
-  lpdUrl: 'https://ldp.herculesasioizertis.desa.um.es/',
-  appUrl: 'https://app.herculesasioizertis.desa.um.es',
+  lpdUrl: 'https://ldpld1desa.um.es/',
+  appUrl: 'https://linkeddata1desa.um.es',
   sgi: 'https://github.com/HerculesCRUE/ib-asio-docs-/tree/master/13-Backend_SGI_Software'
 };
 
@@ -52,8 +52,8 @@ export const yasgui = {
   // method: 'GET'
 
   // Fuseki
-  endpoint: 'https://app.herculesasioizertis.desa.um.es/api/trellis/sparql',
+  endpoint: 'https://linkeddata1desa.um.es/api/trellis/sparql',
   method: 'POST',
-  endpointFeder: 'https://app.herculesasioizertis.desa.um.es/api/trellis/sparql',
+  endpointFeder: 'https://linkeddata1desa.um.es/api/trellis/sparql',
   methodFeder: 'POST',
 };
