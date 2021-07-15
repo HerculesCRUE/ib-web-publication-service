@@ -12,6 +12,7 @@ export const environment = {
   skipPort: '8080',
   node: 'um',
   domain: 'ldp.herculesasioizertis.desa.um.es',
+  spoon: 'http://localhost/web-spoon/spoon/spoon',
   keycloak: {
     realm: 'umasio',
     clientId: 'login-app',

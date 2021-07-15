@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-etl',
@@ -8,7 +9,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 })
 export class EtlComponent {
 
-  url: string = "https://linkeddata1.um.es/web-spoon/spoon/spoon";
+  url: string = environment.spoon;
   urlSafe: SafeResourceUrl;
   public screenWidth: any;
   public screenHeight: any;

@@ -70,7 +70,7 @@
     "import-data": "Importador de datos",
     "delete-data": "Borrado de datos",
     "validator": "Validadores",
-    "ldp": "Linked Data Graph",
+    "ldp": "Entidades del grafo ASIO-SGI",
     "installer": "Instalador",
     "etl": "ETL",
     "information": "Info",
@@ -165,7 +165,7 @@
     "information": "Info",
     "links": "Enlaces",
     "validation": "Validadores",
-    "ldp": "Linked Data Graph",
+    "ldp": "Entidades del grafo ASIO-SGI",
     "validator": "Validadores"
   },
   "links": {
@@ -630,7 +630,7 @@
     "edit-form": "Modificar validador"
   },
   "ldp": {
-    "header": "Linked Data Graph",
+    "header": "Entidades del grafo ASIO-SGI",
     "entity": "Entidad",
     "count": "Total",
     "uri": "URI",
