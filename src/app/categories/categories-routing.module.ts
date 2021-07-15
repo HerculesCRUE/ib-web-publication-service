@@ -16,6 +16,7 @@ import { ScientificPublicationDetailComponent } from './scientific-publication-d
 import { NewDataImporterComponent } from './data-importer/new-data-importer/new-data-importer.component';
 import { NewValidatorComponent } from './validator/new-validator/new-validator.component';
 import { SearchLdpResultComponent } from './ldp/search-result/search-ldp-result.component';
+import { DetailsLdpComponent } from './ldp/details/details-ldp.component';
 
 const routes: Routes = [
   {
@@ -86,6 +87,10 @@ const routes: Routes = [
   {
     path: 'ldp-search-result',
     component: SearchLdpResultComponent
+  },
+  {
+    path: 'ldp-entity-details',
+    component: DetailsLdpComponent
   }
 ];
 

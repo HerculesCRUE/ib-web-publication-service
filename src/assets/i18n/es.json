@@ -631,7 +631,10 @@
     "entity": "Entidad",
     "count": "Total",
     "uri": "URI",
-    "title": "Título/Nombre"
+    "title": "Título/Nombre",
+    "details": {
+      "relations": "Entidades relacionadas"
+    }
   },
   "dataDeletion": {
     "header": "Borrado de datos",

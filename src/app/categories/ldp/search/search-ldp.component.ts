@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 /**
@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
     selector: 'app-search-ldp',
     templateUrl: './search-ldp.component.html',
 })
-export class SearchLdpComponent {
+export class SearchLdpComponent implements OnInit {
 
     searchToken: string;
 

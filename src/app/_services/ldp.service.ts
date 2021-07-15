@@ -6,6 +6,7 @@ import { AbstractService } from "../_helpers/abstract";
 import { Direction, FindRequest, Order, Page } from "../_helpers/search";
 import { Helper } from "../_helpers/utils";
 import { LdpEntityCounter } from "../_models/ldpEntity";
+import { LdpEntityDetails } from "../_models/ldpEntityDetails";
 import { LdpSearchResult } from "../_models/ldpSearchResult";
 
 @Injectable({
@@ -77,6 +78,18 @@ export class LdpService extends AbstractService {
         parameters = Helper.addPaginationParams(parameters, findRequest.pageRequest);
         return this.httpClient
             .get(Helper.getUrl('/ldp/findTitle'), {
+                params: parameters
+            }).pipe(
+                catchError(this.handleError)
+            );
+    }
+
+    findDetails(uri: string): Observable<LdpEntityDetails> {
+        let parameters = new HttpParams();
+        parameters = Helper.addParam(parameters, 'uri', uri);
+
+        return this.httpClient
+            .get(Helper.getUrl('/ldp/findDetails'), {
                 params: parameters
             }).pipe(
                 catchError(this.handleError)

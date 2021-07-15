@@ -632,7 +632,10 @@
     "entity": "Entity",
     "count": "Total",
     "uri": "URI",
-    "title": "Title/Name"
+    "title": "Title/Name",
+    "details": {
+      "relations": "Related entities"
+    }
   },
   "dataDeletion": {
     "header": "Data Deletion",
