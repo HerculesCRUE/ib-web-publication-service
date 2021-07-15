@@ -1,10 +1,5 @@
 <form class="form-horizontal " (ngSubmit)="f.form.valid" #f="ngForm" (keydown.enter)="$event.preventDefault()">
     <div class="row">
-        <div class="col-12">
-            <h5 class="card-title"> {{'form.search-form' | translate}}</h5>
-        </div>
-    </div>
-    <div class="row">
         <!-- type -->
         <div class="form-group col-lg-6">
             <label for="type" class="col-sm-4 control-label">{{ "participant.level" | translate }}</label>
@@ -35,18 +30,13 @@
         <div class="col-12">
             <div class="card flex-fill">
                 <div class="card-header">
-                    <div class="row">
-                        <div class="col-12">
-                            <h1 class="legend">{{'participant.title' | translate}}</h1>
-                        </div>
-                    </div>
                     <div class="container-fluid">
                         <div class="row justify-content-end">
 
                             <div id="mainSearch" aria-labelledby="mainSearch" class="input-group col-md-4"
                                 role="search">
                                 <input class="form-control py-2 border-right-0 border" type="search" name="search"
-                                    #search="ngModel" placeholder="{{'form.search-by-title' | translate }}"
+                                    #search="ngModel" placeholder="{{'form.search-by-name' | translate }}"
                                     [(ngModel)]="findRequest.filter.title" (keyup.enter)="find()">
                                 <span class="input-group-append">
                                     <button (click)="find()" [attr.aria-label]="'form.search-by-name' | translate"
@@ -58,8 +48,7 @@
                             </div>
                             <div class="input-group col-md-2 text-right">
                                 <button id="clean" [attr.aria-label]="'form.clean' | translate " role="button"
-                                    aria-pressed="false" class="btn btn-secondary"
-                                    (click)="f.resetForm();">{{'form.clean' |
+                                    aria-pressed="false" class="btn btn-secondary" (click)="f.resetForm();">{{'form.clean' |
                                     translate }}</button>
                             </div>
                         </div>
@@ -74,7 +63,8 @@
                     <app-table-results-dto [displayPagination]="false" [findRequest]="findRequest"
                         [dtoTypeTranslate]="'scientist'" [extra]="'4'"
                         *ngIf="loaded && resultObject?.content?.length !== 0" [data]="resultObject?.content"
-                        [pageInfo]="resultObject" (sortChanged)="allParticipantsFilteredSortChanged($event)">
+                        [pageInfo]="resultObject" [visibleColumns]="['name', 'gender']" mainColumn="name"
+                        (sortChanged)="allParticipantsFilteredSortChanged($event)">
                     </app-table-results-dto>
                     <div class="container-fluid app-table-results">
                         <div class="row">
@@ -91,5 +81,3 @@
         </div>
     </div>
 </form>
-<app-people-involved [projectId]="projectId"></app-people-involved>
-<app-collaborators></app-collaborators>

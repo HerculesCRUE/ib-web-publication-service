@@ -1,4 +1,4 @@
-name: Build
+name: Build DEV
 
 on:
   push:
@@ -27,7 +27,7 @@ jobs:
       - name: npm install
         run: npm install
       - name: Build
-        run: npm run build -- --baseHref=/ --configuration=pre --prod
+        run: npm run build -- --baseHref=/ --configuration=development --prod
       - name: Create artifact
         working-directory: dist
         run: tar -zcvf ../website.tar.gz .
@@ -74,6 +74,8 @@ jobs:
         uses: docker/metadata-action@v3
         with:
           images: ${{ env.DOCKER_IMAGE }}
+          flavor: |
+            suffix=-dev
           tags: |
             type=ref,event=branch
             type=ref,event=pr
