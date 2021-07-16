@@ -34,7 +34,8 @@ export class MockResearchStaffService {
             researchLine: '',
             surname: '',
             taxId: '',
-            subjectArea: ''
+            subjectArea: '',
+            hasKnowledgeAreaTitle: ''
         },
         {
             id: '148071',
@@ -52,7 +53,8 @@ export class MockResearchStaffService {
             researchLine: '',
             surname: '',
             taxId: '',
-            subjectArea: ''
+            subjectArea: '',
+            hasKnowledgeAreaTitle: ''
         },
         {
             id: '603742',
@@ -70,7 +72,8 @@ export class MockResearchStaffService {
             researchLine: '',
             surname: '',
             taxId: '',
-            subjectArea: ''
+            subjectArea: '',
+            hasKnowledgeAreaTitle: ''
         },
         {
             id: '12019',
@@ -88,7 +91,8 @@ export class MockResearchStaffService {
             researchLine: '',
             surname: '',
             taxId: '',
-            subjectArea: ''
+            subjectArea: '',
+            hasKnowledgeAreaTitle: ''
         },
         {
             id: '60203',
@@ -106,7 +110,8 @@ export class MockResearchStaffService {
             researchLine: '',
             surname: '',
             taxId: '',
-            subjectArea: ''
+            subjectArea: '',
+            hasKnowledgeAreaTitle: ''
         }
     ];
 
