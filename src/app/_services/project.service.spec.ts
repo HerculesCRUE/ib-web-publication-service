@@ -84,7 +84,7 @@ describe('ProjectService', () => {
                 expect(result.content.length).toBe(2);
             }
         });
-        const request = httpMock.expectOne(Helper.getUrl('/project/search?size=10&page=0'));
+        const request = httpMock.expectOne(Helper.getUrl('/project/search?size=50&page=0'));
         expect(request.request.method).toBe('GET');
         request.flush(DUMMY_DATA);
     });
