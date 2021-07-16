@@ -56,7 +56,7 @@ describe('UserService', () => {
       service.findUsers(findRequest).subscribe(result => {
 
       });
-      const request = httpMock.expectOne(Helper.getUrl('/user/search?name=flor&size=10&page=0'));
+      const request = httpMock.expectOne(Helper.getUrl('/user/search?name=flor&size=50&page=0'));
       expect(request.request.method).toBe('GET');
       request.flush(respo);
     });
