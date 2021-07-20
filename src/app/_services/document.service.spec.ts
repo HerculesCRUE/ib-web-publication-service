@@ -85,7 +85,7 @@ describe('DocumentService', () => {
             }
 
         });
-        const request = httpMock.expectOne(Helper.getUrl('/document/search?size=10&page=0'));
+        const request = httpMock.expectOne(Helper.getUrl('/document/search?size=50&page=0'));
         expect(request.request.method).toBe('GET');
         request.flush(DUMMY_DATA);
     });

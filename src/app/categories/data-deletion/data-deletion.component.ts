@@ -15,6 +15,7 @@ export class DataDeletionComponent {
   maxDate: {};
   executing: boolean;
   currentUsername: string;
+  email: {};
 
   constructor(private translate: TranslateService,
     private loginService: LoginService,
@@ -23,8 +24,8 @@ export class DataDeletionComponent {
   }
 
   ngOnInit(): void {
+    this.email = Helper.getEmailData();
     this.maxDate = Helper.fromModel(new Date().getTime());
-
     this.loginService.getLoggedUsername().subscribe((username: string) => {
       this.currentUsername = username;
     });
@@ -33,7 +34,7 @@ export class DataDeletionComponent {
   delete() {
 
     if (this.deletionDate && this.currentUsername) {
-
+      console.log(this.deletionDate);
       this.executing = true;
 
       Swal.fire({
@@ -44,13 +45,14 @@ export class DataDeletionComponent {
         cancelButtonText: this.translate.instant('form.cancel'),
         focusCancel: true
       }).then(result => {
+
         if (result.value) {
 
           const date = Helper.parse(this.deletionDate);
-
-          //pass parameters: date and currentUsername
-
-          this.dataDeletionService.delete().subscribe((data) => {
+          let message = String(this.email['message']);
+          message = message.replace('//date//', new Date(this.deletionDate).toLocaleDateString("es-US"))
+          message = message.replace('//to//', String(this.currentUsername))
+          this.dataDeletionService.delete(this.email['to'], this.email['subject'], message).subscribe((data) => {
             this.executing = false;
           }, (error) => {
             this.executing = false;
