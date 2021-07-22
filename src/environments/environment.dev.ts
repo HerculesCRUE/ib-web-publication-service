@@ -6,7 +6,7 @@ export const environment = {
   oauthSecret: 'acmesecret',
   skipPort: '8080',
   node: 'um',
-  domain: 'ldpld1.um.es',
+  domain: 'ldpld1desa.um.es',
   spoon: 'https://linkeddata1desa.um.es/web-spoon/spoon/spoon',
   keycloak: {
     realm: 'umasio',
