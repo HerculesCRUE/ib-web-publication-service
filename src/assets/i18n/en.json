@@ -216,7 +216,12 @@
     "contains": "Contains",
     "participates": "Participates",
     "provides": "Provides",
-    "relatedBy": "Related by"
+    "relatedBy": "Related by",
+    "center": "Centers",
+    "department": "Departments",
+    "research-group": "Research groups",
+    "funding-organization": "Funding Organizations",
+    "organization": "Organizations"
   },
   "scientist": {
     "title": "Research staff",

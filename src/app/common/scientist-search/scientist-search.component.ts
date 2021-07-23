@@ -26,6 +26,7 @@ export class ScientistSearchComponent extends PaginatedSearchComponent<Person> i
    * university Id for search filter in case of necessary
    */
   @Input() idPrefix: string;
+  @Input() organizationId: string;
   /**
    *
    *
@@ -96,12 +97,21 @@ export class ScientistSearchComponent extends PaginatedSearchComponent<Person> i
     this.graphicService.personArea().subscribe(data => {
       this.echartOptions = HelperGraphics.configChartPie(this.newData(data), 'Número personas por area');
     });
+
+    if (this.organizationId) {
+      this.findRequest.filter.organizationId = this.organizationId;
+    }
   }
 
 
 
 
   protected findInternal(findRequest: FindRequest): Observable<Page<Person>> {
+
+    if (this.organizationId) {
+      this.findRequest.filter.organizationId = this.organizationId;
+    }
+
     const page: Page<Person> = new Page();
     return this.researchStaffServices.find(findRequest).pipe(
       map((x) => {
