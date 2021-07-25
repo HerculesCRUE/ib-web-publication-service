@@ -76,6 +76,10 @@ export class Person {
      */
     subjectArea: string;
 
+    /**
+     * The hasKnowledgeAreaTitle
+     */
+    hasKnowledgeAreaTitle: string;
 
     /**
      * The taxId

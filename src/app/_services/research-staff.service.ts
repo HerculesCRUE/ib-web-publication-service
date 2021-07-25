@@ -38,6 +38,7 @@ export class ResearchStaffService extends AbstractService {
     parameters = Helper.addParam(parameters, 'name', findRequest.filter.name);
     parameters = Helper.addParam(parameters, 'ini', findRequest.filter.ini);
     parameters = Helper.addParam(parameters, 'fin', findRequest.filter.fin);
+    parameters = Helper.addParam(parameters, 'organizationId', findRequest.filter.organizationId);
     // Pagination params
     parameters = Helper.addPaginationParams(parameters, findRequest.pageRequest);
 

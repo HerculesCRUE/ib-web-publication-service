@@ -9,8 +9,12 @@
                         class="form-control" [(ngModel)]="findRequest.filter.type" id="type" #type="ngModel"
                         (change)="filterResearchmentStructures()">
                         <option [value]="undefined"> {{ "form.select" | translate }}</option>
-                        <option value="University">Universidad</option>
-                        <option value="Organization">Organización</option>
+                        <option value="Center">{{ "researchmentStructure.center" | translate }}</option>
+                        <option value="Department">{{ "researchmentStructure.department" | translate }}</option>
+                        <option value="Organization">{{ "researchmentStructure.organization" | translate }}</option>
+                        <option value="Research-group">{{ "researchmentStructure.research-group" | translate }}</option>
+                        <option value="Funding-organization">{{ "researchmentStructure.funding-organization" | translate
+                            }}</option>
                     </select>
                 </div>
             </div>
@@ -61,7 +65,7 @@
                             *ngIf="loaded && resultObject?.content?.length !== 0"
                             [dtoTypeTranslate]="'researchmentStructure'" [extra]="'2'" [data]="resultObject?.content"
                             [pageInfo]="resultObject" [routerFieldSecondary]="'type'" [routerField]="'id'"
-                            [visibleColumns]="['title', 'abbreviation']" mainColumn="title"
+                            [visibleColumns]="['title']" mainColumn="title"
                             (sortChanged)="allResearchmentStructuresFilteredSortChanged($event)">
                         </app-table-results-dto>
                         <div class="container-fluid app-table-results">

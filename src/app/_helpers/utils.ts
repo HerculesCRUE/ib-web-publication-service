@@ -1,5 +1,5 @@
 
-import { BASE_APP_URL, BASE_URL, DISCOVERY, SERVICE_DISCOVERY, IMPORTER_SERVICE, FEDERATION, KEYCLOACK, LPDURL, SGI, URIS_FACTORY } from '../configuration';
+import { BASE_APP_URL, BASE_URL, DISCOVERY, SERVICE_DISCOVERY, IMPORTER_SERVICE, FEDERATION, KEYCLOACK, LPDURL, SGI, URIS_FACTORY, EMAIL } from '../configuration';
 import { HttpParams } from '@angular/common/http';
 import { Direction, Page, PageRequest } from './search';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
@@ -110,6 +110,15 @@ export class Helper {
    */
   static getAPPURL() {
     return BASE_APP_URL;
+  }
+
+
+  /**
+ * Completa la URL a llamar con la URL base del servicio de importacion.
+ * @param fragment Fragmento de URL.
+ */
+  static getEmailData() {
+    return EMAIL;
   }
 
 
