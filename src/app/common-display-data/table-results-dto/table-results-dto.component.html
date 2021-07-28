@@ -42,7 +42,7 @@
             </tr>
 
             <tr *ngIf="!routerField || !item[routerField]"
-              [ngClass]="{ 'table-secondary': i % 2 == 1, 'activeQuery': item['sparqlQuery'] === itemSelected }">
+              [ngClass]="{ 'table-secondary': i % 2 == 1, 'activeQuery': item === itemSelected }">
               <ng-container>
                 <td *ngFor="let header of hedearDTO">
                   <ng-container>{{ item[header] }}</ng-container>
@@ -52,7 +52,8 @@
                   <button style="margin-left: 15px" *ngIf="item['username']" (click)="deleteQuery(item['entityId'])"
                     class="btn btn-secondary">{{'form.delete' |
                     translate}}</button>
-                  <button (click)="useQuery(item['sparqlQuery'])" class="btn btn-secondary">{{'form.use' |
+                  <button [style]="{'margin-left': !item['username'] ? '15px' : '0'}"
+                    (click)="useQuery(item['sparqlQuery'])" class="btn btn-secondary">{{'form.use' |
                     translate}}</button>
                 </td>
 

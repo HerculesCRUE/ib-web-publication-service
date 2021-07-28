@@ -275,7 +275,7 @@ export class TableResultsDtoComponent
 
   useQuery(query: string) {
     this.itemSelected = query;
-    this.queryToUse.emit(query);
+    this.queryToUse.emit(query['sparqlQuery']);
   }
 
 
