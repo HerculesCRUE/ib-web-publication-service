@@ -9,3 +9,7 @@ th {
 .cursor > * {
   cursor: pointer;
 }
+
+.activeQuery {
+  background-color: grey;
+}

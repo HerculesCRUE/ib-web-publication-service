@@ -108,7 +108,7 @@ export class TableResultsDtoComponent
    */
   @Output()
   sizeChanged: EventEmitter<number> = new EventEmitter<number>();
-
+  itemSelected: any;
   /*
    * Initial data
    */
@@ -175,7 +175,7 @@ export class TableResultsDtoComponent
       }
 
 
-      page.numberOfElements = Math.min(page.content ?.length, this.pageInfo ?.size);
+      page.numberOfElements = Math.min(page.content?.length, this.pageInfo?.size);
       page.size = this.pageInfo.size;
       page.totalElements = this.pageInfo.totalElements;
 
@@ -274,7 +274,8 @@ export class TableResultsDtoComponent
   }
 
   useQuery(query: string) {
-    this.queryToUse.emit(query);
+    this.itemSelected = query;
+    this.queryToUse.emit(query['sparqlQuery']);
   }
 
 
