@@ -59,6 +59,7 @@ export class NewTreeComponent implements OnInit {
       }, 300);
 
     });
+    this.filterChanged.emit(this.filter);
   }
 
 

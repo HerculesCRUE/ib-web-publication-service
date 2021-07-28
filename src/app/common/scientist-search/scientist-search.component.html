@@ -15,7 +15,8 @@
             <!-- categorias tree -->
             <div class="col-12" *ngIf="normalTree">
                 <label for="type" class="col-sm-4 control-label">{{ "scientist.area" | translate }}</label>
-                <app-new-tree [treeType]="'area'" itemClass="col-lg-4 col-md-6"></app-new-tree>
+                <app-new-tree [treeType]="'area'" (filterChanged)="filtroTree($event)" itemClass="col-lg-4 col-md-6">
+                </app-new-tree>
             </div>
             <!-- categorias tree -->
             <div class="col-12" *ngIf="!normalTree">
@@ -68,7 +69,7 @@
                         [routerNameLink]="url" [routerField]="'id'"
                         *ngIf="loaded && resultObject?.content?.length !== 0" [data]="resultObject?.content"
                         [dtoTypeTranslate]="'scientist'" [extra]="'2'" [pageInfo]="resultObject"
-                        [visibleColumns]="['name', 'hasKnowledgeAreaTitle', 'gender']" mainColumn="name"
+                        [visibleColumns]="['name', 'gender']" mainColumn="name"
                         (sortChanged)="allScientistsFilteredSortChanged($event)">
                     </app-table-results-dto>
                     <div class="container-fluid app-table-results">
