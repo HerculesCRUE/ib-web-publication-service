@@ -15,7 +15,8 @@
             <!-- categorias tree -->
             <div class="col-12" *ngIf="normalTree">
                 <label for="type" class="col-sm-4 control-label">{{ "scientist.area" | translate }}</label>
-                <app-new-tree [treeType]="'area'" (filterChanged)="filtroTree($event)" itemClass="col-lg-4 col-md-6">
+                <app-new-tree [treeType]="'area'" (searchFilter)="searchFilterTree($event)"
+                    (filterChanged)="filtroTree($event)" [clearTree]="clearTree" itemClass="col-lg-4 col-md-6">
                 </app-new-tree>
             </div>
             <!-- categorias tree -->
@@ -52,7 +53,7 @@
                             <div class="input-group col-md-2 text-right">
                                 <button id="clean" [attr.aria-label]="'form.clean' | translate " role="button"
                                     aria-pressed="false" class="btn btn-secondary"
-                                    (click)="f.resetForm();">{{'form.clean' |
+                                    (click)="f.resetForm();clearTree = clearTree+1;">{{'form.clean' |
                                     translate }}</button>
                             </div>
                         </div>

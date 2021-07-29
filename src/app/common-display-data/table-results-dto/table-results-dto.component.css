@@ -11,5 +11,5 @@ th {
 }
 
 .activeQuery {
-  background-color: grey;
+  background-color: darkgray !important;
 }
