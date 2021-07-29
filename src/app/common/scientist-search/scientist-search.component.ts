@@ -29,6 +29,7 @@ export class ScientistSearchComponent extends PaginatedSearchComponent<Person> i
    */
   @Input() idPrefix: string;
   @Input() organizationId: string;
+  clearTree = 0;
   /**
    *
    *
@@ -109,6 +110,14 @@ export class ScientistSearchComponent extends PaginatedSearchComponent<Person> i
 
   filtroTree(event) {
     this.findRequest.filter.knowledgeAreas = event;
+  }
+
+  searchFilterTree(event) {
+    this.findRequest.filter.knowledgeAreas = event;
+    this.researchStaffServices.find(this.findRequest).subscribe(res => {
+      this.resultObject = res;
+      this.loaded = true;
+    });
   }
 
   protected findInternal(findRequest: FindRequest): Observable<Page<Person>> {
