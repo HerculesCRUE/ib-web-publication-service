@@ -11,7 +11,14 @@
     <div class="col-12">
         <div class="card flex-fill">
             <div class="card-header">
-                <legend class="legend">{{ document.title}}</legend>
+                <legend class="legend">
+                    <ng-container *ngIf="document.title;else documentDescription">
+                        {{ document.title}}
+                    </ng-container>
+                    <ng-template #documentDescription>
+                        {{ document.description}}
+                    </ng-template>
+                </legend>
             </div>
             <div id="datatables-dashboard-markets_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                 <div class="detail-container">
@@ -48,13 +55,13 @@
                             *ngTemplateOutlet="detailField;context:{'titleKey': 'documents.edition', 'value': document?.edition}">
                         </ng-container>
                         <ng-container
-                            *ngTemplateOutlet="detailField;context:{'titleKey': 'documents.startPage', 'value': document?.startPage}">
+                            *ngTemplateOutlet="detailField;context:{'titleKey': 'documents.startPage', 'value': document?.startPage, 'value2': document?.PageStart}">
                         </ng-container>
                         <ng-container
-                            *ngTemplateOutlet="detailField;context:{'titleKey': 'documents.endPage', 'value': document?.endPage}">
+                            *ngTemplateOutlet="detailField;context:{'titleKey': 'documents.endPage', 'value': document?.endPage, 'value2': document?.PageEnd}">
                         </ng-container>
                         <ng-container
-                            *ngTemplateOutlet="detailField;context:{'titleKey': 'documents.summary', 'value': document?.summary, 'value2': document.description}">
+                            *ngTemplateOutlet="detailField;context:{'titleKey': 'documents.summary', 'value': document?.summary, 'value2': document?.description}">
                         </ng-container>
                         <ng-container
                             *ngTemplateOutlet="detailField;context:{'titleKey': 'documents.placeOfPublication', 'value': document?.placeOfPublication}">

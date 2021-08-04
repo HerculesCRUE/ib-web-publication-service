@@ -474,7 +474,8 @@
     "homepage": "Homepage",
     "isStartup": "Is startup",
     "keyword": "Keyword",
-    "publicCompany": "Public company"
+    "publicCompany": "Public company",
+    "other": "Others"
   },
   "participant": {
     "title": "Participants",

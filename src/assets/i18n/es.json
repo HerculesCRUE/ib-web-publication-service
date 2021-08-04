@@ -474,7 +474,8 @@
     "homepage": "Pag. Inicio",
     "isStartup": "Es startup",
     "keyword": "Keyword",
-    "publicCompany": "Compañía pública"
+    "publicCompany": "Compañía pública",
+    "other": "Otras"
   },
   "participant": {
     "title": "Participantes",
