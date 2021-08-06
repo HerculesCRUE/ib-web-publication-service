@@ -52,7 +52,7 @@ export class NewDataImporterComponent implements OnInit {
     this.constants.SGI_PARAM = "http://herc-as-front-desa.atica.um.es/oai-pmh-xml/OAI_PMH";
 
     this.constants.CERIF = "cerif";
-    this.constants.CERIF_PARAM = "http://herc-as-front-desa.atica.um.es/oai-pmh-xml/DAI_PMH";
+    this.constants.CERIF_PARAM = "https://cris.uns.ac.rs/OAIHandlerOpenAIRECRIS";
   }
 
   /**

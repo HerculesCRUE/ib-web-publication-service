@@ -15,7 +15,9 @@
             <!-- categorias tree -->
             <div class="col-12" *ngIf="normalTree">
                 <label for="type" class="col-sm-4 control-label">{{ "scientist.area" | translate }}</label>
-                <app-new-tree [treeType]="'area'" itemClass="col-lg-4 col-md-6"></app-new-tree>
+                <app-new-tree [treeType]="'area'" (searchFilter)="searchFilterTree($event)"
+                    (filterChanged)="filtroTree($event)" [clearTree]="clearTree" itemClass="col-lg-4 col-md-6">
+                </app-new-tree>
             </div>
             <!-- categorias tree -->
             <div class="col-12" *ngIf="!normalTree">
@@ -51,7 +53,7 @@
                             <div class="input-group col-md-2 text-right">
                                 <button id="clean" [attr.aria-label]="'form.clean' | translate " role="button"
                                     aria-pressed="false" class="btn btn-secondary"
-                                    (click)="f.resetForm();">{{'form.clean' |
+                                    (click)="f.resetForm();clearTree = clearTree+1;">{{'form.clean' |
                                     translate }}</button>
                             </div>
                         </div>
@@ -68,7 +70,7 @@
                         [routerNameLink]="url" [routerField]="'id'"
                         *ngIf="loaded && resultObject?.content?.length !== 0" [data]="resultObject?.content"
                         [dtoTypeTranslate]="'scientist'" [extra]="'2'" [pageInfo]="resultObject"
-                        [visibleColumns]="['name', 'hasKnowledgeAreaTitle', 'gender']" mainColumn="name"
+                        [visibleColumns]="['name', 'gender']" mainColumn="name"
                         (sortChanged)="allScientistsFilteredSortChanged($event)">
                     </app-table-results-dto>
                     <div class="container-fluid app-table-results">

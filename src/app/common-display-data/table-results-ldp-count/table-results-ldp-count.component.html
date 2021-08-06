@@ -28,7 +28,12 @@
             <tr [ngClass]="{ 'table-secondary': i % 2 == 1 }">
               <ng-container *ngFor="let header of hedearDTO">
                 <td>
-                  <ng-container>{{ item[header] }}</ng-container>
+                  <ng-container *ngIf="header=='entity'; else noLinkRela"> <a
+                      href="/main/categories/ldp-search-result?category={{ item[header] }}">{{
+                      item[header] }}</a></ng-container>
+                  <ng-template #noLinkRela>
+                    {{ item[header] }}
+                  </ng-template>
                 </td>
               </ng-container>
             </tr>

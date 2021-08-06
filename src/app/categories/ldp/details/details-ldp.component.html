@@ -19,7 +19,15 @@
 
                         <tr [ngClass]="{ 'table-secondary': i % 2 == 1 }">
                             <td>{{detail.key}}</td>
-                            <td>{{detail.value}}</td>
+                            <td>
+                                <ng-container *ngIf="validURL(detail.value); else noLinkPrinci">
+                                    <a
+                                        href="/main/categories/ldp-entity-details?uri={{detail.value}}">{{detail.value}}</a>
+                                </ng-container>
+                                <ng-template #noLinkPrinci>
+                                    {{detail.value}}
+                                </ng-template>
+                            </td>
                         </tr>
                     </ng-container>
                 </tbody>
@@ -36,14 +44,24 @@
                 <div class="col">
                     <table class="table table-bordered" aria-label="Data displayed from Sparql">
                         <thead>
-                            <th colspan="2">{{ relation.uri }}</th>
+                            <th colspan="2"> <a
+                                    href="/main/categories/ldp-entity-details?uri={{ relation.uri }}">{{relation.uri}}</a>
+                            </th>
                         </thead>
                         <tbody>
                             <ng-container *ngFor="let detail of relation.properties; index as i">
 
                                 <tr [ngClass]="{ 'table-secondary': i % 2 == 1 }">
                                     <td>{{detail.key}}</td>
-                                    <td>{{detail.value}}</td>
+                                    <td>
+                                        <ng-container *ngIf="validURL(detail.value); else noLinkRela">
+                                            <a
+                                                href="/main/categories/ldp-entity-details?uri={{detail.value}}">{{detail.value}}</a>
+                                        </ng-container>
+                                        <ng-template #noLinkRela>
+                                            {{detail.value}}
+                                        </ng-template>
+                                    </td>
                                 </tr>
                             </ng-container>
                         </tbody>

@@ -57,4 +57,21 @@ export class DetailsLdpComponent implements OnInit, AfterViewInit {
         }, () => {
         });
     }
+
+    validURL(str: string) {
+        var urlPattern = new RegExp('^(https?:\\/\\/)?' + // protocol
+            '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
+            '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+            '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
+            '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+            '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
+
+        let isUrl = !!urlPattern.test(str);
+
+        var uuidPattern = new RegExp('^.*[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$', 'i'); // fragment locator
+
+        let isUUID = !!uuidPattern.test(str);
+
+        return isUrl && isUUID;
+    }
 }

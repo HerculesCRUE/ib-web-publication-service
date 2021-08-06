@@ -1,9 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ContentChildren, Input, OnInit, QueryList } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
-import { Observable, of } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { Observable, of, Subject } from 'rxjs';
+import { catchError, map, takeUntil } from 'rxjs/operators';
+import { NewTreeComponent } from 'src/app/graphic/new-tree/new-tree.component';
 import { HelperGraphics } from 'src/app/_helpers/helperGraphics';
 import { Direction, FindRequest, Order, Page, PageRequest, PaginatedSearchComponent } from 'src/app/_helpers/search';
 import { Person } from 'src/app/_models/person';
@@ -22,10 +23,13 @@ import { ResearchStaffService } from 'src/app/_services/research-staff.service';
   templateUrl: './scientist-search.component.html'
 })
 export class ScientistSearchComponent extends PaginatedSearchComponent<Person> implements OnInit {
+
   /**
    * university Id for search filter in case of necessary
    */
   @Input() idPrefix: string;
+  @Input() organizationId: string;
+  clearTree = 0;
   /**
    *
    *
@@ -96,12 +100,32 @@ export class ScientistSearchComponent extends PaginatedSearchComponent<Person> i
     this.graphicService.personArea().subscribe(data => {
       this.echartOptions = HelperGraphics.configChartPie(this.newData(data), 'Número personas por area');
     });
+
+    if (this.organizationId) {
+      this.findRequest.filter.organizationId = this.organizationId;
+    }
+
+
   }
 
+  filtroTree(event) {
+    this.findRequest.filter.knowledgeAreas = event;
+  }
 
-
+  searchFilterTree(event) {
+    this.findRequest.filter.knowledgeAreas = event;
+    this.researchStaffServices.find(this.findRequest).subscribe(res => {
+      this.resultObject = res;
+      this.loaded = true;
+    });
+  }
 
   protected findInternal(findRequest: FindRequest): Observable<Page<Person>> {
+
+    if (this.organizationId) {
+      this.findRequest.filter.organizationId = this.organizationId;
+    }
+
     const page: Page<Person> = new Page();
     return this.researchStaffServices.find(findRequest).pipe(
       map((x) => {
@@ -157,6 +181,8 @@ export class ScientistSearchComponent extends PaginatedSearchComponent<Person> i
    * @memberof ScientificProductionComponent
    */
   filterTop(event, filterName: string) {
+
+    console.log("filter:" + this.findRequest.filter.knowledgeAreas);
     this.findRequest.pageRequest.page = 0;
     this.loaded = false;
     event !== 'undefined' ? this.filters.set(filterName, event) : this.filters.set(filterName, '');

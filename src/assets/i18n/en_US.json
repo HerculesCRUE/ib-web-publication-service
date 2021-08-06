@@ -216,7 +216,13 @@
     "contains": "Contains",
     "participates": "Participates",
     "provides": "Provides",
-    "relatedBy": "Related by"
+    "relatedBy": "Related by",
+    "center": "Centers",
+    "department": "Departments",
+    "research-group": "Research groups",
+    "funding-organization": "Funding Organizations",
+    "organization": "Organizations",
+    "university": "Universities"
   },
   "scientist": {
     "title": "Research staff",
@@ -468,7 +474,8 @@
     "homepage": "Homepage",
     "isStartup": "Is startup",
     "keyword": "Keyword",
-    "publicCompany": "Public company"
+    "publicCompany": "Public company",
+    "other": "Others"
   },
   "participant": {
     "title": "Participants",

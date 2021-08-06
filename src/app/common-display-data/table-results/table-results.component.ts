@@ -62,6 +62,7 @@ export class TableResultsComponent
   @Input()
   set data(val: SparqlResults) {
     this.dataComplete = JSON.parse(JSON.stringify(val));
+    this.modifyUriType(this.dataComplete);
   }
 
   get data(): SparqlResults {
@@ -198,12 +199,40 @@ export class TableResultsComponent
 
     return of(page);
   }
+
+  protected modifyUriType(content: SparqlResults) {
+    content.results.bindings.map((element) => {
+      content.head.vars.forEach((head) => {
+        if (element[head].type == 'uri' && !this.validURL(element[head].value)) {
+          element[head].type = 'literal';
+        }
+      })
+    });
+  }
+
   protected removeInternal(entity: any): Observable<{} | Response> {
     return;
   }
 
   protected getDefaultOrder(): Order {
     return new Order();
+  }
+
+  validURL(str: string) {
+    var urlPattern = new RegExp('^(https?:\\/\\/)?' + // protocol
+      '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
+      '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
+      '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
+      '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
+      '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
+
+    let isUrl = !!urlPattern.test(str);
+
+    var uuidPattern = new RegExp('^.*[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$', 'i'); // fragment locator
+
+    let isUUID = !!uuidPattern.test(str);
+
+    return isUrl && isUUID;
   }
 
   showPage(i: number): void {
@@ -253,5 +282,6 @@ export class TableResultsComponent
     }
     return needTooltip;
   }
+
 
 }

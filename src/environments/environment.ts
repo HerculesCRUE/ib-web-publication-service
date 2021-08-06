@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  urlBase: 'http://localhost:8787',
+  urlBase: 'http://localhost:18787',
   oauthUrl: '',
   urlWebsocket: '/gs-guide-websocket',
   oauthClientId: 'acme',

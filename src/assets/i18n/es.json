@@ -216,7 +216,13 @@
     "contains": "Contiene",
     "participates": "Participa en",
     "provides": "Provee",
-    "relatedBy": "Relacionado con"
+    "relatedBy": "Relacionado con",
+    "center": "Centros",
+    "department": "Departamentos",
+    "research-group": "Grupos investigación",
+    "funding-organization": "Organizaciones financiadoras",
+    "organization": "Organizaciones",
+    "university": "Universidades"
   },
   "scientist": {
     "title": "Titulo",
@@ -468,7 +474,8 @@
     "homepage": "Pag. Inicio",
     "isStartup": "Es startup",
     "keyword": "Keyword",
-    "publicCompany": "Compañía pública"
+    "publicCompany": "Compañía pública",
+    "other": "Otras"
   },
   "participant": {
     "title": "Participantes",

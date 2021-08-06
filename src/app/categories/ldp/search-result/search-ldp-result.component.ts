@@ -25,6 +25,8 @@ export class SearchLdpResultComponent extends PaginatedSearchComponent<LdpSearch
 
   title: string;
 
+  category: string;
+
   constructor(
     private researchmentStructureService: LdpService,
     router: Router,
@@ -40,6 +42,7 @@ export class SearchLdpResultComponent extends PaginatedSearchComponent<LdpSearch
       .subscribe(params => {
         console.log(params);
         this.title = params['title'];
+        this.category = params['category'];
         if (this.loaded) {
           this.filterResearchmentStructures();
         }
@@ -49,7 +52,12 @@ export class SearchLdpResultComponent extends PaginatedSearchComponent<LdpSearch
 
   protected findInternal(findRequest: FindRequest): Observable<Page<LdpSearchResult>> {
     const page: Page<LdpSearchResult> = new Page();
-    return this.researchmentStructureService.findByTitle(this.title, findRequest).pipe(
+    let method: Observable<Page<LdpSearchResult>> = this.researchmentStructureService.findByTitle(this.title, findRequest);
+    if (this.category) {
+      method = this.researchmentStructureService.findByCategory(this.category, findRequest);
+    }
+
+    return method.pipe(
       map((x) => {
         this.loaded = true;
         return x;
@@ -80,7 +88,11 @@ export class SearchLdpResultComponent extends PaginatedSearchComponent<LdpSearch
   filterResearchmentStructures() {
     this.findRequest.pageRequest.page = 0;
     this.loaded = false;
-    this.researchmentStructureService.findByTitle(this.title, this.findRequest).subscribe((data) => {
+    let method: Observable<Page<LdpSearchResult>> = this.researchmentStructureService.findByTitle(this.title, this.findRequest);
+    if (this.category) {
+      method = this.researchmentStructureService.findByCategory(this.category, this.findRequest);
+    }
+    method.subscribe((data) => {
       this.resultObject = data;
       this.loaded = true;
     }, () => {
@@ -98,7 +110,11 @@ export class SearchLdpResultComponent extends PaginatedSearchComponent<LdpSearch
   allResearchmentStructuresFilteredSortChanged(pageRequest: PageRequest): void {
     this.findRequest.pageRequest.property = pageRequest.property;
     this.findRequest.pageRequest.direction = pageRequest.direction;
-    this.researchmentStructureService.findByTitle(this.title, this.findRequest).subscribe((data) => {
+    let method: Observable<Page<LdpSearchResult>> = this.researchmentStructureService.findByTitle(this.title, this.findRequest);
+    if (this.category) {
+      method = this.researchmentStructureService.findByCategory(this.category, this.findRequest);
+    }
+    method.subscribe((data) => {
       this.resultObject = data;
       this.loaded = true;
     }, () => {
