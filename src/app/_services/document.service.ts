@@ -101,8 +101,8 @@ export class DocumentService extends AbstractService {
         let parameters = new HttpParams();
         parameters = Helper.addParam(parameters, 'types', findRequest.filter.types);
         parameters = Helper.addParam(parameters, 'title', findRequest.filter.name);
-        parameters = Helper.addParam(parameters, 'yearFrom', findRequest.filter.yearFrom);
-        parameters = Helper.addParam(parameters, 'yearTo', findRequest.filter.yearTo);
+        parameters = Helper.addParam(parameters, 'dateFrom', findRequest.filter.yearFrom);
+        parameters = Helper.addParam(parameters, 'dateTo', findRequest.filter.yearTo);
         parameters = Helper.addParam(parameters, 'directedBy', findRequest.filter.directedBy);
         parameters = Helper.addParam(parameters, 'date', findRequest.filter.date);
         parameters = Helper.addParam(parameters, 'authorId', findRequest.filter.authorId);
