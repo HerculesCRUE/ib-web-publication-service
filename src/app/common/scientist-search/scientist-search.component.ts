@@ -29,6 +29,7 @@ export class ScientistSearchComponent extends PaginatedSearchComponent<Person> i
    */
   @Input() idPrefix: string;
   @Input() organizationId: string;
+  clearTree = 0;
   /**
    *
    *
@@ -111,6 +112,14 @@ export class ScientistSearchComponent extends PaginatedSearchComponent<Person> i
     this.findRequest.filter.knowledgeAreas = event;
   }
 
+  searchFilterTree(event) {
+    this.findRequest.filter.knowledgeAreas = event;
+    this.researchStaffServices.find(this.findRequest).subscribe(res => {
+      this.resultObject = res;
+      this.loaded = true;
+    });
+  }
+
   protected findInternal(findRequest: FindRequest): Observable<Page<Person>> {
 
     if (this.organizationId) {
@@ -135,7 +144,7 @@ export class ScientistSearchComponent extends PaginatedSearchComponent<Person> i
 
   protected getDefaultOrder(): Order {
     return {
-      property: 'id',
+      property: 'name',
       direction: Direction.ASC
     };
   }

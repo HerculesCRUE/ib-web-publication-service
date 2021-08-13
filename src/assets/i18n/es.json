@@ -70,7 +70,7 @@
     "import-data": "Importador de datos",
     "delete-data": "Borrado de datos",
     "validator": "Validadores",
-    "ldp": "Entidades del grafo ASIO-SGI",
+    "ldp": "Entidades del grafo",
     "installer": "Instalador",
     "etl": "ETL",
     "information": "Info",
@@ -109,8 +109,8 @@
   },
   "sparql": {
     "username": "Nombre de usuario",
-    "sparqlQuery": "Query",
-    "sparqlName": "Nombre",
+    "sparqlQuery": "Consulta",
+    "sparqlName": "Título",
     "entityId": "ID",
     "main": {
       "federated": "Consultas federadas",
@@ -165,7 +165,7 @@
     "information": "Info",
     "links": "Enlaces",
     "validation": "Validadores",
-    "ldp": "Entidades del grafo ASIO-SGI",
+    "ldp": "Entidades del grafo",
     "validator": "Validadores"
   },
   "links": {
@@ -474,7 +474,8 @@
     "homepage": "Pag. Inicio",
     "isStartup": "Es startup",
     "keyword": "Keyword",
-    "publicCompany": "Compañía pública"
+    "publicCompany": "Compañía pública",
+    "other": "Otras"
   },
   "participant": {
     "title": "Participantes",
@@ -637,7 +638,7 @@
     "edit-form": "Modificar validador"
   },
   "ldp": {
-    "header": "Entidades del grafo ASIO-SGI",
+    "header": "Entidades del grafo de datos de investigación de la Universidad de Murcia",
     "entity": "Entidad",
     "count": "Total",
     "uri": "URI",

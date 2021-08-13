@@ -109,8 +109,8 @@
   },
   "sparql": {
     "username": "Username",
-    "sparqlQuery": "Query",
-    "sparqlName": "Name",
+    "sparqlQuery": "Consultation",
+    "sparqlName": "Title",
     "entityId": "ID",
     "main": {
       "federated": "Federated queries",
@@ -474,7 +474,8 @@
     "homepage": "Homepage",
     "isStartup": "Is startup",
     "keyword": "Keyword",
-    "publicCompany": "Public company"
+    "publicCompany": "Public company",
+    "other": "Others"
   },
   "participant": {
     "title": "Participants",

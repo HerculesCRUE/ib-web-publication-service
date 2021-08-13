@@ -146,7 +146,7 @@ export class PatentsComponent extends PaginatedSearchComponent<Patent> implement
 
   protected getDefaultOrder(): Order {
     return {
-      property: 'id',
+      property: 'title',
       direction: Direction.ASC
     };
   }
