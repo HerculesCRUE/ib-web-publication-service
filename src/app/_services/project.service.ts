@@ -61,7 +61,7 @@ export class ProjectService extends AbstractService {
      */
     findbyId(id: string): Observable<Project> {
         return this.httpClient
-            .get(Helper.getUrl('/project/' + id)).pipe(
+            .get(Helper.getUrl('/project/' + encodeURIComponent(id))).pipe(
                 catchError(this.handleError)
             );
     }
