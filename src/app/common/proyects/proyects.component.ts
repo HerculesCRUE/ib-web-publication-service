@@ -189,7 +189,7 @@ export class ProyectsComponent extends PaginatedSearchComponent<Project> impleme
 
   protected getDefaultOrder(): Order {
     return {
-      property: 'id',
+      property: 'title',
       direction: Direction.ASC
     };
   }

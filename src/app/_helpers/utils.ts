@@ -7,6 +7,10 @@ import * as moment from 'moment';
 import { Binding, SparqlResults } from '../_models/sparql';
 import { Graphic } from '../_models/graphic';
 import { GraphicModelTree } from '../_models/graphicModelTree';
+import { DatePipe } from '@angular/common';
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
+
 /**
  * Clase de ayuda para la realización de llamadas HTTP.
  */
@@ -400,5 +404,15 @@ export class Helper {
   static returnLastValue(url): string {
     const typeFromURL = url.split('/');
     return typeFromURL.pop();
+  }
+
+  static formatDate(dateStr: string) {
+    registerLocaleData(localeEs, 'es');
+    try {
+      let date = new Date(dateStr);
+      return new DatePipe('es').transform(date, "yyyy-MM-dd HH:mm:ss")
+    } catch (error) {
+      return dateStr;
+    }
   }
 }

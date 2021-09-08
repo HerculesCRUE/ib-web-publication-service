@@ -144,7 +144,7 @@ export class ScientistSearchComponent extends PaginatedSearchComponent<Person> i
 
   protected getDefaultOrder(): Order {
     return {
-      property: 'id',
+      property: 'name',
       direction: Direction.ASC
     };
   }

@@ -71,7 +71,7 @@ export class EventsComponent extends PaginatedSearchComponent<Event> implements 
 
   protected getDefaultOrder(): Order {
     return {
-      property: 'id',
+      property: 'title',
       direction: Direction.ASC
     };
   }

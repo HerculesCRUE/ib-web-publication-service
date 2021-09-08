@@ -109,8 +109,8 @@
   },
   "sparql": {
     "username": "Username",
-    "sparqlQuery": "Query",
-    "sparqlName": "Name",
+    "sparqlQuery": "Consultation",
+    "sparqlName": "Title",
     "entityId": "ID",
     "main": {
       "federated": "Federated queries",

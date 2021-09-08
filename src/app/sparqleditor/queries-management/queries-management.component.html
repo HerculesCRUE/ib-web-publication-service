@@ -64,7 +64,7 @@
                         [hasActions]="true" [displayPagination]="false" [findRequest]="findRequest"
                         [dtoTypeTranslate]="'sparql'" [extra]="'1'"
                         *ngIf="loaded && resultObject?.content?.length !== 0" [data]="resultObject?.content"
-                        [visibleColumns]="['username', 'sparqlQuery', 'sparqlName']" [pageInfo]="resultObject"
+                        [visibleColumns]="['sparqlName', 'sparqlQuery']" [pageInfo]="resultObject"
                         (sortChanged)="allPatentsFilteredSortChanged($event)">
                     </app-table-results-dto>
                     <div class="container-fluid app-table-results">

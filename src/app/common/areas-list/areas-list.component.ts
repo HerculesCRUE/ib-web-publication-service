@@ -94,7 +94,7 @@ export class AreasListComponent extends PaginatedSearchComponent<KnowledgeArea> 
    */
   protected getDefaultOrder(): Order {
     return {
-      property: 'id',
+      property: 'title',
       direction: Direction.ASC
     };
   }
