@@ -17,7 +17,7 @@ import { LdpRelatedSearchResult } from 'src/app/_models/LdpRelatedSearchResult';
  * Class that draw a table
  *
  * @export
- * @class TableResultsLdpSearchComponent
+ * @class TableResultsLdpRelatedSearchComponent
  * @extends {PaginatedSearchComponent<any>}
  * @implements {OnChanges}
  * 
@@ -26,7 +26,7 @@ import { LdpRelatedSearchResult } from 'src/app/_models/LdpRelatedSearchResult';
  *
  */
 @Component({
-  selector: 'app-table-search-ldp-related-result',
+  selector: 'app-table-results-ldp-related-search',
   templateUrl: './table-results-ldp-related-search.component.html',
   styleUrls: ['./table-results-ldp-related-search.component.css'],
 })
@@ -39,7 +39,7 @@ export class TableResultsLdpRelatedSearchComponent
   /**
  * Mandatory to show the data in the table
  *
- * @memberof TableResultsLdpSearchComponent
+ * @memberof TableResultsLdpRelatedSearchComponent
  */
   @Input()
   set data(val: any) {
@@ -60,7 +60,7 @@ export class TableResultsLdpRelatedSearchComponent
    * 
    *
    * @type {Page<any>}
-   * @memberof TableResultsLdpSearchComponent
+   * @memberof TableResultsLdpRelatedSearchComponent
    */
   @Input()
   pageInfo: Page<any>;
@@ -69,7 +69,7 @@ export class TableResultsLdpRelatedSearchComponent
    * reouterField sets a link on the row
    *
    * @type {string}
-   * @memberof TableResultsLdpSearchComponent
+   * @memberof TableResultsLdpRelatedSearchComponent
    */
   @Input()
   routerField: string;
@@ -77,7 +77,7 @@ export class TableResultsLdpRelatedSearchComponent
    *
    *
    * @type {string}
-   * @memberof TableResultsLdpSearchComponent
+   * @memberof TableResultsLdpRelatedSearchComponent
    */
   @Input()
   routerNameLink = './';
@@ -92,7 +92,7 @@ export class TableResultsLdpRelatedSearchComponent
    * Send the event when page is changed
    *
    * @type {EventEmitter<number>}
-   * @memberof TableResultsLdpSearchComponent
+   * @memberof TableResultsLdpRelatedSearchComponent
    */
   @Output()
   pageChanged: EventEmitter<number> = new EventEmitter<number>();
@@ -101,7 +101,7 @@ export class TableResultsLdpRelatedSearchComponent
    * Send the event when page is changed
    *
    * @type {EventEmitter<number>}
-   * @memberof TableResultsLdpSearchComponent
+   * @memberof TableResultsLdpRelatedSearchComponent
    */
   @Output()
   sizeChanged: EventEmitter<number> = new EventEmitter<number>();
@@ -120,7 +120,7 @@ export class TableResultsLdpRelatedSearchComponent
    *
    *
    * @type {Array<string>}
-   * @memberof TableResultsLdpSearchComponent
+   * @memberof TableResultsLdpRelatedSearchComponent
    */
   hedearDTO: Array<string> = [];
 
@@ -131,7 +131,7 @@ export class TableResultsLdpRelatedSearchComponent
    *
    *
    * @type {Array<string>}
-   * @memberof TableResultsLdpSearchComponent
+   * @memberof TableResultsLdpRelatedSearchComponent
    */
   @Input() dtoTypeTranslate = '';
   @Input() extra = '';
@@ -149,7 +149,7 @@ export class TableResultsLdpRelatedSearchComponent
   ngOnChanges(changes: SimpleChanges): void {
     // obtengo los headers
     if (this.data?.length > 0) {
-      this.hedearDTO = Object.keys(this.data[0]);
+      this.hedearDTO = ['relatedDescription', 'relatedType'];
     }
     if (!!this.pageInfo) {
       this.dataCompleteToShow = this.dataComplete;

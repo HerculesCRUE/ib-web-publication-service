@@ -19,10 +19,11 @@
 
 
                     <div class="loader" *ngIf="!loaded"></div>
-                    <app-table-search-ldp-related-result [displayPagination]="false" [findRequest]="findRequest"
+                    <app-table-results-ldp-related-search [displayPagination]="false" [findRequest]="findRequest"
+                        *ngIf="loaded && resultObject?.content?.length !== 0" [dtoTypeTranslate]="'ldp'"
                         [data]="resultObject?.content" [pageInfo]="resultObject"
                         (sortChanged)="allResearchmentStructuresFilteredSortChanged($event)">
-                    </app-table-search-ldp-related-result>
+                    </app-table-results-ldp-related-search>
                     <div class="container-fluid app-table-results">
                         <div class="row">
                             <div class="col">

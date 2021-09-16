@@ -49,7 +49,8 @@ import { TableResultsLdpRelatedSearchComponent } from '../common-display-data/ta
     TableResultsImporterComponent,
     TableResultsValidatorComponent,
     TableResultsLdpCountComponent,
-    TableResultsLdpSearchComponent],
+    TableResultsLdpSearchComponent,
+    TableResultsLdpRelatedSearchComponent],
   providers: [
     PatentService,
     DocumentService

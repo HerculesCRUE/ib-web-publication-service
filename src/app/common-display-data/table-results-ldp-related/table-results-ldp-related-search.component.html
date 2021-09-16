@@ -1,20 +1,20 @@
 <div class="container-fluid app-table-results">
     <div class="row">
         <div class="col">
-            <table class="table table-bordered" aria-label="Data displayed from Sparql" *ngIf="!!dataComplete">
+            <table class="table table-bordered" aria-label="Data displayed from Sparql">
                 <caption>{{'form.results' | translate }}</caption>
                 <thead>
                     <tr>
 
                         <ng-container *ngFor="let header of hedearDTO">
                             <ng-container>
-                                <th class="sortable" (click)="sort(header)" id="{{header + dtoTypeTranslate + extra}}"
-                                    *ngIf="header !== 'importerErrors' && header !== 'params'">
+                                <th id="{{header + dtoTypeTranslate + extra}}">
                                     <em class="oi oi-info" *ngIf="needTooltip(header).required" placement="top"
                                         ngbTooltip="{{needTooltip(header).textValue}}"></em>
                                     {{ dtoTypeTranslate + '.' + header | translate }}
                                     <em class="float-right" [ngClass]="getSortIcon(header)"></em>
                                 </th>
+
                             </ng-container>
 
 
@@ -28,9 +28,9 @@
                         <tr [ngClass]="{ 'table-secondary': i % 2 == 1 }">
                             <ng-container *ngFor="let header of hedearDTO">
                                 <td>
-                                    <ng-container *ngIf="header==='uri'; else noLink"><a
+                                    <ng-container *ngIf="header==='relatedDescription'; else noLink"><a
                                             [routerLink]="['/main/categories/ldp-entity-details']"
-                                            [queryParams]="{uri: item[header]}">{{item[header] }}</a>
+                                            [queryParams]="{uri: item['relatedUri']}">{{item[header] }}</a>
                                     </ng-container>
                                     <ng-template #noLink>{{item[header] }}</ng-template>
                                 </td>
