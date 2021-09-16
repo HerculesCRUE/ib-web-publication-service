@@ -7,6 +7,7 @@ import { Direction, FindRequest, Order, Page } from "../_helpers/search";
 import { Helper } from "../_helpers/utils";
 import { LdpEntityCounter } from "../_models/ldpEntity";
 import { LdpEntityDetails } from "../_models/ldpEntityDetails";
+import { LdpRelatedSearchResult } from "../_models/LdpRelatedSearchResult";
 import { LdpSearchResult } from "../_models/ldpSearchResult";
 
 @Injectable({
@@ -111,6 +112,39 @@ export class LdpService extends AbstractService {
         parameters = Helper.addPaginationParams(parameters, findRequest.pageRequest);
         return this.httpClient
             .get(Helper.getUrl('/ldp/findCategory'), {
+                params: parameters
+            }).pipe(
+                catchError(this.handleError)
+            );
+    }
+
+    /**
+ *
+ *
+ * @param {FindRequest} findRequest
+ * @return {*}  {Observable<Page<LdpRelatedSearchResult>>}
+ * @memberof DataImporterService
+ */
+    findRelated(uri: string, findRequest: FindRequest): Observable<Page<LdpRelatedSearchResult>> {
+        // Filter params
+        let parameters = new HttpParams();
+        parameters = Helper.addParam(parameters, 'uri', uri);
+
+
+        if (findRequest && findRequest.pageRequest && !findRequest.pageRequest.property) {
+
+            // we set default order (workaround!!!!). The view is a mess!!!
+            const order = new Order();
+            order.property = 'relationship';
+            order.direction = Direction.ASC;
+
+            findRequest.setOrder(order.direction, order.property);
+        }
+
+        // Pagination params
+        parameters = Helper.addPaginationParams(parameters, findRequest.pageRequest);
+        return this.httpClient
+            .get(Helper.getUrl('/ldp/findRelated'), {
                 params: parameters
             }).pipe(
                 catchError(this.handleError)

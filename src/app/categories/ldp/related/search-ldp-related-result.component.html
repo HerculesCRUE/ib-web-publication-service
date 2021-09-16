@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="legend">{{ "ldp.relatedHeader" | translate }}</h1>
+    </div>
+</div>
+<fieldset class="panel-default">
+    <legend></legend>
+    <div class="row">
+        <div class="col-12">
+            <div class="card flex-fill">
+                <div class="card-header">
+                    <h5 class="card-title mb-0" *ngIf="loaded && resultObject?.content?.length === 0">
+                        {{'form.no-result' | translate}}</h5>
+                    <h5 class="card-title mb-0" *ngIf="loaded && resultObject?.content?.length !== 0">
+                        {{'form.results-amount' | translate}} {{resultObject?.totalElements}}
+                    </h5>
+                </div>
+                <div id="datatables-dashboard-markets_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+
+
+                    <div class="loader" *ngIf="!loaded"></div>
+                    <app-table-search-ldp-related-result [displayPagination]="false" [findRequest]="findRequest"
+                        [data]="resultObject?.content" [pageInfo]="resultObject"
+                        (sortChanged)="allResearchmentStructuresFilteredSortChanged($event)">
+                    </app-table-search-ldp-related-result>
+                    <div class="container-fluid app-table-results">
+                        <div class="row">
+                            <div class="col">
+                                <app-pagination [resultObject]="resultObject" (pageChanged)="showPage($event)"
+                                    (sizeChanged)="changeSize($event)">
+                                </app-pagination>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</fieldset>

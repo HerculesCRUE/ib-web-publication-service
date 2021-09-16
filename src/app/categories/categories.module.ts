@@ -52,6 +52,7 @@ import { AllDataImporterStructuresComponent } from './data-importer/all-data-imp
 import { AllLdpComponent } from './ldp/all-ldp/all-ldp.component';
 import { SearchLdpComponent } from './ldp/search/search-ldp.component';
 import { SearchLdpResultComponent } from './ldp/search-result/search-ldp-result.component';
+import { RelatedLdpComponent } from './ldp/related/search-ldp-related-result.component';
 import { NewDataImporterComponent } from './data-importer/new-data-importer/new-data-importer.component';
 import { ValidatorComponent } from './validator/validator.component';
 import { AllValidatorStructuresComponent } from './validator/all-validator/all-validator-structures.component';
@@ -73,7 +74,7 @@ import { EtlComponent } from '../etl/etl.component';
     DiscoveryControlComponent, DiscoverySearchComponent, DiscoveryActionComponent, ResultItemComponent, UrisComponent, ServiceDiscoveryComponent,
     PeopleInvolvedComponent, CollaboratorsComponent, ScientificPublicationDetailComponent, AreasListComponent, DataImporterComponent, AllDataImporterStructuresComponent, NewDataImporterComponent,
     ValidatorComponent, AllValidatorStructuresComponent, NewValidatorComponent, LdpComponent, AllLdpComponent, SearchLdpComponent, SearchLdpResultComponent,
-    DataDeletionComponent, DetailsLdpComponent, EtlComponent
+    DataDeletionComponent, DetailsLdpComponent, EtlComponent, RelatedLdpComponent
   ],
   imports: [
     NgxEchartsModule,

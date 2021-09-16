@@ -645,7 +645,12 @@
     "title": "Título/Nombre",
     "details": {
       "relations": "Entidades relacionadas"
-    }
+    },
+    "relatedHeader": "Entidades relacionadas",
+    "relationship" : "Relación",    
+    "relatedUri": "Uri",
+    "relatedType": "Tipo",
+    "relatedDescription": "Descripción"
   },
   "dataDeletion": {
     "header": "Borrado de datos",
