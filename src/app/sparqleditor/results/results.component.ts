@@ -106,7 +106,7 @@ export class ResultsComponent implements OnChanges, AfterViewChecked {
   }
 
   private isText(binding: BindingValue): boolean {
-    return binding.type === 'literal' && binding.hasOwnProperty('xml:lang');
+    return binding.type === 'literal' && !this.isNumeric(binding);
   }
 
   private isNumeric(binding: BindingValue): boolean {
