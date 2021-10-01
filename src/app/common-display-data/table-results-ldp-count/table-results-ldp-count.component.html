@@ -29,8 +29,8 @@
               <ng-container *ngFor="let header of hedearDTO">
                 <td>
                   <ng-container *ngIf="header=='entity'; else noLinkRela"> <a
-                      href="/main/categories/ldp-search-result?category={{ item[header] }}">{{
-                      item[header] }}</a></ng-container>
+                      [routerLink]="['/main/categories/ldp-search-result']" [queryParams]="{category: item[header]}">{{
+                      item['entityName'] }}</a></ng-container>
                   <ng-template #noLinkRela>
                     {{ item[header] }}
                   </ng-template>

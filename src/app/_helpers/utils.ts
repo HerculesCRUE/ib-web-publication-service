@@ -415,4 +415,29 @@ export class Helper {
       return dateStr;
     }
   }
+
+  static getLdpEntityName(entity: string, lastPosition?: number): string {
+    let entityName = entity;
+    if (entity) {
+      const position = !lastPosition || lastPosition >= 0 ? -1 : lastPosition;
+      const parts = entity.split('/');
+      if (parts.length + position > 0) {
+        entityName = parts[parts.length + position];
+      }
+    }
+    return entityName;
+  }
+  static getLdpEntityURI(entity: string, lastPosition?: number): string {
+    let entityURI = entity;
+    if (entity) {
+      const position = (!lastPosition || lastPosition >= 0 ? -1 : lastPosition) + 1;
+      const parts = entity.split('/');
+      if (parts.length + position > 0) {
+        parts.splice(position, parts.length);
+        entityURI = parts.join('/');
+      }
+    }
+    return entityURI;
+  }
+
 }

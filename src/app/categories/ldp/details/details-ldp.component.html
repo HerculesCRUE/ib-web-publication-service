@@ -8,24 +8,35 @@
 <br />
 <div class="loader" *ngIf="!details"></div>
 <div class="container-fluid app-table-results" *ngIf="details">
+
+    <a [routerLink]="['/main/ldp']">{{'ldp.category.names' | translate}}</a> &raquo;
+    <a [routerLink]="['/main/categories/ldp-search-result']"
+        [queryParams]="{category: categoryURI}">{{categoryName}}</a>
+
+    <h3>{{entityName}} <a class="copy-uri" [ngClass]="{'copied': uriCopied}" (click)="copyURI(details.uri)">COPY URI</a>
+    </h3>
+
     <div class="row">
         <div class="col">
             <table class="table table-bordered" aria-label="Data displayed from Sparql">
-                <thead>
-                    <th colspan="2">{{ details.uri }}</th>
-                </thead>
                 <tbody>
                     <ng-container *ngFor="let detail of details.properties; index as i">
 
                         <tr [ngClass]="{ 'table-secondary': i % 2 == 1 }">
-                            <td>{{detail.key}}</td>
+                            <td>{{detail.propertyName}}</td>
                             <td>
-                                <ng-container *ngIf="validURL(detail.value); else noLinkPrinci">
-                                    <a
-                                        href="/main/categories/ldp-entity-details?uri={{detail.value}}">{{detail.value}}</a>
+                                <ng-container *ngIf="detail.categoryURI; else noCategoryURI">
+                                    <a [routerLink]="['/main/categories/ldp-search-result']"
+                                        [queryParams]="{category: detail.categoryURI}">{{detail.value}}</a>
                                 </ng-container>
-                                <ng-template #noLinkPrinci>
-                                    {{detail.value}}
+                                <ng-template #noCategoryURI>
+                                    <ng-container *ngIf="validURL(detail.value); else noLinkPrinci">
+                                        <a [routerLink]="['/main/categories/ldp-entity-details']"
+                                            [queryParams]="{uri: detail.value}">{{detail.value}}</a>
+                                    </ng-container>
+                                    <ng-template #noLinkPrinci>
+                                        {{detail.value}}
+                                    </ng-template>
                                 </ng-template>
                             </td>
                         </tr>
@@ -36,31 +47,23 @@
     </div>
 </div>
 
-<ng-container *ngIf="details && details.relations.length > 0">
-    <h3>{{ "ldp.details.relations" | translate }}</h3>
-    <ng-container *ngFor="let relation of details.relations">
+<ng-container *ngIf="details && relations.length > 0">
+    <ng-container *ngFor="let relation of relations">
+
         <div class="container-fluid app-table-results" *ngIf="details">
             <div class="row">
-                <div class="col">
+                <div class="col-lg-12">
+                    <h5>{{relation.propertyName}}</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
                     <table class="table table-bordered" aria-label="Data displayed from Sparql">
-                        <thead>
-                            <th colspan="2"> <a
-                                    href="/main/categories/ldp-entity-details?uri={{ relation.uri }}">{{relation.uri}}</a>
-                            </th>
-                        </thead>
                         <tbody>
-                            <ng-container *ngFor="let detail of relation.properties; index as i">
-
+                            <ng-container *ngFor="let value of relation.values; index as i">
                                 <tr [ngClass]="{ 'table-secondary': i % 2 == 1 }">
-                                    <td>{{detail.key}}</td>
-                                    <td>
-                                        <ng-container *ngIf="validURL(detail.value); else noLinkRela">
-                                            <a
-                                                href="/main/categories/ldp-entity-details?uri={{detail.value}}">{{detail.value}}</a>
-                                        </ng-container>
-                                        <ng-template #noLinkRela>
-                                            {{detail.value}}
-                                        </ng-template>
+                                    <td><a [routerLink]="['/main/categories/ldp-entity-details']"
+                                            [queryParams]="{uri: value.uri}">{{value.relationName}}</a>
                                     </td>
                                 </tr>
                             </ng-container>
