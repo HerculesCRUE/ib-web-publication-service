@@ -4,10 +4,16 @@
         <div class="col-12">
             <div class="card flex-fill">
                 <div class="card-header">
-                    <h5 class="card-title mb-0" *ngIf="loaded && resultObject?.content?.length === 0">
-                        {{'form.no-result' | translate}}</h5>
-                    <h5 class="card-title mb-0" *ngIf="loaded && resultObject?.content?.length !== 0">
-                        {{'form.results-amount' | translate}} {{resultObject?.totalElements}}
+                    <h4 class="mb-0" *ngIf="loaded" style="float: left;">
+                        {{'ldp.category.names' | translate}}
+                    </h4>
+                    <h5 class="card-title mb-0" *ngIf="loaded" style="float: right;">
+                        <ng-container *ngIf="resultObject?.content?.length === 0; else hasResults">
+                            {{'form.no-result' | translate}}
+                        </ng-container>
+                        <ng-template #hasResults>
+                            {{'form.results-amount' | translate}} {{resultObject?.totalElements}}
+                        </ng-template>
                     </h5>
                 </div>
                 <div id="datatables-dashboard-markets_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">

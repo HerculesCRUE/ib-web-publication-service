@@ -12,6 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Observable, of } from 'rxjs';
 import { Direction, FindRequest, Order, Page, PaginatedSearchComponent } from 'src/app/_helpers/search';
 import { LdpRelatedSearchResult } from 'src/app/_models/LdpRelatedSearchResult';
+import { Helper } from 'src/app/_helpers/utils';
 
 /**
  * Class that draw a table
@@ -44,7 +45,26 @@ export class TableResultsLdpRelatedSearchComponent
   @Input()
   set data(val: any) {
     if (val) {
-      this.dataComplete = JSON.parse(JSON.stringify(val));
+      this.translateService.get('ldp.category.values').subscribe((translations: any) => {
+        this.dataComplete = JSON.parse(JSON.stringify(val));
+        this.dataComplete.forEach(item => {
+          const relatedType = Helper.getLdpEntityName(item.relatedType);
+          let name = null;
+          if (translations && translations[relatedType]) {
+            name = translations[relatedType].s;
+          }
+          item.relatedType = name ? name : relatedType;
+
+          if (!item.relatedDescription) {
+            if (item.relatedUri) {
+              item.relatedDescription = Helper.getLdpEntityName(item.relatedUri);
+            } else {
+              item.relatedDescription = '---';
+            }
+          }
+        });
+      });
+
     }
 
   }

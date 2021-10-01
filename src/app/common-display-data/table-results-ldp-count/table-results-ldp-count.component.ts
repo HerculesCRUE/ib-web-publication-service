@@ -12,6 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Observable, of } from 'rxjs';
 import { Direction, FindRequest, Order, Page, PaginatedSearchComponent } from 'src/app/_helpers/search';
 import { LdpEntityCounter } from 'src/app/_models/ldpEntity';
+import { Helper } from 'src/app/_helpers/utils';
 
 /**
  * Class that draw a table
@@ -44,7 +45,19 @@ export class TableResultsLdpCountComponent
   @Input()
   set data(val: any) {
     if (val) {
-      this.dataComplete = JSON.parse(JSON.stringify(val));
+      const data: Array<{ entity: string, count: number, entityName: string }> = JSON.parse(JSON.stringify(val));
+
+      this.translateService.get('ldp.category.values').subscribe((translations: any) => {
+        data.forEach(d => {
+          let name = Helper.getLdpEntityName(d.entity);
+          if (translations && translations[name]) {
+            name = translations[name].s;
+          }
+          d.entityName = name;
+        });
+        this.dataComplete = data;
+      });
+
     }
 
   }
@@ -149,7 +162,7 @@ export class TableResultsLdpCountComponent
   ngOnChanges(changes: SimpleChanges): void {
     // obtengo los headers
     if (this.data?.length > 0) {
-      this.hedearDTO = Object.keys(this.data[0]);
+      this.hedearDTO = Object.keys(this.data[0]).filter(k => k !== 'entityName');
     }
     if (!!this.pageInfo) {
       this.dataCompleteToShow = this.dataComplete;

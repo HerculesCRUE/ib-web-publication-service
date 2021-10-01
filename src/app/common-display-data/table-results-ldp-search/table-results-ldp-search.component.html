@@ -28,9 +28,9 @@
             <tr [ngClass]="{ 'table-secondary': i % 2 == 1 }">
               <ng-container *ngFor="let header of hedearDTO">
                 <td>
-                  <ng-container *ngIf="header==='uri'; else noLink"><a
+                  <ng-container *ngIf="header==='title'; else noLink"><a
                       [routerLink]="['/main/categories/ldp-entity-details']"
-                      [queryParams]="{uri: item[header]}">{{item[header] }}</a>
+                      [queryParams]="{uri: item['uri']}">{{item[header] }}</a>
                   </ng-container>
                   <ng-template #noLink>{{item[header] }}</ng-template>
                 </td>

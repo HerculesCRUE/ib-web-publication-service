@@ -45,6 +45,14 @@ export class TableResultsLdpSearchComponent
   set data(val: any) {
     if (val) {
       this.dataComplete = JSON.parse(JSON.stringify(val));
+      this.dataComplete.forEach(item => {
+        if (item.title) {
+          const index = item.title.lastIndexOf(', cvn_');
+          if (index >= 0) {
+            item.title = item.title.substring(0, index);
+          }
+        }
+      });
     }
 
   }
@@ -149,7 +157,7 @@ export class TableResultsLdpSearchComponent
   ngOnChanges(changes: SimpleChanges): void {
     // obtengo los headers
     if (this.data?.length > 0) {
-      this.hedearDTO = Object.keys(this.data[0]);
+      this.hedearDTO = Object.keys(this.data[0]).filter(k => k === 'title');
     }
     if (!!this.pageInfo) {
       this.dataCompleteToShow = this.dataComplete;

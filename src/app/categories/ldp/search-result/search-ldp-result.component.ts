@@ -7,6 +7,7 @@ import { catchError, map } from 'rxjs/operators';
 import { Direction, FindRequest, Order, Page, PageRequest, PaginatedSearchComponent } from 'src/app/_helpers/search';
 import { LdpSearchResult } from 'src/app/_models/ldpSearchResult';
 import { LdpService } from 'src/app/_services/ldp.service';
+import { Helper } from 'src/app/_helpers/utils';
 
 /**
  *
@@ -27,10 +28,13 @@ export class SearchLdpResultComponent extends PaginatedSearchComponent<LdpSearch
 
   category: string;
 
+  categoryName: string;
+
   constructor(
     private researchmentStructureService: LdpService,
     router: Router,
     translate: TranslateService,
+    private translateService: TranslateService,
     toastr: ToastrService,
     private route: ActivatedRoute
   ) {
@@ -43,6 +47,12 @@ export class SearchLdpResultComponent extends PaginatedSearchComponent<LdpSearch
         console.log(params);
         this.title = params['title'];
         this.category = params['category'];
+        this.translateService.get('ldp.category.values').subscribe((translations: any) => {
+          this.categoryName = Helper.getLdpEntityName(this.category);
+          if (translations && translations[this.categoryName]) {
+            this.categoryName = translations[this.categoryName].s;
+          }
+        });
         if (this.loaded) {
           this.filterResearchmentStructures();
         }
