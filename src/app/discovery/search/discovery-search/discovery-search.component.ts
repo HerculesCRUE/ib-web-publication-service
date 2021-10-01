@@ -15,7 +15,7 @@ export class DiscoverySearchComponent implements OnInit {
   nodes = {};
   searchRequest: FindRequest = new FindRequest();
   bodyRequest: any;
-  currentUser: User;
+  currentUser: string;
   actionSearch: string;
   objetsList: Array<string>;
   objetsLodList: any;
@@ -27,8 +27,8 @@ export class DiscoverySearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.bodyRequest = JSON.stringify({ "id": 40372, "title": "Fisiología del comportamiento", "date": "2006", "endPage": 41, "publishedIn": "BIOTECNOLOGIA DE LA REPRODUCCION PORCINAPORCI", "startPage": 24 }, null, 2)
-    this.currentUser = this.loginService.getCurrentUser();
-    this.searchRequest.filter.userId = 'front-request:' + ((this.currentUser) ? 'this.currentUser.id' : 'anonimus');
+    this.currentUser = localStorage.getItem('user_name');
+    this.searchRequest.filter.userId = 'front-request:' + ((this.currentUser) ? this.currentUser : 'anonimus');
     this.searchRequest.filter.applyDelta = true;
     this.searchRequest.filter.doSynchronous = true;
     this.searchRequest.filter.linkEntities = false;
@@ -88,9 +88,19 @@ export class DiscoverySearchComponent implements OnInit {
 
   onNodeSelected() {
     this.objetsList = [];
+    if (this.nodes[this.searchRequest.filter.node].length == 1) {
+      this.searchRequest.filter.tripleStore = this.nodes[this.searchRequest.filter.node];
+      this.onTripleStoreSelected();
+    }
+  }
+
+  onTripleStoreSelectedWithTripleStore(tripleStore) {
+    this.searchRequest.filter.tripleStore = tripleStore;
+    this.onTripleStoreSelected()
   }
 
   onTripleStoreSelected() {
+    console.log('Tas llamado a onTripleStoreSelected', this.searchRequest.filter.tripleStore);
     this.objetsList = [];
     this.searchRequest.filter.className = undefined;
     if (this.searchRequest.filter.tripleStore) {
@@ -101,6 +111,10 @@ export class DiscoverySearchComponent implements OnInit {
         this.loadObjects();
       }
     }
+  }
+
+  setTripleStore(tripleStore) {
+    this.searchRequest.filter.tripleStore = tripleStore;
   }
 
 

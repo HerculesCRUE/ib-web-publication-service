@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Subject } from 'rxjs';
 import { User } from '../_models/user';
 import { LoginService } from '../_services/login.service';
+import { DiscoveryActionComponent } from './actions/discovery-action/discovery-action.component';
 
 @Component({
   selector: 'app-discovery',
@@ -16,6 +18,8 @@ export class DiscoveryComponent implements OnInit {
   */
   activeTab: string;
   isAdmin = false;
+
+  eventsSubject: Subject<void> = new Subject<void>();
 
   constructor(private loginService: LoginService) { }
 
@@ -34,6 +38,9 @@ export class DiscoveryComponent implements OnInit {
   changeTab(tabName: string) {
     console.log('onChangeTab', tabName);
     this.activeTab = tabName;
+    if (tabName === 'action-tab') {
+      this.eventsSubject.next();
+    }
   }
 
   // transformData(data: Array<Graphic>) {

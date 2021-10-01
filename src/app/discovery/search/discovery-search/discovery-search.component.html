@@ -43,8 +43,27 @@
                                         [(ngModel)]="searchRequest.filter.tripleStore" #type="ngModel"
                                         (change)="onTripleStoreSelected()" [disabled]="!searchRequest.filter.node"
                                         required>
-                                        <option *ngFor="let ts of nodes[searchRequest.filter.node]" [value]="ts">
+                                        <option *ngFor="let ts of nodes[searchRequest.filter.node]; index as i;"
+                                            [value]="ts"
+                                            [selected]="i==0 && nodes[searchRequest.filter.node].length == 1">
                                             {{ts}}</option>
+
+
+                                        <!--
+                                        <div
+                                            *ngIf="nodes[searchRequest.filter.node] && nodes[searchRequest.filter.node].length === 1; then thenBlock else elseBlock">
+                                        </div>
+                                        <ng-template #thenBlock>
+                                            <option [value]="nodes[searchRequest.filter.node][0]" [selected]="true">
+                                                {{nodes[searchRequest.filter.node][0]}}</option>
+                                            {{onTripleStoreSelectedWithTripleStore(nodes[searchRequest.filter.node][0])}}
+                                        </ng-template>
+                                        <ng-template #elseBlock>
+                                            <option *ngFor="let ts of nodes[searchRequest.filter.node]" [value]="ts">
+                                                {{ts}}</option>
+                                        </ng-template>
+                                        -->
+
                                     </select>
                                 </div>
                                 <div class="form-group col-md-4">
@@ -279,7 +298,8 @@
 <ng-template #notLoadedState>
     {{'discovery.noData' | translate}}
 </ng-template>
-<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="true">
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="true"
+    [timeout]="10000000000000000000000">
     <p style="color: white"> {{'discovery.search-message'
         | translate}} </p>
 </ngx-spinner>
