@@ -8,7 +8,8 @@
 
                         <ng-container *ngFor="let header of hedearDTO">
                             <ng-container>
-                                <th id="{{header + dtoTypeTranslate + extra}}">
+                                <th id="{{header + dtoTypeTranslate + extra}}"
+                                    [ngClass]="{'main-col-of-2': header==='relatedDescription' }">
                                     <em class="oi oi-info" *ngIf="needTooltip(header).required" placement="top"
                                         ngbTooltip="{{needTooltip(header).textValue}}"></em>
                                     {{ dtoTypeTranslate + '.' + header | translate }}

@@ -24,7 +24,7 @@
 
                         <tr [ngClass]="{ 'table-secondary': i % 2 == 1 }">
                             <td>{{detail.propertyName}}</td>
-                            <td>
+                            <td class="main-col-of-2">
                                 <ng-container *ngIf="detail.categoryURI; else noCategoryURI">
                                     <a [routerLink]="['/main/categories/ldp-search-result']"
                                         [queryParams]="{category: detail.categoryURI}">{{detail.value}}</a>
