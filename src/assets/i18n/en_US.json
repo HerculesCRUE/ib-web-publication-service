@@ -328,6 +328,7 @@
     "type-result": "Type result",
     "code-result": "Result code",
     "accept": "Accept similarity",
+    "invert": "Accept reverse similarity",
     "reject": "Reject similarity",
     "entity": "Entity",
     "entity-main": "Main entity",

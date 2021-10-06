@@ -329,6 +329,7 @@
     "code-result": "Código de resultado",
     "accept": "Aceptar similitud",
     "reject": "Rechazar similitud",
+    "invert": "Aceptar similitud invertida",
     "entity": "Entidad",
     "entity-main": "Entidad principal",
     "attributes": "Atributos",

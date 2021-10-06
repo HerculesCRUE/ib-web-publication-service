@@ -65,6 +65,7 @@
                                     <select id="requestCode" name="requestCode" class="form-control"
                                         [(ngModel)]="searchRequest.filter.requestCode" #type="ngModel"
                                         [disabled]="!searchRequest.filter.className" required>
+                                        <option></option>
                                         <option *ngFor="let r of requestCodes" [value]="r.requestCode">
                                             {{dateToLocale(r.requestDate)}}</option>
                                     </select>

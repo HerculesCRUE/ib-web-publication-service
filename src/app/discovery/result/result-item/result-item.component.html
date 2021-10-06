@@ -1,6 +1,7 @@
 <div class="card" style="margin-top: 20px;margin-left: 50px;">
     <div class="card-body">
-        <h5 class="card-title"> {{'discovery.entity-main' | translate}}: <strong>{{ item.entityId }}</strong></h5>
+        <h5 class="card-title"> {{'discovery.entity-main' | translate}}: <strong>{{ getPrintableEntity(item) }}</strong>
+        </h5>
         <br />
         <table class="table table-bordered">
             <tbody>
@@ -56,7 +57,7 @@
             <div class="col-md-9">
                 <ngb-accordion [closeOthers]="false">
                     <ngb-panel *ngFor="let auto of item.automatics" id="acc-auto-{{auto.entityId}}"
-                        title="{{'discovery.entity' | translate}}: {{auto.entityId}}">
+                        title="{{'discovery.entity' | translate}}: {{ getPrintableEntity(auto) }}">
                         <ng-template ngbPanelContent>
                             <table class="table table-bordered">
                                 <tbody>
@@ -160,7 +161,7 @@
             <div class="col-md-9">
                 <ngb-accordion [closeOthers]="false">
                     <ngb-panel *ngFor="let man of item.manuals" id="acc-man-{{man.entityId}}"
-                        title="{{'discovery.entity' | translate}}: {{man.entityId}}">
+                        title="{{'discovery.entity' | translate}}: {{ getPrintableEntity(man) }}">
                         <ng-template ngbPanelContent>
                             <table class="table table-bordered">
                                 <tbody>
@@ -248,197 +249,210 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <div *ngIf="manualDecisions[man.entityId] == undefined; else decisionTemplate">
+                            <div *ngIf="manualDecisions[man.entityId] == undefined && man.state == 'OPEN'; else
+                                decisionTemplate">
                                 <button *ngIf="isAdmin" role="button" aria-pressed="false"
                                     class="btn btn-secondary tree" style="margin: 20px;"
-                                    (click)="onActionOverManualSimilitude(true,man)">{{'discovery.accept' |
+                                    (click)="onActionOverManualSimilitude(true,man,false)">{{'discovery.accept' |
                                     translate}}</button>
                                 <button *ngIf="isAdmin" role="button" aria-pressed="false"
-                                    class="btn btn-secondary tree" (click)="onActionOverManualSimilitude(false,man)"
+                                    class="btn btn-secondary tree" style="margin: 20px;"
+                                    (click)="onActionOverManualSimilitude(true,man,true)">{{'discovery.invert' |
+                                    translate}}</button>
+                                <button *ngIf="isAdmin" role="button" aria-pressed="false" class="btn btn-danger tree"
+                                    (click)="onActionOverManualSimilitude(false,man,false)"
                                     style="margin: 20px;">{{'discovery.reject' |
                                     translate}}</button>
                             </div>
                             <ng-template #decisionTemplate>
-                                <h5>{{'discovery.decision-response' | translate}}:</h5>
-                                <div *ngIf="manualDecisions[man.entityId].response != undefined">
-                                    <div *ngIf="manualDecisions[man.entityId].response.UPDATE != undefined">
-                                        {{'discovery.updated' | translate}}:
-                                        <ngb-accordion [closeOthers]="false">
-                                            <ngb-panel
-                                                *ngFor="let updatedItem of manualDecisions[man.entityId].response.UPDATE | keyvalue"
-                                                id="acc-upd-item-{{man.entityId}}"
-                                                title="Updated Entity: {{updatedItem.key}}">
-                                                <ng-template ngbPanelContent>
-                                                    <table class="table table-bordered">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td class="overflow-visible" width="20%">
-                                                                    {{'discovery.node' | translate}}
-                                                                </td>
-                                                                <td class="overflow-visible" width="80%"><strong>{{
-                                                                        updatedItem.value.node
-                                                                        }}</strong></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="overflow-visible" width="20%">
-                                                                    {{'discovery.storage' | translate}}
-                                                                </td>
-                                                                <td class="overflow-visible" width="80%"><strong>{{
-                                                                        updatedItem.value.tripleStore }}</strong>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="overflow-visible" width="20%">
-                                                                    {{'discovery.class' | translate}}
-                                                                </td>
-                                                                <td class="overflow-visible" width="80%"><strong>{{
-                                                                        updatedItem.value.className }}</strong>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="overflow-visible" width="20%">entityId</td>
-                                                                <td class="overflow-visible" width="80%"><strong>{{
-                                                                        updatedItem.value.entityId }}</strong>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="overflow-visible" width="20%">local URI</td>
-                                                                <td class="overflow-visible" width="80%"><a
-                                                                        href="{{updatedItem.value.localUri}}">{{updatedItem.value.localUri}}</a>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="overflow-visible" width="20%">Origin</td>
-                                                                <td class="overflow-visible" width="80%"><strong>{{
-                                                                        updatedItem.value.origin }}</strong></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="overflow-visible" width="20%">
-                                                                    {{'discovery.state' | translate}}
-                                                                </td>
-                                                                <td cclass="overflow-visible" width="80%"><strong>{{
-                                                                        updatedItem.value.state
-                                                                        }}</strong></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="overflow-visible" width="20%">
-                                                                    <strong>{{'discovery.attributes' |
-                                                                        translate}}</strong></td>
-                                                                <td class="overflow-visible" width="80%">
+                                <div *ngIf="man.state == 'OPEN'">
+                                    <h5>{{'discovery.decision-response' | translate}}:</h5>
+                                    <div *ngIf="manualDecisions[man.entityId].response != undefined">
+                                        <div *ngIf="manualDecisions[man.entityId].response.UPDATE != undefined">
+                                            {{'discovery.updated' | translate}}:
+                                            <ngb-accordion [closeOthers]="false">
+                                                <ngb-panel
+                                                    *ngFor="let updatedItem of manualDecisions[man.entityId].response.UPDATE | keyvalue"
+                                                    id="acc-upd-item-{{man.entityId}}-2"
+                                                    title="Updated Entity: {{updatedItem.key}}">
+                                                    <ng-template ngbPanelContent>
+                                                        <table class="table table-bordered">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="overflow-visible" width="20%">
+                                                                        {{'discovery.node' | translate}}
+                                                                    </td>
+                                                                    <td class="overflow-visible" width="80%"><strong>{{
+                                                                            updatedItem.value.node
+                                                                            }}</strong></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="overflow-visible" width="20%">
+                                                                        {{'discovery.storage' | translate}}
+                                                                    </td>
+                                                                    <td class="overflow-visible" width="80%"><strong>{{
+                                                                            updatedItem.value.tripleStore }}</strong>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="overflow-visible" width="20%">
+                                                                        {{'discovery.class' | translate}}
+                                                                    </td>
+                                                                    <td class="overflow-visible" width="80%"><strong>{{
+                                                                            updatedItem.value.className }}</strong>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="overflow-visible" width="20%">entityId
+                                                                    </td>
+                                                                    <td class="overflow-visible" width="80%"><strong>{{
+                                                                            updatedItem.value.entityId }}</strong>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="overflow-visible" width="20%">local URI
+                                                                    </td>
+                                                                    <td class="overflow-visible" width="80%"><a
+                                                                            href="{{updatedItem.value.localUri}}">{{updatedItem.value.localUri}}</a>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="overflow-visible" width="20%">Origin</td>
+                                                                    <td class="overflow-visible" width="80%"><strong>{{
+                                                                            updatedItem.value.origin }}</strong></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="overflow-visible" width="20%">
+                                                                        {{'discovery.state' | translate}}
+                                                                    </td>
+                                                                    <td cclass="overflow-visible" width="80%"><strong>{{
+                                                                            updatedItem.value.state
+                                                                            }}</strong></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="overflow-visible" width="20%">
+                                                                        <strong>{{'discovery.attributes' |
+                                                                            translate}}</strong>
+                                                                    </td>
+                                                                    <td class="overflow-visible" width="80%">
 
-                                                                    <table class="table">
-                                                                        <tbody>
-                                                                            <tr
-                                                                                *ngFor="let attUI of updatedItem.value.attributes | keyvalue">
-                                                                                <td class="overflow-visible"
-                                                                                    width="20%">{{attUI.key}}</td>
-                                                                                <td class="overflow-visible"
-                                                                                    width="80%">
-                                                                                    <strong placement="bottom"
-                                                                                        ngbTooltip="{{attUI.value}}">{{attUI.value}}</strong>
-                                                                                </td>
-                                                                            </tr>
-                                                                        </tbody>
-                                                                    </table>
+                                                                        <table class="table">
+                                                                            <tbody>
+                                                                                <tr
+                                                                                    *ngFor="let attUI of updatedItem.value.attributes | keyvalue">
+                                                                                    <td class="overflow-visible"
+                                                                                        width="20%">{{attUI.key}}</td>
+                                                                                    <td class="overflow-visible"
+                                                                                        width="80%">
+                                                                                        <strong placement="bottom"
+                                                                                            ngbTooltip="{{attUI.value}}">{{attUI.value}}</strong>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
 
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </ng-template>
-                                            </ngb-panel>
-                                        </ngb-accordion>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </ng-template>
+                                                </ngb-panel>
+                                            </ngb-accordion>
+                                        </div>
+
+                                        <div *ngIf="manualDecisions[man.entityId].response.UPDATE != undefined">
+                                            {{'discovery.deleted' | translate}}:
+                                            <ngb-accordion [closeOthers]="false">
+                                                <ngb-panel
+                                                    *ngFor="let deletedItem of manualDecisions[man.entityId].response.DELETE | keyvalue"
+                                                    id="acc-del-item-{{man.entityId}}"
+                                                    title="Deleted Entity: {{deletedItem.key}}">
+                                                    <ng-template ngbPanelContent>
+                                                        <table class="table table-bordered">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="overflow-visible" width="20%">
+                                                                        {{'discovery.node' | translate}}
+                                                                    </td>
+                                                                    <td class="overflow-visible" width="80%"><strong>{{
+                                                                            deletedItem.value.node
+                                                                            }}</strong></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="overflow-visible" width="20%">
+                                                                        {{'discovery.storage' | translate}}
+                                                                    </td>
+                                                                    <td class="overflow-visible" width="80%"><strong>{{
+                                                                            deletedItem.value.tripleStore }}</strong>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="overflow-visible" width="20%">
+                                                                        {{'discovery.class' | translate}}
+                                                                    </td>
+                                                                    <td class="overflow-visible" width="80%"><strong>{{
+                                                                            deletedItem.value.className }}</strong>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="overflow-visible" width="20%">entityId
+                                                                    </td>
+                                                                    <td class="overflow-visible" width="80%"><strong>{{
+                                                                            deletedItem.value.entityId }}</strong>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="overflow-visible" width="20%">local URI
+                                                                    </td>
+                                                                    <td class="overflow-visible" width="80%"><a
+                                                                            href="{{deletedItem.value.localUri}}">{{deletedItem.value.localUri}}</a>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="overflow-visible" width="20%">Origin</td>
+                                                                    <td class="overflow-visible" width="80%"><strong>{{
+                                                                            deletedItem.value.origin }}</strong></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="overflow-visible" width="20%">
+                                                                        {{'discovery.state' | translate}}
+                                                                    </td>
+                                                                    <td class="overflow-visible" width="80%"><strong>{{
+                                                                            deletedItem.value.state
+                                                                            }}</strong></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="overflow-visible" width="20%">
+                                                                        <strong>{{'discovery.attributes' |
+                                                                            translate}}</strong>
+                                                                    </td>
+                                                                    <td class="overflow-visible" width="80%">
+
+                                                                        <table class="table">
+                                                                            <tbody>
+                                                                                <tr
+                                                                                    *ngFor="let attDI of deletedItem.value.attributes | keyvalue">
+                                                                                    <td class="overflow-visible"
+                                                                                        width="20%">{{attDI.key}}</td>
+                                                                                    <td class="overflow-visible"
+                                                                                        width="80%">
+                                                                                        <strong placement="bottom"
+                                                                                            ngbTooltip="{{attDI.value}}">{{attDI.value}}</strong>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </ng-template>
+                                                </ngb-panel>
+                                            </ngb-accordion>
+                                        </div>
+
                                     </div>
-
-                                    <div *ngIf="manualDecisions[man.entityId].response.UPDATE != undefined">
-                                        {{'discovery.deleted' | translate}}:
-                                        <ngb-accordion [closeOthers]="false">
-                                            <ngb-panel
-                                                *ngFor="let deletedItem of manualDecisions[man.entityId].response.DELETE | keyvalue"
-                                                id="acc-del-item-{{man.entityId}}"
-                                                title="Deleted Entity: {{deletedItem.key}}">
-                                                <ng-template ngbPanelContent>
-                                                    <table class="table table-bordered">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td class="overflow-visible" width="20%">
-                                                                    {{'discovery.node' | translate}}
-                                                                </td>
-                                                                <td class="overflow-visible" width="80%"><strong>{{
-                                                                        deletedItem.value.node
-                                                                        }}</strong></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="overflow-visible" width="20%">
-                                                                    {{'discovery.storage' | translate}}
-                                                                </td>
-                                                                <td class="overflow-visible" width="80%"><strong>{{
-                                                                        deletedItem.value.tripleStore }}</strong>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="overflow-visible" width="20%">
-                                                                    {{'discovery.class' | translate}}
-                                                                </td>
-                                                                <td class="overflow-visible" width="80%"><strong>{{
-                                                                        deletedItem.value.className }}</strong>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="overflow-visible" width="20%">entityId</td>
-                                                                <td class="overflow-visible" width="80%"><strong>{{
-                                                                        deletedItem.value.entityId }}</strong>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="overflow-visible" width="20%">local URI</td>
-                                                                <td class="overflow-visible" width="80%"><a
-                                                                        href="{{deletedItem.value.localUri}}">{{deletedItem.value.localUri}}</a>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="overflow-visible" width="20%">Origin</td>
-                                                                <td class="overflow-visible" width="80%"><strong>{{
-                                                                        deletedItem.value.origin }}</strong></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="overflow-visible" width="20%">
-                                                                    {{'discovery.state' | translate}}
-                                                                </td>
-                                                                <td class="overflow-visible" width="80%"><strong>{{
-                                                                        deletedItem.value.state
-                                                                        }}</strong></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="overflow-visible" width="20%">
-                                                                    <strong>{{'discovery.attributes' |
-                                                                        translate}}</strong></td>
-                                                                <td class="overflow-visible" width="80%">
-
-                                                                    <table class="table">
-                                                                        <tbody>
-                                                                            <tr
-                                                                                *ngFor="let attDI of deletedItem.value.attributes | keyvalue">
-                                                                                <td class="overflow-visible"
-                                                                                    width="20%">{{attDI.key}}</td>
-                                                                                <td class="overflow-visible"
-                                                                                    width="80%">
-                                                                                    <strong placement="bottom"
-                                                                                        ngbTooltip="{{attDI.value}}">{{attDI.value}}</strong>
-                                                                                </td>
-                                                                            </tr>
-                                                                        </tbody>
-                                                                    </table>
-
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </ng-template>
-                                            </ngb-panel>
-                                        </ngb-accordion>
-                                    </div>
-
                                 </div>
                             </ng-template>
                         </ng-template>
@@ -462,7 +476,7 @@
 
                             <ngb-accordion [closeOthers]="false">
                                 <ngb-panel *ngFor="let action of actionMain.items" id="act-auto-{{action.entityId}}"
-                                    title="Entidad {{actionMain.action}}: {{action.entityId}}">
+                                    title="Entidad {{actionMain.action}}: {{getPrintableEntity(action)}}">
                                     <ng-template ngbPanelContent>
 
                                         <table class="table table-bordered">
@@ -524,7 +538,8 @@
                                                 <tr>
                                                     <td class="overflow-visible" width="20%">
                                                         <strong>{{'discovery.attributes' |
-                                                            translate}}</strong></td>
+                                                            translate}}</strong>
+                                                    </td>
                                                     <td class="overflow-visible" width="80%">
 
                                                         <table class="table">
