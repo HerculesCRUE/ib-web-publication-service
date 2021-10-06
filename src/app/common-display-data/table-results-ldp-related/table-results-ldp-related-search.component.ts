@@ -169,7 +169,7 @@ export class TableResultsLdpRelatedSearchComponent
   ngOnChanges(changes: SimpleChanges): void {
     // obtengo los headers
     if (this.data?.length > 0) {
-      this.hedearDTO = ['relatedDescription', 'relatedType'];
+      this.hedearDTO = ['relatedType', 'relatedDescription'];
     }
     if (!!this.pageInfo) {
       this.dataCompleteToShow = this.dataComplete;

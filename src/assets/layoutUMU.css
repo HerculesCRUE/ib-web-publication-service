@@ -1361,7 +1361,18 @@ table.table caption {
 		width: 40%;
 	}
 }
-
+td.main-col-of-2 {
+	width: 75%;
+}
+td.main-col-of-3 {
+	width: 50%;
+}
+td.main-col-of-4 {
+	width: 45%;
+}
+td.main-col-of-5 {
+	width: 40%;
+}
 
 /* table pagination */
 
