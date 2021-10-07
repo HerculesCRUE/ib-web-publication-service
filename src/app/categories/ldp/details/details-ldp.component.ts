@@ -237,7 +237,6 @@ export class DetailsLdpComponent implements OnInit, AfterViewInit, OnChanges, On
             const uuidPattern = /^[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}$/i
             let isUiid = !!uuidPattern.test(str)
 
-            console.log('verificando ' + str)
             return isUrl && isUiid;
         } catch (err) {
             console.log(str + ' error ' + err)

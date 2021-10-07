@@ -51,7 +51,7 @@ export class AllLdpComponent extends PaginatedSearchComponent<LdpEntityCounter> 
 
   protected getDefaultOrder(): Order {
     return {
-      property: 'entity',
+      property: 'count',
       direction: Direction.DESC
     };
   }

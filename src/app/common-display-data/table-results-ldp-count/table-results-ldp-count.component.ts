@@ -227,7 +227,10 @@ export class TableResultsLdpCountComponent
   }
 
   protected getDefaultOrder(): Order {
-    return new Order();
+    const order = new Order();
+    order.property = 'count';
+    order.direction = Direction.DESC;
+    return order;
   }
 
   showPage(i: number): void {
