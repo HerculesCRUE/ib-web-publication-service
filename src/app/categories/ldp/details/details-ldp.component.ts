@@ -116,7 +116,7 @@ export class DetailsLdpComponent implements OnInit, AfterViewInit, OnChanges, On
                                         relationKeys.push(propertyKeyName);
                                     }
                                     keyRelations.push(relation);
-                                } else {
+                                } else if (propertyKeyName !== 'id') {
                                     properties.push(property);
                                 }
                             });
