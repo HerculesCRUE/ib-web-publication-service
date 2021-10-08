@@ -44,6 +44,7 @@ import { AreasListComponent } from '../common/areas-list/areas-list.component';
 import { DiscoveryControlComponent } from '../discovery/control/discovery-control/discovery-control.component';
 import { DiscoverySearchComponent } from '../discovery/search/discovery-search/discovery-search.component';
 import { DiscoveryActionComponent } from '../discovery/actions/discovery-action/discovery-action.component';
+import { DiscoveryResultTableComponent } from '../discovery/result/result-table/discovery-result-table.component';
 import { UrisComponent } from '../uris-factory/uris.component';
 import { ResultItemComponent } from '../discovery/result/result-item/result-item.component';
 import { DataImporterComponent } from './data-importer/data-importer.component';
@@ -71,7 +72,7 @@ import { EtlComponent } from '../etl/etl.component';
     ProjectsDetailComponent, ParticipantsComponent, DeliverableComponent, ScientistComponent, ScientistDetailComponent,
     DirectedJobsComponent, StartupComponent, AreasComponent, EventsComponent,
     ScientificProductionComponent, DocumentDetailComponent, EventDetailComponent, StatisticsComponent, DiscoveryComponent,
-    DiscoveryControlComponent, DiscoverySearchComponent, DiscoveryActionComponent, ResultItemComponent, UrisComponent, ServiceDiscoveryComponent,
+    DiscoveryControlComponent, DiscoverySearchComponent, DiscoveryActionComponent, DiscoveryResultTableComponent, ResultItemComponent, UrisComponent, ServiceDiscoveryComponent,
     PeopleInvolvedComponent, CollaboratorsComponent, ScientificPublicationDetailComponent, AreasListComponent, DataImporterComponent, AllDataImporterStructuresComponent, NewDataImporterComponent,
     ValidatorComponent, AllValidatorStructuresComponent, NewValidatorComponent, LdpComponent, AllLdpComponent, SearchLdpComponent, SearchLdpResultComponent,
     DataDeletionComponent, DetailsLdpComponent, EtlComponent, RelatedLdpComponent
