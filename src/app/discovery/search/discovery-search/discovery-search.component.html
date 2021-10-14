@@ -102,6 +102,14 @@
                                     </label>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label for="inputEmail">Email</label>
+                                <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp"
+                                    [(ngModel)]="searchRequest.filter.email" name="email">
+                                <small id="emailHelp" class="form-text text-muted">{{'discovery.email' |
+                                    translate}}
+                                </small>
+                            </div>
 
                             <button type="submit" class="btn btn-primary" (click)="launchSearch()"
                                 [disabled]="!searchRequest.filter.node || !searchRequest.filter.tripleStore || !searchRequest.filter.className ">{{'discovery.action-btn-launch-search'
@@ -275,6 +283,15 @@
                                         {{'discovery.action-check-other-search-label' | translate}}
                                     </label>
                                 </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="inputEmail">Email</label>
+                                <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp"
+                                    [(ngModel)]="searchRequest.filter.email" name="email">
+                                <small id="emailHelp" class="form-text text-muted">{{'discovery.email' |
+                                    translate}}
+                                </small>
                             </div>
 
                             <button type="submit" class="btn btn-primary" (click)="launchSearch()"
