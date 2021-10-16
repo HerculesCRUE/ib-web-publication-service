@@ -31,23 +31,24 @@ export class DiscoveryResultTable {
   init(responseData?: { response: { results: Array<DiscoveryResultItem> } }): void {
     this.initData = [];
     if (responseData && responseData.response && responseData.response.results) {
+      responseData.response.results;
       for (let i = 0; i < responseData.response.results.length; i++) {
-        if (!(responseData.response.results[i].attributes.title)) {
-          if (responseData.response.results[i].attributes.name) {
-            responseData.response.results[i].attributes.title = responseData.response.results[i].attributes.name;
-          } else if (responseData.response.results[i].attributes.description) {
-            responseData.response.results[i].attributes.title = responseData.response.results[i].attributes.description;
-          } else if (responseData.response.results[i].attributes.id) {
-            responseData.response.results[i].attributes.title = responseData.response.results[i].attributes.id;
-          }
+        if (responseData.response.results[i].attributes.title) {
+          responseData.response.results[i].attributes.label = responseData.response.results[i].attributes.title;
+        } else if (responseData.response.results[i].attributes.name) {
+          responseData.response.results[i].attributes.label = responseData.response.results[i].attributes.name;
+        } else if (responseData.response.results[i].attributes.description) {
+          responseData.response.results[i].attributes.label = responseData.response.results[i].attributes.description;
+        } else if (responseData.response.results[i].attributes.id) {
+          responseData.response.results[i].attributes.label = responseData.response.results[i].attributes.id;
         }
         this.initData[i] = responseData.response.results[i];
       }
-      console.log('this.initData', this.initData);
+      console.log(this.initData);
     }
     this.data = [];
     this.currentSort = [];
-    this.initSorting('attributes.title', 'automatics', 'manuals');
+    this.initSorting('attributes.label', 'automatics', 'manuals');
     this.filter = {};
     this.filterChanged();
   }
@@ -127,7 +128,7 @@ export class DiscoveryResultTable {
       if ((this.filter.manuals === 'true' && !item.manuals.length) || (this.filter.manuals === 'false' && item.manuals.length)) {
         result = false;
       }
-      if (titleRegExp && !titleRegExp.test(item.attributes.title)) {
+      if (titleRegExp && !titleRegExp.test(item.attributes.label)) {
         result = false;
       }
       return result;
