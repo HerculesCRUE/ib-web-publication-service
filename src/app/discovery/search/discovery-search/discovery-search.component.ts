@@ -129,12 +129,14 @@ export class DiscoverySearchComponent implements OnInit {
       this.discoveryService.doRequestFindSimilaritiesByClass(this.searchRequest).then((data) => {
         this.responseIsReady = true;
         this.responseData = data;
+        console.log('response', this.responseData);
         this.searchRequest.filter.node = undefined;
         this.searchRequest.filter.tripleStore = undefined;
         this.searchRequest.filter.className = undefined;
         this.spinner.hide();
       }, (error) => {
         this.responseIsReady = true;
+        console.log('error', this.responseData);
         this.spinner.hide();
       });
     } else if (this.actionSearch === 'instance') {

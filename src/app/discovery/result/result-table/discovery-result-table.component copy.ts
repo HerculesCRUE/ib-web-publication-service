@@ -31,7 +31,6 @@ export class DiscoveryResultTable {
   init(responseData?: { response: { results: Array<DiscoveryResultItem> } }): void {
     this.initData = [];
     if (responseData && responseData.response && responseData.response.results) {
-      responseData.response.results;
       for (let i = 0; i < responseData.response.results.length; i++) {
         if (responseData.response.results[i].attributes.title) {
           responseData.response.results[i].attributes.label = responseData.response.results[i].attributes.title;
