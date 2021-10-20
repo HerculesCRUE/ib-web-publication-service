@@ -345,7 +345,8 @@
     "att-main-value": "Valor atributo entidad principal",
     "att-related-value": "Valor atributo",
     "email": "Email donde se enviara notificación al concluir la tarea la librería de descubrimiento",
-    "email-placeholder": "Introduzca Email para recibir notificación"
+    "email-placeholder": "Introduzca Email para recibir notificación",
+    "linksToEntity": "Links hacia la entidad"
   },
   "uris": {
     "title": "Factoría de URIs",

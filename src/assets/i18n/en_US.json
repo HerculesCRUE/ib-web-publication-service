@@ -345,7 +345,8 @@
     "att-main-value": "Main entity atribute value",
     "att-related-value": "Atribute value",
     "email": "Email where notification will be sent at the conclusion of the discovery library",
-    "email-placeholder": "Enter Email to receive notification"
+    "email-placeholder": "Enter Email to receive notification",
+    "linksToEntity": "Links to entity"
   },
   "uris": {
     "title": "URIs Factory",
