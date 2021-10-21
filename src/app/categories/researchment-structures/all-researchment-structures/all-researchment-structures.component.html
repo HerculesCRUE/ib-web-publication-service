@@ -67,6 +67,7 @@
                             *ngIf="loaded && resultObject?.content?.length !== 0"
                             [dtoTypeTranslate]="'researchmentStructure'" [extra]="'2'" [data]="resultObject?.content"
                             [pageInfo]="resultObject" [routerFieldSecondary]="'type'" [routerField]="'id'"
+                            [ldapEntity]="true" ldapEntityUriField="uri"
                             [visibleColumns]="['title']" mainColumn="title"
                             (sortChanged)="allResearchmentStructuresFilteredSortChanged($event)">
                         </app-table-results-dto>

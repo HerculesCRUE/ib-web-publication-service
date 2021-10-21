@@ -69,6 +69,7 @@
                         *ngIf="loaded && resultObject?.content?.length !== 0" [data]="resultObject?.content"
                         [pageInfo]="resultObject" [dtoTypeTranslate]="'events'" [extra]="'2'" [routerField]="'id'"
                         [routerNameLink]="url" [routerField]="'id'" [routerFieldSecondary]="'type'"
+                        [ldapEntity]="true" ldapEntityUriField="uri"
                         [visibleColumns]="visibleColumns" [mainColumn]="mainColumn"
                         (sortChanged)="allEventsFilteredSortChanged($event)">
                     </app-table-results-dto>

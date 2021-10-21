@@ -68,6 +68,7 @@
                     <div class="loader" *ngIf="!loaded"></div>
                     <app-table-results-dto [findRequest]="findRequest" [displayPagination]="false"
                         [routerNameLink]="url" [routerField]="'id'"
+                        [ldapEntity]="true" ldapEntityUriField="uri"
                         *ngIf="loaded && resultObject?.content?.length !== 0" [data]="resultObject?.content"
                         [dtoTypeTranslate]="'scientist'" [extra]="'2'" [pageInfo]="resultObject"
                         [visibleColumns]="['name', 'gender']" mainColumn="name"

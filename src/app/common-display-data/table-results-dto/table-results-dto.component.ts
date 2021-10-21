@@ -85,6 +85,12 @@ export class TableResultsDtoComponent
   @Input()
   routerFieldSecondary = '';
 
+  @Input()
+  ldapEntity: boolean;
+
+  @Input()
+  ldapEntityUriField: string;
+
   @Input() findRequest: FindRequest = new FindRequest();
 
   mainColumnClass = '';
@@ -175,7 +181,7 @@ export class TableResultsDtoComponent
       }
 
 
-      page.numberOfElements = Math.min(page.content?.length, this.pageInfo?.size);
+      page.numberOfElements = Math.min(page.content ?.length, this.pageInfo ?.size);
       page.size = this.pageInfo.size;
       page.totalElements = this.pageInfo.totalElements;
 
