@@ -132,4 +132,8 @@ export class SearchLdpResultComponent extends PaginatedSearchComponent<LdpSearch
     });
   }
 
+  back() {
+    window.history.back();
+  }
+
 }
