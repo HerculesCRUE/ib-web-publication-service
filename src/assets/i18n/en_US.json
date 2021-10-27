@@ -613,6 +613,7 @@
     "cron": "Cron"
   },
   "importation": {
+    "import-manual": "Import manual",
     "header": "Data importation",
     "button": "+ New Importation",
     "import": "Import",
