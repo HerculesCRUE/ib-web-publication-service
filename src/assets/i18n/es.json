@@ -648,6 +648,7 @@
       "relations": "Entidades relacionadas"
     },
     "relatedHeader": "Entidades relacionadas",
+    "directHeader": "Relaciones principales",
     "relationship": "Relación",
     "relatedUri": "Uri",
     "relatedType": "Categoría",

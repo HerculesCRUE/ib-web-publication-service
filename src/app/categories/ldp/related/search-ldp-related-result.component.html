@@ -2,7 +2,8 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <h5>{{ "ldp.relatedHeader" | translate }}</h5>
+            <h5 *ngIf="type=='back'">{{ "ldp.relatedHeader" | translate }}</h5>
+            <h5 *ngIf="type=='front'">{{ "ldp.directHeader" | translate }}</h5>
         </div>
     </div>
 

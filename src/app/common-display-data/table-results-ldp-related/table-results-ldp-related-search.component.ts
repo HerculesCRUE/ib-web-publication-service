@@ -65,6 +65,19 @@ export class TableResultsLdpRelatedSearchComponent
         });
       });
 
+      this.translateService.get('ldp.properties').subscribe((translations: any) => {
+        this.dataComplete = JSON.parse(JSON.stringify(val));
+        this.dataComplete.forEach(item => {
+
+          const relationship = Helper.getLdpEntityName(item.relationship);
+          let relation = null;
+          if (translations && translations[relationship]) {
+            relation = translations[relationship].s;
+          }
+          item.relationship = relation ? relation : relationship;
+        });
+      });
+
     }
 
   }
@@ -169,7 +182,7 @@ export class TableResultsLdpRelatedSearchComponent
   ngOnChanges(changes: SimpleChanges): void {
     // obtengo los headers
     if (this.data?.length > 0) {
-      this.hedearDTO = ['relatedType', 'relatedDescription'];
+      this.hedearDTO = ['relationship', 'relatedType', 'relatedDescription'];
     }
     if (!!this.pageInfo) {
       this.dataCompleteToShow = this.dataComplete;

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
@@ -25,6 +25,8 @@ export class RelatedLdpComponent extends PaginatedSearchComponent<LdpRelatedSear
 
     uri: string;
 
+    @Input() type: string;
+
     constructor(
         private researchmentStructureService: LdpService,
         router: Router,
@@ -49,7 +51,7 @@ export class RelatedLdpComponent extends PaginatedSearchComponent<LdpRelatedSear
 
     protected findInternal(findRequest: FindRequest): Observable<Page<LdpRelatedSearchResult>> {
         const page: Page<LdpRelatedSearchResult> = new Page();
-        let method: Observable<Page<LdpRelatedSearchResult>> = this.researchmentStructureService.findRelated(this.uri, findRequest);
+        let method: Observable<Page<LdpRelatedSearchResult>> = this.researchmentStructureService.findRelated(this.uri, findRequest, this.type);
 
         return method.pipe(
             map((x) => {
@@ -82,7 +84,7 @@ export class RelatedLdpComponent extends PaginatedSearchComponent<LdpRelatedSear
     filterResearchmentStructures() {
         this.findRequest.pageRequest.page = 0;
         this.loaded = false;
-        let method: Observable<Page<LdpRelatedSearchResult>> = this.researchmentStructureService.findRelated(this.uri, this.findRequest);
+        let method: Observable<Page<LdpRelatedSearchResult>> = this.researchmentStructureService.findRelated(this.uri, this.findRequest, this.type);
 
         method.subscribe((data) => {
             this.resultObject = data;
@@ -102,7 +104,7 @@ export class RelatedLdpComponent extends PaginatedSearchComponent<LdpRelatedSear
     allResearchmentStructuresFilteredSortChanged(pageRequest: PageRequest): void {
         this.findRequest.pageRequest.property = pageRequest.property;
         this.findRequest.pageRequest.direction = pageRequest.direction;
-        let method: Observable<Page<LdpRelatedSearchResult>> = this.researchmentStructureService.findRelated(this.uri, this.findRequest);
+        let method: Observable<Page<LdpRelatedSearchResult>> = this.researchmentStructureService.findRelated(this.uri, this.findRequest, this.type);
 
         method.subscribe((data) => {
             this.resultObject = data;
