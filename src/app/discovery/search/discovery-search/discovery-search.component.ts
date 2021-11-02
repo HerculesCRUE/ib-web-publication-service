@@ -4,6 +4,7 @@ import { User } from 'src/app/_models/user';
 import { DiscoveryService } from 'src/app/_services/discovery/discovery.service';
 import { LoginService } from 'src/app/_services/login.service';
 import { NgxSpinnerService } from "ngx-spinner";
+import { Helper } from 'src/app/_helpers/utils';
 
 @Component({
   selector: 'app-discovery-search',
@@ -33,6 +34,9 @@ export class DiscoverySearchComponent implements OnInit {
     this.searchRequest.filter.doSynchronous = true;
     this.searchRequest.filter.linkEntities = false;
     this.searchRequest.filter.propague_in_kafka = true;
+    if (Helper.checkEmail(this.currentUser)) {
+      this.searchRequest.filter.email = this.currentUser;
+    }
     this.loadNodesList();
     this.loadLodObjects();
   }
@@ -72,14 +76,14 @@ export class DiscoverySearchComponent implements OnInit {
 
   loadLodObjects() {
     this.objetsLodList = {};
-    this.objetsLodList['SCOPUS'] = ['Article', 'Book', 'Book-Chapter', 'Book-Section', 'Doctoral-Thesis', 'Doctoral-Thesis', 'Master-Thesis']
-    this.objetsLodList['CROSSREF'] = ['Article', 'Book', 'Book-Chapter', 'Book-Section', 'Doctoral-Thesis', 'Doctoral-Thesis', 'Master-Thesis']
+    this.objetsLodList['SCOPUS'] = ['Article', 'Book', 'Book-chapter', 'Book-section', 'Doctoral-thesis', 'Master-thesis']
+    this.objetsLodList['CROSSREF'] = ['Article', 'Book', 'Book-chapter', 'Book-section', 'Doctoral-thesis', 'Master-thesis']
     this.objetsLodList['WIKIDATA'] = ['Person']
     this.objetsLodList['ORCID'] = ['Person']
     this.objetsLodList['DOAJ'] = ['Article']
     this.objetsLodList['PUBMED'] = ['Article']
     this.objetsLodList['DBLP'] = ['Person']
-    this.objetsLodList['*'] = ['Article', 'Book', 'Book-Chapter', 'Book-Section', 'Doctoral-Thesis', 'Doctoral-Thesis', 'Master-Thesis', 'Person']
+    this.objetsLodList['*'] = ['Article', 'Book', 'Book-chapter', 'Book-section', 'Doctoral-thesis', 'Master-thesis', 'Person']
   }
 
   onActionSelected() {
@@ -125,12 +129,14 @@ export class DiscoverySearchComponent implements OnInit {
       this.discoveryService.doRequestFindSimilaritiesByClass(this.searchRequest).then((data) => {
         this.responseIsReady = true;
         this.responseData = data;
+        console.log('response', this.responseData);
         this.searchRequest.filter.node = undefined;
         this.searchRequest.filter.tripleStore = undefined;
         this.searchRequest.filter.className = undefined;
         this.spinner.hide();
       }, (error) => {
         this.responseIsReady = true;
+        console.log('error', this.responseData);
         this.spinner.hide();
       });
     } else if (this.actionSearch === 'instance') {

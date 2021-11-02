@@ -4,6 +4,9 @@
     </div>
 </div>
 
+<button id="clean" [attr.aria-label]="'form.clean' | translate " role="button" aria-pressed="false"
+    class="btn btn-secondary" (click)="back()">Volver</button>
+
 <app-search-ldp></app-search-ldp>
 <br />
 <div class="loader" *ngIf="!details"></div>

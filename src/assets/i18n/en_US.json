@@ -343,7 +343,10 @@
     "updated": "Updated entities",
     "att-name": "Attribute Name",
     "att-main-value": "Main entity atribute value",
-    "att-related-value": "Atribute value"
+    "att-related-value": "Atribute value",
+    "email": "Email where notification will be sent at the conclusion of the discovery library",
+    "email-placeholder": "Enter Email to receive notification",
+    "linksToEntity": "Links to entity"
   },
   "uris": {
     "title": "URIs Factory",
@@ -610,6 +613,7 @@
     "cron": "Cron"
   },
   "importation": {
+    "import-manual": "Import manual",
     "header": "Data importation",
     "button": "+ New Importation",
     "import": "Import",

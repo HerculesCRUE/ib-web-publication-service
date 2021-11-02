@@ -30,6 +30,10 @@
                     <td class="overflow-visible" width="80%"><strong>{{ item.state }}</strong></td>
                 </tr>
                 <tr>
+                    <td class="overflow-visible" width="20%">{{'discovery.linksToEntity' | translate}}</td>
+                    <td class="overflow-visible" width="80%"><strong>{{ item.linksToEntity }}</strong></td>
+                </tr>
+                <tr>
                     <td class="overflow-visible" width="20%"><strong>{{'discovery.attributes' | translate}}</strong>
                     </td>
                     <td class="overflow-visible" width="80%">
@@ -93,6 +97,12 @@
                                     <tr>
                                         <td class="overflow-visible" width="20%">{{'discovery.status' | translate}}</td>
                                         <td class="overflow-visible" width="80%"><strong>{{ auto.state }}</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="overflow-visible" width="20%">{{'discovery.linksToEntity' |
+                                            translate}}</td>
+                                        <td class="overflow-visible" width="80%"><strong>{{ auto.linksToEntity
+                                                }}</strong></td>
                                     </tr>
                                     <tr>
                                         <td class="overflow-visible" width="20%">{{'discovery.similiarity' | translate}}
@@ -200,6 +210,12 @@
                                         <td class="overflow-visible" width="80%"><strong>{{ man.state }}</strong></td>
                                     </tr>
                                     <tr>
+                                        <td class="overflow-visible" width="20%">{{'discovery.linksToEntity' |
+                                            translate}}</td>
+                                        <td class="overflow-visible" width="80%"><strong>{{ man.linksToEntity
+                                                }}</strong></td>
+                                    </tr>
+                                    <tr>
                                         <td class="overflow-visible" width="20%">{{'discovery.similiarity' | translate}}
                                         </td>
                                         <td class="overflow-visible" width="80%"><strong>{{ man.similarity }}</strong>
@@ -254,11 +270,11 @@
                                 <button *ngIf="isAdmin" role="button" aria-pressed="false"
                                     class="btn btn-secondary tree" style="margin: 20px;"
                                     (click)="onActionOverManualSimilitude(true,man,false)">{{'discovery.accept' |
-                                    translate}}</button>
+                                    translate}} ({{item.linksToEntity}} links)</button>
                                 <button *ngIf="isAdmin" role="button" aria-pressed="false"
                                     class="btn btn-secondary tree" style="margin: 20px;"
                                     (click)="onActionOverManualSimilitude(true,man,true)">{{'discovery.invert' |
-                                    translate}}</button>
+                                    translate}} ({{man.linksToEntity}} links)</button>
                                 <button *ngIf="isAdmin" role="button" aria-pressed="false" class="btn btn-danger tree"
                                     (click)="onActionOverManualSimilitude(false,man,false)"
                                     style="margin: 20px;">{{'discovery.reject' |
@@ -520,6 +536,12 @@
                                                         translate}}</td>
                                                     <td class="overflow-visible" width="80%"><strong>{{ action.state
                                                             }}</strong></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="overflow-visible" width="20%">{{'discovery.linksToEntity'
+                                                        | translate}}</td>
+                                                    <td class="overflow-visible" width="80%"><strong>{{
+                                                            action.linksToEntity }}</strong></td>
                                                 </tr>
                                                 <tr>
                                                     <td class="overflow-visible" width="20%">{{'discovery.similiarity' |

@@ -99,6 +99,7 @@
                         *ngIf="loaded && resultObject?.content?.length !== 0 && routerFieldSecondary"
                         [data]="resultObject?.content" [routerNameLink]="url" [routerField]="'id'"
                         [routerFieldSecondary]="routerFieldSecondary" [pageInfo]="resultObject"
+                        [ldapEntity]="true" ldapEntityUriField="uri"
                         [visibleColumns]="visibleColumns" [mainColumn]="mainColumn"
                         (sortChanged)="allprojectsFilteredSortChanged($event)">
                     </app-table-results-dto>
@@ -106,6 +107,7 @@
                         [dtoTypeTranslate]="'documents'" [extra]="idPrefix"
                         *ngIf="loaded && resultObject?.content?.length !== 0 && !routerFieldSecondary"
                         [data]="resultObject?.content" [routerNameLink]="url" [routerField]="'id'"
+                        [ldapEntity]="true" ldapEntityUriField="uri"
                         [pageInfo]="resultObject" [visibleColumns]="visibleColumns" [mainColumn]="mainColumn"
                         (sortChanged)="allprojectsFilteredSortChanged($event)">
                     </app-table-results-dto>

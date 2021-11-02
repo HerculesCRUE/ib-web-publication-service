@@ -1,40 +1,64 @@
 <div id="main-wrapper">
   <header class="topbar">
     <nav class="navbar" aria-labelledby="navbar-exapand">
-
-      <a id="menu-button" (click)="toggleMenu()" class="ui-link ui-widget lateralMenuSwitcher selected">
-        <em class="fa fa-{{isMenuCollapsed ? 'bars' : 'times'}}"></em>
-      </a>
-
-      <span class="app-name d-sm-none"></span>
-      <span class="app-name app-name-secondary d-sm-none"> </span>
-      <ul class="navbar-actions">
-
-        <li *ngIf="!isLogged" class="navbar-item">
-          <a [routerLink]="'./login'">
-            {{ "menu.login" | translate }}
+      <div class="row" style="width: 99%;">
+        <div class="col-1">
+          <a id="menu-button" (click)="toggleMenu()" class="ui-link ui-widget lateralMenuSwitcher selected ">
+            <em class="fa fa-{{isMenuCollapsed ? 'bars' : 'times'}}"></em>
           </a>
-        </li>
-        <li *ngIf="isLogged" class="navbar-item navbar-item-exit">
-          <a (click)="logout()">
-            <em class="fa fa-power-off navbar-item-icon"></em>
-          </a>
-        </li>
 
-        <li class="navbar-item">
-          <a class="link-lang cursor" href="JavaScript:void(0)" (click)="translateHelperService.setTransLanguage('es')">
-            {{'lang.es' | translate}}
-          </a>
-          &#124;
-          <a class="link-lang cursos" href="JavaScript:void(0)" (click)="translateHelperService.setTransLanguage('en')">
-            {{'lang.en' | translate}}
-          </a>
-        </li>
+          <span class="app-name d-sm-none"></span>
+          <span class="app-name app-name-secondary d-sm-none"> </span>
+        </div>
+        <div class="col-2 mobile" style="margin-left: 40%;margin-right:-40%">
 
-      </ul>
-      <span class="app-name d-md-none"></span>
-      <span class="app-name app-name-secondary d-md-none"></span>
+          <ul class="navbar-actions">
+            <li class="navbar-item">
+              <div class="logos" style="margin-top: -2%; ">
+                <img alt="Logo Gobierno de España" class="logo " src="assets/images/logo1.png">
+                <div class="logoText">
+                  <p>FONDO EUROPEO DE DESARROLLO REGIONAL (FEDER)</p>
+                  <p><strong><em style="color: white;">Una manera de hacer Europa</em></strong></p>
+                </div>
+                <img alt="Logo Unión europea" class="logo" style="margin-left: 1.5%;" src="assets/images/logo3.png">
+              </div>
+            </li>
+          </ul>
 
+        </div>
+        <div class="col-9 mobile2">
+          <ul class="navbar-actions">
+
+            <li *ngIf="!isLogged" class="navbar-item">
+              <a [routerLink]="'./login'">
+                {{ "menu.login" | translate }}
+              </a>
+            </li>
+            <li *ngIf="isLogged" class="navbar-item navbar-item-exit">
+              <a (click)="logout()">
+                <em class="fa fa-power-off navbar-item-icon"></em>
+              </a>
+            </li>
+
+            <li class="navbar-item">
+              <a class="link-lang cursor" href="JavaScript:void(0)"
+                (click)="translateHelperService.setTransLanguage('es')">
+                {{'lang.es' | translate}}
+              </a>
+              &#124;
+              <a class="link-lang cursos" href="JavaScript:void(0)"
+                (click)="translateHelperService.setTransLanguage('en')">
+                {{'lang.en' | translate}}
+              </a>
+            </li>
+          </ul>
+
+
+
+          <span class="app-name d-md-none"></span>
+          <span class="app-name app-name-secondary d-md-none"></span>
+        </div>
+      </div>
     </nav>
   </header>
 
@@ -54,16 +78,7 @@
 
       <div class="page-content">
 
-        <div class="page-header">
-          <div class="logos">
-            <img alt="Logo Gobierno de España" class="logo" src="assets/images/logo1.png">
-            <div class="logoText">
-              <p>FONDO EUROPEO DE DESARROLLO REGIONAL (FEDER)</p>
-              <p><strong><em>Una manera de hacer Europa</em></strong></p>
-            </div>
-            <img alt="Logo Unión europea" class="logo2" src="assets/images/logo3.png">
-          </div>
-        </div>
+
 
         <div class="container-fluid">
 
@@ -86,7 +101,7 @@
               <ng-container *ngFor="let item of groupItem.homeItems; let i = index">
                 <span *ngIf="!item.disabled && i % 2 === 0">
                   <a class="link" *ngIf="item.url !== ''" [href]="item.urlExterna" [routerLink]="[item.url]">{{
-                              item.title| translate }}</a>
+                    item.title| translate }}</a>
                   <a class="link" *ngIf="item.url === ''" [href]="item.urlExterna">{{ item.title| translate }}</a>
                 </span>
 
@@ -99,7 +114,7 @@
               <ng-container *ngFor="let item of groupItem.homeItems; let i = index">
                 <span *ngIf="!item.disabled && i % 2 !== 0">
                   <a class="link" *ngIf="item.url !== ''" [href]="item.urlExterna" [routerLink]="[item.url]">{{
-                                item.title| translate }}</a>
+                    item.title| translate }}</a>
                   <a class="link" *ngIf="item.url === ''" [href]="item.urlExterna">{{ item.title| translate }}</a>
                 </span>
 

@@ -343,7 +343,10 @@
     "updated": "Entidades actualizadas",
     "att-name": "Nombre atributo",
     "att-main-value": "Valor atributo entidad principal",
-    "att-related-value": "Valor atributo"
+    "att-related-value": "Valor atributo",
+    "email": "Email donde se enviara notificación al concluir la tarea la librería de descubrimiento",
+    "email-placeholder": "Introduzca Email para recibir notificación",
+    "linksToEntity": "Links hacia la entidad"
   },
   "uris": {
     "title": "Factoría de URIs",
@@ -610,6 +613,7 @@
     "cron": "Cron"
   },
   "importation": {
+    "import-manual": "Manual de importación",
     "header": "Importación de datos",
     "button": "+ Nueva Importación",
     "import": "Importar",

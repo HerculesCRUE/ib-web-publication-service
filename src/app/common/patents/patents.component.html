@@ -62,6 +62,7 @@
                         [dtoTypeTranslate]="'patent'" [extra]="'4'"
                         *ngIf="loaded && resultObject?.content?.length !== 0" [data]="resultObject?.content"
                         [routerNameLink]="url" [routerField]="'id'" [pageInfo]="resultObject"
+                        [ldapEntity]="true" ldapEntityUriField="uri"
                         [visibleColumns]="visibleColumns" [mainColumn]="mainColumn"
                         (sortChanged)="allPatentsFilteredSortChanged($event)">
                     </app-table-results-dto>
