@@ -122,6 +122,7 @@ export class DiscoveryService extends AbstractService {
     return new Promise((resolve, reject) => {
       let formData: any = new FormData()
       let xhr = new XMLHttpRequest()
+      xhr.timeout = 86400000;
       xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
           if (xhr.status === 200) {

@@ -176,7 +176,6 @@ export class DiscoverySearchComponent implements OnInit {
       alert("Invalid JSON Format");
       this.bodyRequest = null;
     }
-    alert()
   }
 
   isJsonString(str) {
