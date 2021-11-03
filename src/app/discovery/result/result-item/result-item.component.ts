@@ -46,6 +46,7 @@ export class ResultItemComponent implements OnInit {
     return name + " (Id: " + item.entityId + ")";
   }
 
+
   isValidValue(value) {
     if (value && value != null && value !== "null" && value !== "") {
       return true;

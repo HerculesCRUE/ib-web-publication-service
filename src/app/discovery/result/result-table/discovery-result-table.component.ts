@@ -18,7 +18,32 @@ export class DiscoveryResultTableComponent implements OnChanges {
     }
   }
 
+  getPrintableEntity(item) {
+    let name = "";
+    if (this.isValidValue(item.attributes.title)) {
+      name = item.attributes.title;
+    } else if (this.isValidValue(item.attributes.name)) {
+      name = item.attributes.name;
+    } else if (this.isValidValue(item.attributes.description)) {
+      name = item.attributes.description;
+    } else {
+      name = "Instance"
+    }
+    return name + " (Id: " + item.entityId + ")";
+  }
+
+
+  isValidValue(value) {
+    if (value && value != null && value !== "null" && value !== "") {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
 }
+
+
 
 export class DiscoveryResultTable {
   initData: Array<DiscoveryResultItem> = [];
@@ -134,6 +159,7 @@ export class DiscoveryResultTable {
     });
   }
 
+
   private createSearchRegExp(value: string): RegExp {
     let searchRegexp: RegExp = null;
     if (value != null && value.length) {
@@ -146,6 +172,8 @@ export class DiscoveryResultTable {
   toggleItem(item: DiscoveryResultItem): void {
     this.itemExpanded = this.isItemExpanded(item) ? null : item;
   }
+
+
 
   isItemExpanded(item: DiscoveryResultItem): boolean {
     return this.itemExpanded === item;
