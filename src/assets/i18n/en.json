@@ -613,6 +613,7 @@
     "cron": "Cron"
   },
   "importation": {
+    "import-manual": "Import manual",
     "header": "Data importation",
     "button": "+ New Importation",
     "import": "Import",
@@ -651,6 +652,7 @@
       "relations": "Related entities"
     },
     "relatedHeader": "Related entitites",
+    "directHeader": "Main relations",
     "relationship": "Relationship",
     "relatedUri": "Uri",
     "relatedType": "Category",

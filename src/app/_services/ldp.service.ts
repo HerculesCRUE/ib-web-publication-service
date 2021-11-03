@@ -125,10 +125,11 @@ export class LdpService extends AbstractService {
  * @return {*}  {Observable<Page<LdpRelatedSearchResult>>}
  * @memberof DataImporterService
  */
-    findRelated(uri: string, findRequest: FindRequest): Observable<Page<LdpRelatedSearchResult>> {
+    findRelated(uri: string, findRequest: FindRequest, type: string): Observable<Page<LdpRelatedSearchResult>> {
         // Filter params
         let parameters = new HttpParams();
         parameters = Helper.addParam(parameters, 'uri', uri);
+        parameters = Helper.addParam(parameters, 'type', type);
 
 
         if (findRequest && findRequest.pageRequest && !findRequest.pageRequest.property) {

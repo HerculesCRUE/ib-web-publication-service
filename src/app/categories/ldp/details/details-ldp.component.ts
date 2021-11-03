@@ -252,4 +252,7 @@ export class DetailsLdpComponent implements OnInit, AfterViewInit, OnChanges, On
         });
     }
 
+    back() {
+        window.history.back();
+    }
 }
