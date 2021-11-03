@@ -34,11 +34,11 @@ export class ResultItemComponent implements OnInit {
 
   getPrintableEntity(item) {
     let name = "";
-    if (item.attributes.title) {
+    if (item.attributes.title && item.attributes.title !== 'null') {
       name = item.attributes.title;
-    } else if (item.attributes.name) {
+    } else if (item.attributes.name && item.attributes.title !== 'null') {
       name = item.attributes.name;
-    } else if (item.attributes.description) {
+    } else if (item.attributes.description && item.attributes.title !== 'null') {
       name = item.attributes.name;
     } else {
       name = "Instance"
