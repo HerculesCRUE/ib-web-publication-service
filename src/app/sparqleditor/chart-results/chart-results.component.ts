@@ -14,18 +14,20 @@ export class ChartResultsComponent implements OnInit {
   labels: string[];
   @Input()
   type: string;
+  @Input()
+  options: any;
 
   echartOptions: any;
 
   ngOnInit(): void {
     if (this.type == 'bar') {
-      this.echartOptions = HelperGraphics.configSimpleChartBar(this.labels, this.data);
+      this.echartOptions = this.options ? this.options : HelperGraphics.configSimpleChartBar(this.labels, this.data);
     } else if (this.type == 'line') {
-      this.echartOptions = HelperGraphics.configChartLine(this.labels, this.data);
+      this.echartOptions = this.options ? this.options : HelperGraphics.configChartLine(this.labels, this.data);
     } else if (this.type == 'bubble') {
-      this.echartOptions = HelperGraphics.configChartBubble(this.labels, this.data);
+      this.echartOptions = this.options ? this.options : HelperGraphics.configChartBubble(this.labels, this.data);
     } else if (this.type == 'sector') {
-      this.echartOptions = HelperGraphics.configSimpleChartPie(this.labels, this.data);
+      this.echartOptions = this.options ? this.options : HelperGraphics.configSimpleChartPie(this.labels, this.data);
     }
   }
 
