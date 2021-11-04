@@ -1,3 +1,4 @@
+<div class="loader" *ngIf="!loaded"></div>
 <div *ngIf="loaded && resultObject?.content?.length !== 0" class="container-fluid app-table-results">
 
     <div class="row">
@@ -10,7 +11,6 @@
     <div class="row">
         <div class="col-lg-12">
 
-            <div class="loader" *ngIf="!loaded"></div>
             <app-table-results-ldp-related-search [displayPagination]="false" [findRequest]="findRequest"
                 *ngIf="loaded && resultObject?.content?.length !== 0" [dtoTypeTranslate]="'ldp'"
                 [data]="resultObject?.content" [pageInfo]="resultObject"

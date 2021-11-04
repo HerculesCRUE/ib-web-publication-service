@@ -7,15 +7,22 @@
                     <tr>
 
                         <ng-container *ngFor="let header of hedearDTO">
-                            <ng-container>
-                                <th id="{{header + dtoTypeTranslate + extra}}"
-                                    [ngClass]="{'main-col-of-2': header==='relatedDescription' }">
+                            <ng-container *ngIf="header !== 'relatedDescription'">
+                                <th class="sortable" (click)="sort(header)" id="{{header + dtoTypeTranslate + extra}}">
                                     <em class="oi oi-info" *ngIf="needTooltip(header).required" placement="top"
                                         ngbTooltip="{{needTooltip(header).textValue}}"></em>
                                     {{ dtoTypeTranslate + '.' + header | translate }}
                                     <em class="float-right" [ngClass]="getSortIcon(header)"></em>
                                 </th>
+                            </ng-container>
 
+                            <ng-container *ngIf="header === 'relatedDescription'">
+                                <th id="{{header + dtoTypeTranslate + extra}}"
+                                    [ngClass]="{'main-col-of-2': header==='relatedDescription' }">
+                                    <em class="oi oi-info" *ngIf="needTooltip(header).required" placement="top"
+                                        ngbTooltip="{{needTooltip(header).textValue}}"></em>
+                                    {{ dtoTypeTranslate + '.' + header | translate }}
+                                </th>
                             </ng-container>
 
 

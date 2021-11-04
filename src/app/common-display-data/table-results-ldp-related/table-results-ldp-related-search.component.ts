@@ -66,7 +66,6 @@ export class TableResultsLdpRelatedSearchComponent
       });
 
       this.translateService.get('ldp.properties').subscribe((translations: any) => {
-        this.dataComplete = JSON.parse(JSON.stringify(val));
         this.dataComplete.forEach(item => {
 
           const relationship = Helper.getLdpEntityName(item.relationship);
