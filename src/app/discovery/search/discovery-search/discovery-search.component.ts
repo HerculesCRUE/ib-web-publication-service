@@ -34,7 +34,7 @@ export class DiscoverySearchComponent implements OnInit {
     this.searchRequest.filter.doSynchronous = true;
     this.searchRequest.filter.linkEntities = false;
     this.searchRequest.filter.propague_in_kafka = true;
-    if (Helper.checkEmail(this.currentUser)) {
+    if (this.currentUser && Helper.checkEmail(this.currentUser)) {
       this.searchRequest.filter.email = this.currentUser;
     }
     this.loadNodesList();
@@ -176,7 +176,6 @@ export class DiscoverySearchComponent implements OnInit {
       alert("Invalid JSON Format");
       this.bodyRequest = null;
     }
-    alert()
   }
 
   isJsonString(str) {

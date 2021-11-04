@@ -1499,6 +1499,9 @@ app-pagination .pagination-sm .page-item a.page-link:focus {
     outline: solid 1px var(--umu-focus);
     outline-offset: -5px;
 }
+.nav.nav-tabs li.nav-item a.disabled {
+	color: rgba(0, 0, 0, 0.38) !important;
+}
 
 /* panel */
 

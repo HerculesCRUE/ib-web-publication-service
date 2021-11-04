@@ -34,16 +34,25 @@ export class ResultItemComponent implements OnInit {
 
   getPrintableEntity(item) {
     let name = "";
-    if (item.attributes.title) {
+    if (this.isValidValue(item.attributes.title)) {
       name = item.attributes.title;
-    } else if (item.attributes.name) {
+    } else if (this.isValidValue(item.attributes.name)) {
       name = item.attributes.name;
-    } else if (item.attributes.description) {
-      name = item.attributes.name;
+    } else if (this.isValidValue(item.attributes.description)) {
+      name = item.attributes.description;
     } else {
       name = "Instance"
     }
     return name + " (Id: " + item.entityId + ")";
+  }
+
+
+  isValidValue(value) {
+    if (value && value != null && value !== "null" && value !== "") {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   onActionOverManualSimilitude(isAcepted: boolean, itemManual: any, inverted: boolean) {

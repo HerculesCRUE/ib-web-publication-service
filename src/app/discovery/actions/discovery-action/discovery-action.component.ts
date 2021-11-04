@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import * as moment from 'moment';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Observable, Subscription } from 'rxjs';
 import { FindRequest } from 'src/app/_helpers/search';
@@ -170,9 +171,15 @@ export class DiscoveryActionComponent implements OnInit {
   }
 
   dateToLocale(date) {
-    console.log('date', date);
-    console.log('user local storage', localStorage.getItem('user_name'))
-    return new Date(date).toLocaleString(this.getUsersLocale('es-ES'));
+    var localDate;
+    if (date.includes(" UTC")) {
+      date = date.replace(' UTC', '');
+      let offset = new Date().getTimezoneOffset();
+      localDate = moment(date).add(offset * (-1), 'm').toDate();
+    } else {
+      localDate = date;
+    }
+    return localDate.toLocaleString();
   }
 
   getUsersLocale(defaultValue: string): string {

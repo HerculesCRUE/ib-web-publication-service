@@ -41,7 +41,7 @@
                         <span class="row-toggler fa fa-caret-{{table.isItemExpanded(it) ? 'up' : 'down'}}"
                             (click)="table.toggleItem(it)"></span>
                     </td>
-                    <td>{{it.attributes?.title}}</td>
+                    <td>{{ getPrintableEntity(it) }}</td>
                     <td>
                         <span class="oi oi-{{it.automatics?.length ? 'check' : 'x'}}"></span>
                     </td>
