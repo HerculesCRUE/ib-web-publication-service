@@ -16,38 +16,40 @@
               class="oi oi-list"></span>
             {{ "sparql.results.response" | translate }}</a>
         </li>
-        <li class="nav-item" role="presentation" [ngClass]="{'cursor-text': !activeCharts }">
-          <a class="nav-link" [class.disabled]="!activeCharts" [ngClass]="{'active': activeTab === 'bar-chart' }"
-            id="bar-chart-atb" (click)="changeTab('bar-chart', !activeCharts)" data-bs-toggle="tab"
+        <li class="nav-item" role="presentation" [ngClass]="{'cursor-text': !chart.bar.active }">
+          <a class="nav-link" [class.disabled]="!chart.bar.active" [ngClass]="{'active': activeTab === 'bar-chart' }"
+            id="bar-chart-atb" (click)="changeTab('bar-chart', !chart.bar.active)" data-bs-toggle="tab"
             href="JavaScript:void(0)" role="tab" aria-controls="bar-chart"
             [attr.aria-selected]="activeTab === 'bar-chart'"><span class="oi oi-bar-chart"></span>
             {{ "sparql.results.bar-chart" | translate }}</a>
         </li>
-        <li class="nav-item" role="presentation" [ngClass]="{'cursor-text': !activeCharts }">
-          <a class="nav-link" [class.disabled]="!activeCharts" [ngClass]="{'active': activeTab === 'line-chart' }"
-            id="line-chart-atb" (click)="changeTab('line-chart', !activeCharts)" data-bs-toggle="tab"
+        <li class="nav-item" role="presentation" [ngClass]="{'cursor-text': !chart.line.active }">
+          <a class="nav-link" [class.disabled]="!chart.line.active" [ngClass]="{'active': activeTab === 'line-chart' }"
+            id="line-chart-atb" (click)="changeTab('line-chart', !chart.line.active)" data-bs-toggle="tab"
             href="JavaScript:void(0)" role="tab" aria-controls="line-chart"
             [attr.aria-selected]="activeTab === 'line-chart'"><span class="oi oi-graph"></span>
             {{ "sparql.results.line-chart" | translate }}</a>
         </li>
-        <li class="nav-item" role="presentation" [ngClass]="{'cursor-text': !activeCharts }">
-          <a class="nav-link" [class.disabled]="!activeCharts" [ngClass]="{'active': activeTab === 'buble-chart' }"
-            id="buble-chart-atb" (click)="changeTab('buble-chart', !activeCharts)" data-bs-toggle="tab"
-            href="JavaScript:void(0)" role="tab" aria-controls="buble-chart"
-            [attr.aria-selected]="activeTab === 'buble-chart'"><span class="oi oi-target"></span>
+        <li class="nav-item" role="presentation" [ngClass]="{'cursor-text': !chart.buble.active }">
+          <a class="nav-link" [class.disabled]="!chart.buble.active"
+            [ngClass]="{'active': activeTab === 'buble-chart' }" id="buble-chart-atb"
+            (click)="changeTab('buble-chart', !chart.buble.active)" data-bs-toggle="tab" href="JavaScript:void(0)"
+            role="tab" aria-controls="buble-chart" [attr.aria-selected]="activeTab === 'buble-chart'"><span
+              class="oi oi-target"></span>
             {{ "sparql.results.bubble-chart" | translate }}</a>
         </li>
-        <li class="nav-item" role="presentation" [ngClass]="{'cursor-text': !activeCharts }">
-          <a class="nav-link" [class.disabled]="!activeCharts" [ngClass]="{'active': activeTab === 'sector-chart' }"
-            id="sector-chart-atb" (click)="changeTab('sector-chart', !activeCharts)" data-bs-toggle="tab"
-            href="JavaScript:void(0)" role="tab" aria-controls="sector-chart"
-            [attr.aria-selected]="activeTab === 'sector-chart'"><span class="oi oi-pie-chart"></span>
+        <li class="nav-item" role="presentation" [ngClass]="{'cursor-text': !chart.sector.active }">
+          <a class="nav-link" [class.disabled]="!chart.sector.active"
+            [ngClass]="{'active': activeTab === 'sector-chart' }" id="sector-chart-atb"
+            (click)="changeTab('sector-chart', !chart.sector.active)" data-bs-toggle="tab" href="JavaScript:void(0)"
+            role="tab" aria-controls="sector-chart" [attr.aria-selected]="activeTab === 'sector-chart'"><span
+              class="oi oi-pie-chart"></span>
             {{ "sparql.results.sector-chart" | translate }}</a>
         </li>
-        <li class="nav-item" role="presentation" [ngClass]="{'cursor-text': !activeCharts }">
-          <a class="nav-link" [class.disabled]="!activeCharts" [ngClass]="{'active': activeTab === 'map' }" id="map-tab"
-            (click)="changeTab('map', !activeCharts)" data-bs-toggle="tab" href="JavaScript:void(0)" role="tab"
-            aria-controls="map" [attr.aria-selected]="activeTab === 'map'"><span class="oi oi-map"></span>
+        <li class="nav-item" role="presentation" [ngClass]="{'cursor-text': !chart.map.active }">
+          <a class="nav-link" [class.disabled]="!chart.map.active" [ngClass]="{'active': activeTab === 'map' }"
+            id="map-tab" (click)="changeTab('map', !chart.map.active)" data-bs-toggle="tab" href="JavaScript:void(0)"
+            role="tab" aria-controls="map" [attr.aria-selected]="activeTab === 'map'"><span class="oi oi-map"></span>
             {{ "sparql.results.map" | translate }}</a>
         </li>
       </ul>
@@ -72,28 +74,33 @@
           [ngClass]="{'show': activeTab === 'bar-chart', 'active': activeTab === 'bar-chart' }" role="tabpanel"
           aria-labelledby="bar-chart-tab">
           <div *ngIf="activeTab === 'bar-chart'">
-            <app-chart-results [data]="echartData" [labels]="echartLabels" type="bar"></app-chart-results>
+            <app-chart-results [data]="echartData" [labels]="echartLabels" type="bar" [options]="chart.bar.options">
+            </app-chart-results>
           </div>
         </div>
         <div class="tab-pane fade" id="line-chart"
           [ngClass]="{'show': activeTab === 'line-chart', 'active': activeTab === 'line-chart' }" role="tabpanel"
           aria-labelledby="line-chart-tab">
           <div *ngIf="activeTab === 'line-chart'">
-            <app-chart-results [data]="echartData" [labels]="echartLabels" type="line"></app-chart-results>
+            <app-chart-results [data]="echartData" [labels]="echartLabels" type="line" [options]="chart.line.options">
+            </app-chart-results>
           </div>
         </div>
         <div class="tab-pane fade" id="buble-chart"
           [ngClass]="{'show': activeTab === 'buble-chart', 'active': activeTab === 'buble-chart' }" role="tabpanel"
           aria-labelledby="buble-chart-tab">
           <div *ngIf="activeTab === 'buble-chart'">
-            <app-chart-results [data]="echartData" [labels]="echartLabels" type="bubble"></app-chart-results>
+            <app-chart-results [data]="echartData" [labels]="echartLabels" type="bubble"
+              [options]="chart.buble.options">
+            </app-chart-results>
           </div>
         </div>
         <div class="tab-pane fade" id="sector-chart"
           [ngClass]="{'show': activeTab === 'sector-chart', 'active': activeTab === 'sector-chart' }" role="tabpanel"
           aria-labelledby="sector-chart-tab">
           <div *ngIf="activeTab === 'sector-chart'">
-            <app-chart-results [data]="echartData" [labels]="echartLabels" type="sector"></app-chart-results>
+            <app-chart-results [data]="echartData" [labels]="echartLabels" type="sector"
+              [options]="chart.sector.options"></app-chart-results>
           </div>
         </div>
         <div class="tab-pane fade" id="map" [ngClass]="{'show': activeTab === 'map', 'active': activeTab === 'map' }"
