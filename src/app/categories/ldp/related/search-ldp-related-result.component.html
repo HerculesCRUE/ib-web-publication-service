@@ -2,31 +2,42 @@
 <div *ngIf="loaded && resultObject?.content?.length !== 0" class="container-fluid app-table-results">
 
     <div class="row">
-        <div class="col-lg-12">
+        <div class="form-group col-lg-12">
             <h5 *ngIf="type=='back'">{{ "ldp.relatedHeader" | translate }}</h5>
             <h5 *ngIf="type=='front'">{{ "ldp.directHeader" | translate }}</h5>
         </div>
-    </div>
 
-    <div class="row">
-        <div class="col-lg-12">
+        <div class="form-group col-lg-3" *ngIf="!hideTypes">
+            <label for="categories" class="col-sm-4 control-label">{{ "ldp.relatedType" | translate }}</label>
+            <div class="col-sm-8">
+                <select name="categories" class="form-control" [(ngModel)]="category" #type="ngModel" (change)="find()">
+                    <option *ngFor="let cat of categories" [value]="cat.id">
+                        {{cat.name}}
+                    </option>
+                </select>
+            </div>
+        </div>
 
-            <app-table-results-ldp-related-search [displayPagination]="false" [findRequest]="findRequest"
-                *ngIf="loaded && resultObject?.content?.length !== 0" [dtoTypeTranslate]="'ldp'"
-                [data]="resultObject?.content" [pageInfo]="resultObject"
-                (sortChanged)="allResearchmentStructuresFilteredSortChanged($event)">
-            </app-table-results-ldp-related-search>
-            <div class="container-fluid app-table-results">
-                <div class="row">
-                    <div class="col">
-                        <app-pagination [resultObject]="resultObject" (pageChanged)="showPage($event)"
-                            (sizeChanged)="changeSize($event)">
-                        </app-pagination>
+
+        <div class="row">
+            <div class="col-lg-12">
+
+                <app-table-results-ldp-related-search [displayPagination]="false" [findRequest]="findRequest"
+                    *ngIf="loaded && resultObject?.content?.length !== 0" [dtoTypeTranslate]="'ldp'"
+                    [data]="resultObject?.content" [pageInfo]="resultObject"
+                    (sortChanged)="allResearchmentStructuresFilteredSortChanged($event)">
+                </app-table-results-ldp-related-search>
+                <div class="container-fluid app-table-results">
+                    <div class="row">
+                        <div class="col">
+                            <app-pagination [resultObject]="resultObject" (pageChanged)="showPage($event)"
+                                (sizeChanged)="changeSize($event)">
+                            </app-pagination>
+                        </div>
                     </div>
                 </div>
+
             </div>
-
         </div>
-    </div>
 
-</div>
+    </div>

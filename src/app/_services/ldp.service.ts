@@ -125,11 +125,14 @@ export class LdpService extends AbstractService {
  * @return {*}  {Observable<Page<LdpRelatedSearchResult>>}
  * @memberof DataImporterService
  */
-    findRelated(uri: string, findRequest: FindRequest, type: string): Observable<Page<LdpRelatedSearchResult>> {
+    findRelated(uri: string, findRequest: FindRequest, type: string, filters: string): Observable<Page<LdpRelatedSearchResult>> {
         // Filter params
         let parameters = new HttpParams();
         parameters = Helper.addParam(parameters, 'uri', uri);
         parameters = Helper.addParam(parameters, 'type', type);
+        if (filters) {
+            parameters = Helper.addParam(parameters, 'filters', filters);
+        }
 
 
         if (findRequest && findRequest.pageRequest && !findRequest.pageRequest.property) {
@@ -158,6 +161,19 @@ export class LdpService extends AbstractService {
 
         return this.httpClient
             .get(Helper.getUrl('/ldp/findDetails'), {
+                params: parameters
+            }).pipe(
+                catchError(this.handleError)
+            );
+    }
+
+    findRelatedCategories(uri: string, type: string): Observable<string[]> {
+        let parameters = new HttpParams();
+        parameters = Helper.addParam(parameters, 'uri', uri);
+        parameters = Helper.addParam(parameters, 'type', type);
+
+        return this.httpClient
+            .get(Helper.getUrl('/ldp/findRelated/categories'), {
                 params: parameters
             }).pipe(
                 catchError(this.handleError)
