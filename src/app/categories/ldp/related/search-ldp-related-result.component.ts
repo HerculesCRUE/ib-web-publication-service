@@ -10,7 +10,7 @@ import { LdpRelatedSearchResult } from 'src/app/_models/LdpRelatedSearchResult';
 import { LdpService } from 'src/app/_services/ldp.service';
 
 
-class Category {
+export class Category {
     id: string
     name: string
 
@@ -158,6 +158,11 @@ export class RelatedLdpComponent extends PaginatedSearchComponent<LdpRelatedSear
         }, () => {
             this.loaded = true;
         });
+    }
+
+    filter(value: string) {
+        this.category = value;
+        this.find();
     }
 
 }
