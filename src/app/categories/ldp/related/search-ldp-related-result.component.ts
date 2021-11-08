@@ -52,6 +52,9 @@ export class RelatedLdpComponent extends PaginatedSearchComponent<LdpRelatedSear
         private route: ActivatedRoute
     ) {
         super(router, translate, toastr);
+        router.routeReuseStrategy.shouldReuseRoute = function () {
+            return false;
+        };
     }
 
     ngOnInit() {
