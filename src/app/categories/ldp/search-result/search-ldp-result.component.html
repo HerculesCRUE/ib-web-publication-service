@@ -3,9 +3,17 @@
         <h1 class="legend">{{ "ldp.header" | translate }}</h1>
     </div>
 </div>
-
-<button id="clean" [attr.aria-label]="'form.clean' | translate " role="button" aria-pressed="false"
-    class="btn btn-secondary" (click)="back()">Volver</button>
+<div class="container-fluid">
+    <div class="row text-muted">
+        <div class="col-12 text-right">
+            <p>
+                <a (click)="back()" class="text-muted"> {{'form.back' | translate}} </a>
+            </p>
+        </div>
+    </div>
+</div>
+<!--<button id="clean" [attr.aria-label]="'form.clean' | translate " role="button" aria-pressed="false"
+    class="btn btn-secondary" (click)="back()">Volver</button>-->
 
 <app-search-ldp [searchToken]="title"></app-search-ldp>
 <fieldset class="panel-default">
