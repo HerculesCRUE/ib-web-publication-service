@@ -222,7 +222,8 @@
     "research-group": "Grupos investigación",
     "funding-organization": "Organizaciones financiadoras",
     "organization": "Organizaciones",
-    "university": "Universidades"
+    "university": "Universidades",
+    "relatestitles": "Organizaciones padre"
   },
   "scientist": {
     "title": "Titulo",

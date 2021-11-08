@@ -222,7 +222,8 @@
     "research-group": "Research groups",
     "funding-organization": "Funding Organizations",
     "organization": "Organizations",
-    "university": "Universities"
+    "university": "Universities",
+    "relatestitles": "Parent organizations"
   },
   "scientist": {
     "title": "Research staff",
