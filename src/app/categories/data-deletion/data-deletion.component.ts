@@ -51,7 +51,7 @@ export class DataDeletionComponent {
           const date = Helper.parse(this.deletionDate);
           let message = String(this.email['message']);
           message = message.replace('//date//', new Date(this.deletionDate).toLocaleDateString("es-US"))
-          //message = message.replace('//to//', String(this.currentUsername))
+          message = message.replace('//to//', String(this.currentUsername))
           this.dataDeletionService.delete(this.currentUsername, this.email['subject'], message).subscribe((data) => {
             this.executing = false;
           }, (error) => {
