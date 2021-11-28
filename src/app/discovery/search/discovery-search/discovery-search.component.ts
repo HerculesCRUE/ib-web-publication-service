@@ -68,7 +68,10 @@ export class DiscoverySearchComponent implements OnInit {
     this.objetsList = [];
     this.discoveryService.getObjectList(this.searchRequest).subscribe((objects: Array<Object>) => {
       for (let i = 0; i < objects.length; i++) {
-        this.objetsList.push(String(objects[i]).split("/").slice(-1)[0]);
+        let obj = String(objects[i]).split("/").slice(-1)[0];
+        if (obj !== "Researcher-position" && obj !== "Researcher-role" ) {
+          this.objetsList.push(obj);
+        }
       }
       this.objetsList.sort();
     });
