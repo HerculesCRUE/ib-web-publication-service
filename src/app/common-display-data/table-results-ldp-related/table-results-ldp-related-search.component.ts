@@ -13,6 +13,8 @@ import { Observable, of } from 'rxjs';
 import { Direction, FindRequest, Order, Page, PaginatedSearchComponent } from 'src/app/_helpers/search';
 import { LdpRelatedSearchResult } from 'src/app/_models/LdpRelatedSearchResult';
 import { Helper } from 'src/app/_helpers/utils';
+import { Category } from 'src/app/categories/ldp/related/search-ldp-related-result.component';
+
 
 /**
  * Class that draw a table
@@ -66,7 +68,6 @@ export class TableResultsLdpRelatedSearchComponent
       });
 
       this.translateService.get('ldp.properties').subscribe((translations: any) => {
-        this.dataComplete = JSON.parse(JSON.stringify(val));
         this.dataComplete.forEach(item => {
 
           const relationship = Helper.getLdpEntityName(item.relationship);
@@ -159,6 +160,15 @@ export class TableResultsLdpRelatedSearchComponent
 
 
   routerChild: Router;
+
+  @Input() categories: Array<Category> = [];
+
+  @Output()
+  filterChangeEvent: EventEmitter<string> = new EventEmitter<string>();
+
+  category: string;
+
+  showFilters: boolean = false;
 
   /**
    *
@@ -296,6 +306,14 @@ export class TableResultsLdpRelatedSearchComponent
       needTooltip.required = true;
     }
     return needTooltip;
+  }
+
+  callFilter() {
+    this.filterChangeEvent.emit(this.category);
+  }
+
+  toggleFilters() {
+    this.showFilters = !this.showFilters;
   }
 
   validURL(str: string) {

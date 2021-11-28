@@ -45,7 +45,6 @@ export const environment = {
   appUrl: 'https://linkeddata1desa.um.es',
   sgi: 'https://github.com/HerculesCRUE/ib-asio-docs-/tree/master/13-Backend_SGI_Software',
   mail: {
-    to: "daniel.ruiz.eng@gmail.com",
     subject: "Solicitud de borrado",
     message: "Es necesario restaurar los datos a fecha //date//\n\nPuede consultar los pasos necesarios en el manual de backups:\nhttps://git.izertis.com/universidaddemurcia/semantmurc/asio-docs/-/blob/master/00-Arquitectura/backups_y_restauraciones/Manual%20de%20backups%20y%20restauraciones%20del%20sistema.md\n\nUna vez realizado el borrado de los datos por favor, enviar un correo a //to//.\n\nGracias"
   }

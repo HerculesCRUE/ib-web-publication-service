@@ -52,7 +52,7 @@ export class DataDeletionComponent {
           let message = String(this.email['message']);
           message = message.replace('//date//', new Date(this.deletionDate).toLocaleDateString("es-US"))
           message = message.replace('//to//', String(this.currentUsername))
-          this.dataDeletionService.delete(this.email['to'], this.email['subject'], message).subscribe((data) => {
+          this.dataDeletionService.delete(this.currentUsername, this.email['subject'], message).subscribe((data) => {
             this.executing = false;
           }, (error) => {
             this.executing = false;

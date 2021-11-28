@@ -5,8 +5,20 @@ import { ToastrService } from 'ngx-toastr';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Direction, FindRequest, Order, Page, PageRequest, PaginatedSearchComponent } from 'src/app/_helpers/search';
+import { Helper } from 'src/app/_helpers/utils';
 import { LdpRelatedSearchResult } from 'src/app/_models/LdpRelatedSearchResult';
 import { LdpService } from 'src/app/_services/ldp.service';
+
+
+export class Category {
+    id: string
+    name: string
+
+    constructor(id, name) {
+        this.id = id;
+        this.name = name;
+    }
+}
 
 /**
  *
@@ -25,9 +37,14 @@ export class RelatedLdpComponent extends PaginatedSearchComponent<LdpRelatedSear
 
     uri: string;
 
+    categories: Array<Category> = [];
+
+    category: string;
+
     @Input() type: string;
 
     constructor(
+        private translateService: TranslateService,
         private researchmentStructureService: LdpService,
         router: Router,
         translate: TranslateService,
@@ -35,6 +52,9 @@ export class RelatedLdpComponent extends PaginatedSearchComponent<LdpRelatedSear
         private route: ActivatedRoute
     ) {
         super(router, translate, toastr);
+        router.routeReuseStrategy.shouldReuseRoute = function () {
+            return false;
+        };
     }
 
     ngOnInit() {
@@ -47,11 +67,32 @@ export class RelatedLdpComponent extends PaginatedSearchComponent<LdpRelatedSear
                 }
             }
             );
+        this.researchmentStructureService.findRelatedCategories(this.uri, this.type).subscribe((data) => {
+            let cats = data;
+
+            this.translateService.get('ldp.category.values').subscribe((translations: any) => {
+                cats.forEach(item => {
+                    const relatedType = Helper.getLdpEntityName(item);
+                    let name = null;
+                    if (translations && translations[relatedType]) {
+                        name = translations[relatedType].s;
+                    }
+                    this.categories.push(new Category(item, name ? name : relatedType));
+                });
+            });
+        }, () => {
+        });
+
+
     }
 
     protected findInternal(findRequest: FindRequest): Observable<Page<LdpRelatedSearchResult>> {
         const page: Page<LdpRelatedSearchResult> = new Page();
-        let method: Observable<Page<LdpRelatedSearchResult>> = this.researchmentStructureService.findRelated(this.uri, findRequest, this.type);
+        let filters;
+        if (this.category) {
+            filters = "related," + this.category;
+        }
+        let method: Observable<Page<LdpRelatedSearchResult>> = this.researchmentStructureService.findRelated(this.uri, findRequest, this.type, filters);
 
         return method.pipe(
             map((x) => {
@@ -84,7 +125,11 @@ export class RelatedLdpComponent extends PaginatedSearchComponent<LdpRelatedSear
     filterResearchmentStructures() {
         this.findRequest.pageRequest.page = 0;
         this.loaded = false;
-        let method: Observable<Page<LdpRelatedSearchResult>> = this.researchmentStructureService.findRelated(this.uri, this.findRequest, this.type);
+        let filters;
+        if (this.category) {
+            filters = "related," + this.category;
+        }
+        let method: Observable<Page<LdpRelatedSearchResult>> = this.researchmentStructureService.findRelated(this.uri, this.findRequest, this.type, filters);
 
         method.subscribe((data) => {
             this.resultObject = data;
@@ -104,7 +149,11 @@ export class RelatedLdpComponent extends PaginatedSearchComponent<LdpRelatedSear
     allResearchmentStructuresFilteredSortChanged(pageRequest: PageRequest): void {
         this.findRequest.pageRequest.property = pageRequest.property;
         this.findRequest.pageRequest.direction = pageRequest.direction;
-        let method: Observable<Page<LdpRelatedSearchResult>> = this.researchmentStructureService.findRelated(this.uri, this.findRequest, this.type);
+        let filters;
+        if (this.category) {
+            filters = "related," + this.category;
+        }
+        let method: Observable<Page<LdpRelatedSearchResult>> = this.researchmentStructureService.findRelated(this.uri, this.findRequest, this.type, filters);
 
         method.subscribe((data) => {
             this.resultObject = data;
@@ -112,6 +161,11 @@ export class RelatedLdpComponent extends PaginatedSearchComponent<LdpRelatedSear
         }, () => {
             this.loaded = true;
         });
+    }
+
+    filter(value: string) {
+        this.category = value;
+        this.find();
     }
 
 }
