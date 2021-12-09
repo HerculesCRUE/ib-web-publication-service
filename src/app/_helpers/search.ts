@@ -204,12 +204,10 @@ export abstract class PaginatedSearchComponent<T> implements AfterContentInit {
     const lastSearch = undefined;
     if (lastSearch) {
       this.findRequest = new FindRequest(lastSearch);
-      this.find();
     } else {
       this.findRequest = new FindRequest();
       this.findRequest.filter = {};
       this.resultObject = new Page<T>();
-      this.find();
     }
 
     if (
@@ -219,6 +217,8 @@ export abstract class PaginatedSearchComponent<T> implements AfterContentInit {
       const order: Order = this.getDefaultOrder();
       this.findRequest.setOrder(order.direction, order.property); // se debe fijar un orden por defecto
     }
+
+    this.find();
   }
 
   /**

@@ -41,6 +41,7 @@
                     <app-table-results-dto [displayPagination]="false" [findRequest]="findRequest"
                         *ngIf="loaded && resultObject?.content?.length !== 0" [data]="resultObject?.content"
                         [pageInfo]="resultObject" [dtoTypeTranslate]="'areas'" [routerFieldSecondary]="'type'"
+                        [ldapEntity]="true" ldapEntityUriField="uri"
                         [visibleColumns]="['title']" mainColumn="title"
                         (sortChanged)="allAreasFilteredSortChanged($event)">
                     </app-table-results-dto>

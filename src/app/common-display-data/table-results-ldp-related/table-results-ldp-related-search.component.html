@@ -1,0 +1,70 @@
+<div class="container-fluid app-table-results">
+    <div class="row">
+        <div class="col">
+            <table class="table table-bordered" aria-label="Data displayed from Sparql">
+                <caption>{{'form.results' | translate }}</caption>
+                <thead>
+                    <tr>
+
+                        <ng-container *ngFor="let header of hedearDTO">
+                            <ng-container *ngIf="header !== 'relatedDescription'">
+                                <th class="sortable" id="{{header + dtoTypeTranslate + extra}}">
+                                    <div class="row">
+                                        <em class="oi oi-info" *ngIf="needTooltip(header).required" placement="top"
+                                            ngbTooltip="{{needTooltip(header).textValue}}"></em>
+                                        {{ dtoTypeTranslate + '.' + header | translate }}
+                                        <em *ngIf="header == 'relatedType'" class="fas fa-filter"
+                                            (click)="showFilters=!showFilters"></em>
+                                        <em class="float-right" (click)="sort(header)"
+                                            [ngClass]="getSortIcon(header)"></em>
+                                    </div>
+                                    <div *ngIf="showFilters && header == 'relatedType'" class="row">
+                                        <select name="categories" class="form-control" [(ngModel)]="category"
+                                            #type="ngModel" (change)="callFilter()">
+                                            <option value=""></option>
+                                            <option *ngFor="let cat of categories" [value]="cat.id">
+                                                {{cat.name}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </th>
+                            </ng-container>
+
+                            <ng-container *ngIf="header === 'relatedDescription'">
+                                <th id="{{header + dtoTypeTranslate + extra}}"
+                                    [ngClass]="{'main-col-of-2': header==='relatedDescription' }">
+                                    <em class="oi oi-info" *ngIf="needTooltip(header).required" placement="top"
+                                        ngbTooltip="{{needTooltip(header).textValue}}"></em>
+                                    {{ dtoTypeTranslate + '.' + header | translate }}
+                                </th>
+                            </ng-container>
+
+
+                        </ng-container>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let item of dataCompleteToShow; index as i">
+
+                        <tr [ngClass]="{ 'table-secondary': i % 2 == 1 }">
+                            <ng-container *ngFor="let header of hedearDTO">
+                                <td>
+                                    <ng-container *ngIf="header==='relatedDescription'; else noLink"><a
+                                            [routerLink]="['/main/categories/ldp-entity-details']"
+                                            [queryParams]="{uri: item['relatedUri']}">{{item[header] }}</a>
+                                    </ng-container>
+                                    <ng-template #noLink>{{item[header] }}</ng-template>
+                                </td>
+                            </ng-container>
+                        </tr>
+
+                    </ng-container>
+                </tbody>
+            </table>
+            <app-pagination *ngIf="displayPagination" [resultObject]="resultObject"
+                (pageChanged)="callShowPageWhenPageChanges($event)" (sizeChanged)="callShowPageWhenSizeChanges($event)">
+            </app-pagination>
+        </div>
+    </div>
+</div>

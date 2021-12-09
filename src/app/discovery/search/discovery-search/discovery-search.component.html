@@ -43,8 +43,27 @@
                                         [(ngModel)]="searchRequest.filter.tripleStore" #type="ngModel"
                                         (change)="onTripleStoreSelected()" [disabled]="!searchRequest.filter.node"
                                         required>
-                                        <option *ngFor="let ts of nodes[searchRequest.filter.node]" [value]="ts">
+                                        <option *ngFor="let ts of nodes[searchRequest.filter.node]; index as i;"
+                                            [value]="ts"
+                                            [selected]="i==0 && nodes[searchRequest.filter.node].length == 1">
                                             {{ts}}</option>
+
+
+                                        <!--
+                                        <div
+                                            *ngIf="nodes[searchRequest.filter.node] && nodes[searchRequest.filter.node].length === 1; then thenBlock else elseBlock">
+                                        </div>
+                                        <ng-template #thenBlock>
+                                            <option [value]="nodes[searchRequest.filter.node][0]" [selected]="true">
+                                                {{nodes[searchRequest.filter.node][0]}}</option>
+                                            {{onTripleStoreSelectedWithTripleStore(nodes[searchRequest.filter.node][0])}}
+                                        </ng-template>
+                                        <ng-template #elseBlock>
+                                            <option *ngFor="let ts of nodes[searchRequest.filter.node]" [value]="ts">
+                                                {{ts}}</option>
+                                        </ng-template>
+                                        -->
+
                                     </select>
                                 </div>
                                 <div class="form-group col-md-4">
@@ -82,6 +101,14 @@
                                         {{'discovery.action-check-other-search-label' | translate}}
                                     </label>
                                 </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail">Email</label>
+                                <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp"
+                                    [(ngModel)]="searchRequest.filter.email" name="email">
+                                <small id="emailHelp" class="form-text text-muted">{{'discovery.email' |
+                                    translate}}
+                                </small>
                             </div>
 
                             <button type="submit" class="btn btn-primary" (click)="launchSearch()"
@@ -258,6 +285,15 @@
                                 </div>
                             </div>
 
+                            <div class="form-group">
+                                <label for="inputEmail">Email</label>
+                                <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp"
+                                    [(ngModel)]="searchRequest.filter.email" name="email">
+                                <small id="emailHelp" class="form-text text-muted">{{'discovery.email' |
+                                    translate}}
+                                </small>
+                            </div>
+
                             <button type="submit" class="btn btn-primary" (click)="launchSearch()"
                                 [disabled]="!searchRequest.filter.node || !searchRequest.filter.tripleStore || !searchRequest.filter.className || !searchRequest.filter.dataSource ">{{'discovery.action-btn-launch-search'
                                 | translate}}</button>
@@ -279,7 +315,8 @@
 <ng-template #notLoadedState>
     {{'discovery.noData' | translate}}
 </ng-template>
-<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="true">
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="true"
+    [timeout]="10000000000000000000000">
     <p style="color: white"> {{'discovery.search-message'
         | translate}} </p>
 </ngx-spinner>
@@ -354,24 +391,7 @@
                             </div>
                         </div>
 
-                        <div *ngIf="responseData.response.results.length > 0; else noSimilatirityResultsFound">
-                            <legend class="legend">{{'discovery.results-title' | translate}}</legend>
-                            <ngb-accordion [closeOthers]="false">
-                                <ngb-panel *ngFor="let it of responseData.response.results" id="it-{{it.entityId}}"
-                                    title="Entidad principal: {{it.entityId}}">
-                                    <ng-template ngbPanelContent>
-                                        <app-result-item [item]="it" [requestId]="responseData.response.requestCode"
-                                            [userId]="responseData.response.userId"
-                                            [requestType]="responseData.response.requestType"></app-result-item>
-                                        <hr>
-                                    </ng-template>
-                                </ngb-panel>
-                            </ngb-accordion>
-                        </div>
-
-                        <ng-template #noSimilatirityResultsFound>
-                            {{'discovery.not-result-found' | translate}}
-                        </ng-template>
+                        <app-discovery-result-table [responseData]="responseData"></app-discovery-result-table>
 
                     </div>
 

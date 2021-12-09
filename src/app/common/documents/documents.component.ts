@@ -230,7 +230,7 @@ export class DocumentsComponent extends PaginatedSearchComponent<Document | Acad
    */
   protected getDefaultOrder(): Order {
     return {
-      property: 'id',
+      property: 'title',
       direction: Direction.ASC
     };
   }

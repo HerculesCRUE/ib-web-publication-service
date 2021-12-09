@@ -1,7 +1,26 @@
 <fieldset class="panel-default">
     <legend></legend>
     <form class="form-horizontal" #f="ngForm" (keydown.enter)="$event.preventDefault()">
-
+        <div class="row">
+            <div class="form-group col-lg-4">
+                <label for="type" class="control-label">{{ "researchmentStructure.type" | translate }}</label>
+                <div>
+                    <select [attr.aria-label]="'researchmentStructure.type' | translate " name="type"
+                        class="form-control" [(ngModel)]="findRequest.filter.type" id="type" #type="ngModel"
+                        (change)="filterResearchmentStructures()">
+                        <option [value]="undefined"> {{ "form.select" | translate }}</option>
+                        <option value="Center">{{ "researchmentStructure.center" | translate }}</option>
+                        <option value="Department">{{ "researchmentStructure.department" | translate }}</option>
+                        <option value="Organization">{{ "researchmentStructure.organization" | translate }}</option>
+                        <option value="Research-group">{{ "researchmentStructure.research-group" | translate }}</option>
+                        <option value="Funding-organization">{{ "researchmentStructure.funding-organization" | translate
+                            }}</option>
+                        <option value="University">{{ "researchmentStructure.university" | translate
+                            }}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-12">
                 <div class="card flex-fill">
@@ -48,8 +67,8 @@
                             *ngIf="loaded && resultObject?.content?.length !== 0"
                             [dtoTypeTranslate]="'researchmentStructure'" [extra]="'2'" [data]="resultObject?.content"
                             [pageInfo]="resultObject" [routerFieldSecondary]="'type'" [routerField]="'id'"
-                            [visibleColumns]="['title', 'abbreviation']" mainColumn="title"
-                            (sortChanged)="allResearchmentStructuresFilteredSortChanged($event)">
+                            [ldapEntity]="true" ldapEntityUriField="uri" [visibleColumns]="['title','relatestitles']"
+                            mainColumn="title" (sortChanged)="allResearchmentStructuresFilteredSortChanged($event)">
                         </app-table-results-dto>
                         <div class="container-fluid app-table-results">
                             <div class="row">

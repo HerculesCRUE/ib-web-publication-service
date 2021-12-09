@@ -53,7 +53,7 @@ export class DocumentDetailComponent extends PaginatedSearchComponent<BookSectio
       this.lastItem = typeFromURL.pop();
     }
 
-    if (this.lastItem === 'Dossier') {
+    if (this.lastItem === 'Dossier' || this.lastItem === 'Publication') {
       this.documentService.getotherByIdAndType(this.id, btoa(this.lastItem)).subscribe(other => {
         if (other) {
           this.document = other;

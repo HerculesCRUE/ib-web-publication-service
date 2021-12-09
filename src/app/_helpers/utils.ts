@@ -1,5 +1,5 @@
 
-import { BASE_APP_URL, BASE_URL, DISCOVERY, SERVICE_DISCOVERY, IMPORTER_SERVICE, FEDERATION, KEYCLOACK, LPDURL, SGI, URIS_FACTORY } from '../configuration';
+import { BASE_APP_URL, BASE_URL, DISCOVERY, SERVICE_DISCOVERY, IMPORTER_SERVICE, FEDERATION, KEYCLOACK, LPDURL, SGI, URIS_FACTORY, EMAIL } from '../configuration';
 import { HttpParams } from '@angular/common/http';
 import { Direction, Page, PageRequest } from './search';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
@@ -7,6 +7,10 @@ import * as moment from 'moment';
 import { Binding, SparqlResults } from '../_models/sparql';
 import { Graphic } from '../_models/graphic';
 import { GraphicModelTree } from '../_models/graphicModelTree';
+import { DatePipe } from '@angular/common';
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
+
 /**
  * Clase de ayuda para la realización de llamadas HTTP.
  */
@@ -110,6 +114,15 @@ export class Helper {
    */
   static getAPPURL() {
     return BASE_APP_URL;
+  }
+
+
+  /**
+ * Completa la URL a llamar con la URL base del servicio de importacion.
+ * @param fragment Fragmento de URL.
+ */
+  static getEmailData() {
+    return EMAIL;
   }
 
 
@@ -392,4 +405,47 @@ export class Helper {
     const typeFromURL = url.split('/');
     return typeFromURL.pop();
   }
+
+  static formatDate(dateStr: string) {
+    registerLocaleData(localeEs, 'es');
+    try {
+      let date = new Date(dateStr);
+      return new DatePipe('es').transform(date, "yyyy-MM-dd HH:mm:ss")
+    } catch (error) {
+      return dateStr;
+    }
+  }
+
+  static getLdpEntityName(entity: string, lastPosition?: number): string {
+    let entityName = entity;
+    if (entity) {
+      const position = !lastPosition || lastPosition >= 0 ? -1 : lastPosition;
+      const parts = entity.split('/');
+      if (parts.length + position > 0) {
+        entityName = parts[parts.length + position];
+      }
+    }
+    return entityName;
+  }
+  static getLdpEntityURI(entity: string, lastPosition?: number): string {
+    let entityURI = entity;
+    if (entity) {
+      const position = (!lastPosition || lastPosition >= 0 ? -1 : lastPosition) + 1;
+      const parts = entity.split('/');
+      if (parts.length + position > 0) {
+        parts.splice(position, parts.length);
+        entityURI = parts.join('/');
+      }
+    }
+    return entityURI;
+  }
+
+  static checkEmail(email: string): boolean {
+    var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (email.match(mailformat)) {
+      return true;
+    }
+    return false;
+  }
+
 }

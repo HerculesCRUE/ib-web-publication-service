@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import * as moment from 'moment';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { Observable, Subscription } from 'rxjs';
 import { FindRequest } from 'src/app/_helpers/search';
 import { User } from 'src/app/_models/user';
 import { DiscoveryService } from 'src/app/_services/discovery/discovery.service';
@@ -12,10 +14,13 @@ import { LoginService } from 'src/app/_services/login.service';
 })
 export class DiscoveryActionComponent implements OnInit {
 
+  private eventsSubscription: Subscription;
+  @Input() events: Observable<void>;
+
   nodes = {};
   searchRequest: FindRequest = new FindRequest();
   bodyRequest: any;
-  currentUser: User;
+  currentUser: string;
   actionSearch: string;
   objetsList: Array<string>;
   dataIsLoaded = false;
@@ -28,19 +33,40 @@ export class DiscoveryActionComponent implements OnInit {
   constructor(private discoveryService: DiscoveryService, private loginService: LoginService, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
+    console.log('Inicializando DiscoveryActionComponent');
     this.bodyRequest = JSON.stringify({ "id": 40372, "title": "Fisiología del comportamiento", "date": "2006", "endPage": 41, "publishedIn": "BIOTECNOLOGIA DE LA REPRODUCCION PORCINAPORCI", "startPage": 24 }, null, 2)
     this.loginService.keycloakIsAdmin().subscribe(res => { this.isAdmin = res });
+    this.currentUser = localStorage.getItem('user_name');
     this.searchRequest.filter.applyDelta = true;
     this.searchRequest.filter.doSynchronous = true;
     this.searchRequest.filter.linkEntities = false;
     this.searchRequest.filter.propague_in_kafka = true;
-    this.loadResultsList();
     this.loadNodesList();
+    this.eventsSubscription = this.events.subscribe(() => {
+      console.log('Evento de click');
+      this.init();
+    });
   }
+
+  init() {
+    console.log('.........Inicializando DiscoveryActionComponent desde init');
+    this.actionSearch = null;
+    this.searchRequest.filter = {}
+    this.bodyRequest = JSON.stringify({ "id": 40372, "title": "Fisiología del comportamiento", "date": "2006", "endPage": 41, "publishedIn": "BIOTECNOLOGIA DE LA REPRODUCCION PORCINAPORCI", "startPage": 24 }, null, 2)
+    this.loginService.keycloakIsAdmin().subscribe(res => { this.isAdmin = res });
+    this.currentUser = localStorage.getItem('user_name');
+    this.searchRequest.filter.applyDelta = true;
+    this.searchRequest.filter.doSynchronous = true;
+    this.searchRequest.filter.linkEntities = false;
+    this.searchRequest.filter.propague_in_kafka = true;
+    this.loadNodesList();
+  };
+
+
 
   loadResultsList() {
     this.resultsList = {};
-    this.searchRequest.filter.userId = 'front-request:' + ((this.currentUser) ? 'this.currentUser.id' : 'anonimus');
+    this.searchRequest.filter.userId = 'front-request:' + ((this.currentUser) ? this.currentUser : 'anonimus');
     this.discoveryService.getResultListByUserId(this.searchRequest.filter.userId).then(data => {
       this.resultsList = data;
     });
@@ -73,7 +99,10 @@ export class DiscoveryActionComponent implements OnInit {
     this.objetsList = [];
     this.discoveryService.getObjectList(this.searchRequest).subscribe((objects: Array<Object>) => {
       for (let i = 0; i < objects.length; i++) {
-        this.objetsList.push(String(objects[i]).split("/").slice(-1)[0]);
+        let obj = String(objects[i]).split("/").slice(-1)[0];
+        if (obj !== "Researcher-position" && obj !== "Researcher-role" ) {
+          this.objetsList.push(obj);
+        }
       }
       console.log('nodthis.objetsListes', this.objetsList)
       this.objetsList.sort();
@@ -81,8 +110,9 @@ export class DiscoveryActionComponent implements OnInit {
   }
 
   onActionSelected() {
+    this.loadResultsList();
     this.searchRequest.filter = {};
-    this.searchRequest.filter.userId = 'front-request:' + ((this.currentUser) ? 'this.currentUser.id' : 'anonimus');
+    this.searchRequest.filter.userId = 'front-request:' + ((this.currentUser) ? this.currentUser : 'anonimus');
   }
 
   onNodeSelected() {
@@ -109,7 +139,7 @@ export class DiscoveryActionComponent implements OnInit {
         this.responseIsReady = true;
         this.responseData = data;
         this.searchRequest.filter = {};
-        this.searchRequest.filter.userId = 'front-request:' + ((this.currentUser) ? 'this.currentUser.id' : 'anonimus');
+        this.searchRequest.filter.userId = 'front-request:' + ((this.currentUser) ? this.currentUser : 'anonimus');
         this.requestCodes = [];
         this.spinner.hide();
       }, (error) => {
@@ -133,7 +163,7 @@ export class DiscoveryActionComponent implements OnInit {
         };
         console.log('response', this.responseData);
         this.searchRequest.filter = {};
-        this.searchRequest.filter.userId = 'front-request:' + ((this.currentUser) ? 'this.currentUser.id' : 'anonimus');
+        this.searchRequest.filter.userId = 'front-request:' + ((this.currentUser) ? this.currentUser : 'anonimus');
         this.requestCodes = [];
         this.spinner.hide();
       }, (error) => {
@@ -143,5 +173,27 @@ export class DiscoveryActionComponent implements OnInit {
     }
   }
 
+  dateToLocale(date) {
+    var localDate;
+    if (date.includes(" UTC")) {
+      date = date.replace(' UTC', '');
+      let offset = new Date().getTimezoneOffset();
+      localDate = moment(date).add(offset * (-1), 'm').toDate();
+    } else {
+      localDate = date;
+    }
+    return localDate.toLocaleString();
+  }
+
+  getUsersLocale(defaultValue: string): string {
+    if (typeof window === 'undefined' || typeof window.navigator === 'undefined') {
+      return defaultValue;
+    }
+    const wn = window.navigator as any;
+    let lang = wn.languages ? wn.languages[0] : defaultValue;
+    lang = lang || wn.language || wn.browserLanguage || wn.userLanguage;
+    console.log('locale', lang);
+    return lang;
+  }
 
 }

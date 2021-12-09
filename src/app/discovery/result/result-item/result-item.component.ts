@@ -32,7 +32,30 @@ export class ResultItemComponent implements OnInit {
     this.loginService.keycloakIsAdmin().subscribe(res => { this.isAdmin = res });
   }
 
-  onActionOverManualSimilitude(isAcepted: boolean, itemManual: any) {
+  getPrintableEntity(item) {
+    let name = "";
+    if (this.isValidValue(item.attributes.title)) {
+      name = item.attributes.title;
+    } else if (this.isValidValue(item.attributes.name)) {
+      name = item.attributes.name;
+    } else if (this.isValidValue(item.attributes.description)) {
+      name = item.attributes.description;
+    } else {
+      name = "Instance"
+    }
+    return name + " (Id: " + item.entityId + ")";
+  }
+
+
+  isValidValue(value) {
+    if (value && value != null && value !== "null" && value !== "") {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  onActionOverManualSimilitude(isAcepted: boolean, itemManual: any, inverted: boolean) {
     this.manualDecisions[itemManual.entityId] = {
       'accepted': isAcepted,
       'className': this.item.className,
@@ -41,7 +64,16 @@ export class ResultItemComponent implements OnInit {
     };
     let searchRequest = new FindRequest();
     searchRequest.filter.className = this.manualDecisions[itemManual.entityId].className;
-    searchRequest.filter.decision = this.manualDecisions[itemManual.entityId].accepted ? "ACCEPTED" : "DISCARDED";
+    if (this.manualDecisions[itemManual.entityId].accepted) {
+      if (!inverted) {
+        searchRequest.filter.decision = "ACCEPTED";
+      } else {
+        searchRequest.filter.decision = "INVERTED";
+      }
+    } else {
+      searchRequest.filter.decision = "DISCARDED";
+    }
+    console.log('searchRequest.filter.decision', searchRequest.filter.decision);
     searchRequest.filter.entityIdMainObject = this.manualDecisions[itemManual.entityId].entityIdMainObject;
     searchRequest.filter.entityIdRelatedObject = this.manualDecisions[itemManual.entityId].entityIdRelatedObject;
     this.spinner.show();

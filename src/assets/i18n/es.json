@@ -70,7 +70,7 @@
     "import-data": "Importador de datos",
     "delete-data": "Borrado de datos",
     "validator": "Validadores",
-    "ldp": "Entidades del grafo ASIO-SGI",
+    "ldp": "Entidades del grafo",
     "installer": "Instalador",
     "etl": "ETL",
     "information": "Info",
@@ -109,8 +109,8 @@
   },
   "sparql": {
     "username": "Nombre de usuario",
-    "sparqlQuery": "Query",
-    "sparqlName": "Nombre",
+    "sparqlQuery": "Consulta",
+    "sparqlName": "Título",
     "entityId": "ID",
     "main": {
       "federated": "Consultas federadas",
@@ -165,7 +165,7 @@
     "information": "Info",
     "links": "Enlaces",
     "validation": "Validadores",
-    "ldp": "Entidades del grafo ASIO-SGI",
+    "ldp": "Entidades del grafo",
     "validator": "Validadores"
   },
   "links": {
@@ -216,7 +216,14 @@
     "contains": "Contiene",
     "participates": "Participa en",
     "provides": "Provee",
-    "relatedBy": "Relacionado con"
+    "relatedBy": "Relacionado con",
+    "center": "Centros",
+    "department": "Departamentos",
+    "research-group": "Grupos investigación",
+    "funding-organization": "Organizaciones financiadoras",
+    "organization": "Organizaciones",
+    "university": "Universidades",
+    "relatestitles": "Organizaciones padre"
   },
   "scientist": {
     "title": "Titulo",
@@ -248,7 +255,7 @@
     "hasContactInfo": "Info. de contacto",
     "homepage": "Pag. Inicio",
     "nickname": "Nickname",
-    "personalMaibox": "Mail Personal",
+    "personalMaibox": "Mail",
     "researchLine": "Línea de investigación",
     "surname": "Apellido",
     "taxId": "Tax ID",
@@ -323,6 +330,7 @@
     "code-result": "Código de resultado",
     "accept": "Aceptar similitud",
     "reject": "Rechazar similitud",
+    "invert": "Aceptar similitud invertida",
     "entity": "Entidad",
     "entity-main": "Entidad principal",
     "attributes": "Atributos",
@@ -336,7 +344,10 @@
     "updated": "Entidades actualizadas",
     "att-name": "Nombre atributo",
     "att-main-value": "Valor atributo entidad principal",
-    "att-related-value": "Valor atributo"
+    "att-related-value": "Valor atributo",
+    "email": "Email donde se enviara notificación al concluir la tarea la librería de descubrimiento",
+    "email-placeholder": "Introduzca Email para recibir notificación",
+    "linksToEntity": "Links hacia la entidad"
   },
   "uris": {
     "title": "Factoría de URIs",
@@ -468,7 +479,8 @@
     "homepage": "Pag. Inicio",
     "isStartup": "Es startup",
     "keyword": "Keyword",
-    "publicCompany": "Compañía pública"
+    "publicCompany": "Compañía pública",
+    "other": "Otras"
   },
   "participant": {
     "title": "Participantes",
@@ -602,6 +614,7 @@
     "cron": "Cron"
   },
   "importation": {
+    "import-manual": "Manual de importación",
     "header": "Importación de datos",
     "button": "+ Nueva Importación",
     "import": "Importar",
@@ -631,13 +644,221 @@
     "edit-form": "Modificar validador"
   },
   "ldp": {
-    "header": "Entidades del grafo ASIO-SGI",
+    "header": "Entidades del grafo de datos de investigación de la Universidad de Murcia",
     "entity": "Entidad",
     "count": "Total",
     "uri": "URI",
     "title": "Título/Nombre",
     "details": {
       "relations": "Entidades relacionadas"
+    },
+    "relatedHeader": "Entidades relacionadas",
+    "directHeader": "Relaciones principales",
+    "relationship": "Relación",
+    "relatedUri": "Uri",
+    "relatedType": "Categoría",
+    "relatedDescription": "Descripción",
+    "category": {
+      "name": "Categoría",
+      "names": "Categorías",
+      "values": {
+        "University": {
+          "s": "Universidad",
+          "p": "Universidades"
+        },
+        "Supervisee-role": {
+          "s": "Rol de supervisor",
+          "p": "Roles de supervisor"
+        },
+        "Researcher-role": {
+          "s": "Rol de investigador",
+          "p": "Roles de investigador"
+        },
+        "Researcher-position": {
+          "s": "Puesto de investigador",
+          "p": "Puestos de investigador"
+        },
+        "Research-line": {
+          "s": "Línea de investigación",
+          "p": "Líneas de investigación"
+        },
+        "Research-group": {
+          "s": "Grupo de investigación",
+          "p": "Grupos de investigación"
+        },
+        "Research-field": {
+          "s": "Campo de investigación",
+          "p": "Campos de investigación"
+        },
+        "Publication": {
+          "s": "Publicación",
+          "p": "Publicaciones"
+        },
+        "Project": {
+          "s": "Proyecto",
+          "p": "Proyectos"
+        },
+        "Phd-supervising-relationship": {
+          "s": "Relacion supevision Phd",
+          "p": "Relacions supevision Phd"
+        },
+        "Person": {
+          "s": "Persona",
+          "p": "Personas"
+        },
+        "Patent": {
+          "s": "Patente",
+          "p": "Patentes"
+        },
+        "Organization": {
+          "s": "Organización",
+          "p": "Organizaciones"
+        },
+        "Knowledge-area": {
+          "s": "Área de conocimiento",
+          "p": "Áreas de conocimiento"
+        },
+        "Funding-source": {
+          "s": "Fuente de financiación",
+          "p": "Fuentes de financiación"
+        },
+        "Funding-program": {
+          "s": "Programa de financiación",
+          "p": "Programas de financiación"
+        },
+        "Funding": {
+          "s": "Fondo",
+          "p": "Fondos"
+        },
+        "Feature": {
+          "s": "Característica",
+          "p": "Características"
+        },
+        "Doctoral-thesis": {
+          "s": "Tesis Doctoral",
+          "p": "Tesis Doctorales"
+        },
+        "Department": {
+          "s": "Departamento",
+          "p": "Departamentos"
+        },
+        "Curriculum-vitae": {
+          "s": "Curriculum Vitae",
+          "p": "Curriculums Vitae"
+        },
+        "Conference": {
+          "s": "Conferencia",
+          "p": "Conferencias"
+        },
+        "Center": {
+          "s": "Centro",
+          "p": "Centros"
+        },
+        "Awarded-degree": {
+          "s": "Título otorgado",
+          "p": "Títulos otorgados"
+        },
+        "Article": {
+          "s": "Artículo",
+          "p": "Artículos"
+        },
+        "Activity": {
+          "s": "Actividad",
+          "p": "Actividades"
+        },
+        "Academic-subject": {
+          "s": "Materia académica",
+          "p": "Materias académicas"
+        },
+        "Academic-degree": {
+          "s": "Título académico",
+          "p": "Títulos académicos"
+        }
+      }
+    },
+    "properties": {
+      "22-rdf-syntax-ns#type": "Categoría",
+      "id": "ID",
+      "localId": "ID Local",
+      "title": "Título",
+      "description": "Descripción",
+      "abbreviation": "Abreviatura",
+      "keyword": "Palabra clave",
+      "date": "Fecha",
+      "dedication": "Dedicación",
+      "dedicationPercentage": "Porcentaje de dedicación",
+      "hasKnowledgeArea": "Tiene área de conocimiento",
+      "inheresIn": {
+        "s": "Inherente en",
+        "p": "Inherente en "
+      },
+      "relatedBy": {
+        "s": "Relacionado por",
+        "p": "Relacionado por "
+      },
+      "nickname": "Nickname",
+      "image": "Imagen",
+      "homepage": "Página principal",
+      "birthDate": "Fecha de nacimiento",
+      "personalMaibox": "Buzón personal",
+      "surname": "Apellidos",
+      "gender": "Género",
+      "hasContactInfo": "Tiene información de contacto",
+      "researchLine": "Línea de investigación",
+      "taxId": "Tax ID",
+      "firstName": "Nombre",
+      "name": "Nombre completo",
+      "hasCV": {
+        "s": "Curriculum Vitae",
+        "p": "Curriculum Vitae"
+      },
+      "dateEnd": "Fecha fin",
+      "dateStart": "Fecha inicio",
+      "relates": {
+        "s": "Relación",
+        "p": "Relaciones"
+      },
+      "endDate": "Fecha fin",
+      "excellenceLabel": "Etiqueta de excelencia",
+      "startDate": "Fecha inicio",
+      "type": "Tipo",
+      "PageEnd": "Página fin",
+      "PageStart": "Página inicio",
+      "doi": "DOI",
+      "summary": "Resumen",
+      "correspondingAuthor": {
+        "s": "Autor",
+        "p": "Autores"
+      },
+      "foreseenJustificationDate": "Fecha de justificación prevista",
+      "status": "Estado",
+      "projectClassification": "Clasificación del proyecto",
+      "modality": "Modalidad",
+      "needsEthicalValidation": "Necesita validación ética",
+      "placeOfPublication": "Lugar de publicación",
+      "produces": {
+        "s": "Produce",
+        "p": "Produce"
+      },
+      "endPage": "Página fin",
+      "dateIssued": "Fecha de emisión",
+      "expirationDate": "Fecha de expiración",
+      "startPage": "Página inicio",
+      "publishedIn": "Publicado en",
+      "freetextKeyword": "Palabra clave de texto libre",
+      "isStartup": "Startup",
+      "publicCompany": "Compañía pública",
+      "funds": "Fondos",
+      "publicFunding": "Fondos públicos",
+      "locality": "Localidad",
+      "locatedIn": "Situado en",
+      "presents": {
+        "s": "Presenta",
+        "p": "Presenta"
+      },
+      "position": "Posición",
+      "impact": "Impacto",
+      "contactInformation": "Información de contacto"
     }
   },
   "dataDeletion": {

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FindRequest } from 'src/app/_helpers/search';
 import { DiscoveryService } from 'src/app/_services/discovery/discovery.service';
 import { LoginService } from 'src/app/_services/login.service';
+import { Helper } from 'src/app/_helpers/utils';
+
+// C:\Users\druiz\repositorios\UM\web-publication-service\src\app\_helpers\utils.ts
 
 @Component({
   selector: 'app-discovery-control',
@@ -21,6 +24,7 @@ export class DiscoveryControlComponent implements OnInit {
   objetsList = [];
   objectStats: any;
   isAdmin = false;
+  helper = Helper;
 
   constructor(private discoveryService: DiscoveryService, private loginService: LoginService) { }
 
@@ -64,7 +68,10 @@ export class DiscoveryControlComponent implements OnInit {
     this.objetsList = [];
     this.discoveryService.getObjectList(this.findRequestStats).subscribe((objects: Array<Object>) => {
       for (let i = 0; i < objects.length; i++) {
-        this.objetsList.push(String(objects[i]).split("/").slice(-1)[0]);
+        let obj = String(objects[i]).split("/").slice(-1)[0];
+        //if (obj !== "Researcher-position" && obj !== "Researcher-role" ) {
+          this.objetsList.push(obj);
+        //}
       }
       this.objetsList.sort();
     });

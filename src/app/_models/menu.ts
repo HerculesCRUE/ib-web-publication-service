@@ -104,7 +104,7 @@ export const MENU_ITEMS: MenuItem[] = [
     title: 'menu.users',
     icon: 'oi-person',
     url: '',
-    urlExterna: Helper.getKeyCloackUrl().authUrl + '/admin/',
+    urlExterna: Helper.getKeyCloackUrl().authUrl + '/admin/umasio/console',
     disabled: false,
     loginRequired: true
   },

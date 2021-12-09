@@ -38,6 +38,8 @@ export const WEBSOCKET_URL = environment.urlWebsocket;
 
 export const SGI = environment.sgi;
 
+export const EMAIL = environment.mail;
+
 export const OAUTH: OAuth = {
   clientId: environment.oauthClientId,
   secret: environment.oauthSecret,

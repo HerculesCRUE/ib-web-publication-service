@@ -65,6 +65,7 @@
                     <app-table-results-dto [displayPagination]="false" [findRequest]="findRequest"
                         [dtoTypeTranslate]="'projects'" [extra]="'5'" [routerNameLink]="url"
                         *ngIf="loaded && resultObject?.content?.length !== 0" [routerField]="'id'"
+                        [ldapEntity]="true" ldapEntityUriField="uri"
                         [data]="resultObject?.content" [pageInfo]="resultObject" [visibleColumns]="visibleColumns"
                         [mainColumn]="mainColumn" (sortChanged)="allprojectsFilteredSortChanged($event)">
                     </app-table-results-dto>

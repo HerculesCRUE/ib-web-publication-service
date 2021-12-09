@@ -35,7 +35,8 @@
                     <li class="nav-item" role="presentation">
                         <a class="nav-link" [ngClass]="{'active': activeTab === 'events' }" id="events-tab"
                             (click)="changeTab('events')" data-bs-toggle="tab" href="JavaScript:void(0)" role="tab"
-                            aria-controls="events" [attr.aria-selected]="activeTab === 'events'">{{'scientific-production.events' |
+                            aria-controls="events"
+                            [attr.aria-selected]="activeTab === 'events'">{{'scientific-production.events' |
                             translate}}</a>
                     </li>
                 </ul>
@@ -60,9 +61,10 @@
                         [ngClass]="{'show': activeTab === 'other-publications', 'active': activeTab === 'other-publications' }"
                         role="tabpanel" aria-labelledby="other-publications-tab">
                         <app-documents [idPrefix]="'other'" [url]="'../document'" [routerFieldSecondary]="'type'"
-                            [selectDocumentType]="[{ name: 'dossiers', value: 'Dossier' }]" [isTreeVisible]="false"
-                            [filterDocumentType]="['Dossier']" [visibleColumns]="['description', 'date']"
-                            mainColumn="description"></app-documents>
+                            [selectDocumentType]="[{ name: 'dossiers', value: 'Dossier' }, { name: 'other', value: 'Other' }]"
+                            [isTreeVisible]="false" [filterDocumentType]="['Dossier', 'Other']"
+                            [visibleColumns]="['title', 'description', 'date']" mainColumn="title">
+                        </app-documents>
                     </div>
                     <div class="tab-pane fade" id="events"
                         [ngClass]="{'show': activeTab === 'events', 'active': activeTab === 'events' }" role="tabpanel"

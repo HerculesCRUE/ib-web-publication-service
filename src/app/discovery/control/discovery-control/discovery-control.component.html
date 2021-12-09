@@ -30,7 +30,7 @@
                                 <td><span [ngClass]="getClassByState(discoveryState.states.REDIS.state)">{{'discovery.'
                                         +
                                         discoveryState.states.REDIS.state | translate }}</span></td>
-                                <td>{{discoveryState.states.REDIS.lastDate}}</td>
+                                <td>{{helper.formatDate(discoveryState.states.REDIS.lastDate)}}</td>
                             </tr>
                             <tr>
                                 <td>Elasticsearch</td>
@@ -38,14 +38,14 @@
                                         [ngClass]="getClassByState(discoveryState.states.ELASTICSEARCH.state)">{{'discovery.'
                                         +
                                         discoveryState.states.ELASTICSEARCH.state | translate }}</span></td>
-                                <td>{{discoveryState.states.ELASTICSEARCH.lastDate}}</td>
+                                <td>{{helper.formatDate(discoveryState.states.ELASTICSEARCH.lastDate)}}</td>
                             </tr>
                             <tr>
                                 <td>Real Data</td>
                                 <td><span [ngClass]="getClassByState(discoveryState.states.CACHE.state)">{{'discovery.'
                                         +
                                         discoveryState.states.CACHE.state | translate }}</span></td>
-                                <td>{{discoveryState.states.CACHE.lastDate}}</td>
+                                <td>{{helper.formatDate(discoveryState.states.CACHE.lastDate)}}</td>
                             </tr>
                         </tbody>
                     </table>

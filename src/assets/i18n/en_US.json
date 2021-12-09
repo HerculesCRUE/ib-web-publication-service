@@ -109,8 +109,8 @@
   },
   "sparql": {
     "username": "Username",
-    "sparqlQuery": "Query",
-    "sparqlName": "Name",
+    "sparqlQuery": "Consultation",
+    "sparqlName": "Title",
     "entityId": "ID",
     "main": {
       "federated": "Federated queries",
@@ -216,7 +216,14 @@
     "contains": "Contains",
     "participates": "Participates",
     "provides": "Provides",
-    "relatedBy": "Related by"
+    "relatedBy": "Related by",
+    "center": "Centers",
+    "department": "Departments",
+    "research-group": "Research groups",
+    "funding-organization": "Funding Organizations",
+    "organization": "Organizations",
+    "university": "Universities",
+    "relatestitles": "Parent organizations"
   },
   "scientist": {
     "title": "Research staff",
@@ -248,7 +255,7 @@
     "hasContactInfo": "Has contact info",
     "homepage": "Home page",
     "nickname": "Nickname",
-    "personalMaibox": "PersonalMailbox",
+    "personalMaibox": "E-mail",
     "researchLine": "Research Line",
     "surname": "Surname",
     "taxId": "Tax ID",
@@ -322,6 +329,7 @@
     "type-result": "Type result",
     "code-result": "Result code",
     "accept": "Accept similarity",
+    "invert": "Accept reverse similarity",
     "reject": "Reject similarity",
     "entity": "Entity",
     "entity-main": "Main entity",
@@ -336,7 +344,10 @@
     "updated": "Updated entities",
     "att-name": "Attribute Name",
     "att-main-value": "Main entity atribute value",
-    "att-related-value": "Atribute value"
+    "att-related-value": "Atribute value",
+    "email": "Email where notification will be sent at the conclusion of the discovery library",
+    "email-placeholder": "Enter Email to receive notification",
+    "linksToEntity": "Links to entity"
   },
   "uris": {
     "title": "URIs Factory",
@@ -468,7 +479,8 @@
     "homepage": "Homepage",
     "isStartup": "Is startup",
     "keyword": "Keyword",
-    "publicCompany": "Public company"
+    "publicCompany": "Public company",
+    "other": "Others"
   },
   "participant": {
     "title": "Participants",
@@ -602,6 +614,7 @@
     "cron": "Cron"
   },
   "importation": {
+    "import-manual": "Import manual",
     "header": "Data importation",
     "button": "+ New Importation",
     "import": "Import",
@@ -638,6 +651,214 @@
     "title": "Title/Name",
     "details": {
       "relations": "Related entities"
+    },
+    "relatedHeader": "Related entitites",
+    "directHeader": "Main relations",
+    "relationship": "Relationship",
+    "relatedUri": "Uri",
+    "relatedType": "Category",
+    "relatedDescription": "Description",
+    "category": {
+      "name": "Category",
+      "names": "Categories",
+      "values": {
+        "University": {
+          "s": "University",
+          "p": "Universities"
+        },
+        "Supervisee-role": {
+          "s": "Supervisee Role",
+          "p": "Supervisee Roles"
+        },
+        "Researcher-role": {
+          "s": "Researcher Role",
+          "p": "Researcher Roles"
+        },
+        "Researcher-position": {
+          "s": "Researcher Position",
+          "p": "Researcher Positions"
+        },
+        "Research-line": {
+          "s": "Research Line",
+          "p": "Research Llines"
+        },
+        "Research-group": {
+          "s": "Research Group",
+          "p": "Research Groups"
+        },
+        "Research-field": {
+          "s": "Research Field",
+          "p": "Research Fields"
+        },
+        "Publication": {
+          "s": "Publication",
+          "p": "Publications"
+        },
+        "Project": {
+          "s": "Project",
+          "p": "Projects"
+        },
+        "Phd-supervising-relationship": {
+          "s": "Phd Supervising Relationship",
+          "p": "Phd Supervising Relationships"
+        },
+        "Person": {
+          "s": "Person",
+          "p": "Persons"
+        },
+        "Patent": {
+          "s": "Patent",
+          "p": "Patents"
+        },
+        "Organization": {
+          "s": "Organization",
+          "p": "Organizations"
+        },
+        "Knowledge-area": {
+          "s": "Knowledge Area",
+          "p": "Knowledge Areas"
+        },
+        "Funding-source": {
+          "s": "Funding Source",
+          "p": "Funding Sources"
+        },
+        "Funding-program": {
+          "s": "Funding Program",
+          "p": "Funding Programs"
+        },
+        "Funding": {
+          "s": "Funding",
+          "p": "Funding"
+        },
+        "Feature": {
+          "s": "Feature",
+          "p": "Features"
+        },
+        "Doctoral-thesis": {
+          "s": "Doctoral Thesis",
+          "p": "Doctoral Thesis"
+        },
+        "Department": {
+          "s": "Department",
+          "p": "Departments"
+        },
+        "Curriculum-vitae": {
+          "s": "Curriculum Vitae",
+          "p": "Curriculum Vitae"
+        },
+        "Conference": {
+          "s": "Conference",
+          "p": "Conferences"
+        },
+        "Center": {
+          "s": "Center",
+          "p": "Centers"
+        },
+        "Awarded-degree": {
+          "s": "Awarded Degree",
+          "p": "Awarded Degrees"
+        },
+        "Article": {
+          "s": "Article",
+          "p": "Articles"
+        },
+        "Activity": {
+          "s": "Activity",
+          "p": "Activities"
+        },
+        "Academic-subject": {
+          "s": "Academic Subject",
+          "p": "Academic Subjects"
+        },
+        "Academic-degree": {
+          "s": "Academic Degree",
+          "p": "Academic Degrees"
+        }
+      }
+    },
+    "properties": {
+      "22-rdf-syntax-ns#type": "Category",
+      "id": "ID",
+      "localId": "Local ID",
+      "title": "Title",
+      "description": "Description",
+      "abbreviation": "Abbreviation",
+      "keyword": "Keyword",
+      "date": "Date",
+      "dedication": "Dedication",
+      "dedicationPercentage": "Dedication Percentage",
+      "hasKnowledgeArea": "Has Knowledge Area",
+      "inheresIn": {
+        "s": "Inheres In",
+        "p": "Inheres In"
+      },
+      "relatedBy": {
+        "s": "Related By",
+        "p": "Related By"
+      },
+      "nickname": "Nickname",
+      "image": "Image",
+      "homepage": "Homepage",
+      "birthDate": "BirthDate",
+      "personalMaibox": "Personal Maibox",
+      "surname": "Surname",
+      "gender": "Gender",
+      "hasContactInfo": "Has Contact Info",
+      "researchLine": "Research Line",
+      "taxId": "Tax ID",
+      "firstName": "First Name",
+      "name": "Name",
+      "hasCV": {
+        "s": "Curriculum Vitae",
+        "p": "Curriculum Vitae"
+      },
+      "dateEnd": "End Date",
+      "dateStart": "Start Date",
+      "relates": {
+        "s": "Relates",
+        "p": "Relates"
+      },
+      "endDate": "End Date",
+      "excellenceLabel": "Excellence Label",
+      "startDate": "Start Date",
+      "type": "Type",
+      "PageEnd": "End Page",
+      "PageStart": "Start Page",
+      "doi": "DOI",
+      "summary": "Summary",
+      "correspondingAuthor": {
+        "s": "Author",
+        "p": "Authors"
+      },
+      "foreseenJustificationDate": "Foreseen Justification Date",
+      "status": "Status",
+      "projectClassification": "Project Classification",
+      "modality": "Modality",
+      "needsEthicalValidation": "Needs Ethical Validation",
+      "placeOfPublication": "Place of Publication",
+      "produces": {
+        "s": "Produces",
+        "p": "Produces"
+      },
+      "endPage": "End Page",
+      "dateIssued": "Date of Issue",
+      "expirationDate": "Expiration Date",
+      "startPage": "Start Page",
+      "publishedIn": "Published In",
+      "freetextKeyword": "Free Text Keyword",
+      "isStartup": "Startup",
+      "publicCompany": "Public Company",
+      "funds": "Funds",
+      "publicFunding": "Public Funding",
+      "locality": "Locality",
+      "locatedIn": "Located In",
+      "presents": {
+        "s": "Presents",
+        "p": "Presents"
+      },
+      "position": "Position",
+      "impact": "Impact",
+      "contactInformation": "Contact Information"
     }
   },
   "dataDeletion": {

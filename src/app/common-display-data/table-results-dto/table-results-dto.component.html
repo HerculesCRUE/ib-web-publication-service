@@ -21,7 +21,7 @@
         <tbody>
           <ng-container *ngFor="let item of dataCompleteToShow; index as i">
             <tr [routerLink]="[routerNameLink, item[routerField]]" class="cursor"
-              *ngIf="!!routerField && !!item[routerField] && routerFieldSecondary === ''"
+              *ngIf="!ldapEntity && !!routerField && !!item[routerField] && routerFieldSecondary === ''"
               [ngClass]="{ 'table-secondary': i % 2 == 1 }">
               <ng-container>
                 <td *ngFor="let header of hedearDTO">
@@ -31,7 +31,7 @@
 
             </tr>
             <tr [routerLink]="[routerNameLink, item[routerField], item[routerFieldSecondary]]" class="cursor"
-              *ngIf="!!routerField && !!item[routerField] && routerFieldSecondary !== ''"
+              *ngIf="!ldapEntity && !!routerField && !!item[routerField] && routerFieldSecondary !== ''"
               [ngClass]="{ 'table-secondary': i % 2 == 1 }">
               <ng-container>
                 <td *ngFor="let header of hedearDTO">
@@ -41,19 +41,33 @@
 
             </tr>
 
-            <tr *ngIf="!routerField || !item[routerField]" [ngClass]="{ 'table-secondary': i % 2 == 1 }">
+            <tr [routerLink]="['/main/categories/ldp-entity-details']" [queryParams]="{uri: item[ldapEntityUriField]}"
+              class="cursor" *ngIf="ldapEntity && !!item[ldapEntityUriField]"
+              [ngClass]="{ 'table-secondary': i % 2 == 1 }">
+              <ng-container>
+                <td *ngFor="let header of hedearDTO">
+                  <ng-container>{{ item[header] }}</ng-container>
+                </td>
+              </ng-container>
+
+            </tr>
+
+            <tr
+              *ngIf="(!ldapEntity && (!routerField || !item[routerField])) || (ldapEntity && (!ldapEntityUriField || !item[ldapEntityUriField]))"
+              [ngClass]="{ 'table-secondary': i % 2 == 1, 'activeQuery': item === itemSelected }">
               <ng-container>
                 <td *ngFor="let header of hedearDTO">
                   <ng-container>{{ item[header] }}</ng-container>
 
                 </td>
-                <th id="hasActions2" *ngIf="hasActions">
+                <td id="hasActions2" *ngIf="hasActions">
                   <button style="margin-left: 15px" *ngIf="item['username']" (click)="deleteQuery(item['entityId'])"
                     class="btn btn-secondary">{{'form.delete' |
                     translate}}</button>
-                  <button (click)="useQuery(item['sparqlQuery'])" class="btn btn-secondary">{{'form.use' |
+                  <button [style]="{'margin-left': !item['username'] ? '15px' : '0'}" (click)="useQuery(item)"
+                    class="btn btn-secondary">{{'form.use' |
                     translate}}</button>
-                </th>
+                </td>
 
               </ng-container>
             </tr>

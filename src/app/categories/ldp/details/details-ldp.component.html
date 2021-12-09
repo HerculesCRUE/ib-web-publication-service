@@ -4,22 +4,53 @@
     </div>
 </div>
 
+<div class="container-fluid">
+    <div class="row text-muted">
+        <div class="col-12 text-right">
+            <p>
+                <a (click)="back()" class="text-muted"> {{'form.back' | translate}} </a>
+            </p>
+        </div>
+    </div>
+</div>
+<!--<button id="clean" [attr.aria-label]="'form.clean' | translate " role="button" aria-pressed="false"
+    class="btn btn-secondary" (click)="back()">Volver</button>-->
+
 <app-search-ldp></app-search-ldp>
 <br />
 <div class="loader" *ngIf="!details"></div>
 <div class="container-fluid app-table-results" *ngIf="details">
+
+    <a [routerLink]="['/main/ldp']">{{'ldp.category.names' | translate}}</a> &raquo;
+    <a [routerLink]="['/main/categories/ldp-search-result']"
+        [queryParams]="{category: categoryURI}">{{categoryName}}</a>
+
+    <h3>{{entityName}} <a class="copy-uri" [ngClass]="{'copied': uriCopied}" (click)="copyURI(details.uri)">COPY URI</a>
+    </h3>
+
     <div class="row">
         <div class="col">
             <table class="table table-bordered" aria-label="Data displayed from Sparql">
-                <thead>
-                    <th colspan="2">{{ details.uri }}</th>
-                </thead>
                 <tbody>
                     <ng-container *ngFor="let detail of details.properties; index as i">
 
                         <tr [ngClass]="{ 'table-secondary': i % 2 == 1 }">
-                            <td>{{detail.key}}</td>
-                            <td>{{detail.value}}</td>
+                            <td>{{detail.propertyName}}</td>
+                            <td class="main-col-of-2">
+                                <ng-container *ngIf="detail.categoryURI; else noCategoryURI">
+                                    <a [routerLink]="['/main/categories/ldp-search-result']"
+                                        [queryParams]="{category: detail.categoryURI}">{{detail.value}}</a>
+                                </ng-container>
+                                <ng-template #noCategoryURI>
+                                    <ng-container *ngIf="validURL(detail.value); else noLinkPrinci">
+                                        <a [routerLink]="['/main/categories/ldp-entity-details']"
+                                            [queryParams]="{uri: detail.value}">{{detail.value}}</a>
+                                    </ng-container>
+                                    <ng-template #noLinkPrinci>
+                                        {{detail.value}}
+                                    </ng-template>
+                                </ng-template>
+                            </td>
                         </tr>
                     </ng-container>
                 </tbody>
@@ -28,28 +59,5 @@
     </div>
 </div>
 
-<ng-container *ngIf="details && details.relations.length > 0">
-    <h3>{{ "ldp.details.relations" | translate }}</h3>
-    <ng-container *ngFor="let relation of details.relations">
-        <div class="container-fluid app-table-results" *ngIf="details">
-            <div class="row">
-                <div class="col">
-                    <table class="table table-bordered" aria-label="Data displayed from Sparql">
-                        <thead>
-                            <th colspan="2">{{ relation.uri }}</th>
-                        </thead>
-                        <tbody>
-                            <ng-container *ngFor="let detail of relation.properties; index as i">
-
-                                <tr [ngClass]="{ 'table-secondary': i % 2 == 1 }">
-                                    <td>{{detail.key}}</td>
-                                    <td>{{detail.value}}</td>
-                                </tr>
-                            </ng-container>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </ng-container>
-</ng-container>
+<app-search-ldp-related-result [type]="'front'"></app-search-ldp-related-result>
+<app-search-ldp-related-result [type]="'back'"></app-search-ldp-related-result>

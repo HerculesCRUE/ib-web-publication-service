@@ -52,7 +52,7 @@ export class AllResearchmentStructuresComponent extends PaginatedSearchComponent
 
   protected getDefaultOrder(): Order {
     return {
-      property: 'id',
+      property: 'title',
       direction: Direction.ASC
     };
   }

@@ -36,6 +36,8 @@ export class TableResultsDtoComponent
   @Output() idToDelete: EventEmitter<string> = new EventEmitter<string>();
   @Output() queryToUse: EventEmitter<string> = new EventEmitter<string>();
   @Input() hasActions = false;
+
+  @Input() countMain = 0;
   /**
    * Mandatory to show the data in the table
    *
@@ -85,6 +87,12 @@ export class TableResultsDtoComponent
   @Input()
   routerFieldSecondary = '';
 
+  @Input()
+  ldapEntity: boolean;
+
+  @Input()
+  ldapEntityUriField: string;
+
   @Input() findRequest: FindRequest = new FindRequest();
 
   mainColumnClass = '';
@@ -108,7 +116,7 @@ export class TableResultsDtoComponent
    */
   @Output()
   sizeChanged: EventEmitter<number> = new EventEmitter<number>();
-
+  itemSelected: any;
   /*
    * Initial data
    */
@@ -152,7 +160,15 @@ export class TableResultsDtoComponent
         this.hedearDTO = this.visibleColumns.filter(c => this.hedearDTO.some(h => c === h));
       }
       if (this.mainColumn && this.hedearDTO.some(c => c === this.mainColumn)) {
-        this.mainColumnClass = `main-col-of-${this.hedearDTO.length}`;
+
+        if (this.countMain != 0) {
+          this.mainColumnClass = `main-col-of-${this.countMain}`;
+        } else {
+          this.mainColumnClass = `main-col-of-${this.hedearDTO.length}`;
+        }
+
+
+
       }
     }
     if (!!this.pageInfo) {
@@ -175,7 +191,7 @@ export class TableResultsDtoComponent
       }
 
 
-      page.numberOfElements = Math.min(page.content ?.length, this.pageInfo ?.size);
+      page.numberOfElements = Math.min(page.content?.length, this.pageInfo?.size);
       page.size = this.pageInfo.size;
       page.totalElements = this.pageInfo.totalElements;
 
@@ -274,7 +290,8 @@ export class TableResultsDtoComponent
   }
 
   useQuery(query: string) {
-    this.queryToUse.emit(query);
+    this.itemSelected = query;
+    this.queryToUse.emit(query['sparqlQuery']);
   }
 
 

@@ -61,12 +61,13 @@
                                     </select>
                                 </div>
                                 <div class="form-group col-md-3">
-                                    <label for="requestCode">{{'discovery.code-result' | translate}}</label>
+                                    <label for="requestCode">{{'discovery.startDate' | translate}}</label>
                                     <select id="requestCode" name="requestCode" class="form-control"
                                         [(ngModel)]="searchRequest.filter.requestCode" #type="ngModel"
                                         [disabled]="!searchRequest.filter.className" required>
+                                        <option></option>
                                         <option *ngFor="let r of requestCodes" [value]="r.requestCode">
-                                            {{r.requestCode}} ({{r.requestDate}})</option>
+                                            {{dateToLocale(r.requestDate)}}</option>
                                     </select>
                                 </div>
                             </div>
@@ -127,7 +128,8 @@
 <ng-template #notLoadedState>
     {{'discovery.noData' | translate}}
 </ng-template>
-<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="true">
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#fff" type="square-jelly-box" [fullScreen]="true"
+    [timeout]="10000000000000000000000">
     <p style="color: white"> {{'discovery.search-message'
         | translate}} </p>
 </ngx-spinner>
@@ -202,25 +204,7 @@
                             </div>
                         </div>
 
-                        <div *ngIf="responseData.response.results.length > 0; else noSimilatirityResultsFound">
-                            <legend class="legend">{{'discovery.results-title' | translate}}</legend>
-                            <ngb-accordion [closeOthers]="false">
-                                <ngb-panel *ngFor="let it of responseData.response.results"
-                                    id="it-{{it.id}}-{{it.entityId}}"
-                                    title="Entidad principal: {{it.id}} {{it.entityId}}">
-                                    <ng-template ngbPanelContent>
-                                        <app-result-item [item]="it" [requestId]="responseData.response.requestCode"
-                                            [userId]="responseData.response.userId"
-                                            [requestType]="responseData.response.requestType"></app-result-item>
-                                        <hr>
-                                    </ng-template>
-                                </ngb-panel>
-                            </ngb-accordion>
-                        </div>
-
-                        <ng-template #noSimilatirityResultsFound>
-                            {{'discovery.not-result-found' | translate}}
-                        </ng-template>
+                        <app-discovery-result-table [responseData]="responseData"></app-discovery-result-table>
 
                     </div>
 

@@ -1,0 +1,12 @@
+.app-table-results {
+    margin-top: 10px;
+  }
+  
+  th {
+    padding: 10px;
+  }
+  
+  .cursor > * {
+    cursor: pointer;
+  }
+  

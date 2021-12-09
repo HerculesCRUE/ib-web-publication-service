@@ -15,6 +15,12 @@ export class University {
      * The name
      */
     title: string;
+
+    /**
+     * Related By title
+     */
+    relatestitles: string;
+
     /**
      *
      *

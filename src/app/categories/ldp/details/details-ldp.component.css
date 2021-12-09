@@ -1,0 +1,15 @@
+.copy-uri {
+    font-size: 10px;
+    margin-left: 5px;
+    padding: 3px;
+    background-color: var(--primario-500-base);
+    color: white;
+    position: relative;
+    bottom: 3px;
+}
+.copy-uri:hover {
+    color: white;
+}
+.copy-uri.copied {
+    background-color: var(--verde-cto-100);
+}

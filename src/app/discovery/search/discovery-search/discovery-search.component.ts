@@ -4,6 +4,7 @@ import { User } from 'src/app/_models/user';
 import { DiscoveryService } from 'src/app/_services/discovery/discovery.service';
 import { LoginService } from 'src/app/_services/login.service';
 import { NgxSpinnerService } from "ngx-spinner";
+import { Helper } from 'src/app/_helpers/utils';
 
 @Component({
   selector: 'app-discovery-search',
@@ -15,7 +16,7 @@ export class DiscoverySearchComponent implements OnInit {
   nodes = {};
   searchRequest: FindRequest = new FindRequest();
   bodyRequest: any;
-  currentUser: User;
+  currentUser: string;
   actionSearch: string;
   objetsList: Array<string>;
   objetsLodList: any;
@@ -27,12 +28,15 @@ export class DiscoverySearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.bodyRequest = JSON.stringify({ "id": 40372, "title": "Fisiología del comportamiento", "date": "2006", "endPage": 41, "publishedIn": "BIOTECNOLOGIA DE LA REPRODUCCION PORCINAPORCI", "startPage": 24 }, null, 2)
-    this.currentUser = this.loginService.getCurrentUser();
-    this.searchRequest.filter.userId = 'front-request:' + ((this.currentUser) ? 'this.currentUser.id' : 'anonimus');
+    this.currentUser = localStorage.getItem('user_name');
+    this.searchRequest.filter.userId = 'front-request:' + ((this.currentUser) ? this.currentUser : 'anonimus');
     this.searchRequest.filter.applyDelta = true;
     this.searchRequest.filter.doSynchronous = true;
     this.searchRequest.filter.linkEntities = false;
     this.searchRequest.filter.propague_in_kafka = true;
+    if (this.currentUser && Helper.checkEmail(this.currentUser)) {
+      this.searchRequest.filter.email = this.currentUser;
+    }
     this.loadNodesList();
     this.loadLodObjects();
   }
@@ -64,7 +68,10 @@ export class DiscoverySearchComponent implements OnInit {
     this.objetsList = [];
     this.discoveryService.getObjectList(this.searchRequest).subscribe((objects: Array<Object>) => {
       for (let i = 0; i < objects.length; i++) {
-        this.objetsList.push(String(objects[i]).split("/").slice(-1)[0]);
+        let obj = String(objects[i]).split("/").slice(-1)[0];
+        if (obj !== "Researcher-position" && obj !== "Researcher-role" ) {
+          this.objetsList.push(obj);
+        }
       }
       this.objetsList.sort();
     });
@@ -72,14 +79,14 @@ export class DiscoverySearchComponent implements OnInit {
 
   loadLodObjects() {
     this.objetsLodList = {};
-    this.objetsLodList['SCOPUS'] = ['Article', 'Book', 'Book-Chapter', 'Book-Section', 'Doctoral-Thesis', 'Doctoral-Thesis', 'Master-Thesis']
-    this.objetsLodList['CROSSREF'] = ['Article', 'Book', 'Book-Chapter', 'Book-Section', 'Doctoral-Thesis', 'Doctoral-Thesis', 'Master-Thesis']
+    this.objetsLodList['SCOPUS'] = ['Article', 'Book', 'Book-chapter', 'Book-section', 'Doctoral-thesis', 'Master-thesis']
+    this.objetsLodList['CROSSREF'] = ['Article', 'Book', 'Book-chapter', 'Book-section', 'Doctoral-thesis', 'Master-thesis']
     this.objetsLodList['WIKIDATA'] = ['Person']
     this.objetsLodList['ORCID'] = ['Person']
     this.objetsLodList['DOAJ'] = ['Article']
     this.objetsLodList['PUBMED'] = ['Article']
     this.objetsLodList['DBLP'] = ['Person']
-    this.objetsLodList['*'] = ['Article', 'Book', 'Book-Chapter', 'Book-Section', 'Doctoral-Thesis', 'Doctoral-Thesis', 'Master-Thesis', 'Person']
+    this.objetsLodList['*'] = ['Article', 'Book', 'Book-chapter', 'Book-section', 'Doctoral-thesis', 'Master-thesis', 'Person']
   }
 
   onActionSelected() {
@@ -88,9 +95,19 @@ export class DiscoverySearchComponent implements OnInit {
 
   onNodeSelected() {
     this.objetsList = [];
+    if (this.nodes[this.searchRequest.filter.node].length == 1) {
+      this.searchRequest.filter.tripleStore = this.nodes[this.searchRequest.filter.node];
+      this.onTripleStoreSelected();
+    }
+  }
+
+  onTripleStoreSelectedWithTripleStore(tripleStore) {
+    this.searchRequest.filter.tripleStore = tripleStore;
+    this.onTripleStoreSelected()
   }
 
   onTripleStoreSelected() {
+    console.log('Tas llamado a onTripleStoreSelected', this.searchRequest.filter.tripleStore);
     this.objetsList = [];
     this.searchRequest.filter.className = undefined;
     if (this.searchRequest.filter.tripleStore) {
@@ -103,6 +120,10 @@ export class DiscoverySearchComponent implements OnInit {
     }
   }
 
+  setTripleStore(tripleStore) {
+    this.searchRequest.filter.tripleStore = tripleStore;
+  }
+
 
   launchSearch() {
     this.responseIsReady = false;
@@ -111,12 +132,14 @@ export class DiscoverySearchComponent implements OnInit {
       this.discoveryService.doRequestFindSimilaritiesByClass(this.searchRequest).then((data) => {
         this.responseIsReady = true;
         this.responseData = data;
+        console.log('response', this.responseData);
         this.searchRequest.filter.node = undefined;
         this.searchRequest.filter.tripleStore = undefined;
         this.searchRequest.filter.className = undefined;
         this.spinner.hide();
       }, (error) => {
         this.responseIsReady = true;
+        console.log('error', this.responseData);
         this.spinner.hide();
       });
     } else if (this.actionSearch === 'instance') {
@@ -156,7 +179,6 @@ export class DiscoverySearchComponent implements OnInit {
       alert("Invalid JSON Format");
       this.bodyRequest = null;
     }
-    alert()
   }
 
   isJsonString(str) {
