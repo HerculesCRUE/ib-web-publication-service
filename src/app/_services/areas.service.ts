@@ -55,6 +55,11 @@ export class AreasService extends AbstractService {
             );
     }
 
-
+    getAreas(): Observable<Array<KnowledgeArea>> {
+        return this.httpClient
+            .get(Helper.getUrl('/knowledgearea/all')).pipe(
+                catchError(this.handleError)
+            );
+    }
 
 }

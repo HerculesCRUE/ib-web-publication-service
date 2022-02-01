@@ -1,32 +1,19 @@
 <form class="form-horizontal " (ngSubmit)="f.form.valid" #f="ngForm" (keydown.enter)="$event.preventDefault()">
 
-    <app-panel title="{{'scientist.area' | translate}}" collapsable="true" panelClass="mt-20">
 
-        <div class="row">
-            <div class="col-lg-12">
-                <button role="button" aria-pressed="false" class="btn btn-secondary tree" *ngIf="normalTree"
-                    (click)="normalTree = !normalTree">{{'form.change-tree' |
-                    translate}}</button>
-
-                <button role="button" aria-pressed="false" class="btn btn-secondary tree" *ngIf="!normalTree"
-                    (click)="normalTree = !normalTree">{{'form.change-tree-normal' |
-                    translate}}</button>
-            </div>
-            <!-- categorias tree -->
-            <div class="col-12" *ngIf="normalTree">
-                <label for="type" class="col-sm-4 control-label">{{ "scientist.area" | translate }}</label>
-                <app-new-tree [treeType]="'area'" (searchFilter)="searchFilterTree($event)"
-                    (filterChanged)="filtroTree($event)" [clearTree]="clearTree" itemClass="col-lg-4 col-md-6">
-                </app-new-tree>
-            </div>
-            <!-- categorias tree -->
-            <div class="col-12" *ngIf="!normalTree">
-                <label for="type" class="col-sm-4 control-label">{{ "scientist.area" | translate }}</label>
-                <app-tree [treeType]="'area'"></app-tree>
+    <div class="row">
+        <div class="form-group col-lg-4">
+            <label for="type" class="control-label">{{ "knowledgeAreas.type" | translate }}</label>
+            <div>
+                <select [attr.aria-label]="'knowledgeAreas.type' | translate " name="type" class="form-control"
+                    [(ngModel)]="findRequest.filter.knowledgeAreas" id="type" #type="ngModel"
+                    (change)="filterKnowledgeAreas()">
+                    <option [value]="undefined"> {{ "form.select" | translate }}</option>
+                    <option *ngFor="let c of areas" [ngValue]="c">{{c.title}}</option>
+                </select>
             </div>
         </div>
-
-    </app-panel>
+    </div>
 
     <div class="row">
         <div class="col-12">
@@ -67,8 +54,7 @@
                 <div id="datatables-dashboard-markets_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                     <div class="loader" *ngIf="!loaded"></div>
                     <app-table-results-dto [findRequest]="findRequest" [displayPagination]="false"
-                        [routerNameLink]="url" [routerField]="'id'"
-                        [ldapEntity]="true" ldapEntityUriField="uri"
+                        [routerNameLink]="url" [routerField]="'id'" [ldapEntity]="true" ldapEntityUriField="uri"
                         *ngIf="loaded && resultObject?.content?.length !== 0" [data]="resultObject?.content"
                         [dtoTypeTranslate]="'scientist'" [extra]="'2'" [pageInfo]="resultObject"
                         [visibleColumns]="['name', 'gender']" mainColumn="name"

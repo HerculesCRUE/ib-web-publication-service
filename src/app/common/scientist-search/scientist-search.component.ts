@@ -7,8 +7,10 @@ import { catchError, map, takeUntil } from 'rxjs/operators';
 import { NewTreeComponent } from 'src/app/graphic/new-tree/new-tree.component';
 import { HelperGraphics } from 'src/app/_helpers/helperGraphics';
 import { Direction, FindRequest, Order, Page, PageRequest, PaginatedSearchComponent } from 'src/app/_helpers/search';
+import { KnowledgeArea } from 'src/app/_models/KnowledgeArea';
 import { Person } from 'src/app/_models/person';
 import { PersonGraphic } from 'src/app/_models/personGraphic';
+import { AreasService } from 'src/app/_services/areas.service';
 import { GraphicService } from 'src/app/_services/graphic.service';
 import { ResearchStaffService } from 'src/app/_services/research-staff.service';
 /**
@@ -72,6 +74,7 @@ export class ScientistSearchComponent extends PaginatedSearchComponent<Person> i
    */
   loaded = false;
 
+  areas: Array<KnowledgeArea>;
 
   /**
    * Constructor
@@ -86,7 +89,8 @@ export class ScientistSearchComponent extends PaginatedSearchComponent<Person> i
     private graphicService: GraphicService,
     router: Router,
     translate: TranslateService,
-    toastr: ToastrService
+    toastr: ToastrService,
+    private areasService: AreasService
   ) {
     super(router, translate, toastr);
   }
@@ -105,11 +109,26 @@ export class ScientistSearchComponent extends PaginatedSearchComponent<Person> i
       this.findRequest.filter.organizationId = this.organizationId;
     }
 
+    this.areasService.getAreas().subscribe(data => {
+      this.areas = data;
+    });
 
   }
 
   filtroTree(event) {
     this.findRequest.filter.knowledgeAreas = event;
+  }
+
+  filterKnowledgeAreas() {
+    this.findRequest.pageRequest.page = 0;
+    this.loaded = false;
+    this.researchStaffServices.find(this.findRequest).subscribe((data) => {
+      this.resultObject = data;
+      this.loaded = true;
+    }, () => {
+      this.loaded = true;
+    });
+
   }
 
   searchFilterTree(event) {

@@ -871,5 +871,8 @@
     "header": "Installer",
     "script": "Installation via script",
     "manual": "Manual installation"
+  },
+  "knowledgeAreas": {
+    "type": "Areas"
   }
 }
