@@ -37,4 +37,9 @@ export class MockAreaservice extends AbstractService {
         return of({});
     }
 
+    getAreas(): Observable<Array<KnowledgeArea>> {
+        const list: Array<KnowledgeArea> = new Array<KnowledgeArea>();
+        return of(list);
+    }
+
 }
